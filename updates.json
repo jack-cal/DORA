@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "windows": {
-    "version": "0.57.26",
-    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.26-0.6.76"
+    "version": "0.57.27",
+    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77"
   },
   "android": {
-    "version": "0.6.76",
-    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.26-0.6.76"
+    "version": "0.6.77",
+    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77"
   }
 }
