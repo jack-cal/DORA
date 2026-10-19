@@ -1,9 +1,9 @@
 # SUMUWW Basic Protocol Specification
 
 <!-- boundary-v4-9000 -->
-## v4 / height 9000 — implementation update
+## 2026-10-19 · v4 · 9000 · 10%
 
-The general PoW branch examples below describe the rules before height 9000. From height 9000, compatible software also requires a complete boundary certificate; from 9001 it verifies the split connection to the signed parent. Three distinct node identities with three distinct observed IP addresses sign, and their BLS signatures are aggregated. Signatures do not add PoW weight. A candidate conflicting with this node’s registered connections is rejected. Discovery does not prove that every worldwide live node was included, and complete protection against 51% attacks has not been established. The detailed implementation, replacement rules, persistence and compatibility requirements are documented in BOUNDARY_V4.
+From height 9000, only blocks selected with a 10% probability require a BLS certificate and split trace. The trace joins successive selected blocks across ordinary PoW blocks. A missing required certificate or conflict with registered history is rejected; valid transactions spending common-history coins remain usable.
 
 [BOUNDARY_V4](BOUNDARY_V4_EN.md)
 <!-- /boundary-v4-9000 -->

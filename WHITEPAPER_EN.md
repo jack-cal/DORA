@@ -1,9 +1,9 @@
 # SUMUWW Whitepaper
 
 <!-- boundary-v4-9000 -->
-## v4 / height 9000 — implementation update
+## 2026-10-19 · v4 · 9000 · 10%
 
-The general PoW branch examples below describe the rules before height 9000. From height 9000, compatible software also requires a complete boundary certificate; from 9001 it verifies the split connection to the signed parent. Three distinct node identities with three distinct observed IP addresses sign, and their BLS signatures are aggregated. Signatures do not add PoW weight. A candidate conflicting with this node’s registered connections is rejected. Discovery does not prove that every worldwide live node was included, and complete protection against 51% attacks has not been established. The detailed implementation, replacement rules, persistence and compatibility requirements are documented in BOUNDARY_V4.
+From height 9000, only blocks selected with a 10% probability require a BLS certificate and split trace. The trace joins successive selected blocks across ordinary PoW blocks. A missing required certificate or conflict with registered history is rejected; valid transactions spending common-history coins remain usable.
 
 [BOUNDARY_V4](BOUNDARY_V4_EN.md)
 <!-- /boundary-v4-9000 -->
@@ -109,48 +109,42 @@ Anyone may operate a SUMUWW full node, validate the ledger or mine according to 
 P2P peers can observe connection IP addresses. The protocol does not guarantee participant anonymity.
 
 <!-- boundary-detail -->
-## Activation and compatibility
+## Current source policy: random signature blocks from height 9000
 
-On the public `sumuww` profile the first height requiring a boundary certificate is **9000**. Heights below 9000 retain the previous block-validation rules. Height 9000 requires its own complete certificate, with `start: null`; it does not invent a certificate for block 8999. From 9001 onward, a block also requires the split connection to its certified parent.
+This document describes the 2026-10-19 random-10% source revision, based on Windows 0.57.25 / Android 0.6.75. The existing packaged executables and APK still contain the earlier every-block signature policy. This source revision has not been installed on the user's PC or physical phone or published as a release. A separate audit APK is used only in an owned emulator.
 
-Genesis, existing addresses, wallet ownership, UTXOs, subsidies and transaction fees are unchanged. This is an additional consensus validation requirement. Old software does not enforce it; connecting to an older peer before activation does not demonstrate compatibility after activation. Participants need compatible software for the same post-9000 chain. Isolated regtest activation heights used in tests are not public activation settings.
+From height 9000, each parent/height context selects whether its next block requires BLS signatures with a 10% probability. The input is the network identity, block height and previous block hash, under the `sumuww-random-boundary-block-10pct-v1` domain. The current candidate's nonce and transactions are excluded. Ten percent is an average probability, not a fixed ten-block interval, a preparation deadline or an unbiased randomness guarantee.
 
-## PoW and the certificate
+Only selected blocks require a complete certificate. The first selected block has `start: null`; each later selected block links to the latest selected ancestor. Ordinary intervening PoW blocks contain neither a certificate nor a split trace. Native PoW/content/transaction checks and the registered-history conflict checks still apply to them. Signatures do not add a PoW work bonus.
 
-The block identifier and PoW remain SHA-256d of the original 80-byte header. Boundary proof data is carried separately. It is not inserted into the hash that it signs, avoiding a circular reference. Signatures bind the actual completed block hash, network context, parent connection and election bundle. Transaction contents and nonce therefore cannot be changed while retaining the same certificate.
+The selected team still has three distinct node identities and three distinct observed IP addresses. Discovery and signed replies can be relayed through indirect peers. The responder count and neighbor-observation count are not capped at 1024 and 32. The BLS private signing keys belong to the actual selected nodes; the public block-selection seed is not their private key. The mining service obtains final signatures after valid PoW is found, while the following candidate can be hashed in parallel. Zero signing delay or delivery completed before PoW is not established by this revision.
 
-After finding valid PoW the mining service collects the selected nodes' final signatures, validates the resulting certificate and only then accepts and broadcasts the signed block. While that certificate completes, a worker can hash the next candidate on the staged parent. This implementation can wait for discovery or signatures. It does **not** establish zero delay, a fixed sub-second completion time, or permission to accept an unsigned activated block.
+## Old software, ordinary transfers and joining a branch
 
-Work is `floor(2^256 / (target + 1))`, accumulated over valid ancestors. Signatures do not add a work bonus. Selection by greatest valid cumulative work applies subject to the boundary validity and already-registered-connection checks below.
+| Input received by this source revision | Verification result |
+|---|---|
+| Unsigned old-software block at a selected height | Reject: complete boundary proof required |
+| Unsigned old-software block at an unselected height | Can pass if native rules and registered ancestry also pass |
+| Longer branch conflicting with an already registered selected block | Reject: registered connection conflict; claimed extra work does not bypass it |
+| Old-wallet transaction spending a mature, valid, unspent common-history output | Verify the owner signature and amounts; can relay and confirm normally |
+| Transaction spending a reward existing only on a rejected fork | Reject for a missing/spent input; block-certificate checks are separate from wallet signatures |
 
-## Responders, seed and random selection
+Software age alone is not a transaction field or a blanket reason to refuse valid existing coins. A TCP handshake does not establish post-activation block compatibility. A peer that cannot supply the necessary certificate cannot supply that selected block to this revision.
 
-Signed queries and responses propagate over authenticated v4 peer sessions and can reach indirect peers. A stored address, a previous connection or a peer counter alone does not make a node an eligible responder. Each response binds its identity, query, ECVRF ticket, current neighbor observations and observed socket IP addresses.
+The former every-block-policy database marker can be updated only before any block at or above activation exists, and only when all proof, tail and registration tables are empty. Verified pre-activation blocks, UTXOs, wallets and balances are preserved. A database already using the old policy after activation is refused instead of silently reinterpreting its history.
 
-The draw input contains the network identity, parent height and hash, and child height. ECVRF-EDWARDS25519-SHA512-TAI tickets are verified against that input. Ticket outputs and node IDs determine a reproducible draw over the included response bundle. The chosen team contains **three distinct node identities and three distinct observed IP addresses**. This implementation does not determine countries, geographic regions, carriers or human ownership. Several addresses for one identity do not create extra members of the same team.
+## Runtime requests, connections and retained addresses
 
-The bundle must contain a connected graph of mutually reported neighbors and usable IP observations. The current limit is 1024 responses, with at most 32 neighbor observations in each response. Discovery returns when a valid connected response bundle is available. There is **no implemented proof that this bundle contains every live node in the entire worldwide network**. A validated IP observation is a signed neighbor report; other nodes do not independently repeat every remote socket observation.
+Active discovery objects and their wait events are preserved regardless of how many queries are present. Unowned old-parent queries and idle/finished/cancelled queries are cleaned up. A local discovery with no fresh response ends with an explicit idle error; it does not certify a partial response set or secretly redraw a team.
 
-## Missing replies and replacement
+There is no 512-call limit or default direct-peer count limit, and the address cache has no 128-entry or 64-KiB limit. Failed contacts are removed; healthy alternate connections are protected. Expired retry-suppression entries and completed call records are removed. Local idle retention is `max(60 seconds, socket_timeout * 8, measured_processing_time * 2)`; active send/execution/waiter references are protected. Saved manual preferences remain distinct from the discovery cache. An explicitly supplied CLI `--max-peers` is still an operator option; the application does not set one by default.
 
-The runtime requests signatures from the missing team members. On a missing or unusable reply it obtains fresh signed readiness replies from other responders and randomly replaces the missing slot among eligible ready identities with a compatible distinct-IP assignment. Completed signatures are retained. There is no approval vote by the two other selected members and no fixed list of standby identities.
+Large boundary messages use authenticated `bpart` fragments, with 256-KiB data parts, ordered offsets, a transfer identifier and complete-message digest verification. A whole proof is not limited to 1 MiB. The native `bblock` envelope still uses a uint32 proof-length field, and normal frame/transaction/block limits, DHT round budgets and per-peer traffic quotas remain separate. The observed test sizes are test inputs, not new count limits.
 
-The request budget is derived from locally measured processing costs and the response component size; it is not a network-wide consensus deadline. Replacement events identify the requester, block, bundle, slot, displaced identity and reported cause. Receivers verify the signed event and replay the replacement calculation. This authenticates what the requester reported; it does **not** independently prove that a remote node was globally unresponsive. If no replacement is available the runtime keeps the candidate and retries the missing signer.
+## Verification evidence and scope
 
-## Completed signature, split and next boundary
+The old 0.57.22 core actually mined and accepted an isolated regtest history through height 8999 and unsigned branches through 9111. The last packaged policy rejected its unsigned block 9000. This revision accepted native blocks 9000–9003 on the tested main branch and rejected selected block 9004 without its certificate. The identical block passed with three real private-key BLS signatures. A conflicting private branch and its reward transfer were rejected; an old common-history transaction was accepted and confirmed. Actual TCP tests also rejected the old peer's unsupported selected block. Selection heights vary with the parent hash.
 
-Node identity messages use Ed25519. Boundary signatures use BLS12-381 with proof of possession and three distinct signing keys. The three final signatures on their context-bound messages are aggregated into one 96-byte BLS signature and verified with `AggregateVerify`. This is aggregation, not a shared 2-of-3 private key.
-
-For the next parent-child connection, the **already completed aggregate signature** is split in the BLS group: choose a random nonzero group point A and set B = S − A. Both encoded parts are 96 bytes. Verification checks valid subgroup points and A + B = S, together with the parent block and certificate hashes. The parts are not two independently created signatures, a private-key split, a future-block prediction or smaller total storage than S.
-
-The chain database stores part A in the parent's connection-tail record and part B in the child's proof record, atomically with the accepted block. A later read reconstructs the complete envelope. This is a side record in the chain database; the implementation does **not** rewrite the already-mined parent's 80-byte header or prove that A was included in that header before it was mined.
-
-The child signs a context containing this connection. Its own completed aggregate can then be split for the next child. Validation checks the certificate, parent link, split reconstruction, team selection and replacement transcript before registration. Restart validation checks stored certificates and their connections again.
-
-## Registered history and security scope
-
-From activation, the node stores a height/hash/parent/certificate identity for each accepted boundary. A later candidate conflicting with this node's registered connection, or truncating its registered descendants, is rejected even if it claims greater work. Candidate validation is repeated immediately before signing; local persistent signing locks prevent signing different messages for the same network/height/parent context. Incomplete candidates are persisted and resumed after interruption.
-
-These checks protect a node's registered history. They do not by themselves prove that all independent nodes initially registered the same history. The supplied code has no separate global finality vote resolving independently different initial registrations. Distinct IPs do not prove independent operators; signed observations do not remove Sybil, routing or network-partition risks. Consequently a general or complete 51% attack-prevention guarantee has not been established.
+These are isolated native-code/loopback tests at real numeric heights, not a public-network activation, a worldwide census, independent operator proof or a complete 51% defense proof. The original PoW, genesis, issuance, spending signatures and reward maturity rules remain applicable.
 
 <!-- /boundary-detail -->

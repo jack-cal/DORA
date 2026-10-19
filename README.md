@@ -1,75 +1,68 @@
 # SUMUWW (SMW)
 
-SUMUWW is an independent SHA-256d proof-of-work coin with Windows and Android full-node, wallet and mining applications. It implements UTXO accounting, secp256k1 owner-signature verification, independent validation and chain selection by valid cumulative work subject to the active consensus rules.
+SUMUWW is an independent SHA-256d proof-of-work blockchain with Windows and Android node, wallet and mining applications.
 
-## Current implementation and downloads
+## Downloads — Windows 0.57.26 / Android 0.6.76
 
-The [height-9000 candidate](https://github.com/jack-cal/SUMUWW/releases/tag/updates-20261019) contains **Windows 0.57.25** and **Android 0.6.75**, plus the actual implementation source ZIP and SHA-256 checksums. Its public profile requires a completed boundary certificate from block **9000**, then a split connection to the signed parent from **9001**. Earlier software does not enforce this rule. This is a candidate implementation, not a statement that the public network has activated or that every participant upgraded.
+- [Windows complete ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-PC-0.57.26.zip)
+- [Android signed APK](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-Android-0.6.76.apk)
+- [Matching PC and Android source, tests and build instructions](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-source-0.57.26-0.6.76.zip)
+- [SHA-256 checksums](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SHA256SUMS.txt)
+- [Release notes and installation guidance](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.26-0.6.76)
 
-| Component | Download |
-|---|---|
-| Windows node / wallet / miner | [Complete Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/updates-20261019/SUMUWW-PC-0.57.25-boundary9000-candidate.zip) |
-| Android node / wallet / miner | [Signed Android APK](https://github.com/jack-cal/SUMUWW/releases/download/updates-20261019/SUMUWW-0.6.75-boundary9000-candidate.apk) |
-| Implementation, tests and build instructions | [PC + Android source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/updates-20261019/SUMUWW-source-0.57.25-0.6.75.zip) |
-| Checksums | [SHA256SUMS.txt](https://github.com/jack-cal/SUMUWW/releases/download/updates-20261019/SHA256SUMS.txt) |
-| Local read-only explorer | [Explorer 0.4.0](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.0) |
+The named source ZIP contains the implementation. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original binaries and behavior.
 
-Historical releases and download records are retained. The named source ZIP contains the implementation; GitHub’s automatic “Source code” archives contain this repository’s documentation tree. The current modules are under `sumuww/`; paths using `dora/` describe older archives.
+## Block-signature linkage
 
-## Whitepaper and protocol
+From height **9000**, each parent/height context selects a signature-required block with **10% probability**, not a fixed ten-block interval. Three distinct node identities with distinct observed IPs provide BLS signatures; their aggregate is split and linked to the most recent selected ancestor. Ordinary intervening blocks retain native PoW and transaction checks. Registered-history conflicts are rejected. Signatures do not add a work bonus: valid cumulative PoW governs selection among eligible candidates.
+
+Final signatures are collected after valid PoW is found, before registration and propagation. The implementation does not establish key delivery before block discovery, zero signing latency, worldwide responder coverage/convergence, or complete resistance to 51% attacks. Distinct IPs do not prove distinct people or geographic regions.
+
+## Connection and compatibility changes
+
+Large proofs use authenticated multipart transport and improved response processing. Default direct-peer and signature-relay request count limits have been removed. Active queries are retained; idle requests and failed discovered contacts are cleaned up. Frame, transaction, block and per-peer traffic rules remain separate.
+
+Existing valid common-history coins remain spendable. An old-version peer cannot supply a selected block without its required proof. Rewards existing only on a rejected fork cannot be spent on the accepted chain. Pre-9000 policy-marker migration preserves existing data when no activated records exist. Databases already using the former policy after activation are not automatically converted; preserve them and obtain migration guidance.
+
+Windows: close SUMUWW and extract the whole ZIP, keeping `_internal` and included files together. Android: install over the existing app; do not uninstall or clear data. Retain encrypted wallets, the node database and separate boundary signing state. Update checks read [updates.json](updates.json) and open the release page; installation is manual.
+
+## Documentation
 
 - [English whitepaper](WHITEPAPER_EN.md) · [한국어 백서](WHITEPAPER_KO.md)
-- [v4 / 9000 implementation](BOUNDARY_V4_EN.md) · [v4·9000번 구현 상세](BOUNDARY_V4_KO.md)
+- [BLS/v4 implementation](BOUNDARY_V4_EN.md) · [BLS/v4 구현 상세](BOUNDARY_V4_KO.md)
+- [Current source and compatibility](SOURCE_REVISION.md)
 - [Protocol specification](SUMUWW_PROTOCOL_SPEC_EN.md) · [TCP protocol](NETWORK_PROTOCOL_EN.md)
-- [Genesis record](sumuww_genesis.json)
-
-Three distinct node identities with distinct observed IPs provide BLS signatures. The completed aggregate is split for the next connection; signatures do not add a work bonus. Registered-history checks, random selection, replacement and storage are described in the implementation reference. The code does not prove worldwide inclusion of every live node or global convergence of independently different first registrations; a complete 51% attack defense has not been established.
+- [Genesis record](sumuww_genesis.json) · [Change log](RELEASE_NOTES.txt)
 
 ## Consensus parameters
 
-| Parameter | Implemented rule |
+| Parameter | Rule |
 |---|---|
-| PoW | SHA-256d, 80-byte block header |
-| Target block interval | 600 seconds; actual intervals vary |
-| Difficulty before 8064 | Adjustment every 2016 blocks |
-| Difficulty from 8064 | DGW v3, previous 24 blocks on the parent branch |
-| Boundary activation | Public height 9000; parent split connection from 9001 |
-| TCP | Versions 1–4; boundary messages require v4 |
-| Chainwork | Greatest valid cumulative work, subject to active boundary / registered-history validation; no signature-weight bonus |
+| PoW | SHA-256d, 80-byte header |
+| Target interval | 600 seconds; actual intervals vary |
+| Difficulty | DGW v3 from 8064, using the previous 24 blocks; earlier 2016-block retarget |
+| BLS policy | 10% selected blocks from 9000; linkage between successive selected ancestors |
+| Subsidy | 50 SMW through 149999, then 25 SMW, halving every 210000 blocks |
 | Nominal maximum issuance | 17,999,999.97690000 SMW |
 | Excluding unspendable genesis reward | 17,999,949.97690000 SMW |
-| Subsidy | 50 SMW for heights 0–149,999; then 25 SMW, halved every 210,000 blocks in integer smallest units |
+| Reward maturity | Spending height minus creation height >= 100 |
 | Smallest unit | 0.00000001 SMW |
-| Reward maturity | Spending height minus creation height ≥ 100 |
-| Spending | Native P2WPKH / SIGHASH_ALL, secp256k1 ECDSA |
-| Address prefix | `sumuww` |
-| Genesis | `00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97` |
+| Wallet ownership signatures | secp256k1 ECDSA |
+| Network | IPv4/IPv6 TCP; v4 carries boundary messages |
 
-Included transaction fees may be claimed by the miner with the subsidy. Fees transfer existing coins and do not increase issuance. The issuance rules have no reserved developer allocation. The official application’s GPU/ASIC selection unlocks at verified height 12000; this setting does not establish control over other miners’ hardware.
+## Verification scope
 
-## Update checks
+The source audit passed 1181 Windows tests, 11 additional policy/lifecycle tests and 21 Android emulator tests. Numeric-height isolated tests actually mined old-version history through activation and tested native TCP block/transaction compatibility. Exact release-binary and physical-installation checks are described in the release notes. These are project-run results, not an independent security audit or proof of public-network activation.
 
-Windows has visible **Check for updates** and **GitHub** buttons. Android’s update button reads the same [GitHub version manifest](updates.json). Both compare numeric versions in the background and open the selected GitHub release page when requested. Update failures retain a direct GitHub fallback. Installation remains a user action.
+## Whitepaper pages
 
-## Operation and verification
+Rendered from the current English whitepaper; [image source hashes](whitepaper-render-verification.json).
 
-Windows: extract the whole ZIP and keep its included files and `_internal` folder together. Android: update with the signed APK over the existing application; do not uninstall or clear data. Wallet keys, recovery words and passwords stay private. Preserve separate boundary signing state with the node database.
+![SUMUWW_Whitepaper_EN_random10_01](SUMUWW_Whitepaper_EN_random10_01.png)
 
-Connected peers count current node connections, not saved addresses, unique people or active miners. A working IPv6 socket or emulator test does not prove reachability through every mobile carrier. The 2026-10-19 battery-recovery check passed six stop/manual-restart cycles across Korean and vertical Mongolian on the 0.6.74 emulator build, then three Korean cycles on the signed 0.6.75 APK. The earlier failure was caused by an unhandled system permission dialog in the test fixture; battery production code did not require a change. The physical Samsung phone was updated in place to 0.6.75, and its update button fetched GitHub information and opened the expected release in the GitHub app. Included tests and source are project-run evidence, not an independent audit or proof of public activation.
+![SUMUWW_Whitepaper_EN_random10_02](SUMUWW_Whitepaper_EN_random10_02.png)
 
-Explorer 0.4.0 reads a selected synchronized node database and serves a local page at `http://127.0.0.1:8770`. It is not a publicly hosted explorer and does not synchronize the node, access wallet keys, mine or submit payments.
+![SUMUWW_Whitepaper_EN_random10_03](SUMUWW_Whitepaper_EN_random10_03.png)
 
-## Whitepaper images
-
-The following pages are rendered from the current English whitepaper; [render verification](whitepaper-render-verification.json) records source and image hashes.
-
-![SUMUWW_Whitepaper_EN_v4_01](SUMUWW_Whitepaper_EN_v4_01.png)
-
-![SUMUWW_Whitepaper_EN_v4_02](SUMUWW_Whitepaper_EN_v4_02.png)
-
-![SUMUWW_Whitepaper_EN_v4_03](SUMUWW_Whitepaper_EN_v4_03.png)
-
-![SUMUWW_Whitepaper_EN_v4_04](SUMUWW_Whitepaper_EN_v4_04.png)
-
-![SUMUWW_Whitepaper_EN_v4_05](SUMUWW_Whitepaper_EN_v4_05.png)
+![SUMUWW_Whitepaper_EN_random10_04](SUMUWW_Whitepaper_EN_random10_04.png)
 

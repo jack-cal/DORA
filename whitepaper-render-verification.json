@@ -1,51 +1,18 @@
 {
-  "source_sha256": "8bcdd66767c4f1519ed39988a77cc1c01f7aff8b86644327c69d2de0b445e9d0",
-  "source_sections": 17,
-  "full_text_matches_source": true,
-  "horizontal_overflow": false,
+  "source_sha256": "4381f77395493d1a16b6f403dc41f8243d346f284d474f1c663af0a210950f93",
+  "pages": 4,
   "files": [
-    {
-      "file": "SUMUWW_Whitepaper_EN_v4_01.png",
-      "width": 1500,
-      "height": 2866,
-      "overflow": false,
-      "bytes": 520226,
-      "sha256": "ffc25c8141289ff166e47b76df1150691e200e520074020045ef44fe18e26459"
-    },
-    {
-      "file": "SUMUWW_Whitepaper_EN_v4_02.png",
-      "width": 1500,
-      "height": 2412,
-      "overflow": false,
-      "bytes": 507626,
-      "sha256": "78ce168261acc83a6ada32117514f42ed22297304604f1810bfddd00b9443353"
-    },
-    {
-      "file": "SUMUWW_Whitepaper_EN_v4_03.png",
-      "width": 1500,
-      "height": 2686,
-      "overflow": false,
-      "bytes": 526235,
-      "sha256": "9ffc1bafc7334eaed2c8022704cc5884115d272dfddf811880f8b98cf764ac65"
-    },
-    {
-      "file": "SUMUWW_Whitepaper_EN_v4_04.png",
-      "width": 1500,
-      "height": 2207,
-      "overflow": false,
-      "bytes": 478224,
-      "sha256": "024bc7db1f1f7103c9bfe8d1a8eab829c37d11e94856b021d0e99e4911ef93ce"
-    },
-    {
-      "file": "SUMUWW_Whitepaper_EN_v4_05.png",
-      "width": 1500,
-      "height": 1609,
-      "overflow": false,
-      "bytes": 345318,
-      "sha256": "da4cd4bab94c19adc74217dc17e9a44fa4274e0e49cdea54c44d8e306f6548f5"
-    }
+    "SUMUWW_Whitepaper_EN_random10_01.png",
+    "SUMUWW_Whitepaper_EN_random10_02.png",
+    "SUMUWW_Whitepaper_EN_random10_03.png",
+    "SUMUWW_Whitepaper_EN_random10_04.png"
   ],
-  "original_distribution_source_sha256": "7e0a81c36b213fe5afc85d7f41253bbfbe4a417b255d1a7aafaaa02e10b479a8",
-  "source_file": "WHITEPAPER_EN.md",
-  "link_targets_adjusted_for_repository_root": true
+  "page_size": [
+    1500,
+    2866
+  ],
+  "line_bounds_checked": true,
+  "historical_v4_images_replaced": false,
+  "published_source_file": "WHITEPAPER_EN.md",
+  "published_source_sha256": "8f84fda7860dc45fcc3c9a6e262f2eaf7d6c3a2fe7ad2d965cffc1f914614b2d"
 }
