@@ -12,6 +12,15 @@ SUMUWW is an independent SHA-256d proof-of-work blockchain with Windows and Andr
 
 The named source ZIP contains the implementation. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original binaries and behavior.
 
+## Block explorer — 0.4.2
+
+- [Explorer Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.2/SUMUWW_Explorer_Windows64_v0_4_2.zip)
+- [Explorer implementation source and tests](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.2/SUMUWW_Explorer_Source_v0_4_2.zip)
+- [Explorer release notes and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.2)
+- [Explorer guide](EXPLORER_README.txt)
+
+Version 0.4.2 fixes mining-analysis failures after height 8064 and detects current SUMUWW data paths. The explorer reads the selected local node database and maintains a separate search index.
+
 ## Block-signature linkage
 
 From height **9000**, each parent/height context selects a signature-required block with **10% probability**, not a fixed ten-block interval. Three distinct node identities with distinct observed IPs provide BLS signatures; their aggregate is split and linked to the most recent selected ancestor. Ordinary intervening blocks retain native PoW and transaction checks. Registered-history conflicts are rejected. Signatures do not add a work bonus: valid cumulative PoW governs selection among eligible candidates.
