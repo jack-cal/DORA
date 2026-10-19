@@ -2,13 +2,13 @@
 
 SUMUWW is an independent SHA-256d proof-of-work blockchain with Windows and Android node, wallet and mining applications.
 
-## Downloads — Windows 0.57.26 / Android 0.6.76
+## Downloads — Windows 0.57.27 / Android 0.6.77
 
-- [Windows complete ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-PC-0.57.26.zip)
-- [Android signed APK](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-Android-0.6.76.apk)
-- [Matching PC and Android source, tests and build instructions](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SUMUWW-source-0.57.26-0.6.76.zip)
-- [SHA-256 checksums](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.26-0.6.76/SHA256SUMS.txt)
-- [Release notes and installation guidance](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.26-0.6.76)
+- [Windows complete ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-PC-0.57.27.zip)
+- [Android signed APK](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-Android-0.6.77.apk)
+- [Matching PC and Android source, tests and build instructions](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-source-0.57.27-0.6.77.zip)
+- [SHA-256 checksums](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SHA256SUMS.txt)
+- [Release notes and installation guidance](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77)
 
 The named source ZIP contains the implementation. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original binaries and behavior.
 
@@ -19,6 +19,8 @@ From height **9000**, each parent/height context selects a signature-required bl
 Final signatures are collected after valid PoW is found, before registration and propagation. The implementation does not establish key delivery before block discovery, zero signing latency, worldwide responder coverage/convergence, or complete resistance to 51% attacks. Distinct IPs do not prove distinct people or geographic regions.
 
 ## Connection and compatibility changes
+
+This update fixes disconnects caused by delayed optional address replies and by the previous v4 hello format. A delayed duplicate is ignored without importing hints; incompatible signing policies remain outside the current BLS signing pool. Native transport compatibility does not bypass selected-block proof validation.
 
 Large proofs use authenticated multipart transport and improved response processing. Default direct-peer and signature-relay request count limits have been removed. Active queries are retained; idle requests and failed discovered contacts are cleaned up. Frame, transaction, block and per-peer traffic rules remain separate.
 
@@ -51,6 +53,8 @@ Windows: close SUMUWW and extract the whole ZIP, keeping `_internal` and include
 | Network | IPv4/IPv6 TCP; v4 carries boundary messages |
 
 ## Verification scope
+
+For this update, 175 network regressions, four previous-v4 TCP compatibility tests and ten frozen boundary checks passed. The installed Windows app retained the same TCP connection with a six-second delayed address reply. Eight actual external peer identities remained connected and synchronized for about seven minutes; temporary test peers were excluded. Connection growth beyond eight remains unverified. Android 0.6.77 is signed, but physical-phone installation and testing of this exact revision remain pending. See the attached VERIFICATION.txt for the exact test scope.
 
 The source audit passed 1181 Windows tests, 11 additional policy/lifecycle tests and 21 Android emulator tests. Numeric-height isolated tests actually mined old-version history through activation and tested native TCP block/transaction compatibility. Exact release-binary and physical-installation checks are described in the release notes. These are project-run results, not an independent security audit or proof of public-network activation.
 

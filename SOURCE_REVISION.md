@@ -2,7 +2,7 @@
 
 ## Current source policy: random signature blocks from height 9000
 
-This document describes the 2026-10-19 random-10% source revision, based on Windows 0.57.25 / Android 0.6.75. The existing packaged executables and APK still contain the earlier every-block signature policy. This source revision has not been installed on the user's PC or physical phone or published as a release. A separate audit APK is used only in an owned emulator.
+This document describes Windows **0.57.27** / Android **0.6.77** (versionCode 137), a connection-maintenance update to Windows 0.57.26 / Android 0.6.76. The random-10% signature policy from height 9000 is unchanged. The Windows revision has been installed and checked; this exact signed Android revision has not yet been tested on the physical phone. The earlier Windows 0.57.25 / Android 0.6.75 archives implement the former every-block policy. Use the matching named release assets and source ZIP. [Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77)
 
 From height 9000, each parent/height context selects whether its next block requires BLS signatures with a 10% probability. The input is the network identity, block height and previous block hash, under the `sumuww-random-boundary-block-10pct-v1` domain. The current candidate's nonce and transactions are excluded. Ten percent is an average probability, not a fixed ten-block interval, a preparation deadline or an unbiased randomness guarantee.
 
