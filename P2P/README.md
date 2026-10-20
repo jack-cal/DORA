@@ -1,20 +1,31 @@
 # SUMUWW P2P
 
-[All components](../README.md) · [Release notes](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-v0.1.5)
+[All components](../README.md) · [Unified guide](../Documentation/README.md) · [Version history](#version-history)
 
-Native Windows desktop application for direct SMW/BTC orders, signed reservations, read-only local wallet queries and regtest swap execution.
+Native Windows direct-order sharing and regtest exchange application. Public-money swaps are disabled.
 
-## Downloads — 0.1.5
+## Latest — 0.1.6
 
-| File | Link |
+| File | Download |
 |---|---|
-| Complete Windows application | [SUMUWW-P2P-0.1.5-Windows.zip](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/SUMUWW-P2P-0.1.5-Windows.zip) |
-| Implementation, tests and build files | [SUMUWW-P2P-0.1.5-Source.zip](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/SUMUWW-P2P-0.1.5-Source.zip) |
-| Setup and supported workflow | [README.txt](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/README.txt) |
-| Download checksums | [SHA256SUMS.txt](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/SHA256SUMS.txt) |
+| README.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/README.txt) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/SHA256SUMS.txt) |
+| SUMUWW-P2P-0.1.6-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/SUMUWW-P2P-0.1.6-Source.zip) |
+| SUMUWW-P2P-0.1.6-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/SUMUWW-P2P-0.1.6-Windows.zip) |
 
-Extract the complete ZIP and run `SUMUWW-P2P.exe`. The native window does not open a browser or command prompt. Preserve existing local application data when updating.
+English first-launch default, 34 bundled offline interface languages and persistent explicit language selection. UI language changes preserve amounts, addresses, keys and protocol data.
 
-Exchange execution is restricted to regtest. **Public-money funding and swaps are disabled.** Direct external connections require reachable addresses and ports; automatic Internet discovery and NAT traversal are not included.
+Native Windows application. Adds the 34-language selector, scrollable translated views and traditional Mongolian captions. Switching language retains order input, selected tab and connection settings. Public-money funding and swaps remain disabled; exchange execution is restricted to regtest.
 
-[Wallet](../Wallet/README.md) · [Windows node](../PC/README.md) · [Explorer](../Explorer/README.md)
+Extract the complete Windows ZIP and run SUMUWW-P2P.exe. No browser or command prompt is opened.
+
+
+## Version history
+
+All published historical assets remain available. Older combined PC/Android releases are listed under both matching components; current platform releases are separate.
+
+| Published (UTC) | Release | Application | Source |
+|---|---|---|---|
+| 2026-10-20 | [SUMUWW P2P 0.1.6 — Windows](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-v0.1.6) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/SUMUWW-P2P-0.1.6-Windows.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.6/SUMUWW-P2P-0.1.6-Source.zip) |
+| 2026-10-20 | [SUMUWW P2P 0.1.5 — Windows](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-v0.1.5) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/SUMUWW-P2P-0.1.5-Windows.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.5/SUMUWW-P2P-0.1.5-Source.zip) |
