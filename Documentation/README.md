@@ -1,6 +1,6 @@
 # SUMUWW — Unified Guide and Protocol Reference
 
-Current application versions: Windows node **0.57.28**, Android node **0.6.78**, standalone Android Wallet **1.0.9**, Explorer **0.4.4**, P2P **0.1.7**.
+Current application versions: Windows node **0.57.29**, Android node **0.6.78**, standalone Android Wallet **1.0.9**, Explorer **0.4.4**, P2P **0.1.7**.
 
 [Components and downloads](../README.md) · [PC history](../PC/README.md#version-history) · [Android history](../Android/README.md#version-history) · [Wallet history](../Wallet/README.md#version-history) · [Explorer history](../Explorer/README.md#version-history) · [P2P history](../P2P/README.md#version-history)
 
@@ -22,7 +22,7 @@ This is the current consolidated documentation. Historical releases retain the d
 
 | Application | Purpose | Installation and retained data |
 |---|---|---|
-| Windows node 0.57.28 | Full node, wallet and mining | Close the app and replace the complete extracted bundle. Preserve encrypted wallets, node database and boundary signing state. |
+| Windows node 0.57.29 | Full node, wallet and mining | Close the app and replace the complete extracted bundle. Preserve encrypted wallets, node database and boundary signing state. |
 | Android node 0.6.78 | Full node, wallet and CPU mining | Install the signed APK over the existing app. Do not uninstall or clear data. |
 | Android Wallet 1.0.9 | Standalone wallet, receiving, sending and connection settings | Install over the existing `org.sumuww.wallet` app, preserving its encrypted wallet. It is a separate application from the mining node. |
 | Explorer 0.4.4 | Read-only local blockchain explorer | Extract the Windows ZIP and run `start-explorer.cmd` or the EXE. Uses a browser on localhost and a separate search index. |
@@ -235,7 +235,7 @@ SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0, with a 20-byte
 
 ## Block-signature linkage — v4 / 9000
 
-Implementation reference: Windows 0.57.28 / Android 0.6.78, retaining the random-10% v4 policy. This describes the supplied code, not a claim of completed public-network activation or an independent security audit.
+Implementation reference: Windows 0.57.29 / Android 0.6.78, retaining the random-10% v4 policy. This describes the supplied code, not a claim of completed public-network activation or an independent security audit.
 
 ## Activation and compatibility
 
@@ -611,7 +611,7 @@ SMW/BTC orders and signed reservations can be shared directly with another
 instance. Existing wallet addresses can be queried through a local node.
 Exchange execution is restricted to isolated SUMUWW and Bitcoin Core regtest.
 Public-money funding and swaps remain disabled. The separate SUMUWW node
-0.57.28 / Android 0.6.78 upgrade adds HTLC validation at height 9100; installing
+Windows 0.57.28 and later / Android 0.6.78 upgrade adds HTLC validation at height 9100; installing
 this P2P application does not activate public trading.
 
 RUNNING ON WINDOWS
