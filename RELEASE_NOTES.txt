@@ -1,13 +1,7 @@
-SUMUWW Windows 0.57.28 / Android 0.6.78
+SUMUWW documentation
 
-- Add exact-template P2WSH SHA256/preimage/CLTV conditional spends from block 9100.
-- Keep the separate random-10% BLS block-signature rule from height 9000.
-- Existing mature coins and ordinary P2WPKH transfers remain usable; coin creation height is not an eligibility restriction.
-- Add authenticated local gethtlcinfo, gettxout and findspendingtransaction RPC methods.
-- Persist the activation policy with the chain database and reject conflicting policy on restart.
+Current documentation has been consolidated into the unified guide.
 
-Update both Windows and Android nodes to validate the added spending rule.
-Close the Windows application and replace the complete extracted bundle.
-Install Android over the existing application; do not uninstall or clear data.
-Preserve encrypted wallets, the node database and boundary signing state.
-This node upgrade does not enable public-money swaps in SUMUWW P2P.
+https://github.com/jack-cal/SUMUWW/blob/main/Documentation/README.md#applications-installation-and-languages
+
+Historical versions remain available in Git history and their original release archives.
