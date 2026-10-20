@@ -1,6 +1,6 @@
 # SUMUWW — Unified Guide and Protocol Reference
 
-Current application versions: Windows node **0.57.28**, Android node **0.6.78**, standalone Android Wallet **1.0.9**, Explorer **0.4.4**, P2P **0.1.6**.
+Current application versions: Windows node **0.57.28**, Android node **0.6.78**, standalone Android Wallet **1.0.9**, Explorer **0.4.4**, P2P **0.1.7**.
 
 [Components and downloads](../README.md) · [PC history](../PC/README.md#version-history) · [Android history](../Android/README.md#version-history) · [Wallet history](../Wallet/README.md#version-history) · [Explorer history](../Explorer/README.md#version-history) · [P2P history](../P2P/README.md#version-history)
 
@@ -26,7 +26,7 @@ This is the current consolidated documentation. Historical releases retain the d
 | Android node 0.6.78 | Full node, wallet and CPU mining | Install the signed APK over the existing app. Do not uninstall or clear data. |
 | Android Wallet 1.0.9 | Standalone wallet, receiving, sending and connection settings | Install over the existing `org.sumuww.wallet` app, preserving its encrypted wallet. It is a separate application from the mining node. |
 | Explorer 0.4.4 | Read-only local blockchain explorer | Extract the Windows ZIP and run `start-explorer.cmd` or the EXE. Uses a browser on localhost and a separate search index. |
-| P2P 0.1.6 | Direct order sharing, wallet-address queries and isolated regtest swaps | Extract all files and run the windowed EXE. Preserve `%LOCALAPPDATA%\SUMUWW\P2P`. Public-money swap execution remains disabled. |
+| P2P 0.1.7 | Direct order sharing, wallet-address queries and isolated regtest swaps | Extract all files and run the windowed EXE. Preserve `%LOCALAPPDATA%\SUMUWW\P2P`. Public-money swap execution remains disabled. |
 
 First launch defaults to English. The language selector supports 34 bundled languages; an explicit saved choice is restored. Text catalogs are offline: using the selector does not send wallet data or interface text to a translation service. Arabic/Urdu layouts and traditional Mongolian typography are handled in the corresponding application UI. Amounts, addresses, transaction IDs and protocol values are not translated. A language change does not change the blockchain, wallet keys or signing rules.
 
@@ -604,7 +604,7 @@ First launch defaults to English. Use the language selector for 34 offline catal
 ## P2P operation
 
 ```text
-SUMUWW P2P 0.1.6 — Native Windows application
+SUMUWW P2P 0.1.7 — Native Windows application
 
 CURRENT FUNCTIONALITY
 SMW/BTC orders and signed reservations can be shared directly with another
