@@ -8,7 +8,7 @@ Choose a component. Every section includes its latest application, matching sour
 
 | Component | Version | Open section |
 |---|---|---|
-| PC | 0.57.28 | [PC: downloads and history](PC/README.md) |
+| PC | 0.57.29 | [PC: downloads and history](PC/README.md) |
 | Android | 0.6.78 | [Android: downloads and history](Android/README.md) |
 | Wallet | 1.0.9 | [Wallet: downloads and history](Wallet/README.md) |
 | Explorer | 0.4.4 | [Explorer: downloads and history](Explorer/README.md) |
