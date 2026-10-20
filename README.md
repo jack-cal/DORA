@@ -2,24 +2,21 @@
 
 SUMUWW is an independent SHA-256d proof-of-work blockchain with Windows and Android node, wallet and mining applications.
 
-## Downloads — Windows 0.57.27 / Android 0.6.77
+## Components and downloads
 
-- [Windows complete ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-PC-0.57.27.zip)
-- [Android signed APK](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-Android-0.6.77.apk)
-- [Matching PC and Android source, tests and build instructions](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-source-0.57.27-0.6.77.zip)
-- [SHA-256 checksums](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SHA256SUMS.txt)
-- [Release notes and installation guidance](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77)
+| Component | Application | Published version | Downloads and instructions |
+|---|---|---|---|
+| **PC** | Windows full node, wallet and miner | **0.57.27** | [Open PC section](PC/README.md) |
+| **Android** | Android full node, wallet and CPU miner | **0.6.77** | [Open Android section](Android/README.md) |
+| **Wallet** | Standalone Android wallet | **1.0.7** | [Open Wallet section](Wallet/README.md) |
+| **Explorer** | Local block explorer for Windows | **0.4.2** | [Open Explorer section](Explorer/README.md) |
+| **P2P** | Native desktop peer-to-peer exchange development | No published release | [Open P2P section](P2P/README.md) |
 
-The named source ZIP contains the implementation. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original binaries and behavior.
+Each section lists its matching application, implementation source, checksums and installation instructions. Component version numbers are independent.
 
-## Block explorer — 0.4.2
+[English whitepaper](WHITEPAPER_EN.md) · [Protocol](SUMUWW_PROTOCOL_SPEC_EN.md) · [BLS/v4](BOUNDARY_V4_EN.md) · [All releases](https://github.com/jack-cal/SUMUWW/releases)
 
-- [Explorer Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.2/SUMUWW_Explorer_Windows64_v0_4_2.zip)
-- [Explorer implementation source and tests](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.2/SUMUWW_Explorer_Source_v0_4_2.zip)
-- [Explorer release notes and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.2)
-- [Explorer guide](EXPLORER_README.txt)
-
-Version 0.4.2 fixes mining-analysis failures after height 8064 and detects current SUMUWW data paths. The explorer reads the selected local node database and maintains a separate search index.
+The named source ZIPs contain the implementations and tests. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original files and download records.
 
 ## Block-signature linkage
 
@@ -39,8 +36,8 @@ Windows: close SUMUWW and extract the whole ZIP, keeping `_internal` and include
 
 ## Documentation
 
-- [English whitepaper](WHITEPAPER_EN.md) · [한국어 백서](WHITEPAPER_KO.md)
-- [BLS/v4 implementation](BOUNDARY_V4_EN.md) · [BLS/v4 구현 상세](BOUNDARY_V4_KO.md)
+- [English whitepaper](WHITEPAPER_EN.md)
+- [BLS/v4 implementation](BOUNDARY_V4_EN.md)
 - [Current source and compatibility](SOURCE_REVISION.md)
 - [Protocol specification](SUMUWW_PROTOCOL_SPEC_EN.md) · [TCP protocol](NETWORK_PROTOCOL_EN.md)
 - [Genesis record](sumuww_genesis.json) · [Change log](RELEASE_NOTES.txt)
