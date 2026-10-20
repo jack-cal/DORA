@@ -9,11 +9,11 @@ Windows full node, wallet and miner.
 | File | Download |
 |---|---|
 | RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/RELEASE_NOTES.txt) |
-| PC_DOCS_SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/PC_DOCS_SHA256SUMS.txt) |
-| SUMUWW-PC-0.57.28-HTLC9100-DocsCorrected.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-PC-0.57.28-HTLC9100-DocsCorrected.zip) |
-| SUMUWW-Windows-Source-0.57.28-DocsCorrected.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-Windows-Source-0.57.28-DocsCorrected.zip) |
+| PC_DOCS_COMPLETE_SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/PC_DOCS_COMPLETE_SHA256SUMS.txt) |
+| SUMUWW-PC-0.57.28-HTLC9100-DocsComplete.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-PC-0.57.28-HTLC9100-DocsComplete.zip) |
+| SUMUWW-Windows-Source-0.57.28-DocsComplete.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-Windows-Source-0.57.28-DocsComplete.zip) |
 
-The DocsCorrected archives update the bundled whitepaper and boundary guides. SUMUWW.exe and SUMUWW-node.exe are byte-identical to the original 0.57.28 release. Historical assets remain available on the release page.
+The DocsComplete archives update the bundled English and Korean whitepaper and boundary guides. SUMUWW.exe and SUMUWW-node.exe are byte-identical to the original 0.57.28 release. Historical assets remain available on the release page.
 
 Full node, wallet and mining application. Exact-template P2WSH SHA256/preimage/CLTV spending activates at block **9100**; the separate random-10% BLS block-signature rule remains at **9000**. Existing mature common-history coins remain usable.
 
