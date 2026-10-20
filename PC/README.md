@@ -4,22 +4,22 @@
 
 Windows full node, wallet and miner.
 
-## Latest — 0.57.29
+## Latest — 0.57.30
 
 | File | Download |
 |---|---|
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/RELEASE_NOTES.txt) |
-| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SHA256SUMS.txt) |
-| SUMUWW-PC-0.57.29-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-PC-0.57.29-Windows.zip) |
-| SUMUWW-Windows-Source-0.57.29.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-Windows-Source-0.57.29.zip) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/SHA256SUMS.txt) |
+| SUMUWW-PC-0.57.30-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/SUMUWW-PC-0.57.30-Windows.zip) |
+| SUMUWW-Windows-Source-0.57.30.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/SUMUWW-Windows-Source-0.57.30.zip) |
 
-The Windows package contains the verified 9000 and 9100 documentation in the unified guide and all 34 localized whitepaper/protocol document pairs; untranslated 9100 notes are labeled English technical addenda. The executables were rebuilt with version 0.57.29. Consensus, wallet, mining and network behavior are unchanged from 0.57.28.
+At selected signature blocks, a quiet discovery interval no longer stops the current mined candidate. It remains pending until a third currently responding, distinct-IP signer appears. The three-signature requirement, random 10% selection from height 9000, PoW and height-9100 conditional-spending rules are unchanged. Final signatures are still collected after PoW.
 
 Full node, wallet and mining application. Exact-template P2WSH SHA256/preimage/CLTV spending activates at block **9100**; the separate random-10% BLS block-signature rule remains at **9000**. Existing mature common-history coins remain usable.
 
 Close SUMUWW and replace the complete extracted Windows bundle. Preserve encrypted wallets, node database and signing state.
 
-This release contains only the Windows application and its matching implementation source. Android remains a separate 0.6.78 release.
+This release contains only the Windows application and its matching implementation source. Android 0.6.79 is published separately.
 
 
 ## Version history
@@ -28,6 +28,7 @@ All published historical assets remain available. Older combined PC/Android rele
 
 | Published (UTC) | Release | Application | Source |
 |---|---|---|---|
+| 2026-10-20 | [SUMUWW Windows 0.57.30](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.30) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/SUMUWW-PC-0.57.30-Windows.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.30/SUMUWW-Windows-Source-0.57.30.zip) |
 | 2026-10-20 | [SUMUWW Windows 0.57.29](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.29) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-PC-0.57.29-Windows.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-Windows-Source-0.57.29.zip) |
 | 2026-10-20 | [SUMUWW Windows 0.57.28](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.28) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-PC-0.57.28-HTLC9100-DocsVerified.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-Windows-Source-0.57.28-DocsVerified.zip) |
 | 2026-10-20 | [SUMUWW Windows 0.57.28 / Android 0.6.78](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.28-0.6.78) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-PC-0.57.28-HTLC9100.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-source-0.57.28-0.6.78-HTLC9100.zip) |
