@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "windows": {
-    "version": "0.57.29",
-    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.29"
+    "version": "0.57.30",
+    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.30"
   },
   "android": {
-    "version": "0.6.78",
-    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.78"
+    "version": "0.6.79",
+    "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.79"
   }
 }
