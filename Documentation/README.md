@@ -173,7 +173,7 @@ Maximum excluding the unspendable genesis reward: **17,999,949.97690000 SMW**.
 
 ## 3. Genesis and network identity
 
-SUMUWW's basic execution network is `sumuww`, profile `dora-independent-v0.12-p2wpkh`. Genesis is fixed to hash `00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97`, UTC 2026-10-03 00:00:00 and nonce `5129435`. It has only an OP_RETURN output and is not connected to the UTXO set. Initial nBits is `0x1e0377ae`, powLimit is `floor((2^256-1)/4838400)`, address HRP is `sumuww`, and wire magic is `d052470c`. Before height 8,064, the Chain uses 600 seconds, 2,016 blocks, 1,209,600 seconds and a 4-times clamp. The [complete genesis record](../sumuww_genesis.json) is included.
+SUMUWW's basic execution network is `sumuww`, profile `dora-independent-v0.12-p2wpkh`. Genesis is fixed to hash `00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97`, UTC 2026-10-03 00:00:00 and nonce `5129435`. It has only an OP_RETURN output and is not connected to the UTXO set. Initial nBits is `0x1e0377ae`, powLimit is `floor((2^256-1)/4838400)`, address HRP is `sumuww`, and wire magic is `d052470c`. Before height 8,064, the Chain uses 600 seconds, 2,016 blocks, 1,209,600 seconds and a 4-times clamp. The [complete genesis record](sumuww_genesis.json) is included.
 
 Genesis is the fixed height-0 anchor with a previous hash of 0. Full bytes, Merkle root, header hash and PoW are recalculated. Its transaction is not connected to UTXOs. Ordinary coinbase outputs require spending height minus creation height to be at least 100.
 
