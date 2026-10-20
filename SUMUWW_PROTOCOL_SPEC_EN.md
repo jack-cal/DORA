@@ -1,5 +1,11 @@
 # SUMUWW Basic Protocol Specification
 
+<!-- htlc-9100 -->
+## HTLC upgrade · 9100
+
+The Windows 0.57.28 / Android 0.6.78 upgrade adds exact-template P2WSH SHA256/preimage/CLTV spending at block 9100. Existing mature coins and ordinary P2WPKH transfers remain usable. The separate random BLS rule remains at 9000. This is an authorization extension, not a general script VM or permission to execute public-money swaps. [Exact rules](HTLC_9100.md).
+<!-- /htlc-9100 -->
+
 <!-- boundary-v4-9000 -->
 ## 2026-10-19 · v4 · 9000 · 10%
 
@@ -61,7 +67,7 @@ Validation rejects empty inputs/outputs, duplicate inputs, missing or spent UTXO
 
 Only the first transaction may be coinbase. Coinbase null outpoint, scriptSig length 2~100 bytes and height prefix are checked. Output total cannot exceed the height's subsidy plus block fees. Merkle mutation and witness commitment are checked. Block weight is `3*base_size + total_size <= 4000000`; sigops cost must not exceed 80,000.
 
-Current spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. Other spending scripts or signature flags are rejected as `UnsupportedFeature`; full Bitcoin script VM compliance is not claimed. New spending features must specify rule changes, activation and compatibility.
+Before block 9100, spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. From block 9100, upgraded nodes additionally validate the exact HTLC template described above. Other spending scripts or signature flags remain unsupported; a general script VM is not implemented. Activation is evaluated at the block spending an output, not the block that created its coins.
 
 ## 5. Proof of work, difficulty and time
 
@@ -91,7 +97,7 @@ H >= 8064:
     expected_bits = compact_encode(max(1, min(floor(A * elapsed / 14400), powLimit)))
 ```
 
-A new block timestamp must exceed the median of up to 11 ancestors starting from its parent. Blocks more than 7,200 seconds ahead of the node clock are temporarily inadmissible, not permanently marked invalid. Absolute transaction locktime and relative sequence conditions are checked. CLTV/CSV opcodes are outside the current spending scope.
+A new block timestamp must exceed the median of up to 11 ancestors starting from its parent. Blocks more than 7,200 seconds ahead of the node clock are temporarily inadmissible, not permanently marked invalid. Absolute transaction locktime and relative sequence conditions are checked. General script execution and CSV opcodes remain outside the spending scope. From height 9100, CLTV is supported only within the exact conditional-spend template described in HTLC_9100.md.
 
 ## 6. Chain selection, storage and transaction relay
 
@@ -103,4 +109,4 @@ Nodes exchange version/verack, locator/headers, inventory/getdata and block/tran
 
 ## 7. Address encoding
 
-SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0 and a 20-byte witness program for native P2WPKH. Validation checks the network prefix, checksum and padding. Other-network addresses, mixed case and invalid padding are rejected.
+SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0, with a 20-byte program for native P2WPKH or a 32-byte program for P2WSH. Consensus spending support for the exact P2WSH HTLC template begins at block 9100. Validation checks the network prefix, checksum and padding. Other-network addresses, mixed case and invalid padding are rejected.

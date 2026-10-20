@@ -1,5 +1,11 @@
 # SUMUWW Whitepaper
 
+<!-- htlc-9100 -->
+## HTLC upgrade · 9100
+
+The Windows 0.57.28 / Android 0.6.78 upgrade adds exact-template P2WSH SHA256/preimage/CLTV spending at block 9100. Existing mature coins and ordinary P2WPKH transfers remain usable. The separate random BLS rule remains at 9000. This is an authorization extension, not a general script VM or permission to execute public-money swaps. [Exact rules](HTLC_9100.md).
+<!-- /htlc-9100 -->
+
 <!-- boundary-v4-9000 -->
 ## 2026-10-19 · v4 · 9000 · 10%
 

@@ -1,24 +1,13 @@
-SUMUWW Windows 0.57.27 / Android 0.6.77 (versionCode 137)
+SUMUWW Windows 0.57.28 / Android 0.6.78
 
-Connection maintenance corrections
-- Keep a synchronized native connection when an optional peer-address reply arrives after the local query timer. Late duplicates are ignored without importing their address hints. Address scope, format, native block validation and traffic checks remain applicable.
-- Authenticate the original previous-v4 hello as well as the current hello. Preserve common native block/transaction/address transport while excluding incompatible signing policies from the current BLS signing pool. Outgoing probes can retry the existing native transport.
-- Add opt-in local Windows session tracing for diagnosis. It is disabled by default and is not transmitted to peers.
+- Add exact-template P2WSH SHA256/preimage/CLTV conditional spends from block 9100.
+- Keep the separate random-10% BLS block-signature rule from height 9000.
+- Existing mature coins and ordinary P2WPKH transfers remain usable; coin creation height is not an eligibility restriction.
+- Add authenticated local gethtlcinfo, gettxout and findspendingtransaction RPC methods.
+- Persist the activation policy with the chain database and reject conflicting policy on restart.
 
-Consensus unchanged from Windows 0.57.26 / Android 0.6.76
-SHA-256d PoW, issuance, wallets, difficulty, reward maturity and transaction validation are unchanged. The BLS rule still activates at height 9000 and selects 10% of parent/height contexts; it is not a fixed ten-block interval. Signing, team selection, split-linkage and registered-history validation are unchanged. Native transport compatibility does not bypass the proof required for a selected block.
-
-Verification for this revision
-- 175 network regression tests passed.
-- Four real-TCP previous-v4 compatibility tests passed, including refusal of an unsigned selected block.
-- The installed Windows application retained the same test TCP connection through a six-second address-reply delay and a thirty-second observation.
-- Eight actual external peer process identities stayed connected and synchronized for about seven minutes; temporary loopback test peers were excluded. More than eight external peers and the full historical fourteen-to-eight change remain unverified.
-- Ten frozen native boundary self-test checks passed. See VERIFICATION.txt for the complete release-build checks.
-- Android 0.6.77 is built and signed with the existing update lineage. Its Python transport regressions passed with the Windows cryptography backend. This exact revision has not been installed or tested on the physical phone because no ADB device was attached. No physical-device test is claimed for 0.6.77.
-
-Installation
-Windows: close SUMUWW and extract the complete ZIP, retaining _internal and the existing data directory and encrypted wallets.
-Android: install the signed APK over the existing org.sumuww.miner application. Do not uninstall or clear its data to update.
-Keep node data and separate boundary signing state together. Do not publish wallet passwords, recovery words or signing keys.
-
-Release: https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77
+Update both Windows and Android nodes to validate the added spending rule.
+Close the Windows application and replace the complete extracted bundle.
+Install Android over the existing application; do not uninstall or clear data.
+Preserve encrypted wallets, the node database and boundary signing state.
+This node upgrade does not enable public-money swaps in SUMUWW P2P.

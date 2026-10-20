@@ -6,17 +6,21 @@ SUMUWW is an independent SHA-256d proof-of-work blockchain with Windows and Andr
 
 | Component | Application | Published version | Downloads and instructions |
 |---|---|---|---|
-| **PC** | Windows full node, wallet and miner | **0.57.27** | [Open PC section](PC/README.md) |
-| **Android** | Android full node, wallet and CPU miner | **0.6.77** | [Open Android section](Android/README.md) |
-| **Wallet** | Standalone Android wallet | **1.0.7** | [Open Wallet section](Wallet/README.md) |
-| **Explorer** | Local block explorer for Windows | **0.4.2** | [Open Explorer section](Explorer/README.md) |
-| **P2P** | Native desktop peer-to-peer exchange development | No published release | [Open P2P section](P2P/README.md) |
+| **PC** | Windows full node, wallet and miner | **0.57.28** | [Open PC section](PC/README.md) |
+| **Android** | Android full node, wallet and CPU miner | **0.6.78** | [Open Android section](Android/README.md) |
+| **Wallet** | Standalone Android wallet | **1.0.8** | [Open Wallet section](Wallet/README.md) |
+| **Explorer** | Local block explorer for Windows | **0.4.3** | [Open Explorer section](Explorer/README.md) |
+| **P2P** | Native desktop peer-to-peer exchange development | **0.1.5 — regtest swaps** | [Open P2P section](P2P/README.md) |
 
 Each section lists its matching application, implementation source, checksums and installation instructions. Component version numbers are independent.
 
 [English whitepaper](WHITEPAPER_EN.md) · [Protocol](SUMUWW_PROTOCOL_SPEC_EN.md) · [BLS/v4](BOUNDARY_V4_EN.md) · [All releases](https://github.com/jack-cal/SUMUWW/releases)
 
 The named source ZIPs contain the implementations and tests. GitHub's automatic repository source archives contain this documentation repository. Historical releases retain their original files and download records.
+
+## HTLC spending from block 9100
+
+Windows 0.57.28, Android 0.6.78 and Wallet 1.0.8 validate exact-template SHA256/preimage/CLTV conditional spends from block **9100**. Existing mature coins and ordinary transfers remain usable, including coins created before activation. Explorer 0.4.3 displays the corresponding P2WSH addresses. Public-money swaps remain disabled in the separate P2P application. [Exact HTLC rules](HTLC_9100.md).
 
 ## Block-signature linkage
 
@@ -49,6 +53,7 @@ Windows: close SUMUWW and extract the whole ZIP, keeping `_internal` and include
 | PoW | SHA-256d, 80-byte header |
 | Target interval | 600 seconds; actual intervals vary |
 | Difficulty | DGW v3 from 8064, using the previous 24 blocks; earlier 2016-block retarget |
+| HTLC spending | Exact-template conditional spends from height 9100 |
 | BLS policy | 10% selected blocks from 9000; linkage between successive selected ancestors |
 | Subsidy | 50 SMW through 149999, then 25 SMW, halving every 210000 blocks |
 | Nominal maximum issuance | 17,999,999.97690000 SMW |
@@ -58,15 +63,9 @@ Windows: close SUMUWW and extract the whole ZIP, keeping `_internal` and include
 | Wallet ownership signatures | secp256k1 ECDSA |
 | Network | IPv4/IPv6 TCP; v4 carries boundary messages |
 
-## Verification scope
-
-For this update, 175 network regressions, four previous-v4 TCP compatibility tests and ten frozen boundary checks passed. The installed Windows app retained the same TCP connection with a six-second delayed address reply. Eight actual external peer identities remained connected and synchronized for about seven minutes; temporary test peers were excluded. Connection growth beyond eight remains unverified. Android 0.6.77 is signed, but physical-phone installation and testing of this exact revision remain pending. See the attached VERIFICATION.txt for the exact test scope.
-
-The source audit passed 1181 Windows tests, 11 additional policy/lifecycle tests and 21 Android emulator tests. Numeric-height isolated tests actually mined old-version history through activation and tested native TCP block/transaction compatibility. Exact release-binary and physical-installation checks are described in the release notes. These are project-run results, not an independent security audit or proof of public-network activation.
-
 ## Whitepaper pages
 
-Rendered from the current English whitepaper; [image source hashes](whitepaper-render-verification.json).
+BLS policy pages; consult the linked English whitepaper for the additional HTLC 9100 rules. Original rendering [image source hashes](whitepaper-render-verification.json).
 
 ![SUMUWW_Whitepaper_EN_random10_01](SUMUWW_Whitepaper_EN_random10_01.png)
 
