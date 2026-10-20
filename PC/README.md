@@ -4,22 +4,22 @@
 
 Windows full node, wallet and miner.
 
-## Latest — 0.57.28
+## Latest — 0.57.29
 
 | File | Download |
 |---|---|
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/RELEASE_NOTES.txt) |
-| PC_DOCS_VERIFIED_SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/PC_DOCS_VERIFIED_SHA256SUMS.txt) |
-| SUMUWW-PC-0.57.28-HTLC9100-DocsVerified.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-PC-0.57.28-HTLC9100-DocsVerified.zip) |
-| SUMUWW-Windows-Source-0.57.28-DocsVerified.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-Windows-Source-0.57.28-DocsVerified.zip) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SHA256SUMS.txt) |
+| SUMUWW-PC-0.57.29-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-PC-0.57.29-Windows.zip) |
+| SUMUWW-Windows-Source-0.57.29.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-Windows-Source-0.57.29.zip) |
 
-The DocsVerified archives include current 9000 and 9100 rules in the unified guide and all 34 localized whitepaper/protocol document pairs; untranslated 9100 notes are labeled English technical addenda. SUMUWW.exe and SUMUWW-node.exe are byte-identical to the original 0.57.28 release. Historical assets remain available on the release page.
+The Windows package contains the verified 9000 and 9100 documentation in the unified guide and all 34 localized whitepaper/protocol document pairs; untranslated 9100 notes are labeled English technical addenda. The executables were rebuilt with version 0.57.29. Consensus, wallet, mining and network behavior are unchanged from 0.57.28.
 
 Full node, wallet and mining application. Exact-template P2WSH SHA256/preimage/CLTV spending activates at block **9100**; the separate random-10% BLS block-signature rule remains at **9000**. Existing mature common-history coins remain usable.
 
 Close SUMUWW and replace the complete extracted Windows bundle. Preserve encrypted wallets, node database and signing state.
 
-This release contains only the Windows application and its matching implementation source. Binary contents are identical to the previously published 0.57.28 build; PC and Android downloads are now separated.
+This release contains only the Windows application and its matching implementation source. Android remains a separate 0.6.78 release.
 
 
 ## Version history
@@ -28,6 +28,7 @@ All published historical assets remain available. Older combined PC/Android rele
 
 | Published (UTC) | Release | Application | Source |
 |---|---|---|---|
+| 2026-10-20 | [SUMUWW Windows 0.57.29](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.29) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-PC-0.57.29-Windows.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.29/SUMUWW-Windows-Source-0.57.29.zip) |
 | 2026-10-20 | [SUMUWW Windows 0.57.28](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.28) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-PC-0.57.28-HTLC9100-DocsVerified.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.28/SUMUWW-Windows-Source-0.57.28-DocsVerified.zip) |
 | 2026-10-20 | [SUMUWW Windows 0.57.28 / Android 0.6.78](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.28-0.6.78) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-PC-0.57.28-HTLC9100.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-source-0.57.28-0.6.78-HTLC9100.zip) |
 | 2026-10-19 | [SUMUWW Windows 0.57.27 / Android 0.6.77](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77) | [Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-PC-0.57.27.zip) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-source-0.57.27-0.6.77.zip) |
