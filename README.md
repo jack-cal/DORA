@@ -29,3 +29,7 @@ PC and Android are published separately. Component version numbers are independe
 Nominal maximum issuance: **17,999,999.97690000 SMW**; excluding the unspendable genesis reward: **17,999,949.97690000 SMW**. Transaction fees transfer existing value to the block miner. Reward maturity requires a creation-to-spending height difference of at least 100.
 
 Read the [unified guide](Documentation/README.md) for consensus rules, installation, privacy, compatibility, verification scope and source builds. Named source ZIPs contain implementation; automatic GitHub source archives contain this documentation repository.
+
+## Archive
+
+[Earlier documentation and whitepaper images](Archive/README.md). Current documentation is in [Documentation](Documentation/README.md); historical application downloads are listed within each component.
