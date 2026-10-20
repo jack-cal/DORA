@@ -1,35 +1,9 @@
-# SUMUWW (SMW)
+# SUMUWW (SMW) — affected releases withdrawn
 
-Independent SHA-256d proof-of-work blockchain with node, wallet, mining and local inspection applications.
+The Windows node, Android node and standalone wallet releases that implement or validate the height-9000 block-signature rule have been withdrawn. Their published behavior did not match the intended signing sequence. In the released node code, the final signers are discovered and their signatures are collected **after** a valid PoW block is found. The intended preparation and delivery during mining, with registration complete when the block is created, was not implemented or verified.
 
-## Downloads and version history
+**There is no verified replacement release.** Do not use the withdrawn builds for mining, chain validation or transfers. Earlier builds predate the height-9000 rule and are historical records, not compatible replacements for a chain using that rule. Preserve existing encrypted wallets, recovery material and node data; do not uninstall an Android app or clear its data merely because a release was withdrawn.
 
-Choose a component. Every section includes its latest application, matching source, checksums, installation instructions and previous releases.
+The [PC](PC/README.md), [Android](Android/README.md), [Wallet](Wallet/README.md) and [documentation](Documentation/README.md) sections now carry the withdrawal status. [Explorer](Explorer/README.md) and [P2P](P2P/README.md) releases are separate applications; their presence does not verify or repair the node consensus rule.
 
-| Component | Version | Open section |
-|---|---|---|
-| PC | 0.57.30 | [PC: downloads and history](PC/README.md) |
-| Android | 0.6.79 | [Android: downloads and history](Android/README.md) |
-| Wallet | 1.0.9 | [Wallet: downloads and history](Wallet/README.md) |
-| Explorer | 0.4.4 | [Explorer: downloads and history](Explorer/README.md) |
-| P2P | 0.1.7 | [P2P: downloads and history](P2P/README.md) |
-| Documentation | Current unified edition | [Guide, whitepaper and protocol](Documentation/README.md) |
-
-PC and Android are published separately. Component version numbers are independent. Historical releases and download records are preserved.
-
-## Network and applications
-
-- SHA-256d PoW, independent block/transaction validation and UTXO accounting.
-- Target block interval: 600 seconds. DGW v3 difficulty from height 8064.
-- Random BLS block-signature linkage from height 9000, selected with 10% probability per parent/height context.
-- Exact-template SHA256/preimage/CLTV conditional spending from height 9100. Existing mature coins remain usable.
-- English first-launch default and 34 bundled languages with a saved language selector.
-- Standalone wallet, local explorer and native P2P application are separate downloads. P2P public-money swaps remain disabled; its exchange execution is regtest-only.
-
-Nominal maximum issuance: **17,999,999.97690000 SMW**; excluding the unspendable genesis reward: **17,999,949.97690000 SMW**. Transaction fees transfer existing value to the block miner. Reward maturity requires a creation-to-spending height difference of at least 100.
-
-Read the [unified guide](Documentation/README.md) for consensus rules, installation, privacy, compatibility, verification scope and source builds. Named source ZIPs contain implementation; automatic GitHub source archives contain this documentation repository.
-
-## Archive
-
-[Earlier documentation and whitepaper images](Archive/README.md). Current documentation is in [Documentation](Documentation/README.md); historical application downloads are listed within each component.
+No claim of 51% attack protection or network-wide agreement is established by the withdrawn implementation. A corrected design and end-to-end verification are required before another node release.
