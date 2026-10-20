@@ -12,7 +12,7 @@ Choose a component. Every section includes its latest application, matching sour
 | Android | 0.6.78 | [Android: downloads and history](Android/README.md) |
 | Wallet | 1.0.9 | [Wallet: downloads and history](Wallet/README.md) |
 | Explorer | 0.4.4 | [Explorer: downloads and history](Explorer/README.md) |
-| P2P | 0.1.6 | [P2P: downloads and history](P2P/README.md) |
+| P2P | 0.1.7 | [P2P: downloads and history](P2P/README.md) |
 | Documentation | Current unified edition | [Guide, whitepaper and protocol](Documentation/README.md) |
 
 PC and Android are published separately. Component version numbers are independent. Historical releases and download records are preserved.
