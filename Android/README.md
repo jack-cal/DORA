@@ -1,16 +1,16 @@
 # SUMUWW for Android
 
-[All components](../README.md) · [Release notes](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.27-0.6.77)
+[All components](../README.md) · [Release notes](https://github.com/jack-cal/SUMUWW/releases/tag/smw-0.57.28-0.6.78)
 
 The Android application includes an independently validating node, wallet and CPU proof-of-work miner.
 
-## Downloads — 0.6.77
+## Downloads — 0.6.78
 
 | File | Link |
 |---|---|
-| Signed Android application | [SUMUWW-Android-0.6.77.apk](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-Android-0.6.77.apk) |
-| Matching implementation, tests and build instructions | [PC + Android source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SUMUWW-source-0.57.27-0.6.77.zip) |
-| Download checksums | [SHA256SUMS.txt](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.27-0.6.77/SHA256SUMS.txt) |
+| Signed Android application | [SUMUWW-Android-0.6.78-HTLC9100.apk](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-Android-0.6.78-HTLC9100.apk) |
+| Matching implementation, tests and build instructions | [PC + Android source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SUMUWW-source-0.57.28-0.6.78-HTLC9100.zip) |
+| Download checksums | [SHA256SUMS.txt](https://github.com/jack-cal/SUMUWW/releases/download/smw-0.57.28-0.6.78/SHA256SUMS.txt) |
 
 ## Installation
 
