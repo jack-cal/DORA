@@ -1,4 +1,4 @@
-SUMUWW P2P 0.1.8 — Native Windows application
+SUMUWW P2P 0.1.9 — Native Windows application
 
 CURRENT FUNCTIONALITY
 SMW/BTC orders and signed reservations can be shared directly with another

@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Kiểm tra các từ khôi phục và thứ tự của chúng.",
   "Check the amount. Up to eight decimal places are supported.": "Kiểm tra số tiền. Lên đến tám chữ số thập phân được hỗ trợ.",
   "The transfer review expired. Review it again.": "Quá trình xem xét chuyển nhượng đã hết hạn. Xem lại nó một lần nữa.",
-  "Peers: {0} · Block: {1} · ": "Đồng nghiệp: {0} · Chặn: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Nút đã kết nối: {0} · Khối: {1} · ",
   "{0} confirmations": "{0} xác nhận",
   "Select language": "Chọn ngôn ngữ"
 }

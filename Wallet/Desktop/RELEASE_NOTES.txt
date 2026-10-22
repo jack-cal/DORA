@@ -1,0 +1,21 @@
+# SUMUWW Wallet 1.0.1 — Windows
+
+Fixes the recovery-word window remaining visible after automatic wallet locking. Recovery text is cleared and the window closes on lock, minimize and exit. Automatic-lock settings now survive restart. Synchronization status uses the actual synchronization state, so a node still catching up is not labeled synchronized merely because mining is allowed.
+
+Adds localized common error messages, disables unavailable backup/recovery actions, restores traditional Mongolian vertical captions, and keeps controls reachable in smaller windows. Corrects the connected-node/block terminology in 26 language catalogs.
+
+Extract the complete ZIP and run SUMUWW-Wallet.exe. Data remains in the existing ordinary-wallet profile. This is a locally validating wallet without mining controls, not an SPV client. Back up existing encrypted wallets before updating.
+
+Verification: nine native desktop regression tests, 204 layout combinations and the rebuilt executable's disposable encrypted-wallet/restore self-check passed.
+
+## Required upgrade at height 9,000
+
+**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
+
+This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
+
+## Verification and scope
+
+English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
+
+See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.

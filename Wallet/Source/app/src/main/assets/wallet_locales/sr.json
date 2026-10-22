@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Проверите речи за опоравак и њихов редослед.",
   "Check the amount. Up to eight decimal places are supported.": "Проверите износ. Подржано је до осам децималних места.",
   "The transfer review expired. Review it again.": "Преглед трансфера је истекао. Прегледајте га поново.",
-  "Peers: {0} · Block: {1} · ": "Вршњаци:{0}· Блокирај:{1}· ",
+  "Peers: {0} · Block: {1} · ": "Повезани чворови: {0} · Блок: {1} · ",
   "{0} confirmations": "{0}потврде",
   "Select language": "Изаберите језик"
 }

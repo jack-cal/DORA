@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Tjek gendannelsesordene og deres rækkefølge.",
   "Check the amount. Up to eight decimal places are supported.": "Kontroller beløbet. Op til otte decimaler understøttes.",
   "The transfer review expired. Review it again.": "Overførselsgennemgangen udløb. Gennemgå det igen.",
-  "Peers: {0} · Block: {1} · ": "Peers: {0} · Bloker: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Forbundne noder: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} bekræftelser",
   "Select language": "Vælg sprog"
 }

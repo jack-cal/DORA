@@ -19,13 +19,15 @@ android {
         applicationId = "org.sumuww.wallet.current"
         minSdk = 26
         targetSdk = 35
-        versionCode = 11
-        versionName = "1.1.0"
+        versionCode = 12
+        versionName = "1.1.1"
         ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes { getByName("release") { isMinifyEnabled = false } }
     testOptions { unitTests.isIncludeAndroidResources = true }
+    // Allows the signed release APK to be exercised on a physical device.
+    if (providers.gradleProperty("releaseAudit").isPresent) testBuildType = "release"
 }
 chaquopy { defaultConfig {
     version = "3.13"

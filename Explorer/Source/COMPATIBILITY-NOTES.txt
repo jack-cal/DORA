@@ -1,4 +1,4 @@
-SUMUWW Explorer 0.4.5 — compatibility
+SUMUWW Explorer 0.4.6 — compatibility
 
 Reads the current node database without changing it. Legacy data directory and
 environment-variable aliases remain supported. The separately maintained index

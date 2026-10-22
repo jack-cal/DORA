@@ -114,7 +114,7 @@
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nᠳᠠᠪᠠᠭᠤ ᠲᠠᠯ᠎ᠠ᠄ ᠪᠣᠳᠠᠲᠤ IP ᠶᠢ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠴᠠ ᠨᠢᠭᠤᠬᠤ ᠳᠤ ᠲᠤᠰᠠᠯᠠᠨ᠎ᠠ᠃\n\nᠰᠤᠯᠠ ᠲᠠᠯ᠎ᠠ᠄ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠪᠣᠯᠣᠨ ᠰᠢᠩᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠤᠳᠠᠭᠠᠰᠢᠷᠠᠵᠤ᠂ ᠵᠠᠢ ᠪᠣᠯᠣᠨ ᠥᠭᠡᠭᠳᠡᠯ ᠢᠯᠡᠭᠦᠦ ᠬᠡᠷᠡᠭᠯᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠪᠢᠴᠢᠯᠭᠡ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠬᠡᠪᠡᠷ᠃ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠠᠯᠳᠠᠭᠳᠠᠪᠠᠯ ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠭᠦᠯᠬᠦ ᠦᠭᠡᠢ᠃",
   "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nᠳᠠᠪᠠᠭᠤ ᠲᠠᠯ᠎ᠠ᠄ ᠪᠣᠳᠠᠲᠤ IP ᠶᠢ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠴᠠ ᠨᠢᠭᠤᠬᠤ ᠳᠤ ᠲᠤᠰᠠᠯᠠᠨ᠎ᠠ᠃\n\nᠰᠤᠯᠠ ᠲᠠᠯ᠎ᠠ᠄ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠪᠣᠯᠣᠨ ᠰᠢᠩᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠤᠳᠠᠭᠠᠰᠢᠷᠠᠵᠤ᠂ ᠵᠠᠢ ᠪᠣᠯᠣᠨ ᠥᠭᠡᠭᠳᠡᠯ ᠢᠯᠡᠭᠦᠦ ᠬᠡᠷᠡᠭᠯᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠪᠢᠴᠢᠯᠭᠡ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠬᠡᠪᠡᠷ᠃ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠠᠯᠳᠠᠭᠳᠠᠪᠠᠯ ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠭᠦᠯᠬᠦ ᠦᠭᠡᠢ᠃\n\nI2P ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ Tor ᠪᠣᠯᠣᠨ I2P ᠶᠢ ᠠᠰᠢᠭᠯᠠᠬᠤ ᠦᠭᠡᠢ᠃ ᠶᠡᠷᠦᠳᠡᠭᠡᠨ ᠬᠤᠷᠳᠤᠨ᠂ ᠨᠥᠭᠡᠴᠡ ᠪᠠᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠨ᠎ᠡ᠃ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠲᠠᠨᠤ IP ᠶᠢ ᠬᠠᠷᠠᠨ᠎ᠠ᠃",
-  "Peers: {0} · Block: {1} · ": "ᠨᠥᠬᠥᠳ  {0} · ᠰᠤᠪᠠᠭ  {1} · ",
+  "Peers: {0} · Block: {1} · ": "ᠬᠣᠯᠪᠣᠭᠳᠠᠭᠰᠠᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ: {0} · ᠪᠯᠣᠺ: {1} · ",
   "{0} confirmations": "{0} ᠶᠢᠨ ᠨᠣᠲᠠᠯᠠᠯᠲᠠ",
   "Language": "ᠬᠡᠯᠡ",
   "Select language": "ᠢ ᠰᠣᠩᠭᠣᠬᠤ"

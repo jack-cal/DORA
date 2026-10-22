@@ -16,10 +16,11 @@ prepare_tk()
 import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog, ttk
 from sumuww.brand import apply_window_icon, artwork
+from sumuww.vertical_text import VerticalLabel, VerticalButton
 from sumuww.primitives import format_amount
 import wallet_runtime as runtime
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 
 class WalletApp:
@@ -35,6 +36,9 @@ class WalletApp:
         self.language = saved.get('language', 'en')
         if self.language not in self.languages:
             self.language = 'en'
+        self.timeout = saved.get('timeout', 300)
+        if self.timeout not in (60, 300, 900):
+            self.timeout = 300
         self.catalogs = {code: json.loads((ROOT / f'locales/{code}.json').read_text(encoding='utf-8')) for code in self.languages}
         self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='wallet-ui')
         self.results = queue.Queue()
@@ -68,9 +72,15 @@ class WalletApp:
     def t(self, source):
         return self.catalogs[self.language].get(source, source)
 
+    def label(self, parent, **kwargs):
+        label = VerticalLabel(parent, **kwargs)
+        label._vertical_max_width = int(kwargs.get('wraplength', 680))
+        label.refresh_vertical()
+        return label
+
     def save_preferences(self):
         temporary = self.preferences.with_suffix('.tmp')
-        temporary.write_text(json.dumps({'language': self.language}), encoding='utf-8')
+        temporary.write_text(json.dumps({'language': self.language, 'timeout': self.timeout}), encoding='utf-8')
         os.replace(temporary, self.preferences)
 
     def change_language(self, event=None):
@@ -92,30 +102,40 @@ class WalletApp:
             self.logo = tk.PhotoImage(file=str(artwork(self.language)))
             factor = max(1, self.logo.width() // 190)
             self.logo = self.logo.subsample(factor)
-            ttk.Label(top, image=self.logo).pack(side='left')
+            self.label(top, image=self.logo).pack(side='left')
         except tk.TclError:
-            ttk.Label(top, text='SUMUWW', style='Title.TLabel').pack(side='left')
+            self.label(top, text='SUMUWW', style='Title.TLabel').pack(side='left')
         self.language_choice = ttk.Combobox(top, values=list(self.languages.values()), state='readonly', width=22)
         self.language_choice.current(list(self.languages).index(self.language))
         self.language_choice.pack(side='right')
         self.language_choice.bind('<<ComboboxSelected>>', self.change_language)
-        ttk.Label(top, text=self.t('Language')).pack(side='right', padx=8)
+        self.label(top, text=self.t('Language')).pack(side='right', padx=8)
         nav = ttk.Frame(frame)
         nav.pack(fill='x', pady=(22, 16))
         for page in ('Wallet', 'Activity', 'Settings'):
             self.button(nav, page, lambda p=page: self.navigate(p), side='left')
         self.button(nav, 'Lock', lambda: self.call('lock', done=self.update), side='right')
-        self.status_label = ttk.Label(frame, text=self.t('Starting your wallet…'), wraplength=800)
+        self.status_label = self.label(frame, text=self.t('Starting your wallet…'), wraplength=800)
         self.status_label.pack(fill='x', pady=(0, 12))
-        self.body = ttk.Frame(frame)
-        self.body.pack(fill='both', expand=True)
-        ttk.Label(frame, text=f'SUMUWW Wallet {VERSION} · Core 0.57.34', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
+        area = ttk.Frame(frame)
+        area.pack(fill='both', expand=True)
+        self.body_canvas = tk.Canvas(area, background='#f4f7fb', highlightthickness=0)
+        scrollbar = ttk.Scrollbar(area, orient='vertical', command=self.body_canvas.yview)
+        scrollbar.pack(side='right', fill='y')
+        self.body_canvas.pack(side='left', fill='both', expand=True)
+        self.body_canvas.configure(yscrollcommand=scrollbar.set)
+        self.body = ttk.Frame(self.body_canvas)
+        body_window = self.body_canvas.create_window((0, 0), window=self.body, anchor='nw')
+        self.body.bind('<Configure>', lambda e: self.body_canvas.configure(scrollregion=self.body_canvas.bbox('all')))
+        self.body_canvas.bind('<Configure>', lambda e: self.body_canvas.itemconfigure(body_window, width=e.width))
+        self.root.bind('<MouseWheel>', lambda e: self.body_canvas.yview_scroll(-int(e.delta / 120), 'units'))
+        self.label(frame, text=f'SUMUWW Wallet {VERSION} · Core 0.57.34', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
         self.render()
         self.update_status()
         self.set_busy(self.busy)
 
     def button(self, parent, key, callback, **pack):
-        button = ttk.Button(parent, text=self.t(key), command=callback)
+        button = VerticalButton(parent, text=self.t(key), command=callback)
         button.pack(padx=4, pady=4, **(pack or {'fill': 'x'}))
         self.buttons.setdefault(key, []).append(button)
         return button
@@ -131,8 +151,8 @@ class WalletApp:
             child.destroy()
         self.buttons = {key: [b for b in values if b.winfo_exists()] for key, values in self.buttons.items()}
         if self.page == 'Wallet':
-            ttk.Label(self.body, text=self.t('Your SUMUWW wallet'), style='Title.TLabel').pack(anchor='w')
-            ttk.Label(self.body, text=self.t('Receive and send SMW.')).pack(anchor='w', pady=(6, 20))
+            self.label(self.body, text=self.t('Your SUMUWW wallet'), style='Title.TLabel').pack(anchor='w')
+            self.label(self.body, text=self.t('Receive and send SMW.')).pack(anchor='w', pady=(6, 20))
             wallet = self.state.get('wallet') or {}
             if not self.state.get('wallet_exists'):
                 self.button(self.body, 'Create a wallet', lambda: self.create('create'))
@@ -141,10 +161,10 @@ class WalletApp:
             elif not wallet.get('unlocked'):
                 self.button(self.body, 'Unlock wallet', self.unlock)
             else:
-                ttk.Label(self.body, text=self.t('Available balance')).pack(anchor='w')
-                ttk.Label(self.body, text=wallet.get('available_dora', '0.00000000') + ' SMW', style='Balance.TLabel').pack(anchor='w', pady=(8, 12))
+                self.label(self.body, text=self.t('Available balance')).pack(anchor='w')
+                self.label(self.body, text=wallet.get('available_dora', '0.00000000') + ' SMW', style='Balance.TLabel').pack(anchor='w', pady=(8, 12))
                 for key, label in (('pending_dora', 'Pending'), ('immature_dora', 'Immature mining rewards')):
-                    ttk.Label(self.body, text=f'{self.t(label)}: {wallet.get(key, "0.00000000")} SMW').pack(anchor='w', pady=3)
+                    self.label(self.body, text=f'{self.t(label)}: {wallet.get(key, "0.00000000")} SMW').pack(anchor='w', pady=3)
                 self.button(self.body, '↓  Receive', self.receive)
                 self.button(self.body, '↑  Send', self.send)
                 address = ttk.Entry(self.body, width=70)
@@ -152,10 +172,10 @@ class WalletApp:
                 address.configure(state='readonly')
                 address.pack(fill='x', pady=16)
         elif self.page == 'Activity':
-            ttk.Label(self.body, text=self.t('Recent activity'), style='Title.TLabel').pack(anchor='w', pady=(0, 16))
+            self.label(self.body, text=self.t('Recent activity'), style='Title.TLabel').pack(anchor='w', pady=(0, 16))
             if not (self.state.get('wallet') or {}).get('unlocked'):
                 prompt = 'Open your wallet first.' if self.state.get('wallet_exists') else 'Create or restore a wallet.'
-                ttk.Label(self.body, text=self.t(prompt), wraplength=760).pack(anchor='w')
+                self.label(self.body, text=self.t(prompt), wraplength=760).pack(anchor='w')
                 self.set_busy(self.busy)
                 return
             self.history = tk.Text(self.body, height=16, wrap='word', font=('Segoe UI', 10), relief='flat', padx=12, pady=12)
@@ -168,23 +188,46 @@ class WalletApp:
             if self.started and not self.busy:
                 self.call('history', str(self.offset), done=self.show_history)
         else:
-            ttk.Label(self.body, text=self.t('Wallet management'), style='Title.TLabel').pack(anchor='w', pady=(0, 12))
+            self.label(self.body, text=self.t('Wallet management'), style='Title.TLabel').pack(anchor='w', pady=(0, 12))
             self.button(self.body, 'Export encrypted backup', self.backup)
             self.button(self.body, 'View recovery words', self.phrase)
             self.button(self.body, 'Add peer', self.add_peer)
-            ttk.Label(self.body, text=self.t('Auto-lock')).pack(anchor='w', pady=(16, 3))
+            self.label(self.body, text=self.t('Auto-lock')).pack(anchor='w', pady=(16, 3))
             timeout = ttk.Combobox(self.body, state='readonly', values=[self.t(x) for x in ('1 minute', '5 minutes', '15 minutes')])
             timeout.current({60: 0, 300: 1, 900: 2}.get(runtime._timeout, 1))
             timeout.pack(anchor='w')
-            timeout.bind('<<ComboboxSelected>>', lambda e: self.call('timeout', str((60, 300, 900)[timeout.current()])))
+            timeout.bind('<<ComboboxSelected>>', lambda e: self.set_timeout((60, 300, 900)[timeout.current()]))
         self.set_busy(self.busy)
 
     def set_busy(self, value):
         self.busy = value
-        for buttons in self.buttons.values():
+        for key, buttons in self.buttons.items():
             for button in buttons:
                 if button.winfo_exists():
-                    button.configure(state='disabled' if value or not self.started else 'normal')
+                    unavailable = key in ('Export encrypted backup', 'View recovery words') and not self.state.get('wallet_exists')
+                    unavailable |= key == 'Lock' and not (self.state.get('wallet') or {}).get('unlocked')
+                    button.configure(state='disabled' if value or not self.started or unavailable else 'normal')
+
+    def set_timeout(self, seconds):
+        def saved(ignored):
+            self.timeout = seconds
+            self.save_preferences()
+            self.refresh()
+        self.call('timeout', str(seconds), done=saved)
+
+    def friendly(self, message):
+        lower = message.lower()
+        rules = (
+            ('password' in lower and 'at least 12' in lower, 'Enter a password of at least 12 characters.'),
+            (any(s in lower for s in ('authentication', 'password or', 'decrypt')), 'Check the password or backup file.'),
+            ('different network' in lower or 'address' in lower, 'Check the complete SUMUWW receiving address.'),
+            ('insufficient' in lower, 'Insufficient available balance for the amount and fee.'),
+            ('unlock' in lower, 'Unlock the wallet and try again.'),
+            ('mnemonic' in lower or 'recovery word' in lower, 'Check the recovery words and their order.'),
+            ('amount' in lower, 'Check the amount. Up to eight decimal places are supported.'),
+            ('quote' in lower, 'The transfer review expired. Review it again.'),
+        )
+        return next((self.t(label) for matches, label in rules if matches), message)
 
     def submit(self, function, done=None):
         if self.busy or self.closed:
@@ -213,7 +256,7 @@ class WalletApp:
                 done, value, error = self.results.get_nowait()
                 self.set_busy(False)
                 if error:
-                    messagebox.showerror(self.t('Check'), error, parent=self.root)
+                    messagebox.showerror(self.t('Check'), self.friendly(error), parent=self.root)
                 elif done:
                     done(value)
         except queue.Empty:
@@ -223,10 +266,9 @@ class WalletApp:
     def did_start(self, value):
         self.started = True
         self.state = value
-        if not (value.get('wallet') or {}).get('unlocked') and self.pending_dialog:
-            self.pending_dialog.destroy()
-            self.pending_dialog = None
-        self.call('foreground', 'true', done=self.refresh)
+        if not (value.get('wallet') or {}).get('unlocked'):
+            self.clear_secret()
+        self.call('timeout', str(self.timeout), done=lambda _: self.call('foreground', 'true', done=self.refresh))
 
     def refresh(self, ignored=None):
         if self.started and not self.busy:
@@ -237,6 +279,8 @@ class WalletApp:
             return self.refresh()
         previous = ((self.state.get('wallet') or {}).get('unlocked'), self.state.get('wallet_exists'))
         self.state = value
+        if not (value.get('wallet') or {}).get('unlocked'):
+            self.clear_secret()
         self.update_status()
         current = ((value.get('wallet') or {}).get('unlocked'), value.get('wallet_exists'))
         if self.page == 'Wallet' or previous != current:
@@ -246,7 +290,11 @@ class WalletApp:
         node = self.state.get('node') or {}
         peers = node.get('peers', [])
         count = len(peers) if isinstance(peers, list) else peers if isinstance(peers, int) else 0
-        label = 'Synchronized' if node.get('mining_ready') else 'Synchronizing' if count else 'Waiting for peers'
+        sync = node.get('sync_state')
+        if sync is None:
+            label = 'Synchronized' if node.get('mining_ready') else 'Synchronizing' if count else 'Waiting for peers'
+        else:
+            label = 'Synchronized' if sync == 'ready' else 'Synchronizing' if sync in ('syncing', 'updating') else 'Waiting for peers'
         prefix = self.t('Peers: {0} · Block: {1} · ').replace('{0}', str(count)).replace('{1}', str(node.get('height', 0)))
         self.status_label.configure(text=prefix + self.t(label))
 
@@ -315,24 +363,22 @@ class WalletApp:
             self.call('phrase', password, done=self.show_phrase)
 
     def show_phrase(self, value):
+        self.clear_secret()
         window = tk.Toplevel(self.root)
         self.pending_dialog = window
         window.title(self.t('Recovery words'))
         window.transient(self.root)
         window.grab_set()
-        ttk.Label(window, text=self.t('Record the words in order and store them securely.'), wraplength=520).pack(padx=20, pady=16)
+        self.label(window, text=self.t('Record the words in order and store them securely.'), wraplength=520).pack(padx=20, pady=16)
         secret = tk.Text(window, width=56, height=9)
         words = value['words'].split()
         secret.insert('1.0', '\n'.join('   '.join(f'{j+1}. {words[j]}' for j in range(i, min(i+3, len(words)))) for i in range(0, len(words), 3)))
         secret.configure(state='disabled')
         secret.pack(padx=20, pady=10)
         def dismiss():
-            secret.configure(state='normal')
-            secret.delete('1.0', 'end')
-            window.destroy()
-            self.pending_dialog = None
+            self.clear_secret()
             self.refresh()
-        ttk.Button(window, text=self.t('Close'), command=dismiss).pack(pady=16)
+        VerticalButton(window, text=self.t('Close'), command=dismiss).pack(pady=16)
         window.protocol('WM_DELETE_WINDOW', dismiss)
         # Keep recovery text out of Windows screen captures where supported.
         if sys.platform == 'win32':
@@ -340,6 +386,15 @@ class WalletApp:
             window.update_idletasks()
             handle = ctypes.windll.user32.GetParent(window.winfo_id())
             ctypes.windll.user32.SetWindowDisplayAffinity(handle, 0x11)
+
+    def clear_secret(self):
+        window, self.pending_dialog = self.pending_dialog, None
+        if window is not None and window.winfo_exists():
+            for child in window.winfo_children():
+                if isinstance(child, tk.Text):
+                    child.configure(state='normal')
+                    child.delete('1.0', 'end')
+            window.destroy()
 
     def receive(self):
         address = (self.state.get('wallet') or {}).get('address')
@@ -370,7 +425,7 @@ class WalletApp:
         if result.get('outcome') == 'accepted':
             text = self.t('Transaction submitted. Confirmation follows inclusion in a block.\n\nTransaction ID\n') + result.get('txid', '')
         elif result.get('outcome') == 'rejected':
-            text = result.get('error', '')
+            text = self.friendly(result.get('error', ''))
         else:
             text = self.t('Transfer outcome is unknown. Check activity before sending again.')
         messagebox.showinfo(self.t('Transfer result'), text, parent=self.root)
@@ -404,9 +459,7 @@ class WalletApp:
         if event.widget == self.root and self.started and self.root.state() == 'iconic':
             # Queue behind in-flight work; never bypass a transfer's single-use quote.
             self.pool.submit(lambda: runtime.call('foreground', 'false'))
-            if self.pending_dialog:
-                self.pending_dialog.destroy()
-                self.pending_dialog = None
+            self.clear_secret()
 
     def on_map(self, event):
         if event.widget == self.root and self.started:
@@ -416,6 +469,7 @@ class WalletApp:
         if self.closed:
             return
         self.closed = True
+        self.clear_secret()
         for timer in self.root.tk.call('after', 'info'):
             self.root.after_cancel(timer)
         self.pool.submit(runtime.stop)

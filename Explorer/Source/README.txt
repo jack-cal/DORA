@@ -1,4 +1,4 @@
-SUMUWW Explorer 0.4.5
+SUMUWW Explorer 0.4.6
 
 Windows application ZIP: extract everything and run start-explorer.cmd (or SUMUWW-Explorer.exe).
 The launcher opens http://127.0.0.1:8770 in your browser. If an explorer is already

@@ -33,7 +33,7 @@ from sumuww.primitives import MAX_MONEY, Header, hash_to_display, valid_target, 
 from analytics import AdvancedExplorer, FILTER_KEYS, rate
 
 HASH = re.compile(r'^[0-9a-fA-F]{64}$')
-VERSION = '0.4.5'
+VERSION = '0.4.6'
 INDEX_ID = 0x53574D45
 MAX_HEIGHT = 0x7fffffff
 

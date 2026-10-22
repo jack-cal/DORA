@@ -22,10 +22,10 @@ class WalletUpgradeTest {
 import json,hashlib,tempfile
 from pathlib import Path
 import wallet_runtime
-from dora import keystore
-from dora.chain import Chain
+from sumuww import keystore
+from sumuww.chain import Chain
 from sumuww.__main__ import create_payment
-from dora.wallet import RegtestKey
+from sumuww.wallet import RegtestKey
 keystore._publish_no_replace=wallet_runtime._publish_android
 root=Path(fixture_root);root.mkdir(exist_ok=True)
 password='disposable-upgrade-test-password'
@@ -50,8 +50,8 @@ report=json.dumps({'passed':True,'created_with':'installed_pre_update','wallets'
 import json,hashlib,tempfile
 from pathlib import Path
 import wallet_runtime
-from dora import keystore
-from dora.chain import Chain
+from sumuww import keystore
+from sumuww.chain import Chain
 keystore._publish_no_replace=wallet_runtime._publish_android
 root=Path(fixture_root);expected=json.loads((root/'expected.json').read_text())
 password='disposable-upgrade-test-password'

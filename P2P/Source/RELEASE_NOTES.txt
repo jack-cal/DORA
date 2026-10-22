@@ -1,5 +1,19 @@
-SUMUWW P2P 0.1.8
-Shared validation modules updated to core 0.57.34; source snapshot hashes checked.
-Signed peer-to-peer orders, reservations and existing local-node address queries are retained.
-The P2P exchange is distinct from full-node block propagation.
-Real-money swaps remain disabled; exchange execution is restricted to isolated regtest.
+# SUMUWW P2P 0.1.9 — Windows
+
+Fixes crowded multilingual layouts with wrapping action rows and labels, a separate header-status row, equal-width summary cards, and horizontal scrolling for wide forms. Corrects the German caption for swap/refund testing. Order, reservation and wallet-link behavior is retained.
+
+Extract the complete ZIP and run SUMUWW-P2P.exe. This optional app shares signed orders, manages reservations, reads local wallet RPC information and supports isolated regtest exchanges. Node synchronization is already built into the full node and does not require this app. **Public-money deposits and swaps remain disabled.**
+
+Verification: 81 regression tests and 13 focused native UI/language tests passed. All 408 measured layout combinations kept controls reachable. The packaged program passed a two-process TCP peer test with real SMW/BTC regtest chains, wallet RPC queries, claims without a peer announcement, and refund recovery after restart. These processes ran on one PC; this is not a public exchange or Internet-scale test.
+
+## Required upgrade at height 9,000
+
+**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
+
+This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
+
+## Verification and scope
+
+English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
+
+See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.

@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Angalia maneno ya kurejesha akaunti na mpangilio wake.",
   "Check the amount. Up to eight decimal places are supported.": "Angalia kiasi. Hadi nafasi nane za desimali zinatumika.",
   "The transfer review expired. Review it again.": "Muda wa ukaguzi wa uhamishaji umekwisha. Ihakiki tena.",
-  "Peers: {0} · Block: {1} · ": "Wenzake: {0} · Zuia: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Nodi zilizounganishwa: {0} · Bloku: {1} · ",
   "{0} confirmations": "{0} uthibitisho",
   "Select language": "Chagua lugha"
 }

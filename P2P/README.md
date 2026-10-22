@@ -4,17 +4,17 @@
 
 Native Windows direct-order sharing and regtest exchange application. Public-money swaps are disabled.
 
-## Latest — 0.1.8
+## Latest — 0.1.9
 
 | File | Download |
 |---|---|
-| README.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.8/README.txt) |
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.8/RELEASE_NOTES.txt) |
-| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.8/SHA256SUMS.txt) |
-| SUMUWW-P2P-0.1.8-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.8/SUMUWW-P2P-0.1.8-Source.zip) |
-| SUMUWW-P2P-0.1.8-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.8/SUMUWW-P2P-0.1.8-Windows.zip) |
+| README.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.9/README.txt) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.9/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.9/SHA256SUMS.txt) |
+| SUMUWW-P2P-0.1.9-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.9/SUMUWW-P2P-0.1.9-Source.zip) |
+| SUMUWW-P2P-0.1.9-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/p2p-v0.1.9/SUMUWW-P2P-0.1.9-Windows.zip) |
 
-The window, application state and self-check reports now show the same version. The source archive includes the files needed to run its tests. English is the first-launch default; 34 offline languages and saved selection remain available. Public-money swaps remain disabled.
+Version 0.1.9 improves multilingual layouts with wrapping action rows and labels, a separate status row and scrolling for wide forms. It also corrects the German swap/refund test caption. English is the first-launch default; 34 offline languages and saved selection remain available. Public-money swaps remain disabled.
 
 Extract the complete Windows ZIP and run SUMUWW-P2P.exe. No browser or command prompt is opened.
 

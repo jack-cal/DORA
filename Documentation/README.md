@@ -14,3 +14,5 @@ The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal
 [Automatic beacon recovery](BEACON_RECOVERY.md) is included in this release.
 
 - [Current application suite, migration and verification](COMPONENT_SUITE.md)
+
+[Wallet, P2P and explorer fixes: UI, language and physical-device verification](UI_LANGUAGE_VERIFICATION.md).

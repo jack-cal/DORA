@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Kurtarma sözcüklerini ve sıralarını kontrol edin.",
   "Check the amount. Up to eight decimal places are supported.": "Tutarı kontrol edin. En fazla sekiz ondalık basamak desteklenir.",
   "The transfer review expired. Review it again.": "Aktarım incelemesinin süresi doldu. Tekrar gözden geçirin.",
-  "Peers: {0} · Block: {1} · ": "Benzerler: {0} · Blok: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Bağlı düğümler: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} onayları",
   "Select language": "Dili seçin"
 }

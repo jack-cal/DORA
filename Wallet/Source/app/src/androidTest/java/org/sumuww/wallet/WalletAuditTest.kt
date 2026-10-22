@@ -59,10 +59,10 @@ class WalletAuditTest {
 import tempfile
 from pathlib import Path
 import wallet_runtime as runtime
-from dora.app_service import AppService
-from dora.chain import Chain
-from dora.address import decode_address
-from dora import keystore
+from sumuww.app_service import AppService
+from sumuww.chain import Chain
+from sumuww.address import decode_address
+from sumuww import keystore
 from mobile_interfaces import install
 runtime.stop()
 install()
@@ -154,5 +154,46 @@ with Chain(service.database,network='regtest') as chain:
     assert chain.balance(receiver.script_pubkey)==250000000
 """.trimIndent())
         waitFor("Confirmation did not update") { texts().contains("확인 1회") }
+    }
+
+    @Test fun translatedNavigationAndReceiveButtonsKeepWalletIntact() {
+        val render = MainActivity::class.java.getDeclaredMethod("render").apply { isAccessible = true }
+        fun tr(ko: String, en: String) = WalletLanguages.text(activity, ko, en)
+        val expectedAddress = WalletRuntime.executor.submit<String> {
+            Python.getInstance().getModule("builtins").callAttr("eval", "sender['address']", globals).toString()
+        }.get()
+        exec("import hashlib; before_wallet=hashlib.sha256((service.directory/'wallet.json').read_bytes()).hexdigest()")
+        for (code in WalletLanguages.languages.keys) {
+            ui { WalletLanguages.set(activity, code); render.invoke(activity) }
+            click(tr("설정", "Settings"))
+            click(tr("지갑", "Wallet"))
+            click(tr("↓  받기", "↓  Receive"))
+            waitFor("$code: receive dialog did not open") { dialog() != null }
+            ui { assertTrue(views(dialog()!!.window!!.decorView).filterIsInstance<TextView>().any { it.text.toString() == expectedAddress }) }
+            click(tr("닫기", "Close"))
+            waitFor("$code: receive dialog did not close") { dialog() == null }
+            click(tr("내역", "Activity"))
+            waitFor("$code: history still loading") {
+                !MainActivity::class.java.getDeclaredField("working").apply { isAccessible = true }.getBoolean(activity)
+            }
+            click(tr("지갑", "Wallet"))
+            inst.waitForIdleSync()
+            ui {
+                for (button in views(activity.window.decorView).filterIsInstance<Button>()) {
+                    val layout = button.layout ?: continue
+                    if (layout.lineCount > 0) assertTrue("$code clipped: ${button.text}",
+                        layout.getLineBottom(layout.lineCount - 1) <= button.height - button.compoundPaddingTop - button.compoundPaddingBottom + 2)
+                }
+                if (code in setOf("en", "ko", "ar", "de", "ta", "mn-Mong")) {
+                    val view = activity.window.decorView
+                    val bitmap = android.graphics.Bitmap.createBitmap(view.width, view.height, android.graphics.Bitmap.Config.ARGB_8888)
+                    view.draw(android.graphics.Canvas(bitmap))
+                    val folder = java.io.File(activity.getExternalFilesDir(null), "recheck").apply { mkdirs() }
+                    java.io.File(folder, "$code.png").outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+                    bitmap.recycle()
+                }
+            }
+        }
+        exec("assert hashlib.sha256((service.directory/'wallet.json').read_bytes()).hexdigest()==before_wallet")
     }
 }

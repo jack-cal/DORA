@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Periksa kata pemulihan dan urutannya.",
   "Check the amount. Up to eight decimal places are supported.": "Periksa jumlahnya. Hingga delapan tempat desimal didukung.",
   "The transfer review expired. Review it again.": "Peninjauan transfer telah berakhir. Tinjau lagi.",
-  "Peers: {0} · Block: {1} · ": "Rekan: {0} · Blok: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Node terhubung: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} konfirmasi",
   "Select language": "Pilih bahasa"
 }

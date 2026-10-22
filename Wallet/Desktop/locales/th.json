@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "ตรวจสอบคำกู้คืนและคำสั่งซื้อ",
   "Check the amount. Up to eight decimal places are supported.": "เช็คจำนวนได้เลย รองรับทศนิยมสูงสุดแปดตำแหน่ง",
   "The transfer review expired. Review it again.": "การตรวจสอบการโอนหมดอายุแล้ว ทบทวนอีกครั้ง.",
-  "Peers: {0} · Block: {1} · ": "เพื่อนร่วมงาน: {0} · บล็อก: {1} · ",
+  "Peers: {0} · Block: {1} · ": "โหนดที่เชื่อมต่อ: {0} · บล็อก: {1} · ",
   "{0} confirmations": "{0} ยืนยันแล้ว",
   "Select language": "เลือกภาษา"
 }

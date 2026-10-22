@@ -25,7 +25,7 @@ class PrivacyHelpTest {
 import tempfile,json
 from pathlib import Path
 import wallet_runtime as bridge
-from dora.app_service import AppService
+from sumuww.app_service import AppService
 owned=tempfile.TemporaryDirectory(prefix='owned-privacy-help-')
 bridge.stop()
 service=AppService(Path(owned.name)/'node',network='regtest',peers=[],bootstrap=False,allow_lan=False,allow_internet=False)
@@ -94,8 +94,8 @@ bridge._dispatch=dispatch
 import asyncio,json,tempfile,zipfile
 from mobile_interfaces import install
 install()
-from dora.managed_privacy import ManagedRouter
-from dora.privacy import Transport,settings
+from sumuww.managed_privacy import ManagedRouter
+from sumuww.privacy import Transport,settings
 async def check():
     results={}
     with tempfile.TemporaryDirectory(prefix='owned-embedded-routers-') as folder:

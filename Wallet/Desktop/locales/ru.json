@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Проверьте слова восстановления и их порядок.",
   "Check the amount. Up to eight decimal places are supported.": "Проверьте сумму. Поддерживается до восьми десятичных знаков.",
   "The transfer review expired. Review it again.": "Срок рассмотрения переноса истек. Просмотрите его еще раз.",
-  "Peers: {0} · Block: {1} · ": "Пиры: {0} · Блок: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Подключённые узлы: {0} · Блок: {1} · ",
   "{0} confirmations": "{0} подтверждения",
   "Select language": "Выберите язык"
 }

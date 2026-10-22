@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "بازیابی کے الفاظ اور ان کا آرڈر چیک کریں۔",
   "Check the amount. Up to eight decimal places are supported.": "رقم چیک کریں۔ آٹھ اعشاریہ تک کی جگہیں معاون ہیں۔",
   "The transfer review expired. Review it again.": "منتقلی کے جائزے کی میعاد ختم ہو گئی۔ اس کا دوبارہ جائزہ لیں۔",
-  "Peers: {0} · Block: {1} · ": "ساتھی: {0} · بلاک: {1} · ",
+  "Peers: {0} · Block: {1} · ": "منسلک نوڈز: {0} · بلاک: {1} · ",
   "{0} confirmations": "{0} تصدیقات",
   "Select language": "زبان منتخب کریں۔"
 }

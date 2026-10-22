@@ -1,4 +1,19 @@
-SUMUWW Explorer 0.4.5
-Correct expected difficulty after 9000: hold between ten-block retargets.
-Shared block and transaction readers updated to core 0.57.34.
-Read-only source access, search, address history, exports and 34 languages retained.
+# SUMUWW Explorer 0.4.6 — Windows
+
+Corrects 164 translated entries across 19 languages, including blockchain block/hash terminology, time labels, interval-chart text and untranslated phrases. The compiled language bundle matches the source catalogs. All 34 UI languages remain available.
+
+Read-only chain inspection, search, analytics, exports and DGW/10 predictions are retained. Extract the ZIP and run start-explorer.cmd; use --database to select a node database. The explorer reads that node's stored active chain and does not independently synchronize or validate it.
+
+Verification: 150 Python test executions (including inherited repetitions) and 43 JavaScript UI tests passed. The packaged explorer was checked in a browser across all 34 languages, six navigation sections and block-height search. Language changes preserved the displayed block hash.
+
+## Required upgrade at height 9,000
+
+**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
+
+This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
+
+## Verification and scope
+
+English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
+
+See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.

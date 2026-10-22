@@ -1,4 +1,4 @@
-# SUMUWW Wallet for Windows 1.0.0
+# SUMUWW Wallet for Windows 1.0.1
 
 An ordinary wallet with receive, send, activity, encrypted backup, recovery,
 automatic lock and 34 offline interface languages. English is the first-launch

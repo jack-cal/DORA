@@ -1,4 +1,21 @@
-SUMUWW Wallet Current 1.1.0
-Updated to current asynchronous link proofs, 20% events, DGW/10 and beacon recovery.
-Separate application sandbox preserves the withdrawn wallet; restore from encrypted backup or recovery words.
-34 languages and original Android wallet UI retained.
+# SUMUWW Wallet Current 1.1.1 — Android
+
+Fixes cropped Lock, Send, Receive and navigation captions by allowing button height to fit translated text. Corrects connected-node/block terminology in 26 catalogs, matching the PC wallet. Adds release-device navigation and narrow-screen caption regression coverage.
+
+**Update SUMUWW Wallet Current 1.1.0 in place.** This release keeps application ID `org.sumuww.wallet.current` and the same signing certificate, with versionCode 12. The older withdrawn `org.sumuww.wallet` application is a different app and cannot be overwritten by this APK. Preserve that old app and import its encrypted backup or recovery words into Wallet Current to retain the address. The full-node/miner app is separate and unchanged.
+
+Certificate SHA-256: `e6b41f98b4c965a76072277b8ea258553901bd7f9fd9b1c3120b567e6212e80a`. Android 8+; arm64-v8a and x86_64.
+
+Verification: the corrected app was exercised on a Samsung SM-S928N, including 34-language navigation and receive controls, disposable-wallet checks and protocol instrumentation. Four JVM tests include 204 narrow/standard caption layouts with no remaining measured clipping. Live ordinary-wallet synchronization reached height 8949 with three peers. The release is rebuilt with version 1.1.1; device results refer to the same corrected application logic before this metadata bump. No user wallet was imported or spent during these checks.
+
+## Required upgrade at height 9,000
+
+**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
+
+This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
+
+## Verification and scope
+
+English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
+
+See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.

@@ -1,4 +1,4 @@
-SUMUWW Wallet Current 1.1.0 — Android
+SUMUWW Wallet Current 1.1.1 — Android
 
 Ordinary wallet with send, receive, transaction history, encrypted backups,
 recovery words, automatic lock, and 34 offline interface languages. English is
@@ -28,7 +28,7 @@ new blocks and transactions. Public-money swaps are not part of this wallet.
 Build with JDK 17, Gradle 8.10.2, Python 3.13, Android SDK 35, NDK 27.2.12479018
 and CMake 3.22.1. Set local.properties and DORA_BUILD_PYTHON locally, then run
 assembleRelease and testDebugUnitTest. Private signing material is never included.
-The current application uses a newly generated SUMUWW Wallet Current signing
+This update retains the SUMUWW Wallet Current 1.1.0 signing
 identity, different from the original standalone-wallet certificate. Future
 Current updates must retain this key. Private signing material stays outside
 source and releases. Set SUMUWW_WALLET_SIGNING_DIR and ANDROID_SDK_ROOT, then
@@ -38,3 +38,7 @@ Host tests: tools/check_wallet_host.py, plus the current pc_tests protocol suite
 Android instrumentation: CurrentLinksTest uses disposable files in the cache.
 Older V4 tests are historical fixtures and are not the current activation design.
 Do not treat a successful build or host test as physical Android verification.
+
+Version 1.1.1 (versionCode 12) updates Wallet Current 1.1.0 in place with the
+same application ID and certificate. See the repository UI_LANGUAGE_VERIFICATION
+report for the physical-device and multilingual caption checks.

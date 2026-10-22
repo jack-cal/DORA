@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Tarkista palautussanat ja niiden järjestys.",
   "Check the amount. Up to eight decimal places are supported.": "Tarkista summa. Enintään kahdeksan desimaalin tarkkuutta tuetaan.",
   "The transfer review expired. Review it again.": "Siirron tarkistus vanheni. Tarkista se uudelleen.",
-  "Peers: {0} · Block: {1} · ": "Peers: {0} · Estä: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Yhdistetyt solmut: {0} · Lohko: {1} · ",
   "{0} confirmations": "{0} vahvistukset",
   "Select language": "Valitse kieli"
 }

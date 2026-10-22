@@ -20,13 +20,13 @@ class WalletConsensusTest {
   globals.callAttr("__setitem__","dgw_json",dgwData)
   val code="""
 import json,io,unittest
-from dora.asert import next_bits
-from dora.profiles import DORA
-from dora.primitives import valid_target
+from sumuww.asert import next_bits
+from sumuww.profiles import DORA
+from sumuww.primitives import valid_target
 cases=json.loads(vector_json)
 limit=valid_target(0x1d00ffff,(1<<256)-1)
 passed=all(next_bits(a,t,h,limit)==expected for a,t,h,expected in cases)
-from dora.dgw import next_bits as dgw_bits
+from sumuww.dgw import next_bits as dgw_bits
 dgw=json.loads(dgw_json)
 dgw_passed=dgw_bits(list(reversed(dgw['history_oldest_first'])),(1<<256)-1,spacing=dgw['spacing'])==dgw['expected_bits']
 stream=io.StringIO()

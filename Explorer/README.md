@@ -4,19 +4,19 @@
 
 Read-only local block explorer for Windows.
 
-## Latest — 0.4.5
+## Latest — 0.4.6
 
 | File | Download |
 |---|---|
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/RELEASE_NOTES.txt) |
-| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SHA256SUMS.txt) |
-| SUMUWW-Explorer-v0.4.5-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer-v0.4.5-Source.zip) |
-| SUMUWW-Explorer-v0.4.5-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer-v0.4.5-Windows.zip) |
-| SUMUWW-Explorer.exe | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer.exe) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SHA256SUMS.txt) |
+| SUMUWW-Explorer-v0.4.6-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer-v0.4.6-Source.zip) |
+| SUMUWW-Explorer-v0.4.6-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer-v0.4.6-Windows.zip) |
+| SUMUWW-Explorer.exe | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer.exe) |
 
 English first-launch default, 34 bundled offline interface languages and persistent explicit language selection. UI language changes preserve amounts, addresses, keys and protocol data.
 
-Read-only local explorer. Missing or invalid stored language and the static loading screen now default to English. Adds traditional Mongolian as the 34th language. Extract the complete Windows ZIP and run start-explorer.cmd.
+Version 0.4.6 corrects 164 entries across 19 languages, including block/hash terminology, time labels and chart captions. The browser language bundle matches the source catalogs. Extract the complete Windows ZIP and run start-explorer.cmd.
 
 
 ## Upgrade before block 9,000

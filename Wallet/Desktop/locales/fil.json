@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Suriin ang mga salita sa pagbawi at ang kanilang pagkakasunud-sunod.",
   "Check the amount. Up to eight decimal places are supported.": "Suriin ang halaga. Hanggang walong decimal na lugar ang sinusuportahan.",
   "The transfer review expired. Review it again.": "Nag-expire ang pagsusuri sa paglipat. Suriin ito muli.",
-  "Peers: {0} · Block: {1} · ": "Mga kapantay: {0} · Block: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Mga nakakonektang node: {0} · Bloke: {1} · ",
   "{0} confirmations": "{0} pagkumpirma",
   "Select language": "Pumili ng wika"
 }

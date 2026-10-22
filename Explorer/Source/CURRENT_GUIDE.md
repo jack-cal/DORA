@@ -4,10 +4,10 @@
 |---|---|---|
 | Windows full node | 0.57.34 | Validation, synchronization, wallet and optional mining |
 | Android full node | 0.6.84 | Validation, synchronization, wallet and optional mining |
-| Windows ordinary wallet | 1.0.0 | Receiving, sending, backup, recovery and activity |
-| Android ordinary wallet | 1.1.0 | Receiving, sending, backup, recovery and activity |
-| Explorer | 0.4.5 | Read-only local blockchain inspection |
-| P2P | 0.1.8 | Signed order sharing and isolated regtest exchanges |
+| Windows ordinary wallet | 1.0.1 | Receiving, sending, backup, recovery and activity |
+| Android ordinary wallet | 1.1.1 | Receiving, sending, backup, recovery and activity |
+| Explorer | 0.4.6 | Read-only local blockchain inspection |
+| P2P | 0.1.9 | Signed order sharing and isolated regtest exchanges |
 
 The full nodes are the existing published versions, included unchanged. Peer
 discovery, block/transaction propagation and synchronization are built into the
@@ -58,8 +58,8 @@ They need reachable compatible peers and synchronization before balances and
 confirmations can be considered current. Windows ordinary wallet data is separate
 at `%LOCALAPPDATA%/SUMUWW/Wallet-PC`; the full node can run alongside it.
 
-Android Wallet 1.1.0 has application ID `org.sumuww.wallet.current` and the label
-**SUMUWW Wallet Current**. It is signed with a new key and installs alongside
+Android Wallet 1.1.1 has application ID `org.sumuww.wallet.current` and the label
+**SUMUWW Wallet Current**. It retains the Wallet Current 1.1.0 signing key for in-place updates and installs alongside
 the old `org.sumuww.wallet` app. It cannot overwrite that differently signed app.
 Do not uninstall the old wallet or clear its data to install this release.
 Export an encrypted backup from the old app and import it into the new wallet,
@@ -80,44 +80,26 @@ service. Its data reflects that selected node's stored active chain.
 
 ## Changes and verification
 
-The PC wallet adds a native interface without mining controls, explicit payment
-review, single-use quotes, automatic locking and encrypted import/export. Android
-retains its wallet UI and adopts the current node protocol/runtime. Explorer now
-uses the ten-block DGW interval for predicted targets. P2P embeds the current
-shared core while retaining its regtest-only swap guard. Obsolete bundled guides
-describing the withdrawn boundary-certificate design have been replaced.
+This patch corrects wallet locking and synchronization status, multilingual button
+layouts, translation errors and stale verification statements. It retains the
+existing consensus implementation. See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md)
+for measured results and their limits, including physical Android testing.
 
-Recorded local checks:
+Windows wallet: nine native regression tests and 204 measured layouts passed.
+P2P: 81 regression tests, 13 focused UI/language tests and 408 measured layouts
+passed; the frozen app passed a two-process isolated regtest exchange/refund check.
+Explorer: 150 Python executions (including inherited repetitions), 43 JavaScript
+UI tests and a packaged browser check across 34 languages passed. Android: four
+JVM tests passed, including 204 button-caption layouts; corrected app logic also
+passed physical-device navigation and disposable-wallet checks on a Samsung
+SM-S928N. Live ordinary-wallet synchronization reached height 8949 with three peers.
+The final Android version bump is metadata only; see the report for the exact
+relationship between physical-device tests and the rebuilt release APK.
 
-- Wallet backend: 10 passed, including encrypted legacy import, unchanged address,
-  public key and spendable outputs, real peer transfer in regtest, quote replay
-  protection and automatic lock. Originals were not overwritten.
-- PC wallet: 3 native Tk tests passed (34-language rendering, create/lock/unlock,
-  payment review/cancel/confirm, backup overwrite protection). The frozen EXE
-  separately passed create, backup, lock, same-address restore and mining-command
-  rejection checks; its actual window was inspected.
-- Explorer: 150 unittest executions passed, including inherited repeated cases;
-  this is not a claim of 150 distinct tests. The packaged EXE served a read-only
-  chain snapshot and the browser interface was inspected.
-- P2P: the 81-execution full run had one source-manifest format failure. That
-  format was corrected and all 28 executions in the affected module then passed.
-  The other 80 executions passed in the full run. The packaged native window ran.
-- Protocol: 45 unittest executions passed, including inherited repeated cases,
-  with activation-prefix, 20% event, DGW10, transport and recovery checks. The
-  actual-height fixture covered the 8999/9000 boundary.
-- Eight independent local regtest process identities exercised withholding,
-  asynchronous recovery, restart and late-node verification. During an injected
-  eight-second witness delay, five easy-target blocks were mined in 0.063 seconds.
-  The four final nodes agreed on height 51, tip, UTXO digest and four proofs across
-  both beacon generations. This timing is not a mainnet performance estimate.
-- Android release and instrumentation APKs built successfully. Three Robolectric
-  tests passed, covering 34 language layouts. APK signature and alignment verified.
-  No physical Android device was connected for this run; device instrumentation,
-  installation and live mobile peer synchronization have not been reverified.
-
-These checks do not establish an independent security audit, Internet-scale
-discovery, mainnet endurance or irreversible finality. Real-money P2P swaps remain
-disabled. The connection-proof system remains experimental.
+Earlier protocol and eight-process isolated-network results remain recorded in
+the protocol verification reports. This UI patch does not claim a new public
+activation, an independent security audit, Internet-scale discovery or irreversible
+finality. Public-money P2P swaps remain disabled.
 
 ## Sources and references
 

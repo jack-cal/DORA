@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Zkontrolujte obnovovací slova a jejich pořadí.",
   "Check the amount. Up to eight decimal places are supported.": "Zkontrolujte částku. Je podporováno až osm desetinných míst.",
   "The transfer review expired. Review it again.": "Platnost kontroly převodu vypršela. Zkontrolujte to znovu.",
-  "Peers: {0} · Block: {1} · ": "Peers: {0} · Blokovat: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Připojené uzly: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} potvrzení",
   "Select language": "Vyberte jazyk"
 }

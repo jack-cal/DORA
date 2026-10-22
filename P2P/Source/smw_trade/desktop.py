@@ -101,10 +101,37 @@ class Desktop:
         s.map('Treeview', background=[('selected', '#315287')], foreground=[('selected', '#ffffff')])
 
     def label(self, parent, text, **kwargs):
+        maximum = int(kwargs.setdefault('wraplength', 500))
         widget = VerticalLabel(parent, text=text, **kwargs)
-        widget._vertical_max_width = int(kwargs.get('wraplength', 500))
+        widget._vertical_max_width = maximum
         widget.refresh_vertical()
+        def resize(event):
+            if event.widget == parent and widget.winfo_exists() and event.width > 60:
+                width = max(60, min(maximum, event.width - 40))
+                if int(float(widget.cget('wraplength'))) != width:
+                    widget.configure(wraplength=width)
+                    widget._vertical_max_width = width
+                    widget.refresh_vertical()
+        parent.bind('<Configure>', resize, add='+')
         return widget
+
+    def flow_actions(self, parent):
+        """Wrap action rows without changing commands or translated captions."""
+        children = parent.winfo_children()
+        if len(children) > 1 and all(isinstance(w, VerticalButton) for w in children):
+            for widget in children:
+                widget.pack_forget()
+            def arrange(event=None):
+                available = max(100, parent.winfo_width())
+                cell = max(widget.winfo_reqwidth() + 8 for widget in children)
+                columns = max(1, min(len(children), available // cell))
+                for index, widget in enumerate(children):
+                    widget.grid(row=index // columns, column=index % columns, sticky='w', padx=(0, 8), pady=4)
+            parent.bind('<Configure>', arrange, add='+')
+            arrange()
+        for child in children:
+            if isinstance(child, ttk.Frame):
+                self.flow_actions(child)
 
     def _layout(self):
         outer = ttk.Frame(self.root, padding=24)
@@ -117,7 +144,7 @@ class Desktop:
         self.language_select.pack(side='right', padx=(12, 0))
         self.language_select.bind('<<ComboboxSelected>>', self.change_language)
         self.label(top, 'SUMUWW  P2P', style='Title.TLabel').pack(side='left')
-        self.label(top, self.tr('0.1.6 · HTLC activation 9100 · Public swaps disabled').replace('0.1.6', __version__, 1), style='Muted.TLabel').pack(side='right')
+        self.label(outer, self.tr('0.1.6 · HTLC activation 9100 · Public swaps disabled').replace('0.1.6', __version__, 1), style='Muted.TLabel', wraplength=1050).pack(anchor='w', pady=(6, 0))
         self.label(outer, self.tr('Share SMW orders at a price you choose.'), style='Muted.TLabel').pack(anchor='w', pady=(6, 18))
         banner = ttk.Frame(outer, style='Card.TFrame', padding=12)
         banner.pack(fill='x', pady=(0, 16))
@@ -125,10 +152,10 @@ class Desktop:
         metrics = ttk.Frame(outer)
         metrics.pack(fill='x', pady=(0, 15))
         for col, (title, value) in enumerate(((self.tr('Trading pair'), 'SMW / BTC'), (self.tr('Operator fee'), '0%'), (self.tr('Connected test peers'), self.peers), (self.tr('Active orders'), self.count))):
-            metrics.columnconfigure(col, weight=1)
+            metrics.columnconfigure(col, weight=1, uniform='metric')
             f = ttk.Frame(metrics, style='Card.TFrame', padding=13)
             f.grid(row=0, column=col, sticky='nsew', padx=(0, 8 if col < 3 else 0))
-            self.label(f, title, style='Card.TLabel', foreground=MUTED).pack(anchor='w')
+            self.label(f, title, style='Card.TLabel', foreground=MUTED, wraplength=185).pack(anchor='w')
             label = VerticalLabel(f, style='Card.TLabel', font=('Segoe UI', 17, 'bold'))
             label.configure(textvariable=value) if isinstance(value, tk.Variable) else label.configure(text=value)
             label.pack(anchor='w', pady=(4, 0))
@@ -162,6 +189,8 @@ class Desktop:
         self._trades(trades)
         self._wallet_links(links)
         self._independent(independent)
+        for page in (market, wallet_body, network, trades, links, independent):
+            self.flow_actions(page)
 
     def add_tab(self, page, source):
         text = self.tr(source)
@@ -178,13 +207,18 @@ class Desktop:
 
     def scroll_page(self, page):
         canvas = tk.Canvas(page, bg=BG, highlightthickness=0, bd=0)
+        horizontal = ttk.Scrollbar(page, orient='horizontal', command=canvas.xview)
+        horizontal.pack(side='bottom', fill='x')
         scrollbar = ttk.Scrollbar(page, orient='vertical', command=canvas.yview)
         scrollbar.pack(side='right', fill='y'); canvas.pack(side='left', fill='both', expand=True)
         content = ttk.Frame(canvas)
         window = canvas.create_window((0, 0), window=content, anchor='nw')
-        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.configure(yscrollcommand=scrollbar.set, xscrollcommand=horizontal.set)
         content.bind('<Configure>', lambda event: canvas.configure(scrollregion=canvas.bbox('all')))
-        canvas.bind('<Configure>', lambda event: canvas.itemconfigure(window, width=event.width))
+        # Wide forms remain reachable even with unusually long translations.
+        def resize(event):
+            canvas.itemconfigure(window, width=max(event.width, content.winfo_reqwidth()))
+        canvas.bind('<Configure>', resize)
         self.page_canvases.append(canvas)
         return content
 

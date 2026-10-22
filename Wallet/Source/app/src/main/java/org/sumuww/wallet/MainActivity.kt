@@ -256,7 +256,7 @@ class MainActivity : Activity() {
         header.addView(label("SUMUWW", 21, ink, true), LinearLayout.LayoutParams(0, -2, 1f).apply { leftMargin = dp(12) })
         header.addView(button(if (unlocked()) t("잠금", "Lock") else "SMW", false) {
             if (unlocked()) work("lock") { render() }
-        }, LinearLayout.LayoutParams(dp(74), dp(42)))
+        }, LinearLayout.LayoutParams(dp(74), LinearLayout.LayoutParams.WRAP_CONTENT))
         add(root, header)
         val scroll = ScrollView(this).apply { isFillViewport = true; clipToPadding = false }
         body = column().apply { setPadding(dp(22), dp(8), dp(22), dp(20)) }
@@ -265,7 +265,7 @@ class MainActivity : Activity() {
         when (page) { "history" -> historyPage(); "settings" -> settingsPage(); "send" -> sendPage(); else -> walletPage() }
         val tabs = LinearLayout(this).apply { setBackgroundColor(surface); setPadding(dp(14), dp(10), dp(14), dp(10)) }
         listOf("wallet" to t("지갑", "Wallet"), "history" to t("내역", "Activity"), "settings" to t("설정", "Settings")).forEach { (key, value) ->
-            tabs.addView(button(value, page == key) { page = key; render() }, LinearLayout.LayoutParams(0, dp(48), 1f).apply { leftMargin = dp(4); rightMargin = dp(4) })
+            tabs.addView(button(value, page == key) { page = key; render() }, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply { leftMargin = dp(4); rightMargin = dp(4) })
         }
         add(root, tabs)
         refreshLabels()
@@ -303,8 +303,8 @@ class MainActivity : Activity() {
         val actions = LinearLayout(this)
         actions.addView(button(t("↑  보내기", "↑  Send")) {
             if (!unlocked()) passwordDialog("unlock") { page = "send"; render() } else { page = "send"; render() }
-        }, LinearLayout.LayoutParams(0, dp(54), 1f).apply { rightMargin = dp(7) })
-        actions.addView(button(t("↓  받기", "↓  Receive"), false) { receiveDialog() }, LinearLayout.LayoutParams(0, dp(54), 1f).apply { leftMargin = dp(7) })
+        }, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply { rightMargin = dp(7) })
+        actions.addView(button(t("↓  받기", "↓  Receive"), false) { receiveDialog() }, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply { leftMargin = dp(7) })
         add(body, actions); gap(body, 22)
         val details = card(body)
         pendingLabel = label(""); add(details, pendingLabel!!); gap(details, 10)

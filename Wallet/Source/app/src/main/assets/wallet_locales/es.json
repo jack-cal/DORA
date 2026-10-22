@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Consulta las palabras de recuperación y su orden.",
   "Check the amount. Up to eight decimal places are supported.": "Consulta el importe. Se admiten hasta ocho decimales.",
   "The transfer review expired. Review it again.": "La revisión de la transferencia expiró. Revíselo nuevamente.",
-  "Peers: {0} · Block: {1} · ": "Compañeros: {0} · Bloque: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Nodos conectados: {0} · Bloque: {1} · ",
   "{0} confirmations": "{0} confirmaciones",
   "Select language": "Seleccionar idioma"
 }

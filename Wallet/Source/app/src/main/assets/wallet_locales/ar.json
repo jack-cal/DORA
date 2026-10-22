@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "تحقق من كلمات الاسترداد وترتيبها.",
   "Check the amount. Up to eight decimal places are supported.": "تأكد من المبلغ. يتم دعم ما يصل إلى ثمانية منازل عشرية.",
   "The transfer review expired. Review it again.": "انتهت صلاحية مراجعة النقل. قم بمراجعته مرة أخرى.",
-  "Peers: {0} · Block: {1} · ": "الزملاء: {0} · الكتلة: {1} · ",
+  "Peers: {0} · Block: {1} · ": "العُقد المتصلة: {0} · الكتلة: {1} · ",
   "{0} confirmations": "{0} التأكيدات",
   "Select language": "اختر اللغة"
 }

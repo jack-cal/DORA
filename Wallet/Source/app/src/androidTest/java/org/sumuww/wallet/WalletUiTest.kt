@@ -40,8 +40,8 @@ class WalletUiTest {
 import tempfile
 from pathlib import Path
 import wallet_runtime as runtime
-from dora.app_service import AppService
-from dora import keystore
+from sumuww.app_service import AppService
+from sumuww import keystore
 from mobile_interfaces import install
 runtime.stop()
 install()

@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "Сэргээх үгс болон тэдгээрийн дарааллыг шалгана уу.",
   "Check the amount. Up to eight decimal places are supported.": "Хэмжээг шалгана уу. Найм хүртэлх аравтын орон дэмжигддэг.",
   "The transfer review expired. Review it again.": "Шилжүүлгийн хяналтын хугацаа дууссан. Дахин хянаж үз.",
-  "Peers: {0} · Block: {1} · ": "Үе тэнгийнхэн: {0} · Блок: {1} · ",
+  "Peers: {0} · Block: {1} · ": "Холбогдсон зангилаа: {0} · Блок: {1} · ",
   "{0} confirmations": "{0} баталгаажуулалт",
   "Select language": "Хэл сонгоно уу"
 }

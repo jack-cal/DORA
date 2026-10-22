@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "पुनर्प्राप्ति शब्द और उनका क्रम जांचें।",
   "Check the amount. Up to eight decimal places are supported.": "राशि जांचें। आठ दशमलव स्थानों तक समर्थित हैं।",
   "The transfer review expired. Review it again.": "स्थानांतरण समीक्षा समाप्त हो गई। इसकी दोबारा समीक्षा करें.",
-  "Peers: {0} · Block: {1} · ": "सहकर्मी: {0} · ब्लॉक: {1} · ",
+  "Peers: {0} · Block: {1} · ": "जुड़े नोड: {0} · ब्लॉक: {1} · ",
   "{0} confirmations": "{0} पुष्टिकरण",
   "Select language": "भाषा चुनें"
 }

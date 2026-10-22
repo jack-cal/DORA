@@ -115,7 +115,7 @@
   "Check the recovery words and their order.": "மீட்பு வார்த்தைகளையும் அவற்றின் வரிசையையும் சரிபார்க்கவும்.",
   "Check the amount. Up to eight decimal places are supported.": "தொகையைச் சரிபார்க்கவும். எட்டு தசம இடங்கள் வரை ஆதரிக்கப்படும்.",
   "The transfer review expired. Review it again.": "பரிமாற்ற மதிப்பாய்வு காலாவதியானது. அதை மீண்டும் மதிப்பாய்வு செய்யவும்.",
-  "Peers: {0} · Block: {1} · ": "சகாக்கள்: {0} · தொகுதி: {1} · ",
+  "Peers: {0} · Block: {1} · ": "இணைக்கப்பட்ட முனைகள்: {0} · தொகுதி: {1} · ",
   "{0} confirmations": "{0} உறுதிப்படுத்தல்கள்",
   "Select language": "மொழியைத் தேர்ந்தெடுக்கவும்"
 }
