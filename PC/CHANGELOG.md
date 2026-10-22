@@ -1,27 +1,28 @@
-# SUMUWW PC 0.57.33
+# SUMUWW Windows 0.57.34
 
-Windows AMD64 node, wallet and miner. English is the default for a fresh profile.
+Windows AMD64 full node, wallet and CPU miner. English is the default; all 34 UI languages remain available.
 
-## Updates and fixes
+## Added and fixed
 
-- Document the asynchronous connection proof for exact parent/child blocks A/B: three Ed25519 signatures, six halves, two paired bundles and producer receipts.
-- Use a 20% random connection-event probability. Mining, block acceptance and propagation do not wait for completed signatures.
-- Keep cumulative valid work primary; count nonconflicting connections only for equal-work branches and neutralize conflicting positions.
-- Preserve valid history through height 8999, including a valid prefix delivered with an invalid later continuation. Require the producer commitment on every block from 9000.
-- Retain the 24-block DGW v3 calculation and apply it at 9000, 9010, 9020 and subsequent ten-block boundaries. Preserve issuance, halvings, maturity, wallets and existing valid coins.
-- Rewrite the whitepaper around connection evidence, remove repetitive material, correct obsolete 10% metadata and include the missing height-9100 HTLC reference.
-- Publish English documentation and release notes, while retaining all 34 application UI languages.
+- Automatically prepare a fresh distributed-randomness key when the current beacon group cannot supply enough valid responses.
+- Check participant health with authenticated threshold shares; retry withheld or invalid DKG contributions and unavailable prepared proposals.
+- Bind each replacement to its exact predecessor and a round on the same PoW ancestry. Nodes independently validate the public setup and readiness signatures.
+- Preserve completed historical proofs under their original key. Recovery does not block PoW mining or redraw old proof jobs.
+- Preserve wallets, valid historical blocks, issuance, halvings, the 20% random event probability, cumulative-work priority and DGW/10 from height 9000.
 
-- Correct the difficulty display to show the ten-block adjustment interval after height 9000.
-- Include the complete portable runtime, icons, document menus, node manager and required dependency licenses.
-- Align the network and discovery regression fixtures with current asynchronous proof behavior; this is not a claim of new production networking performance.
+- Show the scheduled height-9000 transition in all 34 languages: per-block DGW before activation, then adjustment every ten blocks.
+- Correct Windows executable file-version metadata to 0.57.34 and reject stale version resources during builds.
 
-## Installation
+## Verification
 
-Extract the entire Windows ZIP into a new folder and run SUMUWW.exe. Keep _internal, assets, docs, programs and the other bundled files together. Close the old application before using the same data directory. Keep the existing encrypted wallet and node database; do not reset either. Python does not need to be installed separately for the executable package.
+Eight independent process identities tested withholding, replacement, restart and late verification. Ten new recovery regression cases passed. The PC regression run passed 28 distinct cases across 36 executions, plus two numeric activation-prefix cases. Four UI/catalog tests covered all 34 languages. Six packaged executable checks passed after rebuilding.
 
-The source ZIP includes the Python application, tests, build instructions and vendored dependency notices. The Windows executables are unsigned by a publisher certificate.
+## Download and update
 
-## Verification and limitations
+[Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.34/SUMUWW-PC-0.57.34-English.zip) · [Windows source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.34/SUMUWW-Windows-Source-0.57.34-English.zip)
 
-See VERIFICATION.md for the recorded checks and limits. This is an experimental protocol release, not independent security certification. The prior withdrawn releases remain withdrawn; this version deliberately requests witness signatures after PoW.
+Extract the complete archive, close the previous program, and run SUMUWW.exe using the existing data directory. Keep the encrypted wallet and node database. The complete portable runtime is included; a separate Python installation is unnecessary. Windows executables do not have a publisher code-signing certificate. Check PC-SHA256SUMS.txt on the release page.
+
+## Compatibility and scope
+
+Recovery requires at least three usable participants, eventual delivery and a mined commitment. Old incomplete jobs may remain incomplete if their original threshold shares are lost. Validating nodes must upgrade before new recovery records are used. The protocol remains experimental; local checks are not an independent cryptographic audit or a multi-day public-network trial.

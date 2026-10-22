@@ -59,7 +59,7 @@ class LinkState:
         key=path[-1][0][0]
         if key in self.anchor_cache:return self.anchor_cache[key]
         result=None
-        for row,block in path[self.activation:]:
+        for row,block in reversed(path[self.activation:]):
             setup=block_beacon(block)
             if setup is not None:
                 result=(row[0],setup);break
@@ -67,6 +67,27 @@ class LinkState:
         if len(self.anchor_cache)>256:self.anchor_cache.clear()
         self.anchor_cache[key]=result
         return result
+    def check_setup_context(self,ctx,path):
+        """Branch-derived authorization. Local timeout observations are not consensus."""
+        beacon.check_context(ctx)
+        require(ctx['network']==self.network and ctx['root']==self.root(path),'Beacon activation ancestry mismatch')
+        current=self.anchor(path)
+        if ctx['domain']!=beacon.RECOVERY_DOMAIN:
+            require(current is None,'Beacon already anchored on this branch')
+            return
+        previous=current[0].hex() if current else beacon.NO_PREVIOUS
+        require(ctx['previous']==previous,'Stale or wrong beacon predecessor')
+        rounds={row[0].hex():row[2] for row,_ in path}
+        require(ctx['round'] in rounds,'Recovery round is not a prior ancestor')
+        minimum=(self.chain._row(current[0])[2]+beacon.MIN_GENERATION_BLOCKS
+                 if current else self.activation-1)
+        require(rounds[ctx['round']]>=minimum,'Recovery generation is too early')
+    def prepared_setup(self,path):
+        setup=self.local('ready_setup')
+        if setup is None:return None
+        try:self.check_setup_context(setup['manifest']['context'],path)
+        except (ValueError,KeyError,TypeError):return None
+        return setup
     def template_coinbase(self,coinbase,path):
         if not self.enabled(len(path)):return coinbase
         if self._producer_id is None:
@@ -74,8 +95,8 @@ class LinkState:
             try:self._producer_id=identity.node_id
             finally:identity.close()
         outputs=coinbase.outputs+(producer_output(self._producer_id),)
-        setup=self.local('ready_setup')
-        if setup is not None and self.anchor(path) is None and setup['manifest']['context']['root']==self.root(path):
+        setup=self.prepared_setup(path)
+        if setup is not None:
             beacon.verify_setup(setup)
             key=(path[-1][0][0],digest(setup))
             if self._template_extras is None or self._template_extras[0]!=key:
@@ -89,9 +110,8 @@ class LinkState:
         try:
             producer(block);setup=block_beacon(block)
             if setup is not None:
-                require(self.anchor(path) is None,'Beacon already anchored on this branch')
                 ctx=setup['manifest']['context']
-                require(ctx['network']==self.network and ctx['root']==self.root(path),'Beacon activation ancestry mismatch')
+                self.check_setup_context(ctx,path)
                 beacon.verify_setup(setup)
         except Exception as error:
             if isinstance(error,StorageError):raise

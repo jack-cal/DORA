@@ -1,6 +1,6 @@
 # SUMUWW · current height-9000 protocol
 
-PC 0.57.33 / Android 0.6.83 · 2026-10-22
+PC 0.57.34 / Android 0.6.84 · 2026-10-22
 
 ## History, money and compatibility
 
@@ -75,10 +75,14 @@ threshold BLS output. Its public setup is committed in an ordinary PoW coinbase
 after activation. A connection uses a setup anchored before its source block.
 Any threshold of valid responses reconstructs the same result. Missing responses
 below that threshold leave evidence pending; PoW continues. Initial setup still
-requires every listed dealer's contribution and a readiness quorum. The initial
-shareholder group is fixed; newly discovered witnesses do not automatically get
-randomness shares. Permanent loss of enough original shareholders can permanently
-stop new connection proofs. There is no deployed automatic resharing protocol.
+requires every listed dealer's contribution and a readiness quorum. Background
+recovery probes discovered contacts, retries failed DKG attempts and prepares
+a fresh key with responsive participants. A replacement is bound to the previous
+setup block and an ancestor round at least 12 blocks later, then committed in
+a subsequent ordinary PoW block. Old proofs keep their original setup; the new
+key applies only to later source blocks. Lost old secrets are not reconstructed.
+Recovery needs enough responsive participants, eventual delivery and a mined
+commitment. Mining never waits for the recovery process. See BEACON_RECOVERY.md.
 
 ## Chain selection and conflicts
 

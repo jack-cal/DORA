@@ -311,5 +311,6 @@
   "An update is available.": "An update is available.",
   "No newer release is available.": "No newer release is available.",
   "Could not check for updates. Open GitHub to check directly.": "Could not check for updates. Open GitHub to check directly.",
-  "Known node addresses": "Known node addresses"
+  "Known node addresses": "Known node addresses",
+  "From block {0:,}: every {1:,} blocks": "From block {0:,}: every {1:,} blocks"
 }

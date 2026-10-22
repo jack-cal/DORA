@@ -311,5 +311,6 @@
   "An update is available.": "Шинэчлэлт байна.",
   "No newer release is available.": "Илүү шинэ хувилбар алга.",
   "Could not check for updates. Open GitHub to check directly.": "Шинэчлэлт шалгаж чадсангүй. GitHub дээр шууд шалгана уу.",
-  "Known node addresses": "Мэдэгдэж буй зангилааны хаягууд"
+  "Known node addresses": "Мэдэгдэж буй зангилааны хаягууд",
+  "From block {0:,}: every {1:,} blocks": "{0:,}-р блокоос эхлэн {1:,} блок тутамд"
 }

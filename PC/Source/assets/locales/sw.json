@@ -311,5 +311,6 @@
   "An update is available.": "Sasisho linapatikana.",
   "No newer release is available.": "Hakuna toleo jipya zaidi.",
   "Could not check for updates. Open GitHub to check directly.": "Imeshindwa kuangalia masasisho. Angalia GitHub moja kwa moja.",
-  "Known node addresses": "Anwani zinazojulikana"
+  "Known node addresses": "Anwani zinazojulikana",
+  "From block {0:,}: every {1:,} blocks": "Kuanzia bloku {0:,}: kila bloku {1:,}"
 }

@@ -311,5 +311,6 @@
   "An update is available.": "May available na update.",
   "No newer release is available.": "Walang mas bagong bersiyon.",
   "Could not check for updates. Open GitHub to check directly.": "Hindi masuri ang mga update. Tingnan nang direkta sa GitHub.",
-  "Known node addresses": "Mga kilalang node address"
+  "Known node addresses": "Mga kilalang node address",
+  "From block {0:,}: every {1:,} blocks": "Mula sa block {0:,}: bawat {1:,} block"
 }

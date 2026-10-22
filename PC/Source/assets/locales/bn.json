@@ -311,5 +311,6 @@
   "An update is available.": "একটি আপডেট পাওয়া গেছে।",
   "No newer release is available.": "আরও নতুন সংস্করণ নেই।",
   "Could not check for updates. Open GitHub to check directly.": "আপডেট পরীক্ষা করা যায়নি। সরাসরি GitHub-এ দেখুন।",
-  "Known node addresses": "পরিচিত নোড ঠিকানা"
+  "Known node addresses": "পরিচিত নোড ঠিকানা",
+  "From block {0:,}: every {1:,} blocks": "ব্লক {0:,} থেকে: প্রতি {1:,} ব্লকে"
 }

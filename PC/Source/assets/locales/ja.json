@@ -311,5 +311,6 @@
   "An update is available.": "新しいバージョンがあります。",
   "No newer release is available.": "新しいバージョンはありません。",
   "Could not check for updates. Open GitHub to check directly.": "更新を確認できませんでした。GitHubで直接確認してください。",
-  "Known node addresses": "既知のノードアドレス"
+  "Known node addresses": "既知のノードアドレス",
+  "From block {0:,}: every {1:,} blocks": "ブロック {0:,} 以降：{1:,} ブロックごとに調整"
 }

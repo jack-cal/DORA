@@ -1405,8 +1405,11 @@ class SumuwwApp:
                 mode = ('DGW v3 · '+tr('Every block')) if node.get('height', 0)+1 >= activation else tr('DGW v3 from block {0:,}', activation)
                 cadence_height = node.get('dgw_interval_activation_height', getattr(profile, 'dgw_interval_activation_height', None))
                 cadence = node.get('dgw_retarget_interval', getattr(profile, 'dgw_retarget_interval', 1))
-                if cadence_height is not None and node.get('height', 0)+1 >= cadence_height and cadence > 1:
-                    mode = 'DGW v3 · '+tr('Difficulty adjustment every {0:,} blocks', cadence)
+                if cadence_height is not None and cadence > 1:
+                    if node.get('height', 0)+1 >= cadence_height:
+                        mode = 'DGW v3 · '+tr('Difficulty adjustment every {0:,} blocks', cadence)
+                    else:
+                        mode = mode+' → '+tr('From block {0:,}: every {1:,} blocks', cadence_height, cadence)
             self.rules_text.set(tr('Average target {0:,}s   ·   {1}   ·   Network {2}', spacing, mode, tr('SUMUWW') if self.network_name == 'dora' else self.network_name))
         wallet = status.get('wallet')
         previous_address = self._wallet.get('address') if self._wallet else None

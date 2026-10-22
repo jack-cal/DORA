@@ -197,6 +197,9 @@ class UiLanguageSwitchTests(unittest.TestCase):
                 self.app._apply_status(status)
                 expected=self.app.translator.render('Every block') if height<8999 else self.app.translator.render('Difficulty adjustment every {0:,} blocks',10)
                 self.assertIn(expected,self.app.rules_text.get(),(language,height))
+                upcoming=self.app.translator.render('From block {0:,}: every {1:,} blocks',9000,10)
+                if height<8999:self.assertIn(upcoming,self.app.rules_text.get(),(language,height))
+                else:self.assertNotIn(upcoming,self.app.rules_text.get(),(language,height))
 
     def test_modal_or_busy_blocks_language_change_and_existing_error_logic_is_localized(self):
         from sumuww.app import _error_message

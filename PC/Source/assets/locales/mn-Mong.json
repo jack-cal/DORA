@@ -311,5 +311,6 @@
   "An update is available.": "ᠰᠢᠨᠡ ᠬᠤᠪᠢᠯᠪᠤᠷᠢ ᠪᠠᠶᠢᠨ᠎ᠠ᠃",
   "No newer release is available.": "ᠰᠢᠨᠡ ᠬᠤᠪᠢᠯᠪᠤᠷᠢ ᠪᠠᠶᠢᠬᠤ ᠦᠭᠡᠢ᠃",
   "Could not check for updates. Open GitHub to check directly.": "ᠰᠢᠨᠡᠴᠢᠯᠡᠯᠲᠡ ᠶᠢ ᠱᠠᠯᠭᠠᠵᠤ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ᠃ GitHub ᠳᠡᠭᠡᠷ᠎ᠡ ᠱᠠᠯᠭᠠᠨ᠎ᠠ ᠤᠤ᠃",
-  "Known node addresses": "ᠮᠡᠳᠡᠭᠳᠡᠭᠰᠡᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠠᠶᠢᠭ"
+  "Known node addresses": "ᠮᠡᠳᠡᠭᠳᠡᠭᠰᠡᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠠᠶᠢᠭ",
+  "From block {0:,}: every {1:,} blocks": "{0:,} ᠳ᠋ᠤᠭᠠᠷ ᠪᠯᠣᠺ ᠡᠴᠡ {1:,} ᠪᠯᠣᠺ ᠲᠤᠲᠤᠮ ᠳ᠋ᠤ"
 }

@@ -43,7 +43,7 @@ def source_hashes(source):
 def copy_distribution_files(source, bundle):
     for name in ('run.cmd', 'start.cmd', 'start-public.cmd', 'join-network.cmd', 'allow-public-connections.cmd'):
         shutil.copy2(source / name, bundle / name)
-    for name in ('HTLC_9100.md', 'HTLC_9100.html', 'CONNECTION_PROOFS_9000.md', 'CONNECTION_PROOFS_9000.html', 'UPGRADE_9000.txt', 'VERSION.txt', 'README.md', 'SOURCE_REVISION.md', 'WHITEPAPER.md', 'SUMUWW_PROTOCOL_SPEC.md', 'BOUNDARY_V4.md', 'BOUNDARY_V4.html', 'DOCUMENT_LAYOUT.json',
+    for name in ('BEACON_RECOVERY.md', 'HTLC_9100.md', 'HTLC_9100.html', 'CONNECTION_PROOFS_9000.md', 'CONNECTION_PROOFS_9000.html', 'UPGRADE_9000.txt', 'VERSION.txt', 'README.md', 'SOURCE_REVISION.md', 'WHITEPAPER.md', 'SUMUWW_PROTOCOL_SPEC.md', 'BOUNDARY_V4.md', 'BOUNDARY_V4.html', 'DOCUMENT_LAYOUT.json',
                  'Protocol.html', 'RPC_API.html', 'User_Guide.html', 'Whitepaper.html',
                  'RELEASE_NOTES.txt', 'DOCUMENT_SHA256SUMS.txt',
                  'requirements-win-cp312.lock', 'requirements.txt', 'LICENSE', 'LICENSE.md', 'LICENSE.txt'):
@@ -112,6 +112,12 @@ def main(argv=None):
     if not options.build:
         print('Build environment ready; waiting for source freeze before --build')
         return 0
+    version = __import__('re').search(r'__version__ = "([^"]+)"', (source / 'sumuww/__init__.py').read_text()).group(1)
+    resource = (source / 'assets/version-info.txt').read_text(encoding='utf-8')
+    for field in ('FileVersion', 'ProductVersion'):
+        assert f"StringStruct('{field}', '{version}')" in resource, f'{field} must match the application version'
+    for field in ('filevers', 'prodvers'):
+        assert f'{field}={tuple(int(part) for part in version.split("."))+(0,)}' in resource, f'{field} must match the application version'
     before = source_hashes(source)
     environment = dict(os.environ, SUMUWW_BUILD_SOURCE=str(source), PYTHONDONTWRITEBYTECODE='1', SOURCE_DATE_EPOCH='0')
     environment.pop('PYTHONPATH', None)

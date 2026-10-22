@@ -311,5 +311,6 @@
   "An update is available.": "Er is een update beschikbaar.",
   "No newer release is available.": "Er is geen nieuwere versie beschikbaar.",
   "Could not check for updates. Open GitHub to check directly.": "Updates controleren is mislukt. Kijk rechtstreeks op GitHub.",
-  "Known node addresses": "Bekende knooppuntadressen"
+  "Known node addresses": "Bekende knooppuntadressen",
+  "From block {0:,}: every {1:,} blocks": "Vanaf blok {0:,}: elke {1:,} blokken"
 }

@@ -311,5 +311,6 @@
   "An update is available.": "Доступно је ажурирање.",
   "No newer release is available.": "Нема новије верзије.",
   "Could not check for updates. Open GitHub to check directly.": "Није могуће проверити ажурирања. Проверите директно на GitHub-у.",
-  "Known node addresses": "Адресе познатих чворова"
+  "Known node addresses": "Адресе познатих чворова",
+  "From block {0:,}: every {1:,} blocks": "Од блока {0:,}: на сваких {1:,} блокова"
 }

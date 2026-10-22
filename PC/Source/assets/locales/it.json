@@ -311,5 +311,6 @@
   "An update is available.": "È disponibile un aggiornamento.",
   "No newer release is available.": "Non sono disponibili versioni più recenti.",
   "Could not check for updates. Open GitHub to check directly.": "Impossibile verificare gli aggiornamenti. Controlla direttamente su GitHub.",
-  "Known node addresses": "Indirizzi dei nodi noti"
+  "Known node addresses": "Indirizzi dei nodi noti",
+  "From block {0:,}: every {1:,} blocks": "Dal blocco {0:,}: ogni {1:,} blocchi"
 }

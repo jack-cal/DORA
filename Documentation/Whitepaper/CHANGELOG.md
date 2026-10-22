@@ -1,13 +1,11 @@
-# SUMUWW Whitepaper v2 — English
+# SUMUWW Whitepaper v2.1 — English
 
-## Updates and corrections
+This edition adds the automatic beacon-generation recovery specification to the connection-proof whitepaper and updates the verification record.
 
-- Reorganize the whitepaper around SUMUWW connection proofs instead of repeating general mining explanations.
-- Explain the three signatures, six halves, conditional compression, paired A/B attachments, producer receipts and later verification.
-- Specify the 20% selection probability and the distinction between an event being selected and a proof completing.
-- Explain cumulative-work priority, equal-work comparison, conflict neutralization and the effects of late evidence.
-- Preserve the existing issuance, halvings and difficulty rules. State the 9000/9100 activation boundaries precisely.
-- Include the connection-proof specification and exact HTLC technical reference. Clarify discovery and threshold-beacon availability limits without claiming irreversible finality or majority-hashrate protection.
-- Directly review all 34 local language editions without an external translation service; publish this release and its technical references in English.
+- Describe replacement of unavailable randomness participants through fresh distributed key generation and PoW-anchored public setups.
+- Explain exact predecessor/round binding, the twelve-block generation spacing, retries and historical-proof preservation.
+- Distinguish new-key recovery from reconstruction of a lost old secret; document the incomplete-old-job and availability limits.
+- Preserve issuance, halvings, the 20% event probability, cumulative-work-first chain selection and DGW every ten blocks from height 9000.
+- Include the current verification scope, the height-9000 connection-proof specification and the height-9100 HTLC reference.
 
-The archive includes readable HTML, editable Markdown and the original project icon. Open index.html after extracting the complete archive. The repository also contains the editable English document sources. This document describes the supplied implementation and its limitations; it is not an independent security audit.
+Open index.html in the complete extracted archive. Editable Markdown, readable HTML, technical references and the original icon are included. Publication language is English. This document describes the implementation; it does not certify independent security review.

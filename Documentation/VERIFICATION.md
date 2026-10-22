@@ -1,5 +1,9 @@
 # Verification and release scope
 
+This page records the 0.57.33 / 0.6.83 publication. The subsequent recovery
+implementation has a [separate verification record](BEACON_RECOVERY_VERIFICATION.md)
+and [protocol description](BEACON_RECOVERY.md).
+
 Date: 2026-10-22. Windows 0.57.33; Android 0.6.83 (versionCode 143).
 
 ## Recorded validation

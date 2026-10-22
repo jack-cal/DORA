@@ -311,5 +311,6 @@
   "An update is available.": "Je k dispozici aktualizace.",
   "No newer release is available.": "Novější verze není k dispozici.",
   "Could not check for updates. Open GitHub to check directly.": "Aktualizace se nepodařilo ověřit. Zkontrolujte přímo GitHub.",
-  "Known node addresses": "Adresy známých uzlů"
+  "Known node addresses": "Adresy známých uzlů",
+  "From block {0:,}: every {1:,} blocks": "Od bloku {0:,}: každých {1:,} bloků"
 }
