@@ -87,6 +87,6 @@ still permits late evidence to alter a tie; valid greater cumulative work wins.
 Replacement records require upgraded validating software. The earlier binaries
 reject these new setup contexts. Historical records remain valid in the updated
 implementation; update participating validators before the activation rollout.
-The public release labels and update feed are not changed by this verification.
+Windows 0.57.34 and Android 0.6.84 are published with this verification record. Publishing a normal release does not extend the verification scope stated above.
 
 See [the recovery protocol](BEACON_RECOVERY.md) for exact transitions and limits.

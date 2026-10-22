@@ -1,29 +1,30 @@
-# SUMUWW Android 0.6.83
+# SUMUWW Android 0.6.84
 
-Android node, wallet and CPU miner. Package org.sumuww.miner, versionCode 143; Android 8.0 or newer, arm64-v8a and x86_64. English is the default for a fresh profile.
+Android full node, wallet and CPU miner. Package `org.sumuww.miner`, versionCode 144; Android 8.0 or newer, arm64-v8a and x86_64. English is the default; all 34 UI languages remain available.
 
-## Updates and fixes
+## Added and fixed
 
-- Document the asynchronous connection proof for exact parent/child blocks A/B: three Ed25519 signatures, six halves, two paired bundles and producer receipts.
-- Use a 20% random connection-event probability. Mining, block acceptance and propagation do not wait for completed signatures.
-- Keep cumulative valid work primary; count nonconflicting connections only for equal-work branches and neutralize conflicting positions.
-- Preserve valid history through height 8999, including a valid prefix delivered with an invalid later continuation. Require the producer commitment on every block from 9000.
-- Retain the 24-block DGW v3 calculation and apply it at 9000, 9010, 9020 and subsequent ten-block boundaries. Preserve issuance, halvings, maturity, wallets and existing valid coins.
-- Rewrite the whitepaper around connection evidence, remove repetitive material, correct obsolete 10% metadata and include the missing height-9100 HTLC reference.
-- Publish English documentation and release notes, while retaining all 34 application UI languages.
+- Automatically prepare a fresh distributed-randomness key when the current beacon group cannot supply enough valid responses.
+- Check participant health with authenticated threshold shares; retry withheld or invalid DKG contributions and unavailable prepared proposals.
+- Bind each replacement to its exact predecessor and a round on the same PoW ancestry. Nodes independently validate the public setup and readiness signatures.
+- Preserve completed historical proofs under their original key. Recovery does not block PoW mining or redraw old proof jobs.
+- Preserve wallets, valid historical blocks, issuance, halvings, the 20% random event probability, cumulative-work priority and DGW/10 from height 9000.
 
-- Carry the validated mobile runtime and wallet-opening fixes from the preceding update into the signed 0.6.83 package.
-- Retain the original icon assets, layouts, language choices, wallet format, consent controls and mining protections.
-- Verify UI actions and consensus boundary behavior in the isolated Android audit package; the signed production APK keeps the original signing lineage.
+- Include the same recovery implementation as Windows while retaining the original mobile icons, button layout, wallet format and saved language preference.
+- Publish the APK using the existing application signing lineage so it can update the installed app without clearing its data.
 
-## Installation
+## Verification
 
-Install the signed APK over the existing org.sumuww.miner app. Do not uninstall the app or clear its data for an ordinary update. Keep an encrypted wallet backup and open the existing wallet with its own password. This release does not update or reinstate the separate standalone wallet application.
+A Samsung SM-S928N running Android 16 passed 29 protocol/native-runtime cases in an isolated audit app, including ten new recovery cases and the numeric 8999/9000 boundary. The signed APK was subsequently installed over the existing app, and wallet display and chain continuity were checked. The shared implementation also passed an eight-identity process experiment with old-group loss, recovery and late verification.
 
-The source ZIP includes the Kotlin UI, Python node code, native dependencies, tests and build configuration. Private release-signing keys and local SDK configuration are excluded. A custom build cannot replace the official app unless signed with a compatible key.
+## Download and update
 
-## Verification and limitations
+[Android APK](https://github.com/jack-cal/SUMUWW/releases/download/android-v0.6.84/SUMUWW-Android-0.6.84.apk) · [Android source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/android-v0.6.84/SUMUWW-Android-Source-0.6.84-English.zip)
 
-See [verification](../Documentation/VERIFICATION.md) for the recorded checks and limits. This is an experimental protocol release, not independent security certification. The prior withdrawn releases remain withdrawn; this version deliberately requests witness signatures after PoW.
+Install the APK over the existing app. Do not uninstall or clear data for an ordinary update. Open the existing wallet with its own password after restarting. Check Android-SHA256SUMS.txt on the release page. The separate standalone wallet application is not part of this release.
 
-[Download Android 0.6.83](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.83) · [Source](Source)
+## Compatibility and scope
+
+Recovery requires at least three usable participants, eventual delivery and a mined commitment. Old incomplete jobs may remain incomplete if their original threshold shares are lost. Validating nodes must upgrade before new recovery records are used. The protocol remains experimental; local checks are not an independent cryptographic audit or a multi-day public-network trial.
+
+[Source](Source) · [Recovery protocol](../Documentation/BEACON_RECOVERY.md) · [Verification](../Documentation/BEACON_RECOVERY_VERIFICATION.md)

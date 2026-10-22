@@ -1,14 +1,37 @@
 {
-  "html_local_links": 3307,
-  "english_document_files": 3297,
-  "document_menu_paths": 340,
-  "runtime_files_unchanged": 1257,
-  "archives_crc": 4,
-  "source_files_match_git": 5136,
-  "sha256_files": 14,
-  "regression_tests": 18,
-  "publication_language": "English",
-  "application_ui_languages": 34,
-  "wallet_or_chain_data_packaged": false,
-  "result": "passed"
+  "versions": {
+    "windows": "0.57.34",
+    "android": "0.6.84",
+    "whitepaper": "2.1"
+  },
+  "publication_language": "en",
+  "ui_languages": 34,
+  "assets": [
+    {
+      "file": "Android/SUMUWW-Android-0.6.84.apk",
+      "sha256": "4d771b5698b883ef0b2c1d99ce6bcd678b27724077230505404323cd7a5ba676",
+      "bytes": 65986296
+    },
+    {
+      "file": "Android/SUMUWW-Android-Source-0.6.84-English.zip",
+      "sha256": "59880d7ba3fd5f0254a841f884a071ea2ecb377f5055c60032a3564d9bfa30ee",
+      "bytes": 43085394
+    },
+    {
+      "file": "Documentation/SUMUWW-Whitepaper-v2.1-English.zip",
+      "sha256": "b66853673544e45997c8b14b5add7f7e61c952790e1dc6a4638336bdf194472f",
+      "bytes": 203040
+    },
+    {
+      "file": "PC/SUMUWW-PC-0.57.34-English.zip",
+      "sha256": "b8714bc1cd22bc95f8ee1f994205903fe7074f55b9cbc8f5100f42281436cd79",
+      "bytes": 82950583
+    },
+    {
+      "file": "PC/SUMUWW-Windows-Source-0.57.34-English.zip",
+      "sha256": "647a3058e9df73c033d3a6d1afe7d291323d341bd87f51c80bf014fadf787592",
+      "bytes": 34945511
+    }
+  ],
+  "scope": "See VERIFICATION.md. No private wallet, signing key, live database or device logs are publication assets."
 }
