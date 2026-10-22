@@ -12,6 +12,12 @@ SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynch
 
 Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. An Android update is installed over the existing app; do not uninstall or clear data.
 
+## Upgrade before block 9,000
+
+The upgraded consensus rules apply at height **9,000 inclusive**. Blocks produced by legacy software under the old, pre-upgrade rules at height 9,000 or above are rejected by upgraded nodes and cannot extend the upgraded chain. Continued mining on a legacy branch does not make those blocks acceptable.
+
+Valid historical blocks through **8,999 remain usable**, including the valid prefix of a mixed synchronization batch whose later legacy continuation is invalid. Existing wallets, coins, valid history, issuance and halvings are preserved. Update both miners and validating nodes before activation. This is validation by block rules, not a blanket rejection based only on an advertised software version.
+
 ## Protocol and documentation
 
 [Whitepaper](Documentation/Whitepaper/WHITEPAPER.md) · [Connection proofs](Documentation/Whitepaper/CONNECTION_PROOFS_9000.md) · [Verification](Documentation/BEACON_RECOVERY_VERIFICATION.md)
