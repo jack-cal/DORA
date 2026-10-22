@@ -293,12 +293,20 @@ def default_data_directory():
     local = os.environ.get('LOCALAPPDATA')
     return (Path(local) if local else Path.home() / '.local/share') / 'SUMUWW/P2P'
 
-def main(root):
+def main(root,flavor='full'):
     parser = argparse.ArgumentParser(description='SUMUWW P2P native Windows development application')
     parser.add_argument('--data-dir', type=Path)
+    parser.add_argument('--legacy-lab', action='store_true', help='Open the previous disposable BTC test laboratory')
+    parser.add_argument('--test-market', action='store_true', help='Use a separate test-only trading board and wallet')
+    parser.add_argument('--market-self-check', action='store_true', help='Offline native UI and signed-peer check in a new directory')
     parser.add_argument('--wallet-self-check', action='store_true', help='Disposable regtest check; requires a new --data-dir')
     parser.add_argument('--peer-self-check', action='store_true', help='Two independent regtest participants; requires a new --data-dir')
     args = parser.parse_args()
+    if args.market_self_check:
+        if args.data_dir is None:parser.error('--market-self-check requires a new --data-dir')
+        from .market.self_check import run
+        run(root,args.data_dir,flavor=flavor)
+        return
     if args.peer_self_check:
         if args.wallet_self_check or args.data_dir is None:
             parser.error('--peer-self-check requires its own new --data-dir')
@@ -311,6 +319,20 @@ def main(root):
         from .wallet_check import run
         result = run(root, args.data_dir)
         raise SystemExit(0 if result['passed'] else 1)
+    if not args.legacy_lab:
+        from .market.application import MarketApplication
+        from .market.desktop import MarketDesktop
+        network='test' if args.test_market else 'mainnet'
+        profile=('Market-Light' if flavor=='light' else 'Market')+('-Test' if args.test_market else '')
+        directory=args.data_dir or default_data_directory()/profile
+        try:app=MarketApplication(root,directory,network,flavor=flavor)
+        except AlreadyRunning as exc:
+            import tkinter as tk
+            from tkinter import messagebox
+            window=tk.Tk();window.withdraw()
+            messagebox.showinfo('SUMUWW P2P',str(exc),parent=window);window.destroy();return
+        MarketDesktop(app).run()
+        return
     args.data_dir = args.data_dir or default_data_directory()
     from .desktop import Desktop
     try:

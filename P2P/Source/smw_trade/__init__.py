@@ -1,2 +1,2 @@
-"""Isolated SUMUWW/BTC regtest exchange development application."""
-__version__ = '0.1.9'
+"""SUMUWW native SMW/BTC trading board and independent-chain settlement."""
+__version__ = '0.3.0'

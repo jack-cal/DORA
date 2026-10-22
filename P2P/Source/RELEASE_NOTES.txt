@@ -1,19 +1,61 @@
-# SUMUWW P2P 0.1.9 — Windows
+SUMUWW P2P 0.3.0 — Full and Light — 2026-10-23
 
-Fixes crowded multilingual layouts with wrapping action rows and labels, a separate header-status row, equal-width summary cards, and horizontal scrolling for wide forms. Corrects the German caption for swap/refund testing. Order, reservation and wallet-link behavior is retained.
+Activation and prerequisites
+- SMW/BTC conditional exchange transactions activate from SUMUWW block 9100.
+- Both editions require the current synchronized local SUMUWW full node.
+- Full requires synchronized unpruned Bitcoin Core with txindex; Light does not.
+- BITCOIN_SETUP.md details disk space, download, configuration and recovery.
 
-Extract the complete ZIP and run SUMUWW-P2P.exe. This optional app shares signed orders, manages reservations, reads local wallet RPC information and supports isolated regtest exchanges. Node synchronization is already built into the full node and does not require this app. **Public-money deposits and swaps remain disabled.**
+Two separate Windows downloads
+- Full retains local Bitcoin Core verification, full history and synchronized txindex.
+- Light adds locally verified Bitcoin headers and transaction inclusion proofs,
+  supplied by three configurable Electrum TLS servers. Local Bitcoin Core is not required.
+- Both use a current synchronized local SUMUWW node and the same SMW/BTC trading
+  protocol. Full and Light participants can trade with each other.
+- Separate executable names and default profiles preserve existing trading data.
 
-Verification: 81 regression tests and 13 focused native UI/language tests passed. All 408 measured layout combinations kept controls reachable. The packaged program passed a two-process TCP peer test with real SMW/BTC regtest chains, wallet RPC queries, claims without a peer announcement, and refund recovery after restart. These processes ran on one PC; this is not a public exchange or Internet-scale test.
+Trading board and recovery
+- Signed SMW/BTC buy/sell posts, exact prices and quantities, whole-order reservations.
+- Explicit local review for funding, receiving and deadline refunds.
+- SMW funds first; verified chain observations determine settlement state.
+- Encrypted signed transactions are saved before broadcast and retried unchanged.
+- Recovery backups preserve keys, addresses, order identity and funded-trade records.
+- Cancellation blocks new funding but cannot bypass refund deadlines.
+- ETH, BNB and XRP are unsupported. Retired encrypted records remain inactive.
 
-## Required upgrade at height 9,000
+Light verification
+- Verify every header from genesis: links, PoW, expected difficulty and retargets,
+  median/future time bounds, activated header versions and cumulative work.
+- Apply Bitcoin Core v31.0's mainnet minimum-work floor; reject stale public tips.
+- Verify TLS certificates and genesis; require two distinct server IPs on the
+  verified tip. Private keys and passwords remain local.
+- Compare histories, unspent outputs and raw transactions. Verify output amounts
+  and scripts from transaction bytes and Merkle inclusion against local headers.
+- Continue with one unavailable server if two consistent responses remain.
+  Conflicts, forged amounts and invalid inclusion proofs stop payment preparation.
+- Follow greater-work reorganizations and revalidate affected proofs.
+- Show synchronization progress and verified header/peer counts in the interface.
+- Correct unsupported-asset connection errors without contacting retired services.
 
-**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
+Language and packaging
+- English default and documentation; all 34 offline UI languages remain selectable.
+- Directly authored edition/server captions and light-verification scope notice.
+- Existing icon, styling and vertical Mongolian support; compact vertical metadata keeps the workspace usable in smaller windows.
+- Separate Full/Light Windows assets, shared source and build instructions, SHA-256 checksums
+  and English verification reports. Windows executables are not Authenticode signed.
 
-This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
+Consensus boundary retained
+Valid legacy blocks through 8999 remain usable. Old-rule blocks at 9000 inclusive
+and above are rejected by upgraded nodes. Upgrade miners and validating nodes.
+Issuance, halvings, 20% asynchronous connection proofs and DGW every ten blocks
+are unchanged. Conditional HTLC spending remains gated at height 9100.
 
-## Verification and scope
-
-English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
-
-See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.
+Limits
+Light is SPV, not full Bitcoin consensus validation. Matching servers can collude
+or omit transactions; different IPs do not prove different operators. Script queries
+reveal transaction interests. No mainnet funds were transferred in verification.
+There is no independent security certification, unattended claim/refund watcher,
+automatic fee bumping, hosted public orderbook or NAT traversal. Monitor funded
+trades and retain complete recovery backups. Fixed fees may be insufficient in
+congestion. This release cannot settle or refund retired ETH/BNB/XRP trades.
+Read EDITIONS.md, README.txt and VERIFICATION.txt before funding.

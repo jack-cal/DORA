@@ -1,4 +1,4 @@
-# SUMUWW component suite — 2026-10-22
+# SUMUWW component suite — 2026-10-23
 
 | Application | Version | Purpose |
 |---|---|---|
@@ -7,13 +7,17 @@
 | Windows ordinary wallet | 1.0.1 | Receiving, sending, backup, recovery and activity |
 | Android ordinary wallet | 1.1.1 | Receiving, sending, backup, recovery and activity |
 | Explorer | 0.4.6 | Read-only local blockchain inspection |
-| P2P | 0.1.9 | Signed order sharing and isolated regtest exchanges |
+| P2P Full | 0.3.0 | SMW/BTC board and settlement using local full nodes |
+| P2P Light | 0.3.0 | SMW/BTC board and settlement using Bitcoin SPV |
 
 The full nodes are the existing published versions, included unchanged. Peer
 discovery, block/transaction propagation and synchronization are built into the
-node. A separate networking application is not required. The P2P application in
-this suite is the existing order/exchange program; public-money swaps remain
-disabled. An order or reservation does not transfer funds.
+node. A separate networking application is not required. P2P 0.3.0 has separate Full and Light trading editions. Funding requires a
+current synchronized SUMUWW node and conditional-spend activation at height 9100.
+Full also requires synchronized unpruned Bitcoin Core with txindex; Light does not.
+Read the [Bitcoin setup and block-9100 guide](../P2P/Source/BITCOIN_SETUP.md).
+An order or reservation does not transfer funds. See the
+[edition comparison and verification limits](../P2P/Source/EDITIONS.md).
 
 English is the first-launch default. All 34 offline UI languages remain
 selectable. Existing branding is retained. Text translation does not alter keys,
@@ -86,8 +90,10 @@ existing consensus implementation. See the [UI and language verification report]
 for measured results and their limits, including physical Android testing.
 
 Windows wallet: nine native regression tests and 204 measured layouts passed.
-P2P: 81 regression tests, 13 focused UI/language tests and 408 measured layouts
-passed; the frozen app passed a two-process isolated regtest exchange/refund check.
+Current P2P 0.3.0: 121 regression executions, 4 final UI/recovery executions,
+136 layout checks and both frozen 34-language checks passed. Full/Light combinations
+completed test-chain trades and refunds. Public Bitcoin header/proof checks were
+read-only. See [P2P verification](../P2P/Source/VERIFICATION.txt).
 Explorer: 150 Python executions (including inherited repetitions), 43 JavaScript
 UI tests and a packaged browser check across 34 languages passed. Android: four
 JVM tests passed, including 204 button-caption layouts; corrected app logic also
@@ -99,7 +105,8 @@ relationship between physical-device tests and the rebuilt release APK.
 Earlier protocol and eight-process isolated-network results remain recorded in
 the protocol verification reports. This UI patch does not claim a new public
 activation, an independent security audit, Internet-scale discovery or irreversible
-finality. Public-money P2P swaps remain disabled.
+finality. P2P funding is gated at height 9100; no public-money settlement was
+performed in the verification described here.
 
 ## Sources and references
 

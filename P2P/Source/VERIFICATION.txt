@@ -1,0 +1,60 @@
+SUMUWW P2P 0.3.0 — verification record — 2026-10-23
+
+RESULTS
+121 regression test executions passed, including inherited repeated cases.
+4 final native UI/recovery test executions passed after the status-display/layout updates.
+6 final header/transport checks passed, including malformed-response rejection.
+Both final frozen Windows editions passed 34-language native UI and signed-peer checks.
+The final frozen Light executable established verified TLS connections to 3 of three configured public servers; at least two are required.
+136 layouts checked: two editions x 34 languages x two window sizes.
+English, Korean, Arabic and vertical Mongolian owned-window screenshots retained.
+Screenshots show disposable test profiles, not user wallets.
+
+SETTLEMENT TESTS
+Real Bitcoin Core 31.1 regtest and current SUMUWW regtest consensus/RPC.
+Full/Full, Light/Light, Full seller/Light buyer and Light seller/Full buyer.
+Independent participant keys and signed direct TCP advertisements/reservations.
+Actual test-asset buy/sell funding, claims, cancellation before funding and after locks,
+early-refund rejection, encrypted funded backup/restore, restart and real deadline refunds.
+Claim discovery without a counterparty claim notification.
+Three independent Electrum-protocol fixture services backed by Core regtest data;
+these fixtures are not three independently developed production server implementations.
+One unavailable server tolerated; one remaining response rejected; conflicting histories,
+forged values, forged Merkle proofs, wrong targets/parents/times and invalid endpoints rejected.
+Greater-work reorganization and cache reload verified. Public minimum-work floor checked.
+34-language fields, captions, publishing, cancellation, reservation, wallet lock/unlock,
+connection controls and full recovery backup checked. No external translation service used.
+
+READ-ONLY MAINNET MEASUREMENTS
+All Bitcoin headers validated from genesis through height 972639 on three public TLS servers.
+Initial raw header storage: 77,811,200 bytes. Initial wire download: 155,659,439 bytes.
+Initial measured duration: 205.34 seconds; not a performance guarantee.
+Subsequent height: 972640; header storage: 77811280 bytes.
+A confirmed public transaction's raw bytes and Merkle inclusion proof were checked.
+No wallet was created for that public check and no mainnet transaction was sent.
+This implementation uses Electrum, not BIP157 compact filters.
+
+WHAT WAS NOT ESTABLISHED
+Independent security audit, native-speaker review of every language, Internet-scale
+marketplace discovery, NAT traversal, public-money settlement, guaranteed server honesty,
+complete SPV transaction validation, guaranteed observation of every spend, automatic
+fee replacement or unattended deadline monitoring. No proof of server operator independence.
+Light requires honest available data sources. False omission/collusion remains possible.
+Full requires synchronized unpruned Bitcoin Core with txindex and authenticated local RPC.
+Both require a synchronized current SUMUWW full node, compatible counterparties and fees.
+Windows executables are unsigned. Blockchain storage is additional to the ZIP size.
+
+PRESERVED RULES
+Valid legacy SUMUWW blocks <=8999 remain usable. Old-rule blocks >=9000 are rejected.
+20% asynchronous connection proofs and DGW every ten blocks remain unchanged.
+Issuance and halvings are unchanged. HTLC funding requires activation at height 9100.
+Existing user wallets, ordinary-wallet apps, full nodes and chain databases were not modified.
+
+REPRODUCIBILITY
+Python 3.12.10 / pinned requirements-lock.txt / PyInstaller 6.22.3 / Bitcoin Core 31.1.
+Run tests with PYTHONPATH=.;vendor;tests and python -m unittest discover -s tests -v.
+build.ps1 builds both Windows editions. A new --data-dir with --market-self-check
+checks the corresponding packaged UI. Light also supports --light-server-check
+with a new --data-dir for a read-only TLS probe; it is not a full header/proof check.
+tools/check_light_mainnet.py performs the read-only header/proof verification.
+See EDITIONS.md for protocol references, measured data costs and recovery instructions.

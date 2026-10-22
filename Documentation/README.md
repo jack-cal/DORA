@@ -16,3 +16,7 @@ The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal
 - [Current application suite, migration and verification](COMPONENT_SUITE.md)
 
 [Wallet, P2P and explorer fixes: UI, language and physical-device verification](UI_LANGUAGE_VERIFICATION.md).
+
+[SUMUWW P2P 0.3.0: Full/Light comparison, storage and recovery](../P2P/Source/EDITIONS.md) · [Verification](../P2P/Source/VERIFICATION.txt).
+
+[Bitcoin setup and SUMUWW block-9100 trading activation](../P2P/Source/BITCOIN_SETUP.md).

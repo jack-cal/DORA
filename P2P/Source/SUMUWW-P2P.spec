@@ -4,6 +4,7 @@ from PyInstaller.utils.hooks import collect_all
 
 datas = [('tools/bitcoin-31.1', 'tools/bitcoin-31.1'), ('tools/runtime-manifest.json', 'tools'), ('smw_trade/locales', 'smw_trade/locales'), ('assets/fonts', 'assets/fonts'), ('vendor/assets/bip39', 'assets/bip39'), ('vendor/assets/bootstrap-nodes.json', 'assets/bootstrap-nodes.json')]
 binaries = []
+datas += [('smw_trade/market/translations.json', 'smw_trade/market'), ('vendor/assets/sumuww.ico', 'vendor/assets')]
 hiddenimports = []
 hiddenimports += collect_submodules('py_ecc')
 hiddenimports += collect_submodules('nacl')
@@ -20,7 +21,7 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['web3', 'eth_account', 'xrpl'],
     noarchive=False,
     optimize=0,
 )
@@ -31,7 +32,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='SUMUWW-P2P',
+    name='SUMUWW-P2P-Full',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -51,5 +52,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='SUMUWW-P2P',
+    name='SUMUWW-P2P-Full',
 )

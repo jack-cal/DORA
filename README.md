@@ -11,10 +11,30 @@ SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynch
 | Windows ordinary wallet | 1.0.1 | [Windows wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.1) | [Source](Wallet/Desktop) |
 | Android ordinary wallet | 1.1.1 | [Android wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.1) | [Source](Wallet/Source) |
 | Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) | [Source](Explorer/Source) |
-| P2P order sharing and regtest exchange | 0.1.9 | [P2P](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-v0.1.9) | [Source](P2P/Source) |
+| P2P Full — SMW/BTC trading | 0.3.0 | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0) | [Source](P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.0 | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0) | [Source](P2P/Source) |
 | Whitepaper and technical references | v2.1, English | [Whitepaper release](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en) | [Editable documents](Documentation/Whitepaper) |
 
 Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. Android full-node updates install over the matching existing app. The new ordinary Android wallet installs alongside the old wallet and imports an encrypted backup; do not uninstall or clear old app data. See the [component suite guide](Documentation/COMPONENT_SUITE.md).
+
+P2P now has separate [Full and Light editions](P2P/Source/EDITIONS.md). Full uses your local Bitcoin Core; Light checks Bitcoin headers and transaction inclusion proofs using configurable TLS servers. Both require your local SUMUWW node and HTLC activation at height 9100. Light is SPV and depends on available honest servers for complete transaction histories.
+
+## SMW/BTC trading starts at SUMUWW block 9100
+
+**Conditional exchange transactions are enabled from SUMUWW block 9100.** Both
+P2P editions require a current synchronized local SUMUWW full node. Setup,
+wallet creation and posting ads can happen earlier; they do not move coins or
+bypass activation. Reaching 9100 alone does not guarantee a working trade.
+
+**Full requires your own synchronized, unpruned Bitcoin Core with `txindex=1`.**
+It downloads and retains Bitcoin history in addition to the trading application.
+**Light does not require a local Bitcoin full node**; it verifies headers and
+transaction inclusion proofs supplied by TLS servers and has different trust
+and availability limits. Full and Light participants can trade with each other.
+
+Read the **[Bitcoin full-node setup, disk requirements, Light setup and block-9100
+guide](P2P/Source/BITCOIN_SETUP.md)** before funding. It explains configuration,
+authentication, synchronization, operating costs, cancellation and recovery.
 
 ## Upgrade before block 9,000
 
