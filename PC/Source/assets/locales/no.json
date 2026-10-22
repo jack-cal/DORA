@@ -311,5 +311,6 @@
   "An update is available.": "En oppdatering er tilgjengelig.",
   "No newer release is available.": "Ingen nyere versjon er tilgjengelig.",
   "Could not check for updates. Open GitHub to check directly.": "Kunne ikke se etter oppdateringer. Sjekk direkte på GitHub.",
-  "Known node addresses": "Kjente nodeadresser"
+  "Known node addresses": "Kjente nodeadresser",
+  "From block {0:,}: every {1:,} blocks": "Fra blokk {0:,}: for hver {1:,} blokker"
 }

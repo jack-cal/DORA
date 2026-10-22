@@ -311,5 +311,6 @@
   "An update is available.": "มีเวอร์ชันใหม่พร้อมใช้งาน",
   "No newer release is available.": "ไม่มีเวอร์ชันที่ใหม่กว่า",
   "Could not check for updates. Open GitHub to check directly.": "ตรวจสอบการอัปเดตไม่ได้ โปรดตรวจสอบโดยตรงที่ GitHub",
-  "Known node addresses": "ที่อยู่โหนดที่รู้จัก"
+  "Known node addresses": "ที่อยู่โหนดที่รู้จัก",
+  "From block {0:,}: every {1:,} blocks": "ตั้งแต่บล็อก {0:,}: ปรับทุก {1:,} บล็อก"
 }

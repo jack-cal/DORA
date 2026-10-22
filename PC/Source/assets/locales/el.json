@@ -311,5 +311,6 @@
   "An update is available.": "Υπάρχει διαθέσιμη ενημέρωση.",
   "No newer release is available.": "Δεν υπάρχει νεότερη έκδοση.",
   "Could not check for updates. Open GitHub to check directly.": "Δεν ήταν δυνατός ο έλεγχος ενημερώσεων. Ελέγξτε απευθείας στο GitHub.",
-  "Known node addresses": "Γνωστές διευθύνσεις κόμβων"
+  "Known node addresses": "Γνωστές διευθύνσεις κόμβων",
+  "From block {0:,}: every {1:,} blocks": "Από το μπλοκ {0:,}: κάθε {1:,} μπλοκ"
 }

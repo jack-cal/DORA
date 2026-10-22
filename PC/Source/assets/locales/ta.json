@@ -311,5 +311,6 @@
   "An update is available.": "புதுப்பிப்பு உள்ளது.",
   "No newer release is available.": "புதிய பதிப்பு எதுவும் இல்லை.",
   "Could not check for updates. Open GitHub to check directly.": "புதுப்பிப்புகளைச் சரிபார்க்க முடியவில்லை. GitHub-இல் நேரடியாகப் பார்க்கவும்.",
-  "Known node addresses": "அறியப்பட்ட முனை முகவரிகள்"
+  "Known node addresses": "அறியப்பட்ட முனை முகவரிகள்",
+  "From block {0:,}: every {1:,} blocks": "பிளாக் {0:,} முதல்: ஒவ்வொரு {1:,} பிளாக்குகளுக்கும்"
 }

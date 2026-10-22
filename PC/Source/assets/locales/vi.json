@@ -311,5 +311,6 @@
   "An update is available.": "Có bản cập nhật mới.",
   "No newer release is available.": "Không có phiên bản mới hơn.",
   "Could not check for updates. Open GitHub to check directly.": "Không thể kiểm tra cập nhật. Hãy kiểm tra trực tiếp trên GitHub.",
-  "Known node addresses": "Địa chỉ nút đã biết"
+  "Known node addresses": "Địa chỉ nút đã biết",
+  "From block {0:,}: every {1:,} blocks": "Từ khối {0:,}: mỗi {1:,} khối"
 }

@@ -112,6 +112,12 @@ def main(argv=None):
     if not options.build:
         print('Build environment ready; waiting for source freeze before --build')
         return 0
+    version = __import__('re').search(r'__version__ = "([^"]+)"', (source / 'sumuww/__init__.py').read_text()).group(1)
+    resource = (source / 'assets/version-info.txt').read_text(encoding='utf-8')
+    for field in ('FileVersion', 'ProductVersion'):
+        assert f"StringStruct('{field}', '{version}')" in resource, f'{field} must match the application version'
+    for field in ('filevers', 'prodvers'):
+        assert f'{field}={tuple(int(part) for part in version.split("."))+(0,)}' in resource, f'{field} must match the application version'
     before = source_hashes(source)
     environment = dict(os.environ, SUMUWW_BUILD_SOURCE=str(source), PYTHONDONTWRITEBYTECODE='1', SOURCE_DATE_EPOCH='0')
     environment.pop('PYTHONPATH', None)

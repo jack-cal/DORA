@@ -311,5 +311,6 @@
   "An update is available.": "Доступно обновление.",
   "No newer release is available.": "Более новой версии нет.",
   "Could not check for updates. Open GitHub to check directly.": "Не удалось проверить обновления. Проверьте непосредственно на GitHub.",
-  "Known node addresses": "Известные адреса"
+  "Known node addresses": "Известные адреса",
+  "From block {0:,}: every {1:,} blocks": "С блока {0:,}: каждые {1:,} блоков"
 }

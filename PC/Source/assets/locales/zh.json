@@ -311,5 +311,6 @@
   "An update is available.": "有新版本可用。",
   "No newer release is available.": "暂无更新版本。",
   "Could not check for updates. Open GitHub to check directly.": "无法检查更新，请直接访问 GitHub 查看。",
-  "Known node addresses": "已知节点地址"
+  "Known node addresses": "已知节点地址",
+  "From block {0:,}: every {1:,} blocks": "从区块 {0:,} 起：每 {1:,} 个区块调整一次"
 }

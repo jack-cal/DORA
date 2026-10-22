@@ -64,10 +64,19 @@ The tests ran on this Windows host and a connected Android phone, using isolated
 local chains. The phone tests exercised protocol and native runtime behavior;
 they were not a full UI interaction audit. Directly importing the Android-only
 secp256k1 adapter on Windows is not a valid device test. No installed production
-app, wallet or live chain database was updated; the phone's original application
-remained at version 0.6.82 (142). The 34 UI languages and their layout,
-icons, wallet implementation, monetary rules and difficulty implementation were
-not edited.
+wallet or live chain database was replaced during those isolated tests. The
+phone's original application remained at version 0.6.82 (142) during that stage.
+The subsequent local deployment installed Windows 0.57.34 and Android 0.6.84
+over the existing applications, retaining their wallet and chain data.
+
+The PC difficulty label now shows the pending height-9000 transition before it
+activates, instead of showing only the current per-block rule. All 34 catalogs
+include that transition text; four targeted UI/catalog tests passed, including
+the cadence label at heights 8998, 8999, 9000, 9009 and 9010 in every language.
+The Windows executable version resource now matches 0.57.34, and the build
+rejects a stale resource version. The packaged Windows checks passed again.
+Icons, button layout, wallet implementation, monetary rules and difficulty
+implementation are unchanged.
 
 There is no claim of a multi-day public Internet trial, public height-9000
 activation, independent cryptographic audit, complete worldwide discovery,

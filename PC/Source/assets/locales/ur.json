@@ -311,5 +311,6 @@
   "An update is available.": "اپ ڈیٹ دستیاب ہے۔",
   "No newer release is available.": "کوئی نیا ورژن دستیاب نہیں۔",
   "Could not check for updates. Open GitHub to check directly.": "اپ ڈیٹس کی جانچ نہیں ہو سکی۔ براہ راست GitHub پر دیکھیں۔",
-  "Known node addresses": "معلوم نوڈ پتے"
+  "Known node addresses": "معلوم نوڈ پتے",
+  "From block {0:,}: every {1:,} blocks": "بلاک {0:,} سے: ہر {1:,} بلاکس پر"
 }

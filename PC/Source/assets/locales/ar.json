@@ -311,5 +311,6 @@
   "An update is available.": "يتوفر تحديث.",
   "No newer release is available.": "لا يوجد إصدار أحدث.",
   "Could not check for updates. Open GitHub to check directly.": "تعذّر التحقق من التحديثات. راجع GitHub مباشرةً.",
-  "Known node addresses": "عناوين العقد المعروفة"
+  "Known node addresses": "عناوين العقد المعروفة",
+  "From block {0:,}: every {1:,} blocks": "بدءًا من الكتلة {0:,}: كل {1:,} كتل"
 }

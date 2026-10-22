@@ -311,5 +311,6 @@
   "An update is available.": "एक अपडेट उपलब्ध है।",
   "No newer release is available.": "कोई नया संस्करण उपलब्ध नहीं है।",
   "Could not check for updates. Open GitHub to check directly.": "अपडेट नहीं जाँचे जा सके। सीधे GitHub पर देखें।",
-  "Known node addresses": "ज्ञात नोड पते"
+  "Known node addresses": "ज्ञात नोड पते",
+  "From block {0:,}: every {1:,} blocks": "ब्लॉक {0:,} से: हर {1:,} ब्लॉक पर"
 }
