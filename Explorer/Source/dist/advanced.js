@@ -1,0 +1,45 @@
+'use strict';
+const advancedFilterKeys=['date_from','date_to','min_height','max_height','min_amount','max_amount','sort','order'];
+function filterQuery(filters={},extra={}){const q=new URLSearchParams();for(const [k,v] of Object.entries({...filters,...extra}))if(v!==''&&v!==null&&v!==undefined)q.set(k,v);return q.toString();}
+function filterForm(filters={},period=false,kind='ordinary',address=''){
+  const fields=[['date_from','datefrom','date'],['date_to','dateto','date'],['min_height','minheight','number'],['max_height','maxheight','number'],...period?[]:[['min_amount','minamount','text'],['max_amount','maxamount','text']]];
+  const inputs=fields.map(([key,label,type])=>`<label>${esc(t(label))}<input name="${key}" type="${type}" ${type==='number'?'min="0" max="2147483647" step="1"':''} value="${esc(filters[key]||'')}"></label>`).join('');
+  const selects=period?'':[['sort',['height','time','amount','fee','rate'],['height','time','total','fee','feerate']],['order',['desc','asc'],['desc','asc']]].map(([key,values,labels])=>`<label>${esc(t(key))}<select name="${key}" aria-label="${esc(t(key))}">${values.map((v,i)=>`<option value="${v}" ${v===(filters[key]||values[0])?'selected':''}>${esc(t(labels[i]))}</option>`).join('')}</select></label>`).join('');
+  const base=period?'#/history/'+encodeURIComponent(address):'#/transactions?kind='+encodeURIComponent(kind);
+  return `<form class="advanced-filter" data-advanced-filter data-period="${period?'1':'0'}" data-kind="${esc(kind)}" data-address="${esc(address)}">${inputs}${selects}<div class="filter-actions"><button type="submit">${esc(t('apply'))}</button>${button(base,t('reset'))}</div></form>`;
+}
+function advancedSubmit(event){const form=event.target.closest('[data-advanced-filter]');if(!form)return;event.preventDefault();const params={};for(const field of form.querySelectorAll('[name]'))if(field.value)params[field.name]=field.value;const period=form.dataset.period==='1';if(!period)params.kind=form.dataset.kind;location.hash=(period?'#/history/'+encodeURIComponent(form.dataset.address):'#/transactions')+'?'+filterQuery(params);}
+function advancedPath(parts,params){
+  const [type,key]=parts;let filters={};for(const k of advancedFilterKeys)if(params.has(k))filters[k]=params.get(k);
+  if(parts.length===1&&type==='fees')return 'fees?';
+  if(parts.length===1&&type==='mining')return 'mining?limit='+encodeURIComponent(params.get('limit')||'144');
+  if(parts.length===1&&type==='transactions')return 'transactions?'+filterQuery(filters,{kind:params.get('kind')||'ordinary',offset:params.get('offset')||'0'});
+  if(parts.length===2&&['related','audit','history'].includes(type)){
+    const decoded=decodeURIComponent(key),safe=encodeURIComponent(decoded);
+    if(type==='related')return 'transaction/'+safe+'/related?';
+    if(type==='audit')return 'block/'+safe+'/audit?';
+    return 'address/'+safe+'/history?'+filterQuery(filters,{offset:params.get('offset')||'0'});
+  }
+  return null;
+}
+function idList(items){return items.length?`<div class="id-list">${items.map(id=>link('transaction',id,id,'mono hash full')).join('')}</div>`:empty('nodata');}
+function feeTable(items){return items.length?`<div class="table-wrap"><table><thead><tr>${['txid','fee','feerate','package','vsize'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${items.map(r=>`<tr><td>${link('transaction',r.txid,short(r.txid),'mono')}</td><td>${r.fee===null?'—':esc(money(r.fee))+' SMW'}</td><td>${esc(r.fee_rate??'—')}</td><td>${esc(r.effective_fee_rate??'—')}</td><td>${n(r.vsize)} vB</td></tr>`).join('')}</tbody></table></div>`:empty('empty');}
+function feesPage(data){
+  const recommendations=data.recommendations.map(r=>metric(r.level,r.fee_rate===null?'—':esc(money(r.fee_rate)))).join('');
+  const buckets=`<div class="table-wrap"><table><thead><tr><th>${esc(t('feerate'))}</th><th>${esc(t('transactions'))}</th><th>vB</th></tr></thead><tbody>${data.buckets.map(b=>`<tr><td>${esc(b.minimum)}–${esc(b.maximum??'∞')}</td><td>${n(b.count)}</td><td>${n(b.vsize)}</td></tr>`).join('')}</tbody></table></div>`;
+  return panel(t('fees'),`<div class="detail-grid">${recommendations}</div>`,t('feenote')+' '+t('feeunit'))+panel(t('pendingstats'),`<div class="detail-grid">${metric('transactions',n(data.total))}${metric('vsize',n(data.vsize)+' vB')}${metric('knownfees',esc(money(data.total_known_fees))+' SMW')}${metric('unresolved',n(data.unresolved_fees))}${metric('samples',n(data.sample_count))}</div>`)+panel(t('feerate'),buckets,t('feeunit'))+panel(t('mempool'),feeTable(data.transactions));
+}
+function relatedPage(data){return heading(t('related'),data.txid)+panel(t('details'),`<div class="detail-grid">${metric('fee',data.package_fee===null?'—':esc(money(data.package_fee))+' SMW')}${metric('package',esc(data.effective_fee_rate??'—'))}${metric('vsize',data.package_vsize===null?'—':n(data.package_vsize)+' vB')}</div>`,t('relationnote')+' '+t('feeunit'))+[['parents',data.parents],['children',data.children],['ancestors',data.pending_ancestors],['descendants',data.pending_descendants]].map(([key,ids])=>panel(t(key),idList(ids))).join('');}
+function miningPage(data){
+  const ranges=[24,144,2016].map(limit=>button('#/mining?limit='+limit,n(limit)+' '+t('blocks'))).join('');
+  const payouts=`<div class="table-wrap"><table><thead><tr>${['address','blocks','share','reward'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${data.payouts.map(p=>`<tr><td>${p.address?link('address',p.address,short(p.address),'mono'):esc(t('unknown'))}</td><td>${n(p.blocks)}</td><td>${n(Number(p.block_share_percent.toFixed(2)))}</td><td>${esc(money(p.amount))} SMW</td></tr>`).join('')}</tbody></table></div>`;
+  const changes=data.changes.length?`<div class="table-wrap"><table><thead><tr>${['height','bits','difficultychange'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${data.changes.map(p=>`<tr><td>${link('block',p.height,n(p.height))}</td><td class="mono">${esc(p.bits)}</td><td>${n(Number(p.change_percent.toFixed(4)))}</td></tr>`).join('')}</tbody></table></div>`:empty('nodata');
+  return panel(t('mining'),`<div class="detail-grid">${metric('sampleblocks',n(data.from_height)+'–'+n(data.to_height))}${metric('hashrate',data.estimated_hashrate===null?'—':n(Math.round(data.estimated_hashrate))+' H/s')}${metric('rewardtotal',esc(money(data.claimed_rewards))+' SMW')}${metric('knownfees',esc(money(data.known_fees))+' SMW')}${metric('difficulty',n(data.current_difficulty))}${metric('nextdifficulty',n(data.next_difficulty))}${metric('nextbits',esc(data.next_bits))}${metric('difficultychange',n(Number(data.next_change_percent.toFixed(4))))}${metric('activation',n(data.dgw_activation))}</div>`,t('miningnote'),'',ranges+button('#/statistics',t('statistics')))+panel(t('payouts'),payouts,t('miningnote'))+panel(t('difficultychanges'),changes)+panel(t('audit'),data.audits.length?`<div class="id-list">${data.audits.map(a=>link('audit',a.blockhash,'#'+n(a.height))).join('')}</div>`:empty('nodata'),t('auditnote'));
+}
+function auditPage(data){return heading(t('audit')+' #'+n(data.height),data.blockhash)+(data.available?panel(t('details'),`<div class="metric-list">${metric('observed',esc(when(data.observed_at)))}</div>`,t('auditnote'))+['expected','actual','missing','added','unseen'].map(key=>panel(t(key)+' · '+n(data[key].length),idList(data[key]))).join(''):panel(t('audit'),`<div class="empty">${esc(t('auditmissing'))}</div>`,t('auditnote')));}
+function historyPage(data){
+  const query=filterQuery(data.filters),base='#/history/'+encodeURIComponent(data.address)+(query?'?'+query:'');
+  const rows=data.transactions.length?`<div class="table-wrap"><table><thead><tr>${['txid','height','type','received','spentinputs','balanceafter'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${data.transactions.map(r=>`<tr><td>${link('transaction',r.txid,short(r.txid),'mono')}</td><td>${link('block',r.height,n(r.height))}</td><td>${esc(t(r.coinbase?'coinbase':'ordinary'))}</td><td>${esc(money(r.received))}</td><td>${esc(money(r.spent))}</td><td>${esc(money(r.balance_after))} SMW</td></tr>`).join('')}</tbody></table></div>`:empty('emptytx');
+  return heading(t('period'),data.address)+panel(t('filters'),filterForm(data.filters,true,'',data.address),t('periodnote'))+panel(t('details'),`<div class="detail-grid">${metric('height',n(data.from_height)+'–'+n(data.to_height))}${[['opening','opening_balance'],['closing','closing_balance'],['received','received'],['spentinputs','spent'],['netchange','net_change']].map(([k,v])=>metric(k,esc(money(data[v]))+' SMW')).join('')}</div>`,'','',download('address/'+encodeURIComponent(data.address)+'/report?'+filterQuery(data.filters,{lang}),t('pdf'),data.snapshot))+chart(data,'value',t('period'))+panel(t('history'),rows+pagination(data.offset,data.total,25,base));
+}
+function advancedPage(type,data){return ({fees:feesPage,mining:miningPage,audit:auditPage,related:relatedPage,history:historyPage}[type]||(()=>null))(data);}

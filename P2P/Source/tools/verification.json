@@ -1,0 +1,6 @@
+{
+  "source": "https://bitcoincore.org/bin/bitcoin-core-31.1/bitcoin-31.1-win64.zip",
+  "sha256": "c99ef173471c58e6766d9eebd12e6c35349082eeed3939bc99eed58ef57db587",
+  "matches_official_https_checksum": true,
+  "pgp_signatures_verified": false
+}

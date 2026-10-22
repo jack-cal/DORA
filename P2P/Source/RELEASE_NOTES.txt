@@ -1,0 +1,5 @@
+SUMUWW P2P 0.1.8
+Shared validation modules updated to core 0.57.34; source snapshot hashes checked.
+Signed peer-to-peer orders, reservations and existing local-node address queries are retained.
+The P2P exchange is distinct from full-node block propagation.
+Real-money swaps remain disabled; exchange execution is restricted to isolated regtest.

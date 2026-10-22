@@ -4,20 +4,31 @@
 
 Read-only local block explorer for Windows.
 
-## Latest — 0.4.4
+## Latest — 0.4.5
 
 | File | Download |
 |---|---|
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.4/RELEASE_NOTES.txt) |
-| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.4/SHA256SUMS.txt) |
-| SUMUWW-Explorer-v0.4.4-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.4/SUMUWW-Explorer-v0.4.4-Source.zip) |
-| SUMUWW-Explorer-v0.4.4-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.4/SUMUWW-Explorer-v0.4.4-Windows.zip) |
-| SUMUWW-Explorer.exe | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.4/SUMUWW-Explorer.exe) |
+| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/RELEASE_NOTES.txt) |
+| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SHA256SUMS.txt) |
+| SUMUWW-Explorer-v0.4.5-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer-v0.4.5-Source.zip) |
+| SUMUWW-Explorer-v0.4.5-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer-v0.4.5-Windows.zip) |
+| SUMUWW-Explorer.exe | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.5/SUMUWW-Explorer.exe) |
 
 English first-launch default, 34 bundled offline interface languages and persistent explicit language selection. UI language changes preserve amounts, addresses, keys and protocol data.
 
 Read-only local explorer. Missing or invalid stored language and the static loading screen now default to English. Adds traditional Mongolian as the 34th language. Extract the complete Windows ZIP and run start-explorer.cmd.
 
+
+## Upgrade before block 9,000
+
+The current rules apply at height **9,000 inclusive**. Blocks produced by legacy
+software under the old rules at height 9,000 or above are rejected by upgraded
+nodes and cannot extend the upgraded chain. Update miners and validating nodes.
+Valid legacy blocks through **8,999 remain usable**, including the valid prefix
+of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings
+are preserved. Validation follows block rules, not an advertised version string.
+
+[Current suite and verification](../Documentation/COMPONENT_SUITE.md)
 
 ## Version history
 

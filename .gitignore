@@ -15,3 +15,4 @@ wallet.json
 *.keystore
 *.p12
 password.txt
+/P2P/Source/tools/bitcoin-31.1-win64.zip

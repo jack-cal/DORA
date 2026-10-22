@@ -1,0 +1,4 @@
+SUMUWW Wallet Current 1.1.0
+Updated to current asynchronous link proofs, 20% events, DGW/10 and beacon recovery.
+Separate application sandbox preserves the withdrawn wallet; restore from encrypted backup or recovery words.
+34 languages and original Android wallet UI retained.

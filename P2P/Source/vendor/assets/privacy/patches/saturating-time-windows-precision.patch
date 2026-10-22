@@ -1,0 +1,104 @@
+--- saturating-time-0.5.0/src/internal.rs
++++ saturating-time-0.5.0/src/internal.rs
+@@ -25,7 +25,7 @@
+ static MIN_INSTANT: LazyLock<Instant> = LazyLock::new(find_min);
+ 
+ /// An internal trait implementing the actual magic behind this.
+-pub trait SaturatingTime: Sized + Copy {
++pub trait SaturatingTime: Sized + Copy + PartialEq {
+     /// Anchor method to obtain an instance of this type.
+     fn anchor() -> Self;
+ 
+@@ -142,6 +142,12 @@
+         // (2) Call f().
+         let next = f(&res, step);
+         match next {
++            Some(st) if st == res => {
++                // Windows SystemTime rounds durations below 100ns to zero.
++                // After an overflowing step was reduced, no further
++                // representable progress is possible at this boundary.
++                return res;
++            }
+             Some(st) => {
+                 // (2.1) If Some, set res to the returned value and continue.
+                 res = st;
+@@ -192,32 +198,34 @@
+             + Add<Duration, Output = T>
+             + Sub<Duration, Output = T>,
+     {
++        // Assertions must use a representable duration on Windows.
++        let tick = Duration::new(0, if cfg!(target_os = "windows") { 100 } else { 1 });
+         assert_eq!(
+             T::max_value().checked_add(Duration::ZERO),
+             Some(T::max_value())
+         );
+-        assert_eq!(T::max_value().checked_add(Duration::new(0, 1)), None);
++        assert_eq!(T::max_value().checked_add(tick), None);
+         assert_eq!(
+             T::max_value().checked_sub(Duration::ZERO),
+             Some(T::max_value())
+         );
+         assert_eq!(
+-            T::max_value().checked_sub(Duration::new(0, 1)),
+-            Some(T::max_value() - Duration::new(0, 1))
++            T::max_value().checked_sub(tick),
++            Some(T::max_value() - tick)
+         );
+ 
+         assert_eq!(
+             T::min_value().checked_sub(Duration::ZERO),
+             Some(T::min_value())
+         );
+-        assert_eq!(T::min_value().checked_sub(Duration::new(0, 1)), None);
++        assert_eq!(T::min_value().checked_sub(tick), None);
+         assert_eq!(
+             T::min_value().checked_add(Duration::ZERO),
+             Some(T::min_value())
+         );
+         assert_eq!(
+-            T::min_value().checked_add(Duration::new(0, 1)),
+-            Some(T::min_value() + Duration::new(0, 1))
++            T::min_value().checked_add(tick),
++            Some(T::min_value() + tick)
+         );
+     }
+ 
+--- saturating-time-0.5.0/src/lib.rs
++++ saturating-time-0.5.0/src/lib.rs
+@@ -300,7 +300,7 @@
+     }
+ 
+     /// Verifies whether the saturating logic behind [`Duration`] types work.
+-    fn saturating_duration<T: SaturatingTime + PartialEq + Debug>() {
++    fn saturating_duration<T: SaturatingTime + PartialEq + Debug>(full_span: Duration) {
+         // The duration from the same anchor should always be zero.
+         let anchor = T::anchor();
+         assert_eq!(anchor.saturating_duration_since(anchor), Duration::ZERO);
+@@ -317,9 +317,8 @@
+         let max = <T as SaturatingTime>::max_value();
+         let min = <T as SaturatingTime>::min_value();
+ 
+-        // This first assertion might not be so portable, maybe remove it if
+-        // this becomes a problem.
+-        assert_eq!(max.saturating_duration_since(min), Duration::MAX);
++        // The native representable time range need not span Duration::MAX.
++        assert_eq!(max.saturating_duration_since(min), full_span);
+         assert_eq!(min.saturating_duration_since(max), Duration::ZERO);
+     }
+ 
+@@ -339,13 +338,13 @@
+     #[test]
+     fn system_time_saturating() {
+         saturating_add_sub::<SystemTime>();
+-        saturating_duration::<SystemTime>();
++        saturating_duration::<SystemTime>(SystemTime::max_value().duration_since(SystemTime::min_value()).unwrap_or(Duration::MAX));
+     }
+ 
+     /// Calls [`saturating_add_sub()`] and [`saturating_duration()`] using [`Instant`].
+     #[test]
+     fn instant_saturating() {
+         saturating_add_sub::<Instant>();
+-        saturating_duration::<Instant>();
++        saturating_duration::<Instant>(Instant::max_value().checked_duration_since(Instant::min_value()).unwrap_or(Duration::MAX));
+     }
+ }

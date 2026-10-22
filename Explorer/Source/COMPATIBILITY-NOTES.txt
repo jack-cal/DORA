@@ -1,0 +1,15 @@
+SUMUWW Explorer 0.4.5 — compatibility
+
+Reads the current node database without changing it. Legacy data directory and
+environment-variable aliases remain supported. The separately maintained index
+can be rebuilt from the source database; it is not a wallet or a blockchain node.
+
+The shared reader core matches Windows node 0.57.34. Predicted difficulty uses
+the ten-block DGW interval from height 9000 with a 24-block observation window.
+Valid legacy blocks through 8999 remain usable. Upgraded validating nodes reject
+old-rule blocks from height 9000 inclusive; the explorer does not independently
+perform full consensus validation. Use an upgraded node for its database source.
+
+English is the default and 34 offline UI languages remain selectable. Wallet
+keys, passwords and recovery words are not accessed. See CURRENT_GUIDE.md for
+the current component versions, migration instructions and verification limits.

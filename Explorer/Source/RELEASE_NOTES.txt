@@ -1,0 +1,4 @@
+SUMUWW Explorer 0.4.5
+Correct expected difficulty after 9000: hold between ten-block retargets.
+Shared block and transaction readers updated to core 0.57.34.
+Read-only source access, search, address history, exports and 34 languages retained.

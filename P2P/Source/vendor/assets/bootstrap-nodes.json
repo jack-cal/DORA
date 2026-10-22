@@ -1,0 +1,7 @@
+{
+  "schema_version": 2,
+  "network": "dora",
+  "genesis": "97af287a70223f8f35a45aa708f329d33d73dac2139b441bc7a843e232000000",
+  "dns_seeds": [],
+  "fallback_peers": []
+}

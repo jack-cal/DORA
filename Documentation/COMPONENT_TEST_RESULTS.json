@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-22",
+  "desktop_wallet_frozen": {
+    "status": "passed",
+    "version": "1.0.0",
+    "checks": [
+      "encrypted wallet creation",
+      "backup authentication",
+      "lock",
+      "restore same address",
+      "mining command unavailable",
+      "34 language catalogs"
+    ]
+  },
+  "p2p_frozen_two_process": {
+    "version": "0.1.8",
+    "passed": true,
+    "public_funds": false,
+    "network": "regtest-only",
+    "independent_processes": true,
+    "private_keys_transmitted": false,
+    "node_wallet_queries_passed": true,
+    "claim_session": "94499e154631acd128a302010887138f63f0c85d199c28a2a6ed5b4bf2fdacfb",
+    "claim_without_peer_notice_passed": true,
+    "refund_session": "1888fd393a03410b7e2ffdb2ecb7a620761fc1404b121da2e177a5440d91f4db",
+    "restart_locked_refunds_passed": true,
+    "scope": "Two processes on one PC, real TCP, actual chain validation; not a two-computer Internet/public-money test"
+  },
+  "explorer_browser": {
+    "height_search": 8941,
+    "language_switches": 34,
+    "empty_headings": 0
+  },
+  "android": {
+    "version": "1.1.0",
+    "application_id": "org.sumuww.wallet.current",
+    "physical_device_connected": false,
+    "robolectric_passed": 3,
+    "languages": 34,
+    "signature_verified": true,
+    "alignment_verified": true
+  },
+  "regtest_nodes": {
+    "independent_process_identities": 8,
+    "late_nodes_agree": 4,
+    "final_height": 51,
+    "completed_proofs": 4
+  }
+}

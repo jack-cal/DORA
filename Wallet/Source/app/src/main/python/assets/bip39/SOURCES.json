@@ -1,0 +1,7 @@
+{
+  "wordlist_source": "https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt",
+  "wordlist_sha256": "2f5eed53a4727b4bf8880d8f3f199efc90e58503646d9ff8eff3a2ed3b24dbda",
+  "license": "MIT",
+  "license_source": "https://github.com/trezor/python-mnemonic/blob/master/LICENSE",
+  "notice": "The retained SatoshiLabs copyright concerns the BIP39 wordlist and published reference vectors, not SUMUWW authorship."
+}

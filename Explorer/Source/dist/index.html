@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>SUMUWW Explorer</title><link rel="stylesheet" href="/style.css"><script src="/languages.js" defer></script><script src="/advanced.js" defer></script><script src="/app.js" defer></script></head>
+<body>
+<header class="top"><a class="brand" href="#/" aria-label="SUMUWW Explorer home"><svg viewBox="0 0 52 36" aria-hidden="true"><path d="M26 18C14-1 3 1 3 18s11 19 23 0C38-1 49 1 49 18S38 37 26 18Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></svg><span>SUMUWW <small>EXPLORER</small></span></a><nav><a href="#/" data-i18n="blocks">Blocks</a><a href="#/transactions" data-i18n="transactions">Transactions</a><a href="#/mempool" data-i18n="mempool">Mempool</a><a href="#/statistics" data-i18n="statistics">Statistics</a><a href="#/fees" data-i18n="fees">Fees & mempool analytics</a><a href="#/mining" data-i18n="mining">Mining & difficulty</a></nav><div class="top-end"><span class="network"><i></i>SUMUWW MAINNET</span><select id="language" class="language" aria-label="Language"></select></div></header>
+<main>
+<section class="hero"><div class="eyebrow">OPEN CONNECTIONS, GREATER TOMORROW.</div><h1 data-i18n="title">Explore every connection.</h1><p data-i18n="subtitle">Follow the blocks, transactions and addresses on SUMUWW.</p><form id="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="query" aria-label="Block height, hash, transaction ID or address" placeholder="Block height, block hash, transaction ID or sumuww1 address" autocomplete="off" spellcheck="false" maxlength="90" required><button type="submit" data-i18n="search">Search <span>↗</span></button></form><div class="source"><span class="source-dot"></span><span data-i18n="local">Stored data from a local node</span><span class="source-separator">/</span><span id="updated">—</span><button id="refresh" type="button" data-i18n="refresh">Refresh</button></div></section>
+<div id="notice" class="notice" role="alert" hidden></div>
+<section id="stats" class="stats" aria-label="Chain statistics"></section>
+<section id="freshness" class="freshness" aria-label="Data freshness" hidden></section>
+<section id="view" aria-live="polite"><div class="loading" data-i18n="loading">Reading chain data…</div></section>
+<footer><a class="footer-brand" href="#/">SUMUWW<span> / EXPLORER</span></a><p data-i18n="footer">Shows the active chain stored by this node. It does not establish global connectivity or irreversible transaction finality.</p><span class="read-only" data-i18n="readonly">READ ONLY</span></footer>
+</main>
+</body></html>

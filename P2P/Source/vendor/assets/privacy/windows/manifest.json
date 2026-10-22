@@ -1,0 +1,15 @@
+{
+  "tor": {
+    "file": "arti.exe",
+    "kind": "arti",
+    "version": "2.7.0",
+    "sha256": "5d0706a74586d27d13e6b2cfcf0df02799b6ffcda885ff249c01979cf86388b1",
+    "local_patch": "saturating-time Windows sub-tick termination fix"
+  },
+  "i2p": {
+    "file": "i2pd.exe",
+    "kind": "i2pd",
+    "version": "2.61.0",
+    "sha256": "3bfac576443ea76586c2ab3d688cba98edaaacaaaabd72308c058249f10c493e"
+  }
+}

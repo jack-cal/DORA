@@ -1,0 +1,7 @@
+SUMUWW optional privacy runtimes
+
+Tor: Arti 2.7.0 (Windows), Tor 0.4.9.14 (Android).
+I2P: i2pd 2.61.0.
+Official sources, archive checksums and the locked Arti dependency graph are included.
+Runtime licenses and dependency notices are in licenses/.
+No component is downloaded when the application runs.

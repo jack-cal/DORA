@@ -12,3 +12,5 @@ The current published documentation is in English.
 The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal-20261020/Documentation/README.md). This edition explicitly describes post-PoW signing and does not claim that signatures are completed during mining.
 
 [Automatic beacon recovery](BEACON_RECOVERY.md) is included in this release.
+
+- [Current application suite, migration and verification](COMPONENT_SUITE.md)
