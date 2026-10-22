@@ -1,3 +1,5 @@
+> Automatic beacon recovery: PC 0.57.34 / Android 0.6.84. Read [BEACON_RECOVERY.md](BEACON_RECOVERY.md) for compatibility and verification limits.
+
 > Updated height-9000 implementation: read [UPGRADE_9000.txt](UPGRADE_9000.txt). Earlier release notes below describe the original source.
 
 # SUMUWW Independent Coin

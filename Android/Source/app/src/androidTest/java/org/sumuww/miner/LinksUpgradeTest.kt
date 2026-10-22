@@ -20,19 +20,21 @@ class LinksUpgradeTest {
    tempfile.tempdir = test_cache
    sys.modules['tests'] = pc_tests
    from pc_tests.test_links9000 import LinkUpgradeTests
+   from pc_tests.test_beacon_recovery import BeaconRecoveryTests
    from pc_tests.test_links_transport import LinkTransportTests
    from pc_tests.test_links_legacy_transport import LegacyLinkTransportTests
    from pc_tests import test_p20_dgw10
    stream = io.StringIO()
    suite = unittest.TestSuite([
        unittest.defaultTestLoader.loadTestsFromTestCase(LinkUpgradeTests),
+       unittest.defaultTestLoader.loadTestsFromTestCase(BeaconRecoveryTests),
        unittest.defaultTestLoader.loadTestsFromTestCase(LinkTransportTests),
        unittest.defaultTestLoader.loadTestsFromTestCase(LegacyLinkTransportTests),
        unittest.defaultTestLoader.loadTestsFromModule(test_p20_dgw10)])
    result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
    report = stream.getvalue()
    if not result.wasSuccessful(): raise AssertionError(report)
-   assert result.testsRun == 17, report
+   assert result.testsRun == 27, report
   """.trimIndent(),globals)
   File(context.getExternalFilesDir(null),"links-upgrade-test.txt").writeText(globals.callAttr("get","report").toString())
  }

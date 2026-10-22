@@ -8,6 +8,7 @@ from .link_crypto import (POLICY,Identity,canonical,digest,require,verify_frame,
                          message,slot,sample,compress,verify,proof_selected,PROOF_SELECTION_DENOMINATOR)
 from . import link_beacon as beacon
 from .boundary_transport import PartReceiver
+from .link_recovery import BeaconRecovery
 
 class LinkRuntime:
     def __init__(self,node):
@@ -20,8 +21,9 @@ class LinkRuntime:
         self.contacts[self.keys.node_id]=self.contact
         self.seen=OrderedDict();self.proofs={};self.deferred={};self.calls={};self.contexts={}
         self.providers={};self.support_tasks={}
-        self.tasks=set();self.jobs={};self.tick=None;self.started=time.monotonic();self.last_error=None
+        self.tasks=set();self.jobs={};self.retry_after={};self.tick=None;self.started=time.monotonic();self.last_error=None
         self.proposed=set();self.omit_beacon=False;self.omit_witness=False;self.signature_delay=0
+        self.omit_dkg=False;self.omit_dkg_probe=False;self.recovery=BeaconRecovery(self)
         self.metrics={'completed':0,'rejected':0,'skipped':0,'pending':0,'lotteries':[]}
     def spawn(self,awaitable):
         task=asyncio.create_task(awaitable);self.tasks.add(task)
@@ -41,7 +43,7 @@ class LinkRuntime:
         return {'activation_height':self.state.activation,'block_policy':POLICY,'signing_node_id':self.keys.node_id,
                 'authenticated_connected_nodes':len(self.sessions()),'discovered_nodes':len(self.contacts),
                 'pending_links':len(self.jobs),'last_error':self.last_error,'selection_probability':1/PROOF_SELECTION_DENOMINATOR,
-                'completed_links':self.metrics['completed']}
+                'completed_links':self.metrics['completed'],'beacon_recovery':self.recovery.info()}
     async def hello(self,session,**kwargs):
         if session.boundary_hello_sent:return
         session.boundary_hello_sent=True
@@ -69,6 +71,15 @@ class LinkRuntime:
         # Full identity/evidence inventory is framed by the existing multipart
         # transport. This is not a truncated lottery candidate prefix.
         await self.node._send(session,'bcall',canonical(self.frame('sync',{'contacts':list(self.contacts.values()),'proofs':self.state.all_proofs()})))
+        # DKG messages are public commitments/encrypted shares, never private
+        # key material. Replay them to a peer which missed the initial gossip.
+        path=self.node.chain._path(self.node.chain.tip_hash)
+        for row in tuple(self.contexts.values()):
+            try:self.state.check_setup_context(row['context'],path)
+            except (ValueError,KeyError,TypeError):continue
+            for kind in ('deal','ready'):
+                for value in tuple(row[kind+'s' if kind=='deal' else 'ready'].values()):
+                    await self.node._send(session,'bcall',canonical(self.frame('dkg',{'context':row['context'],kind:value})))
     async def handle(self,session,command,payload):
         from .boundary_runtime import decode_json,decode_block,BoundaryPolicyMismatch
         if command=='bpart':
@@ -109,7 +120,7 @@ class LinkRuntime:
                 key=digest(proof);self.deferred[key]=proof;self.providers[key]=p['nodeId']
         elif kind=='dkg':
             ctx=body['context'];ids=beacon.check_context(ctx)
-            require(ctx['network']==self.network,'DKG network mismatch')
+            self.state.check_setup_context(ctx,self.node.chain._path(self.node.chain.tip_hash))
             for c in ctx['members']:self.add_contact(c)
             cid=digest(ctx);row=self.contexts.setdefault(cid,{'context':ctx,'deals':{},'ready':{},'dealing':False,'recovering':False})
             if 'deal' in body:
@@ -119,11 +130,11 @@ class LinkRuntime:
             if 'ready' in body:
                 r=verify_frame(body['ready']);require(r['nodeId'] in ids and r['domain']=='sumuww-dkg-ready-v1','Invalid ready identity')
                 row['ready'][r['nodeId']]=body['ready']
-            if self.keys.node_id in ids and not row['dealing']:
+            if self.keys.node_id in ids and not row['dealing'] and not self.omit_dkg:
                 row['dealing']=True;self.spawn(self.deal(row))
-            if len(row['deals'])==len(ids) and not row['recovering']:
+            if len(row['deals'])==len(ids) and not row['recovering'] and not self.omit_dkg:
                 row['recovering']=True;self.spawn(self.ready(row))
-            self.try_setup(row)
+            self.spawn(self.try_setup(row))
         elif kind=='request':
             require(p['nodeId']==body['requester'],'Request signer mismatch')
             if body['target']==self.keys.node_id:self.spawn(self.execute(key,body))
@@ -140,17 +151,35 @@ class LinkRuntime:
     async def ready(self,row):
         if self.keys.node_id not in beacon.check_context(row['context']):return
         m=beacon.manifest(row['context'],list(row['deals'].values()))
-        ready=await self.crypto(beacon.recover,m)
+        try:ready=await self.crypto(beacon.recover,m)
+        except beacon.InvalidDealer as error:
+            # Only this recipient's own authenticated failure affects its next
+            # proposal. Unproved third-party accusations never remove contacts.
+            self.recovery.excluded[error.dealer]=time.monotonic()+self.recovery.cooldown
+            self.recovery.active=None;self.recovery.next_check=0
+            return
         await self.publish('dkg',{'context':row['context'],'ready':ready})
-    def try_setup(self,row):
+    async def try_setup(self,row):
+        if row.get('checking'):return
         ids=beacon.check_context(row['context'])
         if len(row['deals'])!=len(ids) or len(row['ready'])<beacon.quorum(len(ids)):return
         m=beacon.manifest(row['context'],list(row['deals'].values()))
         ready=[r for _,r in sorted(row['ready'].items()) if r['payload']['manifest']==digest(m)]
         if len(ready)<beacon.quorum(len(ids)):return
-        setup={'manifest':m,'ready':ready};beacon.verify_setup(setup)
-        current=self.state.local('ready_setup')
-        if current is None or len(ids)>len(current['manifest']['context']['members']):self.state.set_local('ready_setup',setup)
+        setup={'manifest':m,'ready':ready};row['checking']=True
+        try:await asyncio.to_thread(beacon.verify_setup,setup)
+        finally:row['checking']=False
+        path=self.node.chain._path(self.node.chain.tip_hash)
+        try:self.state.check_setup_context(row['context'],path)
+        except ValueError:return # Completed after a different generation won PoW.
+        if any(self.recovery.excluded.get(i,0)>time.monotonic() for i in ids):return
+        current=self.state.prepared_setup(path)
+        def rank(candidate):
+            ctx=candidate['manifest']['context']
+            height=self.node.chain._row(bytes.fromhex(ctx['round']))[2] if 'round' in ctx else -1
+            return height,len(ctx['members']),digest(candidate['manifest'])
+        if current is None or rank(setup)>rank(current):
+            self.state.set_local('ready_setup',setup)
     async def request(self,target,method,body,timeout=20):
         frame=self.frame('request',{'requester':self.keys.node_id,'target':target,'method':method,'body':body})
         key=digest(frame);future=asyncio.get_running_loop().create_future();self.calls[key]=(target,future)
@@ -161,10 +190,20 @@ class LinkRuntime:
         finally:self.calls.pop(key,None)
     async def execute(self,key,request):
         method=request['method'];body=request['body']
-        if (method=='beacon' and self.omit_beacon) or (method=='sign' and self.omit_witness):return
+        if (method in ('beacon','beacon_health') and self.omit_beacon) or (method=='sign' and self.omit_witness) or (method=='dkg_probe' and self.omit_dkg_probe):return
         try:
             if self.signature_delay and method in ('sign','beacon'):await asyncio.sleep(self.signature_delay)
-            if method=='block':
+            if method=='dkg_probe':
+                from .link_crypto import raw
+                raw(body['nonce'],32);value=body['nonce']
+            elif method=='beacon_health':
+                from .link_crypto import block_beacon,raw
+                raw(body['nonce'],32)
+                anchor=bytes.fromhex(body['anchor']);setup=block_beacon(self.node.chain.get_block(anchor))
+                require(setup is not None,'Health anchor is not a beacon block')
+                challenge=digest(['SUMUWW-BEACON-HEALTH',self.network,body['anchor'],body['nonce']])
+                value=await self.crypto(beacon.partial,setup,challenge)
+            elif method=='block':
                 value=self.node.chain.get_block(bytes.fromhex(body['hash'])).serialize().hex()
             elif method=='beacon':
                 a=bytes.fromhex(body['source']);row=self.node.chain._row(a);found=self.state.anchor(self.node.chain._path(row[1]))
@@ -196,13 +235,19 @@ class LinkRuntime:
         await self.publish('reply',reply)
     async def obtain_beacon(self,a,setup,s):
         ids=beacon.check_context(setup['manifest']['context']);needed=beacon.threshold(len(ids))
-        tasks=[asyncio.create_task(self.request(i,'beacon',{'source':a,'slot':s})) for i in ids];partials=[]
+        async def response(i):
+            value=await self.request(i,'beacon',{'source':a,'slot':s})
+            require(value['nodeId']==i,'Beacon responder identity mismatch')
+            return value
+        tasks=[asyncio.create_task(response(i)) for i in ids];partials=[]
         try:
             for task in asyncio.as_completed(tasks):
                 try:
                     value=await task;await asyncio.to_thread(beacon.verify_partial,setup,s,value);partials.append(value)
                     if len(partials)>=needed:return await asyncio.to_thread(beacon.combine,setup,s,partials)
                 except Exception:continue
+            found=self.state.anchor(self.node.chain._path(self.node.chain._row(bytes.fromhex(a))[1]))
+            self.recovery.failure(found[0],set(ids)-{v['nodeId'] for v in partials})
             raise ValueError('Insufficient valid beacon responses; mining continues')
         finally:
             for task in tasks:task.cancel()
@@ -230,7 +275,9 @@ class LinkRuntime:
             proof['target_receipt']=await self.request(producer(self.node.chain.get_block(b)),'attach',proof)
             self.state.add_proof(proof);saved['done']=True;self.keys.put('job:'+a.hex(),saved)
             self.metrics['completed']+=1;await self.publish('proof',proof)
-        finally:self.jobs.pop(a,None)
+        finally:
+            self.jobs.pop(a,None)
+            self.retry_after[a]=time.monotonic()+30
     async def refresh(self):
         if self.closed:return
         if self.tick is None or self.tick.done():self.tick=self.spawn(self.background())
@@ -267,13 +314,11 @@ class LinkRuntime:
                 self.metrics['rejected']+=1;self.last_error=str(error);self.deferred.pop(key,None)
         path=self.node.chain._path(self.node.chain.tip_hash);root=self.state.root(path)
         if root is None:return
-        if self.state.anchor(path) is None and len(self.contacts)>=3 and root not in self.proposed and time.monotonic()-self.started>2:
-            self.proposed.add(root)
-            self.spawn(self.publish('dkg',{'context':beacon.context(self.network,root,list(self.contacts.values()))}))
+        self.recovery.schedule(path)
         # Discovery continues regardless of activation, setup and job progress.
         rows=self.node.chain.connection.execute('SELECT hash FROM blocks WHERE height>=? ORDER BY height',(self.state.activation,)).fetchall()
         for (a,) in rows:
-            if a in self.jobs:continue
+            if a in self.jobs or time.monotonic()<self.retry_after.get(a,0):continue
             block=self.node.chain.get_block(a)
             if producer(block)!=self.keys.node_id:continue
             saved=self.keys.get('job:'+a.hex())

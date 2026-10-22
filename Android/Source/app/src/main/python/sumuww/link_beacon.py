@@ -14,6 +14,18 @@ from py_ecc.bls.g2_primitives import pubkey_to_G1,G1_to_pubkey,signature_to_G2,G
 from py_ecc.optimized_bls12_381 import G1,Z1,Z2,add,multiply,curve_order as Q,is_inf,eq
 from .link_crypto import canonical,digest,raw,require,verify_frame
 
+# Consensus spacing between key generations, not a witness/candidate limit.
+# Recovery runs in the background; no block is required to include a setup.
+MIN_GENERATION_BLOCKS = 12
+RECOVERY_DOMAIN = 'sumuww-dkg-recovery-v1'
+NO_PREVIOUS = '00'*32
+
+class InvalidDealer(ValueError):
+    """A recipient could not authenticate or verify this dealer's own share."""
+    def __init__(self,dealer):
+        self.dealer=dealer
+        super().__init__('Invalid encrypted DKG share from '+dealer)
+
 def threshold(n): return max(2,(n-1)//3+1)
 def quorum(n): return (2*n)//3+1
 def scalar(): return secrets.randbelow(Q-1)+1
@@ -31,8 +43,16 @@ def evaluate_public(commitments,x):
 def context(network,root,members):
     return {'domain':'sumuww-dkg-9000-v1','network':network,'root':root,
             'members':sorted(members,key=lambda m:m['payload']['nodeId'])}
+def recovery_context(network,root,members,previous,round_hash):
+    ctx=context(network,root,members)
+    ctx.update(domain=RECOVERY_DOMAIN,previous=previous,round=round_hash)
+    return ctx
 def check_context(ctx):
-    require(set(ctx)=={'domain','network','root','members'} and ctx['domain']=='sumuww-dkg-9000-v1','DKG context')
+    if ctx.get('domain')==RECOVERY_DOMAIN:
+        require(set(ctx)=={'domain','network','root','members','previous','round'},'Recovery context fields')
+        raw(ctx['previous'],32);raw(ctx['round'],32)
+    else:
+        require(set(ctx)=={'domain','network','root','members'} and ctx['domain']=='sumuww-dkg-9000-v1','DKG context')
     raw(ctx['network'],32);raw(ctx['root'],32)
     require(type(ctx['members']) is list and len(ctx['members'])>=3,'DKG needs at least three identities')
     ids=[]
@@ -98,8 +118,10 @@ def recover(identity,setup):
         encrypted=p['encrypted'][x-1];aad=canonical([key,p['nodeId'],identity.node_id])
         shared=identity.encryption.exchange(X25519PublicKey.from_public_bytes(raw(member['encryption'],32)))
         encryption_key=sha256(b'SUMUWW-DKG-9000'+shared+aad).digest()
-        share=int.from_bytes(AESGCM(encryption_key).decrypt(raw(encrypted['nonce'],12),raw(encrypted['ciphertext'],48),aad),'big')
-        require(0<share<Q and eq(multiply(G1,share),evaluate_public(p['body']['commitments'],x)),'Inconsistent DKG share')
+        try:
+            share=int.from_bytes(AESGCM(encryption_key).decrypt(raw(encrypted['nonce'],12),raw(encrypted['ciphertext'],48),aad),'big')
+            require(0<share<Q and eq(multiply(G1,share),evaluate_public(p['body']['commitments'],x)),'Inconsistent DKG share')
+        except Exception as error:raise InvalidDealer(p['nodeId']) from error
         value=(value+share)%Q
     require(value!=0,'Zero secret share');identity.put('share:'+digest(setup),format(value,'064x'))
     return identity.signed({'domain':'sumuww-dkg-ready-v1','nodeId':identity.node_id,'manifest':digest(setup)})
