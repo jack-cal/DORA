@@ -1,0 +1,85 @@
+{
+  "packages": [
+    {
+      "name": "coincurve",
+      "version": "21.0.0",
+      "source": "Private identifying metadata omitted from public release",
+      "wheel": "coincurve-21.0.0-cp312-cp312-win_amd64.whl",
+      "sha256": "5dd7b66b83b143f3ad3861a68fc0279167a0bae44fe3931547400b7a200e90b1",
+      "tested_runtime": "CPython 3.12.14, Windows AMD64",
+      "license": "MIT OR Apache-2.0; bundled CFFI/libsecp256k1 MIT",
+      "upstream_default_secp256k1_ref": "0cdc758a56360bf58a851fe91085a327ec97685a",
+      "upstream_build_metadata": "Private identifying metadata omitted from public release",
+      "upstream_ref_note": "Declared default build input, not an independent binary rebuild attestation",
+      "cryptography_scope": "ECDSA/secp256k1 signing and verification only; no Bitcoin chainstate/Core runtime dependency"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.1",
+      "source": "Private identifying metadata omitted from public release",
+      "metadata_source": "Private identifying metadata omitted from public release",
+      "download_url": "Private identifying metadata omitted from public release",
+      "wheel": "cryptography-50.0.1-cp311-abi3-win_amd64.whl",
+      "sha256": "aed8db4f6d71c51efb89530e12d9464e7bf2923d46c3205dc794a2a93f8c0648",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause",
+      "license": null,
+      "license_files": [
+        "vendor/licenses/cryptography-LICENSE",
+        "vendor/licenses/cryptography-LICENSE.APACHE",
+        "vendor/licenses/cryptography-LICENSE.BSD"
+      ],
+      "requires_dist": [
+        "cffi>=2.0.0; platform_python_implementation != \"PyPy\"",
+        "typing-extensions>=4.13.2; python_full_version < \"3.11\"",
+        "bcrypt>=3.1.5; extra == \"ssh\""
+      ],
+      "tested_runtime": "CPython 3.12.14, Windows AMD64"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.0",
+      "source": "Private identifying metadata omitted from public release",
+      "metadata_source": "Private identifying metadata omitted from public release",
+      "download_url": "Private identifying metadata omitted from public release",
+      "wheel": "cffi-2.1.0-cp312-cp312-win_amd64.whl",
+      "sha256": "c97f080ea627e2863524c5af3836e2270b5f5dfff1f104392b959f8df0c5d384",
+      "license_expression": "MIT-0",
+      "license": null,
+      "license_files": [
+        "vendor/licenses/cffi-LICENSE"
+      ],
+      "requires_dist": [
+        "pycparser; implementation_name != \"PyPy\""
+      ],
+      "tested_runtime": "CPython 3.12.14, Windows AMD64"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.0",
+      "source": "Private identifying metadata omitted from public release",
+      "metadata_source": "Private identifying metadata omitted from public release",
+      "download_url": "Private identifying metadata omitted from public release",
+      "wheel": "pycparser-3.0-py3-none-any.whl",
+      "sha256": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992",
+      "license_expression": "BSD-3-Clause",
+      "license": null,
+      "license_files": [
+        "vendor/licenses/pycparser-LICENSE"
+      ],
+      "requires_dist": null,
+      "tested_runtime": "CPython 3.12.14, Windows AMD64"
+    }
+  ],
+  "binary_note": "Official PyPI wheel hashes verified; not an independent reproducible-build attestation.",
+  "address_reference": {
+    "source": "Private identifying metadata omitted from public release",
+    "source_sha256": "2884ce04a36c8374c4249177cd90e91e545ac73b5c9260307bbeb74ae2e9de0f",
+    "license_file": "vendor/licenses/LICENSE-bech32-reference",
+    "note": "Bech32 algorithm/reference attribution; only v0 P2WPKH implemented. BIP173 vectors are attributed in tests."
+  },
+  "public_metadata_redaction": {
+    "identifying_fields_omitted": true,
+    "test_outcomes_recomputed": false,
+    "note": "Redaction removes private metadata only; it does not rerun tests or certify anonymity."
+  }
+}

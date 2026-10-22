@@ -1,0 +1,31 @@
+# SUMUWW Basic Operation PC 0.57.23
+
+SUMUWW PC program · 0.57.23
+
+## Applied validation and operating policies
+
+All received blocks and transactions are validated against the rules before entering the ledger. Invalid block outputs cannot be used as transfer inputs. Normal competing blocks and chain changes driven by greater valid work are handled; the number of changed blocks alone does not trigger a wallet warning or hold transfers. IP connection restrictions for repeated definite invalid data are a communication policy to reduce node load, not a substitute for coin validation or a way to identify miners.
+
+## Local RPC/API
+
+The program provides opt-in, token-authenticated JSON-RPC 2.0 and HTTP REST interfaces at `127.0.0.1:18443`. The GUI saves the RPC/API enable setting and port. The node CLI also starts the service and supplies a local RPC client. They query the active chain, addresses and mempool, submit signed transaction/block bytes, and build mining templates. This release exposes no private-key export, wallet unlock or remote signing methods. Method names do not imply Bitcoin Core API compatibility. [RPC/API guide](RPC_API.md).
+
+Fees equal total inputs minus total outputs. The GUI and wallet-send CLI now use automatic estimation by default; the sender may override it with any nonnegative manual total, including 0. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.
+
+UI, API and performance improvements can preserve genesis, issuance, difficulty, signatures, UTXO validity and cumulative-work chain selection. Each node still validates independently; neither the author nor an API caller can force upgrades or mint, freeze or rewrite balances. Adoption of changed consensus rules is voluntary and may split the chain. These rules do not cryptographically prevent people from creating a fork. SUMUWW has a decentralized consensus architecture; sustained participation by independent public operators has not yet been established by the local checks.
+
+SUMUWW's own code is distributed under the MIT license, the same license type used by Bitcoin Core. Use, copying, modification, merging, publication, distribution, sublicensing, sale and commercial use are permitted. Copies or substantial portions must retain the copyright and permission notice. The software is supplied without warranty; MIT does not require publishing modified source or paying royalties. External dependencies retain their own license notices. The English LICENSE text is authoritative. `Copyright (c) 2026 SUMUWW contributors`. [MIT](../../../../../LICENSE).
+
+## Fee policy
+
+The default GUI estimates the fee and shows the recipient, payment, fee and total debit for confirmation. Advanced settings allow a manual fee. The wallet-send CLI uses automatic estimation when `--fee` is omitted or set to `--fee auto`; `--fee 0` explicitly requests a zero manual fee. Automatic estimation is a wallet policy, not a mandatory network fee or a change to consensus. The CLI treats running wallet-send as authorization to submit directly and reports the actual fee, total debit, fee mode and estimate source; its command does not open the GUI confirmation step.
+
+The local estimator uses positive transaction fee-rate samples from the most recent 20 active-chain blocks and the node’s pending transactions. Virtual size is `ceil(weight/4)`; the upper quartile of observed fee per virtual byte determines the estimate. Payment sizing conservatively budgets a 73-byte DER signature, a 33-byte public key and 2 outputs per supported wallet payment. With no positive sample, the fallback total is `0.001 SMW`. Automatic total fees are capped at `0.01 SMW`; a sender’s explicit manual fee may exceed that cap. This cap may make the automatic offer insufficient during congestion. This is a simple local estimate, not Bitcoin Core’s confirmation predictor or a promised speed. The active-chain history is limited to its latest 1000 transaction samples. The upper quartile uses the nearest-rank 75th percentile and at least 1 smallest unit per virtual byte; the resulting total is rounded upward.
+
+The GUI displays a prepared payment quote and submits that same payment after approval, without silently changing the fee. A quote expires after 120 seconds; locking the wallet or changing the wallet or network invalidates it. Changed inputs or chain conditions can require preparing and confirming again. Final submission revalidates the transaction against current UTXOs and maturity.
+
+The default miner ranks transactions by ancestor-package fee per virtual byte: unconfirmed parents are counted together with their child, parents are placed first, equal-rate packages preserve arrival order, and real block weight and signature-operation limits are enforced. Zero-fee valid transactions remain eligible. Inclusion depends on the chosen miner, available block space and current chain. RPC/API provides 15 methods and 11 REST routes; it adds no RPC fee-estimation method in this release.
+
+Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.
+
+Tor and I2P are optional and bundled with SUMUWW. Only the selected router runs; Direct runs neither. No separate router installation or port setting is needed. If a private connection fails, it does not switch to Direct. I2P requires b32.i2p peers.

@@ -1,0 +1,133 @@
+{
+  "arti": {
+    "version": "2.7.0",
+    "source": "https://crates.io/crates/arti/2.7.0",
+    "crate_sha256": "a567e05cf614b579609d958e41b54602eea6983bccfec46d1e933a45605dd813",
+    "build": "cargo install arti --version 2.7.0 --locked --no-default-features --features tokio,native-tls,onion-service-client,vanguards,compression,static-sqlite",
+    "compiler": "rustc 1.99.0 (GNU Windows x86_64)"
+  },
+  "downloaded": [
+    {
+      "file": "i2pd_2.61.0_win64_mingw.zip",
+      "url": "https://github.com/PurpleI2P/i2pd/releases/download/2.61.0/i2pd_2.61.0_win64_mingw.zip",
+      "sha256": "a0a8fb199a6bc5b487df71567791de6997050b921d65622ef9e936ffa88bc83f",
+      "bytes": 4301473,
+      "contents": [
+        "i2pd.exe",
+        "contrib/i2pd.conf",
+        "contrib/certificates/",
+        "contrib/certificates/family/",
+        "contrib/certificates/family/gostcoin.crt",
+        "contrib/certificates/family/i2p-dev.crt",
+        "contrib/certificates/family/i2pd-dev.crt",
+        "contrib/certificates/family/mca2-i2p.crt",
+        "contrib/certificates/family/stormycloud.crt",
+        "contrib/certificates/family/volatile.crt",
+        "contrib/certificates/reseed/",
+        "contrib/certificates/reseed/acetone_at_mail.i2p.crt",
+        "contrib/certificates/reseed/admin_at_likogan.dev.crt",
+        "contrib/certificates/reseed/admin_at_stormycloud.org.crt",
+        "contrib/certificates/reseed/creativecowpat_at_mail.i2p.crt",
+        "contrib/certificates/reseed/diyarciftci_at_protonmail.com.crt",
+        "contrib/certificates/reseed/echelon3_at_mail.i2p.crt",
+        "contrib/certificates/reseed/hankhill19580_at_gmail.com.crt",
+        "contrib/certificates/reseed/i2p-reseed_at_mk16.de.crt",
+        "contrib/certificates/reseed/igor_at_novg.net.crt",
+        "contrib/certificates/reseed/lazygravy_at_mail.i2p.crt",
+        "contrib/certificates/reseed/orignal_at_mail.i2p.crt",
+        "contrib/certificates/reseed/r4sas-reseed_at_mail.i2p.crt",
+        "contrib/certificates/reseed/rambler_at_mail.i2p.crt",
+        "contrib/certificates/reseed/reseed_at_diva.exchange.crt",
+        "contrib/certificates/reseed/sahil_at_mail.i2p.crt",
+        "contrib/certificates/reseed/vserod1488_at_proton.me.crt"
+      ]
+    },
+    {
+      "file": "i2pd_2.61.0_android_binary.zip",
+      "url": "https://github.com/PurpleI2P/i2pd-android/releases/download/2.61.0/i2pd_2.61.0_android_binary.zip",
+      "sha256": "21f10756e35aaea91bdd78a6d79c9165d2040df9628cff0b0b8caac9af00d9a2",
+      "bytes": 16182606,
+      "contents": [
+        "i2pd-x86_64",
+        "certificates/",
+        "certificates/family/",
+        "certificates/family/i2pd-dev.crt",
+        "certificates/family/i2p-dev.crt",
+        "certificates/family/volatile.crt",
+        "certificates/family/gostcoin.crt",
+        "certificates/family/stormycloud.crt",
+        "certificates/family/mca2-i2p.crt",
+        "certificates/reseed/",
+        "certificates/reseed/acetone_at_mail.i2p.crt",
+        "certificates/reseed/admin_at_stormycloud.org.crt",
+        "certificates/reseed/reseed_at_diva.exchange.crt",
+        "certificates/reseed/i2p-reseed_at_mk16.de.crt",
+        "certificates/reseed/orignal_at_mail.i2p.crt",
+        "certificates/reseed/lazygravy_at_mail.i2p.crt",
+        "certificates/reseed/echelon3_at_mail.i2p.crt",
+        "certificates/reseed/igor_at_novg.net.crt",
+        "certificates/reseed/vserod1488_at_proton.me.crt",
+        "certificates/reseed/rambler_at_mail.i2p.crt",
+        "certificates/reseed/admin_at_likogan.dev.crt",
+        "certificates/reseed/diyarciftci_at_protonmail.com.crt",
+        "certificates/reseed/r4sas-reseed_at_mail.i2p.crt",
+        "certificates/reseed/sahil_at_mail.i2p.crt",
+        "certificates/reseed/creativecowpat_at_mail.i2p.crt",
+        "certificates/reseed/hankhill19580_at_gmail.com.crt",
+        "i2pd-x86",
+        "i2pd-aarch64",
+        "i2pd",
+        "i2pd.conf",
+        "i2pd-armv7l"
+      ]
+    },
+    {
+      "file": "tor-android-0.4.9.14.aar",
+      "url": "https://repo.maven.apache.org/maven2/info/guardianproject/tor-android/0.4.9.14/tor-android-0.4.9.14.aar",
+      "sha256": "28ff2bb6d4d42eabe57183dedd7a97fce77e8ce4b6f5af6fa03993b3ca054edd",
+      "bytes": 12976254,
+      "contents": [
+        "jni/arm64-v8a/libtor.so",
+        "jni/armeabi-v7a/libtor.so",
+        "jni/x86/libtor.so",
+        "jni/x86_64/libtor.so"
+      ]
+    }
+  ],
+  "android_i2pd_rebuild": {
+    "version": "2.61.0",
+    "source": "https://github.com/PurpleI2P/i2pd-android/tree/f8633c6edc0246db310f98df3a178d19dff40810",
+    "i2pd_commit": "635b013a612ff47278ef02acf8580a28e10e26c5",
+    "boost_version": "1.84.0",
+    "openssl_version": "3.5.0",
+    "miniupnp_commit": "6576eb611b670c4841cc65095914275d6be008b2",
+    "android_ifaddrs_commit": "f302cc7ead971d4068661d34c2f3ba06063d8ea2",
+    "ndk_version": "27.2.12479018",
+    "android_api": 26,
+    "patch": "android/i2pd-16k.patch",
+    "linker_flags": [
+      "-Wl,-z,max-page-size=16384",
+      "-Wl,-z,common-page-size=16384"
+    ],
+    "architectures": {
+      "x86_64": {
+        "sha256": "782ddfd6161523a767907ffb3108663580c2455822c813457b2208f92a47b7b2",
+        "bytes": 11730880,
+        "load_alignments": [
+          16384,
+          16384,
+          16384
+        ]
+      },
+      "arm64-v8a": {
+        "sha256": "8ad89177cab63c74703548d0d5826862f225b9b46c3fd8f00dcc8e9cde7010de",
+        "bytes": 11162320,
+        "load_alignments": [
+          16384,
+          16384,
+          16384
+        ]
+      }
+    }
+  }
+}

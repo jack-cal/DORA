@@ -1,9 +1,12 @@
-# SUMUWW documentation — withdrawn
+# SUMUWW documentation
 
-[Project status](../README.md)
+The current published documentation is in English.
 
-The previously published whitepaper, protocol guide and images described the height-9000 block-signature behavior as implemented and verified. That description was incorrect. Those documents have been withdrawn from the current repository tree.
+- [Whitepaper](Whitepaper/WHITEPAPER.md)
+- [Connection-proof specification](Whitepaper/CONNECTION_PROOFS_9000.md)
+- [HTLC technical reference](Whitepaper/HTLC_9100.md)
+- [Whitepaper changes](Whitepaper/CHANGELOG.md)
+- [Verification and limitations](VERIFICATION.md)
+- [Whitepaper download](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.0-en)
 
-The released node code collected final signatures after PoW rather than completing preparation and delivery during mining. The affected Windows, Android and wallet releases have been withdrawn. No corrected consensus implementation or verified replacement documentation has been published.
-
-This notice does not change the behavior of software that was already downloaded or installed. Preserve wallet backups and node data while the protocol and a compatible release are reviewed.
+The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal-20261020/Documentation/README.md). This edition explicitly describes post-PoW signing and does not claim that signatures are completed during mining.

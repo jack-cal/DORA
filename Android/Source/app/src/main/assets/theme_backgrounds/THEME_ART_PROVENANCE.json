@@ -1,0 +1,27 @@
+{
+  "method": "Built-in image_gen tool; precise-object-edit; native Android draws branding and all controls separately",
+  "layout": "Each PNG is one background atlas: light portrait on the left, dark portrait on the right. No rendered UI in the atlas.",
+  "reference_fidelity": "Background scenery reconstructed from user-supplied UI boards. Not a pixel-identical crop of the reference.",
+  "assets": [
+    {
+      "file": "spring.png",
+      "reference": "SUMUWW Spring UI reference board",
+      "prompt": "Use case: precise-object-edit. Asset type: one two-column texture atlas for Android splash backgrounds. Input is the SUMUWW Spring UI reference board. Reconstruct ONLY the scenery background of its FIRST narrow splash phone in each row, preserving the arrangement and palette as closely as possible, while removing the phone border, all text, logos, progress bars and status/navigation bars. Output ONE square image with TWO equal edge-to-edge portrait panels with no gutter: LEFT panel matches the light splash (ivory paper, fresh sage stems and small yellow-white wildflowers rising from lower-left and top edges, soft sunlight, spacious ivory center); RIGHT panel matches the dark splash (deep charcoal sage, stems crossing from upper-left, softly illuminated ivory wildflowers and fresh leaves clustered near bottom-left, spacious calm dark center). Exactly two vertical panels; do not include ANY letters, logos, UI, controls or device mockup. This image is background art only; native app components are added separately. Match the supplied scene and material, do not redesign or add new objects."
+    },
+    {
+      "file": "summer.png",
+      "reference": "SUMUWW Summer UI reference board",
+      "prompt": "Use case: precise-object-edit. Asset type: one two-column texture atlas for Android splash backgrounds. Input is the SUMUWW Summer UI reference board. Reconstruct ONLY the scenery background of its FIRST narrow splash phone in each row, preserving placement and palette as closely as possible, removing all phone frames, letters, logos, status/navigation bars, and progress bars. Output ONE square image with TWO equal edge-to-edge portrait panels and no gutter: LEFT is the supplied light splash background, palm fronds falling diagonally from upper-left, clear pale-cyan sky with soft clouds, turquoise tropical ocean horizon in lower-middle, realistic white surf and warm ivory sandy beach in lower quarter, small leaves at lower-left. RIGHT is the supplied dark splash background, palm-frond silhouettes upper-left, luminous full moon high at upper-right, deep navy moonlit ocean, silver-blue wave reflections and sand in lower third, leaves along lower-left. Keep center open for native app logo and text. No logos, letters, borders, buttons or device mockups. Match reference composition; no extra structures."
+    },
+    {
+      "file": "autumn.png",
+      "reference": "SUMUWW Autumn UI reference board",
+      "prompt": "Use case: precise-object-edit. Asset type: one two-column texture atlas for Android splash backgrounds. Input is the SUMUWW Autumn UI reference board. Reconstruct ONLY the scenery background of its FIRST narrow splash phone in each row, preserving arrangement, photographic-painterly finish and palette as closely as possible, removing all phone frames, text, logos, status/navigation bars and progress bars. Output ONE square image with TWO equal edge-to-edge portrait panels with no gutter: LEFT matches light splash with warm cream sky, orange maple leaves along upper-left/top, distant layered ochre mountain peaks, golden autumn trees and mirror lake across lower third, a few maple leaves around lower corners. RIGHT matches dark splash with a canopy of orange maple leaves at upper-left, sunset glowing behind dark distant mountains in upper quarter, dark brown calm open center, dense orange trees and reflective lake in bottom third, fallen maple leaves lower-left. Keep center visually quiet. No logos, letters, borders, UI or device mockup. Preserve reference's scene instead of inventing another."
+    },
+    {
+      "file": "winter.png",
+      "reference": "SUMUWW Winter UI reference board",
+      "prompt": "Use case: precise-object-edit. Asset type: one two-column texture atlas for Android splash backgrounds. Input is the SUMUWW Winter UI reference board. Reconstruct ONLY the scenery background of its FIRST narrow splash phone in each row, matching arrangement, atmosphere and palette as closely as possible, removing all phone frames, logos, text, status/navigation bars and progress bars. Output ONE square image with TWO equal edge-to-edge portrait panels with no gutter: LEFT matches light splash, pale icy-blue sky, tall distant snow-covered alpine peak in upper quarter, snow-laden dark evergreen trees along both edges, soft snowbanks and snowy branches filling lower quarter, quiet very pale center. RIGHT matches dark splash, deep midnight blue starry sky, distant snowy mountain upper quarter, dark snowy evergreens along both edges, small warmly lit wooden chalet tucked in lower-left/center, blue snowbanks in foreground. Keep center open for native logo/text. No letters, logos, phone frame, buttons, UI or device mockup. Match the supplied scene, no extra buildings."
+    }
+  ]
+}

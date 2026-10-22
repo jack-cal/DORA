@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SUMUWW Independent Coin</title><style>body{font:18px/1.75 system-ui,sans-serif;color:#192940;max-width:1000px;margin:35px auto;padding:25px}h1,h2{color:#164c91}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ced9e7;padding:9px;text-align:left}pre{white-space:pre-wrap;background:#f3f6fa;padding:16px}a{color:#245da1}img{max-width:100%}</style></head><body><blockquote>
+<p>Updated height-9000 implementation: read <a href="UPGRADE_9000.txt">UPGRADE_9000.txt</a>. Earlier release notes below describe the original source.</p>
+</blockquote>
+<h1>SUMUWW Independent Coin</h1>
+<!-- current-links-9000 -->
+<h2>2026-10-22 · 9000 · 20% · DGW/10</h2>
+<p>Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.</p>
+<p><a href="CONNECTION_PROOFS_9000.html">Current protocol / exact format / limitations</a></p>
+<!-- /current-links-9000 -->
+
+<p>SUMUWW has its own genesis, transaction history and proof-of-work consensus. Nodes independently validate transactions and blocks and select the chain with the greatest valid cumulative work.</p>
+<h2>Coin documents</h2>
+<ul>
+<li><a href="WHITEPAPER.md">Whitepaper</a></li>
+<li><a href="SUMUWW_PROTOCOL_SPEC.md">Protocol specification</a></li>
+<li><a href="docs/CONSENSUS_BASELINE.md">Consensus comparison</a></li>
+<li><a href="docs/MINING_AND_CONFIRMATIONS.md">Mining rewards and confirmations</a></li>
+<li><a href="docs/NETWORK_PROTOCOL.md">P2P protocol</a></li>
+<li><a href="docs/COIN_PROMOTION_AND_REGISTRATION.md">Coin promotion and registration</a></li>
+</ul>
+<h2>Separate documentation</h2>
+<p><a href="programs/PC/README.md">PC program documentation</a></p></body></html>

@@ -1,0 +1,30 @@
+{
+  "tor": {
+    "kind": "tor",
+    "version": "0.4.9.14",
+    "architectures": {
+      "arm64-v8a": {
+        "file": "libtor.so",
+        "sha256": "67ce86a6664c330f49037487f0931498e2a0f82099fbfaf3de7a62c32cf5e996"
+      },
+      "x86_64": {
+        "file": "libtor.so",
+        "sha256": "dc7f0fecc47ed73397b2f7928ddf2b87d18fac7c6ba1d00d72e3d7772e5eb480"
+      }
+    }
+  },
+  "i2p": {
+    "kind": "i2pd",
+    "version": "2.61.0",
+    "architectures": {
+      "arm64-v8a": {
+        "file": "libi2pd_exec.so",
+        "sha256": "8ad89177cab63c74703548d0d5826862f225b9b46c3fd8f00dcc8e9cde7010de"
+      },
+      "x86_64": {
+        "file": "libi2pd_exec.so",
+        "sha256": "782ddfd6161523a767907ffb3108663580c2455822c813457b2208f92a47b7b2"
+      }
+    }
+  }
+}

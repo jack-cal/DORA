@@ -1,0 +1,13 @@
+{
+  "tk_version": "8.6.12",
+  "upstream_source": "https://github.com/tcltk/tk/archive/refs/tags/core-8-6-12.zip",
+  "upstream_source_sha256": "c2b4782e76bbc4d63278271e084ea12810ea023381fea6820006110dac2dd84d",
+  "tcl_source": "https://github.com/tcltk/tcl/archive/refs/tags/core-8-6-12.zip",
+  "tcl_source_sha256": "05ad33bb3945eef7d05cf4e01d156c1dc8fa42fee49815b3f6161b86be838e61",
+  "compiler": "w64devkit 2.10.0 / GCC 16.2.0 Windows AMD64",
+  "compiler_download": "https://github.com/skeeto/w64devkit/releases/download/v2.10.0/w64devkit-x64-2.10.0.7z.exe",
+  "compiler_download_sha256": "18d0a4c71a166f8401ab6305781bec5882b40b5e06ba9807c61cb5f3b3c6325e",
+  "tk86t_dll_sha256": "9fd9ccda602a8c286e65a7fb6ccae65b507f4db886d8d6643f5de26e1b371f60",
+  "change": "DEFAULT_QUALITY to CLEARTYPE_QUALITY in GetScreenFont; preserves requested font family, size and weight; replaces 0.57.4 forced grayscale antialiasing",
+  "abi": "Tk 8.6, Tcl stubs; DLL renamed from tk86.dll to tk86t.dll for CPython Windows loader"
+}

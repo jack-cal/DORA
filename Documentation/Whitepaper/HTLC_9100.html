@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTLC spending rule · height 9100</title><style>body{font:18px/1.75 system-ui,sans-serif;color:#192940;max-width:1000px;margin:35px auto;padding:25px}h1,h2{color:#164c91}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ced9e7;padding:9px;text-align:left}pre{white-space:pre-wrap;background:#f3f6fa;padding:16px}a{color:#245da1}img{max-width:100%}</style></head><body><h1>HTLC spending rule · height 9100</h1>
+<h2>Scope</h2>
+<p>From height 9100, SUMUWW permits the exact P2WSH SHA256/preimage/CLTV template below. This transaction-spending extension is independent of the asynchronous connection-proof rule activated at 9000. Ordinary P2WPKH transfers, existing valid outputs, coinbase maturity and value-conservation rules remain applicable. This is a fixed supported template, not a general-purpose script virtual machine or an automatic cross-chain exchange service.</p>
+<h2>Supported template</h2>
+<pre><code class="language-text">IF
+    SHA256 &lt;32-byte hash&gt; EQUALVERIFY
+    &lt;receiver compressed public key&gt; CHECKSIG
+ELSE
+    &lt;refund height&gt; CHECKLOCKTIMEVERIFY DROP
+    &lt;refund compressed public key&gt; CHECKSIG
+ENDIF
+</code></pre>
+<p>The redeem path requires a 32-byte preimage matching the committed SHA256 hash and the receiver's valid signature. The refund path requires the specified block-height condition and the refund key's valid signature. Only canonical compressed public keys, exact pushes and SIGHASH_ALL are accepted. Refund locktime is enforced with transaction finality and a nonfinal input sequence. General scripts and CSV are outside this template.</p>
+<h2>Independent validation</h2>
+<p>Each spending input is checked against the locally validated UTXO and current block context. A peer's claim that payment or refund completed does not replace verification of the transaction and chain. A chain reorganization can affect confirmations; the connection-proof system does not give this template irreversible finality.</p>
+<h2>Technical references</h2>
+<p><a href="CONNECTION_PROOFS_9000.html">Connection proof</a></p></body></html>

@@ -1,0 +1,14 @@
+{
+  "html_local_links": 3307,
+  "english_document_files": 3297,
+  "document_menu_paths": 340,
+  "runtime_files_unchanged": 1257,
+  "archives_crc": 4,
+  "source_files_match_git": 5136,
+  "sha256_files": 14,
+  "regression_tests": 18,
+  "publication_language": "English",
+  "application_ui_languages": 34,
+  "wallet_or_chain_data_packaged": false,
+  "result": "passed"
+}

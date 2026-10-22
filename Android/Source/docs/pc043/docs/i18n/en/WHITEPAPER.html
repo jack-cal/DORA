@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-document-revision" content="whitepaper-20261022-r2"><title>SUMUWW Whitepaper</title><style>@font-face{font-family:SumuwwMongolian;src:url("../../../assets/fonts/NotoSansMongolian-Regular.ttf")}body{margin:0;background:#f4f7fc;color:#192940;font:18px/1.8 system-ui,"Malgun Gothic",sans-serif}main{max-width:1040px;margin:30px auto;background:white;padding:38px 48px;border:1px solid #dce5f0;border-radius:12px}h1{font-size:2rem;color:#164c91;margin-top:10px}h2{font-size:1.35rem;margin-top:2em;border-bottom:1px solid #dce5f0;padding-bottom:8px}p{margin:1em 0}table{width:100%;border-collapse:collapse;font-size:.94em}td,th{border:1px solid #dce5f0;padding:9px;text-align:start}th{background:#f0f5fc}pre{direction:ltr;text-align:left;background:#f5f7fb;padding:16px;overflow:auto;font-size:14px}code{overflow-wrap:anywhere}a{color:#245da1}nav{font-size:15px}nav a{display:inline-block;margin:4px 12px 4px 0}footer{margin-top:38px;padding-top:18px;border-top:1px solid #dce5f0;font-size:14px;color:#58677b}.brand{display:flex;align-items:center;gap:12px;font-weight:bold;color:#164c91}.brand img{width:52px;height:auto}summary{cursor:pointer}html[dir=rtl] article{text-align:right}html[lang=mn-Mong] article{font-family:SumuwwMongolian,sans-serif;font-size:23px;writing-mode:vertical-lr;max-height:78vh;overflow:auto;max-width:100%;padding:14px}html[lang=mn-Mong] article pre,html[lang=mn-Mong] article table{writing-mode:horizontal-tb;font-family:system-ui,sans-serif;font-size:16px}@media(max-width:700px){main{padding:20px;margin:8px}body{font-size:17px}h1{font-size:1.6rem}table{font-size:.8em}}@media print{body{background:white}main{border:0;margin:0;padding:0;max-width:none}nav{display:none}h2{break-after:avoid}tr{break-inside:avoid}html[lang=mn-Mong] article{max-height:none;overflow:visible}}</style></head><body><main><div class="brand"><img alt="SUMUWW" src="../../../assets/sumuww_symbol.png">SUMUWW · SMW</div><article><h1>SUMUWW Whitepaper</h1>
+<h2 id="section-1">Purpose and scope</h2>
+<p>SUMUWW is an independent coin with its own genesis block, transaction history, network and UTXO set. It implements SHA-256d proof of work, UTXO accounting, secp256k1 verification of owner signatures, independent node validation of blocks and transactions, and chain selection by valid cumulative work.</p>
+<h2 id="section-2">SUMUWW connection proof</h2>
+<p>A connection proof records the endorsement of a specific parent block A and its direct child B. After A is mined, A's producer handles the proof in the background once B is known. Requests remain bound to that pair. Block creation, acceptance and propagation do not wait for the proof.</p>
+<p>Three selected nodes each sign the same network, A/B hashes, height, witness team and randomness context with Ed25519. Each node splits its 64-byte signature into two 32-byte halves and returns them to A's producer: six pieces in total. The three front halves form a 96-byte bundle for A; the three back halves form another for B. Each bundle is compressed only if it becomes smaller; otherwise it keeps its original encoding.</p>
+<p>A's producer signs the paired attachment; B's producer verifies it and signs a receipt binding the same pair. The completed record is stored and relayed. Attachments reference the exact block hashes without rewriting mined block bytes. Reassembly restores three verifiable signatures, not a private key. The proof attests to this signed connection; every block still requires independent consensus validation.</p>
+<h2 id="section-3">Random selection and distributed randomness</h2>
+<p>A verified distributed random value selects a connection event with probability 20%. This is neither a fixed five-block schedule nor a guarantee that 20% of blocks obtain completed proofs. Three distinct identities are sampled without replacement from the producer's entire discovered set. Discovery extends through relays, without a direct-neighbor filter, per-IP quota or fixed candidate count. No admission, exit procedure or participation fee is required; one operator may run multiple nodes.</p>
+<p>The random beacon uses Feldman DKG and threshold BLS, with its public setup anchored on chain before A. Enough valid shares reconstruct the same output despite some missing replies. Below the threshold, the proof remains incomplete while mining continues. Initial setup needs all listed dealers' contributions and a readiness quorum. The group of nodes holding secret shares is fixed; automatic resharing is not implemented. Permanent loss of enough secret-share holders can stop new proofs. A worldwide complete candidate census and resistance to a producer's candidate omissions are not established.</p>
+<h2 id="section-4">Chain selection and conflicting evidence</h2>
+<p>Valid cumulative PoW takes priority. From activation, equal-work branches are compared by the number of valid, nonconflicting proven connections on each branch, then by the smaller tip hash in the protocol's internal byte order. Repeated proofs of the same edge count once.</p>
+<p>Conflicting connections for the same parent/height position all receive zero weight, even if all three witnesses double-sign. Late proofs or newly revealed conflicts can change an equal-work choice. A valid greater-work branch still wins. Connection evidence does not provide irreversible finality, prevent every fork or guarantee resistance to a majority-hashrate attack.</p>
+<h2 id="section-5">Verification by a later node</h2>
+<p>A later node obtains the blocks, anchored randomness setup, completed paired proofs and relevant conflict evidence from peers. It decodes both bundles, decompressing only those marked as compressed, joins each witness's halves and verifies the three signatures, both producer receipts and the parent-child relationship. Missing or invalid evidence earns no connection weight; it does not by itself invalidate an otherwise valid PoW block. Independent verification requires the supporting records to remain available.</p>
+<h2 id="section-6">Issuance</h2>
+<p>Each of the first 150,000 blocks has a subsidy of 50 SMW. The subsidy then starts at 25 SMW and halves every 210,000 blocks, rounded down to an integer number of smallest units.</p>
+<table>
+<thead>
+<tr>
+<th>Block height</th>
+<th style="text-align: right;">Block subsidy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–149,999</td>
+<td style="text-align: right;">50 SMW</td>
+</tr>
+<tr>
+<td>150,000–359,999</td>
+<td style="text-align: right;">25 SMW</td>
+</tr>
+<tr>
+<td>360,000–569,999</td>
+<td style="text-align: right;">12.5 SMW</td>
+</tr>
+<tr>
+<td>570,000–779,999</td>
+<td style="text-align: right;">6.25 SMW</td>
+</tr>
+<tr>
+<td>780,000–989,999</td>
+<td style="text-align: right;">3.125 SMW</td>
+</tr>
+<tr>
+<td>6,660,000–6,869,999</td>
+<td style="text-align: right;">0.00000001 SMW</td>
+</tr>
+<tr>
+<td>H ≥ 6,870,000</td>
+<td style="text-align: right;">0 SMW</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">0 &lt;= H &lt; 150000: S(H) = 5000000000
+H &gt;= 150000:
+    k = floor((H - 150000) / 210000)
+    if k &gt;= 32: S(H) = 0
+    otherwise: S(H) = floor(2500000000 / 2^k)
+</code></pre>
+<p>Nominal maximum issuance: <strong>17,999,999.97690000 SMW</strong>.
+Maximum excluding the unspendable genesis reward: <strong>17,999,949.97690000 SMW</strong>.</p>
+<p>A valid block's coinbase may claim the subsidy for its height plus fees from included transactions. Excess issuance is rejected. Fees transfer existing coins. The issuance rules contain no reserved developer allocation. There is no administrator authority for arbitrary issuance, freezing, confiscation or balance modification. A mining reward can be spent when spending height minus creation height is at least 100.</p>
+<h2 id="section-7">Proof of work and difficulty</h2>
+<p>The chain uses SHA-256d PoW with a 600-second target interval. Before height 8064, the original 2016-block adjustment applies. From 8064 through 8999, DGW v3 recalculates every block using the preceding 24 blocks on that branch. From 9000 it recalculates at 9000, 9010, 9020… using the same 24-block algorithm; intervening blocks retain their parent's difficulty. Nodes check the required target as well as the hash. Connection evidence adds no PoW work.</p>
+<h2 id="section-8">Transactions and UTXOs</h2>
+<p>The ledger records unspent transaction outputs, or UTXOs. Transactions consume existing outputs and create new ones. Nodes check input existence, duplicates, maturity, owner signatures and amount totals to reject double spending and overspending. The basic spending format is native P2WPKH with <code>SIGHASH_ALL</code>.</p>
+<h2 id="section-9">Fees and protocol upgrades</h2>
+<p>Fees equal total inputs minus total outputs. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.</p>
+<p>Each node still validates independently; neither the author nor an API caller can force upgrades or mint, freeze or rewrite balances. Adoption of changed consensus rules is voluntary and may split the chain. These rules do not cryptographically prevent people from creating a fork. SUMUWW has a decentralized consensus architecture. Its practical decentralization depends on sustained participation by independent node operators and miners.</p>
+<h2 id="section-10">Activation and compatibility</h2>
+<p>Valid history through 8999 remains usable even when transmitted with an invalid later suffix. From 9000 every block must contain the producer's public-key commitment and satisfy the active difficulty rules. Compatibility is judged by block validity, not the software version name. At 9100, the exact P2WSH SHA256/preimage/CLTV spending template becomes available; this does not introduce a general-purpose script VM. Ordinary P2WPKH transfers and existing valid coins remain usable.</p>
+<h2 id="section-11">Participation and privacy</h2>
+<p>P2P peers can observe connection IP addresses. The protocol does not guarantee participant anonymity.</p>
+<hr />
+<p><a href="../../../CONNECTION_PROOFS_9000.html">SUMUWW · A/B · Ed25519 · BLS</a> · <a href="../../../HTLC_9100.html">HTLC · 9100</a></p></article><footer>2026-10-22 · WP-2</footer></main></body></html>

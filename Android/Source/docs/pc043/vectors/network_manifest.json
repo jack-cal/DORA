@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "design_version": "0.20",
+  "status": "Existing independent SUMUWW chain preserved; fresh SUMUWW GUI permits internet connections with no preset peers; users choose a running peer, existing saved preferences are preserved, and library and node CLI access requires explicit opt-in",
+  "consensus_comparison": {
+    "project": "Bitcoin Core",
+    "tag": "v29.0",
+    "commit": "f490f5562d4b20857ef8d042c050763795fd43da",
+    "use": "rule and test comparison only; not a mandatory source fork or runtime dependency"
+  },
+  "implementation_defaults": {
+    "coinbase_maturity": 100,
+    "genesis_transactions_connected_to_utxo": false,
+    "genesis_fixed_exception_height": 0,
+    "block_weight_limit": 4000000,
+    "block_sigops_cost_limit": 80000,
+    "sumuww_subsidy_era_blocks_on_all_networks": 210000,
+    "supported_spending": "native P2WPKH / SIGHASH_ALL; not all modern Bitcoin rules",
+    "sumuww_first_subsidy_era_blocks_on_all_networks": 150000
+  },
+  "networks": {
+    "mainnet": {
+      "alias_of": "dora",
+      "implemented_network_name": "dora",
+      "genesis": {
+        "hash": "00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97",
+        "fixture_file": "sumuww_genesis.json"
+      },
+      "profile": "dora-independent-v0.12-p2wpkh",
+      "message_magic_hex": "d052470c",
+      "p2p_port": 18444,
+      "bech32_hrp": "dora",
+      "bootstrap_peers": [],
+      "note": "Operational name for the same sumuww chain; no new genesis or CLI profile"
+    },
+    "testnet": {
+      "genesis": null,
+      "message_magic_hex": null,
+      "p2p_port": null,
+      "rpc_port": null,
+      "address_prefixes": null,
+      "bech32_hrp": null,
+      "extended_key_prefixes": null,
+      "hd_coin_type": null,
+      "bootstrap_peers": [],
+      "pow_limit_hex": null,
+      "initial_bits": null,
+      "retarget_profile": null,
+      "status": "not implemented; no public testnet created"
+    },
+    "regtest": {
+      "genesis": {
+        "fixture_file": "regtest_genesis.json",
+        "hash": "51ff452925cf7a4350330ca73abcbf66b4e50d9e0c4641aca6e360dbde838ba0"
+      },
+      "message_magic_hex": "d0524709",
+      "p2p_port": 0,
+      "p2p_port_assignment": "0 requests an OS-assigned port; actual endpoint is published in the ready-file; manual local endpoints are supported",
+      "rpc_port": null,
+      "address_prefixes": null,
+      "bech32_hrp": "drt",
+      "extended_key_prefixes": null,
+      "hd_coin_type": null,
+      "bootstrap_peers": [],
+      "pow_limit_hex": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "initial_bits": "0x207fffff",
+      "retarget_profile": "local no-retarget default; not public-network launch settings",
+      "profile": "dora-local-regtest-v0.8-p2wpkh",
+      "spending_implementation": "native P2WPKH SIGHASH_ALL only",
+      "p2p_implemented": true,
+      "p2p_scope": "numeric IPv4 loopback by default; exact RFC1918 manual peers with allow_lan opt-in",
+      "rpc_implemented": false,
+      "local_mempool_max_transactions": 1000,
+      "local_mempool_max_serialized_bytes": 4000000,
+      "wire_protocol_version": 1,
+      "max_sessions": 8,
+      "max_header_batch": 128,
+      "max_inventory_batch": 256,
+      "max_locator_hashes": 32,
+      "max_payload_bytes": 4000000,
+      "wallet": {
+        "single_random_key": true,
+        "encrypted_file": "scrypt N=131072 r=8 p=1 + AES-256-GCM",
+        "authenticated_backup_restore": true,
+        "hd": false
+      }
+    },
+    "retarget-lab": {
+      "genesis": {
+        "fixture_file": "retarget_lab_genesis.json",
+        "hash": "00364a6e5152bafb1cd74d44e9fc58d2632d7f7b7d0365cab0a86eca40351c51"
+      },
+      "profile": "dora-retarget-lab-v0.11-p2wpkh",
+      "message_magic_hex": "d052470b",
+      "p2p_port": 0,
+      "p2p_port_assignment": "OS-assigned default or manual permitted endpoint",
+      "bech32_hrp": "dtl",
+      "pow_limit_hex": "00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "initial_bits": "0x2000ffff",
+      "no_retarget": false,
+      "retarget_interval": 16,
+      "target_timespan": 16,
+      "target_spacing_seconds": 1,
+      "spending_implementation": "native P2WPKH SIGHASH_ALL only",
+      "genesis_transactions_connected_to_utxo": false,
+      "p2p_implemented": true,
+      "p2p_scope": "numeric IPv4 loopback by default; exact RFC1918 manual peers with allow_lan opt-in",
+      "rpc_implemented": false,
+      "wallet": {
+        "single_random_key": true,
+        "encrypted_file": "scrypt N=131072 r=8 p=1 + AES-256-GCM",
+        "authenticated_backup_restore": true,
+        "hd": false
+      },
+      "public_network_ready": false,
+      "scope": "Accelerated laboratory; public design remains600s/2016blocks"
+    },
+    "dora": {
+      "network": "dora",
+      "profile": "dora-independent-v0.12-p2wpkh",
+      "hash": "00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97",
+      "header_hex": "010000000000000000000000000000000000000000000000000000000000000000000000dabd2a9db1e9898ebeeaa9c3d70c775ba3cab9a6a24a7e64327cc079c91c62098045c06aae77031edb444e00",
+      "block_hex": "010000000000000000000000000000000000000000000000000000000000000000000000dabd2a9db1e9898ebeeaa9c3d70c775ba3cab9a6a24a7e64327cc079c91c62098045c06aae77031edb444e000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff2500444f524120696e646570656e64656e74206e6574776f726b203034204f63742032303236ffffffff0100f2052a01000000266a24444f524120696e646570656e64656e74206e6574776f726b203034204f6374203230323600000000",
+      "timestamp": 1790985600,
+      "nonce": 5129435,
+      "initial_bits": "1e0377ae",
+      "pow_limit_hex": "00000377aef2669de1558cd0447bbf336aae22599d11488c00377aef2669de15",
+      "retarget_interval": 2016,
+      "target_timespan": 1209600,
+      "target_spacing": 600,
+      "no_retarget": false,
+      "address_hrp": "dora",
+      "message_magic_hex": "d052470c",
+      "genesis_utxo_included": false,
+      "scope": "independent SUMUWW chain with opt-in internet TCP",
+      "p2p_port": 18444,
+      "bootstrap_peers": [],
+      "wire_protocol_version": 1,
+      "automatic_peer_exchange": false
+    }
+  },
+  "note": "SUMUWW v0.12 identity and wallets preserved. No creator-operated node address is distributed. Choose a running SUMUWW peer and complete synchronization before public mining. Separate regtest/lab remain separate.",
+  "application_defaults": {
+    "gui_network": "dora",
+    "legacy_cli_network": "regtest",
+    "gui_data_directory": "active node path / adjacent v0.12 data/local / LOCALAPPDATA/SUMUWW/data",
+    "gui_fresh_sumuww_internet_default_enabled": true,
+    "gui_existing_settings_preserved": true,
+    "service_library_internet_default_enabled": false,
+    "node_cli_internet_requires_opt_in": true,
+    "internet_defaults_scope": "Fresh SUMUWW GUI permits internet transport but has no preset peers; library and node CLI transport requires explicit opt-in",
+    "gui_fresh_sumuww_peers": [],
+    "automatic_initial_connection": false,
+    "gui_default_language": "en",
+    "gui_languages": [
+      "en",
+      "fr",
+      "es",
+      "ar",
+      "zh",
+      "pt",
+      "ru",
+      "de",
+      "sw",
+      "hi",
+      "ko"
+    ],
+    "ui_language_changes_consensus_or_wallet_keys": false
+  },
+  "document_revision": 3
+}

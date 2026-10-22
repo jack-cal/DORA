@@ -1,0 +1,8 @@
+SUMUWW PC 0.57.33 / Android 0.6.83 (143)
+PC: display the existing translated DGW/10 cadence label from activation.
+Documentation: replace superseded 10% / mandatory-certificate policy; retain 34 language whitepapers.
+Tests: activation mixed-prefix preservation, current asynchronous transport, Windows UDP scheduling and test-fixture shutdown.
+Consensus, money, wallets, icons and UI layout are unchanged from PC 0.57.32 / Android 0.6.82.
+See CONNECTION_PROOFS_9000.html and the separately packaged audit report.
+
+Documentation revision whitepaper-20261022-r2: 34 connection-centered whitepapers, corrected 20% metadata, HTLC reference and portable documentation inclusion. Runtime versions, consensus and monetary rules unchanged.

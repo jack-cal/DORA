@@ -1,0 +1,22 @@
+# SUMUWW release guide — PC 0.57.33 / Android 0.6.83
+
+[Current whitepaper](docs/pc043/Whitepaper.html) · [Protocol](docs/pc043/Protocol.html) · [Height-9000 connection rules and limitations](CONNECTION_PROOFS_9000.html)
+
+Extract the complete PC ZIP into a new folder and run SUMUWW.exe. Close the old
+app before using the same data directory. Do not reset the database or wallet.
+Install the Android APK over org.sumuww.miner without uninstalling or clearing
+data. The signing certificate is unchanged. The separate .audit test package
+is not a distribution artifact.
+
+Valid old history through 8999 is retained even when an invalid later suffix is
+sent with it. From 9000 blocks must satisfy the producer commitment and current
+DGW rules. Mining never requires a completed witness attachment. Software age
+alone does not invalidate a rule-compliant block or common-history transaction.
+
+DGW uses a 24-block window and recalculates at 9000, 9010, 9020…; target 600 s.
+The random connection-event probability is 20%, with 3 discovered witnesses.
+Issuance, halving, maturity, wallet format, icon assets and 34 UI languages remain.
+
+No real wallet, chain database, password or signing private key belongs in the
+release archive. The verification report records isolated tests and limitations;
+it does not claim independent security certification or completed public activation.

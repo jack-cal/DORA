@@ -1,0 +1,2110 @@
+{
+  "en": {
+    "title": "Help",
+    "subtitle": "How each SMW screen works",
+    "back": "Back to More",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Shows your SMW balance, available balance, mining progress and recent activity. The network section shows local block height and connected peers. Wallet shows immature rewards and pending changes."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Choose 1–10,000 target blocks in Mining settings, then tap Start mining. The ring shows progress toward this batch target; the number inside is your wallet's total SMW, not promised earnings. This phone mines solo. An open wallet and synchronized peer are required on the main network. Stop cancels the current batch."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Create or open a password-protected local wallet. A new seed wallet shows 24 recovery words; save them offline in order. The receiving address may be shared, but the password and recovery words must remain private."
+      },
+      {
+        "id": "send",
+        "title": "Send and receive",
+        "body": "Receive displays your address for copying or sharing. To send, enter a SMW address and amount, review the calculated fee and total debit, then confirm. The sender pays the fee. Amounts support up to eight decimal places."
+      },
+      {
+        "id": "balances",
+        "title": "Balances and confirmations",
+        "body": "Available is the amount ready to spend. Immature rewards are mined coins still subject to the 100-block maturity rule. Pending is a transaction change not yet confirmed in a block. Confirmation counts follow the current active chain and can change after a chain reorganization."
+      },
+      {
+        "id": "history",
+        "title": "Transaction history",
+        "body": "Shows mining rewards, received funds, sent funds, confirmation count, block height, and transaction ID. Filters apply to the loaded page; use Previous or Next to browse more than 50 records."
+      },
+      {
+        "id": "network",
+        "title": "Node connection",
+        "body": "The app runs a local SMW node. Connected peers counts other nodes, so zero does not mean your own node disappeared. With internet enabled, automatic SMW discovery tries to find compatible peers. If none are reachable, add a peer IP or domain:port manually. Mining waits until a peer is synchronized."
+      },
+      {
+        "id": "settings",
+        "title": "Settings and diagnostics",
+        "body": "More lets you select a color theme, light or dark mode, and one of 34 languages. Node details shows local status, peer counts, CPU use, the next difficulty bits, and the current block reward. CPU use is not a hash-rate measurement."
+      },
+      {
+        "id": "backup",
+        "title": "Backup and recovery",
+        "body": "Export an encrypted wallet backup before uninstalling or changing phones; restoring it requires its password. A seed wallet can also be recovered with its 24 words. Copies on USB or cloud storage can grant access to funds if the secret is exposed. Never send recovery words or passwords to anyone."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android application",
+        "body": "The phone mines independently and communicates with compatible SMW peers. A synchronized reachable peer and an open wallet are required on the main network. Automatic discovery does not guarantee access through every NAT or firewall. No mining pool, market price service or QR feature is included.\n\nFees may be calculated automatically or entered manually, with up to eight decimal places. The sender pays the fee. Review the fee and total debit before submitting. Node acceptance is not recipient receipt or block confirmation. Rejection, uncertain results, incoming pending transfers and block inclusion are shown separately. Do not resend an uncertain transaction before checking history.\n\nA local foreground service hosts the node. Active mining uses a wake lock; Android or the device manufacturer may still stop the process. Notifications require permission. Closed apps cannot guarantee immediate receipt alerts; results are checked after reopening and synchronization. Old transactions and mining rewards are excluded from new incoming-transfer alerts."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatic security lock",
+        "body": "Spending is locked during mining; wallet keys are locked when mining ends.\nMining stops at battery temperature 45°C or system overheating. Restart manually after cooling.\nA chain change removed the previous block confirmation. Check transaction history again."
+      }
+    ]
+  },
+  "ko": {
+    "title": "도움말",
+    "subtitle": "SMW 화면과 기능 안내",
+    "back": "더보기로 돌아가기",
+    "topics": [
+      {
+        "id": "home",
+        "title": "홈",
+        "body": "SMW 보유량, 사용 가능한 잔액, 채굴 진행 상황과 최근 활동을 보여줍니다. 네트워크 영역에서 내 블록 높이와 연결 피어를 확인하며, 미성숙 보상과 대기 증감은 지갑에서 확인합니다."
+      },
+      {
+        "id": "mining",
+        "title": "채굴",
+        "body": "채굴 설정에서 목표 블록 수 1~10,000개를 정하고 채굴 시작을 누릅니다. 원형 링은 이번 목표의 완료 비율이며, 가운데 숫자는 예상 수익이 아닌 지갑의 총 SMW 보유량입니다. 휴대폰 단독 채굴이며 메인 네트워크에서는 열린 지갑과 동기화된 피어가 필요합니다. 채굴 중지는 현재 작업을 취소합니다."
+      },
+      {
+        "id": "wallet",
+        "title": "지갑",
+        "body": "비밀번호로 보호되는 로컬 지갑을 만들거나 엽니다. 새 시드 지갑의 복구 단어 24개는 순서대로 오프라인에 기록하세요. 받는 주소는 공유할 수 있지만 비밀번호와 복구 단어는 공개하지 마세요."
+      },
+      {
+        "id": "send",
+        "title": "보내기와 받기",
+        "body": "받기 화면에서 내 주소를 복사하거나 공유합니다. 보내려면 상대 주소와 금액을 입력하고 계산된 수수료·총 지출을 확인한 뒤 전송을 승인합니다. 수수료는 보내는 쪽이 부담하며 금액은 소수점 8자리까지 지원합니다."
+      },
+      {
+        "id": "balances",
+        "title": "잔액과 확인 수",
+        "body": "사용 가능은 지금 지출할 수 있는 금액입니다. 미성숙 보상은 100블록 성숙 규칙이 적용되는 채굴 보상입니다. 대기 중은 아직 블록에서 확인되지 않은 거래 변동입니다. 확인 수는 현재 활성 체인을 기준으로 하며 체인 재구성 시 바뀔 수 있습니다."
+      },
+      {
+        "id": "history",
+        "title": "거래내역",
+        "body": "채굴 보상, 받은 금액, 보낸 금액, 확인 수, 블록 높이, 거래 ID를 보여줍니다. 필터는 현재 불러온 페이지에 적용되며 50건을 넘으면 이전·다음으로 이동합니다."
+      },
+      {
+        "id": "network",
+        "title": "노드 연결",
+        "body": "앱은 자체 SMW 노드를 실행합니다. 연결 피어는 다른 노드의 수이므로 0이라고 내 노드가 사라진 것은 아닙니다. 인터넷 연결 시 호환 피어를 자동 탐색합니다. 접속 가능한 피어를 찾지 못하면 상대의 IP 또는 도메인:포트를 직접 등록하세요. 피어와 동기화되기 전에는 채굴이 대기합니다."
+      },
+      {
+        "id": "settings",
+        "title": "설정과 진단",
+        "body": "더보기에서 색상 테마, 라이트·다크 모드, 33개 언어를 선택합니다. 상세 통계에는 내 노드 상태, 피어 수, CPU 사용률, 다음 난이도 bits, 현재 블록 보상이 표시됩니다. CPU 사용률은 해시레이트가 아닙니다."
+      },
+      {
+        "id": "backup",
+        "title": "백업과 복구",
+        "body": "앱 삭제나 휴대폰 교체 전 암호화 지갑 백업을 내보내세요. 복원에는 비밀번호가 필요합니다. 시드 지갑은 복구 단어 24개로도 복구할 수 있습니다. USB·클라우드의 복사본도 비밀이 노출되면 자산 접근에 쓰일 수 있으니 보호하세요. 복구 단어나 비밀번호를 남에게 보내지 마세요."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android 앱",
+        "body": "휴대폰은 독립적으로 채굴하고 호환 SMW 노드와 통신합니다. 메인 네트워크 채굴에는 동기화된 접속 가능한 상대와 열린 지갑이 필요합니다. 자동 검색이 모든 NAT·방화벽 환경의 접속을 보장하지 않습니다. 공동채굴·시장 가격 서비스·QR 기능은 포함하지 않습니다.\n\n수수료는 자동 계산 또는 직접 설정하며 최대 소수점 8자리까지 입력합니다. 수수료는 보내는 사람이 부담합니다. 제출 전 수수료와 총 지출을 확인합니다. 노드 접수는 상대방 수신이나 블록 확인을 뜻하지 않습니다. 거절·결과 불명확·입금 대기·블록 포함을 구분해 표시합니다. 결과가 불명확하면 거래내역 확인 전 다시 보내지 마세요.\n\n로컬 포그라운드 서비스에서 노드를 실행하고 채굴 중에는 웨이크락을 사용합니다. Android·제조사가 프로세스를 종료할 수 있습니다. 시스템 알림은 권한이 필요합니다. 종료된 앱은 즉시 입금 알림을 보장할 수 없으며 재실행·동기화 뒤 확인합니다. 기존 거래와 채굴 보상은 새 입금 알림에서 제외합니다."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "자동 보안 잠금",
+        "body": "채굴 중에는 송금을 잠그고, 채굴 종료 후에는 지갑 키를 잠급니다. 배터리 온도가 45°C 이상이거나 시스템이 과열 상태이면 채굴을 중지합니다. 기기가 식은 뒤 직접 다시 시작하세요. 체인 변경으로 거래 확인이 취소될 수 있으므로 거래내역에서 현재 상태를 확인하세요."
+      }
+    ]
+  },
+  "fr": {
+    "title": "Aide",
+    "subtitle": "Écrans et fonctions SMW",
+    "back": "Retour à Plus",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Accueil",
+        "body": "Affiche le solde SMW, le solde disponible, la progression du minage et l’activité récente. La section réseau indique la hauteur locale et les pairs connectés. Le portefeuille affiche les récompenses immatures et les changements en attente."
+      },
+      {
+        "id": "mining",
+        "title": "Minage",
+        "body": "Choisissez 1 à 10 000 blocs dans les paramètres de minage, puis lancez le minage. L’anneau indique la progression du lot ; le nombre central est le solde total SMW du portefeuille, pas un gain promis. Le téléphone mine seul. Un portefeuille ouvert et un pair synchronisé sont requis. Arrêter annule le lot."
+      },
+      {
+        "id": "wallet",
+        "title": "Portefeuille",
+        "body": "Créez ou ouvrez un portefeuille local protégé par mot de passe. Notez dans l'ordre et hors ligne les 24 mots de récupération d'un nouveau portefeuille à phrase. L'adresse de réception peut être partagée, jamais les secrets."
+      },
+      {
+        "id": "send",
+        "title": "Envoyer et recevoir",
+        "body": "Copiez ou partagez votre adresse dans Recevoir. Pour envoyer, indiquez l'adresse et le montant, vérifiez les frais et le débit total, puis confirmez. L'expéditeur paie les frais. Huit décimales sont possibles."
+      },
+      {
+        "id": "balances",
+        "title": "Soldes et confirmations",
+        "body": "Disponible peut être dépensé. Les récompenses immatures attendent la règle des 100 blocs. En attente désigne une variation non confirmée. Le nombre de confirmations suit la chaîne active et peut changer après une réorganisation."
+      },
+      {
+        "id": "history",
+        "title": "Historique",
+        "body": "Affiche récompenses, entrées, sorties, confirmations, hauteur et identifiant de transaction. Les filtres portent sur la page chargée ; utilisez Précédent et Suivant au-delà de 50 lignes."
+      },
+      {
+        "id": "network",
+        "title": "Connexion du nœud",
+        "body": "L’application exécute son propre nœud SMW. Zéro pair ne signifie pas que votre nœud a disparu. Avec Internet, la découverte automatique cherche des pairs compatibles. Si aucun n’est accessible, ajoutez une IP ou un domaine:port manuellement. Le minage attend un pair synchronisé."
+      },
+      {
+        "id": "settings",
+        "title": "Réglages et diagnostic",
+        "body": "Dans Plus, choisissez le thème, le mode clair ou sombre et l'une des 34 langues. Les détails affichent l'état local, les pairs, le CPU, les bits de difficulté suivants et la récompense actuelle. Le CPU ne mesure pas le taux de hachage."
+      },
+      {
+        "id": "backup",
+        "title": "Sauvegarde et restauration",
+        "body": "Exportez la sauvegarde chiffrée avant de désinstaller ou de changer d'appareil ; le mot de passe est requis pour la restaurer. Un portefeuille à phrase se restaure aussi avec ses 24 mots. Protégez les copies USB ou cloud. Ne communiquez jamais vos secrets."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Application Android",
+        "body": "Le téléphone mine indépendamment et communique avec des pairs compatibles. Le réseau principal exige un pair accessible synchronisé et un portefeuille ouvert. La découverte ne garantit pas le passage des NAT et pare-feu. Aucun pool, cours de marché ou QR n’est inclus.\n\nFrais automatiques ou manuels, jusqu’à huit décimales, payés par l’expéditeur. Vérifiez les frais et le débit total. Acceptation par le nœud, réception et inclusion dans un bloc sont distinctes. Refus et résultat incertain sont signalés. Vérifiez l’historique avant de renvoyer.\n\nLe service au premier plan héberge le nœud et garde le processeur actif pendant le minage. Android peut arrêter le processus. Les notifications exigent une autorisation. Après fermeture, vérification au redémarrage et après synchronisation. Les anciennes transactions et récompenses ne déclenchent pas de nouvelle réception."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Verrouillage automatique",
+        "body": "Les envois sont verrouillés pendant le minage ; les clés le sont à la fin. Le minage s’arrête si la température de la batterie atteint 45 °C ou si le système signale une surchauffe. Relancez-le manuellement après refroidissement. Une réorganisation peut annuler des confirmations ; consultez l’historique pour connaître l’état actuel."
+      }
+    ]
+  },
+  "es": {
+    "title": "Ayuda",
+    "subtitle": "Pantallas y funciones de SMW",
+    "back": "Volver a Más",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Inicio",
+        "body": "Muestra el saldo SMW, el saldo disponible, el progreso de minería y la actividad reciente. La sección de red muestra la altura local y los pares conectados. La cartera muestra las recompensas inmaduras y las variaciones pendientes."
+      },
+      {
+        "id": "mining",
+        "title": "Minería",
+        "body": "Elige entre 1 y 10 000 bloques en los ajustes de minería e inicia. El anillo muestra el progreso del lote; la cifra central es el saldo total SMW de tu cartera, no ganancias prometidas. El teléfono mina solo. La red principal requiere una cartera abierta y un nodo sincronizado. Detener cancela el lote."
+      },
+      {
+        "id": "wallet",
+        "title": "Cartera",
+        "body": "Cree o abra una cartera local protegida por contraseña. Guarde sin conexión y en orden las 24 palabras de recuperación de una nueva cartera semilla. Puede compartir la dirección de recepción, pero nunca las claves."
+      },
+      {
+        "id": "send",
+        "title": "Enviar y recibir",
+        "body": "Copie o comparta su dirección en Recibir. Para enviar, indique dirección e importe, revise comisión y débito total, y confirme. La comisión la paga quien envía. Se admiten ocho decimales."
+      },
+      {
+        "id": "balances",
+        "title": "Saldos y confirmaciones",
+        "body": "Disponible se puede gastar. Las recompensas inmaduras esperan la regla de 100 bloques. Pendiente es un cambio aún no confirmado. Las confirmaciones siguen la cadena activa y pueden variar tras una reorganización."
+      },
+      {
+        "id": "history",
+        "title": "Historial",
+        "body": "Muestra recompensas, entradas, salidas, confirmaciones, altura e ID de transacción. Los filtros se aplican a la página cargada; use Anterior y Siguiente para más de 50 registros."
+      },
+      {
+        "id": "network",
+        "title": "Conexión del nodo",
+        "body": "La app ejecuta su propio nodo SMW. Cero pares no significa que su nodo haya desaparecido. Con Internet, el descubrimiento automático busca pares compatibles. Si ninguno es accesible, añada manualmente una IP o dominio:puerto. La minería espera a que un par esté sincronizado."
+      },
+      {
+        "id": "settings",
+        "title": "Ajustes y diagnóstico",
+        "body": "En Más elija tema, modo claro u oscuro y uno de 34 idiomas. Los detalles muestran estado local, pares, uso de CPU, bits de dificultad siguientes y recompensa actual. El uso de CPU no es la tasa de hash."
+      },
+      {
+        "id": "backup",
+        "title": "Copia y recuperación",
+        "body": "Exporte una copia cifrada antes de desinstalar o cambiar de móvil; necesita la contraseña para restaurarla. Una cartera semilla también se recupera con sus 24 palabras. Proteja las copias USB o en la nube. Nunca comparta sus secretos."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Aplicación Android",
+        "body": "El teléfono mina de forma independiente con pares SMW compatibles. La red principal requiere un par sincronizado accesible y monedero abierto. La búsqueda no garantiza superar NAT o cortafuegos. Sin pool, precios de mercado ni QR.\n\nComisión automática o manual, hasta ocho decimales, pagada por el remitente. Revisa comisión y débito total. Aceptación del nodo, recepción e inclusión en bloque son estados distintos. Se indican rechazo y resultado incierto. Consulta el historial antes de repetir.\n\nUn servicio en primer plano mantiene el nodo y activa el procesador al minar. Android puede detenerlo. Las notificaciones requieren permiso. Tras cerrar se verifica al abrir y sincronizar. Operaciones antiguas y recompensas no generan avisos de nuevo ingreso."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Bloqueo automático",
+        "body": "La app protege las claves y las operaciones de envío según el estado de la cartera y de la minería. El sobrecalentamiento puede detener la minería; espere a que el dispositivo se enfríe antes de reiniciarla. Si cambia la cadena o el estado de la cartera, puede ser necesario preparar y confirmar otra vez el envío."
+      }
+    ]
+  },
+  "ar": {
+    "title": "المساعدة",
+    "subtitle": "شاشات SMW ووظائفها",
+    "back": "العودة إلى المزيد",
+    "topics": [
+      {
+        "id": "home",
+        "title": "الرئيسية",
+        "body": "يعرض رصيد SMW والرصيد المتاح وتقدم التعدين والنشاط الأخير. يعرض قسم الشبكة ارتفاع السلسلة المحلية والعقد المتصلة. تعرض المحفظة المكافآت غير الناضجة وصافي التغير المعلق."
+      },
+      {
+        "id": "mining",
+        "title": "التعدين",
+        "body": "اختر هدفًا من 1 إلى 10000 كتلة في إعدادات التعدين ثم ابدأ. تعرض الحلقة تقدم الدفعة، والرقم في الوسط هو إجمالي SMW في محفظتك وليس أرباحًا مضمونة. الهاتف يعدّن منفردًا. تتطلب الشبكة الرئيسية محفظة مفتوحة وعقدة متزامنة. الإيقاف يلغي الدفعة."
+      },
+      {
+        "id": "wallet",
+        "title": "المحفظة",
+        "body": "أنشئ محفظة محلية محمية بكلمة مرور أو افتحها. احفظ كلمات الاسترداد الأربع والعشرين لمحفظة البذرة الجديدة بالترتيب دون اتصال. يمكن مشاركة عنوان الاستلام، لكن لا تشارك الأسرار."
+      },
+      {
+        "id": "send",
+        "title": "الإرسال والاستلام",
+        "body": "انسخ عنوانك أو شاركه من شاشة الاستلام. للإرسال أدخل العنوان والمبلغ، راجع الرسوم والإجمالي ثم أكد. يدفع المرسل الرسوم. يدعم المبلغ ثماني منازل عشرية."
+      },
+      {
+        "id": "balances",
+        "title": "الأرصدة والتأكيدات",
+        "body": "الرصيد المتاح قابل للإنفاق. مكافآت التعدين غير الناضجة لم تستوفِ بعد قاعدة النضج البالغة 100 كتلة. صافي التغير المعلق ناتج عن معاملات لم تُدرج في كتلة بعد. تعتمد التأكيدات على السلسلة النشطة وقد تتغير بعد إعادة تنظيمها."
+      },
+      {
+        "id": "history",
+        "title": "السجل",
+        "body": "يعرض مكافآت التعدين والوارد والصادر وعدد التأكيدات وارتفاع الكتلة ومعرف المعاملة. تنطبق المرشحات على الصفحة المحملة؛ استخدم السابق والتالي لأكثر من 50 سجلًا."
+      },
+      {
+        "id": "network",
+        "title": "اتصال العقدة",
+        "body": "يشغّل التطبيق عقدة SMW محلية. صفر من الأقران لا يعني اختفاء عقدتك. عند توفر الإنترنت، يحاول الاكتشاف التلقائي العثور على عقد متوافقة. إذا لم تكن أي عقدة متاحة، أضف عنوان IP أو نطاقًا:منفذًا يدويًا. ينتظر التعدين مزامنة عقدة أخرى."
+      },
+      {
+        "id": "settings",
+        "title": "الإعدادات والتشخيص",
+        "body": "اختر في المزيد المظهر والوضع الفاتح أو الداكن وإحدى 34 لغة. تعرض التفاصيل حالة العقدة والأقران واستخدام المعالج وبتات الصعوبة التالية ومكافأة الكتلة. استخدام المعالج ليس معدل التجزئة."
+      },
+      {
+        "id": "backup",
+        "title": "النسخ والاسترداد",
+        "body": "صدّر نسخة مشفرة من المحفظة قبل إزالة التطبيق أو تبديل الهاتف؛ تتطلب الاستعادة الملف وكلمة مروره. يمكن أيضاً استعادة المحفظة ذات عبارة الاسترداد بكلماتها الأربع والعشرين. احمِ النسخ على USB وفي السحابة، فتسرب الأسرار قد يتيح للآخرين إنفاق أموالك. لا ترسل عبارة الاسترداد أو كلمة المرور لأي شخص."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "تطبيق Android",
+        "body": "يعدّن الهاتف مستقلاً ويتصل بعقد متوافقة. تتطلب الشبكة الرئيسية عقدة متزامنة قابلة للوصول ومحفظة مفتوحة. البحث التلقائي لا يضمن تجاوز NAT والجدران النارية. لا توجد مجموعة تعدين أو أسعار سوق أو QR.\n\nالرسوم تلقائية أو يدوية حتى ثماني منازل عشرية ويدفعها المرسل. راجع الرسوم والمجموع. قبول العقدة والاستلام والتضمين في كتلة حالات منفصلة. يظهر الرفض والنتيجة غير المؤكدة. تحقق من السجل قبل الإعادة.\n\nتستضيف خدمة أمامية العقدة وتبقي المعالج نشطاً أثناء التعدين. قد يوقف Android العملية. تتطلب الإشعارات إذناً. بعد إغلاق التطبيق، تحقق من النتائج عند فتحه مجدداً ومزامنته. المعاملات القديمة ومكافآت التعدين ليست تنبيهات استلام جديد."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "قفل الأمان التلقائي",
+        "body": "يُقفل الإنفاق أثناء التعدين وتُقفل مفاتيح المحفظة عند انتهائه.\nيتوقف التعدين عند حرارة بطارية 45°C أو ارتفاع حرارة النظام. أعد التشغيل يدويًا بعد التبريد.\nقد تُبطل إعادة تنظيم السلسلة تأكيدات سابقة؛ عند حدوث ذلك تحقق من سجل المعاملات مجدداً."
+      }
+    ]
+  },
+  "zh": {
+    "title": "帮助",
+    "subtitle": "SMW 页面与功能",
+    "back": "返回更多",
+    "topics": [
+      {
+        "id": "home",
+        "title": "首页",
+        "body": "显示 SMW 余额、可用余额、挖矿进度和最近活动。网络区域显示本地块高和已连接节点。未成熟奖励及待处理变动在钱包中查看。"
+      },
+      {
+        "id": "mining",
+        "title": "挖矿",
+        "body": "在挖矿设置中选择 1 至 10000 个目标区块，然后开始。圆环显示本批进度；中央数字是钱包的 SMW 总余额，不是承诺收益。手机独立挖矿。主网需要已打开的钱包和同步节点。停止会取消本批挖矿。"
+      },
+      {
+        "id": "wallet",
+        "title": "钱包",
+        "body": "创建或打开受密码保护的本地钱包。新助记词钱包的 24 个恢复词必须按顺序离线保存。收款地址可以分享，密码和恢复词不能分享。"
+      },
+      {
+        "id": "send",
+        "title": "发送与接收",
+        "body": "在接收页复制或分享自己的地址。发送时输入地址和金额，核对手续费与总支出后确认。手续费由发送方支付。金额支持八位小数。"
+      },
+      {
+        "id": "balances",
+        "title": "余额与确认数",
+        "body": "可用余额可立即花费。未成熟奖励须满足 100 区块成熟规则。待处理表示尚未写入区块的交易变动。确认数以当前有效链为准，链重组后可能变化。"
+      },
+      {
+        "id": "history",
+        "title": "交易记录",
+        "body": "显示挖矿奖励、收款、付款、确认数、块高和交易 ID。筛选仅作用于已加载页面；超过 50 条时使用上一页或下一页。"
+      },
+      {
+        "id": "network",
+        "title": "节点连接",
+        "body": "应用运行本地 SMW 节点。已连接节点为零并不代表自己的节点消失。联网后会自动寻找兼容节点；若找不到可连接的节点，请手动添加对方的 IP 或域名:端口。挖矿会等待与节点同步。"
+      },
+      {
+        "id": "settings",
+        "title": "设置与诊断",
+        "body": "在更多中选择主题、明暗模式和 34 种语言之一。节点详情显示本地状态、连接数、CPU 使用率、下一难度 bits 与当前区块奖励。CPU 使用率不是算力。"
+      },
+      {
+        "id": "backup",
+        "title": "备份与恢复",
+        "body": "卸载或更换手机前导出加密钱包备份；恢复需要密码。助记词钱包也可用 24 个词恢复。请保护 USB 和云端副本，切勿把恢复词或密码发送给他人。"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android 应用",
+        "body": "手机独立挖矿并与兼容节点通信。主网需要可连接的同步节点及已打开的钱包。自动发现不能保证穿过所有 NAT 和防火墙。没有矿池、市场价格服务或 QR 功能。\n\n手续费自动计算或手动设置，最多八位小数，由发送方承担。提交前检查手续费与总支出。节点接受不等于对方收款或区块确认。拒绝、结果不明、收款待确认和区块包含分别显示。结果不明时先检查记录再决定是否重发。\n\n前台服务运行节点，挖矿时使用唤醒锁。Android 或厂商仍可能终止进程。通知需要权限。应用关闭后，在重开及同步后检查结果。旧交易与挖矿奖励不作为新收款提醒。"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "自动安全锁定",
+        "body": "挖矿期间锁定转账，挖矿结束后锁定钱包密钥。电池温度达到45°C或系统报告过热时停止挖矿；冷却后请手动重新开始。链重组可能撤销交易确认，请在交易记录中检查当前状态。"
+      }
+    ]
+  },
+  "pt": {
+    "title": "Ajuda",
+    "subtitle": "Telas e funções do SMW",
+    "back": "Voltar a Mais",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Início",
+        "body": "Mostra o saldo SMW, o saldo disponível, o progresso de mineração e a atividade recente. A seção de rede mostra a altura local e os nós conectados. A carteira mostra recompensas imaturas e alterações pendentes."
+      },
+      {
+        "id": "mining",
+        "title": "Mineração",
+        "body": "Escolha de 1 a 10.000 blocos nas configurações e inicie a mineração. O anel mostra o progresso do lote; o número central é o saldo total SMW da carteira, não ganhos prometidos. O telefone minera sozinho. A rede principal exige carteira aberta e nó sincronizado. Parar cancela o lote."
+      },
+      {
+        "id": "wallet",
+        "title": "Carteira",
+        "body": "Crie ou abra uma carteira local protegida por senha. Guarde as 24 palavras de recuperação de uma nova carteira com semente, na ordem correta e sem conexão à Internet. O endereço de recebimento pode ser compartilhado, mas a senha e as palavras de recuperação devem permanecer em sigilo."
+      },
+      {
+        "id": "send",
+        "title": "Enviar e receber",
+        "body": "Copie ou compartilhe seu endereço na tela Receber. Para enviar, informe endereço e valor, confira a taxa e o débito total e confirme. O remetente paga a taxa. São permitidas até oito casas decimais."
+      },
+      {
+        "id": "balances",
+        "title": "Saldos e confirmações",
+        "body": "Disponível pode ser gasto. Recompensas imaturas aguardam a regra de 100 blocos. Pendente é uma alteração ainda não confirmada. As confirmações seguem a cadeia ativa e podem mudar após reorganização."
+      },
+      {
+        "id": "history",
+        "title": "Histórico",
+        "body": "Mostra recompensas, entradas, saídas, confirmações, altura e ID da transação. Os filtros se aplicam à página carregada; use Anterior e Próximo para ver mais de 50 registros."
+      },
+      {
+        "id": "network",
+        "title": "Conexão do nó",
+        "body": "A aplicação executa o seu próprio nó SMW. Zero pares não significa que o nó desapareceu. Com Internet, a descoberta automática procura pares compatíveis. Se nenhum estiver acessível, adicione manualmente um IP ou domínio:porta. A mineração espera a sincronização de um par."
+      },
+      {
+        "id": "settings",
+        "title": "Configurações e diagnóstico",
+        "body": "Em Mais escolha tema, modo claro ou escuro e um dos 34 idiomas. Os detalhes mostram estado local, pares, uso da CPU, próximos bits de dificuldade e recompensa atual. O uso da CPU não é a taxa de hash."
+      },
+      {
+        "id": "backup",
+        "title": "Backup e recuperação",
+        "body": "Exporte um backup criptografado antes de desinstalar ou trocar de celular; a restauração exige a senha. Uma carteira com semente também pode ser recuperada com suas 24 palavras. Proteja cópias em USB ou na nuvem e nunca compartilhe seus segredos."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Aplicativo Android",
+        "body": "O telefone minera independentemente com pares compatíveis. A rede principal exige par sincronizado acessível e carteira aberta. A descoberta não garante atravessar NAT ou firewall. Sem pool, preços de mercado ou QR.\n\nTaxa automática ou manual, até oito casas decimais, paga pelo remetente. Confira taxa e débito total. Aceitação no nó, recebimento e inclusão em bloco são separados. Rejeição e resultado incerto são indicados. Consulte o histórico antes de repetir.\n\nServiço em primeiro plano hospeda o nó e mantém o processador ativo ao minerar. Android pode encerrar o processo. Notificações exigem permissão. Após fechar, verifica ao reabrir e sincronizar. Transações antigas e recompensas não geram avisos de nova entrada."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Bloqueio automático",
+        "body": "O aplicativo protege chaves e operações de envio conforme o estado da carteira e da mineração. O superaquecimento pode interromper a mineração; espere o aparelho esfriar antes de reiniciar. Se a cadeia ou o estado da carteira mudar, pode ser necessário preparar e confirmar o envio novamente."
+      }
+    ]
+  },
+  "ru": {
+    "title": "Справка",
+    "subtitle": "Экраны и функции SMW",
+    "back": "Назад в «Ещё»",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Главная",
+        "body": "Показывает баланс SMW, доступный баланс, прогресс майнинга и недавние действия. Раздел сети показывает локальную высоту и подключённые узлы. Незрелые награды и ожидающие изменения находятся в кошельке."
+      },
+      {
+        "id": "mining",
+        "title": "Майнинг",
+        "body": "Выберите от 1 до 10 000 блоков в настройках и запустите майнинг. Кольцо показывает прогресс задания; число в центре — общий баланс SMW, а не обещанный доход. Телефон майнит самостоятельно. Для основной сети нужны открытый кошелёк и синхронизированный узел. Остановка отменяет задание."
+      },
+      {
+        "id": "wallet",
+        "title": "Кошелёк",
+        "body": "Создайте или откройте локальный кошелёк с паролем. Сохраните 24 слова восстановления нового seed-кошелька по порядку без подключения к сети. Адрес получения можно передавать, секреты — нельзя."
+      },
+      {
+        "id": "send",
+        "title": "Отправка и получение",
+        "body": "На экране получения скопируйте или передайте адрес. Для отправки введите адрес и сумму, проверьте комиссию и итоговое списание, затем подтвердите. Комиссию платит отправитель. Поддерживаются восемь знаков после запятой."
+      },
+      {
+        "id": "balances",
+        "title": "Баланс и подтверждения",
+        "body": "Доступный баланс можно потратить. Незрелые награды ещё не выполнили правило зрелости в 100 блоков. Неподтверждённое изменение баланса связано с транзакциями, которые пока не включены в блок. Число подтверждений зависит от активной цепочки и может измениться при реорганизации."
+      },
+      {
+        "id": "history",
+        "title": "История",
+        "body": "Показывает награды, входящие и исходящие средства, подтверждения, высоту блока и ID транзакции. Фильтры действуют на загруженную страницу; для более 50 записей используйте переходы."
+      },
+      {
+        "id": "network",
+        "title": "Подключение узла",
+        "body": "Приложение запускает собственный узел SMW. Ноль подключённых узлов не означает, что ваш узел исчез. При наличии интернета автоматический поиск ищет совместимые узлы. Если доступных нет, добавьте IP или домен:порт вручную. Майнинг ждёт синхронизации с узлом."
+      },
+      {
+        "id": "settings",
+        "title": "Настройки и диагностика",
+        "body": "В разделе «Ещё» выберите тему, светлый или тёмный режим и один из 34 языков. Подробности показывают состояние узла, пиров, загрузку CPU, bits следующей сложности и текущую награду. Загрузка CPU не равна хешрейту."
+      },
+      {
+        "id": "backup",
+        "title": "Копия и восстановление",
+        "body": "До удаления приложения или смены телефона экспортируйте зашифрованную резервную копию. Для восстановления нужны этот файл и его пароль. Кошелёк с фразой восстановления можно также восстановить по 24 словам. Защищайте копии на USB и в облаке: утечка секретов может дать посторонним доступ к средствам. Никому не сообщайте слова восстановления или пароль."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Приложение Android",
+        "body": "Телефон майнит независимо и взаимодействует с совместимыми узлами. В основной сети нужны доступный синхронизированный узел и открытый кошелёк. Поиск не гарантирует обход NAT и брандмауэров. Нет пула, рыночных цен или QR.\n\nКомиссия автоматическая или ручная, до восьми знаков, за счёт отправителя. Проверьте комиссию и общий расход. Приём узлом, получение и включение в блок различны. Показываются отказ и неопределённый результат. Перед повтором проверьте историю.\n\nУзел работает в службе переднего плана; при майнинге процессор активен. Android может завершить процесс. Уведомления требуют разрешения. После завершения приложения проверьте результат при следующем открытии и синхронизации. Старые переводы и награды не считаются новыми поступлениями."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Автоблокировка",
+        "body": "Во время майнинга отправка блокируется; после завершения блокируются ключи.\nМайнинг останавливается при 45°C батареи или перегреве системы. Запустите после охлаждения.\nРеорганизация цепочки может отменить прежние подтверждения; в таком случае проверьте историю транзакций."
+      }
+    ]
+  },
+  "de": {
+    "title": "Hilfe",
+    "subtitle": "SMW-Bildschirme und Funktionen",
+    "back": "Zurück zu Mehr",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Startseite",
+        "body": "Zeigt SMW-Guthaben, verfügbares Guthaben, Mining-Fortschritt und letzte Aktivitäten. Der Netzwerkbereich zeigt lokale Blockhöhe und verbundene Peers. Unreife Belohnungen und ausstehende Änderungen stehen in der Wallet."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Wähle 1 bis 10.000 Zielblöcke in den Mining-Einstellungen und starte. Der Ring zeigt den Fortschritt dieses Auftrags; die Zahl in der Mitte ist das gesamte SMW-Guthaben, kein versprochener Ertrag. Das Telefon betreibt Solo-Mining. Im Hauptnetz sind eine offene Wallet und ein synchronisierter Peer nötig. Stoppen bricht den Auftrag ab."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Erstellen oder öffnen Sie eine lokale passwortgeschützte Wallet. Notieren Sie die 24 Wiederherstellungswörter einer neuen Seed-Wallet in der richtigen Reihenfolge offline. Die Empfangsadresse darf geteilt werden, Geheimnisse nicht."
+      },
+      {
+        "id": "send",
+        "title": "Senden und Empfangen",
+        "body": "Kopieren oder teilen Sie Ihre Adresse unter Empfangen. Zum Senden Adresse und Betrag eingeben, Gebühr und Gesamtabbuchung prüfen und bestätigen. Der Sender zahlt die Gebühr. Acht Nachkommastellen sind möglich."
+      },
+      {
+        "id": "balances",
+        "title": "Guthaben und Bestätigungen",
+        "body": "Verfügbar ist ausgabefähig. Unreife Erträge warten auf die 100-Block-Regel. Ausstehend ist eine noch nicht im Block bestätigte Änderung. Bestätigungen beziehen sich auf die aktive Kette und können sich nach einer Neuordnung ändern."
+      },
+      {
+        "id": "history",
+        "title": "Verlauf",
+        "body": "Zeigt Erträge, Eingänge, Ausgänge, Bestätigungen, Blockhöhe und Transaktions-ID. Filter gelten für die geladene Seite; bei mehr als 50 Einträgen mit Zurück und Weiter blättern."
+      },
+      {
+        "id": "network",
+        "title": "Knotenverbindung",
+        "body": "Die App betreibt einen eigenen SMW-Knoten. Null Peers bedeutet nicht, dass er verschwunden ist. Bei Internetzugang sucht die automatische Erkennung nach kompatiblen Peers. Ist keiner erreichbar, fügen Sie IP oder Domain:Port manuell hinzu. Mining wartet auf einen synchronisierten Peer."
+      },
+      {
+        "id": "settings",
+        "title": "Einstellungen und Diagnose",
+        "body": "Unter Mehr wählen Sie Farbthema, hellen oder dunklen Modus und eine von 34 Sprachen. Details zeigen lokalen Status, Peers, CPU-Auslastung, nächste Schwierigkeits-bits und aktuelle Blockbelohnung. CPU-Auslastung ist keine Hashrate."
+      },
+      {
+        "id": "backup",
+        "title": "Sicherung und Wiederherstellung",
+        "body": "Exportieren Sie vor Deinstallation oder Telefonwechsel eine verschlüsselte Wallet-Sicherung; zur Wiederherstellung wird das Passwort benötigt. Eine Seed-Wallet lässt sich auch mit 24 Wörtern retten. Schützen Sie USB- und Cloud-Kopien und geben Sie Geheimnisse nie weiter."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-Anwendung",
+        "body": "Das Telefon schürft unabhängig mit kompatiblen Knoten. Im Hauptnetz sind ein erreichbarer synchronisierter Peer und eine offene Wallet nötig. Suche garantiert keinen Zugang durch NAT oder Firewall. Kein Pool, Marktpreis oder QR.\n\nAutomatische oder manuelle Gebühr mit bis zu acht Nachkommastellen; der Sender zahlt. Gebühr und Gesamtabbuchung prüfen. Annahme durch den Knoten, Empfang und Blockaufnahme sind verschieden. Ablehnung und unklarer Ausgang werden angezeigt. Vor Wiederholung Verlauf prüfen.\n\nEin Vordergrunddienst betreibt den Knoten; beim Mining bleibt die CPU aktiv. Android kann den Prozess beenden. Meldungen benötigen Erlaubnis. Nach Schließen erfolgt die Prüfung beim Öffnen und Synchronisieren. Alte Transaktionen und Mining-Belohnungen gelten nicht als neue Eingänge."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatische Sperre",
+        "body": "Die App schützt Schlüssel und Überweisungen abhängig vom Wallet- und Mining-Status. Bei Überhitzung kann das Mining stoppen; lassen Sie das Gerät abkühlen, bevor Sie es neu starten. Ändert sich die Kette oder der Wallet-Status, müssen Sie die Überweisung gegebenenfalls neu vorbereiten und bestätigen."
+      }
+    ]
+  },
+  "sw": {
+    "title": "Msaada",
+    "subtitle": "Skrini na kazi za SMW",
+    "back": "Rudi kwenye Zaidi",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Nyumbani",
+        "body": "Huonyesha salio la SMW, salio linalopatikana, maendeleo ya uchimbaji na shughuli za karibuni. Sehemu ya mtandao huonyesha urefu wa mnyororo wa ndani na nodi zilizounganishwa. Pochi huonyesha zawadi ambazo hazijakomaa na mabadiliko ya salio yanayosubiri."
+      },
+      {
+        "id": "mining",
+        "title": "Uchimbaji",
+        "body": "Chagua vitalu 1–10,000 katika mipangilio ya uchimbaji kisha uanze. Duara huonyesha maendeleo ya kundi hili; namba katikati ni salio lote la SMW, si mapato yaliyoahidiwa. Simu huchimba kwa kujitegemea. Mtandao mkuu unahitaji pochi iliyofunguliwa na nodi iliyosawazishwa. Kusimamisha hughairi kundi la sasa."
+      },
+      {
+        "id": "wallet",
+        "title": "Pochi",
+        "body": "Unda au fungua pochi ya ndani inayolindwa kwa nenosiri. Hifadhi maneno 24 ya kurejesha ya pochi mpya kwa mpangilio na nje ya mtandao. Anwani ya kupokea inaweza kushirikiwa, lakini nenosiri na maneno ya kurejesha lazima yawe siri."
+      },
+      {
+        "id": "send",
+        "title": "Tuma na pokea",
+        "body": "Nakili au shiriki anwani yako kwenye Pokea. Kutuma, andika anwani na kiasi, kagua ada na jumla itakayokatwa, kisha thibitisha. Mtumaji hulipa ada. Desimali nane zinakubaliwa."
+      },
+      {
+        "id": "balances",
+        "title": "Salio na uthibitisho",
+        "body": "Salio linalopatikana linaweza kutumika. Zawadi zisizokomaa bado zinasubiri kutimiza kanuni ya ukomavu wa vitalu 100. Mabadiliko yanayosubiri ni yale ya miamala ambayo haijajumuishwa kwenye kitalu. Idadi ya uthibitisho hufuata mnyororo hai na inaweza kubadilika baada ya upangaji upya."
+      },
+      {
+        "id": "history",
+        "title": "Historia",
+        "body": "Huonyesha zawadi, kilichopokelewa, kilichotumwa, uthibitisho, urefu wa blok na kitambulisho cha muamala. Vichujio hutumika kwenye ukurasa uliopakiwa; tumia Iliyotangulia na Inayofuata kwa rekodi zaidi ya 50."
+      },
+      {
+        "id": "network",
+        "title": "Muunganisho wa nodi",
+        "body": "Programu huendesha nodi yake ya SMW. Nodi nyingine sifuri haimaanishi nodi yako imepotea. Ikiwa intaneti ipo, utafutaji wa moja kwa moja hutafuta nodi zinazolingana. Ikiwa hakuna inayofikika, ongeza IP au domain:port mwenyewe. Uchimbaji husubiri nodi nyingine isawazishwe."
+      },
+      {
+        "id": "settings",
+        "title": "Mipangilio na uchunguzi",
+        "body": "Kwenye Zaidi chagua mandhari, hali ya mwanga au giza na mojawapo ya lugha 34. Maelezo ya nodi huonyesha hali ya ndani, nodi nyingine, matumizi ya CPU, bits za ugumu unaofuata na zawadi ya sasa. Matumizi ya CPU si kiwango cha hash."
+      },
+      {
+        "id": "backup",
+        "title": "Nakala na urejeshaji",
+        "body": "Hamisha nakala rudufu ya pochi iliyosimbwa kabla ya kuondoa programu au kubadili simu; kurejesha kunahitaji faili hiyo na nenosiri lake. Pochi yenye maneno ya kurejesha pia inaweza kurejeshwa kwa maneno yake 24. Linda nakala kwenye USB na wingu: siri zikivuja, mtu mwingine anaweza kupata fedha. Usitume maneno ya kurejesha au nenosiri kwa mtu yeyote."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Programu ya Android",
+        "body": "Simu huchimba yenyewe na kuwasiliana na nodi zinazolingana. Mtandao mkuu unahitaji nodi iliyosawazishwa inayofikika na pochi iliyofunguliwa. Utafutaji hauhakikishi kupita NAT au firewall. Hakuna pool, bei za soko au QR.\n\nAda hukokotolewa au kuwekwa mwenyewe hadi desimali nane; mtumaji hulipa. Hakiki ada na jumla. Kukubaliwa na nodi, kupokelewa na kuingia kwenye bloku ni hatua tofauti. Kukataliwa na matokeo yasiyojulikana huonyeshwa. Hakiki historia kabla ya kutuma tena.\n\nHuduma ya mbele huendesha nodi na huweka CPU hai wakati wa kuchimba. Android inaweza kusimamisha programu. Arifa zinahitaji ruhusa. Baada ya kufungwa, hakiki unapofungua na kusawazisha. Miamala ya zamani na zawadi si mapokezi mapya."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Kufunga kiotomatiki",
+        "body": "Kutuma hufungwa wakati wa uchimbaji; funguo hufungwa uchimbaji ukiisha.\nHusimama betri ikifika 45°C au mfumo ukipata joto. Anza tena baada ya kupoa.\nUpangaji upya wa mnyororo unaweza kuondoa uthibitisho wa awali; ukitokea, angalia historia tena."
+      }
+    ]
+  },
+  "hi": {
+    "title": "सहायता",
+    "subtitle": "SMW स्क्रीन और सुविधाएँ",
+    "back": "अधिक पर वापस जाएँ",
+    "topics": [
+      {
+        "id": "home",
+        "title": "होम",
+        "body": "SMW शेष, उपलब्ध शेष, माइनिंग प्रगति और हाल की गतिविधि दिखाता है। नेटवर्क भाग में स्थानीय ब्लॉक ऊँचाई और जुड़े पीयर दिखते हैं। अपरिपक्व पुरस्कार और लंबित शुद्ध बदलाव वॉलेट में देखें।"
+      },
+      {
+        "id": "mining",
+        "title": "खनन",
+        "body": "माइनिंग सेटिंग में लक्ष्य के लिए 1–10,000 ब्लॉक चुनकर शुरू करें। रिंग इस बैच की प्रगति दिखाती है; बीच की संख्या वॉलेट का कुल SMW शेष है, सुनिश्चित कमाई नहीं। फ़ोन स्वतंत्र माइनिंग करता है। मुख्य नेटवर्क पर खुला वॉलेट और सिंक किया हुआ पीयर आवश्यक हैं। रोकने पर बैच रद्द होता है।"
+      },
+      {
+        "id": "wallet",
+        "title": "वॉलेट",
+        "body": "पासवर्ड से सुरक्षित स्थानीय वॉलेट बनाएँ या खोलें। नए सीड वॉलेट के 24 रिकवरी शब्द सही क्रम में ऑफ़लाइन रखें। प्राप्ति पता साझा कर सकते हैं, लेकिन पासवर्ड और शब्द नहीं।"
+      },
+      {
+        "id": "send",
+        "title": "भेजें और प्राप्त करें",
+        "body": "प्राप्ति स्क्रीन पर अपना पता कॉपी या साझा करें। भेजते समय पता और राशि भरें, शुल्क और कुल कटौती जाँचें, फिर पुष्टि करें। शुल्क भेजने वाला देता है। आठ दशमलव स्थान समर्थित हैं।"
+      },
+      {
+        "id": "balances",
+        "title": "शेष और पुष्टियाँ",
+        "body": "उपलब्ध शेष खर्च किया जा सकता है। अपरिपक्व पुरस्कार 100-ब्लॉक नियम पूरा होने तक प्रतीक्षा करते हैं। लंबित का अर्थ है कि बदलाव अभी ब्लॉक में पुष्ट नहीं हुआ। पुष्टियों की संख्या सक्रिय चेन के अनुसार बदल सकती है।"
+      },
+      {
+        "id": "history",
+        "title": "लेन-देन इतिहास",
+        "body": "खनन पुरस्कार, प्राप्त और भेजी राशि, पुष्टियाँ, ब्लॉक ऊँचाई और लेन-देन ID दिखाता है। फ़िल्टर लोड किए गए पृष्ठ पर लागू होते हैं; 50 से अधिक रिकॉर्ड के लिए पिछले और अगले का उपयोग करें।"
+      },
+      {
+        "id": "network",
+        "title": "नोड कनेक्शन",
+        "body": "ऐप अपना SMW नोड चलाता है। शून्य जुड़े पीयर का अर्थ यह नहीं कि आपका नोड गायब है। इंटरनेट पर स्वचालित खोज संगत पीयर ढूँढती है। यदि कोई उपलब्ध न हो, तो उसका IP या डोमेन:पोर्ट खुद जोड़ें। पीयर से सिंक होने तक खनन प्रतीक्षा करता है।"
+      },
+      {
+        "id": "settings",
+        "title": "सेटिंग और जाँच",
+        "body": "अधिक में रंग थीम, हल्का या गहरा मोड और 34 भाषाओं में से चुनें। नोड विवरण स्थानीय स्थिति, पीयर, CPU उपयोग, अगली कठिनाई के bits और वर्तमान ब्लॉक पुरस्कार दिखाता है। CPU उपयोग हैश दर नहीं है।"
+      },
+      {
+        "id": "backup",
+        "title": "बैकअप और रिकवरी",
+        "body": "ऐप हटाने या फ़ोन बदलने से पहले एन्क्रिप्टेड वॉलेट बैकअप निर्यात करें। उसे बहाल करने के लिए बैकअप फ़ाइल और पासवर्ड दोनों चाहिए। सीड वॉलेट 24 पुनर्प्राप्ति शब्दों से भी बहाल हो सकता है। USB और क्लाउड प्रतियों को सुरक्षित रखें; गोपनीय जानकारी किसी को न दें।"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android ऐप",
+        "body": "फोन स्वतंत्र माइनिंग करता है और संगत नोड से जुड़ता है। मुख्य नेटवर्क में पहुँच योग्य सिंक्रनाइज़ नोड और खुला वॉलेट चाहिए। खोज सभी NAT और फ़ायरवॉल पार करने की गारंटी नहीं है। पूल, बाजार मूल्य या QR नहीं है।\n\nशुल्क स्वचालित या स्वयं तय, अधिकतम आठ दशमलव, भेजने वाला देता है। शुल्क और कुल खर्च जाँचें। नोड स्वीकृति, प्राप्ति और ब्लॉक में शामिल होना अलग हैं। अस्वीकार और अस्पष्ट परिणाम दिखते हैं। दोबारा भेजने से पहले इतिहास जाँचें।\n\nअग्रभूमि सेवा नोड चलाती है और माइनिंग में CPU सक्रिय रहता है। Android प्रक्रिया रोक सकता है। सूचनाओं को अनुमति चाहिए। बंद होने के बाद फिर खोलने और सिंक पर जाँच होती है। पुराने लेनदेन और पुरस्कार नई प्राप्ति नहीं हैं।"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "स्वचालित सुरक्षा लॉक",
+        "body": "माइनिंग के दौरान भेजना लॉक होता है; समाप्त होने पर वॉलेट कुंजियाँ लॉक होती हैं।\nबैटरी 45°C या सिस्टम अधिक गर्म होने पर माइनिंग रुकती है। ठंडा होने पर फिर शुरू करें।\nचेन बदलाव से पिछली पुष्टि हट गई। लेनदेन इतिहास फिर जाँचें।"
+      }
+    ]
+  },
+  "ja": {
+    "title": "ヘルプ",
+    "subtitle": "各 SMW 画面の仕組み",
+    "back": "その他に戻る",
+    "topics": [
+      {
+        "id": "home",
+        "title": "ホーム",
+        "body": "SMW 残高、使用可能な残高、マイニングの進捗、最近の活動を表示します。ネットワーク欄ではローカルのブロック高さと接続中のピアを確認できます。ウォレットには未成熟の報酬と未確認取引による増減を表示します。"
+      },
+      {
+        "id": "mining",
+        "title": "マイニング",
+        "body": "マイニング設定で目標を 1～10,000 ブロックから選び、「マイニング開始」をタップします。リングは今回の目標に対する進捗です。中央の数値はウォレットの SMW 総残高であり、収益の保証ではありません。このスマートフォンはソロマイニングを行います。メインネットワークでは、開いたウォレットと同期済みのピアが必要です。停止すると今回のマイニングを取り消します。"
+      },
+      {
+        "id": "wallet",
+        "title": "ウォレット",
+        "body": "パスワードで保護したローカルウォレットを作成するか開きます。新しいシードウォレットには復元用の 24 単語が表示されるので、順番どおりにオフラインで保管してください。受取用アドレスは共有できますが、パスワードと復元用の単語は秘密にしてください。"
+      },
+      {
+        "id": "send",
+        "title": "送信と受信",
+        "body": "「受信」には、コピーまたは共有するためのアドレスが表示されます。送信するには、SMW アドレスと金額を入力し、計算された手数料と引き落とし総額を確認して、確定します。送信者は手数料を支払います。金額は小数点以下 8 桁までサポートされます。"
+      },
+      {
+        "id": "balances",
+        "title": "残高と確認",
+        "body": "利用可能な金額は、すぐに使える金額です。未成熟な報酬は、まだ 100 ブロックの満期ルールの対象となるマイニングされたコインです。保留中は、ブロック内でまだ確認されていないトランザクションの変更です。確認カウントは現在アクティブなチェーンに従い、チェーンの再編成後に変更される可能性があります。"
+      },
+      {
+        "id": "history",
+        "title": "取引履歴",
+        "body": "マイニング報酬、受け取った資金、送金した資金、確認数、ブロックの高さ、トランザクション ID を表示します。フィルタはロードされたページに適用されます。 50 を超えるレコードを参照するには、「前へ」または「次へ」を使用します。"
+      },
+      {
+        "id": "network",
+        "title": "ノード接続",
+        "body": "アプリはローカル SMW ノードを実行します。接続されたピアは他のノードをカウントするため、ゼロは自分のノードが消滅したことを意味するわけではありません。インターネットが有効になっている場合、自動 SMW 検出は互換性のあるピアを見つけようとします。どれにも到達できない場合は、ピア IP またはドメイン:ポートを手動で追加します。マイニングは、ピアが同期されるまで待機します。"
+      },
+      {
+        "id": "settings",
+        "title": "設定と診断",
+        "body": "[詳細] では、カラー テーマ、ライト モードまたはダーク モード、および 34 言語の 1 つを選択できます。ノードの詳細には、ローカル ステータス、ピア数、CPU 使用率、次の難易度ビット、および現在のブロック報酬が表示されます。 CPU 使用率はハッシュ レートの測定値ではありません。"
+      },
+      {
+        "id": "backup",
+        "title": "バックアップとリカバリ",
+        "body": "アプリの削除や機種変更の前に、暗号化ウォレットのバックアップを保存してください。ファイルからの復元にはパスワードが必要です。シードウォレットは復元用の 24 単語でも復元できます。USB やクラウド上のコピーから秘密情報が漏れると、資金を使われるおそれがあります。復元用の単語とパスワードを他人に送らないでください。"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Androidアプリ",
+        "body": "電話機は独立してマイニングし、互換性のある SMW ピアと通信します。メインネットワークには、同期された到達可能なピアとオープンウォレットが必要です。自動検出は、すべての NAT またはファイアウォールを介したアクセスを保証するものではありません。マイニングプール、相場サービス、QR機能は含まれておりません。\n\n手数料は自動的に計算されるか、小数点以下 8 桁まで手動で入力されます。送信者は手数料を支払います。送信する前に、手数料と引き落とし総額を確認してください。ノードの受け入れは、受信者の受信またはブロックの確認ではありません。拒否、不確実な結果、受信保留中の転送、およびブロックの包含が個別に表示されます。履歴を確認する前に、不確実なトランザクションを再送信しないでください。\n\nローカルのフォアグラウンド サービスがノードをホストします。アクティブマイニングはウェイクロックを使用します。 Android またはデバイスのメーカーがプロセスを停止する可能性があります。通知には許可が必要です。閉じたアプリは即時受信アラートを保証できません。結果は、再度開いて同期した後に確認されます。古いトランザクションとマイニング報酬は、新しい受信転送アラートから除外されます。"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "自動セキュリティロック",
+        "body": "マイニング中は支出がロックされます。マイニングが終了するとウォレットのキーはロックされます。\nマイニングは、バッテリー温度 45°C またはシステムの過熱で停止します。冷却後、手動で再始動してください。\nチェーンの変更により、以前のブロック確認が削除されました。取引履歴を再度確認してください。"
+      }
+    ]
+  },
+  "id": {
+    "title": "Bantuan",
+    "subtitle": "Cara kerja setiap layar SMW",
+    "back": "Kembali ke Lainnya",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Beranda",
+        "body": "Menunjukkan saldo SMW Anda, saldo yang tersedia, kemajuan penambangan, dan aktivitas terkini. Bagian jaringan menunjukkan tinggi blok lokal dan rekan yang terhubung. Dompet menunjukkan imbalan yang belum matang dan perubahan yang tertunda."
+      },
+      {
+        "id": "mining",
+        "title": "Penambangan",
+        "body": "Pilih blok target 1–10,000 di pengaturan Penambangan, lalu ketuk Mulai menambang. Cincin tersebut menunjukkan kemajuan menuju target batch ini; nomor di dalamnya adalah total SMW dompet Anda, bukan penghasilan yang dijanjikan. Ponsel ini menambang sendirian. Dompet terbuka dan rekan tersinkronisasi diperlukan di jaringan utama. Berhenti membatalkan batch saat ini."
+      },
+      {
+        "id": "wallet",
+        "title": "Dompet",
+        "body": "Buat atau buka dompet lokal yang dilindungi kata sandi. Dompet dengan frasa pemulihan baru menunjukkan kata-kata pemulihan 24; simpan secara offline secara berurutan. Alamat penerima boleh dibagikan, namun kata sandi dan kata pemulihan harus tetap bersifat pribadi."
+      },
+      {
+        "id": "send",
+        "title": "Kirim dan terima",
+        "body": "Terima menampilkan alamat Anda untuk disalin atau dibagikan. Untuk mengirim, masukkan alamat dan jumlah SMW, tinjau perhitungan biaya dan total debit, lalu konfirmasi. Pengirim membayar biayanya. Jumlah mendukung hingga delapan tempat desimal."
+      },
+      {
+        "id": "balances",
+        "title": "Saldo dan konfirmasi",
+        "body": "Tersedia adalah jumlah yang siap dibelanjakan. Hadiah yang belum matang adalah koin yang ditambang yang masih tunduk pada aturan jatuh tempo blok 100. Pending adalah perubahan transaksi yang belum terkonfirmasi dalam suatu blok. Jumlah konfirmasi mengikuti rantai aktif saat ini dan dapat berubah setelah reorganisasi rantai."
+      },
+      {
+        "id": "history",
+        "title": "Riwayat transaksi",
+        "body": "Menampilkan hadiah penambangan, dana yang diterima, dana yang dikirim, jumlah konfirmasi, tinggi blok, dan ID transaksi. Filter berlaku untuk halaman yang dimuat; gunakan Sebelumnya atau Berikutnya untuk menelusuri lebih dari catatan 50."
+      },
+      {
+        "id": "network",
+        "title": "Koneksi simpul",
+        "body": "Aplikasi ini menjalankan node SMW lokal. Rekan yang terhubung menghitung node lain, jadi nol tidak berarti node Anda sendiri hilang. Dengan internet diaktifkan, penemuan SMW otomatis mencoba menemukan rekan yang kompatibel. Jika tidak ada yang dapat dijangkau, tambahkan IP rekan atau domain:port secara manual. Penambangan menunggu hingga peer disinkronkan."
+      },
+      {
+        "id": "settings",
+        "title": "Pengaturan dan diagnostik",
+        "body": "Lainnya memungkinkan Anda memilih tema warna, mode terang atau gelap, dan salah satu bahasa 34. Detail node menunjukkan status lokal, jumlah rekan, penggunaan CPU, bit kesulitan berikutnya, dan hadiah blok saat ini. Penggunaan CPU bukanlah pengukuran tingkat hash."
+      },
+      {
+        "id": "backup",
+        "title": "Pencadangan dan pemulihan",
+        "body": "Ekspor cadangan dompet terenkripsi sebelum menghapus aplikasi atau mengganti ponsel. Pemulihan memerlukan berkas cadangan dan kata sandinya. Dompet seed juga dapat dipulihkan dengan 24 kata pemulihan. Lindungi salinan USB dan cloud; terbukanya rahasia dapat memberi akses ke dana. Jangan pernah mengirim kata pemulihan atau kata sandi kepada siapa pun."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Aplikasi Android",
+        "body": "Ponsel ini menambang secara mandiri dan berkomunikasi dengan rekan SMW yang kompatibel. Rekan yang dapat dijangkau dan disinkronkan dan dompet terbuka diperlukan di jaringan utama. Penemuan otomatis tidak menjamin akses melalui setiap NAT atau firewall. Tidak ada kumpulan penambangan, layanan harga pasar, atau fitur QR yang disertakan.\n\nBiaya dapat dihitung secara otomatis atau dimasukkan secara manual, hingga delapan angka desimal. Pengirim membayar biayanya. Tinjau biaya dan total debit sebelum mengirimkan. Penerimaan node bukanlah tanda terima penerima atau konfirmasi blok. Penolakan, hasil yang tidak pasti, transfer masuk yang tertunda, dan penyertaan blok ditampilkan secara terpisah. Jangan mengirim ulang transaksi yang belum pasti sebelum memeriksa riwayat.\n\nLayanan latar depan lokal menghosting node. Penambangan aktif menjaga CPU tetap berjalan dengan wake lock; Android atau produsen perangkat mungkin masih menghentikan proses tersebut. Pemberitahuan memerlukan izin. Aplikasi yang ditutup tidak dapat menjamin peringatan penerimaan langsung; hasilnya diperiksa setelah pembukaan kembali dan sinkronisasi. Transaksi lama dan hadiah penambangan tidak termasuk dalam peringatan transfer masuk yang baru."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Kunci keamanan otomatis",
+        "body": "Pengeluaran dikunci selama penambangan; kunci dompet terkunci saat penambangan berakhir.\nPenambangan berhenti pada suhu baterai 45°C atau sistem terlalu panas. Mulai ulang secara manual setelah pendinginan.\nPerubahan berantai menghapus konfirmasi blok sebelumnya. Periksa kembali riwayat transaksi."
+      }
+    ]
+  },
+  "vi": {
+    "title": "Trợ giúp",
+    "subtitle": "Cách hoạt động của mỗi màn hình SMW",
+    "back": "Quay lại phần Thêm",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Trang chủ",
+        "body": "Hiển thị số dư SMW, số dư khả dụng, tiến trình khai thác và hoạt động gần đây của bạn. Phần mạng hiển thị chiều cao khối cục bộ và các nút được kết nối. Ví hiển thị phần thưởng chưa trưởng thành và các thay đổi đang chờ xử lý."
+      },
+      {
+        "id": "mining",
+        "title": "Khai thác",
+        "body": "Chọn mục tiêu 1–10.000 khối trong cài đặt Khai thác rồi nhấn Bắt đầu. Vòng tròn thể hiện tiến độ đợt này; số ở giữa là tổng SMW của ví, không phải thu nhập cam kết. Điện thoại khai thác độc lập. Mạng chính cần ví mở và nút ngang hàng đã đồng bộ. Dừng hủy đợt hiện tại."
+      },
+      {
+        "id": "wallet",
+        "title": "Ví",
+        "body": "Tạo hoặc mở ví cục bộ được bảo vệ bằng mật khẩu. Ví có cụm từ khôi phục mới hiển thị các từ khôi phục 24; lưu chúng ngoại tuyến theo thứ tự. Địa chỉ nhận có thể được chia sẻ nhưng mật khẩu và từ khôi phục phải được giữ kín."
+      },
+      {
+        "id": "send",
+        "title": "Gửi và nhận",
+        "body": "Nhận hiển thị địa chỉ của bạn để sao chép hoặc chia sẻ. Để gửi, hãy nhập địa chỉ và số tiền SMW, xem lại khoản phí đã tính và tổng số tiền ghi nợ, sau đó xác nhận. Người gửi trả phí. Số tiền hỗ trợ lên tới tám chữ số thập phân."
+      },
+      {
+        "id": "balances",
+        "title": "Số dư và xác nhận",
+        "body": "Có sẵn là số tiền sẵn sàng chi tiêu. Phần thưởng chưa trưởng thành là các đồng tiền được khai thác vẫn tuân theo quy tắc trưởng thành khối 100. Đang chờ xử lý là một thay đổi giao dịch chưa được xác nhận trong một khối. Số lượng xác nhận tuân theo chuỗi hoạt động hiện tại và có thể thay đổi sau khi tổ chức lại chuỗi."
+      },
+      {
+        "id": "history",
+        "title": "Lịch sử giao dịch",
+        "body": "Hiển thị phần thưởng khai thác, số tiền nhận được, số tiền đã gửi, số lượng xác nhận, chiều cao khối và ID giao dịch. Bộ lọc áp dụng cho trang được tải; sử dụng Trước hoặc Tiếp theo để duyệt nhiều hơn bản ghi 50."
+      },
+      {
+        "id": "network",
+        "title": "Kết nối nút",
+        "body": "Ứng dụng chạy nút SMW cục bộ. Số nút kết nối chỉ tính các nút khác, vì vậy số 0 không có nghĩa là nút của riêng bạn biến mất. Khi internet được bật, tính năng phát hiện SMW tự động sẽ cố gắng tìm các nút tương thích. Nếu không thể truy cập được, hãy thêm IP ngang hàng hoặc miền: cổng theo cách thủ công. Việc khai thác chờ cho đến khi một thiết bị ngang hàng được đồng bộ hóa."
+      },
+      {
+        "id": "settings",
+        "title": "Cài đặt và chẩn đoán",
+        "body": "Thêm cho chọn chủ đề màu, sáng hoặc tối và một trong 34 ngôn ngữ. Chi tiết nút hiển thị trạng thái cục bộ, số nút kết nối, mức dùng CPU, bits độ khó tiếp theo và thưởng khối hiện tại. Mức dùng CPU không phải tốc độ hash."
+      },
+      {
+        "id": "backup",
+        "title": "Sao lưu và phục hồi",
+        "body": "Xuất bản sao lưu ví mã hóa trước khi gỡ ứng dụng hoặc đổi điện thoại. Khôi phục cần cả tệp sao lưu và mật khẩu. Ví seed cũng khôi phục được bằng 24 từ. Giữ an toàn bản USB và đám mây; lộ bí mật có thể cho người khác chi tiền. Không gửi từ khôi phục hay mật khẩu cho ai."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Ứng dụng Android",
+        "body": "Điện thoại khai thác độc lập và giao tiếp với các đồng nghiệp SMW tương thích. Cần có một thiết bị ngang hàng có thể truy cập được đồng bộ hóa và một ví mở trên mạng chính. Tự động phát hiện không đảm bảo quyền truy cập thông qua mọi NAT hoặc tường lửa. Không bao gồm nhóm khai thác, dịch vụ giá thị trường hoặc tính năng QR.\n\nPhí có thể được tính tự động hoặc nhập thủ công, tối đa tám chữ số thập phân. Người gửi trả phí. Xem lại phí và tổng số tiền ghi nợ trước khi gửi. Việc chấp nhận nút không phải là biên nhận của người nhận hoặc xác nhận khối. Từ chối, kết quả không chắc chắn, chuyển khoản đang chờ xử lý và đưa khối vào được hiển thị riêng. Không gửi lại giao dịch không chắc chắn trước khi kiểm tra lịch sử.\n\nDịch vụ tiền cảnh cục bộ lưu trữ nút. Khai thác tích cực sử dụng khóa đánh thức; Android hoặc nhà sản xuất thiết bị vẫn có thể dừng quá trình này. Thông báo yêu cầu sự cho phép. Các ứng dụng đã đóng không thể đảm bảo nhận được thông báo ngay lập tức; kết quả được kiểm tra sau khi mở lại và đồng bộ hóa. Các giao dịch cũ và phần thưởng khai thác được loại trừ khỏi các cảnh báo chuyển khoản mới."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Khóa bảo mật tự động",
+        "body": "Chi tiêu bị khóa trong quá trình khai thác; khóa ví bị khóa khi quá trình khai thác kết thúc.\nQuá trình khai thác dừng ở nhiệt độ pin 45°C hoặc hệ thống quá nóng. Khởi động lại bằng tay sau khi làm mát.\nMột thay đổi chuỗi đã loại bỏ xác nhận khối trước đó. Kiểm tra lại lịch sử giao dịch."
+      }
+    ]
+  },
+  "tr": {
+    "title": "Yardım",
+    "subtitle": "Her SMW ekranı nasıl çalışır?",
+    "back": "Daha Fazlasına Dön",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Ana sayfa",
+        "body": "SMW bakiyenizi, mevcut bakiyenizi, madencilik ilerlemenizi ve son etkinliğinizi gösterir. Ağ bölümü yerel blok yüksekliğini ve bağlı eşleri gösterir. Cüzdan olgunlaşmamış ödülleri ve bekleyen değişiklikleri gösteriyor."
+      },
+      {
+        "id": "mining",
+        "title": "Madencilik",
+        "body": "Madencilik ayarlarında 1–10,000 hedef bloklarını seçin ve ardından Madenciliği başlat'a dokunun. Halka, bu toplu hedefe doğru ilerlemeyi gösterir; içindeki sayı cüzdanınızın toplam SMW'idir, vaat edilen kazanç değil. Bu telefon tek başına madencilik yapıyor. Ana ağda açık bir cüzdan ve senkronize eş gereklidir. Durdur, mevcut toplu işlemi iptal eder."
+      },
+      {
+        "id": "wallet",
+        "title": "Cüzdan",
+        "body": "Parola korumalı bir yerel cüzdan oluşturun veya açın. Yeni bir kurtarma sözcüklü cüzdan, 24 kurtarma sözcüklerini gösterir; bunları sırayla çevrimdışına kaydedin. Alıcı adres paylaşılabilir ancak parola ve kurtarma sözcükleri özel kalmalıdır."
+      },
+      {
+        "id": "send",
+        "title": "Gönder ve al",
+        "body": "Al, kopyalamak veya paylaşmak için adresinizi görüntüler. Göndermek için bir SMW adresi ve tutarı girin, hesaplanan ücreti ve toplam kesintiyi inceleyin ve ardından onaylayın. Gönderici ücreti öder. Tutarlar sekiz ondalık basamağa kadar destekler."
+      },
+      {
+        "id": "balances",
+        "title": "Bakiyeler ve onaylar",
+        "body": "Mevcut, harcamaya hazır tutardır. Olgunlaşmamış ödüller, hâlâ 100 bloğu vade kuralına tabi olan, çıkarılan madeni paralardır. Beklemede, henüz bir blokta onaylanmamış bir işlem değişikliğidir. Onay sayıları mevcut etkin zinciri takip eder ve zincirin yeniden düzenlenmesi sonrasında değişebilir."
+      },
+      {
+        "id": "history",
+        "title": "İşlem geçmişi",
+        "body": "Madencilik ödüllerini, alınan fonları, gönderilen fonları, onay sayısını, blok yüksekliğini ve işlem kimliğini gösterir. Filtreler yüklenen sayfaya uygulanır; 50'den daha fazla kayda göz atmak için Önceki veya Sonraki'yi kullanın."
+      },
+      {
+        "id": "network",
+        "title": "Düğüm bağlantısı",
+        "body": "Uygulama yerel bir SMW düğümünü çalıştırır. Bağlı eşler diğer düğümleri sayar; dolayısıyla sıfır, kendi düğümünüzün kaybolduğu anlamına gelmez. İnternet etkinleştirildiğinde, otomatik SMW keşfi uyumlu eşleri bulmaya çalışır. Hiçbirine ulaşılamıyorsa manuel olarak bir eş IP veya etki alanı:bağlantı noktası ekleyin. Madencilik, bir eşin senkronize edilmesini bekler."
+      },
+      {
+        "id": "settings",
+        "title": "Ayarlar ve teşhis",
+        "body": "Daha fazlası bir renk teması, açık veya koyu modu ve 34 dilden birini seçmenizi sağlar. Düğüm ayrıntıları yerel durumu, eş sayımlarını, CPU kullanımını, sonraki zorluk bitlerini ve mevcut blok ödülünü gösterir. CPU kullanımı bir hash oranı ölçümü değildir."
+      },
+      {
+        "id": "backup",
+        "title": "Yedekleme ve kurtarma",
+        "body": "Uygulamayı kaldırmadan veya telefon değiştirmeden önce şifreli cüzdan yedeğini dışa aktarın. Geri yükleme için yedek dosyası ve parola birlikte gerekir. Seed cüzdanı 24 kurtarma sözcüğüyle de kurtarılabilir. USB ve bulut kopyalarını koruyun; sırların açığa çıkması fonlara erişim sağlayabilir. Kurtarma sözcüklerini veya parolayı kimseye göndermeyin."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android uygulaması",
+        "body": "Telefon bağımsız olarak madencilik yapar ve uyumlu SMW eşleriyle iletişim kurar. Ana ağda senkronize ulaşılabilir bir eş ve açık bir cüzdan gereklidir. Otomatik bulma, her NAT veya güvenlik duvarı üzerinden erişimi garanti etmez. Hiçbir madencilik havuzu, piyasa fiyatı hizmeti veya QR özelliği dahil değildir.\n\nÜcretler otomatik olarak hesaplanabilir veya en fazla sekiz ondalık basamakla manuel olarak girilebilir. Gönderici ücreti öder. Göndermeden önce ücreti ve toplam borcu inceleyin. Düğüm kabulü, alıcının makbuzu veya blok onayı değildir. Reddetme, belirsiz sonuçlar, gelen bekleyen transferler ve blok dahil etme ayrı ayrı gösterilir. Geçmişi kontrol etmeden belirsiz bir işlemi tekrar göndermeyin.\n\nDüğümü yerel bir ön plan hizmeti barındırır. Aktif madencilik, uyanık kalma kilidi kullanır; Android veya cihaz üreticisi yine de işlemi durdurabilir. Bildirimler izin gerektirir. Kapalı uygulamalar anında alındı ​​uyarılarını garanti edemez; sonuçlar yeniden açıldıktan ve senkronize edildikten sonra kontrol edilir. Eski işlemler ve madencilik ödülleri yeni gelen transfer uyarılarına dahil edilmez."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Otomatik güvenlik kilidi",
+        "body": "Madencilik sırasında harcamalar kilitlenir; Madencilik sona erdiğinde cüzdan anahtarları kilitlenir.\nMadencilik, 45°C pil sıcaklığında veya sistemin aşırı ısınmasında durur. Soğuduktan sonra manuel olarak yeniden başlatın.\nBir zincir değişikliği önceki blok onayını kaldırdı. İşlem geçmişini tekrar kontrol edin."
+      }
+    ]
+  },
+  "th": {
+    "title": "ความช่วยเหลือ",
+    "subtitle": "หน้าจอ SMW แต่ละหน้าจอทำงานอย่างไร",
+    "back": "กลับไปที่เพิ่มเติม",
+    "topics": [
+      {
+        "id": "home",
+        "title": "หน้าแรก",
+        "body": "แสดงยอดคงเหลือ SMW ของคุณ ยอดคงเหลือ ความคืบหน้าการขุด และกิจกรรมล่าสุด ส่วนเครือข่ายแสดงความสูงของบล็อกในเครื่องและเพียร์ที่เชื่อมต่อ Wallet แสดงรางวัลที่ยังใช้ไม่ได้และการเปลี่ยนแปลงที่รอดำเนินการ"
+      },
+      {
+        "id": "mining",
+        "title": "การขุด",
+        "body": "เลือกบล็อกเป้าหมาย 1–10,000 ในการตั้งค่าการขุด จากนั้นแตะเริ่มการขุด วงแหวนแสดงความคืบหน้าไปสู่เป้าหมายแบทช์นี้ ตัวเลขด้านในคือยอดรวม SMW ในกระเป๋าสตางค์ของคุณ ไม่ใช่รายได้ที่สัญญาไว้ โทรศัพท์เครื่องนี้ทำเหมืองเดี่ยว จำเป็นต้องมีกระเป๋าเงินแบบเปิดและเพียร์ที่ซิงโครไนซ์บนเครือข่ายหลัก หยุดยกเลิกชุดปัจจุบัน"
+      },
+      {
+        "id": "wallet",
+        "title": "กระเป๋าเงิน",
+        "body": "สร้างหรือเปิดกระเป๋าในเครื่องที่ป้องกันด้วยรหัสผ่าน กระเป๋าแบบวลีกู้คืนใหม่จะแสดงคำ 24 คำ ให้บันทึกออฟไลน์ตามลำดับ แชร์ที่อยู่รับได้ แต่ต้องเก็บรหัสผ่านและคำกู้คืนเป็นความลับ"
+      },
+      {
+        "id": "send",
+        "title": "ส่งและรับ",
+        "body": "รับแสดงที่อยู่ของคุณสำหรับการคัดลอกหรือแชร์ หากต้องการส่ง ให้ป้อนที่อยู่และจำนวนเงินของ SMW ตรวจสอบค่าธรรมเนียมที่คำนวณและเดบิตทั้งหมด จากนั้นยืนยัน ผู้ส่งเป็นผู้ชำระค่าธรรมเนียม จำนวนเงินรองรับทศนิยมสูงสุดแปดตำแหน่ง"
+      },
+      {
+        "id": "balances",
+        "title": "ยอดคงเหลือและการยืนยัน",
+        "body": "ที่มีอยู่คือจำนวนเงินที่พร้อมใช้จ่าย รางวัลที่ยังใช้ไม่ได้คือเหรียญที่ขุดได้ซึ่งยังคงอยู่ภายใต้กฎการกำหนดอายุบล็อกของ 100 รอดำเนินการคือการเปลี่ยนแปลงธุรกรรมที่ยังไม่ได้รับการยืนยันในบล็อค จำนวนการยืนยันจะเป็นไปตามเชนที่ใช้งานอยู่ในปัจจุบัน และสามารถเปลี่ยนแปลงได้หลังจากการจัดระเบียบเชนใหม่"
+      },
+      {
+        "id": "history",
+        "title": "ประวัติการทำธุรกรรม",
+        "body": "แสดงรางวัลการขุด เงินที่ได้รับ เงินที่ส่ง จำนวนการยืนยัน ความสูงของบล็อก และรหัสธุรกรรม ตัวกรองมีผลกับหน้าที่โหลด ใช้ก่อนหน้าหรือถัดไปเพื่อเรียกดูบันทึก 50 มากกว่า"
+      },
+      {
+        "id": "network",
+        "title": "การเชื่อมต่อโหนด",
+        "body": "แอปรันโหนด SMW ในเครื่อง เพียร์ที่เชื่อมต่อจะนับโหนดอื่นๆ ดังนั้นศูนย์ไม่ได้หมายความว่าโหนดของคุณหายไป เมื่อเปิดใช้งานอินเทอร์เน็ต การค้นพบ SMW อัตโนมัติจะพยายามค้นหาเพื่อนที่เข้ากันได้ หากไม่สามารถเข้าถึงได้ ให้เพิ่ม IP เพียร์หรือโดเมน: พอร์ตด้วยตนเอง การขุดจะรอจนกว่าเพียร์จะซิงโครไนซ์"
+      },
+      {
+        "id": "settings",
+        "title": "การตั้งค่าและการวินิจฉัย",
+        "body": "เพิ่มเติม ให้คุณเลือกธีมสี โหมดสว่างหรือมืด และหนึ่งในภาษา 34 รายละเอียดโหนดจะแสดงสถานะท้องถิ่น จำนวนเพียร์ การใช้ CPU บิตความยากถัดไป และรางวัลบล็อกปัจจุบัน การใช้ CPU ไม่ใช่การวัดอัตราแฮช"
+      },
+      {
+        "id": "backup",
+        "title": "การสำรองข้อมูลและการกู้คืน",
+        "body": "ส่งออกข้อมูลสำรองกระเป๋าเงินที่เข้ารหัสก่อนที่จะถอนการติดตั้งหรือเปลี่ยนโทรศัพท์ การกู้คืนต้องใช้รหัสผ่าน Seed Wallet สามารถกู้คืนได้ด้วยคำ 24 สำเนาบน USB หรือที่เก็บข้อมูลบนคลาวด์สามารถให้สิทธิ์การเข้าถึงเงินทุนได้หากความลับถูกเปิดเผย อย่าส่งคำกู้คืนหรือรหัสผ่านให้กับใครก็ตาม"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "แอปพลิเคชัน Android",
+        "body": "โทรศัพท์จะขุดเหมืองอย่างอิสระและสื่อสารกับเพียร์ SMW ที่เข้ากันได้ จำเป็นต้องมีเพียร์ที่เข้าถึงได้แบบซิงโครไนซ์และกระเป๋าเงินแบบเปิดบนเครือข่ายหลัก การค้นพบอัตโนมัติไม่ได้รับประกันการเข้าถึงผ่าน NAT หรือไฟร์วอลล์ทุกตัว ไม่มีพูลการขุด บริการราคาตลาด หรือฟีเจอร์ QR รวมอยู่ด้วย\n\nค่าธรรมเนียมอาจคำนวณโดยอัตโนมัติหรือป้อนด้วยตนเองโดยมีทศนิยมสูงสุดแปดตำแหน่ง ผู้ส่งเป็นผู้ชำระค่าธรรมเนียม ตรวจสอบค่าธรรมเนียมและเดบิตรวมก่อนส่ง การยอมรับโหนดไม่ใช่การรับของผู้รับหรือการยืนยันการบล็อก การปฏิเสธ ผลลัพธ์ที่ไม่แน่นอน การโอนที่รอดำเนินการ และการรวมบล็อกจะแสดงแยกกัน อย่าส่งธุรกรรมที่ไม่แน่นอนอีกครั้งก่อนตรวจสอบประวัติ\n\nบริการเบื้องหน้าท้องถิ่นโฮสต์โหนด การขุดที่ใช้งานอยู่จะใช้wake lock เพื่อให้ CPU ทำงานต่อ Android หรือผู้ผลิตอุปกรณ์อาจยังคงหยุดกระบวนการนี้ การแจ้งเตือนต้องได้รับอนุญาต แอปที่ปิดไม่สามารถรับประกันการแจ้งเตือนการรับทันที ผลลัพธ์จะถูกตรวจสอบหลังจากเปิดใหม่และการซิงโครไนซ์ ธุรกรรมเก่าและรางวัลการขุดจะไม่รวมอยู่ในการแจ้งเตือนการโอนเข้ามาใหม่"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "ล็อคความปลอดภัยอัตโนมัติ",
+        "body": "การใช้จ่ายจะถูกล็อคระหว่างการขุด กุญแจกระเป๋าเงินจะถูกล็อคเมื่อการขุดสิ้นสุดลง\nการขุดหยุดที่อุณหภูมิแบตเตอรี่ 45°C หรือระบบมีความร้อนสูงเกินไป รีสตาร์ทด้วยตนเองหลังจากระบายความร้อน\nการเปลี่ยนแปลงเชนลบการยืนยันบล็อกก่อนหน้า ตรวจสอบประวัติการทำธุรกรรมอีกครั้ง"
+      }
+    ]
+  },
+  "it": {
+    "title": "Aiuto",
+    "subtitle": "Come funziona ciascuna schermata SMW",
+    "back": "Torna a Altro",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Mostra il saldo SMW, il saldo disponibile, l'avanzamento dell'estrazione e l'attività recente. La sezione della rete mostra l'altezza del blocco locale e i peer connessi. Il portafoglio mostra ricompense immature e modifiche in sospeso."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Scegli i blocchi target 1–10,000 nelle impostazioni di mining, quindi tocca Avvia mining. L'anello mostra l'avanzamento verso questo obiettivo batch; il numero all'interno rappresenta il totale SMW del tuo portafoglio, non i guadagni promessi. Questo telefono funziona da solo. Sulla rete principale sono necessari un portafoglio aperto e un peer sincronizzato. Interrompi annulla il batch corrente."
+      },
+      {
+        "id": "wallet",
+        "title": "Portafoglio",
+        "body": "Crea o apri un portafoglio locale protetto da password. Un nuovo portafoglio da frase di recupero mostra 24 parole: conservale offline nell’ordine corretto. Puoi condividere l’indirizzo di ricezione; password e parole devono restare segrete."
+      },
+      {
+        "id": "send",
+        "title": "Invia e ricevi",
+        "body": "Ricevi visualizza il tuo indirizzo per la copia o la condivisione. Per inviare, inserisci l'indirizzo e l'importo SMW, controlla la commissione calcolata e l'addebito totale, quindi conferma. Il mittente paga la tariffa. Gli importi supportano fino a otto cifre decimali."
+      },
+      {
+        "id": "balances",
+        "title": "Saldi e conferme",
+        "body": "Disponibile è l’importo spendibile. I premi non maturi devono rispettare la regola dei 100 blocchi. In sospeso indica una variazione non ancora confermata in un blocco. Le conferme seguono la catena attiva e possono cambiare dopo una riorganizzazione."
+      },
+      {
+        "id": "history",
+        "title": "Cronologia delle transazioni",
+        "body": "Mostra premi di mining, fondi ricevuti e inviati, conferme, altezza e ID della transazione. I filtri valgono per la pagina caricata; usa Precedente e Avanti per consultare oltre 50 record."
+      },
+      {
+        "id": "network",
+        "title": "Connessione nodo",
+        "body": "L'app esegue un nodo SMW locale. I peer connessi contano gli altri nodi, quindi zero non significa che il tuo nodo è scomparso. Con Internet abilitato, il rilevamento automatico di SMW tenta di trovare peer compatibili. Se nessuno è raggiungibile, aggiungi manualmente un IP peer o un dominio:porta. Il mining attende finché un peer non viene sincronizzato."
+      },
+      {
+        "id": "settings",
+        "title": "Impostazioni e diagnostica",
+        "body": "Altro permette di scegliere tema, modalità chiara o scura e una delle 34 lingue. I dettagli del nodo mostrano stato, peer, uso della CPU, nBits della prossima difficoltà e premio attuale. L’uso della CPU non misura l’hash rate."
+      },
+      {
+        "id": "backup",
+        "title": "Backup e ripristino",
+        "body": "Prima di disinstallare o cambiare telefono, esporta il backup crittografato; per ripristinarlo servono sia il file sia la password. Un portafoglio da frase di recupero può essere recuperato anche con le sue 24 parole. Copie USB o cloud possono esporre i fondi se viene rivelato il segreto. Non inviare mai password o parole a nessuno."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Applicazione Android",
+        "body": "Il telefono esegue il mining autonomamente e comunica con peer SMW compatibili. Sulla rete principale servono un portafoglio aperto e un peer raggiungibile sincronizzato verificato di recente. La ricerca automatica non supera necessariamente ogni NAT o firewall. Non sono inclusi pool, prezzi di mercato o funzioni QR.\n\nLa commissione può essere automatica o manuale, con al massimo otto decimali; la paga il mittente. Controlla commissione e addebito totale. L’accettazione del nodo non equivale a ricezione o conferma in un blocco. Rifiuti, esiti incerti, entrate in sospeso e conferme sono distinti. Prima di reinviare un esito incerto controlla la cronologia.\n\nUn servizio in primo piano ospita il nodo locale. Durante il mining un wakelock mantiene attiva la CPU, ma Android o il produttore possono comunque arrestare il processo. Le notifiche richiedono autorizzazione. Se l’app è arrestata, non sono garantiti avvisi immediati: i risultati vengono controllati dopo riapertura e sincronizzazione. Le vecchie transazioni e i premi sono esclusi dai nuovi avvisi di entrata."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Blocco di sicurezza automatico",
+        "body": "La spesa è bloccata durante il mining; le chiavi del portafoglio vengono bloccate al termine dell'estrazione.\nL'estrazione si interrompe alla temperatura della batteria 45°C o al surriscaldamento del sistema. Riavviare manualmente dopo il raffreddamento.\nUna modifica a catena ha rimosso la conferma del blocco precedente. Controlla di nuovo la cronologia delle transazioni."
+      }
+    ]
+  },
+  "bn": {
+    "title": "সাহায্য",
+    "subtitle": "প্রতিটি SMW স্ক্রিন কীভাবে কাজ করে",
+    "back": "আরও-এ ফিরে যান",
+    "topics": [
+      {
+        "id": "home",
+        "title": "হোম",
+        "body": "আপনার SMW ব্যালেন্স, উপলব্ধ ব্যালেন্স, খনির অগ্রগতি এবং সাম্প্রতিক কার্যকলাপ দেখায়। নেটওয়ার্ক বিভাগ স্থানীয় ব্লকের উচ্চতা এবং সংযুক্ত পিয়ারগুলোর দেখায়। Wallet অপরিপক্ক পুরস্কার এবং মুলতুবি পরিবর্তন দেখায়।"
+      },
+      {
+        "id": "mining",
+        "title": "মাইনিং",
+        "body": "মাইনিং সেটিংসে 1–10,000 ব্লকের লক্ষ্য বেছে মাইনিং শুরু করুন। বৃত্তে এই ব্যাচের অগ্রগতি; ভেতরের সংখ্যা ওয়ালেটের মোট SMW, প্রতিশ্রুত আয় নয়। ফোন solo মাইনিং করে। মূল নেটওয়ার্কে খোলা ওয়ালেট ও সিঙ্ক হওয়া পিয়ার লাগে। থামান চাপলে বর্তমান ব্যাচ বাতিল হয়।"
+      },
+      {
+        "id": "wallet",
+        "title": "ওয়ালেট",
+        "body": "একটি পাসওয়ার্ড-সুরক্ষিত স্থানীয় ওয়ালেট তৈরি করুন বা খুলুন। একটি নতুন পুনরুদ্ধার শব্দযুক্ত ওয়ালেট 24 পুনরুদ্ধার শব্দ দেখায়; ক্রমানুসারে তাদের অফলাইনে সংরক্ষণ করুন। প্রাপ্তির ঠিকানা ভাগ করা যেতে পারে, তবে পাসওয়ার্ড এবং পুনরুদ্ধারের শব্দগুলি অবশ্যই ব্যক্তিগত থাকতে হবে৷"
+      },
+      {
+        "id": "send",
+        "title": "পাঠান এবং গ্রহণ করুন",
+        "body": "গ্রহণ বিভাগে ঠিকানা কপি বা শেয়ার করুন। পাঠাতে SMW ঠিকানা ও পরিমাণ দিন, গণনা করা ফি ও মোট কর্তন দেখে নিশ্চিত করুন। প্রেরক ফি দেন। পরিমাণে আট দশমিক ঘর পর্যন্ত ব্যবহার করা যায়।"
+      },
+      {
+        "id": "balances",
+        "title": "ব্যালেন্স এবং নিশ্চিতকরণ",
+        "body": "উপলব্ধ পরিমাণ খরচ প্রস্তুত. অপরিপক্ক পুরষ্কারগুলি খননকৃত কয়েন এখনও 100-ব্লক পরিপক্কতা নিয়মের অধীন৷ মুলতুবি একটি লেনদেন পরিবর্তন একটি ব্লকে এখনও নিশ্চিত করা হয়নি৷ নিশ্চিতকরণ গণনা বর্তমান সক্রিয় চেইন অনুসরণ করে এবং একটি চেইন পুনর্গঠনের পরে পরিবর্তিত হতে পারে।"
+      },
+      {
+        "id": "history",
+        "title": "লেনদেনের ইতিহাস",
+        "body": "খনির পুরস্কার, প্রাপ্ত তহবিল, পাঠানো তহবিল, নিশ্চিতকরণ গণনা, ব্লকের উচ্চতা এবং লেনদেন আইডি দেখায়। ফিল্টার লোড পৃষ্ঠায় প্রযোজ্য; 50 এর বেশি রেকর্ড ব্রাউজ করতে পূর্ববর্তী বা পরবর্তী ব্যবহার করুন।"
+      },
+      {
+        "id": "network",
+        "title": "নোড সংযোগ",
+        "body": "অ্যাপ নিজস্ব স্থানীয় SMW নোড চালায়। সংযুক্ত পিয়ারের সংখ্যা অন্য নোড গোনে; শূন্য মানে নিজের নোড হারিয়ে গেছে নয়। ইন্টারনেট চালু থাকলে স্বয়ংক্রিয় আবিষ্কার সামঞ্জস্যপূর্ণ পিয়ার খোঁজে। কাউকে পাওয়া না গেলে পিয়ারের IP বা domain:port নিজে যোগ করা যায়। পিয়ার সিঙ্ক না হওয়া পর্যন্ত মাইনিং অপেক্ষা করে।"
+      },
+      {
+        "id": "settings",
+        "title": "সেটিংস এবং ডায়াগনস্টিকস",
+        "body": "আরও আপনাকে একটি রঙের থিম, হালকা বা অন্ধকার মোড এবং 34 ভাষার একটি নির্বাচন করতে দেয়৷ নোডের বিবরণ স্থানীয় স্থিতি, পিয়ার সংখ্যা, CPU ব্যবহার, পরবর্তী কঠিনতা বিট এবং বর্তমান ব্লক পুরস্কার দেখায়। CPU ব্যবহার একটি হ্যাশ-রেট পরিমাপ নয়।"
+      },
+      {
+        "id": "backup",
+        "title": "ব্যাকআপ এবং পুনরুদ্ধার",
+        "body": "ফোন আনইনস্টল বা পরিবর্তন করার আগে একটি এনক্রিপ্ট করা ওয়ালেট ব্যাকআপ রপ্তানি করুন; এটি পুনরুদ্ধার করার জন্য এর পাসওয়ার্ড প্রয়োজন। একটি পুনরুদ্ধার শব্দযুক্ত ওয়ালেট এর 24 শব্দ দিয়েও উদ্ধার করা যেতে পারে। ইউএসবি বা ক্লাউড স্টোরেজের অনুলিপিগুলি গোপনীয়তা প্রকাশ করা হলে তহবিলে অ্যাক্সেস মঞ্জুর করতে পারে। কখনও কাউকে পুনরুদ্ধারের শব্দ বা পাসওয়ার্ড পাঠাবেন না।"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "অ্যান্ড্রয়েড অ্যাপ্লিকেশন",
+        "body": "ফোনটি স্বাধীনভাবে খনন করে এবং সামঞ্জস্যপূর্ণ SMW পিয়ারগুলোর সাথে যোগাযোগ করে। প্রধান নেটওয়ার্কে একটি সিঙ্ক্রোনাইজড পৌঁছানোর যোগ্য পিয়ার এবং একটি খোলা ওয়ালেট প্রয়োজন৷ স্বয়ংক্রিয় আবিষ্কার প্রতিটি NAT বা ফায়ারওয়ালের মাধ্যমে অ্যাক্সেসের নিশ্চয়তা দেয় না। কোন মাইনিং পুল, বাজার মূল্য পরিষেবা বা QR বৈশিষ্ট্য অন্তর্ভুক্ত করা হয় না।\n\nআট দশমিক স্থান পর্যন্ত ফি স্বয়ংক্রিয়ভাবে গণনা করা যেতে পারে বা ম্যানুয়ালি প্রবেশ করানো যেতে পারে। প্রেরক ফি প্রদান করে। জমা দেওয়ার আগে ফি এবং মোট ডেবিট পর্যালোচনা করুন। নোড গ্রহণ প্রাপক প্রাপ্তি বা ব্লক নিশ্চিতকরণ নয়। প্রত্যাখ্যান, অনিশ্চিত ফলাফল, ইনকামিং পেন্ডিং ট্রান্সফার এবং ব্লক ইনক্লুশন আলাদাভাবে দেখানো হয়েছে। ইতিহাস চেক করার আগে একটি অনিশ্চিত লেনদেন পুনরায় পাঠাবেন না।\n\nএকটি স্থানীয় ফোরগ্রাউন্ড পরিষেবা নোড হোস্ট করে। সক্রিয় মাইনিং একটি ওয়েক লক ব্যবহার করে; অ্যান্ড্রয়েড বা ডিভাইস প্রস্তুতকারক এখনও প্রক্রিয়াটি বন্ধ করতে পারে। বিজ্ঞপ্তি অনুমতি প্রয়োজন. বন্ধ অ্যাপস তাৎক্ষণিক প্রাপ্তি সতর্কতা গ্যারান্টি দিতে পারে না; ফলাফল পুনরায় খোলা এবং সিঙ্ক্রোনাইজেশন পরে চেক করা হয়. পুরানো লেনদেন এবং খনির পুরষ্কারগুলি নতুন ইনকামিং-ট্রান্সফার সতর্কতা থেকে বাদ দেওয়া হয়েছে৷"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "স্বয়ংক্রিয় নিরাপত্তা লক",
+        "body": "খনির সময় ব্যয় লক করা হয়; মাইনিং শেষ হলে ওয়ালেট চাবি লক করা হয়।\nব্যাটারি তাপমাত্রা 45°C বা সিস্টেম অতিরিক্ত গরম হলে মাইনিং বন্ধ হয়ে যায়। ঠান্ডা হওয়ার পর ম্যানুয়ালি রিস্টার্ট করুন।\nএকটি চেইন পরিবর্তন পূর্ববর্তী ব্লক নিশ্চিতকরণ মুছে ফেলা হয়েছে. লেনদেনের ইতিহাস আবার চেক করুন।"
+      }
+    ]
+  },
+  "ur": {
+    "title": "مدد",
+    "subtitle": "ہر ایک SMW اسکرین کیسے کام کرتی ہے۔",
+    "back": "مزید پر واپس جائیں۔",
+    "topics": [
+      {
+        "id": "home",
+        "title": "ہوم",
+        "body": "آپ کا SMW بیلنس، دستیاب بیلنس، کان کنی کی پیشرفت اور حالیہ سرگرمی دکھاتا ہے۔ نیٹ ورک سیکشن مقامی بلاک کی اونچائی اور منسلک ساتھیوں کو دکھاتا ہے۔ Wallet ابھی ناقابلِ خرچ انعامات اور زیر التواء تبدیلیاں دکھاتا ہے۔"
+      },
+      {
+        "id": "mining",
+        "title": "مائننگ",
+        "body": "کان کنی کی ترتیبات میں 1–10,000 ہدف کے بلاکس کا انتخاب کریں، پھر کان کنی شروع کریں پر ٹیپ کریں۔ انگوٹی اس بیچ کے ہدف کی طرف پیشرفت دکھاتی ہے۔ اندر کا نمبر آپ کے بٹوے کا کل SMW ہے، نہ کہ وعدہ شدہ آمدنی۔ یہ فون سولو مائنز ہے۔ مین نیٹ ورک پر ایک کھلا والیٹ اور مطابقت پذیر پیئر درکار ہے۔ سٹاپ موجودہ بیچ کو منسوخ کرتا ہے۔"
+      },
+      {
+        "id": "wallet",
+        "title": "پرس",
+        "body": "پاس ورڈ محفوظ مقامی والیٹ بنائیں یا کھولیں۔ نیا بازیابی والا والیٹ 24 الفاظ دکھاتا ہے؛ ترتیب سے offline محفوظ کریں۔ وصولی پتہ شیئر ہو سکتا ہے، مگر پاس ورڈ اور الفاظ خفیہ رہیں۔"
+      },
+      {
+        "id": "send",
+        "title": "بھیجیں اور وصول کریں۔",
+        "body": "کاپی کرنے یا شیئر کرنے کے لیے موصول آپ کا پتہ دکھاتا ہے۔ بھیجنے کے لیے، ایک SMW پتہ اور رقم درج کریں، حسابی فیس اور کل ڈیبٹ کا جائزہ لیں، پھر تصدیق کریں۔ بھیجنے والا فیس ادا کرتا ہے۔ رقم آٹھ اعشاریہ جگہوں تک سپورٹ کرتی ہے۔"
+      },
+      {
+        "id": "balances",
+        "title": "بیلنس اور تصدیقات",
+        "body": "خرچ کرنے کے لیے تیار رقم دستیاب ہے۔ ناپختہ انعامات کان کنی شدہ سکے ہیں جو اب بھی 100-بلاک میچورٹی اصول کے تابع ہیں۔ زیر التواء ایک ٹرانزیکشن تبدیلی ہے جس کی ابھی تک کسی بلاک میں تصدیق نہیں ہوئی ہے۔ تصدیقی شمار موجودہ فعال سلسلہ کی پیروی کرتے ہیں اور سلسلہ کی تنظیم نو کے بعد تبدیل ہو سکتے ہیں۔"
+      },
+      {
+        "id": "history",
+        "title": "لین دین کی تاریخ",
+        "body": "کان کنی کے انعامات، موصول شدہ فنڈز، بھیجے گئے فنڈز، تصدیقی گنتی، بلاک کی اونچائی، اور ٹرانزیکشن ID دکھاتا ہے۔ فلٹرز بھری ہوئی صفحہ پر لاگو ہوتے ہیں۔ 50 سے زیادہ ریکارڈز کو براؤز کرنے کے لیے پچھلا یا اگلا استعمال کریں۔"
+      },
+      {
+        "id": "network",
+        "title": "نوڈ کنکشن",
+        "body": "ایپ مقامی SMW نوڈ چلاتی ہے۔ منسلک پیئر دوسرے نوڈس کو شمار کرتے ہیں، لہذا صفر کا مطلب یہ نہیں ہے کہ آپ کا اپنا نوڈ غائب ہوگیا۔ انٹرنیٹ فعال ہونے کے ساتھ، خودکار SMW دریافت ہم آہنگ ساتھیوں کو تلاش کرنے کی کوشش کرتی ہے۔ اگر کوئی بھی قابل رسائی نہیں ہے تو، ایک پیئر IP یا domain:port دستی طور پر شامل کریں۔ کان کنی اس وقت تک انتظار کرتی ہے جب تک کہ پیئر مطابقت پذیر نہ ہو۔"
+      },
+      {
+        "id": "settings",
+        "title": "ترتیبات اور تشخیص",
+        "body": "مزید آپ کو رنگین تھیم، لائٹ یا ڈارک موڈ، اور 34 زبانوں میں سے ایک منتخب کرنے دیتا ہے۔ نوڈ کی تفصیلات مقامی حیثیت، پیئر کی تعداد، CPU استعمال، اگلی مشکل بٹس، اور موجودہ بلاک انعام کو ظاہر کرتی ہے۔ CPU کا استعمال ہیش ریٹ کی پیمائش نہیں ہے۔"
+      },
+      {
+        "id": "backup",
+        "title": "بیک اپ اور ریکوری",
+        "body": "ایپ ہٹانے یا فون بدلنے سے پہلے انکرپٹڈ والیٹ backup نکالیں؛ بحالی کے لیے پاس ورڈ چاہیے۔ recovery والا والیٹ 24 الفاظ سے بھی بحال ہو سکتا ہے۔ راز ظاہر ہوں تو USB یا cloud کی کاپی سے رقم تک رسائی ممکن ہے۔ کسی کو بازیابی کے الفاظ یا پاس ورڈ نہ بھیجیں۔"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "اینڈرائیڈ ایپلی کیشن",
+        "body": "فون آزادانہ طور پر مائنز کرتا ہے اور ہم آہنگ SMW ساتھیوں کے ساتھ بات چیت کرتا ہے۔ مرکزی نیٹ ورک پر ایک مطابقت پذیر قابل رسائی پیئر اور ایک کھلا پرس درکار ہے۔ خودکار دریافت ہر NAT یا فائر وال کے ذریعے رسائی کی ضمانت نہیں دیتی۔ کوئی مائننگ پول، مارکیٹ پرائس سروس یا QR فیچر شامل نہیں ہے۔\n\nفیس کا حساب خود بخود لگایا جا سکتا ہے یا دستی طور پر درج کیا جا سکتا ہے، آٹھ اعشاریہ تک کے مقامات کے ساتھ۔ بھیجنے والا فیس ادا کرتا ہے۔ جمع کرانے سے پہلے فیس اور کل ڈیبٹ کا جائزہ لیں۔ نوڈ قبولیت وصول کنندہ کی رسید یا بلاک کی تصدیق نہیں ہے۔ مسترد، غیر یقینی نتائج، آنے والی زیر التوا منتقلی اور بلاک شمولیت کو الگ سے دکھایا گیا ہے۔ تاریخ چیک کرنے سے پہلے غیر یقینی لین دین کو دوبارہ نہ بھیجیں۔\n\nایک مقامی پیش منظر کی خدمت نوڈ کی میزبانی کرتی ہے۔ فعال کان کنی ایک ویک لاک کا استعمال کرتی ہے۔ اینڈرائیڈ یا ڈیوائس بنانے والا ابھی بھی اس عمل کو روک سکتا ہے۔ اطلاعات کے لیے اجازت درکار ہے۔ بند ایپس فوری رسید الرٹس کی ضمانت نہیں دے سکتیں۔ نتائج کو دوبارہ کھولنے اور مطابقت پذیری کے بعد چیک کیا جاتا ہے۔ پرانے لین دین اور کان کنی کے انعامات نئے آنے والے ٹرانسفر الرٹس سے خارج ہیں۔"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "خودکار سیکیورٹی لاک",
+        "body": "کان کنی کے دوران خرچ بند کر دیا جاتا ہے؛ کان کنی ختم ہونے پر بٹوے کی چابیاں بند ہو جاتی ہیں۔\nکان کنی بیٹری کے درجہ حرارت 45°C یا سسٹم کے زیادہ گرم ہونے پر رک جاتی ہے۔ ٹھنڈا ہونے کے بعد دستی طور پر دوبارہ شروع کریں۔\nایک سلسلہ کی تبدیلی نے پچھلے بلاک کی تصدیق کو ہٹا دیا۔ لین دین کی تاریخ دوبارہ چیک کریں۔"
+      }
+    ]
+  },
+  "pl": {
+    "title": "Pomoc",
+    "subtitle": "Jak działa każdy ekran SMW",
+    "back": "Powrót do Więcej",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Główna",
+        "body": "Pokazuje saldo SMW, dostępne saldo, postęp wydobycia i ostatnią aktywność. Sekcja sieci pokazuje wysokość bloku lokalnego i podłączonych elementów równorzędnych. Portfel pokazuje niedojrzałe nagrody i oczekujące zmiany."
+      },
+      {
+        "id": "mining",
+        "title": "Wydobywanie",
+        "body": "Wybierz 1–10,000 bloki docelowe w ustawieniach wydobycia, a następnie dotknij Rozpocznij wydobywanie. Pierścień pokazuje postęp w kierunku docelowej partii; liczba w środku to suma SMW Twojego portfela, a nie obiecane zarobki. Ten telefon wydobywa zasoby solo. W sieci głównej wymagany jest otwarty portfel i zsynchronizowany peer. Stop anuluje bieżącą partię."
+      },
+      {
+        "id": "wallet",
+        "title": "Portfel",
+        "body": "Utwórz lub otwórz lokalny portfel chroniony hasłem. Nowy portfel z frazą odzyskiwania pokazuje 24 słowa; zapisz je offline we właściwej kolejności. Adres do odbioru można udostępniać; hasło i słowa muszą pozostać tajne."
+      },
+      {
+        "id": "send",
+        "title": "Wysyłaj i odbieraj",
+        "body": "Odbierz wyświetla Twój adres do skopiowania lub udostępnienia. Aby wysłać, wprowadź adres i kwotę SMW, sprawdź obliczoną opłatę i całkowite obciążenie, a następnie potwierdź. Nadawca płaci opłatę. Kwoty obsługują maksymalnie osiem miejsc po przecinku."
+      },
+      {
+        "id": "balances",
+        "title": "Salda i potwierdzenia",
+        "body": "Dostępna jest kwota gotowa do wydania. Niedojrzałe nagrody to wydobyte monety, które nadal podlegają regule dojrzewania przez 100 bloków. Oczekująca to zmiana transakcji, która nie została jeszcze potwierdzona w bloku. Liczba potwierdzeń jest zgodna z bieżącym aktywnym łańcuchem i może ulec zmianie po reorganizacji łańcucha."
+      },
+      {
+        "id": "history",
+        "title": "Historia transakcji",
+        "body": "Pokazuje nagrody za wydobycie, otrzymane i wysłane środki, liczbę potwierdzeń, wysokość bloku i identyfikator transakcji. Filtry dotyczą załadowanej strony; użyj opcji Poprzedni lub Następny, aby przeglądać więcej niż 50 rekordów."
+      },
+      {
+        "id": "network",
+        "title": "Połączenie węzła",
+        "body": "Aplikacja uruchamia lokalny węzeł SMW. Połączeni równorzędni zliczają inne węzły, więc zero nie oznacza, że ​​Twój własny węzeł zniknął. Przy włączonym Internecie automatyczne wykrywanie SMW próbuje znaleźć kompatybilne elementy równorzędne. Jeśli żaden nie jest osiągalny, ręcznie dodaj równorzędny adres IP lub domenę:port. Wydobywanie czeka, aż peer zostanie zsynchronizowany."
+      },
+      {
+        "id": "settings",
+        "title": "Ustawienia i diagnostyka",
+        "body": "Opcja Więcej umożliwia wybranie motywu kolorystycznego, trybu jasnego lub ciemnego oraz jednego z 34 języków. Szczegóły węzła pokazują status lokalny, liczbę partnerów, użycie procesora, kolejne bity trudności i aktualną nagrodę za blok. Użycie procesora nie jest miarą szybkości haszowania."
+      },
+      {
+        "id": "backup",
+        "title": "Kopia zapasowa i odzyskiwanie",
+        "body": "Przed odinstalowaniem lub zmianą telefonu wyeksportuj zaszyfrowaną kopię. Przywrócenie wymaga pliku i hasła. Portfel z frazą odzyskiwania można też odzyskać z 24 słów. Kopie USB lub w chmurze mogą ujawnić dostęp do środków, jeśli sekret wycieknie. Nigdy nie wysyłaj nikomu hasła ani słów odzyskiwania."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Aplikacja na Androida",
+        "body": "Telefon samodzielnie wydobywa bloki i komunikuje się z kompatybilnymi urządzeniami równorzędnymi SMW. W sieci głównej wymagany jest zsynchronizowany osiągalny peer i otwarty portfel. Automatyczne wykrywanie nie gwarantuje dostępu przez każdy NAT lub zaporę sieciową. Nie uwzględniono żadnej puli wydobywczej, usługi cen rynkowych ani funkcji QR.\n\nOpłaty mogą być naliczane automatycznie lub wprowadzane ręcznie, z dokładnością do ośmiu miejsc po przecinku. Nadawca płaci opłatę. Przed przesłaniem sprawdź opłatę i całkowite obciążenie. Akceptacja węzła nie jest potwierdzeniem odbiorcy ani potwierdzeniem bloku. Odrzucenie, niepewne wyniki, oczekujące przelewy przychodzące i włączenie bloku są wyświetlane osobno. Nie wysyłaj ponownie niepewnej transakcji przed sprawdzeniem historii.\n\nLokalna usługa pierwszego planu hostuje węzeł. Aktywne wydobycie wykorzystuje blokadę wybudzania utrzymującą aktywność CPU; Android lub producent urządzenia może nadal zatrzymać proces. Powiadomienia wymagają pozwolenia. Zamknięte aplikacje nie mogą zagwarantować natychmiastowych powiadomień o odbiorze; wyniki są sprawdzane po ponownym otwarciu i synchronizacji. Stare transakcje i nagrody za wydobycie nie są uwzględniane w nowych alertach dotyczących przelewów przychodzących."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatyczna blokada bezpieczeństwa",
+        "body": "Wydatki są blokowane podczas wydobycia; klucze do portfela są blokowane po zakończeniu wydobycia.\nWydobywanie zatrzymuje się przy temperaturze akumulatora 45°C lub przegrzaniu systemu. Uruchom ponownie ręcznie po ochłodzeniu.\nZmiana łańcucha usunęła poprzednie potwierdzenie bloku. Sprawdź ponownie historię transakcji."
+      }
+    ]
+  },
+  "nl": {
+    "title": "Hulp",
+    "subtitle": "Hoe elk SMW-scherm werkt",
+    "back": "Terug naar Meer",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Toont uw SMW-saldo, beschikbaar saldo, mijnbouwvoortgang en recente activiteit. Het netwerkgedeelte toont de lokale blokhoogte en verbonden peers. Wallet toont onvolwassen beloningen en openstaande wijzigingen."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Kies doelblokken 1–10,000 in Mijnbouwinstellingen en tik vervolgens op Mijnbouw starten. De ring toont de voortgang in de richting van dit batchdoel; het getal binnenin is het totaal van uw portemonnee SMW, niet de beloofde inkomsten. Deze telefoon mijnt solo. Op het hoofdnetwerk zijn een open portemonnee en gesynchroniseerde peer vereist. Stop annuleert de huidige batch."
+      },
+      {
+        "id": "wallet",
+        "title": "Portemonnee",
+        "body": "Maak of open een met een wachtwoord beveiligde lokale portemonnee. Een nieuwe portemonnee met herstelzin toont 24 herstelwoorden; sla ze offline op volgorde op. Het ontvangende adres mag worden gedeeld, maar het wachtwoord en de herstelwoorden moeten privé blijven."
+      },
+      {
+        "id": "send",
+        "title": "Verzenden en ontvangen",
+        "body": "Ontvangen toont uw adres zodat u het kunt kopiëren of delen. Om te verzenden voert u een SMW adres en bedrag in, controleert u de berekende kosten en het totale afschrijvingsbedrag en bevestigt u vervolgens. De afzender betaalt de vergoeding. Bedragen ondersteunen maximaal acht decimalen."
+      },
+      {
+        "id": "balances",
+        "title": "Saldi en bevestigingen",
+        "body": "Beschikbaar is het besteedbare bedrag. Nieuwe miningbeloningen moeten eerst 100 blokken rijpen. In behandeling is een nog niet bevestigde saldowijziging. Bevestigingen volgen de actieve keten en kunnen na een reorganisatie veranderen."
+      },
+      {
+        "id": "history",
+        "title": "Transactiegeschiedenis",
+        "body": "Toont mijnbeloningen, ontvangen geld, verzonden geld, aantal bevestigingen, blokhoogte en transactie-ID. Filters zijn van toepassing op de geladen pagina; gebruik Vorige of Volgende om door meer dan 50 records te bladeren."
+      },
+      {
+        "id": "network",
+        "title": "Knooppuntverbinding",
+        "body": "De app voert een lokaal SMW knooppunt uit. Verbonden peers tellen andere knooppunten mee, dus nul betekent niet dat uw eigen knooppunt is verdwenen. Als internet is ingeschakeld, probeert de automatische SMW-detectie compatibele peers te vinden. Als er geen bereikbaar zijn, voeg dan handmatig een peer-IP of domein:poort toe. Mining wacht totdat een peer is gesynchroniseerd."
+      },
+      {
+        "id": "settings",
+        "title": "Instellingen en diagnostiek",
+        "body": "Met Meer kunt u een kleurenthema, een lichte of donkere modus en een van de 34 talen selecteren. Knooppuntdetails tonen de lokale status, het aantal peers, CPU-gebruik, de volgende moeilijkheidsbits en de huidige blokbeloning. CPU-gebruik is geen meting van de hashsnelheid."
+      },
+      {
+        "id": "backup",
+        "title": "Back-up en herstel",
+        "body": "Exporteer vóór het verwijderen van de app of wisselen van telefoon een versleutelde back-up. Voor herstel zijn bestand én wachtwoord nodig. Een portemonnee met herstelzin kan ook met de 24 woorden worden hersteld. USB- of cloudkopieën kunnen toegang tot de fondsen geven als het geheim wordt onthuld. Deel nooit wachtwoorden of herstelwoorden."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-applicatie",
+        "body": "De telefoon mineert zelfstandig en communiceert met compatibele SMW-peers. Op het hoofdnetwerk zijn een gesynchroniseerde, bereikbare peer en een open portemonnee vereist. Automatische detectie garandeert geen toegang via elke NAT of firewall. Er is geen miningpool, marktprijsservice of QR-functie inbegrepen.\n\nDe kosten kunnen automatisch worden berekend of handmatig worden ingevoerd, met maximaal acht decimalen. De afzender betaalt de vergoeding. Controleer de kosten en het totale afschrijvingsbedrag voordat u deze indient. Knooppuntacceptatie is geen ontvangersontvangst of blokbevestiging. Afwijzing, onzekere resultaten, inkomende openstaande overdrachten en opname in een blok worden afzonderlijk weergegeven. Verzend een onzekere transactie niet opnieuw voordat u de geschiedenis heeft gecontroleerd.\n\nEen lokale voorgrondservice host het knooppunt. Actieve mijnbouw maakt gebruik van een wake lock om de CPU actief te houden; Android of de fabrikant van het apparaat stopt mogelijk het proces nog steeds. Voor meldingen is toestemming vereist. Gesloten apps kunnen geen onmiddellijke ontvangstwaarschuwingen garanderen; resultaten worden gecontroleerd na heropening en synchronisatie. Oude transacties en mijnbeloningen worden uitgesloten van waarschuwingen voor nieuwe inkomende overdrachten."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatisch veiligheidsslot",
+        "body": "Uitgaven zijn vergrendeld tijdens mijnbouw; portemonneesleutels worden vergrendeld wanneer de mijnbouw eindigt.\nDe mijnbouw stopt bij een batterijtemperatuur 45°C of bij oververhitting van het systeem. Na afkoeling handmatig opnieuw opstarten.\nDoor een kettingwijziging werd de vorige blokbevestiging verwijderd. Controleer de transactiegeschiedenis opnieuw."
+      }
+    ]
+  },
+  "fil": {
+    "title": "Tulong",
+    "subtitle": "Paano gumagana ang bawat SMW screen",
+    "back": "Bumalik sa Higit pa",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Ipinapakita ang iyong SMW balanse, available na balanse, pag-unlad ng pagmimina at kamakailang aktibidad. Ipinapakita ng seksyon ng network ang taas ng lokal na bloke at mga konektadong peer. Ang wallet ay nagpapakita ng mga reward na hindi pa maaaring gastusin at mga nakabinbing pagbabago."
+      },
+      {
+        "id": "mining",
+        "title": "Pagmimina",
+        "body": "Piliin ang 1–10,000 target na mga bloke sa mga setting ng Pagmimina, pagkatapos ay i-tap ang Simulan ang pagmimina. Ang singsing ay nagpapakita ng pag-unlad patungo sa batch target na ito; ang numero sa loob ay ang kabuuang SMW ng iyong wallet, hindi ipinangakong kita. Ang teleponong ito ay nagmimina nang solo. Ang isang bukas na wallet at naka-synchronize na peer ay kinakailangan sa pangunahing network. Kinakansela ng Stop ang kasalukuyang batch."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Gumawa o magbukas ng lokal na wallet na protektado ng password. Ang isang bagong seed wallet ay nagpapakita ng 24 mga salita sa pagbawi; i-save ang mga ito offline sa pagkakasunud-sunod. Maaaring ibahagi ang tatanggap na address, ngunit dapat manatiling pribado ang password at mga salita sa pagbawi."
+      },
+      {
+        "id": "send",
+        "title": "Magpadala at tumanggap",
+        "body": "Ipinapakita ng Receive ang iyong address para sa pagkopya o pagbabahagi. Upang magpadala, maglagay ng SMW address at halaga, suriin ang kinakalkula na bayad at kabuuang debit, pagkatapos ay kumpirmahin. Ang nagpadala ay nagbabayad ng bayad. Sinusuportahan ng mga halaga ang hanggang walong decimal na lugar."
+      },
+      {
+        "id": "balances",
+        "title": "Mga balanse at kumpirmasyon",
+        "body": "Ang available ay ang halagang handa nang gastusin. Ang mga immature reward ay mga mined coin na napapailalim pa rin sa 100-block maturity rule. Ang nakabinbing ay isang pagbabago sa transaksyon na hindi pa nakumpirma sa isang block. Ang mga bilang ng kumpirmasyon ay sumusunod sa kasalukuyang aktibong chain at maaaring magbago pagkatapos ng muling pagsasaayos ng chain."
+      },
+      {
+        "id": "history",
+        "title": "Kasaysayan ng transaksyon",
+        "body": "Nagpapakita ng mga reward sa pagmimina, nakatanggap ng mga pondo, nagpadala ng mga pondo, bilang ng kumpirmasyon, taas ng block, at transaction ID. Nalalapat ang mga filter sa na-load na pahina; gamitin ang Nakaraan o Susunod upang mag-browse ng higit sa 50 mga tala."
+      },
+      {
+        "id": "network",
+        "title": "Koneksyon ng node",
+        "body": "Ang app ay nagpapatakbo ng lokal na SMW node. Ang mga konektadong peer ay nagbibilang ng iba pang mga node, kaya ang zero ay hindi nangangahulugang nawala ang iyong sariling node. Kapag naka-enable ang internet, sinusubukan ng awtomatikong SMW na pagtuklas na maghanap ng mga katugmang kapantay. Kung walang maabot, magdagdag ng peer IP o domain:port nang manu-mano. Naghihintay ang pagmimina hanggang sa ma-synchronize ang isang peer."
+      },
+      {
+        "id": "settings",
+        "title": "Mga setting at diagnostic",
+        "body": "Hinahayaan ka ng higit pa na pumili ng tema ng kulay, light o dark mode, at isa sa 34 na wika. Ang mga detalye ng node ay nagpapakita ng lokal na katayuan, mga bilang ng peer, paggamit ng CPU, ang mga susunod na bit ng kahirapan, at ang kasalukuyang reward sa block. Ang paggamit ng CPU ay hindi isang pagsukat ng hash-rate."
+      },
+      {
+        "id": "backup",
+        "title": "Pag-backup at pagbawi",
+        "body": "Mag-export ng naka-encrypt na backup bago mag-uninstall o magpalit ng telepono. Kailangan ang file at password para sa restore. Maaari ring bawiin ang seed wallet gamit ang 24 salita. Maaaring malantad ang pondo sa USB o cloud copy kung mabunyag ang lihim. Huwag ibahagi ang password o recovery word."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android application",
+        "body": "Ang telepono ay nagmimina nang nakapag-iisa at nakikipag-ugnayan sa mga katugmang SMW na mga kapantay. Ang isang naka-synchronize na maaabot na peer at isang bukas na wallet ay kinakailangan sa pangunahing network. Hindi ginagarantiyahan ng awtomatikong pagtuklas ang pag-access sa bawat NAT o firewall. Walang mining pool, market price service o QR feature na kasama.\n\nAng mga bayarin ay maaaring awtomatikong kalkulahin o ipasok nang manu-mano, na may hanggang walong decimal na lugar. Ang nagpadala ay nagbabayad ng bayad. Suriin ang bayad at kabuuang debit bago isumite. Ang pagtanggap ng node ay hindi resibo ng tatanggap o pagkumpirma ng block. Ang pagtanggi, hindi tiyak na mga resulta, mga papasok na nakabinbing paglilipat at pagsasama ng block ay ipinapakita nang hiwalay. Huwag magpadala muli ng hindi tiyak na transaksyon bago suriin ang kasaysayan.\n\nAng isang lokal na serbisyo sa harapan ay nagho-host ng node. Ang aktibong pagmimina ay gumagamit ng wake lock para panatilihing aktibo ang CPU; Maaaring ihinto pa rin ng Android o ng manufacturer ng device ang proseso. Nangangailangan ng pahintulot ang mga notification. Hindi magagarantiya ng mga saradong app ang mga agarang alerto sa pagtanggap; ang mga resulta ay sinusuri pagkatapos ng muling pagbubukas at pag-synchronize. Ang mga lumang transaksyon at mga reward sa pagmimina ay hindi kasama sa mga bagong alerto sa papasok na paglilipat."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Awtomatikong lock ng seguridad",
+        "body": "Ang paggasta ay naka-lock sa panahon ng pagmimina; Ang mga susi ng wallet ay naka-lock kapag natapos ang pagmimina.\nHumihinto ang pagmimina sa temperatura ng baterya 45°C o sobrang init ng system. I-restart nang manu-mano pagkatapos ng paglamig.\nInalis ng isang pagbabago sa chain ang nakaraang kumpirmasyon ng block. Suriin muli ang kasaysayan ng transaksyon."
+      }
+    ]
+  },
+  "ta": {
+    "title": "உதவி",
+    "subtitle": "ஒவ்வொரு SMW திரையும் எவ்வாறு இயங்குகிறது",
+    "back": "மேலும் பக்கத்துக்குத் திரும்பு",
+    "topics": [
+      {
+        "id": "home",
+        "title": "முகப்பு",
+        "body": "உங்கள் SMW இருப்பு, கிடைக்கும் இருப்பு, சுரங்க முன்னேற்றம் மற்றும் சமீபத்திய செயல்பாடு ஆகியவற்றைக் காட்டுகிறது. நெட்வொர்க் பிரிவு உள்ளூர் தொகுதி உயரம் மற்றும் இணைக்கப்பட்ட சகாக்களைக் காட்டுகிறது. வாலட் முதிர்ச்சியடையாத வெகுமதிகளையும் நிலுவையில் உள்ள மாற்றங்களையும் காட்டுகிறது."
+      },
+      {
+        "id": "mining",
+        "title": "மைனிங்",
+        "body": "மைனிங் அமைப்புகளில் 1–10,000 இலக்கு பிளாக்குகளைத் தேர்ந்தெடுத்து மைனிங்கைத் தொடங்கு என்பதைத் தட்டவும். வட்டக் காட்டி இலக்கை நோக்கிய முன்னேற்றத்தைக் காட்டுகிறது; நடுவிலுள்ள எண் வாலட்டின் மொத்த SMW இருப்பு, உறுதியான வருமானம் அல்ல. இந்தத் தொலைபேசி தனியாக மைனிங் செய்கிறது. முதன்மை நெட்வொர்க்கில் திறந்த வாலட்டும் ஒத்திசைந்த பியரும் தேவை. நிறுத்து பொத்தான் தற்போதைய தொகுப்பை ரத்து செய்கிறது."
+      },
+      {
+        "id": "wallet",
+        "title": "பணப்பை",
+        "body": "கடவுச்சொல் பாதுகாக்கப்பட்ட உள்ளூர் பணப்பையை உருவாக்கவும் அல்லது திறக்கவும். ஒரு புதிய மீட்புச் சொற்கள் கொண்ட வாலட் 24 மீட்பு வார்த்தைகளைக் காட்டுகிறது; அவற்றை ஆஃப்லைனில் சேமிக்கவும். பெறும் முகவரி பகிரப்படலாம், ஆனால் கடவுச்சொல் மற்றும் மீட்பு வார்த்தைகள் தனிப்பட்டதாக இருக்க வேண்டும்."
+      },
+      {
+        "id": "send",
+        "title": "அனுப்பவும் பெறவும்",
+        "body": "பெறுதல் நகலெடுக்க அல்லது பகிர்வதற்கான உங்கள் முகவரியைக் காட்டுகிறது. அனுப்ப, SMW முகவரியையும் தொகையையும் உள்ளிடவும், கணக்கிடப்பட்ட கட்டணம் மற்றும் மொத்தப் பற்றுவை மதிப்பாய்வு செய்து, பின்னர் உறுதிப்படுத்தவும். அனுப்புபவர் கட்டணம் செலுத்துகிறார். தொகைகள் எட்டு தசம இடங்கள் வரை ஆதரிக்கின்றன."
+      },
+      {
+        "id": "balances",
+        "title": "இருப்புக்கள் மற்றும் உறுதிப்படுத்தல்கள்",
+        "body": "பயன்படுத்தக்கூடிய இருப்பு என்பது செலவிடத் தயாரான தொகை. முதிராத வெகுமதிகள் என்பது 100-பிளாக் முதிர்வு விதி இன்னும் நிறைவேறாத மைனிங் நாணயங்கள். நிலுவை இருப்பு மாற்றங்கள் இன்னும் பிளாக்கில் உறுதிசெய்யப்படவில்லை. உறுதிப்படுத்தல்கள் தற்போதைய செயலில் உள்ள சங்கிலியைப் பின்பற்றுகின்றன; சங்கிலி மறுசீரமைப்புக்குப் பிறகு மாறலாம்."
+      },
+      {
+        "id": "history",
+        "title": "பரிவர்த்தனை வரலாறு",
+        "body": "சுரங்க வெகுமதிகள், பெறப்பட்ட நிதிகள், அனுப்பப்பட்ட நிதிகள், உறுதிப்படுத்தல் எண்ணிக்கை, தொகுதி உயரம் மற்றும் பரிவர்த்தனை ஐடி ஆகியவற்றைக் காட்டுகிறது. ஏற்றப்பட்ட பக்கத்திற்கு வடிப்பான்கள் பொருந்தும்; 50 க்கும் மேற்பட்ட பதிவுகளை உலாவ முந்தைய அல்லது அடுத்ததைப் பயன்படுத்தவும்."
+      },
+      {
+        "id": "network",
+        "title": "முனை இணைப்பு",
+        "body": "பயன்பாடு உள்ளூர் SMW முனையை இயக்குகிறது. இணைக்கப்பட்ட சகாக்கள் மற்ற முனைகளைக் கணக்கிடுவார்கள், எனவே பூஜ்ஜியம் என்பது உங்கள் சொந்த முனை மறைந்துவிட்டதாக அர்த்தமல்ல. இணையம் இயக்கப்பட்டிருந்தால், தானியங்கி SMW கண்டுபிடிப்பானது இணக்கமான சகாக்களைக் கண்டறிய முயற்சிக்கிறது. யாரையும் அணுக முடியாவிட்டால், ஒரு பியர் ஐபி அல்லது டொமைன்:போர்ட்டை கைமுறையாகச் சேர்க்கவும். ஒரு பியர் ஒத்திசைக்கப்படும் வரை சுரங்கம் காத்திருக்கிறது."
+      },
+      {
+        "id": "settings",
+        "title": "அமைப்புகள் மற்றும் கண்டறிதல்",
+        "body": "மேலும் வண்ண தீம், ஒளி அல்லது இருண்ட பயன்முறை மற்றும் 34 மொழிகளில் ஒன்றைத் தேர்ந்தெடுக்க உங்களை அனுமதிக்கிறது. முனை விவரங்கள் உள்ளூர் நிலை, சக எண்ணிக்கை, CPU பயன்பாடு, அடுத்த சிரம பிட்கள் மற்றும் தற்போதைய தொகுதி வெகுமதி ஆகியவற்றைக் காட்டுகிறது. CPU பயன்பாடு என்பது ஹாஷ் வீத அளவீடு அல்ல."
+      },
+      {
+        "id": "backup",
+        "title": "காப்பு மற்றும் மீட்பு",
+        "body": "செயலியை நிறுவல் நீக்கும் முன் அல்லது தொலைபேசியை மாற்றும் முன் மறைகுறியாக்கப்பட்ட வாலட் காப்புப்பிரதியை ஏற்றுமதி செய்யவும்; மீட்டமைக்க அதன் கடவுச்சொல் தேவை. மீட்புச் சொற்கள் கொண்ட வாலட்டை அதன் 24 சொற்களால் மீட்டெடுக்கலாம். USB அல்லது கிளவுட் நகல்களின் ரகசியங்கள் வெளியானால் நிதியை அணுக முடியும். மீட்புச் சொற்களையோ கடவுச்சொல்லையோ யாருக்கும் அனுப்ப வேண்டாம்."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android பயன்பாடு",
+        "body": "தொலைபேசி தனியாக மைனிங் செய்து இணக்கமான SMW பியர்களுடன் தொடர்புகொள்கிறது. முதன்மை நெட்வொர்க்கில் அணுகக்கூடிய ஒத்திசைந்த பியரும் திறந்த வாலட்டும் தேவை. தானியங்கித் தேடல் எல்லா NAT அல்லது ஃபயர்வால்களிலும் அணுகலை உறுதி செய்யாது. மைனிங் பூல், சந்தை விலை சேவை அல்லது QR வசதி இல்லை.\n\nகட்டணம் எட்டு தசம இடங்கள் வரை தானாகக் கணக்கிடப்படலாம் அல்லது கைமுறையாக உள்ளிடப்படலாம். அனுப்புநர் கட்டணம் செலுத்துகிறார். சமர்ப்பிக்கும் முன் கட்டணத்தையும் மொத்தப் பற்றையும் மதிப்பாய்வு செய்யவும். நோடு ஏற்றுக்கொண்டது பெறுநர் பெற்றதையோ பிளாக் உறுதிப்படுத்தலையோ குறிக்காது. நிராகரிப்பு, உறுதியற்ற முடிவு, நிலுவை உள்வரும் பரிவர்த்தனை மற்றும் பிளாக் சேர்ப்பு தனித்தனியாகக் காட்டப்படும். வரலாற்றைச் சரிபார்க்கும் முன் உறுதியற்ற பரிவர்த்தனையை மீண்டும் அனுப்ப வேண்டாம்.\n\nஉள்ளூர் foreground service நோடை இயக்குகிறது. செயலில் உள்ள மைனிங் wake lock பயன்படுத்துகிறது; Android அல்லது சாதன உற்பத்தியாளர் செயல்முறையை நிறுத்தலாம். அறிவிப்புகளுக்கு அனுமதி தேவை. செயலி மூடப்பட்டால் உடனடி வரவு அறிவிப்பை உறுதி செய்ய முடியாது; மீண்டும் திறந்து ஒத்திசைத்த பிறகு நிலை சரிபார்க்கப்படும். பழைய பரிவர்த்தனைகளும் மைனிங் வெகுமதிகளும் புதிய உள்வரும் பரிவர்த்தனை அறிவிப்புகளிலிருந்து விலக்கப்படும்."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "தானியங்கி பாதுகாப்பு பூட்டு",
+        "body": "சுரங்கத்தின் போது செலவு பூட்டப்பட்டுள்ளது; சுரங்கம் முடிந்ததும் வாலட் சாவிகள் பூட்டப்படும்.\nபேட்டரி வெப்பநிலை 45°C அல்லது சிஸ்டம் அதிக வெப்பமடையும் போது சுரங்கம் நிறுத்தப்படும். குளிர்ந்த பிறகு கைமுறையாக மறுதொடக்கம் செய்யுங்கள்.\nஒரு சங்கிலி மாற்றம் முந்தைய தொகுதி உறுதிப்படுத்தலை அகற்றியது. பரிவர்த்தனை வரலாற்றை மீண்டும் சரிபார்க்கவும்."
+      }
+    ]
+  },
+  "zh-TW": {
+    "title": "說明",
+    "subtitle": "SMW 各畫面的功能與使用方式",
+    "back": "返回更多",
+    "topics": [
+      {
+        "id": "home",
+        "title": "首頁",
+        "body": "顯示 SMW 餘額、可用餘額、挖礦進度和最近活動。網路區域顯示本地塊高和已連線節點。未成熟獎勵及待處理變動在錢包中檢視。"
+      },
+      {
+        "id": "mining",
+        "title": "挖礦",
+        "body": "在挖礦設定選擇 1–10,000 個目標區塊，再按開始挖礦。圓環顯示這一批次的目標進度；中央數字是錢包的 SMW 總餘額，不是保證收益。手機獨立挖礦，主網需要已開啟的錢包與已同步的對等節點。停止會取消目前批次。"
+      },
+      {
+        "id": "wallet",
+        "title": "錢包",
+        "body": "建立或開啟以密碼保護的本機錢包。新助記詞錢包會顯示 24 個助記詞，請依序離線保存。收款地址可分享，密碼與助記詞必須保密。"
+      },
+      {
+        "id": "send",
+        "title": "傳送與接收",
+        "body": "在接收頁複製或分享自己的地址。傳送時輸入地址和金額，核對手續費與總支出後確認。手續費由傳送方支付。金額支援八位小數。"
+      },
+      {
+        "id": "balances",
+        "title": "餘額和確認",
+        "body": "可用餘額是目前可花費的金額。未成熟獎勵仍受 100 區塊成熟規則限制。待確認淨變動來自尚未納入區塊的交易。確認數依目前有效鏈計算，鏈重組後可能改變。"
+      },
+      {
+        "id": "history",
+        "title": "交易記錄",
+        "body": "顯示挖礦獎勵、收款、付款、確認數、塊高和交易 ID。篩選僅作用於已載入頁面；超過 50 條時使用上一頁或下一頁。"
+      },
+      {
+        "id": "network",
+        "title": "節點連線",
+        "body": "應用執行本地 SMW 節點。已連線節點為零並不代表自己的節點消失。聯網後會自動尋找相容節點；若找不到可連線的節點，請手動新增對方的 IP 或域名:埠。挖礦會等待與節點同步。"
+      },
+      {
+        "id": "settings",
+        "title": "設定與診斷",
+        "body": "在更多中選擇主題、明暗模式和 34 種語言之一。節點詳情顯示本地狀態、連線數、CPU 使用率、下一難度 bits 與當前區塊獎勵。CPU 使用率不是算力。"
+      },
+      {
+        "id": "backup",
+        "title": "備份與復原",
+        "body": "解除安裝或更換手機前，請匯出加密錢包備份；還原時需要該檔案與密碼。助記詞錢包也可使用 24 個助記詞復原。USB 或雲端備份中的機密若外洩，可能使他人取得資金。請勿向任何人傳送助記詞或密碼。"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android 應用程式",
+        "body": "手機獨立挖礦並與相容節點通訊。主網需要可連線的同步節點及已開啟的錢包。自動發現不能保證穿過所有 NAT 和防火牆。沒有礦池、市場價格服務或 QR 功能。\n\n手續費自動計算或手動設定，最多八位小數，由傳送方承擔。提交前檢查手續費與總支出。節點接受不等於對方收款或區塊確認。拒絕、結果不明、收款待確認和區塊包含分別顯示。結果不明時先檢查記錄再決定是否重發。\n\n前臺服務執行節點，挖礦時使用喚醒鎖。Android 或廠商仍可能終止程序。通知需要許可權。應用關閉後，在重開及同步後檢查結果。舊交易與挖礦獎勵不作為新收款提醒。"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "自動安全鎖",
+        "body": "挖礦期間鎖定轉賬，挖礦結束後鎖定錢包金鑰。\n電池溫度達到45°C或系統過熱時停止挖礦。冷卻後請手動重新開始。\n鏈重組可能使先前的區塊確認失效；發生時請重新檢查交易紀錄。"
+      }
+    ]
+  },
+  "zh-HK": {
+    "title": "說明",
+    "subtitle": "SMW 各畫面的功能與使用方式",
+    "back": "返回更多",
+    "topics": [
+      {
+        "id": "home",
+        "title": "首頁",
+        "body": "顯示 SMW 餘額、可用餘額、挖礦進度和最近活動。網絡區域顯示本地塊高和已連線節點。未成熟獎勵及待處理變動在錢包中檢視。"
+      },
+      {
+        "id": "mining",
+        "title": "挖礦",
+        "body": "在挖礦設定選擇 1–10,000 個目標區塊，再按開始挖礦。圓環顯示這一批次的目標進度；中央數字是錢包的 SMW 總餘額，不是保證收益。手機獨立挖礦，主網需要已開啟的錢包與已同步的對等節點。停止會取消目前批次。"
+      },
+      {
+        "id": "wallet",
+        "title": "錢包",
+        "body": "建立或開啟以密碼保護的本機錢包。新助記詞錢包會顯示 24 個助記詞，請依序離線保存。收款地址可分享，密碼與助記詞必須保密。"
+      },
+      {
+        "id": "send",
+        "title": "傳送與接收",
+        "body": "在接收頁複製或分享自己的地址。傳送時輸入地址和金額，核對手續費與總支出後確認。手續費由傳送方支付。金額支援八位小數。"
+      },
+      {
+        "id": "balances",
+        "title": "餘額和確認",
+        "body": "可用餘額是目前可花費的金額。未成熟獎勵仍受 100 區塊成熟規則限制。待確認淨變動來自尚未納入區塊的交易。確認數依目前有效鏈計算，鏈重組後可能改變。"
+      },
+      {
+        "id": "history",
+        "title": "交易記錄",
+        "body": "顯示挖礦獎勵、收款、付款、確認數、塊高和交易 ID。篩選僅作用於已載入頁面；超過 50 條時使用上一頁或下一頁。"
+      },
+      {
+        "id": "network",
+        "title": "節點連線",
+        "body": "應用執行本地 SMW 節點。已連線節點為零並不代表自己的節點消失。聯網後會自動尋找相容節點；若找不到可連線的節點，請手動新增對方的 IP 或域名:埠。挖礦會等待與節點同步。"
+      },
+      {
+        "id": "settings",
+        "title": "設定與診斷",
+        "body": "在更多中選擇主題、明暗模式和 34 種語言之一。節點詳情顯示本地狀態、連線數、CPU 使用率、下一難度 bits 與當前區塊獎勵。CPU 使用率不是算力。"
+      },
+      {
+        "id": "backup",
+        "title": "備份與復原",
+        "body": "解除安裝或更換手機前，請匯出加密錢包備份；還原時需要該檔案與密碼。助記詞錢包也可使用 24 個助記詞復原。USB 或雲端備份中的機密若外洩，可能使他人取得資金。請勿向任何人傳送助記詞或密碼。"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android 應用程式",
+        "body": "手機獨立挖礦並與相容節點通訊。主網需要可連線的同步節點及已開啟的錢包。自動發現不能保證穿過所有 NAT 和防火牆。沒有礦池、市場價格服務或 QR 功能。\n\n手續費自動計算或手動設定，最多八位小數，由傳送方承擔。提交前檢查手續費與總支出。節點接受不等於對方收款或區塊確認。拒絕、結果不明、收款待確認和區塊包含分別顯示。結果不明時先檢查記錄再決定是否重發。\n\n前台服務執行節點，挖礦時使用喚醒鎖。Android 或廠商仍可能終止程序。通知需要許可權。應用關閉後，在重開及同步後檢查結果。舊交易與挖礦獎勵不作為新收款提醒。"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "自動安全鎖",
+        "body": "挖礦期間鎖定轉賬，挖礦結束後鎖定錢包金鑰。\n電池温度達到45°C或系統過熱時停止挖礦。冷卻後請手動重新開始。\n鏈重組可能使先前的區塊確認失效；發生時請重新檢查交易紀錄。"
+      }
+    ]
+  },
+  "cs": {
+    "title": "Nápověda",
+    "subtitle": "Jak fungují jednotlivé obrazovky SMW",
+    "back": "Zpět do nabídky Další",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Domů",
+        "body": "Zobrazuje zůstatek SMW, dostupný zůstatek, postup těžby a nedávnou aktivitu. Sekce sítě ukazuje místní výšku bloků a připojené uzly. Peněženka zobrazuje nezralé odměny a čekající změny."
+      },
+      {
+        "id": "mining",
+        "title": "Těžba",
+        "body": "V nastavení těžby zvolte cíl 1–10 000 bloků a klepněte na Spustit těžbu. Kruh ukazuje postup k cíli této dávky; číslo uvnitř je celkové množství SMW ve vaší peněžence, nikoli slíbený výdělek. Tento telefon těží samostatně. V hlavní síti je nutná otevřená peněženka a synchronizovaný uzel. Tlačítko Zastavit zruší aktuální dávku."
+      },
+      {
+        "id": "wallet",
+        "title": "Peněženka",
+        "body": "Vytvořte nebo otevřete místní peněženku chráněnou heslem. Nová peněženka s obnovovacími slovy zobrazí 24 slov; uložte je bez připojení ve správném pořadí. Adresu pro příjem lze sdílet, ale heslo a obnovovací slova musí zůstat soukromé."
+      },
+      {
+        "id": "send",
+        "title": "Odesílání a příjem",
+        "body": "Příjem zobrazí vaši adresu ke kopírování nebo sdílení. Pro odeslání zadejte adresu SMW a částku, zkontrolujte vypočtený poplatek a celkový odečet a potom potvrďte. Poplatek platí odesílatel. Částky podporují nejvýše osm desetinných míst."
+      },
+      {
+        "id": "balances",
+        "title": "Zůstatky a potvrzení",
+        "body": "Dostupné je částka připravená k utracení. Nezralé odměny jsou vytěžené mince, na které se stále vztahuje pravidlo zralosti 100 bloků. Čekající znamená změnu z transakce dosud nepotvrzené v bloku. Počty potvrzení se řídí aktuálním aktivním řetězcem a mohou se po jeho reorganizaci změnit."
+      },
+      {
+        "id": "history",
+        "title": "Historie transakcí",
+        "body": "Zobrazuje odměny za těžbu, přijaté a odeslané prostředky, počet potvrzení, výšku bloku a ID transakce. Filtry se vztahují na načtenou stránku; při prohlížení více než 50 záznamů použijte Předchozí nebo Další."
+      },
+      {
+        "id": "network",
+        "title": "Připojení uzlu",
+        "body": "Aplikace provozuje místní uzel SMW. Počet připojených uzlů počítá ostatní uzly, takže nula neznamená, že váš vlastní uzel zmizel. Při povoleném internetu se automatické vyhledávání SMW pokouší najít kompatibilní uzly. Pokud žádný není dostupný, přidejte ručně IP nebo doménu:port uzlu. Těžba čeká, dokud se uzel nesynchronizuje."
+      },
+      {
+        "id": "settings",
+        "title": "Nastavení a diagnostika",
+        "body": "Nabídka Další umožňuje zvolit barevný motiv, světlý či tmavý režim a podporovaný jazyk. Podrobnosti uzlu ukazují místní stav, počty uzlů, využití CPU, bits příští obtížnosti a aktuální odměnu za blok. Využití CPU není měřením rychlosti hashování."
+      },
+      {
+        "id": "backup",
+        "title": "Zálohování a obnovení",
+        "body": "Před odinstalací nebo změnou telefonu exportujte šifrovanou zálohu peněženky; k obnovení potřebujete její heslo. Peněženku s obnovovacími slovy lze obnovit také pomocí jejích 24 slov. Kopie na USB nebo v cloudu mohou při odhalení tajných údajů zpřístupnit prostředky. Nikomu nikdy neposílejte obnovovací slova ani hesla."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Aplikace pro Android",
+        "body": "Telefon těží nezávisle a komunikuje s kompatibilními uzly SMW. V hlavní síti je nutný synchronizovaný dostupný uzel a otevřená peněženka. Automatické vyhledávání nezaručuje přístup přes každý NAT nebo firewall. Těžební pool, služba tržních cen ani funkce QR nejsou součástí aplikace.\n\nPoplatky lze vypočítat automaticky nebo zadat ručně s nejvýše osmi desetinnými místy. Poplatek platí odesílatel. Před odesláním zkontrolujte poplatek a celkový odečet. Přijetí uzlem neznamená přijetí příjemcem ani potvrzení v bloku. Odmítnutí, nejistý výsledek, čekající příchozí převod a zařazení do bloku se zobrazují odděleně. Nejistou transakci neposílejte znovu bez kontroly historie.\n\nUzel hostuje místní služba na popředí. Aktivní těžba používá zámek probuzení; Android nebo výrobce zařízení přesto mohou proces zastavit. Oznámení vyžadují oprávnění. Zavřená aplikace nemůže zaručit okamžitá upozornění na příjem; výsledky se kontrolují po opětovném otevření a synchronizaci. Staré transakce a odměny za těžbu jsou vyloučeny z nových upozornění na příchozí převody."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatické bezpečnostní uzamčení",
+        "body": "Během těžby je utrácení uzamčeno; po skončení těžby se uzamknou klíče peněženky.\nTěžba se zastaví při teplotě baterie 45 °C nebo přehřátí systému. Po ochlazení ji spusťte znovu ručně.\nZměna řetězce odstranila předchozí potvrzení v bloku. Znovu zkontrolujte historii transakcí."
+      }
+    ]
+  },
+  "da": {
+    "title": "Hjælp",
+    "subtitle": "Sådan fungerer hver SMW-skærm",
+    "back": "Tilbage til Mere",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Hjem",
+        "body": "Viser din SMW-saldo, tilgængelige saldo, mining-fremgang og seneste aktivitet. Netværksafsnittet viser lokal blokhøjde og tilsluttede noder. Tegnebog viser umodne belønninger og afventende ændringer."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Vælg et mål på 1–10,000 blokke i Mining-indstillinger, og tryk derefter på Start mining. Ringen viser fremgangen mod målet for denne serie; tallet indeni er din tegnebogs samlede SMW, ikke en lovet indtjening. Denne telefon miner alene. På hovednetværket kræves en åben tegnebog og en synkroniseret node. Stop annullerer den aktuelle serie."
+      },
+      {
+        "id": "wallet",
+        "title": "Tegnebog",
+        "body": "Opret eller åbn en lokal tegnebog beskyttet med adgangskode. En ny seed-tegnebog viser 24 gendannelsesord; gem dem offline i korrekt rækkefølge. Modtageadressen kan deles, men adgangskoden og gendannelsesordene skal holdes private."
+      },
+      {
+        "id": "send",
+        "title": "Send og modtag",
+        "body": "Modtag viser din adresse, så den kan kopieres eller deles. For at sende skal du indtaste en SMW-adresse og et beløb, gennemgå det beregnede gebyr og den samlede debitering og derefter bekræfte. Afsenderen betaler gebyret. Beløb understøtter op til otte decimaler."
+      },
+      {
+        "id": "balances",
+        "title": "Saldi og bekræftelser",
+        "body": "Tilgængelig er det beløb, der er klar til brug. Umodne belønninger er minede mønter, der stadig er omfattet af reglen om 100 blokkes modning. Afventer er en transaktionsændring, der endnu ikke er bekræftet i en blok. Antallet af bekræftelser følger den aktuelle aktive kæde og kan ændres efter en kædereorganisering."
+      },
+      {
+        "id": "history",
+        "title": "Transaktionshistorik",
+        "body": "Viser mining-belønninger, modtagne og sendte midler, antal bekræftelser, blokhøjde og transaktions-ID. Filtre gælder den indlæste side; brug Forrige eller Næste for at gennemse mere end 50 poster."
+      },
+      {
+        "id": "network",
+        "title": "Nodeforbindelse",
+        "body": "Appen kører en lokal SMW-node. Tilsluttede noder tæller andre noder, så nul betyder ikke, at din egen node er forsvundet. Med internet aktiveret forsøger SMWs automatiske søgning at finde kompatible noder. Hvis ingen er tilgængelige, skal du tilføje en nodes IP eller domæne:port manuelt. Mining venter, indtil en node er synkroniseret."
+      },
+      {
+        "id": "settings",
+        "title": "Indstillinger og diagnostik",
+        "body": "Mere lader dig vælge et farvetema, lys eller mørk tilstand og et understøttet sprog. Nodeoplysninger viser lokal status, antal noder, CPU-forbrug, næste sværhedsgradsbits og den aktuelle blokbelønning. CPU-forbrug er ikke en måling af hashrate."
+      },
+      {
+        "id": "backup",
+        "title": "Sikkerhedskopiering og gendannelse",
+        "body": "Eksportér en krypteret sikkerhedskopi af tegnebogen, før du afinstallerer eller skifter telefon; gendannelse kræver dens adgangskode. En seed-tegnebog kan også gendannes med sine 24 ord. Kopier på USB eller i skyen kan give adgang til midler, hvis hemmeligheden afsløres. Send aldrig gendannelsesord eller adgangskoder til nogen."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-app",
+        "body": "Telefonen miner selvstændigt og kommunikerer med kompatible SMW-noder. På hovednetværket kræves en synkroniseret, tilgængelig node og en åben tegnebog. Automatisk søgning garanterer ikke adgang gennem enhver NAT eller firewall. Mining-pulje, markedspristjeneste og QR-funktion er ikke inkluderet.\n\nGebyrer kan beregnes automatisk eller indtastes manuelt med op til otte decimaler. Afsenderen betaler gebyret. Gennemgå gebyret og den samlede debitering før indsendelse. Nodens accept er ikke modtagerens modtagelse eller blokbekræftelse. Afvisning, usikre resultater, afventende indgående overførsler og medtagelse i blok vises separat. Send ikke en usikker transaktion igen, før du har kontrolleret historikken.\n\nEn lokal forgrundstjeneste hoster noden. Aktiv mining bruger en wake lock; Android eller enhedsproducenten kan stadig stoppe processen. Notifikationer kræver tilladelse. Lukkede apps kan ikke garantere øjeblikkelige modtagelsesadvarsler; resultater kontrolleres efter genåbning og synkronisering. Gamle transaktioner og mining-belønninger er udelukket fra nye advarsler om indgående overførsler."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatisk sikkerhedslås",
+        "body": "Forbrug er låst under mining; tegnebogens nøgler låses, når mining slutter.\nMining stopper ved en batteritemperatur på 45°C eller overophedning af systemet. Genstart manuelt efter afkøling.\nEn kædeændring fjernede den tidligere blokbekræftelse. Kontrollér transaktionshistorikken igen."
+      }
+    ]
+  },
+  "fi": {
+    "title": "Ohje",
+    "subtitle": "Näin SUMUWWin eri näkymät toimivat",
+    "back": "Takaisin Lisää-näkymään",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Koti",
+        "body": "Näyttää SMW-saldosi, käytettävissä olevan saldon, louhinnan etenemisen ja viimeisimmät tapahtumat. Verkko-osio näyttää paikallisen lohkokorkeuden ja yhdistetyt vertaiset. Lompakko näyttää epäkypsät palkkiot ja odottavat muutokset."
+      },
+      {
+        "id": "mining",
+        "title": "Louhinta",
+        "body": "Valitse Louhinta-asetuksissa tavoitteeksi 1–10,000 lohkoa ja napauta Aloita louhinta. Rengas näyttää etenemisen tämän erän tavoitteeseen; sisällä oleva luku on lompakkosi SMW-kokonaismäärä, ei luvattu tuotto. Tämä puhelin louhii yksin. Pääverkossa vaaditaan avoin lompakko ja synkronoitu vertainen. Pysäytä peruuttaa nykyisen erän."
+      },
+      {
+        "id": "wallet",
+        "title": "Lompakko",
+        "body": "Luo tai avaa salasanalla suojattu paikallinen lompakko. Uusi siemenlompakko näyttää 24 palautussanaa; tallenna ne offline-tilassa oikeassa järjestyksessä. Vastaanotto-osoitteen voi jakaa, mutta salasana ja palautussanat on pidettävä yksityisinä."
+      },
+      {
+        "id": "send",
+        "title": "Lähettäminen ja vastaanottaminen",
+        "body": "Vastaanota näyttää osoitteesi kopioitavaksi tai jaettavaksi. Lähettääksesi kirjoita SMW-osoite ja summa, tarkista laskettu maksu ja kokonaisveloitus ja vahvista. Lähettäjä maksaa maksun. Summat tukevat enintään kahdeksaa desimaalia."
+      },
+      {
+        "id": "balances",
+        "title": "Saldot ja vahvistukset",
+        "body": "Käytettävissä on summa, joka on valmis käytettäväksi. Epäkypsät palkkiot ovat louhittuja kolikoita, joihin sovelletaan vielä 100 lohkon kypsymissääntöä. Odottava tarkoittaa transaktiomuutosta, jota ei ole vielä vahvistettu lohkossa. Vahvistusmäärät seuraavat nykyistä aktiivista ketjua ja voivat muuttua ketjun uudelleenjärjestelyn jälkeen."
+      },
+      {
+        "id": "history",
+        "title": "Transaktiohistoria",
+        "body": "Näyttää louhintapalkkiot, vastaanotetut ja lähetetyt varat, vahvistusmäärän, lohkokorkeuden ja transaktion tunnisteen. Suodattimet koskevat ladattua sivua; selaa yli 50 tietuetta Edellinen- ja Seuraava-painikkeilla."
+      },
+      {
+        "id": "network",
+        "title": "Solmuyhteys",
+        "body": "Sovellus käyttää paikallista SMW-solmua. Yhdistetyt vertaiset laskee muut solmut, joten nolla ei tarkoita oman solmusi kadonneen. Kun internet on käytössä, SUMUWWin automaattinen haku yrittää löytää yhteensopivia vertaisia. Jos yksikään ei ole tavoitettavissa, lisää vertaisen IP tai verkkotunnus:portti käsin. Louhinta odottaa vertaisen synkronointia."
+      },
+      {
+        "id": "settings",
+        "title": "Asetukset ja diagnostiikka",
+        "body": "Lisää-näkymässä voit valita väriteeman, vaalean tai tumman tilan ja tuetun kielen. Solmun tiedot näyttää paikallisen tilan, vertaismäärät, CPU-käytön, seuraavan vaikeustason bits-arvon ja nykyisen lohkopalkkion. CPU-käyttö ei ole tiivistelaskentanopeuden mittaus."
+      },
+      {
+        "id": "backup",
+        "title": "Varmuuskopiointi ja palautus",
+        "body": "Vie salattu lompakon varmuuskopio ennen sovelluksen poistamista tai puhelimen vaihtoa; sen palautus vaatii salasanan. Siemenlompakon voi palauttaa myös sen 24 sanalla. USB- tai pilvikopiot voivat antaa pääsyn varoihin, jos salaisuus paljastuu. Älä koskaan lähetä palautussanoja tai salasanoja kenellekään."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-sovellus",
+        "body": "Puhelin louhii itsenäisesti ja viestii yhteensopivien SMW-vertaisten kanssa. Pääverkossa vaaditaan synkronoitu, tavoitettava vertainen ja avoin lompakko. Automaattinen haku ei takaa pääsyä jokaisen NATin tai palomuurin läpi. Louhintapoolia, markkinahintapalvelua tai QR-toimintoa ei ole mukana.\n\nMaksut voidaan laskea automaattisesti tai syöttää käsin enintään kahdeksalla desimaalilla. Lähettäjä maksaa maksun. Tarkista maksu ja kokonaisveloitus ennen lähettämistä. Solmun hyväksyntä ei ole vastaanottajan vastaanotto tai lohkovahvistus. Hylkäys, epävarmat tulokset, odottavat saapuvat siirrot ja lohkoon sisällyttäminen näytetään erikseen. Älä lähetä epävarmaa transaktiota uudelleen ennen historian tarkistamista.\n\nPaikallinen etualapalvelu ylläpitää solmua. Aktiivinen louhinta käyttää herätelukkoa; Android tai laitteen valmistaja voi silti pysäyttää prosessin. Ilmoitukset vaativat luvan. Suljetut sovellukset eivät voi taata välittömiä vastaanottoilmoituksia; tulokset tarkistetaan uudelleenavauksen ja synkronoinnin jälkeen. Vanhat transaktiot ja louhintapalkkiot jätetään uusien saapuvien siirtoilmoitusten ulkopuolelle."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automaattinen turvalukitus",
+        "body": "Varojen käyttö on lukittu louhinnan aikana; lompakon avaimet lukitaan louhinnan päättyessä.\nLouhinta pysähtyy akun lämpötilan ollessa 45°C tai järjestelmän ylikuumentuessa. Käynnistä käsin uudelleen jäähtymisen jälkeen.\nKetjumuutos poisti aiemman lohkovahvistuksen. Tarkista transaktiohistoria uudelleen."
+      }
+    ]
+  },
+  "el": {
+    "title": "Βοήθεια",
+    "subtitle": "Πώς λειτουργεί κάθε οθόνη SMW",
+    "back": "Επιστροφή στα Περισσότερα",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Αρχική",
+        "body": "Εμφανίζει το υπόλοιπο SMW, το διαθέσιμο υπόλοιπο, την πρόοδο εξόρυξης και την πρόσφατη δραστηριότητα. Η ενότητα δικτύου δείχνει το τοπικό ύψος μπλοκ και τους συνδεδεμένους ομότιμους. Το Πορτοφόλι δείχνει ανώριμες ανταμοιβές και εκκρεμείς μεταβολές."
+      },
+      {
+        "id": "mining",
+        "title": "Εξόρυξη",
+        "body": "Επιλέξτε στόχο 1–10,000 μπλοκ στις Ρυθμίσεις εξόρυξης και πατήστε Έναρξη εξόρυξης. Ο δακτύλιος δείχνει την πρόοδο προς τον στόχο αυτής της παρτίδας· ο αριθμός μέσα είναι το σύνολο SMW του πορτοφολιού σας, όχι υποσχόμενο κέρδος. Αυτό το τηλέφωνο εξορύσσει μόνο του. Στο κύριο δίκτυο απαιτούνται ανοιχτό πορτοφόλι και συγχρονισμένος ομότιμος. Η Διακοπή ακυρώνει την τρέχουσα παρτίδα."
+      },
+      {
+        "id": "wallet",
+        "title": "Πορτοφόλι",
+        "body": "Δημιουργήστε ή ανοίξτε τοπικό πορτοφόλι προστατευμένο με κωδικό. Ένα νέο πορτοφόλι με φράση ανάκτησης εμφανίζει 24 λέξεις· αποθηκεύστε τις εκτός σύνδεσης με τη σωστή σειρά. Η διεύθυνση λήψης μπορεί να κοινοποιηθεί, αλλά ο κωδικός και οι λέξεις ανάκτησης πρέπει να παραμείνουν μυστικά."
+      },
+      {
+        "id": "send",
+        "title": "Αποστολή και λήψη",
+        "body": "Η Λήψη εμφανίζει τη διεύθυνσή σας για αντιγραφή ή κοινοποίηση. Για αποστολή, εισαγάγετε διεύθυνση SMW και ποσό, ελέγξτε το υπολογισμένο τέλος και τη συνολική χρέωση και επιβεβαιώστε. Ο αποστολέας πληρώνει το τέλος. Τα ποσά υποστηρίζουν έως οκτώ δεκαδικά ψηφία."
+      },
+      {
+        "id": "balances",
+        "title": "Υπόλοιπα και επιβεβαιώσεις",
+        "body": "Διαθέσιμο είναι το ποσό έτοιμο για δαπάνη. Οι ανώριμες ανταμοιβές είναι εξορυγμένα νομίσματα που υπόκεινται ακόμη στον κανόνα ωρίμανσης 100 μπλοκ. Εκκρεμεί σημαίνει μεταβολή συναλλαγής που δεν έχει επιβεβαιωθεί ακόμη σε μπλοκ. Οι αριθμοί επιβεβαιώσεων ακολουθούν την τρέχουσα ενεργή αλυσίδα και μπορούν να αλλάξουν μετά από αναδιοργάνωσή της."
+      },
+      {
+        "id": "history",
+        "title": "Ιστορικό συναλλαγών",
+        "body": "Δείχνει ανταμοιβές εξόρυξης, εισερχόμενα και εξερχόμενα κεφάλαια, αριθμό επιβεβαιώσεων, ύψος μπλοκ και αναγνωριστικό συναλλαγής. Τα φίλτρα ισχύουν για τη φορτωμένη σελίδα· χρησιμοποιήστε Προηγούμενο ή Επόμενο για περιήγηση σε περισσότερες από 50 εγγραφές."
+      },
+      {
+        "id": "network",
+        "title": "Σύνδεση κόμβου",
+        "body": "Η εφαρμογή εκτελεί τοπικό κόμβο SMW. Οι συνδεδεμένοι ομότιμοι μετρούν άλλους κόμβους, άρα το μηδέν δεν σημαίνει ότι εξαφανίστηκε ο δικός σας κόμβος. Με ενεργό διαδίκτυο, η αυτόματη ανακάλυψη SMW προσπαθεί να βρει συμβατούς ομότιμους. Αν κανένας δεν είναι προσβάσιμος, προσθέστε IP ή τομέα:θύρα ομότιμου χειροκίνητα. Η εξόρυξη περιμένει μέχρι να συγχρονιστεί ομότιμος."
+      },
+      {
+        "id": "settings",
+        "title": "Ρυθμίσεις και διαγνωστικά",
+        "body": "Τα Περισσότερα επιτρέπουν επιλογή χρωματικού θέματος, φωτεινής ή σκοτεινής λειτουργίας και υποστηριζόμενης γλώσσας. Οι Λεπτομέρειες κόμβου δείχνουν τοπική κατάσταση, πλήθος ομότιμων, χρήση CPU, bits επόμενης δυσκολίας και τρέχουσα ανταμοιβή μπλοκ. Η χρήση CPU δεν μετρά τον ρυθμό κατακερματισμού."
+      },
+      {
+        "id": "backup",
+        "title": "Αντίγραφα ασφαλείας και ανάκτηση",
+        "body": "Εξαγάγετε κρυπτογραφημένο αντίγραφο πορτοφολιού πριν από απεγκατάσταση ή αλλαγή τηλεφώνου· η επαναφορά απαιτεί τον κωδικό του. Πορτοφόλι με φράση ανάκτησης ανακτάται επίσης με τις 24 λέξεις του. Αντίγραφα σε USB ή στο νέφος μπορούν να δώσουν πρόσβαση στα κεφάλαια αν εκτεθεί το μυστικό. Μην στέλνετε ποτέ λέξεις ανάκτησης ή κωδικούς σε κανέναν."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Εφαρμογή Android",
+        "body": "Το τηλέφωνο εξορύσσει ανεξάρτητα και επικοινωνεί με συμβατούς ομότιμους SMW. Στο κύριο δίκτυο απαιτούνται συγχρονισμένος προσβάσιμος ομότιμος και ανοιχτό πορτοφόλι. Η αυτόματη ανακάλυψη δεν εγγυάται πρόσβαση μέσω κάθε NAT ή τείχους προστασίας. Δεν περιλαμβάνονται δεξαμενή εξόρυξης, υπηρεσία τιμών αγοράς ή λειτουργία QR.\n\nΤα τέλη μπορούν να υπολογίζονται αυτόματα ή να εισάγονται χειροκίνητα, με έως οκτώ δεκαδικά ψηφία. Ο αποστολέας πληρώνει το τέλος. Ελέγξτε το τέλος και τη συνολική χρέωση πριν από την υποβολή. Η αποδοχή από τον κόμβο δεν είναι λήψη από τον παραλήπτη ή επιβεβαίωση μπλοκ. Απόρριψη, αβέβαια αποτελέσματα, εκκρεμείς εισερχόμενες μεταφορές και ένταξη σε μπλοκ εμφανίζονται ξεχωριστά. Μην υποβάλλετε ξανά αβέβαιη συναλλαγή πριν ελέγξετε το ιστορικό.\n\nΜια τοπική υπηρεσία προσκηνίου φιλοξενεί τον κόμβο. Η ενεργή εξόρυξη χρησιμοποιεί κλείδωμα αφύπνισης· το Android ή ο κατασκευαστής μπορεί παρ' όλα αυτά να σταματήσει τη διεργασία. Οι ειδοποιήσεις απαιτούν άδεια. Οι κλειστές εφαρμογές δεν εγγυώνται άμεσες ειδοποιήσεις λήψης· τα αποτελέσματα ελέγχονται μετά το άνοιγμα και τον συγχρονισμό. Οι παλιές συναλλαγές και οι ανταμοιβές εξόρυξης εξαιρούνται από νέες ειδοποιήσεις εισερχόμενων μεταφορών."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Αυτόματο κλείδωμα ασφαλείας",
+        "body": "Η δαπάνη κλειδώνεται κατά την εξόρυξη· τα κλειδιά πορτοφολιού κλειδώνονται όταν τελειώνει η εξόρυξη.\nΗ εξόρυξη σταματά σε θερμοκρασία μπαταρίας 45°C ή υπερθέρμανση συστήματος. Επανεκκινήστε χειροκίνητα μετά την ψύξη.\nΜια αλλαγή αλυσίδας αφαίρεσε την προηγούμενη επιβεβαίωση μπλοκ. Ελέγξτε ξανά το ιστορικό συναλλαγών."
+      }
+    ]
+  },
+  "no": {
+    "title": "Hjelp",
+    "subtitle": "Slik fungerer hver SMW-skjerm",
+    "back": "Tilbake til Mer",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Hjem",
+        "body": "Viser SMW-saldoen, tilgjengelig saldo, utvinningsfremdrift og nylig aktivitet. Nettverksdelen viser lokal blokkhøyde og tilkoblede noder. Lommebok viser umodne belønninger og ventende endringer."
+      },
+      {
+        "id": "mining",
+        "title": "Utvinning",
+        "body": "Velg et mål på 1–10,000 blokker i Utvinningsinnstillinger, og trykk deretter Start utvinning. Ringen viser fremdriften mot målet for denne omgangen; tallet inni er lommebokens samlede SMW, ikke lovet avkastning. Denne telefonen utvinner alene. En åpen lommebok og en synkronisert node kreves på hovednettverket. Stopp avbryter den pågående omgangen."
+      },
+      {
+        "id": "wallet",
+        "title": "Lommebok",
+        "body": "Opprett eller åpne en passordbeskyttet lokal lommebok. En ny seed-lommebok viser 24 gjenopprettingsord; lagre dem uten nett i riktig rekkefølge. Mottaksadressen kan deles, men passordet og gjenopprettingsordene må holdes private."
+      },
+      {
+        "id": "send",
+        "title": "Sende og motta",
+        "body": "Motta viser adressen din for kopiering eller deling. For å sende skriver du inn en SMW-adresse og et beløp, ser over beregnet gebyr og samlet belastning, og bekrefter. Avsenderen betaler gebyret. Beløp støtter opptil åtte desimaler."
+      },
+      {
+        "id": "balances",
+        "title": "Saldoer og bekreftelser",
+        "body": "Tilgjengelig er beløpet som er klart til bruk. Umodne belønninger er utvunne mynter som fortsatt er underlagt modningsregelen på 100 blokker. Venter er en transaksjonsendring som ennå ikke er bekreftet i en blokk. Antall bekreftelser følger den aktive kjeden og kan endres etter en kjedeomorganisering."
+      },
+      {
+        "id": "history",
+        "title": "Transaksjonshistorikk",
+        "body": "Viser utvinningsbelønninger, mottatte og sendte midler, antall bekreftelser, blokkhøyde og transaksjons-ID. Filtre gjelder den innlastede siden; bruk Forrige eller Neste for å bla gjennom mer enn 50 poster."
+      },
+      {
+        "id": "network",
+        "title": "Nodetilkobling",
+        "body": "Appen kjører en lokal SMW-node. Tilkoblede noder teller andre noder, så null betyr ikke at din egen node har forsvunnet. Med internett aktivert prøver automatisk SMW-oppdagelse å finne kompatible noder. Hvis ingen kan nås, legg til en nodes IP eller domene:port manuelt. Utvinning venter til en node er synkronisert."
+      },
+      {
+        "id": "settings",
+        "title": "Innstillinger og diagnostikk",
+        "body": "Mer lar deg velge fargetema, lys eller mørk modus og ett av 34 språk. Nodedetaljer viser lokal status, antall noder, CPU-bruk, neste vanskelighetsbiter og gjeldende blokkbelønning. CPU-bruk er ikke et mål på hashrate."
+      },
+      {
+        "id": "backup",
+        "title": "Sikkerhetskopiering og gjenoppretting",
+        "body": "Eksporter en kryptert sikkerhetskopi av lommeboken før avinstallering eller bytte av telefon; gjenoppretting krever passordet. En seed-lommebok kan også gjenopprettes med sine 24 ord. Kopier på USB eller i skylagring kan gi tilgang til midlene hvis hemmeligheten avsløres. Send aldri gjenopprettingsord eller passord til noen."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-app",
+        "body": "Telefonen utvinner selvstendig og kommuniserer med kompatible SMW-noder. En synkronisert, tilgjengelig node og en åpen lommebok kreves på hovednettverket. Automatisk oppdagelse garanterer ikke tilgang gjennom alle NAT-er eller brannmurer. Ingen utvinningspool, markedspristjeneste eller QR-funksjon er inkludert.\n\nGebyrer kan beregnes automatisk eller angis manuelt, med opptil åtte desimaler. Avsenderen betaler gebyret. Se over gebyr og samlet belastning før innsending. At noden godtar transaksjonen, betyr ikke at mottakeren har mottatt den eller at den er bekreftet i en blokk. Avvisning, usikre resultater, ventende innkommende overføringer og blokkinkludering vises separat. Ikke send en usikker transaksjon på nytt før du har kontrollert historikken.\n\nEn lokal forgrunnstjeneste kjører noden. Aktiv utvinning bruker en vekkelås; Android eller enhetsprodusenten kan likevel stoppe prosessen. Varsler krever tillatelse. En lukket app kan ikke garantere umiddelbare mottaksvarsler; resultatene kontrolleres etter ny åpning og synkronisering. Gamle transaksjoner og utvinningsbelønninger utelates fra varsler om nye innkommende overføringer."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatisk sikkerhetslås",
+        "body": "Bruk av midler er låst under utvinning; lommeboknøklene låses når utvinningen avsluttes.\nUtvinning stopper ved batteritemperatur 45°C eller overoppheting av systemet. Start manuelt etter avkjøling.\nEn kjedeendring fjernet den tidligere blokkbekreftelsen. Kontroller transaksjonshistorikken på nytt."
+      }
+    ]
+  },
+  "sv": {
+    "title": "Hjälp",
+    "subtitle": "Så fungerar varje SMW-skärm",
+    "back": "Tillbaka till Mer",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Hem",
+        "body": "Visar ditt SMW-saldo, tillgängligt saldo, brytningsförlopp och senaste aktivitet. Nätverksavsnittet visar lokal blockhöjd och anslutna noder. Plånbok visar omogna belöningar och väntande ändringar."
+      },
+      {
+        "id": "mining",
+        "title": "Brytning",
+        "body": "Välj 1–10,000 målblock i Brytningsinställningar och tryck sedan på Starta brytning. Ringen visar förloppet mot denna omgångs mål; talet inuti är plånbokens totala SMW, inte utlovad avkastning. Denna telefon bryter ensam. En öppen plånbok och en synkroniserad nod krävs i huvudnätverket. Stoppa avbryter den aktuella omgången."
+      },
+      {
+        "id": "wallet",
+        "title": "Plånbok",
+        "body": "Skapa eller öppna en lösenordsskyddad lokal plånbok. En ny fröplånbok visar 24 återställningsord; spara dem utan nätanslutning i rätt ordning. Mottagningsadressen kan delas, men lösenordet och återställningsorden måste förbli privata."
+      },
+      {
+        "id": "send",
+        "title": "Skicka och ta emot",
+        "body": "Ta emot visar din adress för kopiering eller delning. För att skicka anger du en SMW-adress och ett belopp, granskar den beräknade avgiften och den totala debiteringen och bekräftar sedan. Avsändaren betalar avgiften. Belopp stöder upp till åtta decimaler."
+      },
+      {
+        "id": "balances",
+        "title": "Saldon och bekräftelser",
+        "body": "Tillgängligt är det belopp som kan spenderas. Omogna belöningar är brutna mynt som fortfarande omfattas av mognadsregeln på 100 block. Väntande är en transaktionsändring som ännu inte har bekräftats i ett block. Antalet bekräftelser följer den aktuella aktiva kedjan och kan ändras efter en kedjeomorganisation."
+      },
+      {
+        "id": "history",
+        "title": "Transaktionshistorik",
+        "body": "Visar brytningsbelöningar, mottagna medel, skickade medel, antal bekräftelser, blockhöjd och transaktions-ID. Filter gäller den inlästa sidan; använd Föregående eller Nästa för att bläddra bland fler än 50 poster."
+      },
+      {
+        "id": "network",
+        "title": "Nodanslutning",
+        "body": "Appen kör en lokal SMW-nod. Anslutna noder räknar andra noder, så noll betyder inte att din egen nod har försvunnit. När internet är aktiverat försöker automatisk SMW-upptäckt hitta kompatibla noder. Om ingen kan nås lägger du till en nod som IP eller domän:port manuellt. Brytningen väntar tills en nod är synkroniserad."
+      },
+      {
+        "id": "settings",
+        "title": "Inställningar och diagnostik",
+        "body": "Mer låter dig välja färgtema, ljust eller mörkt läge och ett av 34 språk. Noddetaljer visar lokal status, nodantal, CPU-användning, nästa svårighetsbitar och aktuell blockbelöning. CPU-användning är inte ett mått på hashhastighet."
+      },
+      {
+        "id": "backup",
+        "title": "Säkerhetskopiering och återställning",
+        "body": "Exportera en krypterad säkerhetskopia av plånboken innan du avinstallerar eller byter telefon; återställning kräver dess lösenord. En fröplånbok kan också återställas med sina 24 ord. Kopior på USB eller i molnlagring kan ge tillgång till medlen om hemligheten röjs. Skicka aldrig återställningsord eller lösenord till någon."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android-app",
+        "body": "Telefonen bryter självständigt och kommunicerar med kompatibla SMW-noder. En synkroniserad nåbar nod och en öppen plånbok krävs i huvudnätverket. Automatisk upptäckt garanterar inte åtkomst genom alla NAT eller brandväggar. Ingen brytningspool, marknadspristjänst eller QR-funktion ingår.\n\nAvgifter kan beräknas automatiskt eller anges manuellt med upp till åtta decimaler. Avsändaren betalar avgiften. Granska avgiften och den totala debiteringen före inlämning. Nodens acceptans är inte mottagarens mottagande eller blockbekräftelse. Avvisning, osäkra resultat, inkommande väntande överföringar och blockinkludering visas separat. Skicka inte om en osäker transaktion innan du kontrollerat historiken.\n\nEn lokal förgrundstjänst driver noden. Aktiv brytning använder ett väckningslås; Android eller enhetstillverkaren kan fortfarande stoppa processen. Aviseringar kräver behörighet. Stängda appar kan inte garantera omedelbara mottagningsaviseringar; resultat kontrolleras efter att appen öppnats igen och synkroniserats. Gamla transaktioner och brytningsbelöningar undantas från aviseringar om nya inkommande överföringar."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Automatiskt säkerhetslås",
+        "body": "Utgifter är låsta under brytning; plånbokens nycklar låses när brytningen avslutas.\nBrytningen stoppas vid batteritemperatur 45°C eller systemöverhettning. Starta om manuellt efter nedkylning.\nEn kedjeändring tog bort den föregående blockbekräftelsen. Kontrollera transaktionshistoriken igen."
+      }
+    ]
+  },
+  "sr": {
+    "title": "Помоћ",
+    "subtitle": "Како ради сваки SMW екран",
+    "back": "Назад на Још",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Почетна",
+        "body": "Приказује SMW стање, расположиво стање, напредак рударења и недавну активност. Одељак мреже приказује локалну висину блока и повезане чворове. Новчаник приказује недозреле награде и промене на чекању."
+      },
+      {
+        "id": "mining",
+        "title": "Рударење",
+        "body": "Изаберите циљ од 1–10,000 блокова у Подешавањима рударења, па додирните Покрени рударење. Прстен приказује напредак ка циљу ове серије; број унутар њега је укупна SMW у вашем новчанику, а не обећана зарада. Овај телефон рудари самостално. На главној мрежи потребни су отворен новчаник и синхронизован чвор. Заустави отказује тренутну серију."
+      },
+      {
+        "id": "wallet",
+        "title": "Новчаник",
+        "body": "Направите или отворите локални новчаник заштићен лозинком. Нови новчаник са почетним речима приказује 24 речи за опоравак; сачувајте их ван мреже у исправном редоследу. Адреса за пријем се може делити, али лозинка и речи за опоравак морају остати тајне."
+      },
+      {
+        "id": "send",
+        "title": "Слање и пријем",
+        "body": "Прими приказује вашу адресу за копирање или дељење. За слање унесите SMW адресу и износ, прегледајте израчунату накнаду и укупно задужење, па потврдите. Пошиљалац плаћа накнаду. Износи подржавају до осам децималних места."
+      },
+      {
+        "id": "balances",
+        "title": "Стања и потврде",
+        "body": "Расположиво је износ спреман за трошење. Недозреле награде су изрударени новчићи који још подлежу правилу дозревања од 100 блокова. На чекању је промена трансакције која још није потврђена у блоку. Број потврда прати тренутни активни ланац и може се променити након реорганизације ланца."
+      },
+      {
+        "id": "history",
+        "title": "Историја трансакција",
+        "body": "Приказује рударске награде, примљена средства, послата средства, број потврда, висину блока и ID трансакције. Филтери важе за учитану страницу; користите Претходно или Следеће за преглед више од 50 записа."
+      },
+      {
+        "id": "network",
+        "title": "Повезивање чвора",
+        "body": "Апликација покреће локални SMW чвор. Повезани чворови броје друге чворове, па нула не значи да је ваш чвор нестао. Када је интернет укључен, аутоматско SMW откривање покушава да пронађе компатибилне чворове. Ако ниједан није доступан, ручно додајте IP или домен:порт чвора. Рударење чека док чвор не буде синхронизован."
+      },
+      {
+        "id": "settings",
+        "title": "Подешавања и дијагностика",
+        "body": "Још омогућава избор теме боја, светлог или тамног режима и једног од 34 језика. Детаљи чвора приказују локални статус, број чворова, употребу CPU, следеће битове тежине и тренутну награду за блок. Употреба CPU није мерење брзине хеширања."
+      },
+      {
+        "id": "backup",
+        "title": "Резервна копија и опоравак",
+        "body": "Извезите шифровану резервну копију новчаника пре деинсталирања или промене телефона; за враћање је потребна њена лозинка. Новчаник са почетним речима може се опоравити и помоћу своје 24 речи. Копије на USB-у или у облаку могу омогућити приступ средствима ако се тајна открије. Никада никоме не шаљите речи за опоравак или лозинке."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android апликација",
+        "body": "Телефон рудари самостално и комуницира са компатибилним SMW чворовима. На главној мрежи потребни су синхронизован доступан чвор и отворен новчаник. Аутоматско откривање не гарантује приступ кроз сваки NAT или заштитни зид. Нису укључени рударски пул, сервис тржишних цена или QR функција.\n\nНакнаде могу бити аутоматски израчунате или ручно унете, са највише осам децималних места. Пошиљалац плаћа накнаду. Прегледајте накнаду и укупно задужење пре предаје. Прихватање чвора није пријем код примаоца нити потврда блока. Одбијање, неизвесни резултати, долазни преноси на чекању и укључивање у блок приказују се одвојено. Не шаљите поново неизвесну трансакцију пре провере историје.\n\nЛокална услуга у првом плану хостује чвор. Активно рударење користи закључавање будности; Android или произвођач уређаја ипак могу зауставити процес. Обавештења захтевају дозволу. Затворене апликације не могу гарантовати тренутна обавештења о пријему; резултати се проверавају након поновног отварања и синхронизације. Старе трансакције и рударске награде искључене су из обавештења о новим долазним преносима."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Аутоматско безбедносно закључавање",
+        "body": "Трошење је закључано током рударења; кључеви новчаника се закључавају по завршетку рударења.\nРударење се зауставља при температури батерије од 45°C или прегревању система. Поново покрените ручно након хлађења.\nПромена ланца је уклонила претходну потврду блока. Поново проверите историју трансакција."
+      }
+    ]
+  },
+  "mn": {
+    "title": "Тусламж",
+    "subtitle": "SMW дэлгэц бүр хэрхэн ажилладаг вэ",
+    "back": "Бусад руу буцах",
+    "topics": [
+      {
+        "id": "home",
+        "title": "Нүүр",
+        "body": "Таны SMW үлдэгдэл, боломжит үлдэгдэл, олборлолтын явц болон сүүлийн үйл ажиллагааг харуулна. Сүлжээний хэсэгт дотоод блокийн өндөр болон холбогдсон зангилаанууд харагдана. Хэтэвч нь боловсроогүй шагнал болон хүлээгдэж буй өөрчлөлтийг харуулна."
+      },
+      {
+        "id": "mining",
+        "title": "Олборлолт",
+        "body": "Олборлолтын тохиргооноос 1–10,000 зорилтот блок сонгоод Олборлолт эхлүүлэхийг дарна уу. Тойрог энэ багцын зорилтын явцыг харуулна; доторх тоо нь амласан орлого бус таны хэтэвчийн нийт SMW юм. Энэ утас дангаар олборлоно. Үндсэн сүлжээнд нээлттэй хэтэвч болон синхрончилсон зангилаа шаардлагатай. Зогсоох нь одоогийн багцыг цуцална."
+      },
+      {
+        "id": "wallet",
+        "title": "Хэтэвч",
+        "body": "Нууц үгээр хамгаалсан дотоод хэтэвч үүсгэх эсвэл нээнэ үү. Шинэ үр үгтэй хэтэвч сэргээх 24 үг харуулна; тэдгээрийг зөв дарааллаар сүлжээнээс тусгаарлан хадгална уу. Хүлээн авах хаягийг хуваалцаж болно, харин нууц үг болон сэргээх үгс нууц байх ёстой."
+      },
+      {
+        "id": "send",
+        "title": "Илгээх ба хүлээн авах",
+        "body": "Хүлээн авах хэсэгт хуулах эсвэл хуваалцах хаяг харагдана. Илгээхдээ SMW хаяг болон дүн оруулж, тооцоолсон шимтгэл болон нийт суутгалыг хянаад батална уу. Илгээгч шимтгэл төлнө. Дүн таслалаас хойш найм хүртэл оронтой байж болно."
+      },
+      {
+        "id": "balances",
+        "title": "Үлдэгдэл ба баталгаажуулалт",
+        "body": "Боломжтой гэдэг нь зарцуулахад бэлэн дүн юм. Боловсроогүй шагнал нь 100 блокийн боловсрох дүрэмд хамаарч буй олборлосон зоос юм. Хүлээгдэж буй нь блокт хараахан баталгаажаагүй гүйлгээний өөрчлөлт юм. Баталгаажуулалтын тоо одоогийн идэвхтэй гинжийг дагаж, гинж дахин зохион байгуулагдсаны дараа өөрчлөгдөж болно."
+      },
+      {
+        "id": "history",
+        "title": "Гүйлгээний түүх",
+        "body": "Олборлолтын шагнал, хүлээн авсан хөрөнгө, илгээсэн хөрөнгө, баталгаажуулалтын тоо, блокийн өндөр болон гүйлгээний ID-г харуулна. Шүүлтүүр ачаалсан хуудсанд үйлчилнэ; 50-аас олон бичлэг үзэхдээ Өмнөх эсвэл Дараахыг ашиглана уу."
+      },
+      {
+        "id": "network",
+        "title": "Зангилааны холболт",
+        "body": "Апп дотоод SMW зангилаа ажиллуулна. Холбогдсон зангилаанууд нь бусад зангилааг тоолдог тул тэг болсон нь таны зангилаа алга болсон гэсэн үг биш. Интернэт идэвхтэй үед автомат SMW илрүүлэлт нийцтэй зангилаанууд хайна. Аль нь ч холбогдох боломжгүй бол зангилааны IP эсвэл домэйн:порт гараар нэмнэ үү. Зангилаа синхрончлогдох хүртэл олборлолт хүлээнэ."
+      },
+      {
+        "id": "settings",
+        "title": "Тохиргоо ба оношилгоо",
+        "body": "Бусад хэсгээс өнгийн загвар, цайвар эсвэл бараан горим болон 34 хэлний нэгийг сонгож болно. Зангилааны дэлгэрэнгүйд дотоод төлөв, зангилааны тоо, CPU хэрэглээ, дараагийн хүндрэлийн битүүд болон одоогийн блокийн шагнал харагдана. CPU хэрэглээ нь хешийн хурдны хэмжилт биш."
+      },
+      {
+        "id": "backup",
+        "title": "Нөөцлөх ба сэргээх",
+        "body": "Аппыг устгах эсвэл утсаа солихын өмнө шифрлэсэн хэтэвчийн нөөц хуулбарыг экспортлоно уу; сэргээхэд нууц үг нь хэрэгтэй. Үр үгтэй хэтэвчийг мөн 24 үгээр нь сэргээж болно. Нууц ил болсон бол USB эсвэл үүлэн хадгалалтын хуулбараар хөрөнгөд хандаж болно. Сэргээх үгс болон нууц үгээ хэнд ч бүү илгээгээрэй."
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android апп",
+        "body": "Утас бие даан олборлож нийцтэй SMW зангилаануудтай харилцана. Үндсэн сүлжээнд синхрончилсон, холбогдох боломжтой зангилаа болон нээлттэй хэтэвч шаардлагатай. Автомат илрүүлэлт бүх NAT эсвэл галт ханаар нэвтрэхийг батлахгүй. Олборлолтын пул, зах зээлийн үнийн үйлчилгээ эсвэл QR боломж ороогүй.\n\nШимтгэлийг автоматаар тооцоолох эсвэл таслалаас хойш найм хүртэл оронтойгоор гараар оруулж болно. Илгээгч шимтгэл төлнө. Илгээхийн өмнө шимтгэл болон нийт суутгалыг хянана уу. Зангилаа хүлээн авсан нь хүлээн авагчид хүрсэн эсвэл блокт баталгаажсан гэсэн үг биш. Татгалзалт, тодорхойгүй үр дүн, хүлээгдэж буй орлого болон блокт орох төлөвийг тусад нь харуулна. Түүхийг шалгалгүй тодорхойгүй гүйлгээг дахин бүү илгээгээрэй.\n\nДотоод foreground үйлчилгээ зангилааг ажиллуулна. Идэвхтэй олборлолт сэрүүн байлгах түгжээ ашиглана; Android эсвэл төхөөрөмж үйлдвэрлэгч үйл явцыг зогсоож болно. Мэдэгдэлд зөвшөөрөл шаардлагатай. Хаалттай апп шуурхай хүлээн авалтын мэдэгдлийг батлахгүй; дахин нээж синхрончилсны дараа үр дүнг шалгана. Хуучин гүйлгээ болон олборлолтын шагналыг шинэ орлогын мэдэгдлээс хасна."
+      },
+      {
+        "id": "mobile_protection",
+        "title": "Аюулгүй байдлын автомат түгжээ",
+        "body": "Олборлолтын үед зарцуулалт түгжигдэнэ; олборлолт дуусахад хэтэвчийн түлхүүрүүд түгжигдэнэ.\nБатерейн температур 45°C хүрэх эсвэл систем хэт халах үед олборлолт зогсоно. Хөрсний дараа гараар дахин эхлүүлнэ үү.\nГинж өөрчлөгдөж өмнөх блокийн баталгаа хасагдсан. Гүйлгээний түүхийг дахин шалгана уу."
+      }
+    ]
+  },
+  "mn-Mong": {
+    "title": "ᠲᠤᠰᠠᠯᠠᠮᠵᠢ",
+    "subtitle": "SMW ᠶᠢᠨ ᠳᠡᠯᠭᠡᠴᠡ ᠪᠦᠷᠢ ᠶᠢᠨ ᠠᠵᠢᠯᠯᠠᠬᠤ ᠠᠷᠭ᠎ᠠ",
+    "back": "ᠪᠤᠰᠤᠳ ᠷᠤᠤ ᠪᠤᠴᠠᠬᠤ",
+    "topics": [
+      {
+        "id": "home",
+        "title": "ᠨᠢᠭᠤᠷ",
+        "body": "ᠲᠠᠨ ᠤ SMW ᠦᠯᠡᠳᠡᠭᠳᠡᠯ᠂ ᠵᠠᠷᠴᠤᠭᠤᠯᠵᠤ ᠪᠣᠯᠬᠤ ᠦᠯᠡᠳᠡᠭᠳᠡᠯ᠂ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠠᠬᠢᠴᠠ᠂ ᠰᠡᠭᠦᠯ ᠦᠨ ᠦᠢᠯᠡ ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ ᠶᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠲᠣᠣᠷᠴᠢᠯᠠᠯ ᠤᠨ ᠬᠡᠰᠡᠭ ᠳᠣᠲᠣᠭᠠᠳᠤ ᠪᠯᠣᠺ ᠤᠨ ᠥᠨᠳᠥᠷ ᠪᠠ ᠬᠣᠯᠪᠣᠭᠰᠠᠨ ᠲᠦᠩᠰᠢ ᠶᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠪᠣᠯᠪᠣᠰᠣᠷᠠᠭᠤᠢ ᠱᠠᠩᠨᠠᠯ ᠪᠠ ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠥᠭᠡᠷᠴᠡᠯᠲᠡ ᠶᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃"
+      },
+      {
+        "id": "mining",
+        "title": "ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ",
+        "body": "ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠭ᠎ᠠ ᠳᠤ 1–10,000 ᠪᠯᠣᠺ ᠤᠨ ᠵᠣᠷᠢᠯᠲᠠ ᠰᠣᠩᠭᠣᠭᠠᠳ᠂ ᠣᠯᠪᠣᠷᠯᠠᠵᠤ ᠡᠬᠢᠯᠡᠬᠦ ᠶᠢ ᠳᠠᠷᠤᠨ᠎ᠠ᠃ ᠴᠠᠭᠢᠷᠢᠭ ᠡᠨᠡ ᠪᠠᠭᠴᠠ ᠶᠢᠨ ᠵᠣᠷᠢᠯᠲᠠ ᠳᠤ ᠬᠦᠷᠬᠦ ᠠᠬᠢᠴᠠ ᠶᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ; ᠳᠣᠲᠣᠷᠠᠬᠢ ᠲᠣᠭ᠎ᠠ ᠨᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠶᠢᠨ ᠨᠡᠶᠢᠲᠡ SMW ᠪᠣᠯᠬᠤ ᠠᠴᠠ ᠠᠮᠠᠯᠠᠭᠰᠠᠨ ᠣᠷᠣᠯᠭ᠎ᠠ ᠪᠢᠰᠢ᠃ ᠡᠨᠡ ᠤᠲᠠᠰᠤ ᠳᠠᠩᠭᠠᠷ ᠣᠯᠪᠣᠷᠯᠠᠨ᠎ᠠ᠃ ᠦᠨᠳᠦᠰᠦᠨ ᠲᠣᠣᠷᠴᠢᠯᠠᠯ ᠳᠤ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠪᠠ ᠢᠵᠢᠯᠡᠰᠢᠭᠦᠯᠦᠭᠰᠡᠨ ᠲᠦᠩᠰᠢ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃ ᠵᠣᠭᠰᠣᠭᠠᠬᠤ ᠨᠢ ᠣᠳᠣᠬᠠᠨ ᠤ ᠪᠠᠭᠴᠠ ᠶᠢ ᠴᠤᠴᠠᠯᠠᠨ᠎ᠠ᠃"
+      },
+      {
+        "id": "wallet",
+        "title": "ᠲᠦᠷᠢᠦᠪᠴᠢ",
+        "body": "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠷ ᠬᠠᠮᠠᠭᠠᠯᠠᠭᠰᠠᠨ ᠳᠣᠲᠣᠭᠠᠳᠤ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠦᠭᠦᠰᠭᠡᠬᠦ ᠪᠤᠶᠤ ᠨᠡᠭᠡᠭᠡᠨ᠎ᠡ᠃ ᠰᠢᠨ᠎ᠡ ᠦᠷ᠎ᠡ ᠦᠭᠡ ᠲᠡᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ 24 ᠰᠡᠷᠭᠦᠭᠡᠬᠦ ᠦᠭᠡ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ; ᠲᠡᠳᠡᠭᠡᠷ ᠢ ᠰᠦᠯᠵᠢᠶ᠎ᠡ ᠡᠴᠡ ᠲᠤᠰᠠᠭᠠᠷ᠂ ᠳᠡᠰ ᠳᠠᠷᠠᠭ᠎ᠠ ᠪᠠᠷ ᠨᠢ ᠬᠠᠳᠠᠭᠠᠯᠠᠨ᠎ᠠ᠃ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠬᠤ ᠬᠠᠶᠢᠭ ᠢ ᠬᠤᠪᠢᠶᠠᠯᠴᠠᠵᠤ ᠪᠣᠯᠣᠪᠴᠤ᠂ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠠ ᠰᠡᠷᠭᠦᠭᠡᠬᠦ ᠦᠭᠡ ᠪᠡᠨ ᠨᠢᠭᠤᠴᠠᠯᠠᠬᠤ ᠶᠣᠰᠣᠲᠠᠢ᠃"
+      },
+      {
+        "id": "send",
+        "title": "ᠢᠯᠡᠭᠡᠬᠦ ᠪᠠ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠬᠤ",
+        "body": "ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠬᠤ ᠨᠢ ᠬᠠᠶᠢᠭ ᠢ ᠬᠤᠭᠤᠯᠠᠬᠤ ᠪᠤᠶᠤ ᠬᠤᠪᠢᠶᠠᠯᠴᠠᠬᠤ ᠳᠤ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠢᠯᠡᠭᠡᠬᠦ ᠳᠦ SMW ᠬᠠᠶᠢᠭ ᠪᠠ ᠳᠦᠩ ᠣᠷᠣᠭᠤᠯᠵᠤ᠂ ᠪᠣᠳᠣᠭᠰᠠᠨ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠪᠠ ᠨᠡᠶᠢᠲᠡ ᠰᠤᠤᠲᠭᠠᠯ ᠢ ᠬᠢᠨᠠᠭᠠᠳ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃ ᠢᠯᠡᠭᠡᠭᠴᠢ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠲᠥᠯᠦᠨ᠎ᠡ᠃ ᠳᠦᠩ ᠠᠷᠪᠠᠲᠤ ᠶᠢᠨ ᠨᠠᠶᠢᠮᠠᠨ ᠣᠷᠣᠨ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠳᠡᠮᠵᠢᠨ᠎ᠡ᠃"
+      },
+      {
+        "id": "balances",
+        "title": "ᠦᠯᠡᠳᠡᠭᠳᠡᠯ ᠪᠠ ᠪᠠᠲᠤᠯᠠᠯᠲᠠ",
+        "body": "ᠵᠠᠷᠴᠤᠭᠤᠯᠵᠤ ᠪᠣᠯᠬᠤ ᠨᠢ ᠵᠠᠷᠴᠤᠭᠤᠯᠬᠤ ᠳᠤ ᠪᠡᠯᠡᠨ ᠳᠦᠩ᠃ ᠪᠣᠯᠪᠣᠰᠣᠷᠠᠭᠤᠢ ᠱᠠᠩᠨᠠᠯ ᠨᠢ 100 ᠪᠯᠣᠺ ᠤᠨ ᠪᠣᠯᠪᠣᠰᠣᠷᠠᠯᠲᠠ ᠶᠢᠨ ᠳᠦᠷᠢᠮ ᠳᠦ ᠬᠡᠪ ᠢᠶᠡᠷ ᠬᠠᠮᠠᠭᠠᠷᠬᠤ ᠣᠯᠪᠣᠷᠯᠠᠭᠰᠠᠨ ᠺᠣᠶᠢᠨ᠃ ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠨᠢ ᠪᠯᠣᠺ ᠲᠤ ᠬᠠᠷᠠᠬᠠᠨ ᠪᠠᠲᠤᠯᠠᠭᠳᠠᠭ᠎ᠠ ᠦᠭᠡᠢ ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢᠨ ᠥᠭᠡᠷᠴᠡᠯᠲᠡ᠃ ᠪᠠᠲᠤᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠲᠣᠭ᠎ᠠ ᠣᠳᠣᠬᠠᠨ ᠤ ᠢᠳᠡᠪᠬᠢᠲᠡᠢ ᠭᠢᠨᠵᠢ ᠶᠢ ᠳᠠᠭᠠᠵᠤ᠂ ᠭᠢᠨᠵᠢ ᠳᠠᠬᠢᠨ ᠵᠣᠬᠢᠶᠠᠨ ᠪᠠᠶᠢᠭᠤᠯᠤᠭᠳᠠᠭᠰᠠᠨ ᠤ ᠳᠠᠷᠠᠭ᠎ᠠ ᠥᠭᠡᠷᠴᠡᠯᠡᠭᠳᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃"
+      },
+      {
+        "id": "history",
+        "title": "ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢᠨ ᠲᠡᠦᠬᠡ",
+        "body": "ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠱᠠᠩᠨᠠᠯ᠂ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠤᠭᠰᠠᠨ ᠮᠥᠩᠭᠥ᠂ ᠢᠯᠡᠭᠡᠭᠰᠡᠨ ᠮᠥᠩᠭᠥ᠂ ᠪᠠᠲᠤᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠲᠣᠭ᠎ᠠ᠂ ᠪᠯᠣᠺ ᠤᠨ ᠥᠨᠳᠥᠷ᠂ ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢᠨ ID ᠶᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠱᠦᠭᠦᠭᠦᠷ ᠠᠴᠢᠶᠠᠯᠠᠭᠰᠠᠨ ᠬᠠᠭᠤᠳᠠᠰᠤ ᠳᠤ ᠦᠢᠯᠡᠴᠢᠯᠡᠨ᠎ᠡ; 50 ᠠᠴᠠ ᠣᠯᠠᠨ ᠪᠢᠴᠢᠯᠭᠡ ᠦᠵᠡᠬᠦ ᠳᠦ ᠥᠮᠦᠨᠡᠬᠢ ᠪᠤᠶᠤ ᠳᠠᠷᠠᠭᠠᠬᠢ ᠶᠢ ᠠᠰᠢᠭᠯᠠᠨ᠎ᠠ᠃"
+      },
+      {
+        "id": "network",
+        "title": "ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠣᠯᠪᠣᠯᠲᠠ",
+        "body": "ᠠᠫᠫ ᠳᠣᠲᠣᠭᠠᠳᠤ SMW ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠬᠣᠯᠪᠣᠭᠰᠠᠨ ᠲᠦᠩᠰᠢ ᠨᠢ ᠥᠭᠡᠷ᠎ᠡ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢ ᠲᠣᠭᠠᠯᠠᠨ᠎ᠠ᠂ ᠲᠡᠶᠢᠮᠦ ᠡᠴᠡ ᠲᠡᠭ ᠨᠢ ᠥᠪᠡᠷ ᠦᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠯᠭ᠎ᠠ ᠪᠣᠯᠣᠭᠰᠠᠨ ᠢ ᠢᠯᠡᠳᠬᠡᠬᠦ ᠦᠭᠡᠢ᠃ ᠢᠨᠲ᠋ᠧᠷᠨᠡᠲ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠳᠦ SMW ᠶᠢᠨ ᠠᠦ᠋ᠲ᠋ᠣ᠋ ᠬᠠᠶᠢᠯᠲᠠ ᠨᠡᠶᠢᠴᠡᠲᠡᠢ ᠲᠦᠩᠰᠢ ᠣᠯᠬᠤ ᠶᠢ ᠣᠷᠣᠯᠳᠣᠨ᠎ᠠ᠃ ᠬᠦᠷᠴᠦ ᠪᠣᠯᠬᠤ ᠲᠦᠩᠰᠢ ᠦᠭᠡᠢ ᠪᠣᠯ IP ᠪᠤᠶᠤ domain:port ᠢ ᠭᠠᠷ ᠢᠶᠠᠷ ᠨᠡᠮᠡᠨ᠎ᠡ᠃ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠲᠦᠩᠰᠢ ᠢᠵᠢᠯᠡᠰᠢᠬᠦ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠬᠦᠯᠢᠶᠡᠨ᠎ᠡ᠃"
+      },
+      {
+        "id": "settings",
+        "title": "ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠭ᠎ᠠ ᠪᠠ ᠣᠨᠣᠰᠢᠯᠠᠭ᠎ᠠ",
+        "body": "ᠪᠤᠰᠤᠳ ᠬᠡᠰᠡᠭ ᠡᠴᠡ ᠥᠩᠭᠡ ᠶᠢᠨ ᠵᠠᠭᠪᠤᠷ᠂ ᠴᠠᠶᠢᠪᠤᠷ ᠪᠤᠶᠤ ᠪᠠᠷᠠᠭᠠᠨ ᠭᠣᠷᠢᠮ᠂ 25 ᠬᠡᠯᠡᠨ ᠦ ᠨᠢᠭᠡ ᠶᠢ ᠰᠣᠩᠭᠣᠨ᠎ᠠ᠃ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠳᠡᠯᠭᠡᠷᠡᠩᠭᠦᠢ ᠳᠣᠲᠣᠭᠠᠳᠤ ᠲᠥᠯᠥᠪ᠂ ᠲᠦᠩᠰᠢ ᠶᠢᠨ ᠲᠣᠭ᠎ᠠ᠂ CPU ᠠᠰᠢᠭᠯᠠᠯᠲᠠ᠂ ᠳᠠᠷᠠᠭᠠᠬᠢ ᠬᠦᠨᠳᠦᠷᠡᠯ ᠦᠨ ᠪᠢᠲ᠋᠂ ᠣᠳᠣᠬᠠᠨ ᠤ ᠪᠯᠣᠺ ᠤᠨ ᠱᠠᠩᠨᠠᠯ ᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ CPU ᠠᠰᠢᠭᠯᠠᠯᠲᠠ ᠨᠢ ᠬᠧᠱ ᠦᠨ ᠬᠤᠷᠳᠤ ᠶᠢᠨ ᠬᠡᠮᠵᠢᠯᠲᠡ ᠪᠢᠰᠢ᠃"
+      },
+      {
+        "id": "backup",
+        "title": "ᠨᠥᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠪᠠ ᠰᠡᠷᠭᠦᠭᠡᠯᠲᠡ",
+        "body": "ᠠᠫᠫ ᠢ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠪᠤᠶᠤ ᠤᠲᠠᠰᠤ ᠰᠣᠯᠢᠬᠤ ᠠᠴᠠ ᠡᠮᠦᠨ᠎ᠡ ᠰᠢᠹᠷᠯᠡᠭᠰᠡᠨ ᠨᠥᠭᠡᠴᠡ ᠬᠤᠪᠢ ᠭᠠᠷᠭᠠᠨ᠎ᠠ; ᠰᠡᠷᠭᠦᠭᠡᠬᠦ ᠳᠦ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃ ᠦᠷ᠎ᠡ ᠦᠭᠡ ᠲᠡᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠶᠢ 24 ᠦᠭᠡ ᠪᠡᠷ ᠨᠢ ᠪᠠᠰᠠ ᠰᠡᠷᠭᠦᠭᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠨᠢᠭᠤᠴᠠ ᠵᠠᠳᠠᠷᠠᠪᠠᠯ USB ᠪᠤᠶᠤ ᠡᠭᠦᠯᠡᠨ ᠬᠠᠳᠠᠭᠠᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠬᠤᠪᠢ ᠬᠥᠷᠥᠩᠭᠡ ᠳᠦ ᠬᠠᠨᠳᠠᠬᠤ ᠡᠷᠬᠡ ᠥᠭᠴᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠰᠡᠷᠭᠦᠭᠡᠬᠦ ᠦᠭᠡ ᠪᠠ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠬᠡᠨ ᠳᠦ ᠴᠦ ᠪᠦᠦ ᠢᠯᠡᠭᠡᠭᠡᠷᠡᠢ᠃"
+      },
+      {
+        "id": "current_transfer_states",
+        "title": "Android ᠠᠫᠫ",
+        "body": "ᠤᠲᠠᠰᠤ ᠪᠡᠶ᠎ᠡ ᠳᠠᠭᠠᠵᠤ ᠣᠯᠪᠣᠷᠯᠠᠵᠤ᠂ ᠨᠡᠶᠢᠴᠡᠲᠡᠢ SMW ᠲᠦᠩᠰᠢ ᠲᠡᠢ ᠬᠠᠷᠢᠯᠴᠠᠨ᠎ᠠ᠃ ᠦᠨᠳᠦᠰᠦᠨ ᠲᠣᠣᠷᠴᠢᠯᠠᠯ ᠳᠤ ᠢᠵᠢᠯᠡᠰᠢᠭᠦᠯᠦᠭᠰᠡᠨ᠂ ᠬᠦᠷᠴᠦ ᠪᠣᠯᠬᠤ ᠲᠦᠩᠰᠢ ᠪᠠ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃ ᠠᠦ᠋ᠲ᠋ᠣ᠋ ᠬᠠᠶᠢᠯᠲᠠ ᠪᠦᠬᠦ NAT ᠪᠤᠶᠤ ᠭᠠᠯ ᠤᠨ ᠬᠠᠨ᠎ᠠ ᠪᠠᠷ ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠶᠢ ᠪᠠᠲᠤᠯᠠᠬᠤ ᠦᠭᠡᠢ᠃ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠪᠦᠯᠦᠭ᠂ ᠵᠠᠬ᠎ᠠ ᠶᠢᠨ ᠦᠨ᠎ᠡ ᠶᠢᠨ ᠦᠢᠯᠡᠴᠢᠯᠭᠡ ᠪᠤᠶᠤ QR ᠪᠣᠯᠣᠮᠵᠢ ᠣᠷᠣᠭᠰᠠᠨ ᠦᠭᠡᠢ᠃\n\nᠰᠢᠮᠲᠡᠭᠡᠯ ᠢ ᠠᠦ᠋ᠲ᠋ᠣ᠋ ᠪᠠᠷ ᠪᠣᠳᠣᠬᠤ ᠪᠤᠶᠤ ᠠᠷᠪᠠᠲᠤ ᠶᠢᠨ ᠨᠠᠶᠢᠮᠠᠨ ᠣᠷᠣᠨ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠭᠠᠷ ᠢᠶᠠᠷ ᠣᠷᠣᠭᠤᠯᠵᠤ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠢᠯᠡᠭᠡᠭᠴᠢ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠲᠥᠯᠦᠨ᠎ᠡ᠃ ᠢᠯᠡᠭᠡᠬᠦ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠪᠠ ᠨᠡᠶᠢᠲᠡ ᠰᠤᠤᠲᠭᠠᠯ ᠢ ᠬᠢᠨᠠᠨ᠎ᠠ᠃ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠤᠭᠰᠠᠨ ᠨᠢ ᠬᠦᠯᠢᠶᠡᠨ ᠠᠪᠤᠭᠴᠢ ᠳᠤ ᠬᠦᠷᠦᠭᠰᠡᠨ ᠪᠤᠶᠤ ᠪᠯᠣᠺ ᠲᠤ ᠪᠠᠲᠤᠯᠠᠭᠳᠠᠭᠰᠠᠨ ᠢ ᠢᠯᠡᠳᠬᠡᠬᠦ ᠦᠭᠡᠢ᠃ ᠲᠠᠲᠠᠭᠠᠯᠵᠠᠯ᠂ ᠲᠣᠳᠣᠷᠬᠠᠢ ᠦᠭᠡᠢ ᠦᠷ᠎ᠡ ᠳᠦᠩ᠂ ᠣᠷᠣᠬᠤ ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ᠂ ᠪᠯᠣᠺ ᠲᠤ ᠣᠷᠣᠯᠲᠠ ᠶᠢ ᠲᠤᠰ ᠲᠤᠰ ᠲᠤ ᠨᠢ ᠬᠠᠷᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠲᠡᠦᠬᠡ ᠪᠡᠨ ᠰᠢᠯᠭᠠᠬᠤ ᠠᠴᠠ ᠡᠮᠦᠨ᠎ᠡ ᠲᠣᠳᠣᠷᠬᠠᠢ ᠦᠭᠡᠢ ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢ ᠳᠠᠬᠢᠨ ᠪᠦᠦ ᠢᠯᠡᠭᠡᠭᠡᠷᠡᠢ᠃\n\nᠳᠣᠲᠣᠭᠠᠳᠤ foreground ᠦᠢᠯᠡᠴᠢᠯᠭᠡ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢ ᠠᠵᠢᠯᠯᠠᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠢᠳᠡᠪᠬᠢᠲᠡᠢ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠰᠡᠷᠦᠭᠦᠨ ᠪᠠᠷᠢᠬᠤ ᠴᠣᠣᠵᠢ ᠠᠰᠢᠭᠯᠠᠨ᠎ᠠ; Android ᠪᠤᠶᠤ ᠲᠥᠬᠥᠭᠡᠷᠦᠮᠵᠢ ᠶᠢᠨ ᠦᠢᠯᠡᠳᠦᠭᠴᠢ ᠫᠷᠣᠼᠧᠰ ᠢ ᠵᠣᠭᠰᠣᠭᠠᠵᠤ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠮᠡᠳᠡᠭᠳᠡᠯ ᠳᠦ ᠡᠷᠬᠡ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃ ᠬᠠᠭᠠᠯᠲᠠᠲᠠᠢ ᠠᠫᠫ ᠳᠠᠷᠤᠢ ᠣᠷᠣᠯᠭ᠎ᠠ ᠶᠢᠨ ᠮᠡᠳᠡᠭᠳᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠬᠤ ᠦᠭᠡᠢ; ᠳᠠᠬᠢᠨ ᠨᠡᠭᠡᠭᠡᠵᠦ ᠢᠵᠢᠯᠡᠰᠢᠭᠦᠯᠦᠭᠰᠡᠨ ᠦ ᠳᠠᠷᠠᠭ᠎ᠠ ᠦᠷ᠎ᠡ ᠳᠦᠩ ᠢ ᠰᠢᠯᠭᠠᠨ᠎ᠠ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠭᠦᠶᠦᠯᠭᠡ ᠪᠠ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠱᠠᠩᠨᠠᠯ ᠢ ᠰᠢᠨ᠎ᠡ ᠣᠷᠣᠯᠭ᠎ᠠ ᠶᠢᠨ ᠮᠡᠳᠡᠭᠳᠡᠯ ᠡᠴᠡ ᠬᠠᠰᠤᠨ᠎ᠠ᠃"
+      },
+      {
+        "id": "mobile_protection",
+        "title": "ᠠᠦ᠋ᠲ᠋ᠣ᠋ ᠬᠠᠮᠠᠭᠠᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠴᠣᠣᠵᠢ",
+        "body": "ᠣᠯᠪᠣᠷᠯᠠᠬᠤ ᠦᠶ᠎ᠡ ᠳᠦ ᠵᠠᠷᠴᠤᠭᠤᠯᠭ᠎ᠠ ᠴᠣᠣᠵᠢᠲᠠᠢ; ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠳᠠᠭᠤᠰᠬᠤ ᠳᠤ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠶᠢᠨ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠴᠣᠣᠵᠢᠯᠠᠭᠳᠠᠨ᠎ᠠ᠃\nᠵᠠᠶ ᠶᠢᠨ ᠬᠠᠯᠠᠭᠤᠨ 45°C ᠪᠣᠯᠬᠤ ᠪᠤᠶᠤ ᠰᠢᠰᠲ᠋ᠧᠮ ᠬᠡᠲᠦ ᠬᠠᠯᠠᠪᠠᠯ ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠵᠣᠭᠰᠣᠨ᠎ᠠ᠃ ᠬᠥᠷᠦᠭᠰᠡᠨ ᠦ ᠳᠠᠷᠠᠭ᠎ᠠ ᠭᠠᠷ ᠢᠶᠠᠷ ᠳᠠᠬᠢᠨ ᠡᠬᠢᠯᠡᠭᠦᠯᠦᠨ᠎ᠡ ᠦᠦ᠃\nᠭᠢᠨᠵᠢ ᠥᠭᠡᠷᠴᠡᠯᠡᠭᠳᠡᠵᠦ᠂ ᠥᠮᠦᠨᠡᠬᠢ ᠪᠯᠣᠺ ᠤᠨ ᠪᠠᠲᠤᠯᠠᠯᠲᠠ ᠠᠷᠢᠯᠪᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢᠨ ᠲᠡᠦᠬᠡ ᠶᠢ ᠳᠠᠬᠢᠨ ᠰᠢᠯᠭᠠᠨ᠎ᠠ ᠤᠤ᠃"
+      }
+    ]
+  }
+}

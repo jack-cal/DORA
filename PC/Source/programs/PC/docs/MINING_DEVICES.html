@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>CPU / GPU / ASIC</h1>
+<p>CPU is always available. GPU becomes selectable at verified active-chain height 12,000; ASIC at 12,000. This is an official-program policy, not a consensus restriction on hardware. GPU requires an accessible OpenCL GPU driver. ASIC uses a local solo Stratum V1 listener and pays the selected wallet directly. It does not distribute pooled shares. Stop mining before changing devices. A chain reorganization below the unlock height blocks the selected device until the height recovers or CPU is selected.</p>
+<p>GPU: OpenCL</p>
+<p>ASIC: <code>stratum+tcp://&lt;local-node-ip&gt;:3333</code></p>
+<p>Worker: <code>sumuww</code></p>
+<p>Connection password: 16–128 characters. Set the same password in the app and ASIC device.</p>
+<p>Only block-target proof of work is accepted. No automatic public port opening. Model-specific ASIC firmware compatibility requires testing with the actual device.</p></article></body></html>

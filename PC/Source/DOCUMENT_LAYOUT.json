@@ -1,0 +1,64 @@
+{
+  "documentation_revision": 46,
+  "coin_documents": [
+    "COIN_PROMOTION_AND_REGISTRATION.md",
+    "CONSENSUS_BASELINE.md",
+    "SUMUWW_PROTOCOL_SPEC.md",
+    "MINING_AND_CONFIRMATIONS.md",
+    "NETWORK_PROTOCOL.md",
+    "WHITEPAPER.md",
+    "BOUNDARY_V4.md"
+  ],
+  "pc_program_documents_root": "programs/PC",
+  "program_topics": [
+    "usage",
+    "settings",
+    "implementation capabilities",
+    "RPC interface",
+    "operation",
+    "development",
+    "test evidence"
+  ],
+  "android_distribution": "Distributions/Android",
+  "legacy_html_paths": "redirects only; no program prose in coin document selectors",
+  "translation_policy": "English publication. All 34 application UI languages remain available; document selectors open the English edition.",
+  "boundary_activation_height": 9000,
+  "boundary_detail_languages": [
+    "en",
+    "ko"
+  ],
+  "boundary_summary_languages": 34,
+  "source_revision": "sumuww-postpow-links-9000-v2",
+  "signature_block_probability": {
+    "numerator": 1,
+    "denominator": 5,
+    "meaning": "Random connection event; completion is not mandatory for block acceptance."
+  },
+  "new_distribution_binary_built": true,
+  "isolated_android_audit_apk_built": true,
+  "distribution_versions": {
+    "windows": "0.57.33",
+    "android": "0.6.83"
+  },
+  "whitepaper_revision": "whitepaper-20261022-r2",
+  "connection_event_probability": {
+    "numerator": 1,
+    "denominator": 5
+  },
+  "connection_whitepaper_languages": [
+    "en"
+  ],
+  "dgw": {
+    "activation_height": 8064,
+    "window_blocks": 24,
+    "target_seconds": 600,
+    "interval_activation_height": 9000,
+    "retarget_interval": 10
+  },
+  "whitepaper_scope": "Coin design and connection evidence; installation and verification records remain separate.",
+  "publication_language": "en",
+  "documentation_languages": [
+    "en"
+  ],
+  "ui_languages_preserved": 34
+}

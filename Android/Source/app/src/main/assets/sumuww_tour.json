@@ -1,0 +1,1362 @@
+{
+  "en": {
+    "label": "Quick guide",
+    "back": "Back",
+    "next": "Next",
+    "done": "Finish",
+    "skip": "Skip",
+    "replay": "Show first-use guide again",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Check your balance, local block height and connected peers here."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Set a block-count target and start solo mining. An open wallet and synchronized peer are needed."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Create or open your wallet. Keep the password and 24 recovery words private and backed up."
+      },
+      {
+        "id": "history",
+        "title": "History",
+        "body": "Review mining rewards, incoming and outgoing transactions, and their confirmations."
+      },
+      {
+        "id": "more",
+        "title": "More",
+        "body": "Change language and theme, add a peer if discovery fails, and manage wallet backups."
+      },
+      {
+        "id": "help",
+        "title": "Help",
+        "body": "Open this guide whenever you need detailed explanations of SMW features."
+      }
+    ]
+  },
+  "ko": {
+    "label": "시작 안내",
+    "back": "이전",
+    "next": "다음",
+    "done": "완료",
+    "skip": "건너뛰기",
+    "replay": "시작 안내 다시 보기",
+    "steps": [
+      {
+        "id": "home",
+        "title": "홈",
+        "body": "잔액과 내 노드의 블록 높이, 연결된 다른 노드 수를 확인합니다."
+      },
+      {
+        "id": "mining",
+        "title": "채굴",
+        "body": "목표 블록 수를 정해 단독 채굴을 시작합니다. 열린 지갑과 동기화된 피어가 필요합니다."
+      },
+      {
+        "id": "wallet",
+        "title": "지갑",
+        "body": "지갑을 만들거나 엽니다. 비밀번호와 복구 단어 24개는 공개하지 말고 백업하세요."
+      },
+      {
+        "id": "history",
+        "title": "거래내역",
+        "body": "채굴 보상과 송금·입금 내역, 블록 확인 수를 확인합니다."
+      },
+      {
+        "id": "more",
+        "title": "더보기",
+        "body": "언어·테마를 바꾸고, 자동 탐색이 실패하면 피어를 추가하며, 지갑을 백업합니다."
+      },
+      {
+        "id": "help",
+        "title": "도움말",
+        "body": "SMW 기능의 자세한 설명은 언제든 이 도움말에서 다시 볼 수 있습니다."
+      }
+    ]
+  },
+  "fr": {
+    "label": "Guide de démarrage",
+    "back": "Retour",
+    "next": "Suivant",
+    "done": "Terminer",
+    "skip": "Ignorer",
+    "replay": "Revoir le guide",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Accueil",
+        "body": "Consultez solde, hauteur locale et nombre de pairs connectés."
+      },
+      {
+        "id": "mining",
+        "title": "Minage",
+        "body": "Fixez un nombre de blocs puis minez seul. Il faut un portefeuille ouvert et un pair synchronisé."
+      },
+      {
+        "id": "wallet",
+        "title": "Portefeuille",
+        "body": "Créez ou ouvrez votre portefeuille. Sauvegardez le mot de passe et les 24 mots en privé."
+      },
+      {
+        "id": "history",
+        "title": "Historique",
+        "body": "Vérifiez récompenses, transactions entrantes et sortantes, et confirmations."
+      },
+      {
+        "id": "more",
+        "title": "Plus",
+        "body": "Changez langue et thème, ajoutez un pair si la découverte échoue et gérez les sauvegardes."
+      },
+      {
+        "id": "help",
+        "title": "Aide",
+        "body": "Retrouvez ici à tout moment les explications détaillées des fonctions SMW."
+      }
+    ]
+  },
+  "es": {
+    "label": "Guía inicial",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "done": "Finalizar",
+    "skip": "Omitir",
+    "replay": "Ver guía inicial otra vez",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Inicio",
+        "body": "Consulte saldo, altura local y número de pares conectados."
+      },
+      {
+        "id": "mining",
+        "title": "Minería",
+        "body": "Elija un número de bloques y mine en solitario. Necesita cartera abierta y un par sincronizado."
+      },
+      {
+        "id": "wallet",
+        "title": "Cartera",
+        "body": "Cree o abra su cartera. Guarde en privado la contraseña y las 24 palabras de recuperación."
+      },
+      {
+        "id": "history",
+        "title": "Historial",
+        "body": "Revise recompensas, entradas, salidas y confirmaciones."
+      },
+      {
+        "id": "more",
+        "title": "Más",
+        "body": "Cambie idioma y tema, añada un par si falla la búsqueda y gestione las copias."
+      },
+      {
+        "id": "help",
+        "title": "Ayuda",
+        "body": "Vuelva aquí cuando necesite explicaciones detalladas de SMW."
+      }
+    ]
+  },
+  "ar": {
+    "label": "دليل البداية",
+    "back": "السابق",
+    "next": "التالي",
+    "done": "إنهاء",
+    "skip": "تخطي",
+    "replay": "عرض دليل البداية مجددًا",
+    "steps": [
+      {
+        "id": "home",
+        "title": "الرئيسية",
+        "body": "تحقق من الرصيد وارتفاع السلسلة المحلية وعدد العقد المتصلة."
+      },
+      {
+        "id": "mining",
+        "title": "التعدين",
+        "body": "حدد عدد الكتل وابدأ التعدين منفردًا. تحتاج إلى محفظة مفتوحة وعقدة متزامنة."
+      },
+      {
+        "id": "wallet",
+        "title": "المحفظة",
+        "body": "أنشئ محفظتك أو افتحها. احتفظ بكلمة المرور وكلمات الاسترداد الأربع والعشرين بسرية."
+      },
+      {
+        "id": "history",
+        "title": "السجل",
+        "body": "راجع المكافآت والمعاملات الواردة والصادرة وعدد التأكيدات."
+      },
+      {
+        "id": "more",
+        "title": "المزيد",
+        "body": "غيّر اللغة والمظهر، وأضف عقدة عند فشل الاكتشاف، وأدر النسخ الاحتياطية."
+      },
+      {
+        "id": "help",
+        "title": "المساعدة",
+        "body": "ارجع إلى هنا متى احتجت إلى شرح مفصل لوظائف SMW."
+      }
+    ]
+  },
+  "zh": {
+    "label": "入门指南",
+    "back": "上一步",
+    "next": "下一步",
+    "done": "完成",
+    "skip": "跳过",
+    "replay": "重新查看入门指南",
+    "steps": [
+      {
+        "id": "home",
+        "title": "首页",
+        "body": "查看余额、本地区块高度和已连接节点数。"
+      },
+      {
+        "id": "mining",
+        "title": "挖矿",
+        "body": "设置目标区块数后独立挖矿。需要已打开的钱包和已同步的节点。"
+      },
+      {
+        "id": "wallet",
+        "title": "钱包",
+        "body": "创建或打开钱包。妥善保管密码和 24 个恢复词。"
+      },
+      {
+        "id": "history",
+        "title": "交易记录",
+        "body": "查看挖矿奖励、收付款记录和确认数。"
+      },
+      {
+        "id": "more",
+        "title": "更多",
+        "body": "更换语言和主题，自动发现失败时添加节点，并管理钱包备份。"
+      },
+      {
+        "id": "help",
+        "title": "帮助",
+        "body": "需要了解 SMW 功能时，可随时打开这里的详细说明。"
+      }
+    ]
+  },
+  "pt": {
+    "label": "Guia inicial",
+    "back": "Voltar",
+    "next": "Seguinte",
+    "done": "Concluir",
+    "skip": "Ignorar",
+    "replay": "Rever guia inicial",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Início",
+        "body": "Confira o saldo, a altura local e o número de pares conectados."
+      },
+      {
+        "id": "mining",
+        "title": "Mineração",
+        "body": "Defina um número de blocos e mine sozinho. Precisa de carteira aberta e nó sincronizado."
+      },
+      {
+        "id": "wallet",
+        "title": "Carteira",
+        "body": "Crie ou abra sua carteira. Guarde em sigilo a senha e as 24 palavras de recuperação."
+      },
+      {
+        "id": "history",
+        "title": "Histórico",
+        "body": "Veja recompensas, entradas, saídas e confirmações."
+      },
+      {
+        "id": "more",
+        "title": "Mais",
+        "body": "Mude o idioma e o tema, adicione um par se a busca falhar e gerencie os backups."
+      },
+      {
+        "id": "help",
+        "title": "Ajuda",
+        "body": "Volte aqui sempre que precisar de explicações detalhadas sobre SMW."
+      }
+    ]
+  },
+  "ru": {
+    "label": "Краткое руководство",
+    "back": "Назад",
+    "next": "Далее",
+    "done": "Готово",
+    "skip": "Пропустить",
+    "replay": "Показать руководство снова",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Главная",
+        "body": "Здесь видны баланс, локальная высота цепи и число подключённых узлов."
+      },
+      {
+        "id": "mining",
+        "title": "Майнинг",
+        "body": "Задайте число блоков и начните добычу в одиночку. Нужны открытый кошелёк и синхронизированный узел."
+      },
+      {
+        "id": "wallet",
+        "title": "Кошелёк",
+        "body": "Создайте или откройте кошелёк. Храните пароль и 24 слова восстановления в тайне."
+      },
+      {
+        "id": "history",
+        "title": "История",
+        "body": "Просматривайте награды, входящие и исходящие операции и подтверждения."
+      },
+      {
+        "id": "more",
+        "title": "Ещё",
+        "body": "Меняйте язык и тему, добавляйте узел при сбое поиска и управляйте копиями."
+      },
+      {
+        "id": "help",
+        "title": "Помощь",
+        "body": "Подробные объяснения функций SMW всегда доступны здесь."
+      }
+    ]
+  },
+  "de": {
+    "label": "Starthilfe",
+    "back": "Zurück",
+    "next": "Weiter",
+    "done": "Fertig",
+    "skip": "Überspringen",
+    "replay": "Starthilfe erneut anzeigen",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Startseite",
+        "body": "Hier sehen Sie Guthaben, lokale Blockhöhe und verbundene Peers."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Wählen Sie eine Blockzahl und schürfen Sie allein. Wallet und synchronisierter Peer sind nötig."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Erstellen oder öffnen Sie Ihre Wallet. Passwort und 24 Wiederherstellungswörter bleiben geheim."
+      },
+      {
+        "id": "history",
+        "title": "Verlauf",
+        "body": "Prüfen Sie Erträge, Ein- und Ausgänge sowie Bestätigungen."
+      },
+      {
+        "id": "more",
+        "title": "Mehr",
+        "body": "Ändern Sie Sprache und Thema, fügen Sie bei erfolgloser Suche Peers hinzu und verwalten Sie Sicherungen."
+      },
+      {
+        "id": "help",
+        "title": "Hilfe",
+        "body": "Die ausführliche Erklärung der SMW-Funktionen finden Sie jederzeit hier."
+      }
+    ]
+  },
+  "sw": {
+    "label": "Mwongozo wa kuanza",
+    "back": "Nyuma",
+    "next": "Endelea",
+    "done": "Maliza",
+    "skip": "Ruka",
+    "replay": "Onyesha mwongozo tena",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Nyumbani",
+        "body": "Angalia salio, urefu wa blockchain ya ndani na idadi ya nodi zilizounganishwa."
+      },
+      {
+        "id": "mining",
+        "title": "Uchimbaji",
+        "body": "Weka idadi ya vitalu kisha uanze uchimbaji wa kujitegemea. Pochi iliyofunguliwa na nodi iliyosawazishwa vinahitajika."
+      },
+      {
+        "id": "wallet",
+        "title": "Pochi",
+        "body": "Unda au fungua pochi. Hifadhi nenosiri na maneno 24 ya kurejesha kwa siri na uweke nakala rudufu."
+      },
+      {
+        "id": "history",
+        "title": "Historia",
+        "body": "Kagua zawadi, mapokezi, matumizi na uthibitisho."
+      },
+      {
+        "id": "more",
+        "title": "Zaidi",
+        "body": "Badili lugha na mandhari, ongeza nodi ikiwa utafutaji umeshindwa na simamia nakala."
+      },
+      {
+        "id": "help",
+        "title": "Msaada",
+        "body": "Maelezo ya kina ya kazi za SMW yanapatikana hapa wakati wowote."
+      }
+    ]
+  },
+  "hi": {
+    "label": "शुरुआती मार्गदर्शिका",
+    "back": "पिछला",
+    "next": "अगला",
+    "done": "समाप्त",
+    "skip": "छोड़ें",
+    "replay": "मार्गदर्शिका फिर देखें",
+    "steps": [
+      {
+        "id": "home",
+        "title": "होम",
+        "body": "शेष राशि, स्थानीय ब्लॉक ऊँचाई और जुड़े पीयर देखें।"
+      },
+      {
+        "id": "mining",
+        "title": "खनन",
+        "body": "ब्लॉक संख्या चुनकर अकेले खनन करें। खुला वॉलेट और सिंक किया पीयर चाहिए।"
+      },
+      {
+        "id": "wallet",
+        "title": "वॉलेट",
+        "body": "वॉलेट बनाएँ या खोलें। पासवर्ड और 24 रिकवरी शब्द सुरक्षित और निजी रखें।"
+      },
+      {
+        "id": "history",
+        "title": "इतिहास",
+        "body": "पुरस्कार, प्राप्त और भेजी राशि तथा पुष्टियाँ देखें।"
+      },
+      {
+        "id": "more",
+        "title": "अधिक",
+        "body": "भाषा और थीम बदलें, खोज विफल हो तो पीयर जोड़ें और बैकअप सँभालें।"
+      },
+      {
+        "id": "help",
+        "title": "सहायता",
+        "body": "SMW की सुविधाओं का विस्तृत विवरण यहाँ फिर से देखें।"
+      }
+    ]
+  },
+  "ja": {
+    "label": "クイックガイド",
+    "back": "戻る",
+    "next": "次へ",
+    "done": "完了",
+    "skip": "スキップ",
+    "replay": "初回使用ガイドを再度表示する",
+    "steps": [
+      {
+        "id": "home",
+        "title": "ホーム",
+        "body": "ここで残高、ローカルのブロック高さ、接続中のピアを確認できます。"
+      },
+      {
+        "id": "mining",
+        "title": "マイニング",
+        "body": "目標ブロック数を設定し、ソロマイニングを開始します。開いたウォレットと同期済みのピアが必要です。"
+      },
+      {
+        "id": "wallet",
+        "title": "ウォレット",
+        "body": "ウォレットを作成するか開きます。パスワードと復元用の 24 単語を秘密にし、安全に保管してください。"
+      },
+      {
+        "id": "history",
+        "title": "取引履歴",
+        "body": "マイニング報酬、送受信トランザクション、およびその確認を確認します。"
+      },
+      {
+        "id": "more",
+        "title": "その他に戻る",
+        "body": "言語とテーマを変更し、検出が失敗した場合にピアを追加し、ウォレットのバックアップを管理します。"
+      },
+      {
+        "id": "help",
+        "title": "ヘルプ",
+        "body": "SMW 機能の詳細な説明が必要な場合は、いつでもこのガイドを開いてください。"
+      }
+    ]
+  },
+  "id": {
+    "label": "Panduan cepat",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "done": "Selesai",
+    "skip": "Lewati",
+    "replay": "Tampilkan kembali panduan penggunaan pertama",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Beranda",
+        "body": "Periksa saldo Anda, tinggi blok lokal, dan rekan yang terhubung di sini."
+      },
+      {
+        "id": "mining",
+        "title": "Penambangan",
+        "body": "Tetapkan target jumlah blok dan mulai penambangan solo. Dompet terbuka dan rekan yang tersinkronisasi diperlukan."
+      },
+      {
+        "id": "wallet",
+        "title": "Dompet",
+        "body": "Buat atau buka dompet. Jaga kerahasiaan kata sandi dan 24 kata pemulihan, lalu simpan cadangannya."
+      },
+      {
+        "id": "history",
+        "title": "Riwayat",
+        "body": "Tinjau imbalan penambangan, transaksi masuk dan keluar, serta konfirmasinya."
+      },
+      {
+        "id": "more",
+        "title": "Lainnya",
+        "body": "Ubah bahasa dan tema, tambahkan rekan jika penemuan gagal, dan kelola cadangan dompet."
+      },
+      {
+        "id": "help",
+        "title": "Bantuan",
+        "body": "Buka panduan ini kapan pun Anda memerlukan penjelasan mendetail tentang fitur SMW."
+      }
+    ]
+  },
+  "vi": {
+    "label": "Hướng dẫn nhanh",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "done": "Kết thúc",
+    "skip": "Bỏ qua",
+    "replay": "Hiển thị lại hướng dẫn sử dụng lần đầu",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Trang chủ",
+        "body": "Kiểm tra số dư của bạn, chiều cao khối cục bộ và các nút được kết nối tại đây."
+      },
+      {
+        "id": "mining",
+        "title": "Khai thác",
+        "body": "Chọn số khối và bắt đầu khai thác độc lập. Cần ví mở và nút ngang hàng đã đồng bộ."
+      },
+      {
+        "id": "wallet",
+        "title": "Ví",
+        "body": "Tạo hoặc mở ví của bạn. Giữ mật khẩu và 24 từ khôi phục ở chế độ riêng tư và sao lưu."
+      },
+      {
+        "id": "history",
+        "title": "Lịch sử",
+        "body": "Xem xét phần thưởng khai thác, giao dịch đến và đi cũng như xác nhận của chúng."
+      },
+      {
+        "id": "more",
+        "title": "Thêm",
+        "body": "Thay đổi ngôn ngữ và chủ đề, thêm một thiết bị ngang hàng nếu phát hiện không thành công và quản lý các bản sao lưu ví."
+      },
+      {
+        "id": "help",
+        "title": "Trợ giúp",
+        "body": "Mở hướng dẫn này bất cứ khi nào bạn cần giải thích chi tiết về các tính năng SMW."
+      }
+    ]
+  },
+  "tr": {
+    "label": "Hızlı kılavuz",
+    "back": "Geri",
+    "next": "Sonraki",
+    "done": "Bitiş",
+    "skip": "Atla",
+    "replay": "İlk kullanım kılavuzunu tekrar göster",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Ana sayfa",
+        "body": "Bakiyenizi, yerel blok yüksekliğini ve bağlı eşlerinizi buradan kontrol edin."
+      },
+      {
+        "id": "mining",
+        "title": "Madencilik",
+        "body": "Bir blok sayımı hedefi belirleyin ve solo madenciliğe başlayın. Açık bir cüzdan ve senkronize bir eşe ihtiyaç vardır."
+      },
+      {
+        "id": "wallet",
+        "title": "Cüzdan",
+        "body": "Cüzdanınızı oluşturun veya açın. Şifreyi ve 24 kurtarma sözcüğünü gizli ve yedekli tutun."
+      },
+      {
+        "id": "history",
+        "title": "Geçmiş",
+        "body": "Madencilik ödüllerini, gelen ve giden işlemleri ve bunların onaylarını inceleyin."
+      },
+      {
+        "id": "more",
+        "title": "Daha Fazla",
+        "body": "Dili ve temayı değiştirin, keşif başarısız olursa bir eş ekleyin ve cüzdan yedeklemelerini yönetin."
+      },
+      {
+        "id": "help",
+        "title": "Yardım",
+        "body": "SMW özelliklerinin ayrıntılı açıklamalarına ihtiyaç duyduğunuzda bu kılavuzu açın."
+      }
+    ]
+  },
+  "th": {
+    "label": "คำแนะนำฉบับย่อ",
+    "back": "กลับ",
+    "next": "ถัดไป",
+    "done": "เสร็จสิ้น",
+    "skip": "ข้าม",
+    "replay": "แสดงคู่มือการใช้งานครั้งแรกอีกครั้ง",
+    "steps": [
+      {
+        "id": "home",
+        "title": "หน้าแรก",
+        "body": "ตรวจสอบยอดคงเหลือ ความสูงของบล็อกในพื้นที่ และเพื่อนที่เชื่อมต่อที่นี่"
+      },
+      {
+        "id": "mining",
+        "title": "การขุด",
+        "body": "ตั้งเป้าหมายการนับบล็อกและเริ่มการขุดเดี่ยว จำเป็นต้องมีกระเป๋าเงินแบบเปิดและเพียร์ที่ซิงโครไนซ์"
+      },
+      {
+        "id": "wallet",
+        "title": "กระเป๋าเงิน",
+        "body": "สร้างหรือเปิดกระเป๋าสตางค์ของคุณ เก็บรหัสผ่านและคำกู้คืน 24 ไว้เป็นส่วนตัวและสำรองข้อมูลไว้"
+      },
+      {
+        "id": "history",
+        "title": "ประวัติธุรกรรม",
+        "body": "ตรวจสอบรางวัลการขุด ธุรกรรมขาเข้าและขาออก และการยืนยัน"
+      },
+      {
+        "id": "more",
+        "title": "เพิ่มเติม",
+        "body": "เปลี่ยนภาษาและธีม เพิ่มเพียร์หากการค้นหาล้มเหลว และจัดการการสำรองข้อมูลกระเป๋าเงิน"
+      },
+      {
+        "id": "help",
+        "title": "ความช่วยเหลือ",
+        "body": "เปิดคู่มือนี้ทุกครั้งที่คุณต้องการคำอธิบายโดยละเอียดเกี่ยวกับคุณสมบัติ SMW"
+      }
+    ]
+  },
+  "it": {
+    "label": "Guida rapida",
+    "back": "Indietro",
+    "next": "Avanti",
+    "done": "Finisci",
+    "skip": "Salta",
+    "replay": "Mostra di nuovo la guida per il primo utilizzo",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Controlla il tuo saldo, l'altezza del blocco locale e i peer collegati qui."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Imposta un obiettivo di conteggio dei blocchi e avvia l'estrazione in solitario. Sono necessari un portafoglio aperto e un peer sincronizzato."
+      },
+      {
+        "id": "wallet",
+        "title": "Portafoglio",
+        "body": "Crea o apri il tuo portafoglio. Mantieni la password e le parole di ripristino 24 private e fai il backup."
+      },
+      {
+        "id": "history",
+        "title": "Cronologia",
+        "body": "Esamina i premi minerari, le transazioni in entrata e in uscita e le relative conferme."
+      },
+      {
+        "id": "more",
+        "title": "Altro",
+        "body": "Cambia lingua e tema, aggiungi un peer se il rilevamento fallisce e gestisci i backup del portafoglio."
+      },
+      {
+        "id": "help",
+        "title": "Aiuto",
+        "body": "Apri questa guida ogni volta che hai bisogno di spiegazioni dettagliate sulle funzionalità di SMW."
+      }
+    ]
+  },
+  "bn": {
+    "label": "দ্রুত গাইড",
+    "back": "ফিরে",
+    "next": "পরবর্তী",
+    "done": "শেষ করুন",
+    "skip": "এড়িয়ে যান",
+    "replay": "আবার প্রথম-ব্যবহারের নির্দেশিকা দেখান",
+    "steps": [
+      {
+        "id": "home",
+        "title": "হোম",
+        "body": "এখানে আপনার ব্যালেন্স, স্থানীয় ব্লকের উচ্চতা এবং সংযুক্ত পিয়ারগুলোর পরীক্ষা করুন।"
+      },
+      {
+        "id": "mining",
+        "title": "মাইনিং",
+        "body": "একটি ব্লক-গণনা লক্ষ্য সেট করুন এবং একক মাইনিং শুরু করুন। একটি খোলা ওয়ালেট এবং সিঙ্ক্রোনাইজড পিয়ার প্রয়োজন।"
+      },
+      {
+        "id": "wallet",
+        "title": "ওয়ালেট",
+        "body": "আপনার ওয়ালেট তৈরি করুন বা খুলুন। পাসওয়ার্ড এবং 24 পুনরুদ্ধার শব্দ ব্যক্তিগত এবং ব্যাক আপ রাখুন।"
+      },
+      {
+        "id": "history",
+        "title": "ইতিহাস",
+        "body": "খনির পুরষ্কার, আগত এবং বহির্গামী লেনদেন এবং তাদের নিশ্চিতকরণ পর্যালোচনা করুন।"
+      },
+      {
+        "id": "more",
+        "title": "আরও",
+        "body": "ভাষা এবং থিম পরিবর্তন করুন, আবিষ্কার ব্যর্থ হলে একজন পিয়ার যোগ করুন এবং ওয়ালেট ব্যাকআপ পরিচালনা করুন।"
+      },
+      {
+        "id": "help",
+        "title": "সাহায্য",
+        "body": "যখনই আপনার SMW বৈশিষ্ট্যগুলির বিশদ ব্যাখ্যা প্রয়োজন তখন এই নির্দেশিকাটি খুলুন৷"
+      }
+    ]
+  },
+  "ur": {
+    "label": "فوری رہنما",
+    "back": "پیچھے",
+    "next": "اگلا",
+    "done": "ختم کرنا",
+    "skip": "چھوڑیں۔",
+    "replay": "پہلے استعمال کی گائیڈ دوبارہ دکھائیں۔",
+    "steps": [
+      {
+        "id": "home",
+        "title": "ہوم",
+        "body": "اپنا بیلنس، مقامی بلاک کی اونچائی اور منسلک ساتھیوں کو یہاں چیک کریں۔"
+      },
+      {
+        "id": "mining",
+        "title": "مائننگ",
+        "body": "بلاک گنتی کا ہدف مقرر کریں اور سولو کان کنی شروع کریں۔ ایک کھلا پرس اور مطابقت پذیر پیئر کی ضرورت ہے۔"
+      },
+      {
+        "id": "wallet",
+        "title": "پرس",
+        "body": "اپنا بٹوہ بنائیں یا کھولیں۔ پاس ورڈ اور 24 بازیابی کے الفاظ کو نجی اور بیک اپ رکھیں۔"
+      },
+      {
+        "id": "history",
+        "title": "تاریخ",
+        "body": "کان کنی کے انعامات، آنے والے اور جانے والے لین دین، اور ان کی تصدیقوں کا جائزہ لیں۔"
+      },
+      {
+        "id": "more",
+        "title": "مزید",
+        "body": "زبان اور تھیم تبدیل کریں، دریافت ناکام ہونے پر ایک پیئر شامل کریں، اور والیٹ بیک اپ کا نظم کریں۔"
+      },
+      {
+        "id": "help",
+        "title": "مدد",
+        "body": "جب بھی آپ کو SMW خصوصیات کی تفصیلی وضاحت کی ضرورت ہو اس گائیڈ کو کھولیں۔"
+      }
+    ]
+  },
+  "pl": {
+    "label": "Szybki przewodnik",
+    "back": "Powrót",
+    "next": "Następny",
+    "done": "Zakończ",
+    "skip": "Pomiń",
+    "replay": "Pokaż ponownie instrukcję pierwszego użycia",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Główna",
+        "body": "Sprawdź tutaj swoje saldo, wysokość lokalnego bloku i podłączone urządzenia równorzędne."
+      },
+      {
+        "id": "mining",
+        "title": "Wydobywanie",
+        "body": "Ustaw docelową liczbę bloków i rozpocznij wydobywanie solo. Potrzebny jest otwarty portfel i zsynchronizowany peer."
+      },
+      {
+        "id": "wallet",
+        "title": "Portfel",
+        "body": "Utwórz lub otwórz swój portfel. Zachowaj hasło i 24 słowa odzyskiwania jako prywatne i zabezpiecz je kopią zapasową."
+      },
+      {
+        "id": "history",
+        "title": "Historia",
+        "body": "Przeglądaj nagrody za wydobycie, transakcje przychodzące i wychodzące oraz ich potwierdzenia."
+      },
+      {
+        "id": "more",
+        "title": "Więcej",
+        "body": "Zmień język i motyw, dodaj partnera, jeśli odkrycie się nie powiedzie, i zarządzaj kopiami zapasowymi portfela."
+      },
+      {
+        "id": "help",
+        "title": "Pomoc",
+        "body": "Otwórz ten przewodnik, jeśli potrzebujesz szczegółowych wyjaśnień dotyczących funkcji SMW."
+      }
+    ]
+  },
+  "nl": {
+    "label": "Korte handleiding",
+    "back": "Terug",
+    "next": "Volgende",
+    "done": "Voltooien",
+    "skip": "Overslaan",
+    "replay": "Laat de handleiding voor het eerste gebruik opnieuw zien",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Controleer hier uw saldo, lokale blokhoogte en aangesloten peers."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Stel een doel voor het aantal blokken in en begin met solo-mijnbouw. Een open portemonnee en gesynchroniseerde peer zijn nodig."
+      },
+      {
+        "id": "wallet",
+        "title": "Portemonnee",
+        "body": "Maak of open uw portemonnee. Houd het wachtwoord en de 24 herstelwoorden privé en maak er een back-up van."
+      },
+      {
+        "id": "history",
+        "title": "Geschiedenis",
+        "body": "Bekijk mijnbeloningen, inkomende en uitgaande transacties en hun bevestigingen."
+      },
+      {
+        "id": "more",
+        "title": "Meer",
+        "body": "Wijzig de taal en het thema, voeg een peer toe als de detectie mislukt en beheer portemonnee-back-ups."
+      },
+      {
+        "id": "help",
+        "title": "Hulp",
+        "body": "Open deze handleiding wanneer u gedetailleerde uitleg nodig heeft over SMW-functies."
+      }
+    ]
+  },
+  "fil": {
+    "label": "Mabilis na gabay",
+    "back": "Bumalik",
+    "next": "Susunod",
+    "done": "Tapusin",
+    "skip": "Laktawan",
+    "replay": "Ipakita muli ang gabay sa unang paggamit",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Home",
+        "body": "Suriin ang iyong balanse, lokal na taas ng block at konektadong mga kapantay dito."
+      },
+      {
+        "id": "mining",
+        "title": "Pagmimina",
+        "body": "Itakda ang bilang ng block at simulan ang solo mining. Kailangan ang bukas na wallet at naka-sync na peer."
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": "Lumikha o buksan ang iyong wallet. Panatilihing pribado at naka-back up ang password at 24 mga salita sa pagbawi."
+      },
+      {
+        "id": "history",
+        "title": "Kasaysayan",
+        "body": "Suriin ang mining reward, papasok at papalabas na transaksyon at mga kumpirmasyon."
+      },
+      {
+        "id": "more",
+        "title": "Higit pa",
+        "body": "Baguhin ang wika at tema, magdagdag ng peer kung nabigo ang pagtuklas, at pamahalaan ang mga backup ng wallet."
+      },
+      {
+        "id": "help",
+        "title": "Tulong",
+        "body": "Buksan ang gabay na ito sa tuwing kailangan mo ng mga detalyadong paliwanag ng SMW feature."
+      }
+    ]
+  },
+  "ta": {
+    "label": "விரைவான வழிகாட்டி",
+    "back": "மீண்டும்",
+    "next": "அடுத்து",
+    "done": "முடிக்கவும்",
+    "skip": "தவிர்க்கவும்",
+    "replay": "முதல் பயன்பாட்டு வழிகாட்டியை மீண்டும் காட்டு",
+    "steps": [
+      {
+        "id": "home",
+        "title": "முகப்பு",
+        "body": "உங்கள் இருப்பு, உள்ளூர் தொகுதி உயரம் மற்றும் இணைக்கப்பட்ட சகாக்களை இங்கே சரிபார்க்கவும்."
+      },
+      {
+        "id": "mining",
+        "title": "மைனிங்",
+        "body": "தொகுதி எண்ணிக்கை இலக்கை அமைத்து தனி சுரங்கத்தைத் தொடங்கவும். திறந்த பணப்பை மற்றும் ஒத்திசைக்கப்பட்ட பியர் தேவை."
+      },
+      {
+        "id": "wallet",
+        "title": "பணப்பை",
+        "body": "உங்கள் பணப்பையை உருவாக்கவும் அல்லது திறக்கவும். கடவுச்சொல் மற்றும் 24 மீட்பு வார்த்தைகளை தனிப்பட்டதாகவும் காப்புப் பிரதி எடுக்கவும்."
+      },
+      {
+        "id": "history",
+        "title": "வரலாறு",
+        "body": "சுரங்க வெகுமதிகள், உள்வரும் மற்றும் வெளிச்செல்லும் பரிவர்த்தனைகள் மற்றும் அவற்றின் உறுதிப்படுத்தல்களை மதிப்பாய்வு செய்யவும்."
+      },
+      {
+        "id": "more",
+        "title": "மேலும்",
+        "body": "மொழி மற்றும் தீமை மாற்றவும், தானியங்கித் தேடல் தோல்வியுற்றால் பியரைச் சேர்க்கவும், வாலட் காப்புப்பிரதிகளை நிர்வகிக்கவும்."
+      },
+      {
+        "id": "help",
+        "title": "உதவி",
+        "body": "SMW அம்சங்களின் விரிவான விளக்கங்கள் தேவைப்படும் போதெல்லாம் இந்த வழிகாட்டியைத் திறக்கவும்."
+      }
+    ]
+  },
+  "zh-TW": {
+    "label": "入門指南",
+    "back": "返回",
+    "next": "下一頁",
+    "done": "完成",
+    "skip": "跳過",
+    "replay": "重新檢視入門指南",
+    "steps": [
+      {
+        "id": "home",
+        "title": "首頁",
+        "body": "在此檢查您的餘額、本地區塊高度和已連接的節點。"
+      },
+      {
+        "id": "mining",
+        "title": "挖礦",
+        "body": "設定目標區塊數後獨立挖礦。需要已開啟的錢包和已同步的節點。"
+      },
+      {
+        "id": "wallet",
+        "title": "錢包",
+        "body": "建立或開啟錢包，妥善保密保存密碼與 24 個助記詞，並完成備份。"
+      },
+      {
+        "id": "history",
+        "title": "交易紀錄",
+        "body": "檢視挖礦獎勵、收付款記錄和確認數。"
+      },
+      {
+        "id": "more",
+        "title": "更多",
+        "body": "更改語言和主題、在發現失敗時添加對等點以及管理錢包備份。"
+      },
+      {
+        "id": "help",
+        "title": "說明",
+        "body": "需要了解 SMW 功能時，可隨時開啟這裡的詳細說明。"
+      }
+    ]
+  },
+  "zh-HK": {
+    "label": "入門指南",
+    "back": "返回",
+    "next": "下一頁",
+    "done": "完成",
+    "skip": "跳過",
+    "replay": "重新檢視入門指南",
+    "steps": [
+      {
+        "id": "home",
+        "title": "首頁",
+        "body": "在此檢查您的餘額、本地區塊高度和已連接的節點。"
+      },
+      {
+        "id": "mining",
+        "title": "挖礦",
+        "body": "設定目標區塊數後獨立挖礦。需要已開啟的錢包和已同步的節點。"
+      },
+      {
+        "id": "wallet",
+        "title": "錢包",
+        "body": "建立或開啟錢包，妥善保密保存密碼與 24 個助記詞，並完成備份。"
+      },
+      {
+        "id": "history",
+        "title": "交易紀錄",
+        "body": "檢視挖礦獎勵、收付款記錄和確認數。"
+      },
+      {
+        "id": "more",
+        "title": "更多",
+        "body": "更改語言和主題、在發現失敗時添加對等點以及管理錢包備份。"
+      },
+      {
+        "id": "help",
+        "title": "說明",
+        "body": "需要了解 SMW 功能時，可隨時開啟這裡的詳細説明。"
+      }
+    ]
+  },
+  "cs": {
+    "label": "Stručný průvodce",
+    "back": "Zpět",
+    "next": "Další",
+    "done": "Dokončit",
+    "skip": "Přeskočit",
+    "replay": "Znovu zobrazit průvodce prvním použitím",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Domů",
+        "body": "Zde zkontrolujete zůstatek, místní výšku bloků a připojené uzly."
+      },
+      {
+        "id": "mining",
+        "title": "Těžba",
+        "body": "Nastavte cílový počet bloků a spusťte samostatnou těžbu. Je potřeba otevřená peněženka a synchronizovaný uzel."
+      },
+      {
+        "id": "wallet",
+        "title": "Peněženka",
+        "body": "Vytvořte nebo otevřete peněženku. Heslo a 24 obnovovacích slov uchovávejte soukromě a zálohujte je."
+      },
+      {
+        "id": "history",
+        "title": "Historie",
+        "body": "Prohlížejte odměny za těžbu, příchozí a odchozí transakce i jejich potvrzení."
+      },
+      {
+        "id": "more",
+        "title": "Další",
+        "body": "Změňte jazyk a motiv, přidejte uzel při neúspěšném vyhledávání a spravujte zálohy peněženky."
+      },
+      {
+        "id": "help",
+        "title": "Nápověda",
+        "body": "Tuto příručku otevřete kdykoli potřebujete podrobné vysvětlení funkcí SMW."
+      }
+    ]
+  },
+  "da": {
+    "label": "Hurtig vejledning",
+    "back": "Tilbage",
+    "next": "Næste",
+    "done": "Afslut",
+    "skip": "Spring over",
+    "replay": "Vis introduktionen ved første brug igen",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Hjem",
+        "body": "Kontrollér din saldo, lokale blokhøjde og tilsluttede noder her."
+      },
+      {
+        "id": "mining",
+        "title": "Mining",
+        "body": "Angiv et mål for antal blokke, og start solo-mining. En åben tegnebog og en synkroniseret node er nødvendige."
+      },
+      {
+        "id": "wallet",
+        "title": "Tegnebog",
+        "body": "Opret eller åbn din tegnebog. Hold adgangskoden og de 24 gendannelsesord private og sikkerhedskopierede."
+      },
+      {
+        "id": "history",
+        "title": "Historik",
+        "body": "Gennemgå mining-belønninger, indgående og udgående transaktioner samt deres bekræftelser."
+      },
+      {
+        "id": "more",
+        "title": "Mere",
+        "body": "Skift sprog og tema, tilføj en node, hvis søgning mislykkes, og administrér sikkerhedskopier af tegnebogen."
+      },
+      {
+        "id": "help",
+        "title": "Hjælp",
+        "body": "Åbn denne vejledning, når du har brug for detaljerede forklaringer af SMWs funktioner."
+      }
+    ]
+  },
+  "fi": {
+    "label": "Pikaopas",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "done": "Valmis",
+    "skip": "Ohita",
+    "replay": "Näytä ensikäytön opas uudelleen",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Koti",
+        "body": "Tarkista tässä saldo, paikallinen lohkokorkeus ja yhdistetyt vertaiset."
+      },
+      {
+        "id": "mining",
+        "title": "Louhinta",
+        "body": "Aseta lohkomäärätavoite ja aloita yksinlouhinta. Avoin lompakko ja synkronoitu vertainen vaaditaan."
+      },
+      {
+        "id": "wallet",
+        "title": "Lompakko",
+        "body": "Luo tai avaa lompakkosi. Pidä salasana ja 24 palautussanaa yksityisinä ja varmuuskopioituina."
+      },
+      {
+        "id": "history",
+        "title": "Historia",
+        "body": "Tarkista louhintapalkkiot, saapuvat ja lähtevät transaktiot sekä niiden vahvistukset."
+      },
+      {
+        "id": "more",
+        "title": "Lisää",
+        "body": "Vaihda kieli ja teema, lisää vertainen haun epäonnistuessa ja hallitse lompakon varmuuskopioita."
+      },
+      {
+        "id": "help",
+        "title": "Ohje",
+        "body": "Avaa tämä opas aina, kun tarvitset yksityiskohtaisia selityksiä SUMUWWin toiminnoista."
+      }
+    ]
+  },
+  "el": {
+    "label": "Γρήγορος οδηγός",
+    "back": "Πίσω",
+    "next": "Επόμενο",
+    "done": "Τέλος",
+    "skip": "Παράλειψη",
+    "replay": "Εμφάνιση οδηγού πρώτης χρήσης ξανά",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Αρχική",
+        "body": "Ελέγξτε εδώ το υπόλοιπο, το τοπικό ύψος μπλοκ και τους συνδεδεμένους ομότιμους."
+      },
+      {
+        "id": "mining",
+        "title": "Εξόρυξη",
+        "body": "Ορίστε στόχο αριθμού μπλοκ και αρχίστε ατομική εξόρυξη. Απαιτούνται ανοιχτό πορτοφόλι και συγχρονισμένος ομότιμος."
+      },
+      {
+        "id": "wallet",
+        "title": "Πορτοφόλι",
+        "body": "Δημιουργήστε ή ανοίξτε το πορτοφόλι σας. Κρατήστε τον κωδικό και τις 24 λέξεις ανάκτησης μυστικά και με αντίγραφο ασφαλείας."
+      },
+      {
+        "id": "history",
+        "title": "Ιστορικό",
+        "body": "Ελέγξτε ανταμοιβές εξόρυξης, εισερχόμενες και εξερχόμενες συναλλαγές και τις επιβεβαιώσεις τους."
+      },
+      {
+        "id": "more",
+        "title": "Περισσότερα",
+        "body": "Αλλάξτε γλώσσα και θέμα, προσθέστε ομότιμο αν αποτύχει η ανακάλυψη και διαχειριστείτε αντίγραφα πορτοφολιού."
+      },
+      {
+        "id": "help",
+        "title": "Βοήθεια",
+        "body": "Ανοίξτε αυτόν τον οδηγό όταν χρειάζεστε λεπτομερείς εξηγήσεις των λειτουργιών SMW."
+      }
+    ]
+  },
+  "no": {
+    "label": "Hurtigveiledning",
+    "back": "Tilbake",
+    "next": "Neste",
+    "done": "Fullfør",
+    "skip": "Hopp over",
+    "replay": "Vis førstegangsveiledningen igjen",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Hjem",
+        "body": "Kontroller saldoen, lokal blokkhøyde og tilkoblede noder her."
+      },
+      {
+        "id": "mining",
+        "title": "Utvinning",
+        "body": "Angi et mål for antall blokker og start soloutvinning. En åpen lommebok og en synkronisert node kreves."
+      },
+      {
+        "id": "wallet",
+        "title": "Lommebok",
+        "body": "Opprett eller åpne lommeboken. Hold passordet og de 24 gjenopprettingsordene private og sikkerhetskopiert."
+      },
+      {
+        "id": "history",
+        "title": "Historikk",
+        "body": "Se over utvinningsbelønninger, innkommende og utgående transaksjoner og bekreftelsene deres."
+      },
+      {
+        "id": "more",
+        "title": "Mer",
+        "body": "Endre språk og tema, legg til en node hvis oppdagelse mislykkes, og administrer sikkerhetskopier av lommeboken."
+      },
+      {
+        "id": "help",
+        "title": "Hjelp",
+        "body": "Åpne denne veiledningen når du trenger detaljerte forklaringer av SMWs funksjoner."
+      }
+    ]
+  },
+  "sv": {
+    "label": "Snabbguide",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "done": "Slutför",
+    "skip": "Hoppa över",
+    "replay": "Visa introduktionen igen",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Hem",
+        "body": "Kontrollera saldo, lokal blockhöjd och anslutna noder här."
+      },
+      {
+        "id": "mining",
+        "title": "Brytning",
+        "body": "Ange ett mål för antalet block och börja bryta ensam. En öppen plånbok och en synkroniserad nod behövs."
+      },
+      {
+        "id": "wallet",
+        "title": "Plånbok",
+        "body": "Skapa eller öppna din plånbok. Håll lösenordet och de 24 återställningsorden privata och säkerhetskopierade."
+      },
+      {
+        "id": "history",
+        "title": "Historik",
+        "body": "Granska brytningsbelöningar, inkommande och utgående transaktioner och deras bekräftelser."
+      },
+      {
+        "id": "more",
+        "title": "Mer",
+        "body": "Ändra språk och tema, lägg till en nod om upptäckten misslyckas och hantera säkerhetskopior av plånboken."
+      },
+      {
+        "id": "help",
+        "title": "Hjälp",
+        "body": "Öppna denna guide när du behöver detaljerade förklaringar av SMWs funktioner."
+      }
+    ]
+  },
+  "sr": {
+    "label": "Кратко упутство",
+    "back": "Назад",
+    "next": "Следеће",
+    "done": "Заврши",
+    "skip": "Прескочи",
+    "replay": "Поново прикажи уводно упутство",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Почетна",
+        "body": "Овде проверите стање, локалну висину блока и повезане чворове."
+      },
+      {
+        "id": "mining",
+        "title": "Рударење",
+        "body": "Подесите циљ броја блокова и започните самостално рударење. Потребни су отворен новчаник и синхронизован чвор."
+      },
+      {
+        "id": "wallet",
+        "title": "Новчаник",
+        "body": "Направите или отворите новчаник. Чувајте лозинку и 24 речи за опоравак у тајности и направите резервне копије."
+      },
+      {
+        "id": "history",
+        "title": "Историја",
+        "body": "Прегледајте рударске награде, долазне и одлазне трансакције и њихове потврде."
+      },
+      {
+        "id": "more",
+        "title": "Још",
+        "body": "Промените језик и тему, додајте чвор ако откривање не успе и управљајте резервним копијама новчаника."
+      },
+      {
+        "id": "help",
+        "title": "Помоћ",
+        "body": "Отворите ово упутство кад год су вам потребна детаљна објашњења SMW функција."
+      }
+    ]
+  },
+  "mn": {
+    "label": "Товч гарын авлага",
+    "back": "Буцах",
+    "next": "Дараах",
+    "done": "Дуусгах",
+    "skip": "Алгасах",
+    "replay": "Анхны хэрэглээний зааврыг дахин харуулах",
+    "steps": [
+      {
+        "id": "home",
+        "title": "Нүүр",
+        "body": "Энд үлдэгдэл, дотоод блокийн өндөр болон холбогдсон зангилаануудыг шалгана уу."
+      },
+      {
+        "id": "mining",
+        "title": "Олборлолт",
+        "body": "Блокийн тооны зорилт тохируулж дангаар олборлож эхэлнэ үү. Нээлттэй хэтэвч болон синхрончилсон зангилаа хэрэгтэй."
+      },
+      {
+        "id": "wallet",
+        "title": "Хэтэвч",
+        "body": "Хэтэвчээ үүсгэх эсвэл нээнэ үү. Нууц үг болон сэргээх 24 үгийг нууцалж, нөөцөлнө үү."
+      },
+      {
+        "id": "history",
+        "title": "Түүх",
+        "body": "Олборлолтын шагнал, орлого, зарлагын гүйлгээ болон тэдгээрийн баталгаажуулалтыг хянана уу."
+      },
+      {
+        "id": "more",
+        "title": "Бусад",
+        "body": "Хэл болон загварыг өөрчлөх, илрүүлэлт амжилтгүй бол зангилаа нэмэх, хэтэвчийн нөөц хуулбарыг удирдах."
+      },
+      {
+        "id": "help",
+        "title": "Тусламж",
+        "body": "SMW боломжуудын дэлгэрэнгүй тайлбар хэрэгтэй үед энэ гарын авлагыг нээнэ үү."
+      }
+    ]
+  },
+  "mn-Mong": {
+    "label": "ᠲᠦᠷᠭᠡᠨ ᠵᠠᠭᠠᠪᠤᠷᠢ",
+    "back": "ᠪᠤᠴᠠᠬᠤ",
+    "next": "ᠳᠠᠷᠠᠭᠠᠬᠢ",
+    "done": "ᠳᠠᠭᠤᠰᠬᠠᠬᠤ",
+    "skip": "ᠠᠯᠭᠠᠰᠠᠬᠤ",
+    "replay": "ᠠᠩᠬᠠᠨ ᠤ ᠬᠡᠷᠡᠭᠯᠡᠯᠲᠡ ᠶᠢᠨ ᠵᠠᠭᠠᠪᠤᠷᠢ ᠶᠢ ᠳᠠᠬᠢᠨ ᠬᠠᠷᠠᠭᠤᠯᠬᠤ",
+    "steps": [
+      {
+        "id": "home",
+        "title": "ᠨᠢᠭᠤᠷ",
+        "body": "ᠡᠨᠳᠡ ᠦᠯᠡᠳᠡᠭᠳᠡᠯ᠂ ᠳᠣᠲᠣᠭᠠᠳᠤ ᠪᠯᠣᠺ ᠤᠨ ᠥᠨᠳᠥᠷ᠂ ᠬᠣᠯᠪᠣᠭᠰᠠᠨ ᠲᠦᠩᠰᠢ ᠪᠡᠨ ᠰᠢᠯᠭᠠᠨ᠎ᠠ ᠤᠤ᠃"
+      },
+      {
+        "id": "mining",
+        "title": "ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ",
+        "body": "ᠪᠯᠣᠺ ᠤᠨ ᠲᠣᠭᠠᠨ ᠵᠣᠷᠢᠯᠲᠠ ᠲᠣᠭᠲᠠᠭᠠᠵᠤ᠂ ᠳᠠᠩᠭᠠᠷ ᠣᠯᠪᠣᠷᠯᠠᠵᠤ ᠡᠬᠢᠯᠡᠨ᠎ᠡ᠃ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠪᠠ ᠢᠵᠢᠯᠡᠰᠢᠭᠦᠯᠦᠭᠰᠡᠨ ᠲᠦᠩᠰᠢ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃"
+      },
+      {
+        "id": "wallet",
+        "title": "ᠲᠦᠷᠢᠦᠪᠴᠢ",
+        "body": "ᠲᠦᠷᠢᠦᠪᠴᠢ ᠪᠡᠨ ᠦᠭᠦᠰᠭᠡᠬᠦ ᠪᠤᠶᠤ ᠨᠡᠭᠡᠭᠡᠨ᠎ᠡ᠃ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠠ 24 ᠰᠡᠷᠭᠦᠭᠡᠬᠦ ᠦᠭᠡ ᠪᠡᠨ ᠨᠢᠭᠤᠴᠠᠯᠠᠵᠤ᠂ ᠨᠥᠭᠡᠴᠡᠯᠡᠨ᠎ᠡ ᠦᠦ᠃"
+      },
+      {
+        "id": "history",
+        "title": "ᠲᠡᠦᠬᠡ",
+        "body": "ᠣᠯᠪᠣᠷᠯᠠᠯᠲᠠ ᠶᠢᠨ ᠱᠠᠩᠨᠠᠯ᠂ ᠣᠷᠣᠬᠤ ᠪᠠ ᠭᠠᠷᠬᠤ ᠭᠦᠶᠦᠯᠭᠡ᠂ ᠲᠡᠳᠡᠭᠡᠷ ᠦᠨ ᠪᠠᠲᠤᠯᠠᠯᠲᠠ ᠶᠢ ᠬᠢᠨᠠᠨ᠎ᠠ ᠤᠤ᠃"
+      },
+      {
+        "id": "more",
+        "title": "ᠪᠤᠰᠤᠳ",
+        "body": "ᠬᠡᠯᠡ ᠪᠠ ᠵᠠᠭᠪᠤᠷ ᠰᠣᠯᠢᠬᠤ᠂ ᠬᠠᠶᠢᠯᠲᠠ ᠪᠦᠲᠦᠭᠰᠡᠨ ᠦᠭᠡᠢ ᠪᠣᠯ ᠲᠦᠩᠰᠢ ᠨᠡᠮᠡᠬᠦ᠂ ᠲᠦᠷᠢᠦᠪᠴᠢ ᠶᠢᠨ ᠨᠥᠭᠡᠴᠡ ᠬᠤᠪᠢ ᠪᠡᠨ ᠤᠳᠤᠷᠢᠳᠬᠤ᠃"
+      },
+      {
+        "id": "help",
+        "title": "ᠲᠤᠰᠠᠯᠠᠮᠵᠢ",
+        "body": "SMW ᠶᠢᠨ ᠪᠣᠯᠣᠮᠵᠢ ᠶᠢᠨ ᠳᠡᠯᠭᠡᠷᠡᠩᠭᠦᠢ ᠲᠠᠶᠢᠯᠪᠤᠷᠢ ᠬᠡᠷᠡᠭᠲᠡᠢ ᠦᠶ᠎ᠡ ᠳᠦ ᠡᠨᠡ ᠵᠠᠭᠠᠪᠤᠷᠢ ᠶᠢ ᠨᠡᠭᠡᠭᠡᠨ᠎ᠡ ᠦᠦ᠃"
+      }
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>body{font:18px/1.7 sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:8px}pre{white-space:pre-wrap}</style></head><body><article><h1 id="sumuww-tcp-protocol">SUMUWW TCP Protocol</h1>
+<h2 id="frames-and-resource-limits">Frames and resource limits</h2>
+<p>Each frame consists of a 24-byte header and payload. Integer fields are little-endian; hashes use the internal raw 32-byte order. The length is checked before reading the payload, then the checksum is validated.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align: right;">Bytes</th>
+<th>Local rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magic</td>
+<td style="text-align: right;">4</td>
+<td>Selected network's magic: sumuww <code>d052470c</code>, regtest <code>d0524709</code>, lab <code>d052470b</code></td>
+</tr>
+<tr>
+<td>Command</td>
+<td style="text-align: right;">12</td>
+<td>1~12 English letters/digits starting with a lowercase English letter; remaining bytes are NUL</td>
+</tr>
+<tr>
+<td>Payload length</td>
+<td style="text-align: right;">4</td>
+<td>uint32, at most 4,000,000 bytes</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td style="text-align: right;">4</td>
+<td>First 4 bytes of SHA256d(payload)</td>
+</tr>
+</tbody>
+</table>
+<p>Normal EOF at a frame boundary is distinguished as <code>PeerDisconnected</code>. EOF after only part of a header/body, invalid magic/padding/checksum/size, and frame timeout are errors. Whole-frame reading and drain each have a deadline. Command payloads are also checked for canonical CompactSize, lengths, counts, and trailing bytes.</p>
+<h2 id="handshake-and-messages">Handshake and messages</h2>
+<p>Each frame's magic is compared with the selected network. After both sides send <code>version</code>, protocol, genesis, profile, and self-connection nonce are checked. Empty <code>verack</code> messages must then be exchanged before ordinary messages are processed. A peer's advertised tip is a discovery hint, not an adopted validated chain state. Claimed height or work never drives chain selection.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Payload</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>uint32 protocol=1/2/3/4, genesis32, uint64 nonce, CompactSize UTF-8 profile 1~64 bytes, tip32</td>
+<td>Exact protocol/genesis/profile comparison</td>
+</tr>
+<tr>
+<td>verack</td>
+<td>Empty payload</td>
+<td>Complete handshake</td>
+</tr>
+<tr>
+<td>getheaders</td>
+<td>CompactSize locator count, raw hashes, stop32</td>
+<td>Return after the active chain's common ancestor</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>CompactSize count, each 80-byte Header</td>
+<td>Check target within selected PoW limit, PoW, version, and connection order; contextual DAA checked during body validation</td>
+</tr>
+<tr>
+<td>inv / getdata / notfound</td>
+<td>CompactSize count, each uint32 kind+digest32</td>
+<td>kind1=tx, kind2=block; at most 256</td>
+</tr>
+<tr>
+<td>block</td>
+<td>Canonical block bytes, including witness</td>
+<td>Match requested header, then validate branch ancestors' expected nBits and existing Chain conditions</td>
+</tr>
+<tr>
+<td>tx</td>
+<td>Canonical transaction bytes, including witness</td>
+<td>Match requested txid, then existing mempool admission</td>
+</tr>
+<tr>
+<td>ping / pong</td>
+<td>uint64 nonce</td>
+<td>Check connection responsiveness</td>
+</tr>
+<tr>
+<td>getaddr</td>
+<td>Empty payload</td>
+<td>Protocols 2, 3 and 4; bounded request rate</td>
+</tr>
+<tr>
+<td>addr</td>
+<td>listener_present + CompactSize peer_count + endpoints</td>
+<td>Protocols 2, 3 and 4; untrusted address hints</td>
+</tr>
+</tbody>
+</table>
+<p>This local <code>headers</code> message does not append a transaction-count byte to each header. The version payload and witness inventory handling also differ from Bitcoin wire messages. Commands sharing names does not mean the program can connect to Bitcoin peers.</p>
+<p>Inventory kind 1 is the raw 32-byte TXID of the transaction excluding witness; kind 2 is the raw 32-byte SHA256d of the 80-byte block header. <code>getheaders</code> returns starting after the first active-chain hash found in locator order. With no common hash, it returns after genesis; a stop of 0 proceeds up to the count limit. When the active-chain stop hash is encountered, that header is included and the response ends.</p>
+<h2 id="synchronization-and-transaction-relay">Synchronization and transaction relay</h2>
+<p>A node requests headers using its own validated block locator. Known blocks are skipped and unknown blocks fetched in sequence. The header stage checks the selected profile's PoW limit, PoW, and linkage; it does not require fixed regtest nBits on all networks. At this stage, headers are not stored as validated work or activated as the chain.</p>
+<p>Received full blocks can be stored/activated only after consensus validation passes every check: expected nBits calculated from the actual branch's parent/ancestors and timestamps, amounts, maturity, signatures, time, and commitments. Valid blocks crossing lab adjustment boundaries are relayed. Blocks with valid PoW but incorrect contextual nBits are rejected at the body stage. Unvalidated headers or a peer's tip advertisement do not change UTXO or tip in this case.</p>
+<p>When a batch ends, the next locator is built from the last validated branch hash. The next page can be fetched even if that branch is shorter than or tied with the current active chain; once its total valid cumulative work grows larger, existing consensus rules select it.</p>
+<h2 id="p2p-discovery-encoding-and-compatibility">P2P discovery encoding and compatibility</h2>
+<p>The new <code>getaddr</code> message is empty. The <code>addr</code> payload has the following binary layout; integers are little-endian and counts use canonical CompactSize. A listener, if present, is separate from the count of remaining peers.</p>
+<pre><code class="language-text">getaddr: empty
+addr:
+    uint8 listener_present (0 or 1)
+    CompactSize peer_count
+    [listener endpoint if listener_present == 1]
+    peer_count endpoints
+endpoint:
+    CompactSize host_byte_length
+    host ASCII bytes
+    uint16_le port
+</code></pre>
+<p>A host contains 1–253 ASCII bytes. DNS names and IPv4 addresses use letters, digits, dots and hyphens. IPv6 addresses use canonical numeric notation; scoped and IPv4-mapped IPv6 addresses are rejected. A port is 1–65535. At most 32 endpoints, including the listener, are allowed; the payload limit is 8259 bytes. Address exchange requires protocol 2, 3 or 4, and IPv6 hints are sent only to protocol 3 or 4 peers.</p>
+<p>A boundary-enabled outgoing connection first tries protocol 4; compatibility retries can negotiate versions 3, 2 or 1. A recognized protocol 2 peer can be retried with protocol 2. Listeners initially announce protocol 1 for older clients. After matching network magic, genesis and profile, an eligible protocol 1 peer that closes or resets before acknowledgement permits one retry with protocol 1. Wrong-network peers do not trigger a downgrade. Protocol 1 sessions receive no <code>getaddr</code> or <code>addr</code> messages. Every successful session requires the final acknowledgement before normal full-node synchronization.</p></article></body></html>

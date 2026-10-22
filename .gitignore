@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.gradle/
+.kotlin/
+.cxx/
+build/
+bin/
+.venv/
+venv/
+local.properties
+wallet.json
+*.sqlite*
+*.db
+*.jks
+*.keystore
+*.p12
+password.txt
