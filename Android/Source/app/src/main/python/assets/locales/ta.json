@@ -284,5 +284,14 @@
   "Do not show this help again.": "இந்த உதவியை மீண்டும் காட்ட வேண்டாம்.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "நேரடி இணைப்பு Tor அல்லது I2P ஐப் பயன்படுத்தாது. பொதுவாக இது வேகமானது, குறைந்த வளங்களைப் பயன்படுத்தும். பிற முனைகள் உங்கள் இணைப்பின் IP ஐக் காணலாம்.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nநன்மை: பிற முனைகளிடமிருந்து உங்கள் உண்மையான IP ஐ மறைக்க உதவுகிறது.\n\nகுறைபாடுகள்: இணைப்பும் ஒத்திசைவும் மெதுவாகலாம்; பேட்டரி மற்றும் தரவுப் பயன்பாடு அதிகரிக்கலாம். பரிவர்த்தனைப் பதிவுகள் பொதுவாகவே இருக்கும். இணைப்பு தோல்வியடைந்தால் நேரடி இணைப்பு இயக்கப்படாது.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nநன்மை: பிற முனைகளிடமிருந்து உங்கள் உண்மையான IP ஐ மறைக்க உதவுகிறது.\n\nகுறைபாடுகள்: இணைப்பும் ஒத்திசைவும் மெதுவாகலாம்; பேட்டரி மற்றும் தரவுப் பயன்பாடு அதிகரிக்கலாம். பரிவர்த்தனைப் பதிவுகள் பொதுவாகவே இருக்கும். இணைப்பு தோல்வியடைந்தால் நேரடி இணைப்பு இயக்கப்படாது.\n\nI2P முனைகள் தேவை."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nநன்மை: பிற முனைகளிடமிருந்து உங்கள் உண்மையான IP ஐ மறைக்க உதவுகிறது.\n\nகுறைபாடுகள்: இணைப்பும் ஒத்திசைவும் மெதுவாகலாம்; பேட்டரி மற்றும் தரவுப் பயன்பாடு அதிகரிக்கலாம். பரிவர்த்தனைப் பதிவுகள் பொதுவாகவே இருக்கும். இணைப்பு தோல்வியடைந்தால் நேரடி இணைப்பு இயக்கப்படாது.\n\nI2P முனைகள் தேவை.",
+  "This node": "இந்த முனை",
+  "Other node": "பிற முனை",
+  "Producer unavailable": "உருவாக்கியவர் விவரம் இல்லை",
+  "Block time (local)": "தொகுதி நேரம் (உள்ளூர்)",
+  "Producer": "உருவாக்கியவர்",
+  "Block hash": "தொகுதி ஹாஷ்",
+  "All blocks": "அனைத்து தொகுதிகள்",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "முதல் தொகுதியிலிருந்து சங்கிலியின் தற்போதைய கடைசித் தொகுதி வரை, அனைத்து முனைகளின் சரிபார்க்கப்பட்ட தொகுதிகள்.",
+  "Search": "தேடு"
 }

@@ -28,7 +28,7 @@ internal class SumuwwScreens(
         val targetDraft: String, val sendAddress: String, val sendAmount: String,
         val error: String?, val tour: Boolean, val dark: Boolean,
         val palette: SumuwwTheme.Palette, val themeMode: String, val languageName: String,
-        val manualFee: Boolean = false, val feeDraft: String = "0.001", val historySearch: String = "", val statusUnavailable: Boolean = false
+        val manualFee: Boolean = false, val feeDraft: String = "0.001", val historySearch: String = "", val statusUnavailable: Boolean = false, val blocks: JSONObject? = null, val blockSearch: String = ""
     )
 
     val appRoot = FrameLayout(activity)
@@ -92,7 +92,7 @@ internal class SumuwwScreens(
             0 -> tr("SUMUWW"); 1 -> tr("채굴"); 2 -> tr("지갑"); 3 -> tr("거래내역"); 4 -> tr("더보기")
             5 -> tr("보내기"); 6 -> tr("받기"); 7 -> tr("도움말"); 8 -> tr("테마")
             9 -> tr("설정"); 10 -> tr("계정"); 11 -> tr("보안 설정"); 12 -> tr("채굴 설정")
-            13 -> tr("알림 설정"); 14 -> tr("앱 정보"); else -> tr("SUMUWW")
+            13 -> tr("알림 설정"); 14 -> tr("앱 정보"); 15 -> tr("전체 블록"); else -> tr("SUMUWW")
         }
         val back = if (next.page in listOf(0, 1, 2, 4)) null else ({ action("back") })
         topHeader.addView(ui.SumuwwTopBar(title, back,
@@ -107,7 +107,7 @@ internal class SumuwwScreens(
         when (next.page) {
             0 -> home(page); 1 -> mining(page); 2 -> wallet(page); 3 -> history(page); 4 -> more(page)
             5 -> send(page); 6 -> receive(page); 7 -> help(page); 8 -> themes(page); 9 -> settings(page)
-            10 -> account(page); 11 -> security(page); 12 -> miningSettings(page); 13 -> notifications(page); 14 -> information(page)
+            10 -> account(page); 11 -> security(page); 12 -> miningSettings(page); 13 -> notifications(page); 14 -> information(page); 15 -> allBlocks(page)
         }
         if(ui.verticalMongolian){
             // A vertical heading sits beside its content, as in Mongolian reading
@@ -346,7 +346,39 @@ internal class SumuwwScreens(
         p.addView(ui.SumuwwSettingRow(R.drawable.ic_info, tr("새로고침")) { action("historyRefresh") })
     }
 
+    private fun allBlocks(p: LinearLayout) {
+        p.addView(ui.label(tr("제네시스부터 현재까지 검증된 모든 노드의 블록을 확인합니다."),13f,ui.muted),ui.params(bottom=12))
+        val search=ui.SumuwwField(tr("블록 높이"),"0",state.blockSearch,true,"blockSearch")
+        p.addView(search.first,ui.params(bottom=8))
+        p.addView(ui.SumuwwPrimaryButton(tr("검색")){action("blockSearch",search.second.text.toString())}.apply{tag="blocks-search"},ui.params(bottom=12))
+        p.addView(ui.SumuwwSettingRow(R.drawable.ic_info,tr("새로고침")){action("blocksRefresh")}.apply{tag="blocks-refresh"})
+        val result=state.blocks
+        val blocks=result?.optJSONArray("blocks")
+        if(blocks==null){p.addView(ui.label(tr("불러오는 중"),14f,ui.muted));return}
+        val offset=result.optInt("offset");val total=result.optInt("total")
+        val controls=ui.column()
+        if(offset>0)controls.addView(ui.SumuwwPrimaryButton(tr("이전")){action("blocksPrevious")}.apply{tag="blocks-previous"},ui.params(bottom=8))
+        if(offset+50<total)controls.addView(ui.SumuwwPrimaryButton(tr("다음")){action("blocksNext")}.apply{tag="blocks-next"},ui.params(bottom=8))
+        p.addView(controls,ui.params(top=12,bottom=12))
+        if(blocks.length()>0)p.addView(ui.label("${tr("블록 높이")}: ${blocks.getJSONObject(blocks.length()-1).optInt("height")}–${blocks.getJSONObject(0).optInt("height")} / ${result.optInt("height")}",13f,ui.muted),ui.params(bottom=12))
+        val list=ui.column().apply{tag="sumuww-all-blocks-list"}
+        p.addView(list)
+        for(i in 0 until blocks.length()){
+            val block=blocks.getJSONObject(i)
+            val card=ui.column().apply{tag="network-block-${block.optString("hash")}";setPadding(ui.dp(12),ui.dp(12),ui.dp(12),ui.dp(12));background=ui.surfaceFinish(12)}
+            val origin=tr(when(block.optString("origin")){"local"->"이 노드";"other"->"다른 노드";else->"생성자 정보 없음"})
+            card.addView(ui.label("${tr("블록 높이")} ${block.optInt("height")} · $origin",14f,ui.ink,true))
+            val date=java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss",java.util.Locale.getDefault()).format(java.util.Date(block.optLong("timestamp")*1000L))
+            card.addView(ui.label("${tr("블록 시간 (현지)")}: $date",12f,ui.muted),ui.params(top=6))
+            val producer=block.optString("producer_id").takeIf{it.isNotBlank()&&it!="null"}
+            if(producer!=null)card.addView(ui.label("${tr("생성 노드")}: $producer",11f,ui.muted),ui.params(top=6))
+            card.addView(ui.label("${tr("블록 해시")}: ${block.optString("hash")}",11f,ui.muted).apply{setTextIsSelectable(true)},ui.params(top=6))
+            list.addView(card,ui.params(bottom=8))
+        }
+    }
+
     private fun more(p: LinearLayout) {
+        setting(p, R.drawable.ic_info, "전체 블록", "page", "15").tag="sumuww-all-blocks"
         setting(p, R.drawable.nav_wallet, "지갑 관리", "page", "10")
         setting(p, R.drawable.ic_security, "보안 설정", "page", "11")
         setting(p, R.drawable.nav_mining, "채굴 설정", "page", "12")

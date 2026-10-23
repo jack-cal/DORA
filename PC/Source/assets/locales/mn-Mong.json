@@ -312,5 +312,14 @@
   "No newer release is available.": "ᠰᠢᠨᠡ ᠬᠤᠪᠢᠯᠪᠤᠷᠢ ᠪᠠᠶᠢᠬᠤ ᠦᠭᠡᠢ᠃",
   "Could not check for updates. Open GitHub to check directly.": "ᠰᠢᠨᠡᠴᠢᠯᠡᠯᠲᠡ ᠶᠢ ᠱᠠᠯᠭᠠᠵᠤ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ᠃ GitHub ᠳᠡᠭᠡᠷ᠎ᠡ ᠱᠠᠯᠭᠠᠨ᠎ᠠ ᠤᠤ᠃",
   "Known node addresses": "ᠮᠡᠳᠡᠭᠳᠡᠭᠰᠡᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠬᠠᠶᠢᠭ",
-  "From block {0:,}: every {1:,} blocks": "{0:,} ᠳ᠋ᠤᠭᠠᠷ ᠪᠯᠣᠺ ᠡᠴᠡ {1:,} ᠪᠯᠣᠺ ᠲᠤᠲᠤᠮ ᠳ᠋ᠤ"
+  "From block {0:,}: every {1:,} blocks": "{0:,} ᠳ᠋ᠤᠭᠠᠷ ᠪᠯᠣᠺ ᠡᠴᠡ {1:,} ᠪᠯᠣᠺ ᠲᠤᠲᠤᠮ ᠳ᠋ᠤ",
+  "This node": "ᠡᠨᠡ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ",
+  "Other node": "ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ",
+  "Producer unavailable": "ᠦᠭᠦᠰᠭᠡᠭᠴᠢ ᠶᠢᠨ ᠮᠡᠳᠡᠭᠡᠯᠡᠯ ᠦᠭᠡᠢ",
+  "Block time (local)": "ᠪᠯᠣᠺ ᠤᠨ ᠴᠠᠭ (ᠣᠷᠣᠨ ᠨᠤᠲᠤᠭ ᠤᠨ)",
+  "Producer": "ᠦᠭᠦᠰᠭᠡᠭᠴᠢ",
+  "Block hash": "ᠪᠯᠣᠺ ᠤᠨ ᠬᠡᠱ",
+  "All blocks": "ᠪᠦᠬᠦ ᠪᠯᠣᠺ",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "ᠡᠬᠢᠨ ᠦ ᠪᠯᠣᠺ ᠠᠴᠠ ᠣᠳᠣᠭᠠᠨ ᠤ ᠰᠡᠭᠦᠯ ᠦᠨ ᠪᠯᠣᠺ ᠬᠦᠷᠲᠡᠯᠡᠬᠢ ᠪᠦᠬᠦ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠪᠠᠲᠠᠯᠠᠭᠠᠵᠢᠭᠰᠠᠨ ᠪᠯᠣᠺ ᠤᠳ᠃",
+  "Search": "ᠬᠠᠢᠬᠤ"
 }

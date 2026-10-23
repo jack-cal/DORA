@@ -284,5 +284,14 @@
   "Do not show this help again.": "Deze hulp niet meer tonen.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Een directe verbinding gebruikt geen Tor of I2P. Ze is meestal sneller en verbruikt minder middelen. Andere peers kunnen uw verbindings-IP zien.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVoordeel: helpt uw echte IP voor andere peers te verbergen.\n\nNadelen: verbinding en synchronisatie kunnen vertragen en het batterij- en dataverbruik kan stijgen. Transacties blijven openbaar. Bij een fout blijft direct verbinden uitgeschakeld.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVoordeel: helpt uw echte IP voor andere peers te verbergen.\n\nNadelen: verbinding en synchronisatie kunnen vertragen en het batterij- en dataverbruik kan stijgen. Transacties blijven openbaar. Bij een fout blijft direct verbinden uitgeschakeld.\n\nI2P-peers zijn vereist."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVoordeel: helpt uw echte IP voor andere peers te verbergen.\n\nNadelen: verbinding en synchronisatie kunnen vertragen en het batterij- en dataverbruik kan stijgen. Transacties blijven openbaar. Bij een fout blijft direct verbinden uitgeschakeld.\n\nI2P-peers zijn vereist.",
+  "This node": "Deze node",
+  "Other node": "Andere node",
+  "Producer unavailable": "Maker onbekend",
+  "Block time (local)": "Bloktijd (lokaal)",
+  "Producer": "Maker",
+  "Block hash": "Blokhash",
+  "All blocks": "Alle blokken",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Gevalideerde blokken vanaf het genesisblok tot de huidige ketentop, van alle nodes.",
+  "Search": "Zoeken"
 }

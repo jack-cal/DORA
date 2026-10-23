@@ -284,5 +284,14 @@
   "Do not show this help again.": "عدم إظهار هذه المساعدة مجددًا.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "الاتصال المباشر لا يستخدم Tor أو I2P. يكون عادةً أسرع وأقل استهلاكًا للموارد. يمكن للعقد الأخرى رؤية عنوان IP لاتصالك.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nالميزة: يساعد في إخفاء عنوان IP الحقيقي عن العقد الأخرى.\n\nالعيوب: قد يصبح الاتصال والمزامنة أبطأ ويزداد استهلاك البطارية والبيانات. تبقى سجلات المعاملات عامة. عند فشل الاتصال، يظل الاتصال المباشر معطلاً.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nالميزة: يساعد في إخفاء عنوان IP الحقيقي عن العقد الأخرى.\n\nالعيوب: قد يصبح الاتصال والمزامنة أبطأ ويزداد استهلاك البطارية والبيانات. تبقى سجلات المعاملات عامة. عند فشل الاتصال، يظل الاتصال المباشر معطلاً.\n\nيلزم وجود عقد I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nالميزة: يساعد في إخفاء عنوان IP الحقيقي عن العقد الأخرى.\n\nالعيوب: قد يصبح الاتصال والمزامنة أبطأ ويزداد استهلاك البطارية والبيانات. تبقى سجلات المعاملات عامة. عند فشل الاتصال، يظل الاتصال المباشر معطلاً.\n\nيلزم وجود عقد I2P.",
+  "This node": "هذه العقدة",
+  "Other node": "عقدة أخرى",
+  "Producer unavailable": "مُنشئ غير معروف",
+  "Block time (local)": "وقت الكتلة (المحلي)",
+  "Producer": "المُنشئ",
+  "Block hash": "بصمة الكتلة",
+  "All blocks": "جميع الكتل",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "الكتل التي تم التحقق منها، من كتلة التكوين حتى أحدث كتلة، وتشمل جميع العقد.",
+  "Search": "بحث"
 }

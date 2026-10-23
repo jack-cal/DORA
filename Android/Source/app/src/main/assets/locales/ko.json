@@ -284,5 +284,14 @@
   "Do not show this help again.": "다음부터 도움말을 보지 않겠습니다.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Tor와 I2P를 사용하지 않습니다. 보통 연결이 빠르고 자원을 적게 쓰지만, 상대 노드에게 연결 IP가 보입니다.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.\n\nI2P 피어가 필요합니다."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.\n\nI2P 피어가 필요합니다.",
+  "This node": "이 노드",
+  "Other node": "다른 노드",
+  "Producer unavailable": "생성자 정보 없음",
+  "Block time (local)": "블록 시간 (현지)",
+  "Producer": "생성 노드",
+  "Block hash": "블록 해시",
+  "All blocks": "전체 블록",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "제네시스부터 현재까지 검증된 모든 노드의 블록을 확인합니다.",
+  "Search": "검색"
 }

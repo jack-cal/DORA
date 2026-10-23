@@ -284,5 +284,14 @@
   "Do not show this help again.": "Tuto nápovědu již nezobrazovat.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Přímé spojení nepoužívá Tor ani I2P. Obvykle je rychlejší a spotřebuje méně prostředků. Ostatní uzly vidí IP vašeho připojení.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.\n\nJsou potřeba uzly I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.\n\nJsou potřeba uzly I2P.",
+  "This node": "Tento uzel",
+  "Other node": "Jiný uzel",
+  "Producer unavailable": "Tvůrce není znám",
+  "Block time (local)": "Čas bloku (místní)",
+  "Producer": "Tvůrce",
+  "Block hash": "Hash bloku",
+  "All blocks": "Všechny bloky",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Ověřené bloky od počátečního bloku po aktuální konec řetězce, ze všech uzlů.",
+  "Search": "Hledat"
 }

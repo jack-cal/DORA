@@ -312,5 +312,14 @@
   "No newer release is available.": "Hakuna toleo jipya zaidi.",
   "Could not check for updates. Open GitHub to check directly.": "Imeshindwa kuangalia masasisho. Angalia GitHub moja kwa moja.",
   "Known node addresses": "Anwani zinazojulikana",
-  "From block {0:,}: every {1:,} blocks": "Kuanzia bloku {0:,}: kila bloku {1:,}"
+  "From block {0:,}: every {1:,} blocks": "Kuanzia bloku {0:,}: kila bloku {1:,}",
+  "This node": "Nodi hii",
+  "Other node": "Nodi nyingine",
+  "Producer unavailable": "Mtengenezaji hajulikani",
+  "Block time (local)": "Muda wa bloku (wa hapa)",
+  "Producer": "Mtengenezaji",
+  "Block hash": "Hashi ya bloku",
+  "All blocks": "Bloku zote",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Bloku zilizothibitishwa kuanzia bloku ya mwanzo hadi ya sasa, kutoka nodi zote.",
+  "Search": "Tafuta"
 }

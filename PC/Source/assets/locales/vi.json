@@ -312,5 +312,14 @@
   "No newer release is available.": "Không có phiên bản mới hơn.",
   "Could not check for updates. Open GitHub to check directly.": "Không thể kiểm tra cập nhật. Hãy kiểm tra trực tiếp trên GitHub.",
   "Known node addresses": "Địa chỉ nút đã biết",
-  "From block {0:,}: every {1:,} blocks": "Từ khối {0:,}: mỗi {1:,} khối"
+  "From block {0:,}: every {1:,} blocks": "Từ khối {0:,}: mỗi {1:,} khối",
+  "This node": "Nút này",
+  "Other node": "Nút khác",
+  "Producer unavailable": "Không rõ nút tạo",
+  "Block time (local)": "Thời gian khối (địa phương)",
+  "Producer": "Nút tạo",
+  "Block hash": "Mã băm khối",
+  "All blocks": "Tất cả khối",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Các khối đã xác minh từ khối khởi nguyên đến khối mới nhất của chuỗi, từ mọi nút.",
+  "Search": "Tìm kiếm"
 }

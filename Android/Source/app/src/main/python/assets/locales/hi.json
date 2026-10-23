@@ -284,5 +284,14 @@
   "Do not show this help again.": "यह सहायता फिर न दिखाएँ।",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "सीधा कनेक्शन Tor या I2P का उपयोग नहीं करता। यह आम तौर पर तेज़ है और कम संसाधन लेता है। दूसरे नोड आपका कनेक्शन IP देख सकते हैं।",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।\n\nI2P नोड आवश्यक हैं।"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।\n\nI2P नोड आवश्यक हैं।",
+  "This node": "यह नोड",
+  "Other node": "अन्य नोड",
+  "Producer unavailable": "निर्माता की जानकारी उपलब्ध नहीं",
+  "Block time (local)": "ब्लॉक का समय (स्थानीय)",
+  "Producer": "निर्माता",
+  "Block hash": "ब्लॉक हैश",
+  "All blocks": "सभी ब्लॉक",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "जेनेसिस ब्लॉक से वर्तमान अंतिम ब्लॉक तक के सत्यापित ब्लॉक, सभी नोड सहित।",
+  "Search": "खोजें"
 }

@@ -312,5 +312,14 @@
   "No newer release is available.": "Nie ma nowszej wersji.",
   "Could not check for updates. Open GitHub to check directly.": "Nie udało się sprawdzić aktualizacji. Sprawdź bezpośrednio na GitHub.",
   "Known node addresses": "Znane adresy węzłów",
-  "From block {0:,}: every {1:,} blocks": "Od bloku {0:,}: co {1:,} bloków"
+  "From block {0:,}: every {1:,} blocks": "Od bloku {0:,}: co {1:,} bloków",
+  "This node": "Ten węzeł",
+  "Other node": "Inny węzeł",
+  "Producer unavailable": "Twórca nieznany",
+  "Block time (local)": "Czas bloku (lokalny)",
+  "Producer": "Twórca",
+  "Block hash": "Hash bloku",
+  "All blocks": "Wszystkie bloki",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Zweryfikowane bloki od bloku genezy do aktualnego końca łańcucha, ze wszystkich węzłów.",
+  "Search": "Szukaj"
 }

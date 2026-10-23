@@ -24,6 +24,7 @@ class MainActivity:Activity(){
  private var page=0
   set(value){if(field!=value){error=null;};field=value}
  private var state:JSONObject?=null
+ private var blocks:JSONObject?=null; private var blocksOffset=0; private var blocksSearch=""; private var blocksBusy=false; private var blocksRequest=0
  private var history:JSONObject?=null; private var offset=0; private var filter="all"; private var search=""
  private var lastActivitySignal=0L
  private var target="1"; private var appliedTarget="1"; private var recipient=""; private var quantity=""
@@ -52,7 +53,8 @@ class MainActivity:Activity(){
   appliedTarget=prefs.getString("mining-target","1")?.toIntOrNull()?.takeIf{it in 1..10000}?.toString()?:"1"
   target=appliedTarget
   saved?.let{page=it.getInt("page");target=it.getString("target","1")?:"1";recipient=it.getString("recipient","")?:"";quantity=it.getString("quantity","")?:"";manualFee=it.getBoolean("manualFee");feeDraft=it.getString("feeDraft","0.001")?:"0.001";offset=it.getInt("offset");filter=it.getString("filter","all")?:"all";search=it.getString("search","")?:""}
-  saved?.getIntArray("backPages")?.filter{it in 0..14}?.takeLast(32)?.forEach{backPages.addLast(it)}
+  saved?.let{blocksOffset=it.getInt("blocksOffset");blocksSearch=it.getString("blocksSearch", "")?:""}
+  saved?.getIntArray("backPages")?.filter{it in 0..15}?.takeLast(32)?.forEach{backPages.addLast(it)}
   if(Build.VERSION.SDK_INT>=30)window.setDecorFitsSystemWindows(false)
   screens=SumuwwScreens(this,{tr(it)},{a,b,c->action(a,b,c)})
   setContentView(screens.appRoot);render()
@@ -71,13 +73,13 @@ class MainActivity:Activity(){
  }
  override fun onPause(){privacyDialog?.dismiss();privacyDialog=null;updates.cancel();captureDrafts();error=null;touching=false;epoch++;polling=false;if(!controls.isShutdown)controls.execute{try{PcRuntime.setForeground(false)}catch(_:Exception){}};main.removeCallbacks(poll);main.removeCallbacks(freshness);sensitive.toList().forEach{it.dismiss()};sensitive.clear();super.onPause()}
  override fun onDestroy(){updates.close();polling=false;main.removeCallbacksAndMessages(null);worker.shutdown();controls.shutdown();transfers.shutdown();super.onDestroy()}
- override fun onSaveInstanceState(saved:Bundle){captureDrafts();saved.putInt("page",page);saved.putIntArray("backPages",backPages.toIntArray());saved.putString("target",target);saved.putString("recipient",recipient);saved.putString("quantity",quantity);saved.putBoolean("manualFee",manualFee);saved.putString("feeDraft",feeDraft);saved.putInt("offset",offset);saved.putString("filter",filter);saved.putString("search",search);super.onSaveInstanceState(saved)}
+ override fun onSaveInstanceState(saved:Bundle){captureDrafts();saved.putInt("page",page);saved.putIntArray("backPages",backPages.toIntArray());saved.putString("target",target);saved.putString("recipient",recipient);saved.putString("quantity",quantity);saved.putBoolean("manualFee",manualFee);saved.putString("feeDraft",feeDraft);saved.putInt("offset",offset);saved.putString("filter",filter);saved.putString("search",search);saved.putInt("blocksOffset",blocksOffset);saved.putString("blocksSearch",blocksSearch);super.onSaveInstanceState(saved)}
  private fun navigate(next:Int){
   if(next in listOf(0,1,2,4))backPages.clear()
   else if(next!=page){if(backPages.size>=32)backPages.removeFirst();backPages.addLast(page)}
   page=next
  }
- override fun onBackPressed(){if(consentOverlay!=null){if(SumuwwConsent.accepted(this))closeConsent()else finish();return};captureDrafts();page=if(backPages.isNotEmpty())backPages.removeLast()else when(page){3,5,6->2;8,10,11,13,14->9;12->1;7,9->4;else->0};if(page==3)loadHistory();render()}
+ override fun onBackPressed(){if(consentOverlay!=null){if(SumuwwConsent.accepted(this))closeConsent()else finish();return};captureDrafts();page=if(backPages.isNotEmpty())backPages.removeLast()else when(page){3,5,6->2;8,10,11,13,14->9;12->1;7,9,15->4;else->0};if(page==3)loadHistory();if(page==15)loadBlocks();render()}
  private fun postUi(block:()->Unit){main.post{if(!isDestroyed&&!isFinishing){if(touching)main.postDelayed({postUi(block)},50)else block()}}}
  private fun accept(next:JSONObject){
   lastStatusAt=SystemClock.elapsedRealtime();if(pollError){pollError=false;error=null}
@@ -88,6 +90,7 @@ class MainActivity:Activity(){
   val runtimeError=next.optString("runtime_error","");if(runtimeError.isNotBlank()&&runtimeError!="null")error=runtimeError
   // Keep focused input views intact during background status polling.
   if(page in listOf(5,12))screens.updateFormStatus(next,cpu)
+  else if(page==15){if(blocks==null&&!blocksBusy&&currentFocus?.tag!="blockSearch")loadBlocks()}
   else if(page==3&&currentFocus?.tag=="historySearch"){}
   else if(!touching)render()
   showTransferAlert()
@@ -95,6 +98,7 @@ class MainActivity:Activity(){
  private fun captureDrafts(){
   if(!::screens.isInitialized)return
   if(page==5){screens.content.findViewWithTag<EditText>("sendAddress")?.let{recipient=it.text.toString()};screens.content.findViewWithTag<EditText>("sendAmount")?.let{quantity=it.text.toString()};screens.content.findViewWithTag<EditText>("sendFee")?.let{feeDraft=it.text.toString()};screens.content.findViewWithTag<CheckBox>("manualFee")?.let{manualFee=it.isChecked}}
+  if(page==15)screens.content.findViewWithTag<EditText>("blockSearch")?.let{blocksSearch=it.text.toString()}
   if(page==3)screens.content.findViewWithTag<EditText>("historySearch")?.let{search=it.text.toString()}
   if(page==12)screens.content.findViewWithTag<EditText>("miningTarget")?.let{target=it.text.toString()}
  }
@@ -105,7 +109,7 @@ class MainActivity:Activity(){
   val palette=SumuwwThemeCalendar.resolve(prefs.getString("palette","default"))
   screens.render(SumuwwScreens.Model(page,state,history,offset,filter,cpu,
    state?.optJSONObject("mobile_batch")?.optDouble("elapsed_seconds",0.0)?.toLong()?.let{seconds->"%02d:%02d:%02d".format(seconds/3600,seconds/60%60,seconds%60)}?:"00:00:00",
-   if(page==12)target else appliedTarget,recipient,quantity,error,false,dark(),palette,mode(),UiLanguage.languages[UiLanguage.code(this)]?:"English",manualFee,feeDraft,search,pollError))
+   if(page==12)target else appliedTarget,recipient,quantity,error,false,dark(),palette,mode(),UiLanguage.languages[UiLanguage.code(this)]?:"English",manualFee,feeDraft,search,pollError,blocks,blocksSearch))
   window.statusBarColor=SumuwwTheme.background(palette,dark());window.navigationBarColor=SumuwwTheme.background(palette,dark())
   if(Build.VERSION.SDK_INT>=30){
    val mask=WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
@@ -120,7 +124,7 @@ class MainActivity:Activity(){
   bootRequested=true
   try{startForegroundService(Intent(this,PcNodeService::class.java))}catch(e:Exception){fail(e)}
   if(Build.VERSION.SDK_INT>=33&&checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)!=android.content.pm.PackageManager.PERMISSION_GRANTED)requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),42)
-  worker.execute{try{val result=JSONObject(PcRuntime.start(this));postUi{if(SumuwwConsent.accepted(this)){accept(result);if(page==3)loadHistory()}}}catch(e:Exception){fail(e)}}
+  worker.execute{try{val result=JSONObject(PcRuntime.start(this));postUi{if(SumuwwConsent.accepted(this)){accept(result);if(page==3)loadHistory();if(page==15)loadBlocks()}}}catch(e:Exception){fail(e)}}
  }
  private fun closeConsent(){consentOverlay?.let{screens.appRoot.removeView(it)};consentOverlay=null}
  private fun showConsent(managing:Boolean){
@@ -208,13 +212,17 @@ class MainActivity:Activity(){
  private fun action(a:String,b:String,c:String){if(!SumuwwConsent.accepted(this)){showConsent(false);return};captureDrafts();when(a){
   "consentSettings"->showConsent(true)
   "checkUpdates"->updates.check()
-  "page"->{navigate(b.toIntOrNull()?.takeIf{it in 0..14}?:return);if(page==3){history=null;loadHistory()};render()};"back"->onBackPressed()
+  "page"->{navigate(b.toIntOrNull()?.takeIf{it in 0..15}?:return);if(page==3){history=null;loadHistory()};if(page==15){blocks=null;loadBlocks()};render()};"back"->onBackPressed()
   "startMining"->{
    val reason=MiningProtection.read(this).reason
    if(reason!=null){error=tr(reason);render();return}
    if(state?.optJSONObject("security")?.optBoolean("locked")==true){password("지갑 비밀번호"){pass->controls.execute{try{val next=JSONObject(PcRuntime.call("unlock_spending",pass));postUi{accept(next);action("startMining",b,c)}}catch(e:Exception){fail(e)}}};return}
    val count=b.toIntOrNull();if(count==null||count !in 1..10000){error=tr("1–10000 사이 블록 수를 입력하세요.");render()}else{target=b;call("mine_blocks",b)}};"stopMining"->call("stop_mining")
   "miningTarget"->{requireTarget(b)}
+  "blocksRefresh"->{blocksOffset=0;loadBlocks()}
+  "blocksPrevious"->{blocksOffset=(blocksOffset-50).coerceAtLeast(0);loadBlocks()}
+  "blocksNext"->{blocksOffset+=50;loadBlocks()}
+  "blockSearch"->{val height=b.trim().toIntOrNull();if(height==null||height<0){error=tr("블록 높이")+": 0–"+(state?.optJSONObject("node")?.optInt("height")?:0);render()}else{currentFocus?.clearFocus();loadBlocks(height.toString())}}
   "history"->{navigate(3);offset=0;loadHistory()};"historyRefresh"->loadHistory()
   "historyPrevious"->{offset=(offset-50).coerceAtLeast(0);loadHistory()};"historyNext"->{offset+=50;loadHistory()}
   "historyFilter"->{filter=b;offset=0;history=null;loadHistory();render()}
@@ -304,6 +312,14 @@ class MainActivity:Activity(){
     send.isEnabled=true
    }
   }catch(e:Exception){postUi{if(dialog.isShowing&&epoch==owner){dialog.setMessage(e.message?:e.javaClass.simpleName);dialog.getButton(AlertDialog.BUTTON_NEGATIVE).text=tr("닫기")}}}}
+ }
+ private fun loadBlocks(height:String=""){
+  if(worker.isShutdown)return
+  blocksBusy=true;val request=++blocksRequest;val requestedOffset=blocksOffset
+  worker.execute{try{
+   val next=JSONObject(PcRuntime.call("block_history",requestedOffset.toString(),"50",height))
+   postUi{blocksBusy=false;if(request==blocksRequest){blocks=next;blocksOffset=next.optInt("offset");error=null;if(page==15&&currentFocus?.tag!="blockSearch")render()}}
+  }catch(e:Exception){postUi{blocksBusy=false;if(request==blocksRequest){error=e.message;if(page==15&&currentFocus?.tag!="blockSearch")render()}}}}
  }
  private fun loadHistory(){if(worker.isShutdown)return;if(address().isBlank()){history=JSONObject().put("transactions",org.json.JSONArray()).put("total",0);if(page==3)render();return};val request=++historyRequest;val requestedOffset=offset;val requestedFilter=filter;val requestedSearch=search;worker.execute{try{val next=JSONObject(PcRuntime.call("filtered_history",requestedOffset.toString(),"50",requestedFilter,requestedSearch));postUi{if(request==historyRequest){history=next;if(page==3)render()}}}catch(e:Exception){postUi{if(request==historyRequest){history=JSONObject().put("transactions",org.json.JSONArray()).put("total",0)} };fail(e)}}}
  private fun tour(index:Int){val guide=SumuwwTour.page(this,UiLanguage.code(this));if(index>=guide.steps.size)return;val step=guide.steps[index];SumuwwVerticalCaptions.builder(this).setTitle(step.title).setMessage(step.body).setNegativeButton(guide.skip,null).setPositiveButton(if(index==guide.steps.lastIndex)guide.done else guide.next){_,_->tour(index+1)}.show()}

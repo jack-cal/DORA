@@ -312,5 +312,14 @@
   "No newer release is available.": "کوئی نیا ورژن دستیاب نہیں۔",
   "Could not check for updates. Open GitHub to check directly.": "اپ ڈیٹس کی جانچ نہیں ہو سکی۔ براہ راست GitHub پر دیکھیں۔",
   "Known node addresses": "معلوم نوڈ پتے",
-  "From block {0:,}: every {1:,} blocks": "بلاک {0:,} سے: ہر {1:,} بلاکس پر"
+  "From block {0:,}: every {1:,} blocks": "بلاک {0:,} سے: ہر {1:,} بلاکس پر",
+  "This node": "یہ نوڈ",
+  "Other node": "دوسرا نوڈ",
+  "Producer unavailable": "بنانے والے کی معلومات دستیاب نہیں",
+  "Block time (local)": "بلاک کا وقت (مقامی)",
+  "Producer": "بنانے والا",
+  "Block hash": "بلاک ہیش",
+  "All blocks": "تمام بلاکس",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "ابتدائی بلاک سے چین کے موجودہ آخری بلاک تک تصدیق شدہ بلاکس، تمام نوڈز سمیت۔",
+  "Search": "تلاش"
 }

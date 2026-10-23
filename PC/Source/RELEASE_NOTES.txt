@@ -1,4 +1,38 @@
-SUMUWW PC 0.57.34 / Android 0.6.84 (144)
-Automatic replacement of unavailable beacon participants through fresh DKG and PoW-anchored generations.
-Recovery never waits on the mining path. Historical proofs, wallet formats, issuance, halvings, DGW/10, 20% events and 34 UI languages are retained.
-All verifying nodes must support replacement records. See BEACON_RECOVERY.md for protocol, compatibility and limitations.
+SUMUWW PC 0.57.38 / Android 0.6.88 (148)
+
+All blocks
+- A separate All blocks screen now shows the validated active chain from genesis (height 0) to the current local tip, including blocks from every producer.
+- Browse 50 blocks per page with Previous and Next, or search a block height directly. Refresh returns to the latest page.
+- PC: use All blocks in the top bar. Android: More > All blocks.
+- Mining screens retain their own local mining progress. The network-wide block list is separate from wallet transaction history.
+- Entries include height, block-header time in the local time zone, producer commitment when available, and the full block hash. Header time is not reception time.
+- This node / Other node compares the producer commitment with this installation. Legacy blocks without producer commitments are marked Producer unavailable. This is not an identification of the person operating a node.
+- Browsing works without an unlocked wallet. Read-only database snapshots and background reads keep history queries off the node event loop; only the requested page loads block bodies.
+- All 34 languages are retained. Only locally synchronized, validated active-chain blocks appear; unreceived blocks and inactive branches do not appear in this list.
+
+Compatibility
+No consensus or wallet-format changes. Existing wallets, balances, blocks, issuance, halvings, DGW every 10 blocks and the 20% linkage-proof schedule are retained.
+Height 9000 protocol activation and height 9100 SMW/BTC swap activation are unchanged. Valid legacy blocks below 9000 remain usable; legacy-rule blocks at or above 9000 are rejected by upgraded nodes.
+
+Peer reconnection
+- Previously synchronized contacts now remain available after temporary connection failures and retry with bounded backoff. Failed unverified hints are still removed, and verified contacts expire after the existing 30-day cache age.
+- Same-node transport deduplication is unchanged: IPv4, IPv6 and opposite directions share one process identity. An IP address can host multiple node processes.
+- A connection still requires an available remote node; retaining a contact cannot make an offline peer reachable.
+
+Missing listener recovery
+- A synchronized incoming peer can answer address requests without advertising any listening address. The node now queues that observed socket IP and SUMUWW default port as an unverified candidate.
+- It does not use the incoming source port, assume that the candidate is the same process, or publish an untested endpoint as verified. Existing scope/privacy rules, handshake, identity deduplication and chain synchronization still apply. Successfully verified contacts are then shared normally.
+- This adds another discovery path; it does not restrict discovery to these addresses or a fixed node count. It cannot make an unreachable remote listener accessible.
+
+Learned-peer retry accounting
+- Count one failed connection attempt once, including its verified alternate addresses.
+- Preserve response-timeout failures instead of subsequently resetting them as successful attempts.
+- Verified addresses remain available for automatic retry. Peer identity, chain validation, readiness rules, consensus and wallet formats are unchanged.
+- This client correction does not guarantee availability of external nodes or eliminate observed remote response outages.
+
+Slow public peers and proof-history scheduling
+- Reuse an immutable verified ancestor prefix only when its hash, height and SQLite snapshot match. Index changes still invalidate the cache; forks remain independently validated.
+- Yield between background proof/history jobs so network and mining control can run.
+- Separate public outgoing handshake/response waits (120 seconds) from the unchanged short partial-frame and write deadlines.
+- An already synchronized, verified peer may finish a periodic tip refresh within the bounded response budget. Unknown block/header data, unverified sessions and expired replies cannot use this grace. Real disconnection still removes the peer.
+- No consensus, issuance, difficulty, wallet, random witness selection or 9000/9100 activation changes.

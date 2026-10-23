@@ -284,5 +284,14 @@
   "Do not show this help again.": "Не приказуј поново ову помоћ.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Директна веза не користи Tor ни I2P. Обично је бржа и троши мање ресурса. Други чворови виде IP ваше везе.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nПредност: помаже да сакријете стварни IP од других чворова.\n\nНедостаци: повезивање и синхронизација могу бити спорији, уз већу потрошњу батерије и података. Трансакције остају јавне. Ако веза не успе, директна веза остаје искључена.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПредност: помаже да сакријете стварни IP од других чворова.\n\nНедостаци: повезивање и синхронизација могу бити спорији, уз већу потрошњу батерије и података. Трансакције остају јавне. Ако веза не успе, директна веза остаје искључена.\n\nПотребни су I2P чворови."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПредност: помаже да сакријете стварни IP од других чворова.\n\nНедостаци: повезивање и синхронизација могу бити спорији, уз већу потрошњу батерије и података. Трансакције остају јавне. Ако веза не успе, директна веза остаје искључена.\n\nПотребни су I2P чворови.",
+  "This node": "Овај чвор",
+  "Other node": "Други чвор",
+  "Producer unavailable": "Творац није познат",
+  "Block time (local)": "Време блока (локално)",
+  "Producer": "Творац",
+  "Block hash": "Хеш блока",
+  "All blocks": "Сви блокови",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверени блокови од почетног блока до тренутног врха ланца, са свих чворова.",
+  "Search": "Претрага"
 }

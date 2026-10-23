@@ -312,5 +312,14 @@
   "No newer release is available.": "Daha yeni bir sürüm yok.",
   "Could not check for updates. Open GitHub to check directly.": "Güncellemeler denetlenemedi. Doğrudan GitHub’dan kontrol edin.",
   "Known node addresses": "Bilinen düğüm adresleri",
-  "From block {0:,}: every {1:,} blocks": "{0:,}. bloktan itibaren: her {1:,} blokta bir"
+  "From block {0:,}: every {1:,} blocks": "{0:,}. bloktan itibaren: her {1:,} blokta bir",
+  "This node": "Bu düğüm",
+  "Other node": "Başka düğüm",
+  "Producer unavailable": "Üreten düğüm bilinmiyor",
+  "Block time (local)": "Blok zamanı (yerel)",
+  "Producer": "Üreten düğüm",
+  "Block hash": "Blok özeti",
+  "All blocks": "Tüm bloklar",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Başlangıç bloğundan zincirin güncel ucuna kadar, tüm düğümlerin doğrulanmış blokları.",
+  "Search": "Ara"
 }

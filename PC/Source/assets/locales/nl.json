@@ -312,5 +312,14 @@
   "No newer release is available.": "Er is geen nieuwere versie beschikbaar.",
   "Could not check for updates. Open GitHub to check directly.": "Updates controleren is mislukt. Kijk rechtstreeks op GitHub.",
   "Known node addresses": "Bekende knooppuntadressen",
-  "From block {0:,}: every {1:,} blocks": "Vanaf blok {0:,}: elke {1:,} blokken"
+  "From block {0:,}: every {1:,} blocks": "Vanaf blok {0:,}: elke {1:,} blokken",
+  "This node": "Deze node",
+  "Other node": "Andere node",
+  "Producer unavailable": "Maker onbekend",
+  "Block time (local)": "Bloktijd (lokaal)",
+  "Producer": "Maker",
+  "Block hash": "Blokhash",
+  "All blocks": "Alle blokken",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Gevalideerde blokken vanaf het genesisblok tot de huidige ketentop, van alle nodes.",
+  "Search": "Zoeken"
 }

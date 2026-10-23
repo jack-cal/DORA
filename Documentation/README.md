@@ -20,3 +20,6 @@ The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal
 [SUMUWW P2P 0.3.0: Full/Light comparison, storage and recovery](../P2P/Source/EDITIONS.md) · [Verification](../P2P/Source/VERIFICATION.txt).
 
 [Bitcoin setup and SUMUWW block-9100 trading activation](../P2P/Source/BITCOIN_SETUP.md).
+
+
+[Current node update: Windows 0.57.38 / Android 0.6.88 — peer recovery, history browser, verification and remaining interruption](PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).

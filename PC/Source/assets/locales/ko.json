@@ -312,5 +312,14 @@
   "No newer release is available.": "새 업데이트가 없습니다.",
   "Could not check for updates. Open GitHub to check directly.": "업데이트 정보를 가져올 수 없습니다. GitHub에서 직접 확인하세요.",
   "Known node addresses": "알고 있는 노드 주소",
-  "From block {0:,}: every {1:,} blocks": "{0:,}번 블록부터 {1:,}블록마다 조정"
+  "From block {0:,}: every {1:,} blocks": "{0:,}번 블록부터 {1:,}블록마다 조정",
+  "This node": "이 노드",
+  "Other node": "다른 노드",
+  "Producer unavailable": "생성자 정보 없음",
+  "Block time (local)": "블록 시간 (현지)",
+  "Producer": "생성 노드",
+  "Block hash": "블록 해시",
+  "All blocks": "전체 블록",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "제네시스부터 현재까지 검증된 모든 노드의 블록을 확인합니다.",
+  "Search": "검색"
 }

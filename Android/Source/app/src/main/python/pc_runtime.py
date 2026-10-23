@@ -285,6 +285,10 @@ def stop_mining_for_safety(reason):
     with _batch_guard: _batch['protection_reason']=str(reason)
     return status()
 
+def block_history(offset='0',limit='50',height=''):
+    height = int(height) if height.strip() else None
+    return _json(_result(_service.block_history(int(offset), int(limit), height)))
+
 def filtered_history(offset='0',limit='50',kind='all',query=''):
     offset,limit=int(offset),int(limit)
     if offset<0 or not 1<=limit<=200 or kind not in ('all','receive','send','mining'):

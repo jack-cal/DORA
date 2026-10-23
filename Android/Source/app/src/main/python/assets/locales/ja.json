@@ -284,5 +284,14 @@
   "Do not show this help again.": "次回からこのヘルプを表示しない。",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "TorもI2Pも使用しません。通常は接続が速く、資源の使用も少なくなります。他のノードに接続元IPが見えます。",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。\n\nI2Pノードが必要です。"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。\n\nI2Pノードが必要です。",
+  "This node": "このノード",
+  "Other node": "他のノード",
+  "Producer unavailable": "生成者情報なし",
+  "Block time (local)": "ブロック時刻（現地）",
+  "Producer": "生成ノード",
+  "Block hash": "ブロックハッシュ",
+  "All blocks": "すべてのブロック",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "ジェネシスから現在の先端まで、すべてのノードが生成した検証済みブロックを表示します。",
+  "Search": "検索"
 }

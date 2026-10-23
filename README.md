@@ -6,8 +6,8 @@ SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynch
 
 | Component | Version | Release | Source |
 |---|---|---|---|
-| Windows node, wallet and miner | 0.57.34 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.34) | [PC source](PC/Source) |
-| Android node, wallet and miner | 0.6.84 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.84) | [Android source](Android/Source) |
+| Windows node, wallet and miner | 0.57.38 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.38) | [PC source](PC/Source) |
+| Android node, wallet and miner | 0.6.88 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.88) | [Android source](Android/Source) |
 | Windows ordinary wallet | 1.0.1 | [Windows wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.1) | [Source](Wallet/Desktop) |
 | Android ordinary wallet | 1.1.1 | [Android wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.1) | [Source](Wallet/Source) |
 | Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) | [Source](Explorer/Source) |
@@ -18,6 +18,12 @@ SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynch
 Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. Android full-node updates install over the matching existing app. The new ordinary Android wallet installs alongside the old wallet and imports an encrypted backup; do not uninstall or clear old app data. See the [component suite guide](Documentation/COMPONENT_SUITE.md).
 
 P2P now has separate [Full and Light editions](P2P/Source/EDITIONS.md). Full uses your local Bitcoin Core; Light checks Bitcoin headers and transaction inclusion proofs using configurable TLS servers. Both require your local SUMUWW node and HTLC activation at height 9100. Light is SPV and depends on available honest servers for complete transaction histories.
+
+## Latest node update: Windows 0.57.38 / Android 0.6.88
+
+The latest packages include the All blocks browser, verified-contact recovery, corrected retry accounting, longer bounded waits for slow public peers and faster proof-history scheduling. Existing wallets, valid history and all 34 UI languages are retained.
+
+**A remaining connection interruption was observed.** The phone synchronized and hashed with the PC app off, but its sole external connection closed once and recovered after 13.39 seconds. Uninterrupted connectivity is not claimed. See the [measured verification and limitations](Documentation/PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).
 
 ## SMW/BTC trading starts at SUMUWW block 9100
 
@@ -44,7 +50,7 @@ Valid historical blocks through **8,999 remain usable**, including the valid pre
 
 ## Protocol and documentation
 
-[Whitepaper](Documentation/Whitepaper/WHITEPAPER.md) · [Connection proofs](Documentation/Whitepaper/CONNECTION_PROOFS_9000.md) · [Verification](Documentation/BEACON_RECOVERY_VERIFICATION.md)
+[Whitepaper](Documentation/Whitepaper/WHITEPAPER.md) · [Connection proofs](Documentation/Whitepaper/CONNECTION_PROOFS_9000.md) · [Current verification](Documentation/PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md)
 
 The original issuance and halving schedule is preserved. Valid history through 8999 remains usable. From 9000, every block requires a producer-key commitment; random connection events use a 20% probability, and DGW recalculates every ten blocks with a 24-block observation window. Completed signatures are not a mining or block-acceptance prerequisite. The exact-template HTLC spending rule activates at 9100.
 

@@ -312,5 +312,14 @@
   "No newer release is available.": "Нема новије верзије.",
   "Could not check for updates. Open GitHub to check directly.": "Није могуће проверити ажурирања. Проверите директно на GitHub-у.",
   "Known node addresses": "Адресе познатих чворова",
-  "From block {0:,}: every {1:,} blocks": "Од блока {0:,}: на сваких {1:,} блокова"
+  "From block {0:,}: every {1:,} blocks": "Од блока {0:,}: на сваких {1:,} блокова",
+  "This node": "Овај чвор",
+  "Other node": "Други чвор",
+  "Producer unavailable": "Творац није познат",
+  "Block time (local)": "Време блока (локално)",
+  "Producer": "Творац",
+  "Block hash": "Хеш блока",
+  "All blocks": "Сви блокови",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверени блокови од почетног блока до тренутног врха ланца, са свих чворова.",
+  "Search": "Претрага"
 }

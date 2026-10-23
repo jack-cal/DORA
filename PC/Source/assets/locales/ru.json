@@ -312,5 +312,14 @@
   "No newer release is available.": "Более новой версии нет.",
   "Could not check for updates. Open GitHub to check directly.": "Не удалось проверить обновления. Проверьте непосредственно на GitHub.",
   "Known node addresses": "Известные адреса",
-  "From block {0:,}: every {1:,} blocks": "С блока {0:,}: каждые {1:,} блоков"
+  "From block {0:,}: every {1:,} blocks": "С блока {0:,}: каждые {1:,} блоков",
+  "This node": "Этот узел",
+  "Other node": "Другой узел",
+  "Producer unavailable": "Создатель неизвестен",
+  "Block time (local)": "Время блока (местное)",
+  "Producer": "Создатель",
+  "Block hash": "Хеш блока",
+  "All blocks": "Все блоки",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверенные блоки от генезис-блока до текущей вершины цепи, созданные всеми узлами.",
+  "Search": "Поиск"
 }

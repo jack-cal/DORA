@@ -284,5 +284,14 @@
   "Do not show this help again.": "No volver a mostrar esta ayuda.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "La conexión directa no usa Tor ni I2P. Suele ser más rápida y consumir menos recursos. Otros pares pueden ver tu IP de conexión.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVentaja: ayuda a ocultar tu IP real a otros pares.\n\nDesventajas: la conexión y sincronización pueden ralentizarse y aumentar el consumo de batería y datos. Las transacciones siguen siendo públicas. Si falla esta conexión, la conexión directa permanece desactivada.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVentaja: ayuda a ocultar tu IP real a otros pares.\n\nDesventajas: la conexión y sincronización pueden ralentizarse y aumentar el consumo de batería y datos. Las transacciones siguen siendo públicas. Si falla esta conexión, la conexión directa permanece desactivada.\n\nSe necesitan pares I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVentaja: ayuda a ocultar tu IP real a otros pares.\n\nDesventajas: la conexión y sincronización pueden ralentizarse y aumentar el consumo de batería y datos. Las transacciones siguen siendo públicas. Si falla esta conexión, la conexión directa permanece desactivada.\n\nSe necesitan pares I2P.",
+  "This node": "Este nodo",
+  "Other node": "Otro nodo",
+  "Producer unavailable": "Creador desconocido",
+  "Block time (local)": "Hora del bloque (local)",
+  "Producer": "Creador",
+  "Block hash": "Hash del bloque",
+  "All blocks": "Todos los bloques",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Bloques validados desde el génesis hasta el bloque actual, de todos los nodos.",
+  "Search": "Buscar"
 }

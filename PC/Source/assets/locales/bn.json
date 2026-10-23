@@ -312,5 +312,14 @@
   "No newer release is available.": "আরও নতুন সংস্করণ নেই।",
   "Could not check for updates. Open GitHub to check directly.": "আপডেট পরীক্ষা করা যায়নি। সরাসরি GitHub-এ দেখুন।",
   "Known node addresses": "পরিচিত নোড ঠিকানা",
-  "From block {0:,}: every {1:,} blocks": "ব্লক {0:,} থেকে: প্রতি {1:,} ব্লকে"
+  "From block {0:,}: every {1:,} blocks": "ব্লক {0:,} থেকে: প্রতি {1:,} ব্লকে",
+  "This node": "এই নোড",
+  "Other node": "অন্য নোড",
+  "Producer unavailable": "নির্মাতার তথ্য নেই",
+  "Block time (local)": "ব্লকের সময় (স্থানীয়)",
+  "Producer": "নির্মাতা",
+  "Block hash": "ব্লকের হ্যাশ",
+  "All blocks": "সব ব্লক",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "জেনেসিস ব্লক থেকে চেইনের বর্তমান শেষ ব্লক পর্যন্ত সব নোডের যাচাইকৃত ব্লক।",
+  "Search": "খুঁজুন"
 }

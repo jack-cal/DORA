@@ -312,5 +312,14 @@
   "No newer release is available.": "Não há uma versão mais recente.",
   "Could not check for updates. Open GitHub to check directly.": "Não foi possível verificar atualizações. Consulte o GitHub diretamente.",
   "Known node addresses": "Endereços conhecidos",
-  "From block {0:,}: every {1:,} blocks": "A partir do bloco {0:,}: a cada {1:,} blocos"
+  "From block {0:,}: every {1:,} blocks": "A partir do bloco {0:,}: a cada {1:,} blocos",
+  "This node": "Este nó",
+  "Other node": "Outro nó",
+  "Producer unavailable": "Criador desconhecido",
+  "Block time (local)": "Hora do bloco (local)",
+  "Producer": "Criador",
+  "Block hash": "Hash do bloco",
+  "All blocks": "Todos os blocos",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Blocos validados desde o génesis até ao bloco atual, incluindo todos os nós.",
+  "Search": "Pesquisar"
 }

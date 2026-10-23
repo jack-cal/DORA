@@ -665,6 +665,7 @@ class SumuwwApp:
         self._node_snapshot = {}
         self._transactions_snapshot = []
         self._history_dialog = None
+        self._blocks_dialog = None
         self._update_dialog = None
         self._connection_snapshot = None
         self._rpc_snapshot = None
@@ -761,6 +762,8 @@ class SumuwwApp:
                                          values=[label for _, label in LANGUAGES], state='readonly', width=21)
         self.language_combo.pack(side='left')
         self.language_combo.bind('<<ComboboxSelected>>', self._language_selected)
+        self.blocks_button = _button(language_row, text=tr('All blocks'), command=self._open_blocks)
+        self.blocks_button.pack(side='left', padx=(8, 0))
         self.docs_button = _localized_widget(VerticalMenubutton, language_row, text=tr('Documents'))
         self.docs_button.pack(side='left', padx=(8, 0))
         self._docs_menu = tk.Menu(self.docs_button, tearoff=False)
@@ -1161,6 +1164,8 @@ class SumuwwApp:
         self._docs_menu.configure(font=(_font_family(), 13 if self.translator.language == 'ar' else 10))
         if self._history_dialog is not None:
             self._history_dialog.refresh_language()
+        if self._blocks_dialog is not None:
+            self._blocks_dialog.refresh_language()
         self._apply_mongolian_layout()
         if self._node_snapshot or self._wallet is not None:
             self._apply_status({'node': self._node_snapshot, 'wallet': self._wallet,
@@ -1460,6 +1465,13 @@ class SumuwwApp:
     def _mining_allowed(self):
         return self.network_name != 'dora' or self._node_snapshot.get('mining_ready') is True
 
+    def _open_blocks(self):
+        if not self._started or self._closing:return
+        if self._blocks_dialog is not None:
+            self._blocks_dialog.lift();return
+        from .block_browser_ui import BlockBrowser
+        self._blocks_dialog = BlockBrowser(self)
+
     def _open_history(self):
         if not self._started or not self._wallet or self._closing or self._busy or self._dialog_open:
             return
@@ -1491,6 +1503,7 @@ class SumuwwApp:
         self.docs_button.configure(state='normal' if not (self._closing or self._dialog_open) else 'disabled')
         self.rpc_button.configure(state='normal' if self._rpc_can_act() else 'disabled')
         wallet = bool(self._wallet)
+        self.blocks_button.configure(state='normal' if self._started and not self._closing else 'disabled')
         self.history_button.configure(state='normal' if self._started and wallet and not (self._closing or self._busy or self._dialog_open) else 'disabled')
         unlocked = wallet and bool(self._wallet.get('unlocked'))
         for button in (self.create_button, self.open_button, self.restore_button, self.peer_button,
@@ -2037,6 +2050,8 @@ class SumuwwApp:
             return
         if self._history_dialog is not None:
             self._history_dialog.close()
+        if self._blocks_dialog is not None:
+            self._blocks_dialog.close()
         if self._update_dialog is not None:
             self._update_dialog.destroy()
         self._closing = True

@@ -312,5 +312,14 @@
   "No newer release is available.": "لا يوجد إصدار أحدث.",
   "Could not check for updates. Open GitHub to check directly.": "تعذّر التحقق من التحديثات. راجع GitHub مباشرةً.",
   "Known node addresses": "عناوين العقد المعروفة",
-  "From block {0:,}: every {1:,} blocks": "بدءًا من الكتلة {0:,}: كل {1:,} كتل"
+  "From block {0:,}: every {1:,} blocks": "بدءًا من الكتلة {0:,}: كل {1:,} كتل",
+  "This node": "هذه العقدة",
+  "Other node": "عقدة أخرى",
+  "Producer unavailable": "مُنشئ غير معروف",
+  "Block time (local)": "وقت الكتلة (المحلي)",
+  "Producer": "المُنشئ",
+  "Block hash": "بصمة الكتلة",
+  "All blocks": "جميع الكتل",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "الكتل التي تم التحقق منها، من كتلة التكوين حتى أحدث كتلة، وتشمل جميع العقد.",
+  "Search": "بحث"
 }

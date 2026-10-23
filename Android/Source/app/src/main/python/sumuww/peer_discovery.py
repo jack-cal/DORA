@@ -57,7 +57,7 @@ class _Candidate:
 
 
 class PeerAddressBook:
-    """No entry-count limit; failed contacts are removed, successful ones persist."""
+    """Unverified failures expire; verified contacts survive temporary outages."""
 
     def __init__(self, path, network_id, genesis, *, scope='public', validator=None,
                  clock=time.time, retry_clock=time.monotonic):
@@ -101,20 +101,14 @@ class PeerAddressBook:
         entry.retry_at = entry.attempted_at + 10
         self._save()
 
-    def attempted(self, endpoint, *, success=False, compatibility_retry=False):
+    def attempted(self, endpoint, *, success=False):
         entry = self._entries.get(endpoint)
         if entry is not None:
-            if compatibility_retry and not success:
-                # A pre-version close may justify a bounded protocol probe,
-                # but cannot erase failures or refresh a verified timestamp.
-                entry.attempted_at = self.retry_clock()
-                entry.retry_at = entry.attempted_at + 5
-                return
             if success:
                 entry.failures = 0
             else:
                 entry.failures = min(entry.failures + 1, 10)
-            if not success:
+            if not success and (not entry.verified_at or self.clock()-entry.verified_at>CACHE_MAX_AGE):
                 self._entries.pop(endpoint, None)
                 self.prune()
                 self._suppressed[endpoint] = self.retry_clock() + STALE_RETRY_SUPPRESSION
@@ -137,6 +131,12 @@ class PeerAddressBook:
     def prune(self):
         now=self.retry_clock()
         self._suppressed={key:until for key,until in self._suppressed.items() if until>now}
+        stale=[key for key,value in self._entries.items()
+               if value.verified_at and self.clock()-value.verified_at>CACHE_MAX_AGE]
+        for key in stale:
+            self._entries.pop(key,None)
+            self.expired+=1
+        if stale:self._save()
 
     def known(self, maximum=32):
         entries = sorted((entry for entry in self._entries.values() if entry.verified_at),

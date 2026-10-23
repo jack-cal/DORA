@@ -312,5 +312,14 @@
   "No newer release is available.": "ไม่มีเวอร์ชันที่ใหม่กว่า",
   "Could not check for updates. Open GitHub to check directly.": "ตรวจสอบการอัปเดตไม่ได้ โปรดตรวจสอบโดยตรงที่ GitHub",
   "Known node addresses": "ที่อยู่โหนดที่รู้จัก",
-  "From block {0:,}: every {1:,} blocks": "ตั้งแต่บล็อก {0:,}: ปรับทุก {1:,} บล็อก"
+  "From block {0:,}: every {1:,} blocks": "ตั้งแต่บล็อก {0:,}: ปรับทุก {1:,} บล็อก",
+  "This node": "โหนดนี้",
+  "Other node": "โหนดอื่น",
+  "Producer unavailable": "ไม่ทราบผู้สร้าง",
+  "Block time (local)": "เวลาของบล็อก (ท้องถิ่น)",
+  "Producer": "ผู้สร้าง",
+  "Block hash": "แฮชของบล็อก",
+  "All blocks": "บล็อกทั้งหมด",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "บล็อกที่ตรวจสอบแล้วตั้งแต่บล็อกแรกจนถึงปลายเชนปัจจุบัน รวมบล็อกจากทุกโหนด",
+  "Search": "ค้นหา"
 }

@@ -284,5 +284,14 @@
   "Do not show this help again.": "یہ مدد دوبارہ نہ دکھائیں۔",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "براہ راست رابطہ Tor یا I2P استعمال نہیں کرتا۔ عموماً یہ تیز اور کم وسائل استعمال کرتا ہے۔ دوسرے نوڈ آپ کے رابطے کا IP دیکھ سکتے ہیں۔",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔\n\nI2P نوڈز درکار ہیں۔"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔\n\nI2P نوڈز درکار ہیں۔",
+  "This node": "یہ نوڈ",
+  "Other node": "دوسرا نوڈ",
+  "Producer unavailable": "بنانے والے کی معلومات دستیاب نہیں",
+  "Block time (local)": "بلاک کا وقت (مقامی)",
+  "Producer": "بنانے والا",
+  "Block hash": "بلاک ہیش",
+  "All blocks": "تمام بلاکس",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "ابتدائی بلاک سے چین کے موجودہ آخری بلاک تک تصدیق شدہ بلاکس، تمام نوڈز سمیت۔",
+  "Search": "تلاش"
 }

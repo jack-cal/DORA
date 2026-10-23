@@ -38,7 +38,7 @@ class AddressTests(unittest.TestCase):
         self.assertEqual(('2606:4700::1111',18444), resolve_self_address(
             ('0.0.0.0',18444), include_ipv6=True, **args).advertised_endpoint)
 
-    def test_failed_cached_contact_removed_from_disk_and_repeated_hints_suppressed(self):
+    def test_failed_verified_contact_kept_for_retry_without_duplicate_hints(self):
         with tempfile.TemporaryDirectory() as directory:
             now=[10000.]
             path=Path(directory)/'contacts.json'
@@ -46,20 +46,21 @@ class AddressTests(unittest.TestCase):
             old=('127.0.0.1',9151); good=('127.0.0.1',18444)
             book.verified(old);book.verified(good)
             book.attempted(old)
-            self.assertNotIn(old,book.known())  # Confirmed failure removes the cached contact.
+            self.assertIn(old,book.known())  # A temporary outage must not erase a verified route.
             book.verified(old)  # Fresh verified connectivity can restore it.
             book.attempted(old,success=True)
             for _ in range(1):book.attempted(old)
-            self.assertNotIn(old,book.known())
+            self.assertIn(old,book.known())
             self.assertIn(good,book.known())
             self.assertFalse(book.add_hint(old))
-            self.assertEqual([18444],[row['port'] for row in json.loads(path.read_text())['peers']])
-            reloaded=PeerAddressBook(path,'fixture',bytes(32),scope='loopback')
-            self.assertNotIn(old,reloaded.known())
+            self.assertEqual({9151,18444},{row['port'] for row in json.loads(path.read_text())['peers']})
+            reloaded=PeerAddressBook(path,'fixture',bytes(32),scope='loopback',clock=lambda:now[0])
+            self.assertIn(old,reloaded.known())
             now[0]+=59
             self.assertFalse(book.add_hint(old))
             now[0]+=2
-            self.assertTrue(book.add_hint(old))  # Later rediscovery remains possible.
+            self.assertFalse(book.add_hint(old))  # Already retained; no rediscovery is required.
+            self.assertEqual(old,book.candidate(excluded=[good]))
 
 
 class SocketTests(unittest.IsolatedAsyncioTestCase):

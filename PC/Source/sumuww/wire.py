@@ -179,6 +179,8 @@ async def read_frame(reader, timeout=5, *, magic=NETWORK_MAGIC, idle_timeout=Non
         if idle_timeout is not None:
             try:
                 first = await asyncio.wait_for(reader.readexactly(1), timeout=idle_timeout)
+            except TimeoutError as exc:
+                raise ProtocolError("Peer idle response timed out") from exc
             except asyncio.IncompleteReadError as exc:
                 raise PeerDisconnected("Peer closed connection between frames") from exc
             return await asyncio.wait_for(read(first), timeout=timeout)

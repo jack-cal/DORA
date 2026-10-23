@@ -312,5 +312,14 @@
   "No newer release is available.": "Novější verze není k dispozici.",
   "Could not check for updates. Open GitHub to check directly.": "Aktualizace se nepodařilo ověřit. Zkontrolujte přímo GitHub.",
   "Known node addresses": "Adresy známých uzlů",
-  "From block {0:,}: every {1:,} blocks": "Od bloku {0:,}: každých {1:,} bloků"
+  "From block {0:,}: every {1:,} blocks": "Od bloku {0:,}: každých {1:,} bloků",
+  "This node": "Tento uzel",
+  "Other node": "Jiný uzel",
+  "Producer unavailable": "Tvůrce není znám",
+  "Block time (local)": "Čas bloku (místní)",
+  "Producer": "Tvůrce",
+  "Block hash": "Hash bloku",
+  "All blocks": "Všechny bloky",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Ověřené bloky od počátečního bloku po aktuální konec řetězce, ze všech uzlů.",
+  "Search": "Hledat"
 }

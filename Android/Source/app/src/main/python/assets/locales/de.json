@@ -284,5 +284,14 @@
   "Do not show this help again.": "Diese Hilfe nicht mehr anzeigen.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Die direkte Verbindung nutzt weder Tor noch I2P. Sie ist meist schneller und benötigt weniger Ressourcen. Andere Peers sehen Ihre Verbindungs-IP.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVorteil: hilft, Ihre echte IP vor anderen Peers zu verbergen.\n\nNachteile: Verbindung und Synchronisierung können langsamer werden, Akku- und Datenverbrauch steigen. Transaktionen bleiben öffentlich. Bei einem Fehler bleibt die direkte Verbindung deaktiviert.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVorteil: hilft, Ihre echte IP vor anderen Peers zu verbergen.\n\nNachteile: Verbindung und Synchronisierung können langsamer werden, Akku- und Datenverbrauch steigen. Transaktionen bleiben öffentlich. Bei einem Fehler bleibt die direkte Verbindung deaktiviert.\n\nI2P-Peers sind erforderlich."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVorteil: hilft, Ihre echte IP vor anderen Peers zu verbergen.\n\nNachteile: Verbindung und Synchronisierung können langsamer werden, Akku- und Datenverbrauch steigen. Transaktionen bleiben öffentlich. Bei einem Fehler bleibt die direkte Verbindung deaktiviert.\n\nI2P-Peers sind erforderlich.",
+  "This node": "Dieser Knoten",
+  "Other node": "Anderer Knoten",
+  "Producer unavailable": "Ersteller unbekannt",
+  "Block time (local)": "Blockzeit (Ortszeit)",
+  "Producer": "Ersteller",
+  "Block hash": "Block-Hash",
+  "All blocks": "Alle Blöcke",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Validierte Blöcke vom Genesisblock bis zur aktuellen Kettenspitze, von allen Knoten.",
+  "Search": "Suchen"
 }

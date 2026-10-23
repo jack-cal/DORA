@@ -295,6 +295,7 @@ class LinkRuntime:
     async def background(self):
         self.parts.expire(max(60,self.node.timeout))
         for key,proof in tuple(self.deferred.items()):
+            await asyncio.sleep(0)
             m=proof.get('message',{})
             try:
                 if not self.node.chain.has_block(bytes.fromhex(m['source'])) or not self.node.chain.has_block(bytes.fromhex(m['target'])):
@@ -318,6 +319,8 @@ class LinkRuntime:
         # Discovery continues regardless of activation, setup and job progress.
         rows=self.node.chain.connection.execute('SELECT hash FROM blocks WHERE height>=? ORDER BY height',(self.state.activation,)).fetchall()
         for (a,) in rows:
+            # Let TCP readers, keepalives and mining control run between jobs.
+            await asyncio.sleep(0)
             if a in self.jobs or time.monotonic()<self.retry_after.get(a,0):continue
             block=self.node.chain.get_block(a)
             if producer(block)!=self.keys.node_id:continue

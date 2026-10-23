@@ -284,5 +284,14 @@
   "Do not show this help again.": "Huwag nang ipakita ang tulong na ito.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Hindi gumagamit ng Tor o I2P ang direktang koneksyon. Karaniwan itong mas mabilis at mas kaunti ang gamit na resources. Makikita ng ibang node ang IP ng koneksyon mo.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.\n\nKailangan ng mga I2P node."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.\n\nKailangan ng mga I2P node.",
+  "This node": "Node na ito",
+  "Other node": "Ibang node",
+  "Producer unavailable": "Hindi matukoy ang gumawa",
+  "Block time (local)": "Oras ng block (lokal)",
+  "Producer": "Gumawa",
+  "Block hash": "Hash ng block",
+  "All blocks": "Lahat ng bloke",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Mga napatunayang bloke mula sa genesis hanggang sa kasalukuyang dulo ng chain, mula sa lahat ng node.",
+  "Search": "Maghanap"
 }

@@ -284,5 +284,14 @@
   "Do not show this help again.": "Ne plus afficher cette aide.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "La connexion directe n’utilise ni Tor ni I2P. Elle est généralement plus rapide et consomme moins de ressources. Les autres pairs voient votre IP de connexion.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.\n\nDes pairs I2P sont nécessaires."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.\n\nDes pairs I2P sont nécessaires.",
+  "This node": "Ce nœud",
+  "Other node": "Autre nœud",
+  "Producer unavailable": "Producteur inconnu",
+  "Block time (local)": "Heure du bloc (locale)",
+  "Producer": "Producteur",
+  "Block hash": "Empreinte du bloc",
+  "All blocks": "Tous les blocs",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Blocs validés depuis la genèse jusqu’au bloc actuel, tous nœuds confondus.",
+  "Search": "Rechercher"
 }

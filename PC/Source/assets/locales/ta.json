@@ -312,5 +312,14 @@
   "No newer release is available.": "புதிய பதிப்பு எதுவும் இல்லை.",
   "Could not check for updates. Open GitHub to check directly.": "புதுப்பிப்புகளைச் சரிபார்க்க முடியவில்லை. GitHub-இல் நேரடியாகப் பார்க்கவும்.",
   "Known node addresses": "அறியப்பட்ட முனை முகவரிகள்",
-  "From block {0:,}: every {1:,} blocks": "பிளாக் {0:,} முதல்: ஒவ்வொரு {1:,} பிளாக்குகளுக்கும்"
+  "From block {0:,}: every {1:,} blocks": "பிளாக் {0:,} முதல்: ஒவ்வொரு {1:,} பிளாக்குகளுக்கும்",
+  "This node": "இந்த முனை",
+  "Other node": "பிற முனை",
+  "Producer unavailable": "உருவாக்கியவர் விவரம் இல்லை",
+  "Block time (local)": "தொகுதி நேரம் (உள்ளூர்)",
+  "Producer": "உருவாக்கியவர்",
+  "Block hash": "தொகுதி ஹாஷ்",
+  "All blocks": "அனைத்து தொகுதிகள்",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "முதல் தொகுதியிலிருந்து சங்கிலியின் தற்போதைய கடைசித் தொகுதி வரை, அனைத்து முனைகளின் சரிபார்க்கப்பட்ட தொகுதிகள்.",
+  "Search": "தேடு"
 }

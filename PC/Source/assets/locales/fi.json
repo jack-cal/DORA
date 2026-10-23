@@ -312,5 +312,14 @@
   "No newer release is available.": "Uudempaa versiota ei ole saatavilla.",
   "Could not check for updates. Open GitHub to check directly.": "Päivityksiä ei voitu tarkistaa. Tarkista suoraan GitHubista.",
   "Known node addresses": "Tunnetut solmuosoitteet",
-  "From block {0:,}: every {1:,} blocks": "Lohkosta {0:,} alkaen: {1:,} lohkon välein"
+  "From block {0:,}: every {1:,} blocks": "Lohkosta {0:,} alkaen: {1:,} lohkon välein",
+  "This node": "Tämä solmu",
+  "Other node": "Muu solmu",
+  "Producer unavailable": "Luoja tuntematon",
+  "Block time (local)": "Lohkon aika (paikallinen)",
+  "Producer": "Luoja",
+  "Block hash": "Lohkon tiiviste",
+  "All blocks": "Kaikki lohkot",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Vahvistetut lohkot alkulohkosta ketjun nykyiseen kärkeen, kaikista solmuista.",
+  "Search": "Hae"
 }

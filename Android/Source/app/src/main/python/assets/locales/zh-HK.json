@@ -284,5 +284,14 @@
   "Do not show this help again.": "下次不再顯示此說明。",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "直接連線不使用 Tor 或 I2P，通常連線較快、資源消耗較少。其他節點可看見你的連線 IP。",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。\n\n需要 I2P 節點。"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。\n\n需要 I2P 節點。",
+  "This node": "本節點",
+  "Other node": "其他節點",
+  "Producer unavailable": "無產生者資料",
+  "Block time (local)": "區塊時間（本地）",
+  "Producer": "產生節點",
+  "Block hash": "區塊雜湊",
+  "All blocks": "所有區塊",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "查看從創世區塊到目前鏈端的已驗證區塊，包括所有節點產生的區塊。",
+  "Search": "搜尋"
 }

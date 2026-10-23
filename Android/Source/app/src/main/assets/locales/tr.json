@@ -284,5 +284,14 @@
   "Do not show this help again.": "Bu yardımı tekrar gösterme.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Doğrudan bağlantı Tor veya I2P kullanmaz. Genellikle daha hızlıdır ve daha az kaynak tüketir. Diğer eşler bağlantı IP'nizi görebilir.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.\n\nI2P eşleri gerekir."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.\n\nI2P eşleri gerekir.",
+  "This node": "Bu düğüm",
+  "Other node": "Başka düğüm",
+  "Producer unavailable": "Üreten düğüm bilinmiyor",
+  "Block time (local)": "Blok zamanı (yerel)",
+  "Producer": "Üreten düğüm",
+  "Block hash": "Blok özeti",
+  "All blocks": "Tüm bloklar",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Başlangıç bloğundan zincirin güncel ucuna kadar, tüm düğümlerin doğrulanmış blokları.",
+  "Search": "Ara"
 }

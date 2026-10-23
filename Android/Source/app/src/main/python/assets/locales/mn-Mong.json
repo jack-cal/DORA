@@ -284,5 +284,14 @@
   "Do not show this help again.": "ᠡᠨᠡ ᠲᠤᠰᠠᠯᠠᠮᠵᠢ ᠶᠢ ᠳᠠᠬᠢᠨ ᠪᠦᠦ ᠬᠠᠷᠠᠭᠤᠯ᠃",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ Tor ᠪᠣᠯᠣᠨ I2P ᠶᠢ ᠠᠰᠢᠭᠯᠠᠬᠤ ᠦᠭᠡᠢ᠃ ᠶᠡᠷᠦᠳᠡᠭᠡᠨ ᠬᠤᠷᠳᠤᠨ᠂ ᠨᠥᠭᠡᠴᠡ ᠪᠠᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠨ᠎ᠡ᠃ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠲᠠᠨᠤ IP ᠶᠢ ᠬᠠᠷᠠᠨ᠎ᠠ᠃",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nᠳᠠᠪᠠᠭᠤ ᠲᠠᠯ᠎ᠠ᠄ ᠪᠣᠳᠠᠲᠤ IP ᠶᠢ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠴᠠ ᠨᠢᠭᠤᠬᠤ ᠳᠤ ᠲᠤᠰᠠᠯᠠᠨ᠎ᠠ᠃\n\nᠰᠤᠯᠠ ᠲᠠᠯ᠎ᠠ᠄ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠪᠣᠯᠣᠨ ᠰᠢᠩᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠤᠳᠠᠭᠠᠰᠢᠷᠠᠵᠤ᠂ ᠵᠠᠢ ᠪᠣᠯᠣᠨ ᠥᠭᠡᠭᠳᠡᠯ ᠢᠯᠡᠭᠦᠦ ᠬᠡᠷᠡᠭᠯᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠪᠢᠴᠢᠯᠭᠡ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠬᠡᠪᠡᠷ᠃ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠠᠯᠳᠠᠭᠳᠠᠪᠠᠯ ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠭᠦᠯᠬᠦ ᠦᠭᠡᠢ᠃",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nᠳᠠᠪᠠᠭᠤ ᠲᠠᠯ᠎ᠠ᠄ ᠪᠣᠳᠠᠲᠤ IP ᠶᠢ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠴᠠ ᠨᠢᠭᠤᠬᠤ ᠳᠤ ᠲᠤᠰᠠᠯᠠᠨ᠎ᠠ᠃\n\nᠰᠤᠯᠠ ᠲᠠᠯ᠎ᠠ᠄ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠪᠣᠯᠣᠨ ᠰᠢᠩᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠤᠳᠠᠭᠠᠰᠢᠷᠠᠵᠤ᠂ ᠵᠠᠢ ᠪᠣᠯᠣᠨ ᠥᠭᠡᠭᠳᠡᠯ ᠢᠯᠡᠭᠦᠦ ᠬᠡᠷᠡᠭᠯᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠪᠢᠴᠢᠯᠭᠡ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠬᠡᠪᠡᠷ᠃ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠠᠯᠳᠠᠭᠳᠠᠪᠠᠯ ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠭᠦᠯᠬᠦ ᠦᠭᠡᠢ᠃\n\nI2P ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nᠳᠠᠪᠠᠭᠤ ᠲᠠᠯ᠎ᠠ᠄ ᠪᠣᠳᠠᠲᠤ IP ᠶᠢ ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠠᠴᠠ ᠨᠢᠭᠤᠬᠤ ᠳᠤ ᠲᠤᠰᠠᠯᠠᠨ᠎ᠠ᠃\n\nᠰᠤᠯᠠ ᠲᠠᠯ᠎ᠠ᠄ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠪᠣᠯᠣᠨ ᠰᠢᠩᠭᠡᠴᠡᠯᠡᠯᠲᠡ ᠤᠳᠠᠭᠠᠰᠢᠷᠠᠵᠤ᠂ ᠵᠠᠢ ᠪᠣᠯᠣᠨ ᠥᠭᠡᠭᠳᠡᠯ ᠢᠯᠡᠭᠦᠦ ᠬᠡᠷᠡᠭᠯᠡᠵᠦ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠪᠢᠴᠢᠯᠭᠡ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠬᠡᠪᠡᠷ᠃ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠠᠯᠳᠠᠭᠳᠠᠪᠠᠯ ᠰᠢᠭᠤᠳ ᠬᠣᠯᠪᠣᠯᠲᠠ ᠶᠢ ᠡᠬᠢᠯᠡᠭᠦᠯᠬᠦ ᠦᠭᠡᠢ᠃\n\nI2P ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃",
+  "This node": "ᠡᠨᠡ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ",
+  "Other node": "ᠪᠤᠰᠤᠳ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ",
+  "Producer unavailable": "ᠦᠭᠦᠰᠭᠡᠭᠴᠢ ᠶᠢᠨ ᠮᠡᠳᠡᠭᠡᠯᠡᠯ ᠦᠭᠡᠢ",
+  "Block time (local)": "ᠪᠯᠣᠺ ᠤᠨ ᠴᠠᠭ (ᠣᠷᠣᠨ ᠨᠤᠲᠤᠭ ᠤᠨ)",
+  "Producer": "ᠦᠭᠦᠰᠭᠡᠭᠴᠢ",
+  "Block hash": "ᠪᠯᠣᠺ ᠤᠨ ᠬᠡᠱ",
+  "All blocks": "ᠪᠦᠬᠦ ᠪᠯᠣᠺ",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "ᠡᠬᠢᠨ ᠦ ᠪᠯᠣᠺ ᠠᠴᠠ ᠣᠳᠣᠭᠠᠨ ᠤ ᠰᠡᠭᠦᠯ ᠦᠨ ᠪᠯᠣᠺ ᠬᠦᠷᠲᠡᠯᠡᠬᠢ ᠪᠦᠬᠦ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠪᠠᠲᠠᠯᠠᠭᠠᠵᠢᠭᠰᠠᠨ ᠪᠯᠣᠺ ᠤᠳ᠃",
+  "Search": "ᠬᠠᠢᠬᠤ"
 }

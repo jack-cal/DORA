@@ -312,5 +312,14 @@
   "No newer release is available.": "暫無更新版本。",
   "Could not check for updates. Open GitHub to check directly.": "無法檢查更新，請直接前往 GitHub 查看。",
   "Known node addresses": "已知節點地址",
-  "From block {0:,}: every {1:,} blocks": "由區塊 {0:,} 起：每 {1:,} 個區塊調整一次"
+  "From block {0:,}: every {1:,} blocks": "由區塊 {0:,} 起：每 {1:,} 個區塊調整一次",
+  "This node": "本節點",
+  "Other node": "其他節點",
+  "Producer unavailable": "無產生者資料",
+  "Block time (local)": "區塊時間（本地）",
+  "Producer": "產生節點",
+  "Block hash": "區塊雜湊",
+  "All blocks": "所有區塊",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "查看從創世區塊到目前鏈端的已驗證區塊，包括所有節點產生的區塊。",
+  "Search": "搜尋"
 }

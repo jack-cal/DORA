@@ -34,37 +34,37 @@ class StaleAddressBookTests(unittest.TestCase):
                 self.book.attempted(endpoint)
             self.now[0] += 301
         healthy = ('127.0.0.1', 34567)
-        # Current stale-contact policy expires repeated failures, freeing slots.
-        self.assertEqual(FIXTURE_CONTACT_COUNT, self.book.expired)
-        self.assertEqual(0, len(self.book._entries))
+        # Verified contacts remain retryable; they do not impose a candidate cap.
+        self.assertEqual(0, self.book.expired)
+        self.assertEqual(FIXTURE_CONTACT_COUNT, len(self.book._entries))
         self.assertTrue(self.book.add_hint(healthy))
-        self.assertEqual(1, len(self.book._entries))
+        self.assertEqual(FIXTURE_CONTACT_COUNT+1, len(self.book._entries))
         self.assertEqual(healthy, self.book.candidate(excluded=self.old))
         self.book.verified(healthy)
         reloaded = PeerAddressBook(self.path, REGTEST.profile_id, REGTEST.genesis.block_hash(),
                                   scope='loopback', clock=lambda: self.now[0])
         self.assertIn(healthy, reloaded.known(FIXTURE_CONTACT_COUNT))
-        self.assertEqual((healthy,), reloaded.known(FIXTURE_CONTACT_COUNT))
-        self.assertEqual(1, len(reloaded._entries))
+        self.assertEqual(healthy, reloaded.known(FIXTURE_CONTACT_COUNT)[0])
+        self.assertEqual(FIXTURE_CONTACT_COUNT+1, len(reloaded._entries))
 
     def test_zero_one_or_two_failed_attempts_do_not_evict_working_verified_contacts(self):
         self.assertTrue(self.book.add_hint(('127.0.0.1',34567)))
         self.assertTrue(set(self.old).issubset(self.book._entries))
         self.assertEqual(FIXTURE_CONTACT_COUNT+1,len(self.book._entries))
         self.book.attempted(self.old[0])
-        self.assertNotIn(self.old[0],self.book._entries)
+        self.assertIn(self.old[0],self.book._entries)
         self.assertTrue(set(self.old[1:]).issubset(self.book._entries))
 
-    def test_replacement_prefers_worst_failures_and_retains_good_contacts_and_128_cap(self):
+    def test_unverified_failure_removed_without_evicting_verified_contacts(self):
         self.book.attempted(self.old[0]);self.book.attempted(self.old[1])
         target=('127.0.0.1',34567)
         self.assertTrue(self.book.add_hint(target))
-        self.assertNotIn(self.old[0],self.book._entries)
-        self.assertNotIn(self.old[1],self.book._entries)
+        self.assertIn(self.old[0],self.book._entries)
+        self.assertIn(self.old[1],self.book._entries)
         self.book.attempted(target)
         self.assertNotIn(target,self.book._entries)
         self.assertTrue(self.book.add_hint(('127.0.0.1',34568)))
-        self.assertEqual(FIXTURE_CONTACT_COUNT-1,len(self.book._entries))
+        self.assertEqual(FIXTURE_CONTACT_COUNT+1,len(self.book._entries))
         self.assertTrue(set(self.old[2:]).issubset(self.book._entries))
 
 

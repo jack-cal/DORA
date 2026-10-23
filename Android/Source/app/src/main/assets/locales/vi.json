@@ -284,5 +284,14 @@
   "Do not show this help again.": "Không hiện trợ giúp này nữa.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Kết nối trực tiếp không dùng Tor hay I2P. Thường kết nối nhanh hơn và dùng ít tài nguyên hơn. Nút khác có thể thấy IP kết nối của bạn.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.\n\nCần có các nút I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.\n\nCần có các nút I2P.",
+  "This node": "Nút này",
+  "Other node": "Nút khác",
+  "Producer unavailable": "Không rõ nút tạo",
+  "Block time (local)": "Thời gian khối (địa phương)",
+  "Producer": "Nút tạo",
+  "Block hash": "Mã băm khối",
+  "All blocks": "Tất cả khối",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Các khối đã xác minh từ khối khởi nguyên đến khối mới nhất của chuỗi, từ mọi nút.",
+  "Search": "Tìm kiếm"
 }

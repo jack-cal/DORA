@@ -312,5 +312,14 @@
   "No newer release is available.": "Ingen nyare version finns tillgänglig.",
   "Could not check for updates. Open GitHub to check directly.": "Det gick inte att söka efter uppdateringar. Kontrollera direkt på GitHub.",
   "Known node addresses": "Kända nodadresser",
-  "From block {0:,}: every {1:,} blocks": "Från block {0:,}: vart {1:,}:e block"
+  "From block {0:,}: every {1:,} blocks": "Från block {0:,}: vart {1:,}:e block",
+  "This node": "Denna nod",
+  "Other node": "Annan nod",
+  "Producer unavailable": "Okänd skapare",
+  "Block time (local)": "Blocktid (lokal)",
+  "Producer": "Skapare",
+  "Block hash": "Blockhash",
+  "All blocks": "Alla block",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Validerade block från genesisblocket till kedjans nuvarande topp, från alla noder.",
+  "Search": "Sök"
 }

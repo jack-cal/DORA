@@ -312,5 +312,14 @@
   "No newer release is available.": "कोई नया संस्करण उपलब्ध नहीं है।",
   "Could not check for updates. Open GitHub to check directly.": "अपडेट नहीं जाँचे जा सके। सीधे GitHub पर देखें।",
   "Known node addresses": "ज्ञात नोड पते",
-  "From block {0:,}: every {1:,} blocks": "ब्लॉक {0:,} से: हर {1:,} ब्लॉक पर"
+  "From block {0:,}: every {1:,} blocks": "ब्लॉक {0:,} से: हर {1:,} ब्लॉक पर",
+  "This node": "यह नोड",
+  "Other node": "अन्य नोड",
+  "Producer unavailable": "निर्माता की जानकारी उपलब्ध नहीं",
+  "Block time (local)": "ब्लॉक का समय (स्थानीय)",
+  "Producer": "निर्माता",
+  "Block hash": "ब्लॉक हैश",
+  "All blocks": "सभी ब्लॉक",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "जेनेसिस ब्लॉक से वर्तमान अंतिम ब्लॉक तक के सत्यापित ब्लॉक, सभी नोड सहित।",
+  "Search": "खोजें"
 }

@@ -423,6 +423,14 @@ class Chain:
             branch = self._branch_entries(token).get(block_hash)
             if branch is not None:
                 return branch[1]
+            if cached is not None and cached[0] == token:
+                # Proof jobs revisit many old parents. Their exact ancestry is
+                # already validated in this immutable, same-snapshot path.
+                # Match the hash as well as height; a fork must never borrow
+                # another branch's prefix. SQL edits invalidate the token.
+                height = self._row(block_hash)[2]
+                if 0 <= height < len(cached[1]) and cached[1][height][0][0] == block_hash:
+                    return cached[1][:height + 1]
             path = self._read_index_path(block_hash)
             if block_hash == self.tip_hash:
                 self._indexed_path_cache = (token, path)

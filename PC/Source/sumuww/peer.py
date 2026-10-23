@@ -64,6 +64,7 @@ DISCONNECTED_PEER_RETRY_CAP = 15
 LISTENER_RETRY_INTERVAL = 5
 LISTENER_POLL_INTERVAL = 1
 CONNECTED_REPLY_TIMEOUT = 30
+INTERNET_REPLY_TIMEOUT = 120
 MAX_HINT_BLOCKS = MAX_HEADERS
 MAX_HINT_BLOCK_BYTES = 8 * 1024 * 1024
 HEADER_REFRESH_INTERVAL = 10
@@ -206,6 +207,7 @@ class _Session:
     remote_listener: tuple | None = None
     last_address_response: tuple = ()
     address_response_count: int = 0
+    observed_listener_probe_round: int = 0
     cached: bool = False
     failed: bool = False
     completed_contacts: set = field(default_factory=set)
@@ -751,12 +753,35 @@ class PeerNode:
             reserved = max(reserved, min(self._outgoing_target or 1, self.max_peers - 1))
         return self.max_peers - reserved
 
+    def _reply_timeout(self):
+        # A public peer can be busy validating history before it can reply.
+        # This deadline never extends the short partial-frame/drain budget.
+        return max(self.timeout, INTERNET_REPLY_TIMEOUT if self.allow_internet else CONNECTED_REPLY_TIMEOUT)
+
+    def _handshake_timeout(self, session):
+        return (max(self.timeout, INTERNET_REPLY_TIMEOUT)
+                if self.allow_internet and session.outgoing is not None else self.timeout)
+
+    def _recent_verified_session(self, session, now):
+        if now - session.last_verified_at <= VERIFIED_PEER_FRESHNESS:
+            return True
+        # A periodic tip check of an already validated chain may take the
+        # complete reply budget. Unknown headers/bodies never receive this
+        # grace, nor may repeated requests renew it without a verified reply.
+        return (session.verified_once and session.synchronized
+                and not session.live_update_pending and session.header_requested
+                and not session.unknown_blocks and not session.requested_block_hints
+                and not session.headers and not session.block_requests
+                and session.hint_requested is None and not session.hint_blocks
+                and now - session.header_requested_at <= self._reply_timeout()
+                and now - session.last_verified_at <= HEADER_REFRESH_INTERVAL + self._reply_timeout())
+
     def _healthy_sessions(self):
         now = self._peer_clock()
         return self._unique_peer_sessions(session for session in self._sessions.values()
                      if session.ready and not session.writer.is_closing()
                      and (session.synchronized or session.live_update_pending) and session.verified_once
-                     and now - session.last_verified_at <= VERIFIED_PEER_FRESHNESS)
+                     and self._recent_verified_session(session, now))
 
     def _can_probe_incoming(self, remote_ip):
         # Full listeners must still let a newcomer negotiate and learn peers.
@@ -831,7 +856,7 @@ class PeerNode:
 
         def quality(item):
             validated = item.verified_once and (item.synchronized or item.live_update_pending)
-            return (validated and now - item.last_verified_at <= VERIFIED_PEER_FRESHNESS,
+            return (validated and self._recent_verified_session(item, now),
                     validated, item.synchronized, item.verified_once)
 
         for session in sessions:
@@ -994,6 +1019,8 @@ class PeerNode:
                             'egress_bytes_per_second': PEER_EGRESS_RATE,
                             'header_refresh_seconds': HEADER_REFRESH_INTERVAL,
                             'verified_freshness_seconds': VERIFIED_PEER_FRESHNESS,
+                            'block_reply_timeout_seconds': self._reply_timeout(),
+                            'public_outgoing_handshake_seconds': max(self.timeout, INTERNET_REPLY_TIMEOUT),
                             'transaction_hints': MAX_PENDING_TRANSACTIONS},
             'last_peer_error': self._last_error,
             'recent_peer_attempts': [dict(row) for row in self._recent_peer_attempts],
@@ -1592,9 +1619,13 @@ class PeerNode:
                                       else 'connect_failed', error)
         finally:
             if self._running and not compatibility_retry:
-                if transport_failed or session is not None and session.failed:
+                # Once reserved, _run_session owns failure accounting for
+                # the endpoint and its aliases. Do not count it a second time
+                # or turn a local response deadline into a successful retry.
+                if transport_failed and session is None:
                     self._forget_failed_contact(target)
-                elif session is not None and session.cached:
+                elif (session is not None and session.cached and not session.failed
+                      and not session.local_close_reason):
                     self._addresses.attempted(target,success=True)
 
     def _forget_failed_contact(self,target):
@@ -1724,10 +1755,38 @@ class PeerNode:
                 row['result'] = 'rejected_scope_or_protocol'
                 self._stats['address_hints_rejected'] += 1
         session.last_address_response = tuple(response)
+        self._hint_observed_listener(session)
+
+    def _hint_observed_listener(self, session):
+        # NAT/container peers may send an empty addr reply despite accepting
+        # connections on the network's ordinary port. The socket's source IP
+        # gives a candidate, never a listener identity or a verified contact.
+        # Never use an inbound socket's ephemeral source port, scan other ports,
+        # bypass scope/privacy settings, or probe before full synchronization.
+        if (not self.discover_peers or not self.allow_internet
+                or self._privacy.mode != 'direct' or not session.ready
+                or not session.synchronized or session.outgoing is not None
+                or session.remote_listener is not None or not session.address_response_count
+                or session.observed_listener_probe_round >= session.address_response_count):
+            return
+        # A later address reply may revive this hint after the address book's
+        # normal failure cooldown. A single timeout must not disable discovery
+        # for the lifetime of an otherwise healthy incoming connection.
+        session.observed_listener_probe_round = session.address_response_count
+        try:
+            target = self._addresses.validate((session.remote_ip, DEFAULT_PORT))
+        except ValueError:
+            return
+        if target in self._self_state.own_addresses or target in (self.address, self.advertised_endpoint):
+            return
+        if self._addresses.add_hint(target):
+            self._stats['address_hints_received'] += 1
+            self._trace_event('observed_listener_candidate', target=target)
 
     def _cache_synchronized_endpoint(self, session):
         if not session.synchronized:
             return
+        self._hint_observed_listener(session)
         # Compatibility probes describe one connection attempt, not a durable
         # peer capability. A transient pre-version close must not pin a modern
         # listener to v1/v2 on every later connection and suppress IPv6 exchange.
@@ -1822,8 +1881,10 @@ class PeerNode:
                                           header_hex=data.hex())
                     return data
             reader=HeaderTraceReader()
+        idle = (self._reply_timeout() if session.ready else
+                self._handshake_timeout(session) if self.allow_internet and session.outgoing is not None else None)
         frame = await read_frame(reader, timeout=self.timeout, magic=self.network.message_magic,
-                                 idle_timeout=max(self.timeout, CONNECTED_REPLY_TIMEOUT) if session.ready else None)
+                                 idle_timeout=idle)
         self._stats['frames_received'] += 1
         return frame
 
@@ -1916,7 +1977,7 @@ class PeerNode:
 
     async def _run_session(self, session):
         try:
-            await asyncio.wait_for(self._handshake(session), timeout=self.timeout)
+            await asyncio.wait_for(self._handshake(session), timeout=self._handshake_timeout(session))
             if not session.ready:
                 return
             while self._running:
@@ -2401,7 +2462,7 @@ class PeerNode:
     async def _poll_session(self, session, tip, pool, now):
         if session.writer.is_closing() is True:
             return
-        reply_timeout = max(self.timeout, CONNECTED_REPLY_TIMEOUT)
+        reply_timeout = self._reply_timeout()
         if ((session.header_requested and now - session.header_requested_at > reply_timeout)
                 or (session.headers and now - session.block_requested_at > reply_timeout)
                 or (session.hint_requested is not None and now - session.hint_requested_at > reply_timeout)):

@@ -312,5 +312,14 @@
   "No newer release is available.": "Илүү шинэ хувилбар алга.",
   "Could not check for updates. Open GitHub to check directly.": "Шинэчлэлт шалгаж чадсангүй. GitHub дээр шууд шалгана уу.",
   "Known node addresses": "Мэдэгдэж буй зангилааны хаягууд",
-  "From block {0:,}: every {1:,} blocks": "{0:,}-р блокоос эхлэн {1:,} блок тутамд"
+  "From block {0:,}: every {1:,} blocks": "{0:,}-р блокоос эхлэн {1:,} блок тутамд",
+  "This node": "Энэ зангилаа",
+  "Other node": "Өөр зангилаа",
+  "Producer unavailable": "Үүсгэгчийн мэдээлэл алга",
+  "Block time (local)": "Блокийн цаг (орон нутгийн)",
+  "Producer": "Үүсгэгч",
+  "Block hash": "Блокийн хэш",
+  "All blocks": "Бүх блок",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Эхний блокоос гинжний одоогийн сүүлийн блок хүртэлх бүх зангилааны баталгаажсан блокууд.",
+  "Search": "Хайх"
 }

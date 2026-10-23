@@ -452,6 +452,9 @@ class AppService:
     def status(self):
         return self._submit('status')
 
+    def block_history(self, offset=0, limit=50, height=None):
+        return self._submit('block_history', offset, limit, height)
+
     def transaction_history(self, offset=0, limit=50):
         return self._submit('transaction_history', offset, limit)
 
@@ -883,6 +886,11 @@ class AppService:
             hardware_mining.save_settings(self.directory, settings)
             self._hardware_settings = settings
             return hardware_mining.public_settings(settings, self._node.chain._row(self._node.chain.tip_hash)[2])
+        if operation == 'block_history':
+            from .block_history import block_history
+            runtime = self._node.boundary_runtime
+            own_id = runtime.keys.node_id if runtime else None
+            return await asyncio.to_thread(block_history, self.database, *arguments, own_id)
         if operation == 'transaction_history':
             if self._address is None:
                 raise AppServiceError('Select a wallet before reading transaction history')

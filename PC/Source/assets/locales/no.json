@@ -312,5 +312,14 @@
   "No newer release is available.": "Ingen nyere versjon er tilgjengelig.",
   "Could not check for updates. Open GitHub to check directly.": "Kunne ikke se etter oppdateringer. Sjekk direkte på GitHub.",
   "Known node addresses": "Kjente nodeadresser",
-  "From block {0:,}: every {1:,} blocks": "Fra blokk {0:,}: for hver {1:,} blokker"
+  "From block {0:,}: every {1:,} blocks": "Fra blokk {0:,}: for hver {1:,} blokker",
+  "This node": "Denne noden",
+  "Other node": "Annen node",
+  "Producer unavailable": "Ukjent produsent",
+  "Block time (local)": "Blokktid (lokal)",
+  "Producer": "Produsent",
+  "Block hash": "Blokkhash",
+  "All blocks": "Alle blokker",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Validerte blokker fra genesisblokken til kjedens nåværende topp, fra alle noder.",
+  "Search": "Søk"
 }

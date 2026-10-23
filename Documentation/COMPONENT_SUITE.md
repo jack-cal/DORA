@@ -2,8 +2,8 @@
 
 | Application | Version | Purpose |
 |---|---|---|
-| Windows full node | 0.57.34 | Validation, synchronization, wallet and optional mining |
-| Android full node | 0.6.84 | Validation, synchronization, wallet and optional mining |
+| Windows full node | 0.57.38 | Validation, synchronization, wallet and optional mining |
+| Android full node | 0.6.88 | Validation, synchronization, wallet and optional mining |
 | Windows ordinary wallet | 1.0.1 | Receiving, sending, backup, recovery and activity |
 | Android ordinary wallet | 1.1.1 | Receiving, sending, backup, recovery and activity |
 | Explorer | 0.4.6 | Read-only local blockchain inspection |

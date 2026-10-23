@@ -284,5 +284,14 @@
   "Do not show this help again.": "Больше не показывать эту справку.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Прямое соединение не использует Tor или I2P. Обычно оно быстрее и требует меньше ресурсов. Другие узлы видят IP вашего соединения.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.\n\nНужны узлы I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.\n\nНужны узлы I2P.",
+  "This node": "Этот узел",
+  "Other node": "Другой узел",
+  "Producer unavailable": "Создатель неизвестен",
+  "Block time (local)": "Время блока (местное)",
+  "Producer": "Создатель",
+  "Block hash": "Хеш блока",
+  "All blocks": "Все блоки",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверенные блоки от генезис-блока до текущей вершины цепи, созданные всеми узлами.",
+  "Search": "Поиск"
 }

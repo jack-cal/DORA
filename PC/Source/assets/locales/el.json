@@ -312,5 +312,14 @@
   "No newer release is available.": "Δεν υπάρχει νεότερη έκδοση.",
   "Could not check for updates. Open GitHub to check directly.": "Δεν ήταν δυνατός ο έλεγχος ενημερώσεων. Ελέγξτε απευθείας στο GitHub.",
   "Known node addresses": "Γνωστές διευθύνσεις κόμβων",
-  "From block {0:,}: every {1:,} blocks": "Από το μπλοκ {0:,}: κάθε {1:,} μπλοκ"
+  "From block {0:,}: every {1:,} blocks": "Από το μπλοκ {0:,}: κάθε {1:,} μπλοκ",
+  "This node": "Αυτός ο κόμβος",
+  "Other node": "Άλλος κόμβος",
+  "Producer unavailable": "Άγνωστος δημιουργός",
+  "Block time (local)": "Ώρα μπλοκ (τοπική)",
+  "Producer": "Δημιουργός",
+  "Block hash": "Κατακερματισμός μπλοκ",
+  "All blocks": "Όλα τα μπλοκ",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Επικυρωμένα μπλοκ από το αρχικό μπλοκ έως την τρέχουσα κορυφή της αλυσίδας, από όλους τους κόμβους.",
+  "Search": "Αναζήτηση"
 }

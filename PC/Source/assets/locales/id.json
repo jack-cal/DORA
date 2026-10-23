@@ -312,5 +312,14 @@
   "No newer release is available.": "Tidak ada versi yang lebih baru.",
   "Could not check for updates. Open GitHub to check directly.": "Tidak dapat memeriksa pembaruan. Periksa langsung di GitHub.",
   "Known node addresses": "Alamat node yang diketahui",
-  "From block {0:,}: every {1:,} blocks": "Mulai blok {0:,}: setiap {1:,} blok"
+  "From block {0:,}: every {1:,} blocks": "Mulai blok {0:,}: setiap {1:,} blok",
+  "This node": "Node ini",
+  "Other node": "Node lain",
+  "Producer unavailable": "Pembuat tidak diketahui",
+  "Block time (local)": "Waktu blok (lokal)",
+  "Producer": "Pembuat",
+  "Block hash": "Hash blok",
+  "All blocks": "Semua blok",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Blok terverifikasi dari blok genesis hingga ujung rantai saat ini, dari semua node.",
+  "Search": "Cari"
 }

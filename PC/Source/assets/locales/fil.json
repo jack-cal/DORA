@@ -312,5 +312,14 @@
   "No newer release is available.": "Walang mas bagong bersiyon.",
   "Could not check for updates. Open GitHub to check directly.": "Hindi masuri ang mga update. Tingnan nang direkta sa GitHub.",
   "Known node addresses": "Mga kilalang node address",
-  "From block {0:,}: every {1:,} blocks": "Mula sa block {0:,}: bawat {1:,} block"
+  "From block {0:,}: every {1:,} blocks": "Mula sa block {0:,}: bawat {1:,} block",
+  "This node": "Node na ito",
+  "Other node": "Ibang node",
+  "Producer unavailable": "Hindi matukoy ang gumawa",
+  "Block time (local)": "Oras ng block (lokal)",
+  "Producer": "Gumawa",
+  "Block hash": "Hash ng block",
+  "All blocks": "Lahat ng bloke",
+  "Validated blocks from genesis to the current tip. Includes all nodes.": "Mga napatunayang bloke mula sa genesis hanggang sa kasalukuyang dulo ng chain, mula sa lahat ng node.",
+  "Search": "Maghanap"
 }
