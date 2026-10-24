@@ -1,25 +1,24 @@
 # SUMUWW documentation
 
-The current published documentation is in English.
+Current document release: 24 October 2026. [English whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) and [documentation 20261024-r1](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261024-r1) are separate downloads.
 
-- [Whitepaper](Whitepaper/WHITEPAPER.md)
+- [Current versions, publication states and bundled-document erratum](CURRENT_STATUS.md)
+- [Whitepaper 2.2](Whitepaper/WHITEPAPER.md) · [Changes](Whitepaper/CHANGELOG.md)
 - [Connection-proof specification](Whitepaper/CONNECTION_PROOFS_9000.md)
-- [HTLC technical reference](Whitepaper/HTLC_9100.md)
-- [Whitepaper changes](Whitepaper/CHANGELOG.md)
-- [Verification and limitations](BEACON_RECOVERY_VERIFICATION.md)
-- [Whitepaper download](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en)
+- [Beacon recovery](BEACON_RECOVERY.md) · [HTLC reference](Whitepaper/HTLC_9100.md)
+- [Current connection repair verification: PC 0.57.40 / Android 0.6.89](CONNECTION_PROOF_REPAIR_VERIFICATION.md)
+- [Component suite and migration](COMPONENT_SUITE.md)
+- [Historical whitepaper 2.1 archive](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en)
+- [P2P Full/Light comparison](../P2P/Source/EDITIONS.md) · [Bitcoin and block-9100 setup](../P2P/Source/BITCOIN_SETUP.md)
 
-The earlier withdrawal notice is retained in [the archive](../Archive/withdrawal-20261020/Documentation/README.md). This edition explicitly describes post-PoW signing and does not claim that signatures are completed during mining.
+## Earlier verification records
 
-[Automatic beacon recovery](BEACON_RECOVERY.md) is included in this release.
+- [Wallet/dependency repair](LOCAL_REPAIR_VERIFICATION.md)
+- [PC 0.57.38 / Android 0.6.88 recovery](PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md)
+- [UI, language and physical-device checks, 22 October](UI_LANGUAGE_VERIFICATION.md)
+- [Beacon recovery, PC 0.57.34 / Android 0.6.84](BEACON_RECOVERY_VERIFICATION.md)
+- [PC 0.57.33 / Android 0.6.83](VERIFICATION.md)
+- [Earlier withdrawal record](../Archive/withdrawal-20261020/Documentation/README.md)
 
-- [Current application suite, migration and verification](COMPONENT_SUITE.md)
-
-[Wallet, P2P and explorer fixes: UI, language and physical-device verification](UI_LANGUAGE_VERIFICATION.md).
-
-[SUMUWW P2P 0.3.0: Full/Light comparison, storage and recovery](../P2P/Source/EDITIONS.md) · [Verification](../P2P/Source/VERIFICATION.txt).
-
-[Bitcoin setup and SUMUWW block-9100 trading activation](../P2P/Source/BITCOIN_SETUP.md).
-
-
-[Current node update: Windows 0.57.38 / Android 0.6.88 — peer recovery, history browser, verification and remaining interruption](PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).
+Historical reports apply to their named versions and test environments, not to
+every later build. A published document or application does not mean it was installed.

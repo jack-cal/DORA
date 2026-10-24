@@ -1,5 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>SUMUWW · current height-9000 protocol</h1>
-<p>PC 0.57.34 / Android 0.6.84 · 2026-10-22</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><p><strong>Documentation edition 2.2, 24 October 2026; application release archives are unchanged.</strong></p><article><h1>SUMUWW · current height-9000 protocol</h1>
+<p>Current implementation: PC 0.57.40 / Android 0.6.89 · 2026-10-24. Recovery was introduced in PC 0.57.34 / Android 0.6.84.</p>
 <h2>History, money and compatibility</h2>
 <p>The genesis and all pre-9000 consensus rules remain unchanged. Valid history up
 to 8999 is accepted even when an old peer advertises an invalid continuation.
@@ -32,8 +32,13 @@ specific direct child B. The job keeps the exact A/B target across retries. A
 verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.</p>
-<p>The producer samples three distinct identities without replacement from its
-entire locally discovered identity set, using rejection sampling. There are no
+<p>For a new job, the producer probes its entire discovered identity inventory
+through authenticated nonce echoes, including relayed participants. At least
+three identities must respond before the job proceeds to the verified beacon
+and its 20% event test. The producer then samples three responding identities
+without replacement, using rejection sampling. Silent contacts remain in the
+discovery inventory for later attempts. Responses are local availability
+observations, not consensus membership or a guaranteed future signature. There are no
 registration fees, membership admissions, exits, one-person checks, per-IP
 lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
 through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
@@ -92,8 +97,10 @@ preactivation v1 database marker may migrate without rewriting blocks or UTXOs.
 A database already containing incompatible post-activation history is refused
 for explicit review. Do not delete it or reset a wallet to bypass this check.</p>
 <p>The shipped implementation and isolated test evidence are not an independent
-security audit or proof of worldwide decentralization. Initial public-network
-activation at height 9000 has not occurred in these laboratory tests.</p>
+security audit or proof of worldwide decentralization. The original laboratory tests used isolated networks. On 24 October 2026,
+read-only checks observed a local active chain beyond heights 9000 and 9100.
+That snapshot does not establish network-wide adoption, uninterrupted operation
+or successful completion of repaired connection jobs on the public network.</p>
 <h2>Source map</h2>
 <p><code>sumuww/link_crypto.py</code>: format, splitting, sampling and producer outputs.
 <code>sumuww/link_beacon.py</code>: distributed setup and threshold responses.

@@ -4,15 +4,14 @@
 
 Read-only local block explorer for Windows.
 
-## Latest — 0.4.6
+## Latest — 0.4.6 docs-r3
 
-| File | Download |
-|---|---|
-| RELEASE_NOTES.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/RELEASE_NOTES.txt) |
-| SHA256SUMS.txt | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SHA256SUMS.txt) |
-| SUMUWW-Explorer-v0.4.6-Source.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer-v0.4.6-Source.zip) |
-| SUMUWW-Explorer-v0.4.6-Windows.zip | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer-v0.4.6-Windows.zip) |
-| SUMUWW-Explorer.exe | [Download](https://github.com/jack-cal/SUMUWW/releases/download/explorer-v0.4.6/SUMUWW-Explorer.exe) |
+[Release and verified downloads](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3) ·
+[Current guide](Source/CURRENT_GUIDE.md)
+
+The executable remains 0.4.6. This separate documentation edition clarifies
+current component versions, all-address history and transaction-inclusion proof
+scope. The original [0.4.6 release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) remains unchanged.
 
 English first-launch default, 34 bundled offline interface languages and persistent explicit language selection. UI language changes preserve amounts, addresses, keys and protocol data.
 

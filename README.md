@@ -2,9 +2,8 @@
 
 SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynchronous connection-proof system. A block producer requests three witness signatures after PoW, binds the six signature halves to an exact parent/child pair, and relays completed evidence without making mining wait. Valid cumulative work remains the primary chain-selection rule.
 
-Local revision 2026-10-24: ordinary wallets now include core 0.57.38 connection
-recovery and synchronization fixes. The new wallet builds and docs-r2 packages
-are not GitHub releases. Full nodes PC 0.57.40 / Android 0.6.89 now include the
+Release editions 2026-10-24: ordinary wallets now include core 0.57.38 connection
+recovery and synchronization fixes. The wallet builds, Explorer docs-r3, P2P docs-r2 and whitepaper 2.2 are separate releases. Full nodes PC 0.57.40 / Android 0.6.89 now include the
 connection-proof availability repair. Their release pages below contain the matching binaries, source archives and checksums.
 
 ## Downloads
@@ -13,14 +12,14 @@ connection-proof availability repair. Their release pages below contain the matc
 |---|---|---|---|
 | Windows node, wallet and miner | 0.57.40 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) | [PC source](PC/Source) |
 | Android node, wallet and miner | 0.6.89 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89) | [Android source](Android/Source) |
-| Windows ordinary wallet | 1.0.2 | Local build; not published | [Source](Wallet/Desktop) |
-| Android ordinary wallet | 1.1.2 | Local build; not published | [Source](Wallet/Source) |
-| Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) | [Source](Explorer/Source) |
-| P2P Full — SMW/BTC trading | 0.3.0 | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0) | [Source](P2P/Source) |
-| P2P Light — SMW/BTC trading | 0.3.0 | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0) | [Source](P2P/Source) |
-| Whitepaper and technical references | v2.1, English | [Whitepaper release](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en) | [Editable documents](Documentation/Whitepaper) |
+| Windows ordinary wallet | 1.0.2 | [Windows wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.2) | [Source](Wallet/Desktop) |
+| Android ordinary wallet | 1.1.2 | [Android wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.2) | [Source](Wallet/Source) |
+| Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3) | [Source](Explorer/Source) |
+| P2P Full — SMW/BTC trading | 0.3.0 | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0-docs-r2) | [Source](P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.0 | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0-docs-r2) | [Source](P2P/Source) |
+| Whitepaper and technical references | v2.2, English | [Whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) | [Editable documents](Documentation/Whitepaper) |
 
-Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. Android full-node updates install over the matching existing app. The new ordinary Android wallet installs alongside the old wallet and imports an encrypted backup; do not uninstall or clear old app data. See the [component suite guide](Documentation/COMPONENT_SUITE.md).
+Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. Android full-node updates install over the matching existing app. The new ordinary Android wallet installs alongside the old wallet and imports an encrypted backup; do not uninstall or clear old app data. See the [component suite guide](Documentation/COMPONENT_SUITE.md). Whitepaper 2.2 and corrected source documents are separate releases; [status and errata](Documentation/CURRENT_STATUS.md) identify differences from immutable published archives.
 
 P2P now has separate [Full and Light editions](P2P/Source/EDITIONS.md). Full uses your local Bitcoin Core; Light checks Bitcoin headers and transaction inclusion proofs using configurable TLS servers. Both require your local SUMUWW node and HTLC activation at height 9100. Light is SPV and depends on available honest servers for complete transaction histories.
 
@@ -53,7 +52,7 @@ Read the **[Bitcoin full-node setup, disk requirements, Light setup and block-91
 guide](P2P/Source/BITCOIN_SETUP.md)** before funding. It explains configuration,
 authentication, synchronization, operating costs, cancellation and recovery.
 
-## Upgrade before block 9,000
+## Rules from block 9,000
 
 The upgraded consensus rules apply at height **9,000 inclusive**. Blocks produced by legacy software under the old, pre-upgrade rules at height 9,000 or above are rejected by upgraded nodes and cannot extend the upgraded chain. Continued mining on a legacy branch does not make those blocks acceptable.
 
@@ -61,7 +60,7 @@ Valid historical blocks through **8,999 remain usable**, including the valid pre
 
 ## Protocol and documentation
 
-[Whitepaper](Documentation/Whitepaper/WHITEPAPER.md) · [Connection proofs](Documentation/Whitepaper/CONNECTION_PROOFS_9000.md) · [Current verification](Documentation/PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md)
+[Whitepaper](Documentation/Whitepaper/WHITEPAPER.md) · [Connection proofs](Documentation/Whitepaper/CONNECTION_PROOFS_9000.md) · [Current verification](Documentation/CONNECTION_PROOF_REPAIR_VERIFICATION.md) · [Publication and document status](Documentation/CURRENT_STATUS.md)
 
 The original issuance and halving schedule is preserved. Valid history through 8999 remains usable. From 9000, every block requires a producer-key commitment; random connection events use a 20% probability, and DGW recalculates every ten blocks with a 24-block observation window. Completed signatures are not a mining or block-acceptance prerequisite. The exact-template HTLC spending rule activates at 9100.
 
@@ -69,7 +68,7 @@ English is the publication language and the default for a fresh app profile. All
 
 ## Release status
 
-These node packages publish the post-PoW design described above, with the recorded local and isolated-network checks. They do not establish independent security certification, completed public-network activation, worldwide candidate discovery or irreversible finality. Read the specific limitations in the verification report and specification.
+These node packages publish the post-PoW design described above, with the recorded local and isolated-network checks. They do not establish independent security certification, network-wide adoption, worldwide candidate discovery or irreversible finality. Read-only local checks on 24 October observed an active chain beyond height 9100. Read the specific limitations in the verification report and specification.
 
 Previously withdrawn node releases remain withdrawn; the [withdrawal record](Archive/withdrawal-20261020/README.md) is retained. New [ordinary wallets](Wallet/README.md), [Explorer](Explorer/README.md) and [P2P](P2P/README.md) use the current shared core. Withdrawn older wallet binaries remain withdrawn. See [component changes, migration and verification limits](Documentation/COMPONENT_SUITE.md).
 

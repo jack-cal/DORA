@@ -1,5 +1,10 @@
-Documentation revision 2 (2026-10-24), local and unpublished. Explorer
-executable 0.4.6 is unchanged. The results below are historical 0.4.6 checks.
+Documentation revision 3 (2026-10-24). Release: https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3. Explorer
+executable 0.4.6 is unchanged. The guide now identifies published full nodes
+0.57.40 / 0.6.89 and separates wallet source availability from download releases.
+It also distinguishes transaction inclusion proofs from connection proofs.
+Current checks: all active blocks through height 9176 were read by the packaged
+executable; app/UI source matches and 43 JavaScript UI tests passed.
+The release notes below are historical 0.4.6 checks.
 
 # SUMUWW Explorer 0.4.6 — Windows
 

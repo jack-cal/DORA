@@ -21,7 +21,7 @@ with the same Wallet Current signing certificate for in-place updates from
 1.1.0 or 1.1.1. It does not replace the withdrawn org.sumuww.wallet application.
 Windows data remains at %LOCALAPPDATA%/SUMUWW/Wallet-PC.
 
-This local release has not been published to GitHub. Prior published versions
-remain a separate historical record. See LOCAL_REPAIR_VERIFICATION.md in the
+Release downloads: https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.2
+and https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.2. Earlier versions remain a separate historical record. See LOCAL_REPAIR_VERIFICATION.md in the
 suite documentation for current verification results and limits. Earlier
 physical-device and live-network measurements do not certify this new build.

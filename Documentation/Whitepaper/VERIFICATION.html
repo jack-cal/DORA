@@ -1,84 +1,35 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SUMUWW release documentation</title><style>body{font:18px/1.65 system-ui;max-width:1000px;margin:40px auto;padding:24px;color:#192940}a{color:#145bb1}pre{white-space:pre-wrap}img{max-width:100%}</style><h1>Beacon recovery verification</h1>
-<p>Windows 0.57.34 / Android 0.6.84 (144), 2026-10-22.</p>
-<h2>Completed checks</h2>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Whitepaper v2.2 verification and limits</title><style>body{font:18px/1.75 system-ui,sans-serif;color:#192940;max-width:1000px;margin:35px auto;padding:25px}h1,h2{color:#164c91}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ced9e7;padding:9px;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:#f3f6fa;padding:16px}a{color:#245da1}blockquote{border-left:4px solid #b88722;background:#fff4db;margin:18px 0;padding:10px 18px}code{overflow-wrap:anywhere}</style></head><body><h1>Whitepaper v2.2 verification and limits</h1>
+<p>Reviewed on 24 October 2026 against repository base
+<code>da1eee4fb52dcada8b1ba56289ff3d623a9e13ca</code>, with documentation edits after that commit.
+Application builds remain PC 0.57.40 / Android 0.6.89. Whitepaper 2.2 is a separate document release; earlier release posts and attachments remain unchanged.</p>
+<h2>Evidence used</h2>
 <ul>
-<li>Ten new recovery regression cases passed: historical proof preservation,
-  fresh-group threshold output without old shares, invalid predecessor/round/
-  timing rejection, incomplete or forged readiness rejection, stale template
-  handling, branch-specific generation selection, legacy overwrite rejection,
-  invalid encrypted dealer identification, isolation from failed old jobs, and
-  recovery from an unavailable prepared proposal.</li>
-<li>The combined PC regression run passed 36 executions (28 distinct cases;
-  eight original cases were also discovered through an imported test class).
-  It includes the original proof/transport, late discovery, 20% probability,
-  preserved issuance and DGW/10 checks. This is a targeted regression run, not
-  a rerun of the preceding release's entire UI or security audit.</li>
-<li>Two numeric activation-prefix cases passed with an independently mined
-  height-8999 regtest snapshot: the valid old prefix survives an invalid
-  height-9000 continuation and synchronization resumes with valid new blocks.</li>
-<li>A real loopback TCP fixture used eight distinct node identities in separate
-  processes, with seven simultaneously present during replacement. One node
-  acknowledged probes but withheld DKG data; the attempt expired and a valid
-  three-member setup was prepared from four discovered contacts.</li>
-<li>All original beacon shares were then withheld. Three new participants
-  prepared a new key, seven nodes accepted its PoW-anchored generation, and a
-  further complete connection proof was produced using it.</li>
-<li>With witness replies delayed eight seconds and the old beacon unavailable,
-  five local regtest blocks were mined in approximately 0.031 seconds. This
-  measures independence from the reply wait, not public-network mining speed.</li>
-<li>Four original processes were stopped. The three replacement nodes remained
-  connected and synchronized. A restarted replacement and a late eighth node
-  verified the historical and replacement proofs. The final four nodes agreed
-  at height 43, with two complete proofs, the same tip and UTXO commitment,
-  and successful SQLite integrity checks.</li>
-<li>Windows executables built successfully and passed six packaged checks with
-  temporary databases: CLI/version, offline public-profile mining guard,
-  wallet/mine/send, encrypted backup/restore, two-daemon block/transaction relay,
-  and the portable launcher without a Python installation on PATH.</li>
-<li>Android built successfully with both configured native ABIs. The final APK
-  was signed through the existing signing lineage; its current certificate
-  SHA-256 is <code>8481abe8acb2fbc935f824008fa54cd78e790bebbb5795f80604234ee1b4cf4d</code>,
-  matching 0.6.83. The four beacon source modules match the PC copies exactly.</li>
-<li>A connected Samsung SM-S928N running Android 16 passed 29 Python cases in
-  two instrumentation tests: 27 connection-proof/recovery/DGW cases and two
-  numeric 8999/9000 prefix cases. These ran in a separate audit application,
-  using the Android native cryptography adapter and isolated test databases.
-  The first prefix attempt lacked its synthetic height-8999 fixture; after
-  copying that fixture, both prefix cases passed. No source change was needed.
-  The temporary audit applications were removed after collecting the results.</li>
+<li>Inspected producer-job scheduling, signed participant probes, beacon event selection, witness sampling, persisted replies, receipts and job counters in both current full-node source trees.</li>
+<li>Compared issuance, integer rounding, genesis exclusion, maturity, DGW activation/cadence and HTLC activation descriptions with current source and targeted regression checks recorded in DOCUMENT_REVIEW.json.</li>
+<li>The 24 October connection repair recorded 84 regression executions, final PC checks (5 availability/restart/corruption and 4 history/UI checks), 5 Android-source host checks and 6 frozen PC smoke checks. Shared test re-executions are not distinct cases. See the <a href="https://github.com/jack-cal/SUMUWW/blob/da1eee4fb52dcada8b1ba56289ff3d623a9e13ca/Documentation/CONNECTION_PROOF_REPAIR_VERIFICATION.md">published repair record</a>.</li>
+<li>A mixed-witness source test completed, stored and verified a proof using a PC 0.57.40 producer with ordinary-wallet PC 1.0.2 and Android 1.1.2 responders. It used real signatures and an in-memory relay on the host, not physical Android devices.</li>
+<li>The packaged Explorer 0.4.6 indexed 9,177 active blocks through height 9176, 9,177 reward transactions and 64 ordinary transactions in a read-only snapshot on 24 October. A TXID inclusion proof verified, packaged app/UI files matched source and 43 UI tests passed. These findings concern transaction history, not completed connection proofs.</li>
 </ul>
-<p>The successful process run is retained in <code>verification/eight-node-recovery.json</code>
-in the local delivery. Earlier failed fixture runs were retained in the work
-directory: one disconnected all replacement nodes by stopping their sole test
-relay; another incorrectly required unmined proposals to match; another stopped
-PoW before an intermediate generation's recovery spacing had elapsed. The final
-fixture preserves a replacement-to-replacement path, tests agreement after PoW
-commitment, and continues ordinary mining through recovery windows. The
-unavailable-prepared-proposal bug found during these runs has a regression test.</p>
-<h2>Limits and deployment status</h2>
-<p>The tests ran on this Windows host and a connected Android phone, using isolated
-local chains. The phone tests exercised protocol and native runtime behavior;
-they were not a full UI interaction audit. Directly importing the Android-only
-secp256k1 adapter on Windows is not a valid device test. No installed production
-wallet or live chain database was replaced during those isolated tests. The
-phone's original application remained at version 0.6.82 (142) during that stage.
-The subsequent local deployment installed Windows 0.57.34 and Android 0.6.84
-over the existing applications, retaining their wallet and chain data.</p>
-<p>The PC difficulty label now shows the pending height-9000 transition before it
-activates, instead of showing only the current per-block rule. All 34 catalogs
-include that transition text; four targeted UI/catalog tests passed, including
-the cadence label at heights 8998, 8999, 9000, 9009 and 9010 in every language.
-The Windows executable version resource now matches 0.57.34, and the build
-rejects a stale resource version. The packaged Windows checks passed again.
-Icons, button layout, wallet implementation, monetary rules and difficulty
-implementation are unchanged.</p>
-<p>There is no claim of a multi-day public Internet trial, public height-9000
-activation, independent cryptographic audit, complete worldwide discovery,
-arbitrary-adversary DKG liveness, or recovery of a lost old threshold secret.
-Incomplete old jobs can remain incomplete. The existing equal-work proof rule
-still permits late evidence to alter a tie; valid greater cumulative work wins.</p>
-<p>Replacement records require upgraded validating software. The earlier binaries
-reject these new setup contexts. Historical records remain valid in the updated
-implementation; update participating validators before the activation rollout.
-Windows 0.57.34 and Android 0.6.84 are published with this verification record. Publishing a normal release does not extend the verification scope stated above.</p>
-<p>See <a href="BEACON_RECOVERY.md">the recovery protocol</a> for exact transitions and limits.</p></html>
+<h2>Publication, installation and test scope</h2>
+<p>This edition accompanies <a href="https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en">whitepaper 2.2</a> and the
+<a href="https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261024-r1">documentation release</a>. The current suite has full nodes
+PC 0.57.40 / Android 0.6.89, ordinary wallets PC 1.0.2 / Android 1.1.2,
+Explorer 0.4.6 docs-r3 and P2P Full/Light 0.3.0 docs-r2. Document revisions keep
+their existing executable versions and tested runtime bytes. Earlier package
+digests remain attached to their original releases. DOCUMENT_REVIEW.json is
+the earlier local review snapshot; it is not the current publication manifest.
+The desktop production full-node replacement remains pending. Publication
+does not start, install or replace an operating application.</p>
+<p>No new production transfer, mining run, physical Android run or Internet endurance
+test is claimed by this documentation review. Past snapshots are not live counts.
+The nine old selected jobs had valid beacon/selection records but no complete
+stored proof at the recorded inspection. Their old store lacked per-job error
+diagnostics, so the exact failure of every individual job cannot be established.
+Isolated completion does not prove completion on the operating public network.</p>
+<p>Worldwide discovery, omission resistance, malicious-participant DKG security and
+uninterrupted availability are not established. Missing original witnesses can
+leave selected old jobs incomplete indefinitely. Existing valid history, wallet
+keys and signature locks are retained. No private wallet, key, chain database or
+raw device/network log is included in this document archive.</p>
+<p><a href="RECOVERY_VERIFICATION_20261022.html">Historical recovery verification, 22 October</a>
+records only the earlier PC 0.57.34 / Android 0.6.84 tests.</p></body></html>

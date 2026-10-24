@@ -1,11 +1,18 @@
-# SUMUWW Whitepaper v2.1 — English
+# SUMUWW Whitepaper v2.2 — English
 
-This edition adds the automatic beacon-generation recovery specification to the connection-proof whitepaper and updates the verification record.
+Release edition, 24 October 2026. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en.
 
-- Describe replacement of unavailable randomness participants through fresh distributed key generation and PoW-anchored public setups.
-- Explain exact predecessor/round binding, the twelve-block generation spacing, retries and historical-proof preservation.
-- Distinguish new-key recovery from reconstruction of a lost old secret; document the incomplete-old-job and availability limits.
-- Preserve issuance, halvings, the 20% event probability, cumulative-work-first chain selection and DGW every ten blocks from height 9000.
-- Include the current verification scope, the height-9000 connection-proof specification and the height-9100 HTLC reference.
+- Align witness selection with PC 0.57.40 / Android 0.6.89: probe all discovered identities, then sample three responsive identities with the verified beacon.
+- Distinguish the signed availability probe from the BLS beacon-health challenge and from consensus membership.
+- Explain saved partial replies, diagnostic phases, retries and preservation of original messages and witnesses for already selected jobs.
+- Define setup, lottery, selected-pending, selected-complete and stored-proof counters; explain why 11 minus 9 does not imply two completed proofs.
+- Distinguish full validation, wallet-only recent activity, public active-chain history and Explorer's transaction-inclusion proofs.
+- Separate published downloads, local prepared documents and historical test evidence. Retain the original recovery verification in a dated record.
+- Retain issuance, halvings, 20% event probability, three-signature format, cumulative-work-first selection, DGW/10 and height-9100 HTLC rules.
 
-Open index.html in the complete extracted archive. Editable Markdown, readable HTML, technical references and the original icon are included. Publication language is English. This document describes the implementation; it does not certify independent security review.
+## Previous edition: v2.1, published 22 October 2026
+
+Added fresh-key beacon-generation recovery, predecessor/ancestor-round binding,
+twelve-block spacing and historical-proof preservation. That edition predates
+the responsive-witness and partial-reply repair. Its published archive and
+checksums remain unchanged. This documentation is not an independent security audit.

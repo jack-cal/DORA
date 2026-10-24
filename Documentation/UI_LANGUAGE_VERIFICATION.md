@@ -1,3 +1,5 @@
+> Historical test record for the versions and dates below. Current release and local preparation status: [CURRENT_STATUS.md](CURRENT_STATUS.md). These results are not new measurements of later builds.
+
 # UI, language and packaged-application verification
 
 Date: 2026-10-22. Release versions: Windows wallet 1.0.1, Android Wallet Current 1.1.1 (versionCode 12), P2P 0.1.9 and Explorer 0.4.6.

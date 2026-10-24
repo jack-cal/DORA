@@ -10,8 +10,7 @@
 | P2P Full | 0.3.0 | SMW/BTC board and settlement using local full nodes |
 | P2P Light | 0.3.0 | SMW/BTC board and settlement using Bitcoin SPV |
 
-Windows full node 0.57.40 includes public block/transaction browsing and the connection-proof availability repair. Android full node 0.6.89 includes the same proof repair. New jobs probe all discovered identities before selecting three responsive witnesses; old selected jobs keep their original witnesses. Valid replies survive retries and restarts. Setup records, local lottery jobs and complete proofs have distinct counters. Full-node release pages: [PC 0.57.40](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) and [Android 0.6.89](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89). Wallet 1.0.2 / 1.1.2 and
-the corrected local packages have not been published to GitHub. Peer
+Windows full node 0.57.40 includes public block/transaction browsing and the connection-proof availability repair. Android full node 0.6.89 includes the same proof repair. New jobs probe all discovered identities before selecting three responsive witnesses; old selected jobs keep their original witnesses. Valid replies survive retries and restarts. Setup records, local lottery jobs and complete proofs have distinct counters. Full-node release pages: [PC 0.57.40](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) and [Android 0.6.89](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89). Wallet 1.0.2 / 1.1.2, Explorer docs-r3, P2P docs-r2 and whitepaper 2.2 have separate release links in [current release status](CURRENT_STATUS.md). Peer
 discovery, block/transaction propagation and synchronization are built into the
 node. A separate networking application is not required. P2P 0.3.0 has separate Full and Light trading editions. Funding requires a
 current synchronized SUMUWW node and conditional-spend activation at height 9100.
@@ -24,7 +23,7 @@ English is the first-launch default. All 34 offline UI languages remain
 selectable. Existing branding is retained. Text translation does not alter keys,
 addresses, amounts or protocol data. This update adds no node enrollment fee.
 
-## Upgrade before block 9,000
+## Rules from block 9,000
 
 The current rules apply at height **9,000 inclusive**. Blocks produced by legacy
 software under the old rules at height 9,000 or above are rejected by upgraded
@@ -38,8 +37,8 @@ are preserved. Validation follows block rules, not an advertised version string.
 SHA-256d PoW and valid cumulative work remain primary. From height 9000 each
 block requires a producer-key commitment. After PoW, a random event has a 20%
 probability of starting an asynchronous connection-proof request. Three distinct
-witnesses each provide one signature divided into two halves. The two compressed
-groups are bound to an exact adjacent parent/child pair and retained with proof
+witnesses each provide one signature divided into two halves. The two bundles (compressed only when smaller)
+are bound to an exact adjacent parent/child pair and retained with proof
 metadata for later verification, including by newly synchronized nodes.
 
 Completed signatures are not a prerequisite for mining or accepting an otherwise
@@ -94,7 +93,9 @@ including transitive dependencies. Each new build checks those version pins.
 Android uses its own ABI-specific dependency versions; those are intentional.
 Current guides and local checksums identify the files actually distributed.
 
-See [this repair's verification and limits](LOCAL_REPAIR_VERIFICATION.md).
+See [the current connection repair verification](CONNECTION_PROOF_REPAIR_VERIFICATION.md),
+[wallet repair evidence](LOCAL_REPAIR_VERIFICATION.md) and
+[current publication/document status](CURRENT_STATUS.md).
 Earlier UI, device and live-network measurements remain in the historical
 [UI and language report](UI_LANGUAGE_VERIFICATION.md) and
 [full-node recovery report](PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).

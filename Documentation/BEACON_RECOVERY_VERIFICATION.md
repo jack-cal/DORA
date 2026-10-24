@@ -1,3 +1,5 @@
+> Historical test record for the versions and dates below. Current release and local preparation status: [CURRENT_STATUS.md](CURRENT_STATUS.md). These results are not new measurements of later builds.
+
 # Beacon recovery verification
 
 Windows 0.57.34 / Android 0.6.84 (144), 2026-10-22.

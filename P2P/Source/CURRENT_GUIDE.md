@@ -25,3 +25,8 @@ a reachable counterparty, confirmations, transaction fees and timeout monitoring
 No separately deployed exchange contract is needed. Keep private recovery backups.
 
 [Detailed Bitcoin full-node setup and block-9100 activation guide](BITCOIN_SETUP.md).
+
+Documentation edition docs-r2, 24 October 2026. The current Windows full-node
+setup link points to 0.57.40; P2P executable code remains 0.3.0. Downloads:
+https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0-docs-r2
+https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0-docs-r2

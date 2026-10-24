@@ -1,3 +1,5 @@
+> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
+
 # SUMUWW Whitepaper
 
 ## Purpose and scope
@@ -14,9 +16,25 @@ A's producer signs the paired attachment; B's producer verifies it and signs a r
 
 ## Random selection and distributed randomness
 
-A verified distributed random value selects a connection event with probability 20%. This is neither a fixed five-block schedule nor a guarantee that 20% of blocks obtain completed proofs. Three distinct identities are sampled without replacement from the producer's entire discovered set. Discovery extends through relays, without a direct-neighbor filter, per-IP quota or fixed candidate count. No admission, exit procedure or participation fee is required; one operator may run multiple nodes.
+A verified distributed random value selects a connection event with probability 20%. This is neither a fixed five-block schedule nor a guarantee that 20% of blocks obtain completed proofs. Starting with PC 0.57.40 / Android 0.6.89, a new job probes the producer's entire discovered identity inventory through authenticated relays. It then samples three distinct responding identities without replacement using the verified beacon. Silent contacts remain in discovery for later attempts. A response shows availability at that moment, not a guarantee of a later signature. This is a local availability policy, not consensus membership. Already selected jobs keep their exact A/B pair, beacon and three witnesses. Discovery extends through relays, without a direct-neighbor filter, per-IP quota or fixed candidate count. No admission, exit procedure or participation fee is required; one operator may run multiple nodes.
 
 The random beacon uses Feldman DKG and threshold BLS, with its public setup anchored on chain before A. Enough valid shares reconstruct the same output despite some missing replies. Below the threshold, the proof remains incomplete while mining continues. Initial setup needs all listed dealers' contributions and a readiness quorum. Unavailable beacon groups can be replaced by background fresh-key DKG, with each replacement anchored in PoW and bound to its predecessor and an ancestor round. Old proofs keep their original key; new generations apply only to later source blocks. Recovery needs enough responsive participants and eventual delivery, and never gates mining. This is fresh-key recovery, not recovery of a lost old secret; same-key resharing is not implemented. A worldwide complete candidate census and resistance to a producer's candidate omissions are not established.
+
+## Progress and application views
+
+Setup records, lottery jobs and completed proofs count different things. A setup
+can support many jobs; a nonselected lottery finishes without creating a proof.
+Subtracting 9 selected jobs from 11 setup records does not imply 2 successes.
+Valid partial signatures survive retries and restarts. Already selected jobs
+still require their original participants; completion is not guaranteed.
+
+Full nodes independently validate and synchronize the chain. Ordinary wallets
+also use local full validation but do not expose mining. The Windows full node's
+recent wallet view shows its own wallet, while All history shows all blocks and
+transactions on its synchronized active chain. The separate Explorer reads a
+chosen local database and builds an index; it does not independently synchronize
+or validate the chain. Explorer's TXID Merkle inclusion proof is different from
+the three-witness connection proof and does not establish consensus validity.
 
 ## Chain selection and conflicting evidence
 

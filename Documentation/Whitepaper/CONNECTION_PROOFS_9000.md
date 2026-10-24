@@ -1,6 +1,8 @@
+> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
+
 # SUMUWW · current height-9000 protocol
 
-PC 0.57.34 / Android 0.6.84 · 2026-10-22
+Current implementation: PC 0.57.40 / Android 0.6.89 · 2026-10-24. Recovery was introduced in PC 0.57.34 / Android 0.6.84.
 
 ## History, money and compatibility
 
@@ -42,8 +44,13 @@ verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.
 
-The producer samples three distinct identities without replacement from its
-entire locally discovered identity set, using rejection sampling. There are no
+For a new job, the producer probes its entire discovered identity inventory
+through authenticated nonce echoes, including relayed participants. At least
+three identities must respond before the job proceeds to the verified beacon
+and its 20% event test. The producer then samples three responding identities
+without replacement, using rejection sampling. Silent contacts remain in the
+discovery inventory for later attempts. Responses are local availability
+observations, not consensus membership or a guaranteed future signature. There are no
 registration fees, membership admissions, exits, one-person checks, per-IP
 lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
 through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
@@ -67,6 +74,31 @@ Missing halves, forged signatures, altered target hashes and wrong ancestry fail
 verification. Late nodes fetch the blocks, anchored randomness transcript and
 complete proofs, including conflict evidence on side branches, and independently
 reconstruct and verify signatures. Some jobs can remain incomplete indefinitely.
+
+## Job progress and counters
+
+A beacon setup record prepares a randomness generation. One setup can serve
+many A/B jobs; it is not one attempted proof. Local job counters separate:
+
+| Counter | Meaning |
+|---|---|
+| Awaiting lottery | Participant or beacon preparation has not produced a final event result |
+| Not selected | The verified 20% event test did not select this job; no completed proof is expected |
+| Selected pending | The job was selected but still lacks required signatures, a receipt or verification |
+| Selected complete | This node's selected job completed and was verified and stored |
+| Stored complete proofs | All complete proofs stored locally, including proofs received from peers |
+
+The four local job outcomes sum to the local job total. Setup records are a
+separate population. For example, 11 setup records and 9 selected jobs do not
+imply 2 completed proofs. Stored proofs and local completed jobs can also differ.
+An awaiting-lottery count does not mean that the 20% selection has failed.
+
+Each valid witness reply is persisted immediately, reverified and reused after
+a retry or restart. Corrupt saved replies are discarded and requested again.
+The job records its phase, missing witnesses and errors. Existing selected jobs
+keep the exact message and team, including signature locks; the repair cannot
+replace missing original witnesses or make old incomplete proofs complete.
+Completion also requires the source attachment and the child producer's receipt.
 
 ## Randomness and availability limits
 
@@ -113,8 +145,10 @@ A database already containing incompatible post-activation history is refused
 for explicit review. Do not delete it or reset a wallet to bypass this check.
 
 The shipped implementation and isolated test evidence are not an independent
-security audit or proof of worldwide decentralization. Initial public-network
-activation at height 9000 has not occurred in these laboratory tests.
+security audit or proof of worldwide decentralization. The original laboratory tests used isolated networks. On 24 October 2026,
+read-only checks observed a local active chain beyond heights 9000 and 9100.
+That snapshot does not establish network-wide adoption, uninterrupted operation
+or successful completion of repaired connection jobs on the public network.
 
 ## Source map
 

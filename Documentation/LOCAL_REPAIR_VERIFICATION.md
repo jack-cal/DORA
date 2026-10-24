@@ -1,3 +1,5 @@
+> Historical test record for the versions and dates below. Current release and local preparation status: [CURRENT_STATUS.md](CURRENT_STATUS.md). These results are not new measurements of later builds.
+
 # Wallet recovery and distribution repair — 2026-10-24
 
 This is a local, unpublished revision. Windows ordinary wallet **1.0.2** and

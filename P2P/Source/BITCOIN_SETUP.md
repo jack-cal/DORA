@@ -17,7 +17,7 @@ This is a **SUMUWW height**, not a Bitcoin height. Reaching 9100 does not itself
 provide a counterparty, balances, confirmations or a working Bitcoin connection.
 The SUMUWW node must be synchronized and support the exact-template HTLC rules.
 Use the current Windows full node from the
-[SUMUWW releases](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.38).
+[SUMUWW releases](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40).
 
 The earlier consensus upgrade remains separate: valid legacy SUMUWW blocks
 through **8999 remain usable**; **old-rule blocks at 9000 inclusive and above
