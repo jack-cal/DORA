@@ -321,5 +321,19 @@
   "Block hash": "Blokhash",
   "All blocks": "Alle blokken",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Gevalideerde blokken vanaf het genesisblok tot de huidige ketentop, van alle nodes.",
-  "Search": "Zoeken"
+  "Search": "Zoeken",
+  "My history": "Mijn geschiedenis",
+  "All history": "Volledige geschiedenis",
+  "Connection proofs": "Verbindingsbewijzen",
+  "Recent wallet transactions · Confirmations": "Recente wallettransacties · Bevestigingen",
+  "Select a block to view its transactions.": "Selecteer een blok om alle transacties erin te bekijken.",
+  "Output total SMW": "Totaal uitgangen SMW",
+  "Inputs": "Ingangen",
+  "Outputs": "Uitgangen",
+  "Block is no longer in the active chain. Refresh the list.": "Dit blok maakt geen deel meer uit van de actieve keten. Vernieuw de lijst.",
+  "Full node · Wallet · Mining": "Volledige node · Wallet · Mining",
+  "Local lottery jobs": "Lotingen van deze node",
+  "Not selected": "Niet geselecteerd",
+  "Selected pending": "Geselecteerd, in afwachting",
+  "Selected complete": "Geselecteerd, voltooid"
 }

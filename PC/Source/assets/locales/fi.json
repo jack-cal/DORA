@@ -321,5 +321,19 @@
   "Block hash": "Lohkon tiiviste",
   "All blocks": "Kaikki lohkot",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Vahvistetut lohkot alkulohkosta ketjun nykyiseen kärkeen, kaikista solmuista.",
-  "Search": "Hae"
+  "Search": "Hae",
+  "My history": "Oma historia",
+  "All history": "Koko historia",
+  "Connection proofs": "Yhteystodisteet",
+  "Recent wallet transactions · Confirmations": "Lompakon viimeisimmät siirrot · Vahvistukset",
+  "Select a block to view its transactions.": "Valitse lohko nähdäksesi kaikki sen siirrot.",
+  "Output total SMW": "Ulostulojen summa SMW",
+  "Inputs": "Syötteet",
+  "Outputs": "Ulostulot",
+  "Block is no longer in the active chain. Refresh the list.": "Tämä lohko ei enää kuulu aktiiviseen ketjuun. Päivitä luettelo.",
+  "Full node · Wallet · Mining": "Täysi solmu · Lompakko · Louhinta",
+  "Local lottery jobs": "Tämän solmun arvonnat",
+  "Not selected": "Ei valittu",
+  "Selected pending": "Valittu, odottaa",
+  "Selected complete": "Valittu, valmis"
 }

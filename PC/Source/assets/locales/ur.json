@@ -321,5 +321,19 @@
   "Block hash": "بلاک ہیش",
   "All blocks": "تمام بلاکس",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "ابتدائی بلاک سے چین کے موجودہ آخری بلاک تک تصدیق شدہ بلاکس، تمام نوڈز سمیت۔",
-  "Search": "تلاش"
+  "Search": "تلاش",
+  "My history": "میری تاریخ",
+  "All history": "مکمل تاریخ",
+  "Connection proofs": "کنکشن کے ثبوت",
+  "Recent wallet transactions · Confirmations": "والیٹ کی حالیہ ٹرانزیکشنز · تصدیقات",
+  "Select a block to view its transactions.": "کسی بلاک کی تمام ٹرانزیکشنز دیکھنے کے لیے اسے منتخب کریں۔",
+  "Output total SMW": "کل آؤٹ پٹ SMW",
+  "Inputs": "ان پٹ",
+  "Outputs": "آؤٹ پٹ",
+  "Block is no longer in the active chain. Refresh the list.": "یہ بلاک اب فعال چین میں شامل نہیں ہے۔ فہرست تازہ کریں۔",
+  "Full node · Wallet · Mining": "مکمل نوڈ · والیٹ · مائننگ",
+  "Local lottery jobs": "اس نوڈ کے قرعہ اندازی کے کام",
+  "Not selected": "منتخب نہیں ہوئے",
+  "Selected pending": "منتخب، زیر التوا",
+  "Selected complete": "منتخب، مکمل"
 }

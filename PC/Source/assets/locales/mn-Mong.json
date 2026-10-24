@@ -321,5 +321,19 @@
   "Block hash": "ᠪᠯᠣᠺ ᠤᠨ ᠬᠡᠱ",
   "All blocks": "ᠪᠦᠬᠦ ᠪᠯᠣᠺ",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "ᠡᠬᠢᠨ ᠦ ᠪᠯᠣᠺ ᠠᠴᠠ ᠣᠳᠣᠭᠠᠨ ᠤ ᠰᠡᠭᠦᠯ ᠦᠨ ᠪᠯᠣᠺ ᠬᠦᠷᠲᠡᠯᠡᠬᠢ ᠪᠦᠬᠦ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠪᠠᠲᠠᠯᠠᠭᠠᠵᠢᠭᠰᠠᠨ ᠪᠯᠣᠺ ᠤᠳ᠃",
-  "Search": "ᠬᠠᠢᠬᠤ"
+  "Search": "ᠬᠠᠢᠬᠤ",
+  "My history": "ᠮᠢᠨᠤ ᠲᠡᠦᠬᠡ",
+  "All history": "ᠪᠦᠬᠦ ᠲᠡᠦᠬᠡ",
+  "Connection proofs": "ᠬᠣᠯᠪᠣᠭᠠᠨ ᠤ ᠨᠣᠲᠠᠯᠭ᠎ᠠ",
+  "Recent wallet transactions · Confirmations": "ᠲᠦᠷᠢᠭᠦᠪᠴᠢ ᠶᠢᠨ ᠰᠡᠭᠦᠯ ᠦᠨ ᠭᠦᠶᠦᠯᠭᠡ · ᠪᠠᠲᠤᠯᠠᠯᠲᠠ",
+  "Select a block to view its transactions.": "ᠪᠯᠣᠺ ᠢ ᠰᠣᠩᠭᠣᠪᠠᠯ ᠲᠡᠭᠦᠨ ᠦ ᠪᠦᠬᠦ ᠭᠦᠶᠦᠯᠭᠡ ᠶᠢ ᠬᠠᠷᠠᠨ᠎ᠠ᠃",
+  "Output total SMW": "ᠭᠠᠷᠤᠯᠲᠠ ᠶᠢᠨ ᠨᠡᠶᠢᠲᠡ ᠬᠡᠮᠵᠢᠶ᠎ᠡ SMW",
+  "Inputs": "ᠣᠷᠣᠯᠲᠠ",
+  "Outputs": "ᠭᠠᠷᠤᠯᠲᠠ",
+  "Block is no longer in the active chain. Refresh the list.": "ᠡᠨᠡ ᠪᠯᠣᠺ ᠣᠳᠣ ᠢᠳᠡᠪᠬᠢᠲᠡᠢ ᠬᠡᠯᠬᠢᠶᠡᠨ ᠳᠦ ᠪᠠᠶᠢᠬᠤ ᠦᠭᠡᠢ᠃ ᠵᠢᠭᠰᠠᠭᠠᠯᠲᠠ ᠶᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠨ᠎ᠡ ᠦᠦ᠃",
+  "Full node · Wallet · Mining": "ᠪᠦᠷᠢᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ · ᠲᠦᠷᠢᠭᠦᠪᠴᠢ · ᠣᠯᠪᠣᠷᠢᠯᠠᠯᠲᠠ",
+  "Local lottery jobs": "ᠡᠨᠡ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠤᠭᠤᠯᠠᠭ᠎ᠠ ᠶᠢᠨ ᠠᠵᠢᠯ",
+  "Not selected": "ᠰᠣᠩᠭᠣᠭᠳᠠᠭ᠎ᠠ ᠦᠭᠡᠢ",
+  "Selected pending": "ᠰᠣᠩᠭᠣᠭᠳᠠᠵᠤ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Selected complete": "ᠰᠣᠩᠭᠣᠭᠳᠠᠵᠤ ᠳᠠᠭᠤᠰᠤᠭᠰᠠᠨ"
 }

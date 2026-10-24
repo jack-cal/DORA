@@ -454,6 +454,9 @@ class AppService:
     def block_history(self, offset=0, limit=50, height=None):
         return self._submit('block_history', offset, limit, height)
 
+    def block_transactions(self, block_hash, offset=0, limit=50):
+        return self._submit('block_transactions', block_hash, offset, limit)
+
     def transaction_history(self, offset=0, limit=50):
         return self._submit('transaction_history', offset, limit)
 
@@ -889,7 +892,12 @@ class AppService:
             from .block_history import block_history
             runtime = self._node.boundary_runtime
             own_id = runtime.keys.node_id if runtime else None
-            return await asyncio.to_thread(block_history, self.database, *arguments, own_id)
+            result = await asyncio.to_thread(block_history, self.database, *arguments, own_id)
+            result['lottery_jobs'] = runtime.job_counts() if runtime is not None else None
+            return result
+        if operation == 'block_transactions':
+            from .block_history import block_transactions
+            return await asyncio.to_thread(block_transactions, self.database, *arguments, self.network)
         if operation == 'transaction_history':
             if self._address is None:
                 raise AppServiceError('Select a wallet before reading transaction history')

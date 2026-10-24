@@ -321,5 +321,19 @@
   "Block hash": "தொகுதி ஹாஷ்",
   "All blocks": "அனைத்து தொகுதிகள்",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "முதல் தொகுதியிலிருந்து சங்கிலியின் தற்போதைய கடைசித் தொகுதி வரை, அனைத்து முனைகளின் சரிபார்க்கப்பட்ட தொகுதிகள்.",
-  "Search": "தேடு"
+  "Search": "தேடு",
+  "My history": "எனது வரலாறு",
+  "All history": "முழு வரலாறு",
+  "Connection proofs": "இணைப்புச் சான்றுகள்",
+  "Recent wallet transactions · Confirmations": "பணப்பையின் அண்மைப் பரிவர்த்தனைகள் · உறுதிப்படுத்தல்கள்",
+  "Select a block to view its transactions.": "ஒரு தொகுதியின் அனைத்துப் பரிவர்த்தனைகளையும் பார்க்க அதைத் தேர்ந்தெடுக்கவும்.",
+  "Output total SMW": "மொத்த வெளியீடு SMW",
+  "Inputs": "உள்ளீடுகள்",
+  "Outputs": "வெளியீடுகள்",
+  "Block is no longer in the active chain. Refresh the list.": "இந்தத் தொகுதி இனி செயலில் உள்ள சங்கிலியில் இல்லை. பட்டியலைப் புதுப்பிக்கவும்.",
+  "Full node · Wallet · Mining": "முழு முனை · பணப்பை · சுரங்கம்",
+  "Local lottery jobs": "இந்த முனையின் குலுக்கல் பணிகள்",
+  "Not selected": "தேர்வாகவில்லை",
+  "Selected pending": "தேர்வாகி நிலுவையில் உள்ளது",
+  "Selected complete": "தேர்வாகி முடிந்தது"
 }

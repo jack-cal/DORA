@@ -80,6 +80,10 @@ class LinkUpgradeTests(unittest.TestCase):
         before=[b.serialize() for b in pair];self.chain.boundary.add_proof(p)
         self.assertEqual(before,[self.chain.get_block(b.block_hash()).serialize() for b in pair])
         self.assertEqual(1,self.chain.boundary.score(self.chain._path(pair[1].block_hash())))
+        from sumuww.block_history import block_history
+        public=block_history(self.path)
+        self.assertEqual(1,public['stored_proofs'])
+        self.assertEqual([1,1],[b['proofs'] for b in public['blocks'][:2]])
         for changed in ('left','right'):
             bad=copy.deepcopy(p);bad[changed]['data']='00'*96;bad[changed]['codec']='raw'
             with self.assertRaises(Exception):self.chain.boundary.add_proof(bad)

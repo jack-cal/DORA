@@ -4,6 +4,7 @@ import json
 import secrets
 import time
 from collections import OrderedDict
+from cryptography.exceptions import InvalidSignature
 from .link_crypto import (POLICY,Identity,canonical,digest,require,verify_frame,producer,
                          message,slot,sample,compress,verify,proof_selected,PROOF_SELECTION_DENOMINATOR)
 from . import link_beacon as beacon
@@ -25,6 +26,7 @@ class LinkRuntime:
         self.proposed=set();self.omit_beacon=False;self.omit_witness=False;self.signature_delay=0
         self.omit_dkg=False;self.omit_dkg_probe=False;self.recovery=BeaconRecovery(self)
         self.metrics={'completed':0,'rejected':0,'skipped':0,'pending':0,'lotteries':[]}
+        self._job_count_cache=None
     def spawn(self,awaitable):
         task=asyncio.create_task(awaitable);self.tasks.add(task)
         def finished(t):
@@ -43,7 +45,38 @@ class LinkRuntime:
         return {'activation_height':self.state.activation,'block_policy':POLICY,'signing_node_id':self.keys.node_id,
                 'authenticated_connected_nodes':len(self.sessions()),'discovered_nodes':len(self.contacts),
                 'pending_links':len(self.jobs),'last_error':self.last_error,'selection_probability':1/PROOF_SELECTION_DENOMINATOR,
-                'completed_links':self.metrics['completed'],'beacon_recovery':self.recovery.info()}
+                'completed_links':self.metrics['completed'],'beacon_recovery':self.recovery.info(),
+                'stored_complete_proofs':self.node.chain.connection.execute('SELECT COUNT(*) FROM link_proofs').fetchone()[0],
+                'lottery_jobs':self.job_counts()}
+
+    def job_counts(self):
+        """Do not confuse a nonselected finished lottery with a complete proof."""
+        token=self.keys.db.total_changes
+        if self._job_count_cache is not None and self._job_count_cache[0]==token:
+            return dict(self._job_count_cache[1])
+        counts={'total':0,'not_selected':0,'awaiting_lottery':0,'selected_pending':0,'selected_complete':0}
+        for done,selected in self.keys.db.execute("SELECT json_extract(value,'$.done'),json_type(value,'$.message') FROM link_private WHERE name GLOB 'job:*'"):
+            counts['total']+=1
+            counts[('selected_complete' if done else 'selected_pending') if selected=='object' else
+                   ('not_selected' if done else 'awaiting_lottery')]+=1
+        self._job_count_cache=(token,counts)
+        return dict(counts)
+
+    async def responsive_candidates(self):
+        """Probe the entire discovery inventory through relays, before sampling.
+
+        A failed probe does not delete a contact or restrict future discovery.
+        The existing signed nonce echo works with previous v2 peers as well.
+        These are local availability observations, not consensus membership.
+        """
+        candidates=tuple(sorted(self.contacts));nonce=secrets.token_hex(32)
+        async def probe(node_id):
+            try:
+                response=await self.request(node_id,'dkg_probe',{'nonce':nonce})
+                return node_id if response==nonce else None
+            except (ValueError,TimeoutError,OSError):return None
+        responses=await asyncio.gather(*(probe(i) for i in candidates))
+        return [i for i in responses if i is not None]
     async def hello(self,session,**kwargs):
         if session.boundary_hello_sent:return
         session.boundary_hello_sent=True
@@ -256,25 +289,69 @@ class LinkRuntime:
         ar=self.node.chain._row(a);found=self.state.anchor(self.node.chain._path(ar[1]));setup=found[1]
         saved=self.keys.get('job:'+a.hex()) or {'target':b.hex()};self.keys.put('job:'+a.hex(),saved)
         b=bytes.fromhex(saved['target'])
+        if saved.get('done'):return
+        def persist(phase=None):
+            if phase is not None:saved['phase']=phase
+            self.keys.put('job:'+a.hex(),saved)
+        saved['attempts']=saved.get('attempts',0)+1
+        saved['last_error']=None;saved['waiting_for']=[]
         try:
             if 'message' not in saved:
+                persist('participants')
+                candidates=await self.responsive_candidates()
+                saved['responsive_candidates']=len(candidates)
+                require(len(candidates)>=3,'Fewer than three discovered participants replied; mining continues')
+                saved['candidates']=candidates;persist('beacon')
                 s=slot(self.network,ar[2],ar[1].hex());signature=await self.obtain_beacon(a.hex(),setup,s)
                 random=beacon.verify_beacon(setup,s,signature)
                 if not proof_selected(random):
-                    saved['done']=True;self.keys.put('job:'+a.hex(),saved);self.metrics['skipped']+=1;return
-                signers=sample(random,self.contacts)
+                    saved['done']=True;persist('not_selected');self.metrics['skipped']+=1;return
+                signers=sample(random,candidates)
                 saved['message']=message(self.network,a.hex(),b.hex(),ar[2],ar[1].hex(),signers,signature)
-                saved['candidates']=sorted(self.contacts);self.keys.put('job:'+a.hex(),saved)
-                self.metrics['lotteries'].append({'source':a.hex(),'candidate_count':len(self.contacts),'signers':signers})
+                persist('witnesses')
+                self.metrics['lotteries'].append({'source':a.hex(),'candidate_count':len(candidates),'signers':signers})
             m=saved['message']
-            pieces=await asyncio.gather(*(self.request(i,'sign',m) for i in m['signers']))
-            proof={'message':m,'left':compress(b''.join(bytes.fromhex(p['left']) for p in pieces)),
-                   'right':compress(b''.join(bytes.fromhex(p['right']) for p in pieces))}
+            # Keep legacy A/B/team messages intact. Never erase a signature lock
+            # or silently ask a witness to sign another message for the slot.
+            def validate_piece(signer,piece):
+                require(type(piece) is dict and set(piece)=={'left','right'},'Invalid witness response')
+                left=bytes.fromhex(piece['left']);right=bytes.fromhex(piece['right'])
+                require(len(left)==32 and len(right)==32,'Invalid witness signature halves')
+                verify(signer,m,(left+right).hex())
+            pieces={}
+            for signer,piece in saved.get('pieces',{}).items():
+                if signer not in m['signers']:continue
+                try:validate_piece(signer,piece)
+                except (ValueError,TypeError,KeyError,InvalidSignature):continue
+                pieces[signer]=piece
+            saved['pieces']=pieces;persist('witnesses')
+            missing=[i for i in m['signers'] if i not in pieces]
+            errors={}
+            async def collect(signer):
+                try:
+                    piece=await self.request(signer,'sign',m)
+                    validate_piece(signer,piece)
+                    pieces[signer]=piece
+                    persist() # Retain each valid reply, even if others fail.
+                except Exception as error:
+                    errors[signer]=str(error) or type(error).__name__
+            await asyncio.gather(*(collect(i) for i in missing))
+            saved['waiting_for']=[i for i in m['signers'] if i not in pieces]
+            saved['witness_errors']=errors
+            require(not saved['waiting_for'],f"Waiting for {len(saved['waiting_for'])} of 3 original witnesses; valid replies are saved")
+            ordered=[pieces[i] for i in m['signers']]
+            proof={'message':m,'left':compress(b''.join(bytes.fromhex(p['left']) for p in ordered)),
+                   'right':compress(b''.join(bytes.fromhex(p['right']) for p in ordered))}
             source_body={'domain':'sumuww-source-attachment-v1',**proof}
             proof['source_receipt']=self.keys.sign(source_body)
+            persist('target_receipt')
             proof['target_receipt']=await self.request(producer(self.node.chain.get_block(b)),'attach',proof)
-            self.state.add_proof(proof);saved['done']=True;self.keys.put('job:'+a.hex(),saved)
+            persist('verification')
+            self.state.add_proof(proof);saved['done']=True;persist('complete')
             self.metrics['completed']+=1;await self.publish('proof',proof)
+        except Exception as error:
+            saved['last_error']=str(error) or type(error).__name__;persist()
+            raise
         finally:
             self.jobs.pop(a,None)
             self.retry_after[a]=time.monotonic()+30

@@ -321,5 +321,19 @@
   "Block hash": "Block hash",
   "All blocks": "All blocks",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Validated blocks from genesis to the current tip. Includes all nodes.",
-  "Search": "Search"
+  "Search": "Search",
+  "My history": "My history",
+  "All history": "All history",
+  "Connection proofs": "Connection proofs",
+  "Recent wallet transactions · Confirmations": "Recent wallet transactions · Confirmations",
+  "Select a block to view its transactions.": "Select a block to view its transactions.",
+  "Output total SMW": "Output total SMW",
+  "Inputs": "Inputs",
+  "Outputs": "Outputs",
+  "Block is no longer in the active chain. Refresh the list.": "Block is no longer in the active chain. Refresh the list.",
+  "Full node · Wallet · Mining": "Full node · Wallet · Mining",
+  "Local lottery jobs": "Local lottery jobs",
+  "Not selected": "Not selected",
+  "Selected pending": "Selected pending",
+  "Selected complete": "Selected complete"
 }

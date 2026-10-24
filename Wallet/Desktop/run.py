@@ -20,7 +20,7 @@ from sumuww.vertical_text import VerticalLabel, VerticalButton
 from sumuww.primitives import format_amount
 import wallet_runtime as runtime
 
-VERSION = '1.0.1'
+VERSION = '1.0.2'
 
 
 class WalletApp:

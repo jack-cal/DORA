@@ -321,5 +321,19 @@
   "Block hash": "區塊雜湊",
   "All blocks": "所有區塊",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "查看從創世區塊到目前鏈端的已驗證區塊，包括所有節點產生的區塊。",
-  "Search": "搜尋"
+  "Search": "搜尋",
+  "My history": "我的紀錄",
+  "All history": "全部紀錄",
+  "Connection proofs": "連線證明",
+  "Recent wallet transactions · Confirmations": "錢包近期交易 · 確認數",
+  "Select a block to view its transactions.": "選取區塊即可查看其中的所有交易。",
+  "Output total SMW": "輸出總額 SMW",
+  "Inputs": "輸入",
+  "Outputs": "輸出",
+  "Block is no longer in the active chain. Refresh the list.": "此區塊已不在目前主鏈中，請重新整理清單。",
+  "Full node · Wallet · Mining": "完整節點 · 錢包 · 挖礦",
+  "Local lottery jobs": "本節點抽籤作業",
+  "Not selected": "未選中已結束",
+  "Selected pending": "選中待完成",
+  "Selected complete": "選中已完成"
 }

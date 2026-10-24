@@ -321,5 +321,19 @@
   "Block hash": "Blok özeti",
   "All blocks": "Tüm bloklar",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Başlangıç bloğundan zincirin güncel ucuna kadar, tüm düğümlerin doğrulanmış blokları.",
-  "Search": "Ara"
+  "Search": "Ara",
+  "My history": "Geçmişim",
+  "All history": "Tüm geçmiş",
+  "Connection proofs": "Bağlantı kanıtları",
+  "Recent wallet transactions · Confirmations": "Cüzdanın son işlemleri · Onaylar",
+  "Select a block to view its transactions.": "Bir bloktaki tüm işlemleri görmek için bloğu seçin.",
+  "Output total SMW": "Çıktı toplamı SMW",
+  "Inputs": "Girdiler",
+  "Outputs": "Çıktılar",
+  "Block is no longer in the active chain. Refresh the list.": "Bu blok artık etkin zincirde değil. Listeyi yenileyin.",
+  "Full node · Wallet · Mining": "Tam düğüm · Cüzdan · Madencilik",
+  "Local lottery jobs": "Bu düğümün çekilişleri",
+  "Not selected": "Seçilmedi",
+  "Selected pending": "Seçildi, bekliyor",
+  "Selected complete": "Seçildi, tamamlandı"
 }

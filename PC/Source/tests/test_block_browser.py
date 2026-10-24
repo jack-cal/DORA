@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from sumuww.app_service import AppService
-from sumuww.block_history import block_history
+from sumuww.block_history import block_history, block_transactions
 from sumuww.chain import Chain
 from sumuww.link_crypto import producer_output
 from sumuww.peer import PeerNode
@@ -81,7 +81,43 @@ class BlockHistoryTests(unittest.TestCase):
                 with patch('sumuww.block_history.block_history',side_effect=reader):
                     result=service.block_history(height=0).result(timeout=5)
                 self.assertEqual([0],[r['height'] for r in result['blocks']])
+                detail=service.block_transactions(result['blocks'][0]['hash']).result(timeout=5)
+                self.assertTrue(detail['transactions'][0]['coinbase'])
             finally:service.stop().result(timeout=10)
+
+    def test_other_wallet_rewards_and_transfers_are_visible_but_recent_stays_private(self):
+        from sumuww.wallet_history import WalletHistory
+        from sumuww.wallet import sign_p2wpkh
+        from sumuww.transaction import Transaction, TxInput, TxOutput
+        from sumuww.address import encode_address
+        other=RegtestKey.from_int(702);recipient=RegtestKey.from_int(703)
+        blocks=self.chain.mine(other.script_pubkey,100)
+        reward=blocks[0].transactions[0]
+        tx=Transaction(2,(TxInput(reward.txid(),0),),(TxOutput(reward.outputs[0].value-1000,recipient.script_pubkey),))
+        tx=sign_p2wpkh(tx,0,reward.outputs[0],other)
+        self.chain.submit_transaction(tx)
+        block=self.chain.mine(other.script_pubkey)[0]
+        digest=block.block_hash()[::-1].hex()
+        details=block_transactions(self.database,digest,network=REGTEST)
+        self.assertEqual([True,False],[t['coinbase'] for t in details['transactions']])
+        self.assertEqual(tx.txid()[::-1].hex(),details['transactions'][1]['txid'])
+        self.assertEqual(encode_address(recipient.script_pubkey,network=REGTEST),details['transactions'][1]['outputs'][0]['address'])
+        self.assertEqual(reward.txid()[::-1].hex(),details['transactions'][1]['inputs'][0]['txid'])
+        self.assertEqual([],WalletHistory(SCRIPT).recent(self.chain))
+        self.assertEqual(1,len(block_transactions(self.database,digest,offset=1,limit=1,network=REGTEST)['transactions']))
+        self.assertEqual(1,details['confirmations'])
+        self.chain.mine(SCRIPT)
+        self.assertEqual(2,block_transactions(self.database,digest,network=REGTEST)['confirmations'])
+
+    def test_details_reject_orphan_block_after_reorganization(self):
+        genesis=self.chain.tip_hash
+        old=mine(self.chain,LOCAL)
+        fork=mine(self.chain,REMOTE,parent_hash=genesis,extra_nonce=31)
+        mine(self.chain,REMOTE,parent_hash=fork.block_hash())
+        with self.assertRaisesRegex(ValueError,'active chain'):
+            block_transactions(self.database,old.block_hash()[::-1].hex(),network=REGTEST)
+        for value in ('bad','00'*32):
+            with self.assertRaises(ValueError):block_transactions(self.database,value)
 
 class BlockHistoryPeerTests(unittest.IsolatedAsyncioTestCase):
     async def test_three_real_nodes_and_browsing_while_mining(self):

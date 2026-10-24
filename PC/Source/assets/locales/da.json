@@ -321,5 +321,19 @@
   "Block hash": "Blokhash",
   "All blocks": "Alle blokke",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Validerede blokke fra genesisblokken til kædens nuværende top, fra alle noder.",
-  "Search": "Søg"
+  "Search": "Søg",
+  "My history": "Min historik",
+  "All history": "Hele historikken",
+  "Connection proofs": "Forbindelsesbeviser",
+  "Recent wallet transactions · Confirmations": "Seneste wallet-transaktioner · Bekræftelser",
+  "Select a block to view its transactions.": "Vælg en blok for at se alle dens transaktioner.",
+  "Output total SMW": "Samlet output SMW",
+  "Inputs": "Input",
+  "Outputs": "Output",
+  "Block is no longer in the active chain. Refresh the list.": "Denne blok er ikke længere i den aktive kæde. Opdater listen.",
+  "Full node · Wallet · Mining": "Fuld node · Wallet · Mining",
+  "Local lottery jobs": "Denne nodes lodtrækninger",
+  "Not selected": "Ikke udvalgt",
+  "Selected pending": "Udvalgt, afventer",
+  "Selected complete": "Udvalgt, afsluttet"
 }

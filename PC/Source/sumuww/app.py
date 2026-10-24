@@ -473,7 +473,7 @@ class _HistoryDialog(tk.Toplevel):
         self.total = 0
         self.height = 0
         self.transactions = []
-        self.title(tr('Full history') + ' · SUMUWW')
+        self.title(tr('My history') + ' · SUMUWW')
         self.transient(owner.root)
         self.geometry('1080x520')
         self.minsize(820, 380)
@@ -608,7 +608,7 @@ class _HistoryDialog(tk.Toplevel):
     def refresh_language(self):
         if self._closed:
             return
-        self.title(tr('Full history') + ' · SUMUWW')
+        self.title(tr('My history') + ' · SUMUWW')
         for widget in self.owner._walk_widgets(self):
             message = getattr(widget, '_localized_text', None)
             if message is not None:
@@ -751,7 +751,7 @@ class SumuwwApp:
         self._titles = titles
         titles.pack(side='left')
         _label(titles, text=tr('SUMUWW'), style='Title.TLabel').pack(anchor='w')
-        _label(titles, text=tr('Private-key wallet · Send · Mine'), style='Muted.TLabel', wraplength=340).pack(anchor='w', pady=(2, 0))
+        _label(titles, text=tr('Full node · Wallet · Mining'), style='Muted.TLabel', wraplength=340).pack(anchor='w', pady=(2, 0))
         header_right = ttk.Frame(header)
         header_right.pack(side='right', anchor='n')
         language_row = ttk.Frame(header_right)
@@ -924,10 +924,12 @@ class SumuwwApp:
         history_card.columnconfigure(0, weight=1)
         history_heading = ttk.Frame(history_card, style='Card.TFrame')
         history_heading.grid(row=0, column=0, columnspan=2, sticky='ew', pady=(0, 5))
-        _label(history_heading, text=tr('Recent transactions · Confirmations'), style='CardTitle.TLabel', wraplength=410).pack(side='left')
+        _label(history_heading, text=tr('Recent wallet transactions · Confirmations'), style='CardTitle.TLabel', wraplength=300).pack(side='left')
         history_actions = ttk.Frame(history_heading, style='Card.TFrame')
         history_actions.pack(side='right')
-        self.history_button = _button(history_actions, text=tr('Full history'), command=self._open_history)
+        self.all_history_button = _button(history_actions, text=tr('All history'), command=self._open_blocks)
+        self.all_history_button.pack(side='right', padx=(10, 0))
+        self.history_button = _button(history_actions, text=tr('My history'), command=self._open_history)
         self.history_button.pack(side='right', padx=(10, 0))
         _label(history_actions, text=tr('Last 10 · Confirmations follow the current chain'), style='CardMuted.TLabel', wraplength=250).pack(side='right')
         self.transaction_table = VerticalTreeview(history_card, columns=('kind', 'amount', 'confirmations', 'txid'), show='headings', height=3, selectmode='browse')
@@ -1504,6 +1506,7 @@ class SumuwwApp:
         self.rpc_button.configure(state='normal' if self._rpc_can_act() else 'disabled')
         wallet = bool(self._wallet)
         self.blocks_button.configure(state='normal' if self._started and not self._closing else 'disabled')
+        self.all_history_button.configure(state='normal' if self._started and not self._closing else 'disabled')
         self.history_button.configure(state='normal' if self._started and wallet and not (self._closing or self._busy or self._dialog_open) else 'disabled')
         unlocked = wallet and bool(self._wallet.get('unlocked'))
         for button in (self.create_button, self.open_button, self.restore_button, self.peer_button,

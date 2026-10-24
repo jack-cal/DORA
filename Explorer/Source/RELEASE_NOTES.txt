@@ -1,3 +1,6 @@
+Documentation revision 2 (2026-10-24), local and unpublished. Explorer
+executable 0.4.6 is unchanged. The results below are historical 0.4.6 checks.
+
 # SUMUWW Explorer 0.4.6 — Windows
 
 Corrects 164 translated entries across 19 languages, including blockchain block/hash terminology, time labels, interval-chart text and untranslated phrases. The compiled language bundle matches the source catalogs. All 34 UI languages remain available.
@@ -16,4 +19,4 @@ This patch does not change consensus. The existing 20% asynchronous post-PoW con
 
 English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
 
-See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.
+See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. That earlier suite statement concerned P2P 0.1.9. Current P2P Full/Light 0.3.0 require height-9100 activation and synchronized nodes; Explorer itself does not exchange coins. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.

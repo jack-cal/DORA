@@ -321,5 +321,19 @@
   "Block hash": "Хеш блока",
   "All blocks": "Все блоки",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверенные блоки от генезис-блока до текущей вершины цепи, созданные всеми узлами.",
-  "Search": "Поиск"
+  "Search": "Поиск",
+  "My history": "Моя история",
+  "All history": "Общая история",
+  "Connection proofs": "Доказательства связи",
+  "Recent wallet transactions · Confirmations": "Последние транзакции кошелька · Подтверждения",
+  "Select a block to view its transactions.": "Выберите блок, чтобы увидеть все его транзакции.",
+  "Output total SMW": "Сумма выходов SMW",
+  "Inputs": "Входы",
+  "Outputs": "Выходы",
+  "Block is no longer in the active chain. Refresh the list.": "Этот блок больше не входит в активную цепочку. Обновите список.",
+  "Full node · Wallet · Mining": "Полный узел · Кошелёк · Майнинг",
+  "Local lottery jobs": "Розыгрыши этого узла",
+  "Not selected": "Не выбраны",
+  "Selected pending": "Выбраны, ожидают",
+  "Selected complete": "Выбраны, завершены"
 }

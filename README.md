@@ -2,14 +2,19 @@
 
 SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynchronous connection-proof system. A block producer requests three witness signatures after PoW, binds the six signature halves to an exact parent/child pair, and relays completed evidence without making mining wait. Valid cumulative work remains the primary chain-selection rule.
 
+Local revision 2026-10-24: ordinary wallets now include core 0.57.38 connection
+recovery and synchronization fixes. The new wallet builds and docs-r2 packages
+are not GitHub releases. Full nodes PC 0.57.40 / Android 0.6.89 now include the
+connection-proof availability repair. Their release pages below contain the matching binaries, source archives and checksums.
+
 ## Downloads
 
 | Component | Version | Release | Source |
 |---|---|---|---|
-| Windows node, wallet and miner | 0.57.38 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.38) | [PC source](PC/Source) |
-| Android node, wallet and miner | 0.6.88 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.88) | [Android source](Android/Source) |
-| Windows ordinary wallet | 1.0.1 | [Windows wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.1) | [Source](Wallet/Desktop) |
-| Android ordinary wallet | 1.1.1 | [Android wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.1) | [Source](Wallet/Source) |
+| Windows node, wallet and miner | 0.57.40 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) | [PC source](PC/Source) |
+| Android node, wallet and miner | 0.6.89 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89) | [Android source](Android/Source) |
+| Windows ordinary wallet | 1.0.2 | Local build; not published | [Source](Wallet/Desktop) |
+| Android ordinary wallet | 1.1.2 | Local build; not published | [Source](Wallet/Source) |
 | Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) | [Source](Explorer/Source) |
 | P2P Full — SMW/BTC trading | 0.3.0 | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0) | [Source](P2P/Source) |
 | P2P Light — SMW/BTC trading | 0.3.0 | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0) | [Source](P2P/Source) |
@@ -19,9 +24,15 @@ Read the component instructions and SHA-256 checksums before installing. Keep ex
 
 P2P now has separate [Full and Light editions](P2P/Source/EDITIONS.md). Full uses your local Bitcoin Core; Light checks Bitcoin headers and transaction inclusion proofs using configurable TLS servers. Both require your local SUMUWW node and HTLC activation at height 9100. Light is SPV and depends on available honest servers for complete transaction histories.
 
-## Latest node update: Windows 0.57.38 / Android 0.6.88
+## Latest node update: Windows 0.57.40 / Android 0.6.89
 
-The latest packages include the All blocks browser, verified-contact recovery, corrected retry accounting, longer bounded waits for slow public peers and faster proof-history scheduling. Existing wallets, valid history and all 34 UI languages are retained.
+New proof jobs check responsiveness across the discovered identity inventory before selecting three witnesses. Valid replies survive retries and restarts; already selected jobs retain their original witnesses. PC public history shows all active-chain transactions and distinguishes nonselected lotteries, selected pending jobs, selected completed jobs and stored complete proofs. See the [repair verification and limits](Documentation/CONNECTION_PROOF_REPAIR_VERIFICATION.md). Completion still depends on the required participants being available.
+
+## Previously published: Windows 0.57.38 / Android 0.6.88
+
+[Windows 0.57.38 release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.38) and [Android 0.6.88 release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.88) describe the previous published binaries.
+
+Those packages introduced the All blocks browser, verified-contact recovery, corrected retry accounting, longer bounded waits for slow public peers and faster proof-history scheduling. Existing wallets, valid history and all 34 UI languages are retained.
 
 **A remaining connection interruption was observed.** The phone synchronized and hashed with the PC app off, but its sole external connection closed once and recovered after 13.39 seconds. Uninterrupted connectivity is not claimed. See the [measured verification and limitations](Documentation/PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).
 

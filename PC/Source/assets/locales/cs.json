@@ -321,5 +321,19 @@
   "Block hash": "Hash bloku",
   "All blocks": "Všechny bloky",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Ověřené bloky od počátečního bloku po aktuální konec řetězce, ze všech uzlů.",
-  "Search": "Hledat"
+  "Search": "Hledat",
+  "My history": "Moje historie",
+  "All history": "Úplná historie",
+  "Connection proofs": "Důkazy spojení",
+  "Recent wallet transactions · Confirmations": "Nedávné transakce peněženky · Potvrzení",
+  "Select a block to view its transactions.": "Vyberte blok a zobrazte všechny jeho transakce.",
+  "Output total SMW": "Součet výstupů SMW",
+  "Inputs": "Vstupy",
+  "Outputs": "Výstupy",
+  "Block is no longer in the active chain. Refresh the list.": "Tento blok již není v aktivním řetězci. Obnovte seznam.",
+  "Full node · Wallet · Mining": "Plný uzel · Peněženka · Těžba",
+  "Local lottery jobs": "Losování tohoto uzlu",
+  "Not selected": "Nevybráno",
+  "Selected pending": "Vybráno, čeká",
+  "Selected complete": "Vybráno, dokončeno"
 }

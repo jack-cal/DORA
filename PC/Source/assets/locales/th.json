@@ -321,5 +321,19 @@
   "Block hash": "แฮชของบล็อก",
   "All blocks": "บล็อกทั้งหมด",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "บล็อกที่ตรวจสอบแล้วตั้งแต่บล็อกแรกจนถึงปลายเชนปัจจุบัน รวมบล็อกจากทุกโหนด",
-  "Search": "ค้นหา"
+  "Search": "ค้นหา",
+  "My history": "ประวัติของฉัน",
+  "All history": "ประวัติทั้งหมด",
+  "Connection proofs": "หลักฐานการเชื่อมต่อ",
+  "Recent wallet transactions · Confirmations": "ธุรกรรมล่าสุดของกระเป๋า · จำนวนการยืนยัน",
+  "Select a block to view its transactions.": "เลือกบล็อกเพื่อดูธุรกรรมทั้งหมดในบล็อกนั้น",
+  "Output total SMW": "ยอดรวมเอาต์พุต SMW",
+  "Inputs": "อินพุต",
+  "Outputs": "เอาต์พุต",
+  "Block is no longer in the active chain. Refresh the list.": "บล็อกนี้ไม่ได้อยู่ในเชนที่ใช้งานแล้ว โปรดรีเฟรชรายการ",
+  "Full node · Wallet · Mining": "โหนดเต็ม · กระเป๋า · การขุด",
+  "Local lottery jobs": "งานสุ่มของโหนดนี้",
+  "Not selected": "ไม่ถูกเลือกและสิ้นสุดแล้ว",
+  "Selected pending": "ถูกเลือกและรอดำเนินการ",
+  "Selected complete": "ถูกเลือกและเสร็จสมบูรณ์"
 }

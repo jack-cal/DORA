@@ -165,7 +165,7 @@ Changes in 0.4.5:
 LANGUAGE SETTINGS
 First launch defaults to English. Use the language selector for 34 offline catalogs. An explicit browser language choice is retained. Missing/invalid settings fall back to English.
 
-Current consensus compatibility: the expected difficulty calculation now supplies the ten-block DGW schedule from height 9000. Read-only core modules match 0.57.34.
+Current consensus compatibility: the expected difficulty calculation now supplies the ten-block DGW schedule from height 9000. The bundled read-only core is based on 0.57.34; the current full node is 0.57.38. The consensus rules read by this Explorer are unchanged. See CURRENT_GUIDE.md for current component versions.
 
 UPGRADE AT HEIGHT 9000
 Valid legacy blocks through 8999 remain usable. Old-rule blocks at 9000 inclusive and above are rejected by upgraded nodes. Update miners and validating nodes. See CURRENT_GUIDE.md.

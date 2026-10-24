@@ -1,2 +1,2 @@
-SUMUWW Windows 0.57.38
-pc-v0.57.38
+SUMUWW Windows 0.57.40
+pc-v0.57.40

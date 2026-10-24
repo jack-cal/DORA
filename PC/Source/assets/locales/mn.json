@@ -321,5 +321,19 @@
   "Block hash": "Блокийн хэш",
   "All blocks": "Бүх блок",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Эхний блокоос гинжний одоогийн сүүлийн блок хүртэлх бүх зангилааны баталгаажсан блокууд.",
-  "Search": "Хайх"
+  "Search": "Хайх",
+  "My history": "Миний түүх",
+  "All history": "Бүх түүх",
+  "Connection proofs": "Холболтын нотолгоо",
+  "Recent wallet transactions · Confirmations": "Түрийвчийн сүүлийн гүйлгээ · Баталгаажуулалт",
+  "Select a block to view its transactions.": "Блокийг сонговол доторх бүх гүйлгээг харна.",
+  "Output total SMW": "Гаралтын нийт дүн SMW",
+  "Inputs": "Оролт",
+  "Outputs": "Гаралт",
+  "Block is no longer in the active chain. Refresh the list.": "Энэ блок идэвхтэй гинжинд байхаа больсон. Жагсаалтыг шинэчилнэ үү.",
+  "Full node · Wallet · Mining": "Бүрэн зангилаа · Түрийвч · Олборлолт",
+  "Local lottery jobs": "Энэ зангилааны сугалааны ажлууд",
+  "Not selected": "Сонгогдоогүй, дууссан",
+  "Selected pending": "Сонгогдсон, хүлээгдэж буй",
+  "Selected complete": "Сонгогдсон, дууссан"
 }

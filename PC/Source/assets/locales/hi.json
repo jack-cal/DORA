@@ -321,5 +321,19 @@
   "Block hash": "ब्लॉक हैश",
   "All blocks": "सभी ब्लॉक",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "जेनेसिस ब्लॉक से वर्तमान अंतिम ब्लॉक तक के सत्यापित ब्लॉक, सभी नोड सहित।",
-  "Search": "खोजें"
+  "Search": "खोजें",
+  "My history": "मेरा इतिहास",
+  "All history": "पूरा इतिहास",
+  "Connection proofs": "कनेक्शन प्रमाण",
+  "Recent wallet transactions · Confirmations": "वॉलेट के हाल के लेन-देन · पुष्टियाँ",
+  "Select a block to view its transactions.": "किसी ब्लॉक के सभी लेन-देन देखने के लिए उसे चुनें।",
+  "Output total SMW": "कुल आउटपुट SMW",
+  "Inputs": "इनपुट",
+  "Outputs": "आउटपुट",
+  "Block is no longer in the active chain. Refresh the list.": "यह ब्लॉक अब सक्रिय चेन में नहीं है। सूची रीफ़्रेश करें।",
+  "Full node · Wallet · Mining": "पूर्ण नोड · वॉलेट · माइनिंग",
+  "Local lottery jobs": "इस नोड के ड्रॉ कार्य",
+  "Not selected": "चयन नहीं हुआ",
+  "Selected pending": "चयनित, लंबित",
+  "Selected complete": "चयनित, पूर्ण"
 }

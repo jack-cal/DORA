@@ -1,3 +1,37 @@
+SUMUWW PC 0.57.40 / Android full node 0.6.89 (149) — 2026-10-24
+
+Connection proof availability and accounting
+- Before a new job chooses its three witnesses, probe the complete discovered identity inventory with authenticated nonce echoes through the existing relay protocol. Sample three distinct currently responsive identities with the verified beacon. No neighbor-only pool, participant quota, paid admission or deletion of silent contacts is introduced.
+- This is a local availability policy, not a consensus membership list. A probe can time out for an otherwise honest node; later jobs probe it again. A participant can also disappear after replying, so proof completion is not guaranteed.
+- Existing selected jobs retain their exact block pair, beacon and three-witness message. Existing signature locks are never erased or bypassed. An old job still needs its original witnesses to return.
+- Verify and persist each witness's two signature halves independently. Retries and restarts reuse valid saved replies rather than discarding them when another witness or the target producer is temporarily unavailable.
+- Persist the current phase, missing witnesses and last error. Public status separates nonselected finished lotteries, selected pending jobs, selected completed jobs and stored complete proofs.
+- PC All history shows these separate local job counters. A beacon setup can serve many lotteries: setup records must not be subtracted from selected-job counts.
+- The previous PC 0.57.39 public block/transaction browser is included. Recent wallet history remains wallet-only.
+
+Compatibility
+The v2 attachment format, 20 percent event selection, three-signature requirement, PoW, chain selection, signature locks, stored history and wallet formats remain unchanged. Existing v2 peers already support the authenticated probe. Ordinary wallets and external nodes are not automatically upgraded. Android retains its existing UI while receiving the proof job repair. Release tags: pc-v0.57.40 and android-v0.6.89. The matching GitHub release pages record publication status and verified assets.
+
+Earlier release notes follow (historical versions).
+
+SUMUWW Windows full node 0.57.39 — 2026-10-24
+
+Public history and wallet history
+- Recent wallet transactions / Confirmations shows only the selected wallet's last 10 transactions.
+- All history, beside the recent list, opens the same public browser as All blocks in the top bar. No wallet is required.
+- The public list includes all producers on the validated local active chain, from height 0 to the current tip. Browse 50 blocks per page or search by height.
+- Select a block to see every transaction, including other wallets' mining rewards and transfers. Transactions are paginated in groups of 50; expand a transaction to inspect its input references and every output address or script.
+- Amounts in the public list are output totals, not the selected wallet's gain or loss. Confirmations are computed from the current read snapshot. A block removed from the active chain is rejected when its details are refreshed.
+- My history keeps the separate wallet-only full history, including pending wallet transactions.
+- Connection proofs displays the number of locally stored complete attachments and the count associated with each listed block. The total can include stored side-branch evidence. A beacon setup is not a completed proof; zero stored proofs must not be described as successful completion.
+- Public history does not include unreceived data, inactive-chain blocks or unconfirmed network transactions. It covers the full locally validated active chain.
+- All new labels were directly authored in 34 languages. Saved language choices are retained.
+
+Compatibility and publication
+No consensus, witness selection, monetary, wallet-format, transport or mining scheduling rules change in this release. This PC release is a local build; it has not been published to GitHub. Android full node remains 0.6.88, ordinary wallets remain 1.0.2 / 1.1.2.
+
+Earlier release notes follow (historical versions).
+
 SUMUWW PC 0.57.38 / Android 0.6.88 (148)
 
 All blocks

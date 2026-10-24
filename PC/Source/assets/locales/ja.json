@@ -321,5 +321,19 @@
   "Block hash": "ブロックハッシュ",
   "All blocks": "すべてのブロック",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "ジェネシスから現在の先端まで、すべてのノードが生成した検証済みブロックを表示します。",
-  "Search": "検索"
+  "Search": "検索",
+  "My history": "自分の履歴",
+  "All history": "すべての履歴",
+  "Connection proofs": "接続証明",
+  "Recent wallet transactions · Confirmations": "ウォレットの最近の取引 · 承認数",
+  "Select a block to view its transactions.": "ブロックを選択すると、その中のすべての取引を確認できます。",
+  "Output total SMW": "出力合計 SMW",
+  "Inputs": "入力",
+  "Outputs": "出力",
+  "Block is no longer in the active chain. Refresh the list.": "このブロックは現在のチェーンから外れました。一覧を更新してください。",
+  "Full node · Wallet · Mining": "フルノード · ウォレット · マイニング",
+  "Local lottery jobs": "このノードの抽選処理",
+  "Not selected": "未選択で終了",
+  "Selected pending": "選択後の完了待ち",
+  "Selected complete": "選択後に完了"
 }

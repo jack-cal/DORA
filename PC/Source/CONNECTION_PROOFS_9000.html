@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>SUMUWW · current height-9000 protocol</h1>
-<p>PC 0.57.34 / Android 0.6.84 · 2026-10-22</p>
+<p>Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89</p>
 <h2>History, money and compatibility</h2>
 <p>The genesis and all pre-9000 consensus rules remain unchanged. Valid history up
 to 8999 is accepted even when an old peer advertises an invalid continuation.
@@ -32,8 +32,7 @@ specific direct child B. The job keeps the exact A/B target across retries. A
 verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.</p>
-<p>The producer samples three distinct identities without replacement from its
-entire locally discovered identity set, using rejection sampling. There are no
+<p>Starting with PC 0.57.40 / Android 0.6.89, new jobs probe the entire discovered identity inventory through relays and then randomly sample three responsive identities with the verified beacon. Silent contacts remain discovered and are retried by later jobs. Existing selected jobs retain their original message and witnesses. Availability observations are local and do not define consensus membership. There are no
 registration fees, membership admissions, exits, one-person checks, per-IP
 lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
 through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate

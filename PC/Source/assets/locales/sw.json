@@ -321,5 +321,19 @@
   "Block hash": "Hashi ya bloku",
   "All blocks": "Bloku zote",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Bloku zilizothibitishwa kuanzia bloku ya mwanzo hadi ya sasa, kutoka nodi zote.",
-  "Search": "Tafuta"
+  "Search": "Tafuta",
+  "My history": "Historia yangu",
+  "All history": "Historia yote",
+  "Connection proofs": "Uthibitisho wa miunganisho",
+  "Recent wallet transactions · Confirmations": "Miamala ya karibuni ya pochi · Uthibitisho",
+  "Select a block to view its transactions.": "Chagua bloku ili kuona miamala yake yote.",
+  "Output total SMW": "Jumla ya matokeo SMW",
+  "Inputs": "Ingizo",
+  "Outputs": "Matokeo",
+  "Block is no longer in the active chain. Refresh the list.": "Bloku hii haipo tena kwenye mnyororo unaotumika. Onyesha upya orodha.",
+  "Full node · Wallet · Mining": "Nodi kamili · Pochi · Uchimbaji",
+  "Local lottery jobs": "Droo za nodi hii",
+  "Not selected": "Hazikuchaguliwa",
+  "Selected pending": "Zilizochaguliwa, zinasubiri",
+  "Selected complete": "Zilizochaguliwa, zimekamilika"
 }

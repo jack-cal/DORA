@@ -321,5 +321,19 @@
   "Block hash": "بصمة الكتلة",
   "All blocks": "جميع الكتل",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "الكتل التي تم التحقق منها، من كتلة التكوين حتى أحدث كتلة، وتشمل جميع العقد.",
-  "Search": "بحث"
+  "Search": "بحث",
+  "My history": "سجلي",
+  "All history": "السجل الكامل",
+  "Connection proofs": "إثباتات الاتصال",
+  "Recent wallet transactions · Confirmations": "معاملات المحفظة الأخيرة · التأكيدات",
+  "Select a block to view its transactions.": "اختر كتلة لعرض معاملاتها.",
+  "Output total SMW": "إجمالي المخرجات SMW",
+  "Inputs": "المدخلات",
+  "Outputs": "المخرجات",
+  "Block is no longer in the active chain. Refresh the list.": "لم تعد هذه الكتلة ضمن السلسلة النشطة. حدّث القائمة.",
+  "Full node · Wallet · Mining": "عقدة كاملة · محفظة · تعدين",
+  "Local lottery jobs": "عمليات السحب لهذه العقدة",
+  "Not selected": "لم تُختَر",
+  "Selected pending": "مختارة قيد الانتظار",
+  "Selected complete": "مختارة مكتملة"
 }

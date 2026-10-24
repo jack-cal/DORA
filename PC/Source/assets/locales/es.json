@@ -321,5 +321,19 @@
   "Block hash": "Hash del bloque",
   "All blocks": "Todos los bloques",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Bloques validados desde el génesis hasta el bloque actual, de todos los nodos.",
-  "Search": "Buscar"
+  "Search": "Buscar",
+  "My history": "Mi historial",
+  "All history": "Historial global",
+  "Connection proofs": "Pruebas de conexión",
+  "Recent wallet transactions · Confirmations": "Transacciones recientes de la cartera · Confirmaciones",
+  "Select a block to view its transactions.": "Selecciona un bloque para ver sus transacciones.",
+  "Output total SMW": "Total de salidas SMW",
+  "Inputs": "Entradas",
+  "Outputs": "Salidas",
+  "Block is no longer in the active chain. Refresh the list.": "Este bloque ya no pertenece a la cadena activa. Actualiza la lista.",
+  "Full node · Wallet · Mining": "Nodo completo · Cartera · Minería",
+  "Local lottery jobs": "Sorteos de este nodo",
+  "Not selected": "No seleccionados",
+  "Selected pending": "Seleccionados pendientes",
+  "Selected complete": "Seleccionados completados"
 }

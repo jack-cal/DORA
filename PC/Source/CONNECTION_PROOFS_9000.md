@@ -1,6 +1,6 @@
 # SUMUWW · current height-9000 protocol
 
-PC 0.57.34 / Android 0.6.84 · 2026-10-22
+Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89
 
 ## History, money and compatibility
 
@@ -42,8 +42,12 @@ verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.
 
-The producer samples three distinct identities without replacement from its
-entire locally discovered identity set, using rejection sampling. There are no
+Starting with PC 0.57.40 / Android 0.6.89, a new job first probes the entire
+locally discovered identity set through relays. It then samples three distinct
+responding identities without replacement using the verified beacon and
+rejection sampling. This local availability snapshot is not consensus membership;
+contacts that time out remain discovered and are probed again for later jobs.
+Already selected jobs keep their original message and witness team. There are no
 registration fees, membership admissions, exits, one-person checks, per-IP
 lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
 through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate

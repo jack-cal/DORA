@@ -321,5 +321,19 @@
   "Block hash": "Hash ng block",
   "All blocks": "Lahat ng bloke",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Mga napatunayang bloke mula sa genesis hanggang sa kasalukuyang dulo ng chain, mula sa lahat ng node.",
-  "Search": "Maghanap"
+  "Search": "Maghanap",
+  "My history": "Kasaysayan ko",
+  "All history": "Lahat ng tala",
+  "Connection proofs": "Mga patunay ng koneksiyon",
+  "Recent wallet transactions · Confirmations": "Mga kamakailang transaksiyon ng wallet · Mga kumpirmasyon",
+  "Select a block to view its transactions.": "Pumili ng block upang makita ang lahat ng transaksiyon nito.",
+  "Output total SMW": "Kabuuang output SMW",
+  "Inputs": "Mga input",
+  "Outputs": "Mga output",
+  "Block is no longer in the active chain. Refresh the list.": "Wala na ang block na ito sa aktibong chain. I-refresh ang listahan.",
+  "Full node · Wallet · Mining": "Buong node · Wallet · Pagmimina",
+  "Local lottery jobs": "Mga bunutan ng node na ito",
+  "Not selected": "Hindi napili",
+  "Selected pending": "Napili, naghihintay",
+  "Selected complete": "Napili, natapos"
 }

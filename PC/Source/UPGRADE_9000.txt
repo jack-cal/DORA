@@ -1,6 +1,6 @@
 # SUMUWW · current height-9000 protocol
 
-PC 0.57.34 / Android 0.6.84 · 2026-10-22
+Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89
 
 ## History, money and compatibility
 

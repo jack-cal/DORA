@@ -1,4 +1,4 @@
-# SUMUWW Wallet for Windows 1.0.1
+# SUMUWW Wallet for Windows 1.0.2
 
 An ordinary wallet with receive, send, activity, encrypted backup, recovery,
 automatic lock and 34 offline interface languages. English is the first-launch
@@ -10,7 +10,7 @@ run alongside it. Import an encrypted wallet backup or restore its recovery
 words to use an existing address. Originals are never overwritten. Keep both the
 encrypted backup and its password. Recovery words are displayed only on request.
 
-This wallet synchronizes and validates the chain locally with core 0.57.34. It
+This wallet synchronizes and validates the chain locally with core 0.57.38. It
 does not offer mining controls or depend on a remote server to sign payments.
 It is not a lightweight/SPV client. Initial synchronization requires peers and
 storage for the blockchain. Settings allows adding a reachable peer address.

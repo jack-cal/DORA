@@ -321,5 +321,19 @@
   "Block hash": "Mã băm khối",
   "All blocks": "Tất cả khối",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Các khối đã xác minh từ khối khởi nguyên đến khối mới nhất của chuỗi, từ mọi nút.",
-  "Search": "Tìm kiếm"
+  "Search": "Tìm kiếm",
+  "My history": "Lịch sử của tôi",
+  "All history": "Toàn bộ lịch sử",
+  "Connection proofs": "Bằng chứng kết nối",
+  "Recent wallet transactions · Confirmations": "Giao dịch ví gần đây · Số xác nhận",
+  "Select a block to view its transactions.": "Chọn một khối để xem tất cả giao dịch trong khối đó.",
+  "Output total SMW": "Tổng đầu ra SMW",
+  "Inputs": "Đầu vào",
+  "Outputs": "Đầu ra",
+  "Block is no longer in the active chain. Refresh the list.": "Khối này không còn thuộc chuỗi đang hoạt động. Hãy làm mới danh sách.",
+  "Full node · Wallet · Mining": "Nút đầy đủ · Ví · Đào coin",
+  "Local lottery jobs": "Tác vụ rút thăm của nút này",
+  "Not selected": "Không được chọn",
+  "Selected pending": "Đã chọn, đang chờ",
+  "Selected complete": "Đã chọn, hoàn tất"
 }

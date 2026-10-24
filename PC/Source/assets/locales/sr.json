@@ -321,5 +321,19 @@
   "Block hash": "Хеш блока",
   "All blocks": "Сви блокови",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Проверени блокови од почетног блока до тренутног врха ланца, са свих чворова.",
-  "Search": "Претрага"
+  "Search": "Претрага",
+  "My history": "Моја историја",
+  "All history": "Целокупна историја",
+  "Connection proofs": "Докази повезивања",
+  "Recent wallet transactions · Confirmations": "Недавне трансакције новчаника · Потврде",
+  "Select a block to view its transactions.": "Изаберите блок да видите све његове трансакције.",
+  "Output total SMW": "Збир излаза SMW",
+  "Inputs": "Улази",
+  "Outputs": "Излази",
+  "Block is no longer in the active chain. Refresh the list.": "Овај блок више није у активном ланцу. Освежите листу.",
+  "Full node · Wallet · Mining": "Пун чвор · Новчаник · Рударење",
+  "Local lottery jobs": "Извлачења овог чвора",
+  "Not selected": "Нису изабрана",
+  "Selected pending": "Изабрана, на чекању",
+  "Selected complete": "Изабрана, завршена"
 }

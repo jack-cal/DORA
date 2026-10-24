@@ -9,7 +9,7 @@ Valid blocks through 8999 remain usable, including those sent together with an i
 <!-- /current-links-9000 -->
 
 
-SUMUWW PC program · 0.57.33
+SUMUWW PC full node · 0.57.40
 
 Extract the Windows executable package and run SUMUWW.exe. Keep the shared runtime and documents beside it.
 
@@ -24,3 +24,5 @@ Encrypted wallet creation, opening, seed recovery, backup and restore; balances,
 [CPU / GPU / ASIC](docs/i18n/en/MINING_DEVICES.md)
 
 [Deployment readiness and failure handling](docs/i18n/en/DEPLOYMENT_READINESS.md)
+
+All history opens the public active-chain browser without selecting a wallet. Select a block to view all its transactions and expand a transaction to inspect its inputs and outputs. Recent wallet transactions and My history remain specific to the selected wallet. Connection proof counts refer to complete stored attachments, not beacon preparation.

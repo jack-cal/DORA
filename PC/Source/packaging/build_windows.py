@@ -109,6 +109,8 @@ def main(argv=None):
         parser.error('Use a project-local virtual environment; no global installs')
     for name in ('pyinstaller', 'coincurve', 'cryptography', 'cffi', 'pycparser'):
         importlib.metadata.version(name)
+    from check_dependencies import check
+    check(source)
     if not options.build:
         print('Build environment ready; waiting for source freeze before --build')
         return 0

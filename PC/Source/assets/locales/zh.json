@@ -321,5 +321,19 @@
   "Block hash": "区块哈希",
   "All blocks": "全部区块",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "查看从创世区块到当前链顶的已验证区块，包括所有节点生成的区块。",
-  "Search": "搜索"
+  "Search": "搜索",
+  "My history": "我的记录",
+  "All history": "全部记录",
+  "Connection proofs": "连接证明",
+  "Recent wallet transactions · Confirmations": "钱包近期交易 · 确认数",
+  "Select a block to view its transactions.": "选择区块可查看其中的所有交易。",
+  "Output total SMW": "输出总额 SMW",
+  "Inputs": "输入",
+  "Outputs": "输出",
+  "Block is no longer in the active chain. Refresh the list.": "此区块已不在当前主链中，请刷新列表。",
+  "Full node · Wallet · Mining": "全节点 · 钱包 · 挖矿",
+  "Local lottery jobs": "本节点抽签任务",
+  "Not selected": "未选中已结束",
+  "Selected pending": "选中待完成",
+  "Selected complete": "选中已完成"
 }

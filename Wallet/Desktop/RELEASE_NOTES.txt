@@ -1,21 +1,27 @@
-# SUMUWW Wallet 1.0.1 — Windows
+Connection recovery and synchronization update — 2026-10-24
 
-Fixes the recovery-word window remaining visible after automatic wallet locking. Recovery text is cleared and the window closes on lock, minimize and exit. Automatic-lock settings now survive restart. Synchronization status uses the actual synchronization state, so a node still catching up is not labeled synchronized merely because mining is allowed.
+Windows ordinary wallet 1.0.2 and Android Wallet Current 1.1.2 now include
+the connection and synchronization fixes from full-node core 0.57.38 /
+Android 0.6.88. Verified contacts survive temporary failures. Retry failures
+are counted once, and idle-response timeouts cannot count as successful replies.
+Missing inbound listening addresses are discovered and verified before sharing.
+Public outgoing handshakes and idle responses allow up to 120 seconds; partial
+frames retain their shorter deadline. Validated ancestry is reused only for the
+same chain snapshot, height and hash. Background proof-history work yields to
+other tasks so it does not unnecessarily delay network handling.
 
-Adds localized common error messages, disables unavailable backup/recovery actions, restores traditional Mongolian vertical captions, and keeps controls reachable in smaller windows. Corrects the connected-node/block terminology in 26 language catalogs.
+The Windows wallet is rebuilt with the shared current desktop core. Android
+retains its platform adapters and uses the matching Android core changes.
+Wallet formats, addresses, consensus rules and saved language preferences are
+unchanged. All 34 offline UI languages remain available. No external automatic
+translation service was used. No new UI strings are introduced by these fixes.
 
-Extract the complete ZIP and run SUMUWW-Wallet.exe. Data remains in the existing ordinary-wallet profile. This is a locally validating wallet without mining controls, not an SPV client. Back up existing encrypted wallets before updating.
+Android retains application ID org.sumuww.wallet.current and versionCode 13,
+with the same Wallet Current signing certificate for in-place updates from
+1.1.0 or 1.1.1. It does not replace the withdrawn org.sumuww.wallet application.
+Windows data remains at %LOCALAPPDATA%/SUMUWW/Wallet-PC.
 
-Verification: nine native desktop regression tests, 204 layout combinations and the rebuilt executable's disposable encrypted-wallet/restore self-check passed.
-
-## Required upgrade at height 9,000
-
-**From block 9,000 inclusive, blocks created under the old pre-upgrade rules are rejected by upgraded nodes. Update miners and validating nodes.** Valid legacy history through **8,999 remains usable**, including the valid prefix of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings are preserved. Validation follows block rules, not an advertised version string.
-
-This patch does not change consensus. The existing 20% asynchronous post-PoW connection events, three witnesses, DGW recalculation every ten blocks using 24 prior blocks, and HTLC activation at 9100 remain unchanged. Mining does not wait for completed witness signatures. Valid cumulative work remains primary.
-
-## Verification and scope
-
-English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
-
-See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. Public-money P2P swaps remain disabled. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.
+This local release has not been published to GitHub. Prior published versions
+remain a separate historical record. See LOCAL_REPAIR_VERIFICATION.md in the
+suite documentation for current verification results and limits. Earlier
+physical-device and live-network measurements do not certify this new build.

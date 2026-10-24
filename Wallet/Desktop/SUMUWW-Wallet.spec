@@ -2,6 +2,8 @@ from pathlib import Path
 from PyInstaller.utils.hooks import collect_all
 ROOT = Path(SPECPATH)
 CORE = ROOT.parents[1] / 'PC/Source'
+import runpy
+runpy.run_path(str(CORE / 'packaging/check_dependencies.py'))['check'](CORE)
 datas = [(str(ROOT / 'locales'), 'locales'), (str(CORE / 'assets'), 'assets')]
 binaries = []
 hiddenimports = []

@@ -321,5 +321,19 @@
   "Block hash": "Κατακερματισμός μπλοκ",
   "All blocks": "Όλα τα μπλοκ",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Επικυρωμένα μπλοκ από το αρχικό μπλοκ έως την τρέχουσα κορυφή της αλυσίδας, από όλους τους κόμβους.",
-  "Search": "Αναζήτηση"
+  "Search": "Αναζήτηση",
+  "My history": "Το ιστορικό μου",
+  "All history": "Πλήρες ιστορικό",
+  "Connection proofs": "Αποδείξεις σύνδεσης",
+  "Recent wallet transactions · Confirmations": "Πρόσφατες συναλλαγές πορτοφολιού · Επιβεβαιώσεις",
+  "Select a block to view its transactions.": "Επιλέξτε ένα μπλοκ για να δείτε όλες τις συναλλαγές του.",
+  "Output total SMW": "Σύνολο εξόδων SMW",
+  "Inputs": "Είσοδοι",
+  "Outputs": "Έξοδοι",
+  "Block is no longer in the active chain. Refresh the list.": "Αυτό το μπλοκ δεν ανήκει πλέον στην ενεργή αλυσίδα. Ανανεώστε τη λίστα.",
+  "Full node · Wallet · Mining": "Πλήρης κόμβος · Πορτοφόλι · Εξόρυξη",
+  "Local lottery jobs": "Κληρώσεις αυτού του κόμβου",
+  "Not selected": "Δεν επιλέχθηκαν",
+  "Selected pending": "Επιλεγμένες σε αναμονή",
+  "Selected complete": "Επιλεγμένες ολοκληρωμένες"
 }

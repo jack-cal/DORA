@@ -1,3 +1,19 @@
+SUMUWW PC 0.57.40 / Android full node 0.6.89 (149) — 2026-10-24
+
+Connection proof availability and accounting
+- Before a new job chooses its three witnesses, probe the complete discovered identity inventory with authenticated nonce echoes through the existing relay protocol. Sample three distinct currently responsive identities with the verified beacon. No neighbor-only pool, participant quota, paid admission or deletion of silent contacts is introduced.
+- This is a local availability policy, not a consensus membership list. A probe can time out for an otherwise honest node; later jobs probe it again. A participant can also disappear after replying, so proof completion is not guaranteed.
+- Existing selected jobs retain their exact block pair, beacon and three-witness message. Existing signature locks are never erased or bypassed. An old job still needs its original witnesses to return.
+- Verify and persist each witness's two signature halves independently. Retries and restarts reuse valid saved replies rather than discarding them when another witness or the target producer is temporarily unavailable.
+- Persist the current phase, missing witnesses and last error. Public status separates nonselected finished lotteries, selected pending jobs, selected completed jobs and stored complete proofs.
+- PC All history shows these separate local job counters. A beacon setup can serve many lotteries: setup records must not be subtracted from selected-job counts.
+- The previous PC 0.57.39 public block/transaction browser is included. Recent wallet history remains wallet-only.
+
+Compatibility
+The v2 attachment format, 20 percent event selection, three-signature requirement, PoW, chain selection, signature locks, stored history and wallet formats remain unchanged. Existing v2 peers already support the authenticated probe. Ordinary wallets and external nodes are not automatically upgraded. Android retains its existing UI while receiving the proof job repair. Release tags: pc-v0.57.40 and android-v0.6.89. The matching GitHub release pages record publication status and verified assets.
+
+Earlier release notes follow (historical versions).
+
 SUMUWW PC 0.57.38 / Android 0.6.88 (148)
 
 All blocks

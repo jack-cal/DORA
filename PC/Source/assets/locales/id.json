@@ -321,5 +321,19 @@
   "Block hash": "Hash blok",
   "All blocks": "Semua blok",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Blok terverifikasi dari blok genesis hingga ujung rantai saat ini, dari semua node.",
-  "Search": "Cari"
+  "Search": "Cari",
+  "My history": "Riwayat saya",
+  "All history": "Semua riwayat",
+  "Connection proofs": "Bukti koneksi",
+  "Recent wallet transactions · Confirmations": "Transaksi dompet terbaru · Konfirmasi",
+  "Select a block to view its transactions.": "Pilih blok untuk melihat semua transaksinya.",
+  "Output total SMW": "Total keluaran SMW",
+  "Inputs": "Masukan",
+  "Outputs": "Keluaran",
+  "Block is no longer in the active chain. Refresh the list.": "Blok ini tidak lagi berada dalam rantai aktif. Muat ulang daftar.",
+  "Full node · Wallet · Mining": "Node penuh · Dompet · Penambangan",
+  "Local lottery jobs": "Pengundian node ini",
+  "Not selected": "Tidak terpilih",
+  "Selected pending": "Terpilih, menunggu",
+  "Selected complete": "Terpilih, selesai"
 }
