@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Issuance limit (block)",
   "Available fees (block)": "Available fees (block)",
   "Unclaimed reward": "Unclaimed reward",
-  "Reward not fully claimed": "Reward not fully claimed"
+  "Reward not fully claimed": "Reward not fully claimed",
+  "Update before block 9,600.": "Update before block 9,600.",
+  "Checking active nodes": "Checking active nodes",
+  "Waiting for lottery": "Waiting for lottery",
+  "Waiting for candidate approval": "Waiting for candidate approval",
+  "Waiting for witness signatures": "Waiting for witness signatures",
+  "Waiting for block producer": "Waiting for block producer",
+  "Witness replies": "Witness replies",
+  "Next retry": "Next retry",
+  "Increase fee": "Increase fee",
+  "Connection unavailable": "Connection unavailable",
+  "Automatic fee": "Automatic fee",
+  "Manual fee rate (blank = automatic)": "Manual fee rate (blank = automatic)",
+  "Connection proofs": "Connection proofs",
+  "Selected pending": "Selected pending"
 }

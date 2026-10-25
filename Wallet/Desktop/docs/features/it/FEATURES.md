@@ -1,4 +1,4 @@
-# SUMUWW Wallet PC 1.0.6
+# SUMUWW Wallet PC 1.0.7
 
 1 SMW = 100.000.000 yugeon. Le commissioni automatiche offrono tre livelli basati sulle osservazioni locali, senza garantire i tempi di conferma. Puoi inserire una tariffa in yugeon/vB. Prima di inviare, controlla commissione finale e totale in SMW. Una transazione rifiutata non riduce il saldo.
 

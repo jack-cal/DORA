@@ -1,0 +1,138 @@
+{
+  "en": [
+    "Certified active-witness selection is required from source block 9,600. Earlier records remain intact. Update nodes and wallets before that height: older versions can choose a different chain when work is equal. Pending jobs keep their history.",
+    "P2P supports fees based on the current queue, manual rates and reviewed fee increases. Unsent canceled previews release reserved funds. Refunds require only the chain holding your funds. Agreed amounts and fee reserves stay fixed."
+  ],
+  "ko": [
+    "9,600번 원본 블록부터 활동 증인 선정 증명 검증을 의무 적용합니다. 이전 기록은 보존합니다. 노드와 지갑을 그 전에 업데이트하세요. 이전 버전은 누적 작업량이 같을 때 다른 체인을 선택할 수 있습니다. 대기 작업의 이력도 유지합니다.",
+    "P2P는 현재 대기 거래를 기준으로 한 자동 수수료, 직접 입력, 확인 후 수수료 올리기를 지원합니다. 미전송 미리보기를 취소하면 예약 잔액을 해제합니다. 환불에는 내 자금이 있는 체인만 필요합니다. 합의한 금액과 수수료 예비금은 유지합니다."
+  ],
+  "ja": [
+    "元ブロック9,600から稼働中の証人の選定証明が必須になります。以前の記録は保持されます。それまでにノードとウォレットを更新してください。旧版は累積作業量が同じ場合に異なるチェーンを選ぶ可能性があります。保留中の履歴も保持します。",
+    "P2Pは現在の待機取引に基づく手数料、手動設定、確認後の増額に対応します。未送信のプレビューを取り消すと予約資金を解放します。返金に必要なのは自分の資金があるチェーンだけです。合意済みの金額と手数料予備金は維持します。"
+  ],
+  "zh": [
+    "从源区块9,600起，必须验证活跃见证人的选择证明。保留此前记录。请提前更新节点和钱包；旧版在累计工作量相同时可能选择不同的链。待处理任务的历史也会保留。",
+    "P2P支持根据当前待处理交易自动计算手续费、手动费率及确认后加费。取消未发送预览会释放预留资金。退款只需连接存放自己资金的链。约定金额和手续费储备保持不变。"
+  ],
+  "zh-TW": [
+    "從來源區塊9,600起，必須驗證活躍見證人的選定證明。保留先前紀錄。請提前更新節點和錢包；舊版在累積工作量相同時可能選擇不同的鏈。待處理工作的歷史也會保留。",
+    "P2P支援依目前待處理交易自動計算手續費、手動費率及確認後加費。取消未傳送的預覽會釋放預留資金。退款只需連接存放自己資金的鏈。約定金額與手續費準備金保持不變。"
+  ],
+  "zh-HK": [
+    "從來源區塊9,600起，必須驗證活躍見證人的選定證明。保留先前紀錄。請提前更新節點和錢包；舊版在累積工作量相同時可能選擇不同的鏈。待處理工作的歷史亦會保留。",
+    "P2P支援按目前待處理交易自動計算手續費、手動費率及確認後加費。取消未傳送的預覽會釋放預留資金。退款只需連接存放自己資金的鏈。約定金額與手續費儲備保持不變。"
+  ],
+  "fr": [
+    "La sélection certifiée des témoins actifs devient obligatoire à partir du bloc source 9 600. Les anciens enregistrements sont conservés. Mettez à jour les nœuds et portefeuilles avant ce seuil : à travail égal, une ancienne version peut choisir une autre chaîne. L’historique des tâches en attente est conservé.",
+    "P2P propose des frais selon la file actuelle, un taux manuel et une augmentation après confirmation. Annuler un aperçu non envoyé libère les fonds réservés. Le remboursement ne nécessite que la chaîne détenant vos fonds. Les montants et réserves convenus restent fixes."
+  ],
+  "es": [
+    "La selección certificada de testigos activos es obligatoria desde el bloque de origen 9.600. Se conservan los registros anteriores. Actualiza nodos y carteras antes: con igual trabajo acumulado, versiones anteriores pueden elegir otra cadena. Se conserva el historial pendiente.",
+    "P2P calcula comisiones según la cola actual y permite tarifas manuales y aumentos confirmados. Cancelar una vista previa no enviada libera los fondos reservados. El reembolso solo necesita la cadena que guarda tus fondos. Se mantienen los importes y reservas acordados."
+  ],
+  "pt": [
+    "A seleção certificada de testemunhas ativas é obrigatória a partir do bloco de origem 9.600. Os registros anteriores são preservados. Atualize nós e carteiras antes: versões antigas podem escolher outra cadeia quando o trabalho acumulado é igual. O histórico pendente é mantido.",
+    "P2P oferece taxas pela fila atual, taxas manuais e aumentos após confirmação. Cancelar uma prévia não enviada libera fundos reservados. O reembolso exige apenas a cadeia que guarda seus fundos. Valores e reservas acordados permanecem fixos."
+  ],
+  "de": [
+    "Ab Quellblock 9.600 ist die zertifizierte Auswahl aktiver Zeugen erforderlich. Frühere Einträge bleiben erhalten. Knoten und Wallets vorher aktualisieren: Alte Versionen können bei gleicher kumulierter Arbeit eine andere Kette wählen. Der Verlauf offener Aufgaben bleibt erhalten.",
+    "P2P bietet Gebühren anhand der aktuellen Warteschlange, manuelle Sätze und bestätigte Erhöhungen. Abgebrochene ungesendete Vorschauen geben reservierte Mittel frei. Für eine Rückzahlung wird nur die Kette mit den eigenen Mitteln benötigt. Vereinbarte Beträge und Gebührenreserven bleiben fest."
+  ],
+  "it": [
+    "Dal blocco sorgente 9.600 è obbligatoria la selezione certificata dei testimoni attivi. I dati precedenti restano intatti. Aggiorna nodi e portafogli prima: a parità di lavoro, le versioni precedenti possono scegliere un’altra catena. La cronologia in sospeso viene conservata.",
+    "P2P offre commissioni basate sulla coda attuale, tariffe manuali e aumenti confermati. Annullare un’anteprima non inviata libera i fondi riservati. Il rimborso richiede solo la catena che custodisce i tuoi fondi. Importi e riserve concordati restano fissi."
+  ],
+  "ru": [
+    "С исходного блока 9 600 требуется сертифицированный выбор активных свидетелей. Прежние записи сохраняются. Заранее обновите узлы и кошельки: при равной накопленной работе старые версии могут выбрать другую цепь. История ожидающих задач сохраняется.",
+    "P2P рассчитывает комиссии по текущей очереди, поддерживает ручную ставку и повышение после подтверждения. Отмена неотправленного предпросмотра освобождает резерв. Для возврата нужна только цепь с вашими средствами. Согласованные суммы и резервы комиссии не меняются."
+  ],
+  "ar": [
+    "ابتداءً من كتلة المصدر 9,600 يلزم اختيار موثق للشهود النشطين. تُحفظ السجلات السابقة. حدّث العقد والمحافظ قبل ذلك؛ فقد تختار الإصدارات القديمة سلسلة أخرى عند تساوي العمل المتراكم. يبقى سجل المهام المعلقة محفوظًا.",
+    "يدعم P2P رسومًا حسب قائمة الانتظار الحالية، ومعدلًا يدويًا، وزيادة بعد التأكيد. إلغاء المعاينة غير المرسلة يحرر الأموال المحجوزة. الاسترداد يحتاج فقط إلى السلسلة التي تحتفظ بأموالك. تبقى المبالغ واحتياطيات الرسوم المتفق عليها ثابتة."
+  ],
+  "hi": [
+    "स्रोत ब्लॉक 9,600 से सक्रिय गवाहों का प्रमाणित चयन आवश्यक है। पुराने रिकॉर्ड सुरक्षित रहेंगे। उससे पहले नोड और वॉलेट अपडेट करें; समान संचित कार्य पर पुराने संस्करण अलग चेन चुन सकते हैं। लंबित कार्यों का इतिहास बना रहेगा।",
+    "P2P वर्तमान कतार के अनुसार शुल्क, मैन्युअल दर और पुष्टि के बाद शुल्क बढ़ाने की सुविधा देता है। न भेजे गए पूर्वावलोकन रद्द करने पर आरक्षित राशि मुक्त होती है। वापसी के लिए केवल आपकी राशि वाली चेन चाहिए। तय राशि और शुल्क आरक्षित निधि नहीं बदलती।"
+  ],
+  "bn": [
+    "উৎস ব্লক 9,600 থেকে সক্রিয় সাক্ষীর প্রত্যয়িত নির্বাচন আবশ্যক। পুরোনো রেকর্ড অক্ষত থাকবে। তার আগে নোড ও ওয়ালেট আপডেট করুন; সমান সঞ্চিত কাজের ক্ষেত্রে পুরোনো সংস্করণ ভিন্ন চেইন বেছে নিতে পারে। অপেক্ষমাণ কাজের ইতিহাস থাকবে।",
+    "P2P বর্তমান সারি অনুযায়ী ফি, নিজে হার নির্ধারণ ও নিশ্চিত করে ফি বাড়ানোর সুবিধা দেয়। না পাঠানো প্রিভিউ বাতিল করলে সংরক্ষিত অর্থ মুক্ত হয়। ফেরতের জন্য শুধু আপনার অর্থ থাকা চেইন দরকার। সম্মত পরিমাণ ও ফি সংরক্ষণ অপরিবর্তিত থাকে।"
+  ],
+  "ur": [
+    "ماخذ بلاک 9,600 سے فعال گواہوں کا تصدیق شدہ انتخاب ضروری ہے۔ پرانے ریکارڈ محفوظ رہیں گے۔ اس سے پہلے نوڈز اور والیٹ اپ ڈیٹ کریں؛ یکساں مجموعی کام پر پرانے ورژن دوسری چین چن سکتے ہیں۔ زیر التوا کاموں کی تاریخ محفوظ رہے گی۔",
+    "P2P موجودہ قطار کے مطابق فیس، دستی شرح اور تصدیق کے بعد فیس بڑھانے کی سہولت دیتا ہے۔ غیر ارسال شدہ پیش منظر منسوخ کرنے سے محفوظ رقم آزاد ہوتی ہے۔ واپسی کے لیے صرف اپنی رقم والی چین درکار ہے۔ طے شدہ رقم اور فیس کا ذخیرہ برقرار رہتا ہے۔"
+  ],
+  "ta": [
+    "மூலத் தொகுதி 9,600 முதல் செயலில் உள்ள சாட்சிகளின் சான்றளிக்கப்பட்ட தேர்வு கட்டாயம். பழைய பதிவுகள் பாதுகாக்கப்படும். அதற்கு முன் முனைகளையும் பணப்பைகளையும் புதுப்பிக்கவும்; மொத்த வேலை சமமாக இருந்தால் பழைய பதிப்புகள் வேறு சங்கிலியைத் தேர்ந்தெடுக்கலாம். நிலுவைப் பணிகளின் வரலாறு பாதுகாக்கப்படும்.",
+    "P2P தற்போதைய வரிசைப்படி கட்டணம், கைமுறை விகிதம், உறுதிப்படுத்திய பின் கட்டண உயர்வு ஆகியவற்றை வழங்குகிறது. அனுப்பாத முன்னோட்டத்தை ரத்து செய்தால் ஒதுக்கிய நிதி விடுவிக்கப்படும். பணத்தைத் திரும்பப் பெற உங்கள் நிதி உள்ள சங்கிலி மட்டும் தேவை. ஒப்புக்கொண்ட தொகையும் கட்டண இருப்பும் மாறாது."
+  ],
+  "id": [
+    "Mulai blok sumber 9.600, pemilihan saksi aktif harus bersertifikat. Catatan lama tetap utuh. Perbarui node dan dompet sebelumnya: versi lama dapat memilih rantai berbeda saat kerja kumulatif sama. Riwayat tugas tertunda tetap disimpan.",
+    "P2P menyediakan biaya menurut antrean saat ini, tarif manual, dan kenaikan setelah konfirmasi. Membatalkan pratinjau yang belum dikirim membebaskan dana cadangan. Pengembalian hanya memerlukan rantai tempat dana Anda berada. Jumlah dan cadangan biaya yang disepakati tetap."
+  ],
+  "vi": [
+    "Từ khối nguồn 9.600, bắt buộc xác minh việc chọn nhân chứng đang hoạt động. Dữ liệu cũ được giữ nguyên. Hãy cập nhật nút và ví trước đó; phiên bản cũ có thể chọn chuỗi khác khi tổng công việc bằng nhau. Lịch sử tác vụ chờ được giữ lại.",
+    "P2P hỗ trợ phí theo hàng đợi hiện tại, mức phí thủ công và tăng phí sau xác nhận. Hủy bản xem trước chưa gửi sẽ giải phóng tiền giữ chỗ. Hoàn tiền chỉ cần chuỗi đang giữ tiền của bạn. Số tiền và khoản dự phòng phí đã thỏa thuận không đổi."
+  ],
+  "th": [
+    "ตั้งแต่บล็อกต้นทาง 9,600 ต้องใช้การเลือกพยานที่ใช้งานอยู่พร้อมหลักฐานรับรอง เก็บบันทึกเดิมไว้ โปรดอัปเดตโหนดและกระเป๋าก่อนถึงบล็อกนี้ เพราะรุ่นเก่าอาจเลือกคนละเชนเมื่อปริมาณงานสะสมเท่ากัน ประวัติงานที่รอยังคงอยู่",
+    "P2P รองรับค่าธรรมเนียมตามคิวปัจจุบัน อัตราที่กำหนดเอง และการเพิ่มค่าธรรมเนียมหลังยืนยัน การยกเลิกตัวอย่างที่ยังไม่ส่งจะคืนยอดที่จองไว้ การคืนเงินต้องใช้เฉพาะเชนที่ถือเงินของคุณ จำนวนและเงินสำรองค่าธรรมเนียมที่ตกลงไว้ไม่เปลี่ยน"
+  ],
+  "fil": [
+    "Mula sa source block 9,600, kailangan ang sertipikadong pagpili ng aktibong saksi. Mananatili ang lumang tala. I-update muna ang mga node at wallet; maaaring pumili ng ibang chain ang lumang bersyon kapag pantay ang kabuuang trabaho. Mananatili ang kasaysayan ng nakabinbing gawain.",
+    "May bayad ayon sa kasalukuyang pila, manwal na rate at kumpirmadong pagtaas ang P2P. Kapag kinansela ang hindi naipadalang preview, nababakante ang nakalaang pondo. Ang chain lamang na may hawak ng iyong pondo ang kailangan sa refund. Hindi nagbabago ang napagkasunduang halaga at reserbang bayad."
+  ],
+  "sw": [
+    "Kuanzia bloku chanzo 9,600, uchaguzi uliothibitishwa wa mashahidi hai unahitajika. Rekodi za awali zinahifadhiwa. Sasisha nodi na pochi kabla yake; matoleo ya zamani yanaweza kuchagua mnyororo tofauti kazi iliyokusanywa ikilingana. Historia ya kazi zinazosubiri inabaki.",
+    "P2P ina ada kulingana na foleni ya sasa, viwango vya mkono na ongezeko baada ya uthibitisho. Kufuta onyesho lisilotumwa huachilia fedha zilizotengwa. Marejesho yanahitaji tu mnyororo wenye fedha zako. Kiasi na akiba ya ada iliyokubaliwa haibadiliki."
+  ],
+  "tr": [
+    "Kaynak blok 9.600’den itibaren etkin tanıkların sertifikalı seçimi zorunludur. Önceki kayıtlar korunur. Düğüm ve cüzdanları önceden güncelleyin; eski sürümler birikmiş iş eşit olduğunda başka zincir seçebilir. Bekleyen işlerin geçmişi saklanır.",
+    "P2P güncel kuyruğa göre ücret, elle oran belirleme ve onaylı ücret artışı sunar. Gönderilmemiş önizleme iptal edilince ayrılmış fonlar serbest kalır. İade için yalnızca fonlarınızı tutan zincir gerekir. Kararlaştırılan tutar ve ücret rezervi değişmez."
+  ],
+  "pl": [
+    "Od bloku źródłowego 9 600 wymagany jest poświadczony wybór aktywnych świadków. Wcześniejsze zapisy pozostają. Zaktualizuj wcześniej węzły i portfele: przy równej pracy stare wersje mogą wybrać inny łańcuch. Historia oczekujących zadań zostaje zachowana.",
+    "P2P obsługuje opłaty według bieżącej kolejki, ręczne stawki i zatwierdzane podwyżki. Anulowanie niewysłanego podglądu zwalnia rezerwę środków. Zwrot wymaga tylko łańcucha przechowującego twoje środki. Uzgodnione kwoty i rezerwy opłat nie zmieniają się."
+  ],
+  "nl": [
+    "Vanaf bronblok 9.600 is gecertificeerde selectie van actieve getuigen vereist. Oude gegevens blijven bewaard. Werk nodes en wallets vooraf bij: oude versies kunnen bij gelijke totale arbeid een andere keten kiezen. De geschiedenis van openstaande taken blijft behouden.",
+    "P2P biedt kosten op basis van de huidige wachtrij, handmatige tarieven en bevestigde verhogingen. Een niet-verzonden voorbeeld annuleren geeft gereserveerde middelen vrij. Terugbetaling vereist alleen de keten met jouw middelen. Afgesproken bedragen en kostenreserves blijven gelijk."
+  ],
+  "cs": [
+    "Od zdrojového bloku 9 600 je povinný certifikovaný výběr aktivních svědků. Starší záznamy zůstávají. Aktualizujte uzly a peněženky předem; při stejné kumulované práci mohou staré verze vybrat jiný řetězec. Historie čekajících úloh se zachová.",
+    "P2P podporuje poplatky podle aktuální fronty, ruční sazby a potvrzené navýšení. Zrušení neodeslaného náhledu uvolní rezervované prostředky. Vrácení vyžaduje pouze řetězec s vašimi prostředky. Dohodnuté částky a rezervy poplatků se nemění."
+  ],
+  "da": [
+    "Fra kildeblok 9.600 kræves certificeret valg af aktive vidner. Tidligere poster bevares. Opdater noder og tegnebøger inden da: Ældre versioner kan vælge en anden kæde ved samme samlede arbejde. Historikken for ventende opgaver bevares.",
+    "P2P tilbyder gebyrer efter den aktuelle kø, manuelle satser og bekræftede forhøjelser. Annullering af en usendt forhåndsvisning frigiver reserverede midler. Tilbagebetaling kræver kun kæden med dine midler. Aftalte beløb og gebyrreserver er uændrede."
+  ],
+  "sv": [
+    "Från källblock 9 600 krävs certifierat val av aktiva vittnen. Tidigare poster bevaras. Uppdatera noder och plånböcker i förväg: äldre versioner kan välja en annan kedja vid lika ackumulerat arbete. Historiken för väntande jobb bevaras.",
+    "P2P erbjuder avgifter utifrån aktuell kö, manuella avgiftssatser och bekräftade höjningar. Avbrutna oskickade förhandsvisningar frigör reserverade medel. Återbetalning kräver bara kedjan som håller dina medel. Avtalade belopp och avgiftsreserver är oförändrade."
+  ],
+  "no": [
+    "Fra kildeblokk 9 600 kreves sertifisert valg av aktive vitner. Tidligere poster bevares. Oppdater noder og lommebøker først: eldre versjoner kan velge en annen kjede ved likt samlet arbeid. Historikken for ventende jobber beholdes.",
+    "P2P tilbyr gebyrer etter gjeldende kø, manuelle satser og bekreftede økninger. Kansellering av en usendt forhåndsvisning frigjør reserverte midler. Tilbakebetaling krever bare kjeden med dine midler. Avtalte beløp og gebyrreserver er uendret."
+  ],
+  "fi": [
+    "Lähdelohkosta 9 600 alkaen vaaditaan aktiivisten todistajien varmennettu valinta. Aiemmat tiedot säilyvät. Päivitä solmut ja lompakot sitä ennen: vanhat versiot voivat valita eri ketjun, jos kertynyt työ on sama. Odottavien tehtävien historia säilyy.",
+    "P2P tukee nykyiseen jonoon perustuvia maksuja, käsin asetettavia maksutasoja ja vahvistettavia korotuksia. Lähettämättömän esikatselun peruminen vapauttaa varatut varat. Palautus tarvitsee vain varojasi säilyttävän ketjun. Sovitut summat ja maksuvaraukset eivät muutu."
+  ],
+  "el": [
+    "Από το μπλοκ προέλευσης 9.600 απαιτείται πιστοποιημένη επιλογή ενεργών μαρτύρων. Τα παλιά αρχεία διατηρούνται. Ενημερώστε κόμβους και πορτοφόλια νωρίτερα: με ίση συσσωρευμένη εργασία, παλιές εκδόσεις μπορεί να επιλέξουν άλλη αλυσίδα. Το ιστορικό εκκρεμών εργασιών παραμένει.",
+    "Το P2P υποστηρίζει τέλη βάσει της τρέχουσας ουράς, χειροκίνητες χρεώσεις και επιβεβαιωμένες αυξήσεις. Η ακύρωση μη απεσταλμένης προεπισκόπησης αποδεσμεύει χρήματα. Η επιστροφή απαιτεί μόνο την αλυσίδα που κρατά τα χρήματά σας. Συμφωνημένα ποσά και αποθέματα τελών μένουν σταθερά."
+  ],
+  "sr": [
+    "Од изворног блока 9.600 обавезан је потврђен избор активних сведока. Претходни записи остају. Ажурирајте чворове и новчанике пре тога: старе верзије могу изабрати други ланац при истом укупном раду. Историја задатака на чекању се чува.",
+    "P2P подржава накнаде према тренутном реду, ручне стопе и потврђено повећање. Отказивање непослатог прегледа ослобађа резервисана средства. Повраћај захтева само ланац који чува ваша средства. Договорени износи и резерве накнада остају исти."
+  ],
+  "mn": [
+    "Эх блок 9,600-аас идэвхтэй гэрчийг баталгаажуулан сонгох шаардлагатай. Өмнөх бүртгэл хэвээр үлдэнэ. Түүнээс өмнө зангилаа, хэтэвчээ шинэчилнэ үү. Нийт ажил тэнцүү үед хуучин хувилбар өөр хэлхээ сонгож болно. Хүлээгдэж буй ажлын түүх хадгалагдана.",
+    "P2P нь одоогийн дараалалд тулгуурласан шимтгэл, гараар тохируулах хувь, баталгаажуулсны дараах шимтгэл нэмэлтийг дэмжинэ. Илгээгээгүй урьдчилсан харагдацыг цуцлахад нөөцөлсөн хөрөнгө чөлөөлөгдөнө. Буцаалтад өөрийн хөрөнгө байгаа хэлхээ л хэрэгтэй. Тохирсон дүн, шимтгэлийн нөөц өөрчлөгдөхгүй."
+  ],
+  "mn-Mong": [
+    "9,600 ᠳ᠋ᠤᠭᠠᠷ ᠡᠬᠢ ᠪᠯᠣᠺ ᠡᠴᠡ ᠢᠳᠡᠪᠬᠢᠲᠡᠢ ᠭᠡᠷᠡᠴᠢ ᠶᠢᠨ ᠰᠣᠩᠭᠣᠯᠲᠠ ᠶᠢ ᠪᠠᠲᠤᠯᠠᠭᠠᠵᠢᠭᠤᠯᠤᠨ᠎ᠠ᠃ ᠡᠮᠦᠨᠡᠬᠢ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠬᠠᠳᠠᠭᠠᠯᠠᠭᠳᠠᠨ᠎ᠠ᠃ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠪᠣᠯᠣᠨ ᠬᠡᠲᠡᠪᠴᠢ ᠪᠡᠨ ᠡᠮᠦᠨ᠎ᠡ ᠨᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠨ᠎ᠡ ᠦᠦ᠃ ᠠᠵᠢᠯ ᠲᠡᠩᠴᠡᠭᠦ ᠦᠶ᠎ᠡ ᠳᠦ ᠬᠠᠭᠤᠴᠢᠨ ᠬᠤᠪᠢᠯᠪᠤᠷᠢ ᠥᠭᠡᠷ᠎ᠡ ᠬᠡᠯᠬᠢᠶ᠎ᠡ ᠰᠣᠩᠭᠣᠵᠤ ᠪᠣᠯᠣᠨ᠎ᠠ᠃ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠤᠢ ᠠᠵᠢᠯ ᠤᠨ ᠲᠡᠦᠬᠡ ᠬᠠᠳᠠᠭᠠᠯᠠᠭᠳᠠᠨ᠎ᠠ᠃",
+    "P2P ᠨᠢ ᠣᠳᠣᠭᠠᠬᠢ ᠳᠠᠷᠠᠭ᠎ᠠ ᠶᠢᠨ ᠰᠢᠮᠲᠡᠭᠡᠯ᠂ ᠭᠠᠷ ᠢᠶᠠᠷ ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠬᠤ᠂ ᠪᠠᠲᠤᠯᠠᠭᠠᠵᠢᠭᠤᠯᠤᠭᠠᠳ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠨᠡᠮᠡᠬᠦ ᠶᠢ ᠳᠡᠮᠵᠢᠨ᠎ᠡ᠃ ᠢᠯᠡᠭᠡᠭᠡᠳᠦᠢ ᠵᠠᠬᠢᠶᠠᠯᠭ᠎ᠠ ᠶᠢ ᠴᠤᠴᠠᠯᠠᠪᠠᠯ ᠨᠥᠭᠡᠴᠡᠯᠡᠭᠰᠡᠨ ᠬᠥᠷᠥᠩᠭᠡ ᠴᠢᠯᠦᠭᠡᠯᠡᠭᠳᠡᠨ᠎ᠡ᠃ ᠪᠤᠴᠠᠭᠠᠯᠲᠠ ᠳᠤ ᠥᠪᠡᠷ ᠦᠨ ᠬᠥᠷᠥᠩᠭᠡ ᠲᠡᠢ ᠬᠡᠯᠬᠢᠶ᠎ᠡ ᠯᠡ ᠬᠡᠷᠡᠭᠲᠡᠢ᠃ ᠲᠣᠬᠢᠷᠣᠯᠴᠠᠭᠰᠠᠨ ᠳ᠋ᠦᠩ ᠪᠣᠯᠣᠨ ᠰᠢᠮᠲᠡᠭᠡᠯ ᠦᠨ ᠨᠥᠭᠡᠴᠡ ᠥᠭᠡᠷᠡᠴᠢᠯᠡᠭᠳᠡᠬᠦ ᠦᠭᠡᠢ᠃"
+  ]
+}

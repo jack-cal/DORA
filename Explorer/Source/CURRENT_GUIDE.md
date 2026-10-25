@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Run start-explorer.cmd after extracting the complete Windows ZIP. The explorer
 reads a local SUMUWW node database in read-only mode and writes only its own,
@@ -8,18 +8,9 @@ selected node's active chain, including rewards and transactions from all nodes.
 Address searches narrow the view to that address; they do not limit the main
 block or transaction lists to your wallet.
 
-## Current versions and publication status
+## Current release
 
-Full-node releases are Windows 0.57.46 and Android 0.6.95. Ordinary wallets are
-Windows 1.0.6 and Android Wallet Current 1.1.6. They retain connection recovery and
-synchronization repairs and can respond to authenticated witness probes.
-
-Explorer executable 0.4.10 includes block reward components, yugeon fee-rate
-labels, recorded replacement links and revealed spending conditions. Download:
-https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10
-P2P Full/Light are 0.3.4, and the current English whitepaper is 2.2.
-Earlier release posts and assets remain unchanged. Publication does not replace
-an operating installation. See the suite's current release and installation guide.
+Explorer 0.4.11 fixes wrapping menus at intermediate widths and deterministic locale fallback. Download version 0.4.11 from https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.11. Validating nodes and ordinary wallets must be updated for the source-block 9,600 rule. This read-only explorer does not itself select the network chain.
 
 ## Proof scope
 
@@ -47,12 +38,12 @@ inclusion proof verified. The node database was opened read-only; the test index
 was separate. All 43 JavaScript UI tests passed. Packaged app modules and UI
 files match source. These are point-in-time checks, not continuous operation.
 
-All 34 offline UI languages and saved preferences are retained. Current 0.4.10
+All 34 offline UI languages and saved preferences are retained. Current 0.4.11
 packaging checks compare the compiled application modules with their source.
 The guide was written directly without an external automatic translation service.
 Earlier 0.4.6 execution tests remain historical.
 
-## 0.4.10
+## 0.4.11
 
 The explorer shows fee rates in yugeon/vB. When the local node has recorded a transaction replacement, the transaction page links to the replacement. Confirmed chain records take precedence; local replacement history is limited.
 

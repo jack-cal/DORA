@@ -1,38 +1,7 @@
-# SUMUWW P2P 0.3.4 guide
+# SUMUWW P2P Full / Light 0.3.5
 
-The current instructions are in [README.txt](README.txt), with changes in
-[RELEASE_NOTES.txt](RELEASE_NOTES.txt) and evidence in [VERIFICATION.txt](VERIFICATION.txt).
-Choose [Full or Light](EDITIONS.md): Full uses your local Bitcoin Core; Light
-checks Bitcoin headers and inclusion proofs using configurable public TLS servers.
-Both still use your local SUMUWW full node and can trade with each other.
+This locally prepared update includes current-queue fee estimation, manual rates and reviewed child-fee increases. Agreed trading amounts and fee reserves remain unchanged. A canceled unsubmitted preview releases its input reservations. Refunds need only the chain holding your funds; conflicting or unavailable observations never count as confirmed.
 
-SMW/BTC is the only supported trading pair. The board shares buy/sell posts
-and coordinates conditional settlement. It is separate from peer discovery
-and blockchain synchronization built into the full-node programs.
+Use a synchronized SUMUWW node updated for source block 9,600. Full requires unpruned Bitcoin Core with txindex. Light checks Bitcoin headers and inclusion proofs against independent TLS servers; it does not fully validate Bitcoin. Both editions use separate profiles and support SMW/BTC. Every spend requires review. There is no unattended payment retry or guaranteed confirmation time.
 
-All 34 interface languages remain available; English is the default. Existing
-full-node programs, ordinary wallets and stored blockchain data are unchanged.
-Older trading wallets and recovery archives remain readable, preserving SMW/BTC
-addresses, keys and records. Retired asset data remains encrypted but is inactive.
-
-Valid legacy blocks through 8999 remain usable. Upgraded nodes reject old-rule
-blocks at 9000 inclusive and later. Conditional-spend activation remains 9100.
-Advertisements can be shared before that height; funding requires activation.
-
-Public trading also requires a configured synchronized SUMUWW node and a working
-Bitcoin connection for the selected edition,
-a reachable counterparty, confirmations, transaction fees and timeout monitoring.
-No separately deployed exchange contract is needed. Keep private recovery backups.
-
-[Detailed Bitcoin full-node setup and block-9100 activation guide](BITCOIN_SETUP.md).
-
-Current editions, 25 October 2026: P2P Full/Light 0.3.4 and Windows full node
-0.57.46. Downloads:
-https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.4
-https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.4
-
-## 0.3.4
-
-Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
-
-[Current features in 34 languages](docs/features/index.html).
+Read [setup and recovery](BITCOIN_SETUP.md), [upgrade details](UPGRADE_9600.md), [34-language notes](docs/upgrade9600/index.html) and [edition differences](EDITIONS.md). Back up the complete private recovery archive while funds are locked. Release publication is a separate step; no new GitHub release is claimed by this local build.

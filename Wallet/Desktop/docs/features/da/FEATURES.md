@@ -1,4 +1,4 @@
-# SUMUWW Wallet PC 1.0.6
+# SUMUWW Wallet PC 1.0.7
 
 1 SMW = 100.000.000 yugeon. Automatiske gebyrer tilbyder tre niveauer ud fra lokale observationer uden at garantere bekræftelsestiden. Du kan indtaste en sats i yugeon/vB. Kontrollér det endelige gebyr og totalen i SMW før afsendelse. En afvist transaktion reducerer ikke saldoen.
 

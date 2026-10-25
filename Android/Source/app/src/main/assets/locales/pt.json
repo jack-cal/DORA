@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Limite de emissão do bloco",
   "Available fees (block)": "Taxas disponíveis do bloco",
   "Unclaimed reward": "Recompensa não reivindicada",
-  "Reward not fully claimed": "Recompensa reivindicada parcialmente"
+  "Reward not fully claimed": "Recompensa reivindicada parcialmente",
+  "Update before block 9,600.": "Atualize antes do bloco 9.600.",
+  "Checking active nodes": "Verificando nós ativos",
+  "Waiting for lottery": "Aguardando sorteio",
+  "Waiting for candidate approval": "Aguardando aprovação dos candidatos",
+  "Waiting for witness signatures": "Aguardando assinaturas das testemunhas",
+  "Waiting for block producer": "Aguardando o produtor do bloco",
+  "Witness replies": "Respostas das testemunhas",
+  "Next retry": "Próxima tentativa",
+  "Increase fee": "Aumentar taxa",
+  "Connection unavailable": "Conexão indisponível",
+  "Automatic fee": "Taxa automática",
+  "Manual fee rate (blank = automatic)": "Taxa manual (vazio = automática)",
+  "Connection proofs": "Provas de conexão",
+  "Selected pending": "Selecionados pendentes"
 }

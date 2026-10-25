@@ -1,4 +1,8 @@
-# SUMUWW Wallet for Windows 1.0.6
+Core version label now reads the bundled runtime version. Release 1.0.8: https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.8.
+
+SUMUWW 1.0.8 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+
+# SUMUWW Wallet for Windows 1.0.8
 
 An ordinary wallet with receive, send, activity, encrypted backup, recovery,
 automatic lock and 34 offline interface languages. English is the first-launch
@@ -10,7 +14,7 @@ run alongside it. Import an encrypted wallet backup or restore its recovery
 words to use an existing address. Originals are never overwritten. Keep both the
 encrypted backup and its password. Recovery words are displayed only on request.
 
-This wallet synchronizes and validates the chain locally with core 0.57.38. It
+This wallet synchronizes and validates the chain locally with core 0.57.47. It
 does not offer mining controls or depend on a remote server to sign payments.
 It is not a lightweight/SPV client. Initial synchronization requires peers and
 storage for the blockchain. Settings allows adding a reachable peer address.
@@ -28,7 +32,7 @@ For source execution use Windows Python 3.12 with the pinned dependencies in
 using `SUMUWW-Wallet.spec`. Desktop tests use disposable regtest wallets only.
 The executable is not publisher-code-signed.
 
-## 1.0.6
+## 1.0.8
 
 1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.
 

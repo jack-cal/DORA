@@ -159,8 +159,14 @@ class LightTradeTests(BitcoinTradeTests):
         self.assertEqual(self.b.engine.status(sid)['state'], 'completed')
         self.fixtures[0].offline = False
         self.fixtures[0].mutate = lambda method, value: [] if method == 'blockchain.scripthash.get_history' else value
+        terms,state=self.b.engine._load(sid)
+        spec=self.b.engine.specs(terms,state)['BTC']
         with self.assertRaisesRegex(ValueError, 'disagree'):
-            self.b.engine.status(sid)
+            node.observe(spec)
+        status=self.b.engine.status(sid)
+        self.assertEqual('unavailable',status['chains']['BTC']['status'])
+        self.assertFalse(status['chains']['BTC']['confirmed'])
+        self.assertNotEqual('completed',status['state'])
         self.fixtures[0].mutate = lambda method, value: value
         self.assertEqual(self.b.engine.status(sid)['state'], 'completed')
 

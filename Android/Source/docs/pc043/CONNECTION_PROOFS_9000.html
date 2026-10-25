@@ -1,5 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>SUMUWW · current height-9000 protocol</h1>
-<p>Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89</p>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CONNECTION_PROOFS_9000</title><style>body{max-width:980px;margin:30px auto;padding:24px;font:17px/1.8 system-ui;color:#183248;background:#f6f9fc}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd7e3;padding:9px;text-align:start}pre{white-space:pre-wrap}a{color:#175e9c}code{overflow-wrap:anywhere}img{max-width:100%}nav{display:flex;flex-wrap:wrap;gap:14px}</style><body><h1>SUMUWW connection-proof protocol · heights 9,000 and 9,600</h1>
+<p>Protocol baseline at 9,000, certified candidate selection from source block 9,600. Locally prepared edition 2.3; publication is separate.</p>
 <h2>History, money and compatibility</h2>
 <p>The genesis and all pre-9000 consensus rules remain unchanged. Valid history up
 to 8999 is accepted even when an old peer advertises an invalid continuation.
@@ -32,13 +32,9 @@ specific direct child B. The job keeps the exact A/B target across retries. A
 verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.</p>
-<p>Starting with PC 0.57.40 / Android 0.6.89, new jobs probe the entire discovered identity inventory through relays and then randomly sample three responsive identities with the verified beacon. Silent contacts remain discovered and are retried by later jobs. Existing selected jobs retain their original message and witnesses. Availability observations are local and do not define consensus membership. There are no
-registration fees, membership admissions, exits, one-person checks, per-IP
-lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
-through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
-omission by a malicious producer and a global uniform census are not proven.
-One operator can run multiple identities. This design does not provide Sybil
-resistance based on unique human identity.</p>
+<p>A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.</p>
+<p>For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.</p>
+<p>Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.</p>
 <p>Each of the three witnesses signs the canonical network/parent/height/slot/
 A/B/team/beacon message with Ed25519. Each 64-byte signature is split into two
 32-byte halves. The three front halves form 96 bytes; the three back halves form
@@ -74,7 +70,7 @@ nonconflicting proven A/B edges contained in each branch; the greater count wins
 then the smaller internal tip-hash integer wins. Duplicate proofs for one edge
 do not multiply its score. If distinct edges occupy one parent/height slot, all
 edges in that slot score zero, including when all three witnesses double-sign.
-Honest local keys also refuse a second different message for one slot.</p>
+Legacy keys retain their original slot lock. Certified rounds use a lock bound to the slot, A/B pair and selection digest; changing the round does not permit conflicting edges to gain weight.</p>
 <p>There is no arrival-order finality lock. Late evidence or newly discovered
 conflicts can change an equal-work choice; a valid greater-work branch wins.
 Hidden evidence is not proven absent. These rules do not guarantee irreversible
@@ -101,4 +97,4 @@ activation at height 9000 has not occurred in these laboratory tests.</p>
 <code>sumuww/difficulty.py</code>, <code>profiles.py</code>, <code>chain.py</code>: native consensus and DGW cadence.
 <code>tests/test_activation_prefix.py</code>: valid old prefix plus invalid new suffix.</p>
 <p>The obsolete mandatory random-10% BLS policy, distinct-IP witness rule and
-registered-history lock are superseded. They are not requirements of this release.</p></article></body></html>
+registered-history lock are superseded. They are not requirements of this release.</p></body></html>

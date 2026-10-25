@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Ограничење издавања блока",
   "Available fees (block)": "Доступне накнаде блока",
   "Unclaimed reward": "Непреузета награда",
-  "Reward not fully claimed": "Награда је делимично преузета"
+  "Reward not fully claimed": "Награда је делимично преузета",
+  "Update before block 9,600.": "Ажурирајте пре блока 9.600.",
+  "Checking active nodes": "Провера активних чворова",
+  "Waiting for lottery": "Чекање извлачења",
+  "Waiting for candidate approval": "Чекање одобрења кандидата",
+  "Waiting for witness signatures": "Чекање потписа сведока",
+  "Waiting for block producer": "Чекање ствараоца блока",
+  "Witness replies": "Одговори сведока",
+  "Next retry": "Следећи покушај",
+  "Increase fee": "Повећај накнаду",
+  "Connection unavailable": "Веза није доступна",
+  "Automatic fee": "Аутоматска накнада",
+  "Manual fee rate (blank = automatic)": "Ручна стопа (празно = аутоматски)"
 }

@@ -107,6 +107,7 @@ class LanguageWalletOutputTests(unittest.TestCase):
             translator=i18n.Translator('en'), language_choice=Mock(), _language_path=None,
             _configure_fonts=Mock(), root=Mock(), _walk_widgets=lambda outer: (), _outer=None,
             _docs_menu_records=(), _docs_menu=Mock(), _history_dialog=None,
+            _blocks_dialog=None, fee_preset=Mock(),
             _node_snapshot=None, _wallet=None, _mining=False, _mine_inflight=False,
             _message=Mock(), _sync_controls=Mock(), _reflow_wrapping=Mock(),
             _apply_mongolian_layout=Mock())

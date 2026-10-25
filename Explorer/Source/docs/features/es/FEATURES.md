@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 El explorador muestra las tarifas en yugeon/vB. Si el nodo local ha registrado una sustitución, la página enlaza a la nueva transacción. Prevalecen los registros confirmados de la cadena; el historial local de sustituciones es limitado.
 

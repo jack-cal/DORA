@@ -17,4 +17,4 @@ p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;paddin
 <p>公開ネットワークは <code>sumuww</code>、内部の別名は <code>dora</code> です。下記のジェネシスハッシュも確認してください。標準アドレスは圧縮secp256k1公開鍵のHASH160を使うwitness v0 P2WPKHです。必須のメモやタグはありません。ネットワーク違いや不正なチェックサムは拒否します。HDアドレスの受取・お釣りの分岐とインデックスを記録し、Bitcoinと同じ導出パスとは考えないでください。</p>
 <h2>取引・ブロックの照会</h2>
 <p><code>getrawtransaction</code> はアクティブチェーンとメモリプールを検索し、孤立分岐だけの取引は検索しません。入力は過去の出力を指し、一意の送信元アドレスを表しません。<code>getblock</code> の <code>verbose</code> は真偽値です。保存済み非アクティブブロックは <code>active=false</code>、<code>confirmations=-1</code> となり、生の取引はブロックハッシュで取得できます。<code>findspendingtransaction</code> はアクティブチェーンの確定済み使用取引だけを探すため、nullだけで使用可能とは判断できません。<code>include_mempool=true</code> の <code>gettxout</code> も確認してください。確認数とactive状態は再編で変わり得ます。</p>
-<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main><p><a href="../../upgrade9600/ja.html">ブロック9,600までに更新してください。</a></p></body></html>

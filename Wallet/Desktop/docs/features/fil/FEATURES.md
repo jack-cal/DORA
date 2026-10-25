@@ -1,4 +1,4 @@
-# SUMUWW Wallet PC 1.0.6
+# SUMUWW Wallet PC 1.0.7
 
 1 SMW = 100,000,000 yugeon. May tatlong antas ang awtomatikong bayad batay sa lokal na obserbasyon, ngunit walang garantisadong oras ng kumpirmasyon. Maaari kang magtakda ng rate sa yugeon/vB. Suriin ang huling bayad at kabuuang SMW bago magpadala. Hindi nababawasan ang balanse sa tinanggihang transaksiyon.
 

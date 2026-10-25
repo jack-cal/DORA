@@ -310,5 +310,19 @@
   "Issuance limit (block)": "เพดานการออกเหรียญของบล็อก",
   "Available fees (block)": "ค่าธรรมเนียมที่รับได้ของบล็อก",
   "Unclaimed reward": "รางวัลที่ไม่ได้รับ",
-  "Reward not fully claimed": "รับรางวัลเพียงบางส่วน"
+  "Reward not fully claimed": "รับรางวัลเพียงบางส่วน",
+  "Update before block 9,600.": "อัปเดตก่อนถึงบล็อก 9,600",
+  "Checking active nodes": "กำลังตรวจสอบโหนดที่ใช้งานอยู่",
+  "Waiting for lottery": "รอการสุ่มเลือก",
+  "Waiting for candidate approval": "รออนุมัติรายชื่อผู้สมัคร",
+  "Waiting for witness signatures": "รอลายเซ็นพยาน",
+  "Waiting for block producer": "รอผู้สร้างบล็อก",
+  "Witness replies": "คำตอบจากพยาน",
+  "Next retry": "ลองใหม่ครั้งถัดไป",
+  "Increase fee": "เพิ่มค่าธรรมเนียม",
+  "Connection unavailable": "เชื่อมต่อไม่ได้",
+  "Automatic fee": "ค่าธรรมเนียมอัตโนมัติ",
+  "Manual fee rate (blank = automatic)": "อัตราที่กำหนดเอง (เว้นว่าง = อัตโนมัติ)",
+  "Connection proofs": "หลักฐานการเชื่อมต่อ",
+  "Selected pending": "ถูกเลือกและรอดำเนินการ"
 }

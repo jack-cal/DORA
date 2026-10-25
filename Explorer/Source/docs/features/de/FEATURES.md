@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Der Explorer zeigt Gebührensätze in yugeon/vB. Hat der lokale Knoten eine Transaktionsersetzung gespeichert, verlinkt die Transaktionsseite auf den Ersatz. Bestätigte Kettendaten haben Vorrang; die lokale Ersetzungshistorie ist begrenzt.
 

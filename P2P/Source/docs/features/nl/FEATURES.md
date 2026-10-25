@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P controleert een ondertekende SUMUWW-transactie bij de verbonden node voordat deze wordt verspreid. Bij afwijzing wordt deze niet verspreid. Afgesproken ruilbedragen en kosten blijven gelijk; Bitcoin-kosten gebruiken hun eigen eenheden.
+P2P biedt kosten op basis van de huidige wachtrij, handmatige tarieven en bevestigde verhogingen. Een niet-verzonden voorbeeld annuleren geeft gereserveerde middelen vrij. Terugbetaling vereist alleen de keten met jouw middelen. Afgesproken bedragen en kostenreserves blijven gelijk.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

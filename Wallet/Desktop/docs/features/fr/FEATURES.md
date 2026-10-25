@@ -1,4 +1,4 @@
-# SUMUWW Wallet PC 1.0.6
+# SUMUWW Wallet PC 1.0.7
 
 1 SMW = 100 000 000 yugeon. Les frais automatiques proposent trois niveaux selon les observations locales, sans garantir le délai de confirmation. Vous pouvez saisir un taux en yugeon/vB. Vérifiez les frais définitifs et le total en SMW avant l’envoi. Une transaction refusée ne débite pas votre solde.
 

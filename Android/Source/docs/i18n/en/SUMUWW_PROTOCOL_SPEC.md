@@ -5,9 +5,13 @@
 
 Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.
 
-[Current protocol / exact format / limitations](../../../CONNECTION_PROOFS_9000.html)
+[Current protocol / exact format / limitations](CONNECTION_PROOFS_9000.html)
 <!-- /current-links-9000 -->
 
+
+## Source-block 9,600 update
+
+From source block 9,600, connection proofs require certified active-candidate selection. More than two thirds of the anchored generation attest the activity round; validators recompute the three witnesses. After activation, unfinished jobs can renew the activity round while preserving the A/B pair and event beacon. Archived responses from different rounds cannot be combined. Earlier valid proofs remain valid. The exact rules and quorum assumptions are in [CONNECTION_PROOFS_9000.md](CONNECTION_PROOFS_9000.md).
 
 ## 1. Basic principles
 
@@ -45,7 +49,7 @@ Maximum excluding the unspendable genesis reward: **17,999,949.97690000 SMW**.
 
 ## 3. Genesis and network identity
 
-SUMUWW's basic execution network is `sumuww`, profile `dora-independent-v0.12-p2wpkh`. Genesis is fixed to hash `00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97`, UTC 2026-10-03 00:00:00 and nonce `5129435`. It has only an OP_RETURN output and is not connected to the UTXO set. Initial nBits is `0x1e0377ae`, powLimit is `floor((2^256-1)/4838400)`, address HRP is `sumuww`, and wire magic is `d052470c`. Before height 8,064, the Chain uses 600 seconds, 2,016 blocks, 1,209,600 seconds and a 4-times clamp. The [complete genesis record](../../pc043/vectors/sumuww_genesis.json) is included.
+SUMUWW's basic execution network is `sumuww`, profile `dora-independent-v0.12-p2wpkh`. Genesis is fixed to hash `00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97`, UTC 2026-10-03 00:00:00 and nonce `5129435`. It has only an OP_RETURN output and is not connected to the UTXO set. Initial nBits is `0x1e0377ae`, powLimit is `floor((2^256-1)/4838400)`, address HRP is `sumuww`, and wire magic is `d052470c`. Before height 8,064, the Chain uses 600 seconds, 2,016 blocks, 1,209,600 seconds and a 4-times clamp. The [complete genesis record](vectors/sumuww_genesis.json) is included.
 
 Genesis is the fixed height-0 anchor with a previous hash of 0. Full bytes, Merkle root, header hash and PoW are recalculated. Its transaction is not connected to UTXOs. Ordinary coinbase outputs require spending height minus creation height to be at least 100.
 
@@ -59,7 +63,7 @@ Validation rejects empty inputs/outputs, duplicate inputs, missing or spent UTXO
 
 Only the first transaction may be coinbase. Coinbase null outpoint, scriptSig length 2~100 bytes and height prefix are checked. Output total cannot exceed the height's subsidy plus block fees. Merkle mutation and witness commitment are checked. Block weight is `3*base_size + total_size <= 4000000`; sigops cost must not exceed 80,000.
 
-Before block 9100, spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. From block 9100, upgraded nodes additionally validate the exact HTLC template described in [HTLC_9100.md](../../../HTLC_9100.md). Other spending scripts or signature flags remain unsupported; a general script VM is not implemented. Activation is evaluated at the block spending an output, not the block that created its coins.
+Before block 9100, spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. From block 9100, upgraded nodes additionally validate the exact HTLC template described in [HTLC_9100.md](HTLC_9100.md). Other public-network spending scripts or signature flags remain unsupported; a general script VM is not implemented. Multisig and output-lock templates are implemented for explicit test-chain activation only; public activation is not scheduled. Activation is evaluated at the block spending an output, not the block that created its coins.
 
 ## 5. Proof of work, difficulty and time
 
@@ -102,3 +106,8 @@ Nodes exchange version/verack, locator/headers, inventory/getdata and block/tran
 ## 7. Address encoding
 
 SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0 and a 20-byte witness program for native P2WPKH. Validation checks the network prefix, checksum and padding. Other-network addresses, mixed case and invalid padding are rejected.
+
+
+## Implementation addendum: PC 0.57.47 / Android 0.6.96
+
+[Current fee, yugeon, replacement and script activation specification](NODE_FEATURES.md).

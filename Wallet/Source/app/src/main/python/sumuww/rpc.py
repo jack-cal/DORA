@@ -619,6 +619,13 @@ class RpcServer:
                         return {'value_units': coin.output.value, 'script_pubkey': coin.output.script_pubkey.hex(),
                                 'confirmations': chain._row(chain.tip_hash)[2] - coin.height + 1,
                                 'coinbase': coin.coinbase}
+                if include_mempool:
+                    for transaction in chain.mempool_transactions():
+                        if transaction.txid()==digest and index<len(transaction.outputs):
+                            output=transaction.outputs[index]
+                            if output.script_pubkey.startswith(b'\x6a') or len(output.script_pubkey)>10_000:return None
+                            return {'value_units':output.value,'script_pubkey':output.script_pubkey.hex(),
+                                    'confirmations':0,'coinbase':False}
                 return None
             if method == 'findspendingtransaction':
                 digest = _hash(arguments['txid'])

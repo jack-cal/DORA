@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 L’explorateur affiche les taux de frais en yugeon/vB. Si le nœud local a enregistré un remplacement, la page de la transaction renvoie vers la nouvelle transaction. Les données confirmées de la chaîne priment ; l’historique local des remplacements est limité.
 

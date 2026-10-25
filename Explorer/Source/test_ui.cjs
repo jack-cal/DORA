@@ -5,6 +5,13 @@ const vm=require('node:vm');
 const {test}=require('node:test');
 const source=fs.readFileSync(__dirname+'/dist/app.js','utf8');
 
+test('unsupported formatting locale has an explicit fallback',async()=>{
+  const h=await boot();
+  h.run("lang='mn-Mong'");
+  assert.ok(['mn-Mong-CN','mn','en'].includes(h.run('locale()')));
+  assert.equal(h.run('Intl.DateTimeFormat.supportedLocalesOf([locale()]).length'),1);
+});
+
 test('advanced routes preserve only supported filters and encode keys',async()=>{
   const h=await boot();
   assert.equal(h.run("advancedPath(['transactions'],new URLSearchParams('kind=ordinary&sort=rate&order=asc&min_amount=0.00000001&junk=x'))"),'transactions?min_amount=0.00000001&sort=rate&order=asc&kind=ordinary&offset=0');

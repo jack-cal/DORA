@@ -5,9 +5,10 @@ from ..wallet_link import LocalRPC
 from ..htlc import Contract, sign_spend, verify_spend
 from sumuww.block import Block
 from sumuww.transaction import Transaction, TxInput, TxOutput
-from sumuww.wallet import sign_p2wpkh
+from sumuww.wallet import sign_p2wpkh,p2wpkh_script
 from sumuww.address import encode_address, _bech32_encode, _convert_bits
 from sumuww.profiles import get_network
+from .fee_quote import quote,MAX_FEE,validate_settings
 
 BTC_GENESIS='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
 
@@ -17,6 +18,7 @@ class UtxoAdapter:
     def __init__(self,coin,config,network='mainnet'):
         if coin not in ('SMW','BTC'):raise ValueError('Invalid UTXO coin.')
         self.coin=coin;self.config=config;self.network=network
+        validate_settings(config)
         self.rpc=LocalRPC(config['url'],config['credential_file'],coin.lower())
         self.confirmations=int(config.get('confirmations',6 if network=='mainnet' else 1))
         if self.confirmations<1 or (network=='mainnet' and self.confirmations<6):raise ValueError('Insufficient confirmation policy.')
@@ -52,6 +54,26 @@ class UtxoAdapter:
 
     def contract(self,spec):
         return Contract(bytes.fromhex(spec['hash']),bytes.fromhex(spec['receiver']['pubkey']),bytes.fromhex(spec['sender']['pubkey']),spec['expiry'])
+
+    def fee_quote(self,size,mode=None):
+        mode=mode or self.config.get('fee_mode','normal')
+        manual=self.config.get('fee_rate')
+        if self.coin=='SMW':
+            estimate=self.rpc.call('estimatefee',size,mode)
+            if manual is None:
+                if estimate.get('capped'):raise ValueError('Fee quote exceeds the automatic spending limit.')
+                return int(estimate['fee_units'])
+            policy=self.rpc.call('getmempoolpolicy')
+            floor=Decimal(str(policy['minimum_fee_units_per_kvb']))/1000
+            return quote(size,[],max(floor,Decimal('0.001')),mode,manual)
+        info=self.rpc.call('getmempoolinfo')
+        floor=max(Decimal(str(info.get('mempoolminfee','0'))),Decimal(str(info.get('minrelaytxfee','0.00001'))))*100000
+        pool=self.rpc.call('getrawmempool',True) if manual is None else {}
+        bins=[(str(Decimal(str(e['fees']['base']))*100000000/e['vsize']),int(e['vsize'])) for e in pool.values()]
+        return quote(size,bins,max(floor,Decimal('0.001')),mode,manual)
+
+    @staticmethod
+    def vsize(transaction):return (transaction.weight()+3)//4
 
     def output(self,digest,index):
         value=self.rpc.call('gettxout',digest,index,True)
@@ -92,21 +114,24 @@ class UtxoAdapter:
     def prepare_lock(self,spec,key,reserved=()):
         if not self.info()['active']:raise ValueError('SUMUWW HTLC spending activates at height 9100. No funding before activation.')
         if key.pubkey.hex()!=spec['sender']['pubkey']:raise ValueError('Wrong funding key.')
-        contract=self.contract(spec);amount=spec['amount']+spec['fee'];selected=[];total=0
+        contract=self.contract(spec);amount=spec['amount']+spec['fee'];selected=[];total=0;fee=0
         for coin in self.coins(key):
             if (coin['txid'],coin['index']) in reserved:continue
             selected.append(coin);total+=coin['value']
-            if total>=amount+self.fee:break
-        if total<amount+self.fee:raise ValueError('Insufficient confirmed funds including fees.')
-        change=total-amount-self.fee
-        if change and change<294:raise ValueError('Change would be dust; adjust the amount or fee.')
+            dummy=Transaction(2,tuple(TxInput(bytes.fromhex(c['txid'])[::-1],c['index'],witness=(bytes(73),key.pubkey)) for c in selected),
+                              (TxOutput(amount,contract.script_pubkey),TxOutput(294,key.script_pubkey)),0)
+            fee=self.fee_quote(self.vsize(dummy))
+            # Keep an owned change output for a reviewed child-fee increase.
+            if total>=amount+fee+294:break
+        if total<amount+fee+294:raise ValueError('Insufficient confirmed funds including fees.')
+        change=total-amount-fee
         outputs=[TxOutput(amount,contract.script_pubkey)]
         if change:outputs.append(TxOutput(change,key.script_pubkey))
         tx=Transaction(2,tuple(TxInput(bytes.fromhex(c['txid'])[::-1],c['index']) for c in selected),tuple(outputs),0)
         for i,c in enumerate(selected):tx=sign_p2wpkh(tx,i,TxOutput(c['value'],key.script_pubkey),key)
         refund=Transaction(2,(TxInput(tx.txid(),0,sequence=0xfffffffe),),(TxOutput(spec['amount'],key.script_pubkey),),contract.refund_height)
         refund=sign_spend(refund,0,tx.outputs[0],contract,key)
-        return {'raw':tx.serialize().hex(),'txid':txid(tx),'refund_raw':refund.serialize().hex(),'fee':self.fee,'value':amount,'coin':self.coin,'inputs':[(c['txid'],c['index']) for c in selected]}
+        return {'raw':tx.serialize().hex(),'txid':txid(tx),'refund_raw':refund.serialize().hex(),'fee':fee,'value':amount,'coin':self.coin,'inputs':[(c['txid'],c['index']) for c in selected]}
 
     def reference(self,spec,operation):return {'txid':operation['txid'],'index':0}
 
@@ -162,35 +187,105 @@ class UtxoAdapter:
         if len(witness)==4:result['secret']=witness[1].hex()
         return result
 
-    def prepare_claim(self,spec,reference,key,secret):
+    def prepare_claim(self,spec,reference,key,secret,reserved=()):
         observed=self.observe(spec,reference);reference=observed.get('reference')
         if observed['status']!='locked':raise ValueError('A confirmed unspent lock is required.')
-        fund,index,out,count=self._funding(spec,reference)
-        tx=Transaction(2,(TxInput(fund.txid(),index,sequence=0xfffffffe),),(TxOutput(spec['amount'],key.script_pubkey),),0)
-        tx=sign_spend(tx,0,out,self.contract(spec),key,secret=secret)
-        return {'raw':tx.serialize().hex(),'txid':txid(tx),'fee':spec['fee'],'value':0,'coin':self.coin}
+        return self._prepare_spend(spec,reference,key,secret=secret,reserved=reserved)
 
-    def prepare_refund(self,spec,reference,key):
+    def prepare_refund(self,spec,reference,key,reserved=()):
         if self.remaining(spec)>0:raise ValueError('Refund height has not arrived.')
-        fund,index,out,count=self._funding(spec,reference)
-        tx=Transaction(2,(TxInput(fund.txid(),index,sequence=0xfffffffe),),(TxOutput(spec['amount'],key.script_pubkey),),spec['expiry'])
-        tx=sign_spend(tx,0,out,self.contract(spec),key)
-        return {'raw':tx.serialize().hex(),'txid':txid(tx),'fee':spec['fee'],'value':0,'coin':self.coin}
+        return self._prepare_spend(spec,reference,key,reserved=reserved)
 
-    def broadcast(self,operation):
+    def _prepare_spend(self,spec,reference,key,secret=None,reserved=()):
+        fund,index,out,count=self._funding(spec,reference)
+        contract=self.contract(spec);extra=[];total=0;available=None
+        refund=secret is None;locktime=spec['expiry'] if refund else 0
+        sponsor=p2wpkh_script(bytes.fromhex(spec['sender']['pubkey']))
+        while True:
+            witness=(bytes(73),b'',contract.script) if refund else (bytes(73),bytes(32),b'\x01',contract.script)
+            inputs=(TxInput(fund.txid(),index,sequence=0xfffffffe,witness=witness),)+tuple(
+                TxInput(bytes.fromhex(c['txid'])[::-1],c['index'],witness=(bytes(73),key.pubkey)) for c in extra)
+            dummy=Transaction(2,inputs,(TxOutput(spec['amount'],key.script_pubkey),TxOutput(294,sponsor),TxOutput(294,key.script_pubkey)),locktime)
+            fee=self.fee_quote(self.vsize(dummy))
+            if spec['fee']+total>=fee:break
+            if available is None:available=iter(c for c in self.coins(key) if (c['txid'],c['index']) not in reserved)
+            coin=next(available,None)
+            if coin is None:raise ValueError('Additional confirmed funds are needed for the current network fee.')
+            extra.append(coin);total+=coin['value']
+        outputs=[TxOutput(spec['amount'],key.script_pubkey)]
+        unused=max(0,spec['fee']-fee);change=total-max(0,fee-spec['fee'])
+        for value,script in ((unused,sponsor),(change,key.script_pubkey)):
+            if value>=294:outputs.append(TxOutput(value,script))
+            else:fee+=value
+        if fee>MAX_FEE:raise ValueError('Fee exceeds the spending limit.')
+        inputs=tuple(TxInput(i.prev_txid,i.prev_index,sequence=i.sequence) for i in inputs)
+        tx=Transaction(2,inputs,tuple(outputs),locktime)
+        tx=sign_spend(tx,0,out,contract,key,secret=secret)
+        for position,coin in enumerate(extra,1):tx=sign_p2wpkh(tx,position,TxOutput(coin['value'],key.script_pubkey),key)
+        return {'raw':tx.serialize().hex(),'txid':txid(tx),'fee':fee,'value':0,'coin':self.coin,'inputs':[(c['txid'],c['index']) for c in extra]}
+
+    def prepare_fee_child(self,parent,key,reserved=()):
+        tx=Transaction.deserialize(bytes.fromhex(parent['raw']))
+        if txid(tx)!=parent['txid']:raise ValueError('Changed parent transaction.')
+        available=[]
+        for index,out in enumerate(tx.outputs):
+            if out.script_pubkey!=key.script_pubkey:continue
+            current=self.output(parent['txid'],index)
+            if current and current['confirmations']==0:
+                available.append((out.value,index))
+        if not available:raise ValueError('No unconfirmed owned output is available for a fee increase.')
+        value,index=max(available);point=(parent['txid'],index)
+        if point in reserved:raise ValueError('Fee-increase output is already reserved.')
+        selected=[{'txid':parent['txid'],'index':index,'value':value}];total=value
+        package=parent.get('package',[])+[{'txid':parent['txid'],'vsize':self.vsize(tx),'fee':parent['fee']}]
+        if len(package)>20:raise ValueError('Wait for confirmations before adding another fee increase.')
+        old_size=sum(p['vsize'] for p in package);old_fee=sum(p['fee'] for p in package)
+        coins=None
+        while True:
+            dummy=Transaction(2,tuple(TxInput(bytes.fromhex(c['txid'])[::-1],c['index'],witness=(bytes(73),key.pubkey)) for c in selected),
+                              (TxOutput(294,key.script_pubkey),),0)
+            size=self.vsize(dummy)
+            fee=max(self.fee_quote(size,'fast'),self.fee_quote(size+old_size,'fast')-old_fee,
+                    (old_fee*size+old_size-1)//old_size+size)
+            if fee>MAX_FEE:raise ValueError('Fee increase exceeds the spending limit.')
+            if total>=fee+294:break
+            if coins is None:coins=iter(c for c in self.coins(key) if (c['txid'],c['index']) not in reserved)
+            coin=next(coins,None)
+            if coin is None:raise ValueError('Additional confirmed funds are needed for the fee increase.')
+            selected.append(coin);total+=coin['value']
+        child=Transaction(2,tuple(TxInput(bytes.fromhex(c['txid'])[::-1],c['index']) for c in selected),
+                          (TxOutput(total-fee,key.script_pubkey),),0)
+        for i,c in enumerate(selected):child=sign_p2wpkh(child,i,TxOutput(c['value'],key.script_pubkey),key)
+        return {'raw':child.serialize().hex(),'txid':txid(child),'fee':fee,'value':0,'coin':self.coin,
+                'inputs':[(c['txid'],c['index']) for c in selected],'package':package,'parent':parent['txid']}
+
+    def preflight(self,operation):
         if not self.info()['active']:raise ValueError('Conditional spending is not active.')
         tx=Transaction.deserialize(bytes.fromhex(operation['raw']))
         if txid(tx)!=operation['txid']:raise ValueError('Changed signed transaction.')
         try:
-            known,_=self.transaction(txid(tx))
+            known,confirmations=self.transaction(txid(tx))
         except ValueError:known=None
         if known is not None:
             if known.serialize()!=tx.serialize():raise ValueError('Different known witness.')
-            return txid(tx)
+            if confirmations>0:return txid(tx)
+            try:
+                if self.rpc.call('getmempoolentry',txid(tx)) is not None:return txid(tx)
+            except ValueError:pass
         if self.coin=='SMW':
             preflight=self.rpc.call('testmempoolaccept',operation['raw'])
             if not preflight.get('allowed'):
                 raise ValueError('SUMUWW transaction rejected by current node policy: '+str(preflight.get('reject_reason','validation failed')))
+        else:
+            checks=self.rpc.call('testmempoolaccept',[operation['raw']])
+            if not checks or not checks[0].get('allowed'):
+                raise ValueError('Bitcoin transaction rejected by current node policy.')
+        return None
+
+    def broadcast(self,operation):
+        known=self.preflight(operation)
+        if known is not None:return known
+        tx=Transaction.deserialize(bytes.fromhex(operation['raw']))
         result=self.rpc.call('sendrawtransaction',operation['raw'])
         digest=result if self.coin=='BTC' else result['txid']
         if digest!=txid(tx):raise ValueError('Unexpected broadcast ID.')

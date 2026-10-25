@@ -310,5 +310,19 @@
   "Issuance limit (block)": "حد إصدار الكتلة",
   "Available fees (block)": "الرسوم المتاحة للكتلة",
   "Unclaimed reward": "المكافأة غير المطالب بها",
-  "Reward not fully claimed": "تمت المطالبة بجزء من المكافأة"
+  "Reward not fully claimed": "تمت المطالبة بجزء من المكافأة",
+  "Update before block 9,600.": "حدّث قبل الكتلة 9,600.",
+  "Checking active nodes": "جارٍ فحص العقد النشطة",
+  "Waiting for lottery": "بانتظار القرعة",
+  "Waiting for candidate approval": "بانتظار اعتماد المرشحين",
+  "Waiting for witness signatures": "بانتظار توقيعات الشهود",
+  "Waiting for block producer": "بانتظار منتج الكتلة",
+  "Witness replies": "ردود الشهود",
+  "Next retry": "المحاولة التالية",
+  "Increase fee": "زيادة الرسوم",
+  "Connection unavailable": "الاتصال غير متاح",
+  "Automatic fee": "رسوم تلقائية",
+  "Manual fee rate (blank = automatic)": "معدل يدوي (فارغ = تلقائي)",
+  "Connection proofs": "إثباتات الاتصال",
+  "Selected pending": "مختارة قيد الانتظار"
 }

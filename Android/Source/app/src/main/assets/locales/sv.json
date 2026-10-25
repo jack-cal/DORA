@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Blockets utgivningsgräns",
   "Available fees (block)": "Tillgängliga blockavgifter",
   "Unclaimed reward": "Ej uttagen belöning",
-  "Reward not fully claimed": "Belöning delvis uttagen"
+  "Reward not fully claimed": "Belöning delvis uttagen",
+  "Update before block 9,600.": "Uppdatera före block 9 600.",
+  "Checking active nodes": "Kontrollerar aktiva noder",
+  "Waiting for lottery": "Väntar på lottning",
+  "Waiting for candidate approval": "Väntar på godkännande av kandidater",
+  "Waiting for witness signatures": "Väntar på vittnessignaturer",
+  "Waiting for block producer": "Väntar på blockproducenten",
+  "Witness replies": "Vittnessvar",
+  "Next retry": "Nästa försök",
+  "Increase fee": "Höj avgiften",
+  "Connection unavailable": "Anslutning saknas",
+  "Automatic fee": "Automatisk avgift",
+  "Manual fee rate (blank = automatic)": "Manuell avgiftssats (tomt = automatisk)",
+  "Connection proofs": "Anslutningsbevis",
+  "Selected pending": "Utvalda, väntar"
 }

@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WHITEPAPER</title><style>body{max-width:980px;margin:30px auto;padding:24px;font:17px/1.8 system-ui;color:#183248;background:#f6f9fc}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd7e3;padding:9px;text-align:start}pre{white-space:pre-wrap}a{color:#175e9c}code{overflow-wrap:anywhere}img{max-width:100%}nav{display:flex;flex-wrap:wrap;gap:14px}</style><body><blockquote>
+<p>Document edition 2.3, 26 October 2026. Source-block 9,600 activation.</p>
+</blockquote>
+<h1>SUMUWW Whitepaper</h1>
+<h2>Purpose and scope</h2>
+<p>SUMUWW is an independent coin with its own genesis block, transaction history, network and UTXO set. It implements SHA-256d proof of work, UTXO accounting, secp256k1 verification of owner signatures, independent node validation of blocks and transactions, and chain selection by valid cumulative work.</p>
+<h2>SUMUWW connection proof</h2>
+<p>A connection proof records the endorsement of a specific parent block A and its direct child B. After A is mined, A's producer handles the proof in the background once B is known. Requests remain bound to that pair. Block creation, acceptance and propagation do not wait for the proof.</p>
+<p>Three selected nodes each sign the same network, A/B hashes, height, witness team and randomness context with Ed25519. Each node splits its 64-byte signature into two 32-byte halves and returns them to A's producer: six pieces in total. The three front halves form a 96-byte bundle for A; the three back halves form another for B. Each bundle is compressed only if it becomes smaller; otherwise it keeps its original encoding.</p>
+<p>A's producer signs the paired attachment; B's producer verifies it and signs a receipt binding the same pair. The completed record is stored and relayed. Attachments reference the exact block hashes without rewriting mined block bytes. Reassembly restores three verifiable signatures, not a private key. The proof attests to this signed connection; every block still requires independent consensus validation.</p>
+<h2>Random selection and distributed randomness</h2>
+<p>A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.</p>
+<p>For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.</p>
+<p>Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.</p>
+<p>The random beacon uses Feldman DKG and threshold BLS, with its public setup anchored on chain before A. Enough valid shares reconstruct the same output despite some missing replies. Below the threshold, the proof remains incomplete while mining continues. Initial setup needs all listed dealers' contributions and a readiness quorum. Unavailable beacon groups can be replaced by background fresh-key DKG, with each replacement anchored in PoW and bound to its predecessor and an ancestor round. Old proofs keep their original key; new generations apply only to later source blocks. Recovery needs enough responsive participants and eventual delivery, and never gates mining. This is fresh-key recovery, not recovery of a lost old secret; same-key resharing is not implemented. Candidate-set certification at 9,600 adds quorum attestation; its scope and assumptions are stated above.</p>
+<h2>Progress and application views</h2>
+<p>Setup records, lottery jobs and completed proofs count different things. A setup
+can support many jobs; a nonselected lottery finishes without creating a proof.
+Subtracting 9 selected jobs from 11 setup records does not imply 2 successes.
+Valid partial signatures survive retries and restarts within their own round. Certified renewal archives prior rounds. Failed jobs retain their next retry across restart, with backoff capped at 15 minutes. The progress view distinguishes candidate collection, quorum approval, witness replies, target receipt and verification. Completion is not guaranteed.</p>
+<p>Full nodes independently validate and synchronize the chain. Ordinary wallets
+also use local full validation but do not expose mining. The Windows full node's
+recent wallet view shows its own wallet, while All history shows all blocks and
+transactions on its synchronized active chain. The separate Explorer reads a
+chosen local database and builds an index; it does not independently synchronize
+or validate the chain. Explorer's TXID Merkle inclusion proof is different from
+the three-witness connection proof and does not establish consensus validity.</p>
+<h2>Chain selection and conflicting evidence</h2>
+<p>Valid cumulative PoW takes priority. From activation, equal-work branches are compared by the number of valid, nonconflicting proven connections on each branch, then by the smaller tip hash in the protocol's internal byte order. Repeated proofs of the same edge count once.</p>
+<p>Conflicting connections for the same parent/height position all receive zero weight, even if all three witnesses double-sign. Late proofs or newly revealed conflicts can change an equal-work choice. A valid greater-work branch still wins. Connection evidence does not provide irreversible finality, prevent every fork or guarantee resistance to a majority-hashrate attack.</p>
+<h2>Verification by a later node</h2>
+<p>A later node obtains the blocks, anchored randomness setup, completed paired proofs and relevant conflict evidence from peers. It decodes both bundles, decompressing only those marked as compressed, joins each witness's halves and verifies the three signatures, both producer receipts and the parent-child relationship. Missing or invalid evidence earns no connection weight; it does not by itself invalidate an otherwise valid PoW block. Independent verification requires the supporting records to remain available.</p>
+<h2>Issuance</h2>
+<p>Each of the first 150,000 blocks has a subsidy of 50 SMW. The subsidy then starts at 25 SMW and halves every 210,000 blocks, rounded down to an integer number of smallest units.</p>
+<table>
+<thead>
+<tr>
+<th>Block height</th>
+<th style="text-align: right;">Block subsidy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–149,999</td>
+<td style="text-align: right;">50 SMW</td>
+</tr>
+<tr>
+<td>150,000–359,999</td>
+<td style="text-align: right;">25 SMW</td>
+</tr>
+<tr>
+<td>360,000–569,999</td>
+<td style="text-align: right;">12.5 SMW</td>
+</tr>
+<tr>
+<td>570,000–779,999</td>
+<td style="text-align: right;">6.25 SMW</td>
+</tr>
+<tr>
+<td>780,000–989,999</td>
+<td style="text-align: right;">3.125 SMW</td>
+</tr>
+<tr>
+<td>6,660,000–6,869,999</td>
+<td style="text-align: right;">0.00000001 SMW</td>
+</tr>
+<tr>
+<td>H ≥ 6,870,000</td>
+<td style="text-align: right;">0 SMW</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">0 &lt;= H &lt; 150000: S(H) = 5000000000
+H &gt;= 150000:
+    k = floor((H - 150000) / 210000)
+    if k &gt;= 32: S(H) = 0
+    otherwise: S(H) = floor(2500000000 / 2^k)
+</code></pre>
+<p>Nominal maximum issuance: <strong>17,999,999.97690000 SMW</strong>.
+Maximum excluding the unspendable genesis reward: <strong>17,999,949.97690000 SMW</strong>.</p>
+<p>A valid block's coinbase may claim the subsidy for its height plus fees from included transactions. Excess issuance is rejected. Fees transfer existing coins. The issuance rules contain no reserved developer allocation. There is no administrator authority for arbitrary issuance, freezing, confiscation or balance modification. A mining reward can be spent when spending height minus creation height is at least 100.</p>
+<h2>Proof of work and difficulty</h2>
+<p>The chain uses SHA-256d PoW with a 600-second target interval. Before height 8064, the original 2016-block adjustment applies. From 8064 through 8999, DGW v3 recalculates every block using the preceding 24 blocks on that branch. From 9000 it recalculates at 9000, 9010, 9020… using the same 24-block algorithm; intervening blocks retain their parent's difficulty. Nodes check the required target as well as the hash. Connection evidence adds no PoW work.</p>
+<h2>Transactions and UTXOs</h2>
+<p>One SMW equals 100,000,000 yugeon; one yugeon is 0.00000001 SMW. The ledger records unspent transaction outputs, or UTXOs. Transactions consume existing outputs and create new ones. Nodes check input existence, duplicates, maturity, owner signatures and amount totals to reject double spending and overspending. The basic spending format is native P2WPKH with <code>SIGHASH_ALL</code>.</p>
+<h2>Fees and protocol upgrades</h2>
+<p>Automatic slow, normal and fast suggestions use the node’s current accepted transaction queue and ancestor packages. They do not use recent-block fee samples. Manual rates use yugeon/vB: vB measures data size, not currency. The final confirmation fixes the exact fee and total. The public default relay floor is 1 yugeon/vB; this is local policy, not a consensus ban on zero-fee blocks. A rejected transaction does not debit confirmed coins, although pending wallet inputs may remain reserved.</p>
+<p>Mining history reports new issuance, included transaction fees and claimed total separately from the amount received by your own address. For an underclaimed coinbase the split of the paid reward is unknown, rather than invented. Fees can still be claimed after the block subsidy reaches zero.</p>
+<p>Fees equal total inputs minus total outputs. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.</p>
+<p>Each node still validates independently; neither the author nor an API caller can force upgrades or mint, freeze or rewrite balances. Adoption of changed consensus rules is voluntary and may split the chain. These rules do not cryptographically prevent people from creating a fork. SUMUWW has a decentralized consensus architecture. Its practical decentralization depends on sustained participation by independent node operators and miners.</p>
+<h2>Activation and compatibility</h2>
+<p>Valid history through 8999 remains usable even when transmitted with an invalid later suffix. From 9000 every block must contain the producer's public-key commitment and satisfy the active difficulty rules. Compatibility is judged by block validity, not the software version name. At 9100, the exact P2WSH SHA256/preimage/CLTV spending template becomes available; this does not introduce a general-purpose script VM. Ordinary P2WPKH transfers and existing valid coins remain usable. The source-block 9,600 connection-proof rule requires coordinated node and wallet updates before that height. Missing proof does not invalidate a valid PoW block, but old software can choose a different equal-work branch. General multisig and output-lock templates are implemented for explicit test-chain activation; public activation is not scheduled.</p>
+<h2>Participation and privacy</h2>
+<p>P2P peers can observe connection IP addresses. The protocol does not guarantee participant anonymity.</p>
+<hr />
+<p><a href="CONNECTION_PROOFS_9000.html">SUMUWW · A/B · Ed25519 · BLS</a> · <a href="HTLC_9100.html">HTLC · 9100</a></p></body></html>

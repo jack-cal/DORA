@@ -352,5 +352,17 @@
   "Issuance limit (block)": "区块发行上限",
   "Available fees (block)": "区块可领取手续费",
   "Unclaimed reward": "未领取奖励",
-  "Reward not fully claimed": "仅领取了部分奖励"
+  "Reward not fully claimed": "仅领取了部分奖励",
+  "Update before block 9,600.": "请在第9,600个区块前更新。",
+  "Checking active nodes": "正在检查活跃节点",
+  "Waiting for lottery": "等待抽签",
+  "Waiting for candidate approval": "等待候选名单批准",
+  "Waiting for witness signatures": "等待见证人签名",
+  "Waiting for block producer": "等待区块生成者回应",
+  "Witness replies": "见证人回应",
+  "Next retry": "下次重试",
+  "Increase fee": "提高手续费",
+  "Connection unavailable": "无法连接",
+  "Automatic fee": "自动手续费",
+  "Manual fee rate (blank = automatic)": "手动费率（留空则自动）"
 }

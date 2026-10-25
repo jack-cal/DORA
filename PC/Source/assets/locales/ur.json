@@ -352,5 +352,17 @@
   "Issuance limit (block)": "بلاک کے اجرا کی حد",
   "Available fees (block)": "بلاک کی دستیاب فیس",
   "Unclaimed reward": "غیر وصول شدہ انعام",
-  "Reward not fully claimed": "انعام جزوی طور پر وصول ہوا"
+  "Reward not fully claimed": "انعام جزوی طور پر وصول ہوا",
+  "Update before block 9,600.": "بلاک 9,600 سے پہلے اپ ڈیٹ کریں۔",
+  "Checking active nodes": "فعال نوڈز کی جانچ جاری ہے",
+  "Waiting for lottery": "قرعہ اندازی کا انتظار",
+  "Waiting for candidate approval": "امیدواروں کی منظوری کا انتظار",
+  "Waiting for witness signatures": "گواہوں کے دستخطوں کا انتظار",
+  "Waiting for block producer": "بلاک بنانے والے کا انتظار",
+  "Witness replies": "گواہوں کے جوابات",
+  "Next retry": "اگلی کوشش",
+  "Increase fee": "فیس بڑھائیں",
+  "Connection unavailable": "کنکشن دستیاب نہیں",
+  "Automatic fee": "خودکار فیس",
+  "Manual fee rate (blank = automatic)": "دستی فیس کی شرح (خالی = خودکار)"
 }

@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Eksplorator pokazuje stawki opłat w yugeon/vB. Gdy lokalny węzeł zapisał zastąpienie, strona transakcji prowadzi do nowej transakcji. Potwierdzone dane łańcucha mają pierwszeństwo; lokalna historia zastąpień jest ograniczona.
 

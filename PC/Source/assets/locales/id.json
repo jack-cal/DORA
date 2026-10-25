@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Batas penerbitan blok",
   "Available fees (block)": "Biaya blok yang tersedia",
   "Unclaimed reward": "Imbalan belum diklaim",
-  "Reward not fully claimed": "Imbalan diklaim sebagian"
+  "Reward not fully claimed": "Imbalan diklaim sebagian",
+  "Update before block 9,600.": "Perbarui sebelum blok 9.600.",
+  "Checking active nodes": "Memeriksa node aktif",
+  "Waiting for lottery": "Menunggu undian",
+  "Waiting for candidate approval": "Menunggu persetujuan kandidat",
+  "Waiting for witness signatures": "Menunggu tanda tangan saksi",
+  "Waiting for block producer": "Menunggu pembuat blok",
+  "Witness replies": "Tanggapan saksi",
+  "Next retry": "Percobaan berikutnya",
+  "Increase fee": "Naikkan biaya",
+  "Connection unavailable": "Koneksi tidak tersedia",
+  "Automatic fee": "Biaya otomatis",
+  "Manual fee rate (blank = automatic)": "Tarif manual (kosong = otomatis)"
 }

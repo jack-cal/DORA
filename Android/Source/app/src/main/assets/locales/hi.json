@@ -310,5 +310,19 @@
   "Issuance limit (block)": "ब्लॉक की निर्गम सीमा",
   "Available fees (block)": "ब्लॉक के उपलब्ध शुल्क",
   "Unclaimed reward": "दावा न किया गया पुरस्कार",
-  "Reward not fully claimed": "पुरस्कार का आंशिक दावा"
+  "Reward not fully claimed": "पुरस्कार का आंशिक दावा",
+  "Update before block 9,600.": "ब्लॉक 9,600 से पहले अपडेट करें।",
+  "Checking active nodes": "सक्रिय नोड जाँचे जा रहे हैं",
+  "Waiting for lottery": "चयन की प्रतीक्षा",
+  "Waiting for candidate approval": "उम्मीदवारों की मंजूरी की प्रतीक्षा",
+  "Waiting for witness signatures": "गवाहों के हस्ताक्षरों की प्रतीक्षा",
+  "Waiting for block producer": "ब्लॉक निर्माता की प्रतीक्षा",
+  "Witness replies": "गवाहों के उत्तर",
+  "Next retry": "अगला प्रयास",
+  "Increase fee": "शुल्क बढ़ाएँ",
+  "Connection unavailable": "कनेक्शन उपलब्ध नहीं",
+  "Automatic fee": "स्वचालित शुल्क",
+  "Manual fee rate (blank = automatic)": "मैन्युअल शुल्क दर (खाली = स्वचालित)",
+  "Connection proofs": "कनेक्शन प्रमाण",
+  "Selected pending": "चयनित, लंबित"
 }

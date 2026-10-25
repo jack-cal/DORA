@@ -21,6 +21,8 @@ class BlockBrowser(tk.Toplevel):
         self.rows = []
         self.stored_proofs = 0
         self.lottery_jobs = None
+        self.pending_jobs = []
+        self.selection_activation = None
         self.detail_generation = 0
         self.detail_timer = None
         self.detail = None
@@ -84,6 +86,7 @@ class BlockBrowser(tk.Toplevel):
         self.next.pack(side='left',padx=8)
         self.refresh=_button(controls,text=tr('Refresh'),command=lambda:self.load(0))
         self.refresh.pack(side='left')
+        _button(controls,text=tr('Connection proofs'),command=self.proof_jobs).pack(side='left',padx=8)
         _button(controls,text=tr('Close'),command=self.close).pack(side='right')
         self.load(0)
 
@@ -120,6 +123,8 @@ class BlockBrowser(tk.Toplevel):
             self.offset=result['offset'];self.total=result['total'];self.rows=result['blocks']
             self.stored_proofs=result.get('stored_proofs',0)
             self.lottery_jobs=result.get('lottery_jobs')
+            self.pending_jobs=result.get('pending_proof_jobs',[])
+            self.selection_activation=result.get('selection_activation_height')
             self.render()
         except Exception as error:self.failed(error);return
         self.busy=False;self.controls()
@@ -141,6 +146,28 @@ class BlockBrowser(tk.Toplevel):
                 if jobs['awaiting_lottery']:
                     status+=' · '+tr('Pending')+f": {jobs['awaiting_lottery']:,}"
             self.state.set(status)
+
+    def proof_jobs(self):
+        from .app import _label, _button
+        dialog=tk.Toplevel(self);dialog.title(tr('Connection proofs'));dialog.geometry('840x540')
+        dialog.transient(self)
+        text=tk.Text(dialog,wrap='word',padx=14,pady=14);text.pack(fill='both',expand=True)
+        def stamp(value):return datetime.fromtimestamp(value).strftime('%Y-%m-%d %H:%M:%S') if value else '—'
+        if self.selection_activation is not None and self.total-1<self.selection_activation:
+            text.insert('end',tr('Update before block 9,600.')+'\n\n')
+        phases={'participants':'Checking active nodes','activity':'Checking active nodes',
+                'beacon':'Waiting for lottery','candidate_quorum':'Waiting for candidate approval',
+                'witnesses':'Waiting for witness signatures','target_receipt':'Waiting for block producer',
+                'verification':'Verification'}
+        for row in self.pending_jobs:
+            text.insert('end',tr('Block height')+f": {row['height']} · "+tr(phases.get(row['phase'],'Pending'))+'\n')
+            text.insert('end',tr('Witness replies')+f": {row['received']}/3 · "+tr('Next retry')+': '+stamp(row['next_retry'])+'\n')
+            if row['phase']=='candidate_quorum':text.insert('end',f"{row['approvals']}/{row['required_approvals']}\n")
+            if row.get('last_error'):text.insert('end',row['last_error']+'\n')
+            text.insert('end','\n')
+        if not self.pending_jobs:text.insert('end',tr('Selected pending')+': 0')
+        text.configure(state='disabled')
+        _button(dialog,text=tr('Close'),command=dialog.destroy).pack(pady=8)
 
     def clear_detail(self):
         self.detail_generation += 1

@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Ipinapakita ng explorer ang singil sa yugeon/vB. Kung naitala ng lokal na node ang pagpapalit, may link ang pahina ng transaksiyon patungo sa kapalit nito. Mas pinapahalagahan ang mga nakumpirmang tala sa chain; limitado ang lokal na kasaysayan ng pagpapalit.
 

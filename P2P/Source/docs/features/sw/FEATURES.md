@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P hukagua muamala wa SUMUWW uliotiwa saini kwenye nodi iliyounganishwa kabla ya kuusambaza. Ukikataliwa hausambazwi. Kiasi na ada za ubadilishaji zilizokubaliwa hubaki vilevile; ada za Bitcoin hutumia vipimo vyake.
+P2P ina ada kulingana na foleni ya sasa, viwango vya mkono na ongezeko baada ya uthibitisho. Kufuta onyesho lisilotumwa huachilia fedha zilizotengwa. Marejesho yanahitaji tu mnyororo wenye fedha zako. Kiasi na akiba ya ada iliyokubaliwa haibadiliki.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

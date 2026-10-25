@@ -1,4 +1,6 @@
-SUMUWW P2P 0.3.4 — Full and Light Windows editions
+SUMUWW 0.3.5 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+
+SUMUWW P2P 0.3.5 — Full and Light Windows editions
 
 CHOOSE AN EDITION
 Full: run PC/SUMUWW-P2P-Full.exe with your synchronized local Bitcoin Core.
@@ -125,8 +127,8 @@ PYTHONPATH=vendor;tests;. python -m unittest discover -s tests -v
 all 34 languages, SMW/BTC wallet addresses and signed BTC-order reservations.
 See VERIFICATION.txt for completed checks and precise limits.
 
-## 0.3.4
+## 0.3.5
 
-Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
+Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and HTLC fee reserves remain fixed. Network fees use the current queue or a manual rate; a pending payment can receive a reviewed child-fee increase. Bitcoin uses its own fee units.
 
 [Current features in 34 languages](docs/features/index.html).

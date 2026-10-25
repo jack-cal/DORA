@@ -375,6 +375,30 @@ internal class SumuwwScreens(
         val blocks=result?.optJSONArray("blocks")
         if(blocks==null){p.addView(ui.label(tr("불러오는 중"),14f,ui.muted));return}
         val offset=result.optInt("offset");val total=result.optInt("total")
+        if(result.optInt("height")<9600)p.addView(ui.label(tr("9,600번 블록 전에 업데이트하세요."),13f,ui.muted),ui.params(bottom=8))
+        val jobs=result.optJSONArray("pending_proof_jobs")
+        p.addView(ui.SumuwwSettingRow(R.drawable.ic_info,tr("Connection proofs")+": "+result.optInt("stored_proofs")){
+            val lines=StringBuilder()
+            val counts=result.optJSONObject("lottery_jobs")
+            if(counts!=null)lines.append(tr("Selected pending")).append(": ").append(counts.optInt("selected_pending")).append("\n\n")
+            for(i in 0 until (jobs?.length()?:0)){
+                val job=jobs!!.getJSONObject(i)
+                val phase=when(job.optString("phase")){
+                    "participants","activity"->"활동 중인 노드 확인 중"
+                    "beacon"->"추첨 대기"
+                    "candidate_quorum"->"후보 승인 대기"
+                    "witnesses"->"증인 서명 대기"
+                    "target_receipt"->"블록 생성자 응답 대기"
+                    else->"Pending"
+                }
+                lines.append(tr("블록 높이")).append(": ").append(job.optInt("height")).append(" · ").append(tr(phase)).append("\n")
+                lines.append(tr("증인 응답")).append(": ").append(job.optInt("received")).append("/3\n")
+                val retry=job.optLong("next_retry")
+                if(retry>0)lines.append(tr("다음 재시도")).append(": ").append(java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss",java.util.Locale.getDefault()).format(java.util.Date(retry*1000))).append("\n")
+                lines.append("\n")
+            }
+            SumuwwVerticalCaptions.builder(activity).setTitle(tr("Connection proofs")).setMessage(lines.toString()).setPositiveButton(tr("닫기"),null).show()
+        })
         val controls=ui.column()
         if(offset>0)controls.addView(ui.SumuwwPrimaryButton(tr("이전")){action("blocksPrevious")}.apply{tag="blocks-previous"},ui.params(bottom=8))
         if(offset+50<total)controls.addView(ui.SumuwwPrimaryButton(tr("다음")){action("blocksNext")}.apply{tag="blocks-next"},ui.params(bottom=8))

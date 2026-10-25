@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Blokkens utstedelsesgrense",
   "Available fees (block)": "Tilgjengelige blokkgebyrer",
   "Unclaimed reward": "Belønning som ikke er hentet",
-  "Reward not fully claimed": "Belønning delvis hentet"
+  "Reward not fully claimed": "Belønning delvis hentet",
+  "Update before block 9,600.": "Oppdater før blokk 9 600.",
+  "Checking active nodes": "Kontrollerer aktive noder",
+  "Waiting for lottery": "Venter på trekning",
+  "Waiting for candidate approval": "Venter på godkjenning av kandidater",
+  "Waiting for witness signatures": "Venter på vitnesignaturer",
+  "Waiting for block producer": "Venter på blokkprodusenten",
+  "Witness replies": "Svar fra vitner",
+  "Next retry": "Neste forsøk",
+  "Increase fee": "Øk gebyret",
+  "Connection unavailable": "Tilkobling utilgjengelig",
+  "Automatic fee": "Automatisk gebyr",
+  "Manual fee rate (blank = automatic)": "Manuell sats (tom = automatisk)",
+  "Connection proofs": "Forbindelsesbevis",
+  "Selected pending": "Valgt, venter"
 }

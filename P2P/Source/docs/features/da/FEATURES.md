@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P kontrollerer signerede SUMUWW-transaktioner hos den tilsluttede node før udsendelse. Afviste transaktioner udsendes ikke. Aftalte byttebeløb og gebyrer fastholdes; Bitcoin-gebyrer bruger egne enheder.
+P2P tilbyder gebyrer efter den aktuelle kø, manuelle satser og bekræftede forhøjelser. Annullering af en usendt forhåndsvisning frigiver reserverede midler. Tilbagebetaling kræver kun kæden med dine midler. Aftalte beløb og gebyrreserver er uændrede.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

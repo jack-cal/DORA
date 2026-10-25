@@ -894,6 +894,8 @@ class AppService:
             own_id = runtime.keys.node_id if runtime else None
             result = await asyncio.to_thread(block_history, self.database, *arguments, own_id)
             result['lottery_jobs'] = runtime.job_counts() if runtime is not None else None
+            result['pending_proof_jobs'] = runtime.job_details() if runtime is not None else []
+            result['selection_activation_height'] = self._node.chain.boundary.selection_activation
             return result
         if operation == 'block_transactions':
             from .block_history import block_transactions

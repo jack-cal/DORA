@@ -310,6 +310,21 @@ class RpcHttpTests(unittest.IsolatedAsyncioTestCase):
             status, _ = await self.request(path=f'/api/v1/addresses/{self.address}/utxos?{query}')
             self.assertEqual(400, status)
 
+    async def test_gettxout_exposes_only_unspent_spendable_pending_outputs(self):
+        previous=self.blocks[0].transactions[0]
+        tx=Transaction(2,(TxInput(previous.txid(),0),),(
+            TxOutput(50*COIN-100_000,ALICE.script_pubkey),TxOutput(0,b'\x6a\x01x')))
+        tx=sign_p2wpkh(tx,0,previous.outputs[0],ALICE)
+        txid=(await self.result('sendrawtransaction',[tx.serialize().hex()]))['txid']
+        out=await self.result('gettxout',[txid,0])
+        self.assertEqual(0,out['confirmations']);self.assertFalse(out['coinbase'])
+        self.assertIsNone(await self.result('gettxout',[txid,0,False]))
+        self.assertIsNone(await self.result('gettxout',[txid,1]))
+        child=Transaction(2,(TxInput(tx.txid(),0),),(TxOutput(tx.outputs[0].value-100_000,ALICE.script_pubkey),))
+        child=sign_p2wpkh(child,0,tx.outputs[0],ALICE)
+        await self.result('sendrawtransaction',[child.serialize().hex()])
+        self.assertIsNone(await self.result('gettxout',[txid,0]))
+
     async def test_signed_transaction_mempool_template_block_and_confirmations(self):
         tx = self.spend()
         status, submitted = await self.request('POST', '/api/v1/transactions', {'hex': tx.serialize().hex()})

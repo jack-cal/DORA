@@ -76,7 +76,7 @@ class ElectrumPeer:
                 raw = ssl.create_default_context().wrap_socket(raw, server_hostname=self.host)
             self.socket = raw
             self.address = raw.getpeername()[0]
-            version = self._request('server.version', ['SUMUWW-P2P-Light/0.3.0', '1.4'])
+            version = self._request('server.version', ['SUMUWW-P2P-Light/0.3.5', '1.4'])
             if not isinstance(version, list) or len(version) != 2 or not str(version[1]).startswith('1.4'):
                 raise ValueError('Bitcoin server does not support Electrum protocol 1.4.')
             features = self._request('server.features', [])

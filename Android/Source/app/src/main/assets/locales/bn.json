@@ -310,5 +310,19 @@
   "Issuance limit (block)": "ব্লকের ইস্যু সীমা",
   "Available fees (block)": "ব্লকের উপলব্ধ ফি",
   "Unclaimed reward": "দাবি না করা পুরস্কার",
-  "Reward not fully claimed": "পুরস্কারের আংশিক দাবি"
+  "Reward not fully claimed": "পুরস্কারের আংশিক দাবি",
+  "Update before block 9,600.": "ব্লক 9,600-এর আগে আপডেট করুন।",
+  "Checking active nodes": "সক্রিয় নোড যাচাই হচ্ছে",
+  "Waiting for lottery": "লটারির অপেক্ষায়",
+  "Waiting for candidate approval": "প্রার্থীদের অনুমোদনের অপেক্ষায়",
+  "Waiting for witness signatures": "সাক্ষীদের স্বাক্ষরের অপেক্ষায়",
+  "Waiting for block producer": "ব্লক প্রস্তুতকারীর অপেক্ষায়",
+  "Witness replies": "সাক্ষীদের উত্তর",
+  "Next retry": "পরবর্তী চেষ্টা",
+  "Increase fee": "ফি বাড়ান",
+  "Connection unavailable": "সংযোগ পাওয়া যাচ্ছে না",
+  "Automatic fee": "স্বয়ংক্রিয় ফি",
+  "Manual fee rate (blank = automatic)": "নিজে দেওয়া ফি হার (ফাঁকা = স্বয়ংক্রিয়)",
+  "Connection proofs": "সংযোগের প্রমাণ",
+  "Selected pending": "নির্বাচিত, অপেক্ষমাণ"
 }

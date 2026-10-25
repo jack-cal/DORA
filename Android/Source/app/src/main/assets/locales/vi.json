@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Giới hạn phát hành của khối",
   "Available fees (block)": "Phí khả dụng của khối",
   "Unclaimed reward": "Phần thưởng chưa nhận",
-  "Reward not fully claimed": "Chỉ nhận một phần thưởng"
+  "Reward not fully claimed": "Chỉ nhận một phần thưởng",
+  "Update before block 9,600.": "Cập nhật trước khối 9.600.",
+  "Checking active nodes": "Đang kiểm tra nút hoạt động",
+  "Waiting for lottery": "Đang chờ bốc thăm",
+  "Waiting for candidate approval": "Đang chờ duyệt ứng viên",
+  "Waiting for witness signatures": "Đang chờ chữ ký nhân chứng",
+  "Waiting for block producer": "Đang chờ bên tạo khối",
+  "Witness replies": "Phản hồi nhân chứng",
+  "Next retry": "Lần thử tiếp theo",
+  "Increase fee": "Tăng phí",
+  "Connection unavailable": "Không thể kết nối",
+  "Automatic fee": "Phí tự động",
+  "Manual fee rate (blank = automatic)": "Mức phí thủ công (để trống = tự động)",
+  "Connection proofs": "Bằng chứng kết nối",
+  "Selected pending": "Đã chọn, đang chờ"
 }

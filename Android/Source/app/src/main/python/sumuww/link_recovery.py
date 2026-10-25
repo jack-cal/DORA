@@ -82,10 +82,15 @@ class BeaconRecovery:
         # No fixed-size shortlist or IP quota is used. A probe is not admission.
         self.status='checking discovered participants'
         nonce=secrets.token_hex(32)
+        certified=r.state.selection_required(path[-1][0][2])
         async def probe(node_id):
             try:
-                value=await r.request(node_id,'dkg_probe',{'nonce':nonce},timeout=self.request_timeout)
-                if value==nonce:return node_id
+                method='selection_probe' if certified else 'dkg_probe'
+                value=await r.request(node_id,method,{'nonce':nonce},timeout=self.request_timeout)
+                if certified:
+                    from .link_selection import SELECTION_POLICY,PUBLIC_ACTIVATION_HEIGHT
+                    if value=={'nonce':nonce,'policy':SELECTION_POLICY,'activation_height':PUBLIC_ACTIVATION_HEIGHT}:return node_id
+                elif value==nonce:return node_id
             except (ValueError,TimeoutError,OSError):pass
             return None
         results=await asyncio.gather(*(probe(i) for i in tuple(r.contacts)))

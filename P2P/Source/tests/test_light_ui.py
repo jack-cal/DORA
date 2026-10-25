@@ -41,7 +41,7 @@ class LightUiTests(unittest.TestCase):
                     # Save captures the three editable endpoints on the UI thread.
                     with patch.object(app, 'configure', return_value={'height': 100}) as configure:
                         ui.buttons['Save connection'].invoke();drain()
-                        self.assertEqual(configure.call_args.args, ('BTC', {'mode': 'light', 'servers': list(DEFAULT_SERVERS)}))
+                        self.assertEqual(configure.call_args.args, ('BTC', {'mode': 'light', 'servers': list(DEFAULT_SERVERS), 'fee_mode': 'normal'}))
                     ui.vars['node_coin'].set('SMW');ui.load_connection();self.assertIn('Select file', ui.buttons)
                     ui.vars['quantity'].set('2');ui.vars['price'].set('0.1');ui.vars['title'].set('Light / Full test')
                     ui.buttons['Publish'].invoke();drain()

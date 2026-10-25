@@ -167,7 +167,7 @@ object UiLanguage {
         val language = code(context)
         if (language == "ko") {
             return mobileData(context).optJSONObject("korean_overrides")
-                ?.optString(korean)?.takeIf { it.isNotBlank() } ?: korean
+                ?.optString(korean)?.takeIf { it.isNotBlank() } ?: catalog(context, "ko").optString(korean, korean)
         }
         mobileText(context, language, korean)?.let { return it }
         val ko = catalog(context, "ko")

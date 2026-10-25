@@ -310,5 +310,19 @@
   "Issuance limit (block)": "블록 신규 발행 한도",
   "Available fees (block)": "블록 수수료 합계",
   "Unclaimed reward": "미청구 보상",
-  "Reward not fully claimed": "보상 일부만 청구됨"
+  "Reward not fully claimed": "보상 일부만 청구됨",
+  "Update before block 9,600.": "9,600번 블록 전에 업데이트하세요.",
+  "Checking active nodes": "활동 중인 노드 확인 중",
+  "Waiting for lottery": "추첨 대기",
+  "Waiting for candidate approval": "후보 승인 대기",
+  "Waiting for witness signatures": "증인 서명 대기",
+  "Waiting for block producer": "블록 생성자 응답 대기",
+  "Witness replies": "증인 응답",
+  "Next retry": "다음 재시도",
+  "Increase fee": "수수료 올리기",
+  "Connection unavailable": "연결할 수 없음",
+  "Automatic fee": "자동 수수료",
+  "Manual fee rate (blank = automatic)": "직접 입력할 수수료율 (비워 두면 자동)",
+  "Connection proofs": "연결증명",
+  "Selected pending": "선택 후 대기"
 }

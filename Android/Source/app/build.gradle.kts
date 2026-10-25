@@ -20,7 +20,7 @@ android {
 
         applicationId="org.sumuww.miner"; minSdk=26; targetSdk=35
 
-        versionCode=155; versionName="0.6.95"
+        versionCode=156; versionName="0.6.96"
 
         ndk { abiFilters += listOf("arm64-v8a","x86_64") }
 
@@ -45,6 +45,7 @@ android {
     }
 
     testBuildType="compatible"
+    testOptions { unitTests.isIncludeAndroidResources = true }
 
 }
 
@@ -64,6 +65,8 @@ chaquopy { defaultConfig {
 } }
 
 dependencies {
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.14.1")
 
     androidTestImplementation("androidx.test:runner:1.6.2")
 

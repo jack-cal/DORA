@@ -1,8 +1,6 @@
-> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
+# SUMUWW connection-proof protocol · heights 9,000 and 9,600
 
-# SUMUWW · current height-9000 protocol
-
-Current implementation: PC 0.57.40 / Android 0.6.89 · 2026-10-24. Recovery was introduced in PC 0.57.34 / Android 0.6.84.
+Protocol baseline at 9,000, certified candidate selection from source block 9,600. Locally prepared edition 2.3; publication is separate.
 
 ## History, money and compatibility
 
@@ -44,19 +42,11 @@ verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.
 
-For a new job, the producer probes its entire discovered identity inventory
-through authenticated nonce echoes, including relayed participants. At least
-three identities must respond before the job proceeds to the verified beacon
-and its 20% event test. The producer then samples three responding identities
-without replacement, using rejection sampling. Silent contacts remain in the
-discovery inventory for later attempts. Responses are local availability
-observations, not consensus membership or a guaranteed future signature. There are no
-registration fees, membership admissions, exits, one-person checks, per-IP
-lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
-through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
-omission by a malicious producer and a global uniform census are not proven.
-One operator can run multiple identities. This design does not provide Sybil
-resistance based on unique human identity.
+A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.
+
+For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.
+
+Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.
 
 Each of the three witnesses signs the canonical network/parent/height/slot/
 A/B/team/beacon message with Ed25519. Each 64-byte signature is split into two
@@ -74,31 +64,6 @@ Missing halves, forged signatures, altered target hashes and wrong ancestry fail
 verification. Late nodes fetch the blocks, anchored randomness transcript and
 complete proofs, including conflict evidence on side branches, and independently
 reconstruct and verify signatures. Some jobs can remain incomplete indefinitely.
-
-## Job progress and counters
-
-A beacon setup record prepares a randomness generation. One setup can serve
-many A/B jobs; it is not one attempted proof. Local job counters separate:
-
-| Counter | Meaning |
-|---|---|
-| Awaiting lottery | Participant or beacon preparation has not produced a final event result |
-| Not selected | The verified 20% event test did not select this job; no completed proof is expected |
-| Selected pending | The job was selected but still lacks required signatures, a receipt or verification |
-| Selected complete | This node's selected job completed and was verified and stored |
-| Stored complete proofs | All complete proofs stored locally, including proofs received from peers |
-
-The four local job outcomes sum to the local job total. Setup records are a
-separate population. For example, 11 setup records and 9 selected jobs do not
-imply 2 completed proofs. Stored proofs and local completed jobs can also differ.
-An awaiting-lottery count does not mean that the 20% selection has failed.
-
-Each valid witness reply is persisted immediately, reverified and reused after
-a retry or restart. Corrupt saved replies are discarded and requested again.
-The job records its phase, missing witnesses and errors. Existing selected jobs
-keep the exact message and team, including signature locks; the repair cannot
-replace missing original witnesses or make old incomplete proofs complete.
-Completion also requires the source attachment and the child producer's receipt.
 
 ## Randomness and availability limits
 
@@ -123,7 +88,7 @@ nonconflicting proven A/B edges contained in each branch; the greater count wins
 then the smaller internal tip-hash integer wins. Duplicate proofs for one edge
 do not multiply its score. If distinct edges occupy one parent/height slot, all
 edges in that slot score zero, including when all three witnesses double-sign.
-Honest local keys also refuse a second different message for one slot.
+Legacy keys retain their original slot lock. Certified rounds use a lock bound to the slot, A/B pair and selection digest; changing the round does not permit conflicting edges to gain weight.
 
 There is no arrival-order finality lock. Late evidence or newly discovered
 conflicts can change an equal-work choice; a valid greater-work branch wins.
@@ -145,10 +110,8 @@ A database already containing incompatible post-activation history is refused
 for explicit review. Do not delete it or reset a wallet to bypass this check.
 
 The shipped implementation and isolated test evidence are not an independent
-security audit or proof of worldwide decentralization. The original laboratory tests used isolated networks. On 24 October 2026,
-read-only checks observed a local active chain beyond heights 9000 and 9100.
-That snapshot does not establish network-wide adoption, uninterrupted operation
-or successful completion of repaired connection jobs on the public network.
+security audit or proof of worldwide decentralization. Initial public-network
+activation at height 9000 has not occurred in these laboratory tests.
 
 ## Source map
 

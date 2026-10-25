@@ -91,7 +91,9 @@ async def demonstrate():
             assert signed.serialize().hex() in json.dumps(inactive)
             reverted=await rpc('getrawtransaction',{'txid':txid})
             assert reverted['in_mempool'] and reverted['confirmations']==0
-            assert await rpc('gettxout',{'txid':txid,'index':0}) is None
+            assert await rpc('gettxout',{'txid':txid,'index':0,'include_mempool':False}) is None
+            unconfirmed_output=await rpc('gettxout',{'txid':txid,'index':0})
+            assert unconfirmed_output['confirmations']==0 and unconfirmed_output['value_units']==3*COIN
             checks.append('reorganization changes active block and confirmation state without erasing stored block')
             node.chain.mine(payer.script_pubkey,1)
             again=await rpc('getrawtransaction',{'txid':txid})

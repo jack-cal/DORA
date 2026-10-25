@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Limitasyon ng paglabas sa block",
   "Available fees (block)": "Makukuhang bayarin ng block",
   "Unclaimed reward": "Hindi nakuhang gantimpala",
-  "Reward not fully claimed": "Bahagi lamang ng gantimpala ang kinuha"
+  "Reward not fully claimed": "Bahagi lamang ng gantimpala ang kinuha",
+  "Update before block 9,600.": "Mag-update bago ang block 9,600.",
+  "Checking active nodes": "Sinusuri ang mga aktibong node",
+  "Waiting for lottery": "Naghihintay ng bunutan",
+  "Waiting for candidate approval": "Naghihintay ng pag-apruba sa mga kandidato",
+  "Waiting for witness signatures": "Naghihintay ng mga lagda ng saksi",
+  "Waiting for block producer": "Naghihintay sa gumawa ng block",
+  "Witness replies": "Mga tugon ng saksi",
+  "Next retry": "Susunod na pagsubok",
+  "Increase fee": "Taasan ang bayad",
+  "Connection unavailable": "Hindi makakonekta",
+  "Automatic fee": "Awtomatikong bayad",
+  "Manual fee rate (blank = automatic)": "Manwal na rate (blangko = awtomatiko)"
 }

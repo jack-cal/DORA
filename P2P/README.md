@@ -1,5 +1,7 @@
 # SUMUWW P2P — SMW/BTC trading
 
+Update every validating full node and ordinary wallet before **block 9,600**. The connection-proof candidate certificate and renewal rules activate at that height. English is the first-launch language on every operating-system language; a saved language choice remains in effect.
+
 [All components](../README.md) · [Full/Light comparison](Source/EDITIONS.md) · [User guide](Source/README.txt) · [Verification](Source/VERIFICATION.txt)
 
 ## Activation and Bitcoin requirement
@@ -13,14 +15,14 @@ SUMUWW node. Setup and ads can be used earlier, but they move no funds.
 for disk space, download, configuration, local authentication, readiness checks,
 Light's verification limits and funded-trade recovery.
 
-## Current — 0.3.4
+## Current — 0.3.5
 
 | Edition | Windows download | Release notes | Source |
 |---|---|---|---|
-| Full — your local Bitcoin Core | [Full Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.4/SUMUWW-P2P-Full-0.3.4-Windows.zip) | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.4) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.4/SUMUWW-P2P-0.3.4-Source.zip) |
-| Light — Bitcoin headers and transaction proofs | [Light Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.4/SUMUWW-P2P-Light-0.3.4-Windows.zip) | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.4) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.4/SUMUWW-P2P-0.3.4-Source.zip) |
+| Full — your local Bitcoin Core | [Full Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.5/SUMUWW-P2P-Full-0.3.5-Windows.zip) | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.5) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.5/SUMUWW-P2P-0.3.5-Source.zip) |
+| Light — Bitcoin headers and transaction proofs | [Light Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.5/SUMUWW-P2P-Light-0.3.5-Windows.zip) | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.5) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.5/SUMUWW-P2P-0.3.5-Source.zip) |
 
-The current builds check signed SUMUWW transactions with the connected node before broadcast. Rejected checks are not broadcast. Agreed swap amounts and fees stay fixed; Bitcoin fees retain their own units. Current documentation is included in all 34 supported languages.
+The current builds check signed SUMUWW transactions with the connected node before broadcast. Rejected checks are not broadcast. Agreed swap amounts and funding references stay fixed. The fee review supports current-queue estimates, manual rates and explicit child-transaction fee increases; Bitcoin fees retain their own units. Current documentation is included in all 34 supported languages.
 
 Both editions post signed SMW/BTC buy/sell orders with exact prices and quantities,
 support locally reviewed conditional settlement and deadline refunds, and can trade

@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Blok ihraç sınırı",
   "Available fees (block)": "Kullanılabilir blok ücretleri",
   "Unclaimed reward": "Talep edilmeyen ödül",
-  "Reward not fully claimed": "Ödül kısmen talep edildi"
+  "Reward not fully claimed": "Ödül kısmen talep edildi",
+  "Update before block 9,600.": "9.600 numaralı bloktan önce güncelleyin.",
+  "Checking active nodes": "Etkin düğümler denetleniyor",
+  "Waiting for lottery": "Çekiliş bekleniyor",
+  "Waiting for candidate approval": "Aday onayı bekleniyor",
+  "Waiting for witness signatures": "Tanık imzaları bekleniyor",
+  "Waiting for block producer": "Blok üreticisi bekleniyor",
+  "Witness replies": "Tanık yanıtları",
+  "Next retry": "Sonraki deneme",
+  "Increase fee": "Ücreti artır",
+  "Connection unavailable": "Bağlantı kullanılamıyor",
+  "Automatic fee": "Otomatik ücret",
+  "Manual fee rate (blank = automatic)": "Elle ücret oranı (boş = otomatik)"
 }

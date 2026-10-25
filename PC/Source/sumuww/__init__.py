@@ -1,3 +1,3 @@
 """Independent SUMUWW node and desktop wallet."""
 
-__version__ = "0.57.46"
+__version__ = "0.57.47"

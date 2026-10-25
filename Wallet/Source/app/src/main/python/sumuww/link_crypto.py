@@ -107,9 +107,11 @@ def sample(seed, candidates):
     return output
 
 def slot(network, height, parent): return digest([POLICY,network,height,parent])
-def message(network, a, b, height, parent, signers, beacon):
-    return {'domain':POLICY,'network':network,'source':a,'target':b,'height':height,
-            'slot':slot(network,height,parent),'signers':signers,'beacon':beacon}
+def message(network, a, b, height, parent, signers, beacon, selection=None):
+    value={'domain':POLICY,'network':network,'source':a,'target':b,'height':height,
+           'slot':slot(network,height,parent),'signers':signers,'beacon':beacon}
+    if selection is not None:value['selection']=selection
+    return value
 
 def producer(block):
     values=[]

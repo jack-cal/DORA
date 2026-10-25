@@ -1,6 +1,6 @@
-# SUMUWW · current height-9000 protocol
+# SUMUWW connection-proof protocol · heights 9,000 and 9,600
 
-Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89
+Protocol baseline at 9,000, certified candidate selection from source block 9,600. Locally prepared edition 2.3; publication is separate.
 
 ## History, money and compatibility
 
@@ -42,18 +42,11 @@ verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.
 
-Starting with PC 0.57.40 / Android 0.6.89, a new job first probes the entire
-locally discovered identity set through relays. It then samples three distinct
-responding identities without replacement using the verified beacon and
-rejection sampling. This local availability snapshot is not consensus membership;
-contacts that time out remain discovered and are probed again for later jobs.
-Already selected jobs keep their original message and witness team. There are no
-registration fees, membership admissions, exits, one-person checks, per-IP
-lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
-through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
-omission by a malicious producer and a global uniform census are not proven.
-One operator can run multiple identities. This design does not provide Sybil
-resistance based on unique human identity.
+A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.
+
+For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.
+
+Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.
 
 Each of the three witnesses signs the canonical network/parent/height/slot/
 A/B/team/beacon message with Ed25519. Each 64-byte signature is split into two
@@ -95,7 +88,7 @@ nonconflicting proven A/B edges contained in each branch; the greater count wins
 then the smaller internal tip-hash integer wins. Duplicate proofs for one edge
 do not multiply its score. If distinct edges occupy one parent/height slot, all
 edges in that slot score zero, including when all three witnesses double-sign.
-Honest local keys also refuse a second different message for one slot.
+Legacy keys retain their original slot lock. Certified rounds use a lock bound to the slot, A/B pair and selection digest; changing the round does not permit conflicting edges to gain weight.
 
 There is no arrival-order finality lock. Late evidence or newly discovered
 conflicts can change an equal-work choice; a valid greater-work branch wins.

@@ -1,4 +1,6 @@
-# SUMUWW Windows 0.57.46
+# SUMUWW Windows 0.57.47
+
+Update every validating full node and ordinary wallet before **block 9,600**. The connection-proof candidate certificate and renewal rules activate at that height. English is the first-launch language on every operating-system language; a saved language choice remains in effect.
 
 The node validates and synchronizes the SUMUWW chain, provides a personal wallet and optional CPU mining, and retains peer recovery and asynchronous connection proofs.
 
@@ -10,4 +12,4 @@ English is the default and all 34 UI languages remain available. Preserve encryp
 
 Extract the complete Windows ZIP and run SUMUWW.exe. Windows executables are not publisher-code-signed.
 
-[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.46) · [Source](Source) · [Current specification](Source/NODE_FEATURES.md)
+[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.47) · [Source](Source) · [Current specification](Source/NODE_FEATURES.md)

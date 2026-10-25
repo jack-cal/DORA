@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Penjelajah menampilkan tarif biaya dalam yugeon/vB. Jika node lokal mencatat penggantian, halaman transaksi menyediakan tautan ke transaksi baru. Catatan yang terkonfirmasi di rantai diutamakan; riwayat penggantian lokal terbatas.
 

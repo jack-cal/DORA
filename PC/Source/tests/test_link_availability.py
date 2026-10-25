@@ -164,5 +164,119 @@ class LinkAvailabilityTests(unittest.IsolatedAsyncioTestCase):
         proofs=self.chain.boundary.all_proofs()
         self.assertEqual(1,len(proofs));self.chain.boundary.verify_proof(proofs[0])
 
+    async def test_activation_boundary_and_legacy_history(self):
+        from sumuww.link_selection import PUBLIC_ACTIVATION_HEIGHT
+        self.assertEqual(9600,PUBLIC_ACTIVATION_HEIGHT)
+        state=self.chain.boundary;state.selection_activation=PUBLIC_ACTIVATION_HEIGHT
+        self.assertFalse(state.selection_required(9599));self.assertTrue(state.selection_required(9600))
+        (a,b),_,_=self.selected_pair()
+        await self.source.link(a.block_hash(),b.block_hash())
+        proof=state.all_proofs()[0];self.assertNotIn('selection',proof)
+        state.verify_storage()
+        # The identical proof is legal before activation and rejected at its
+        # source height. No block or historical record is rewritten.
+        height=self.chain._row(a.block_hash())[2]
+        state.selection_activation=height+1;state.verify_proof(proof)
+        state.selection_activation=height
+        with self.assertRaisesRegex(ValueError,'Certified active witness selection'):state.verify_proof(proof)
+        state.selection_activation=9600;state.verify_storage()
+        self.assertEqual(proof,state.all_proofs()[0])
+
+    async def test_certified_selection_rejects_arbitrary_witnesses(self):
+        import copy
+        self.chain.boundary.selection_activation=3
+        (a,b),_,_=self.selected_pair()
+        await self.source.link(a.block_hash(),b.block_hash())
+        proof=self.chain.boundary.all_proofs()[0]
+        self.assertIn('selection',proof)
+        self.chain.boundary.verify_proof(proof)
+        self.chain.boundary.selection_activation=self.chain._row(self.chain.tip_hash)[2]+1
+        with self.assertRaisesRegex(ValueError,'precedes selection activation'):self.chain.boundary.verify_proof(proof)
+        self.chain.boundary.selection_activation=3
+        bad=copy.deepcopy(proof)
+        bad['message']['signers']=[key.node_id for key in self.extra_keys[:3]]
+        with self.assertRaisesRegex(ValueError,'certified random selection'):
+            self.chain.boundary.verify_proof(bad)
+        bad=copy.deepcopy(proof);bad.pop('selection');bad['message'].pop('selection')
+        with self.assertRaisesRegex(ValueError,'Certified active witness selection'):
+            self.chain.boundary.verify_proof(bad)
+
+    async def test_producer_cannot_certify_its_own_three_node_subset(self):
+        from sumuww import link_selection
+        self.chain.boundary.selection_activation=3
+        (a,b),signature,_=self.selected_pair()
+        original=self.source.activity_records
+        async def subset(ctx):return (await original(ctx))[:3]
+        self.source.activity_records=subset
+        cert=await self.source.candidate_certificate(a.block_hash(),b.block_hash())
+        random=beacon.verify_beacon(self.fixture.setup,slot(self.source.network,
+            self.chain._row(a.block_hash())[2],a.header.previous_hash.hex()),signature)
+        with self.assertRaisesRegex(ValueError,'Anchored quorum'):
+            link_selection.verify_certificate(self.chain.boundary,cert,random)
+
+    async def test_old_pending_team_is_archived_then_reselected_from_live_candidates(self):
+        from sumuww.link_crypto import message,digest
+        self.chain.boundary.selection_activation=3
+        (a,b),signature,old_team=self.selected_pair()
+        old=message(self.source.network,a.block_hash().hex(),b.block_hash().hex(),
+            self.chain._row(a.block_hash())[2],a.header.previous_hash.hex(),old_team,signature)
+        key='job:'+a.block_hash().hex()
+        self.source.keys.put(key,{'target':b.block_hash().hex(),'message':old,'pieces':{},'attempts':1000})
+        await self.source.link(a.block_hash(),b.block_hash())
+        saved=self.source.keys.get(key)
+        self.assertTrue(saved['done'])
+        self.assertTrue(set(saved['message']['signers'])<=self.runtimes.keys())
+        archived=self.source.keys.get('job-round:'+a.block_hash().hex()+':'+digest(old))
+        self.assertEqual(old,archived['message'])
+        self.chain.boundary.verify_proof(self.chain.boundary.all_proofs()[0])
+
+    async def test_certified_proof_reaches_late_tcp_peer(self):
+        from unittest.mock import patch
+        from sumuww.peer import PeerNode
+        from sumuww.link_state import LinkState
+        self.chain.boundary.selection_activation=3
+        (a,b),_,_=self.selected_pair()
+        await self.source.link(a.block_hash(),b.block_hash())
+        expected=self.chain.tip_hash
+        path=self.fixture.path.parent/'tcp-source.sqlite'
+        with sqlite3.connect(path) as target:self.chain.connection.backup(target)
+        initialize=LinkState.__init__
+        def test_rule(state,*args,**kwargs):
+            initialize(state,*args,**kwargs);state.selection_activation=3
+        nodes=[]
+        try:
+            with patch.object(LinkState,'__init__',test_rule):
+                for i in range(2):
+                    node=PeerNode(path if not i else path.with_name('tcp-late.sqlite'),boundary_activation=3,
+                        peers=[nodes[0].address] if i else [],discover_peers=False,dht_enabled=False,
+                        auto_address=False,poll_interval=.05,timeout=10)
+                    nodes.append(node);await node.start()
+            deadline=asyncio.get_running_loop().time()+40
+            while asyncio.get_running_loop().time()<deadline:
+                if nodes[-1].chain.tip_hash==expected and nodes[-1].chain.boundary.all_proofs():break
+                await asyncio.sleep(.1)
+            self.assertEqual(expected,nodes[-1].chain.tip_hash)
+            proofs=nodes[-1].chain.boundary.all_proofs();self.assertEqual(1,len(proofs))
+            self.assertIn('selection',proofs[0]);nodes[-1].chain.boundary.verify_storage()
+        finally:
+            for node in reversed(nodes):await node.stop()
+
+    async def test_pending_progress_and_retry_survive_restart(self):
+        import time
+        (a,b),signature,team=self.selected_pair()
+        from sumuww.link_crypto import message
+        key='job:'+a.block_hash().hex()
+        self.source.keys.put(key,{'target':b.block_hash().hex(),'message':message(self.source.network,
+            a.block_hash().hex(),b.block_hash().hex(),self.chain._row(a.block_hash())[2],a.header.previous_hash.hex(),team,signature)})
+        with self.assertRaises(Exception):await self.source.link(a.block_hash(),b.block_hash())
+        row=self.source.job_details()[0]
+        self.assertGreater(row['next_retry'],time.time());self.assertGreater(row['attempts'],0)
+        self.assertNotIn('message',row);self.assertNotIn('pieces',row)
+        await self.source.close();self.source=self.runtime(self.fixture.path)
+        self.source.recovery.schedule=lambda path:None
+        await self.source.background()
+        self.assertNotIn(a.block_hash(),self.source.jobs)
+        self.assertEqual(row,self.source.job_details()[0])
+
 
 if __name__=='__main__':unittest.main()

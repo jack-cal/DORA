@@ -53,4 +53,4 @@ p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;paddin
 <p>挖矿记录分别显示每个区块的新增发行奖励、交易手续费奖励和总奖励，钱包实际收到的金额单独显示。若只领取了部分奖励，不会擅自推定两类奖励的分配。节点提供 28 个 RPC 方法，包括手续费估算，并验证和转发已签名交易。</p>
 <h2>交易与区块查询</h2>
 <p><code>getrawtransaction</code> 查询活跃链及内存池，不查询仅存在于孤立分支的交易。输入指向之前的输出，并非唯一发送地址。<code>getblock</code> 的 <code>verbose</code> 为布尔值；已保存的非活跃块为 <code>active=false</code>、<code>confirmations=-1</code>，仍可用区块哈希取得原始交易。<code>findspendingtransaction</code> 仅查活跃链上已确认的花费，null 不证明可用。还需查询 <code>include_mempool=true</code> 的 <code>gettxout</code>。确认数及活跃状态都可能随重组改变。</p>
-<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main><p><a href="../../upgrade9600/zh.html">请在第9,600个区块前更新。</a></p></body></html>

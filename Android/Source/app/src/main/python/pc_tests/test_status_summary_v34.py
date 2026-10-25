@@ -141,9 +141,9 @@ class StatusSummaryTests(unittest.TestCase):
         original_replay = Chain._replay
         replays = []
 
-        def replay(chain, path):
+        def replay(chain, path, reward_fees=None):
             replays.append(len(path))
-            return original_replay(chain, path)
+            return original_replay(chain, path, reward_fees)
 
         with patch.object(Chain, '_replay', replay):
             with Chain(self.database, network=REGTEST) as chain:

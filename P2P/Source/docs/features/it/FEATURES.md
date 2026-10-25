@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P verifica le transazioni SUMUWW firmate presso il nodo connesso prima di trasmetterle. In caso di rifiuto non le trasmette. Importi e commissioni concordati restano fissi; le commissioni Bitcoin mantengono le proprie unità.
+P2P offre commissioni basate sulla coda attuale, tariffe manuali e aumenti confermati. Annullare un’anteprima non inviata libera i fondi riservati. Il rimborso richiede solo la catena che custodisce i tuoi fondi. Importi e riserve concordati restano fissi.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

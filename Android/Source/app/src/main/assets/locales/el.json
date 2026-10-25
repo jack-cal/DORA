@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Όριο έκδοσης του μπλοκ",
   "Available fees (block)": "Διαθέσιμα τέλη του μπλοκ",
   "Unclaimed reward": "Μη διεκδικημένη ανταμοιβή",
-  "Reward not fully claimed": "Μερική διεκδίκηση ανταμοιβής"
+  "Reward not fully claimed": "Μερική διεκδίκηση ανταμοιβής",
+  "Update before block 9,600.": "Ενημερώστε πριν από το μπλοκ 9.600.",
+  "Checking active nodes": "Έλεγχος ενεργών κόμβων",
+  "Waiting for lottery": "Αναμονή κλήρωσης",
+  "Waiting for candidate approval": "Αναμονή έγκρισης υποψηφίων",
+  "Waiting for witness signatures": "Αναμονή υπογραφών μαρτύρων",
+  "Waiting for block producer": "Αναμονή δημιουργού μπλοκ",
+  "Witness replies": "Απαντήσεις μαρτύρων",
+  "Next retry": "Επόμενη προσπάθεια",
+  "Increase fee": "Αύξηση τέλους",
+  "Connection unavailable": "Η σύνδεση δεν είναι διαθέσιμη",
+  "Automatic fee": "Αυτόματο τέλος",
+  "Manual fee rate (blank = automatic)": "Χειροκίνητη χρέωση (κενό = αυτόματη)",
+  "Connection proofs": "Αποδείξεις σύνδεσης",
+  "Selected pending": "Επιλεγμένες σε αναμονή"
 }

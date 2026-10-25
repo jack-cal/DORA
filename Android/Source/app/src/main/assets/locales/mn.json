@@ -310,5 +310,19 @@
   "Issuance limit (block)": "Блокийн гаргалтын хязгаар",
   "Available fees (block)": "Блокийн боломжит шимтгэл",
   "Unclaimed reward": "Аваагүй шагнал",
-  "Reward not fully claimed": "Шагналыг хэсэгчлэн авсан"
+  "Reward not fully claimed": "Шагналыг хэсэгчлэн авсан",
+  "Update before block 9,600.": "9,600-р блокоос өмнө шинэчилнэ үү.",
+  "Checking active nodes": "Идэвхтэй зангилааг шалгаж байна",
+  "Waiting for lottery": "Сугалаа хүлээж байна",
+  "Waiting for candidate approval": "Нэр дэвшигчдийн зөвшөөрлийг хүлээж байна",
+  "Waiting for witness signatures": "Гэрчийн гарын үсгийг хүлээж байна",
+  "Waiting for block producer": "Блок үүсгэгчийг хүлээж байна",
+  "Witness replies": "Гэрчийн хариу",
+  "Next retry": "Дараагийн оролдлого",
+  "Increase fee": "Шимтгэл нэмэх",
+  "Connection unavailable": "Холболт боломжгүй",
+  "Automatic fee": "Автомат шимтгэл",
+  "Manual fee rate (blank = automatic)": "Гараар оруулах хувь (хоосон = автомат)",
+  "Connection proofs": "Холболтын нотолгоо",
+  "Selected pending": "Сонгогдсон, хүлээгдэж буй"
 }

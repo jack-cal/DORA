@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "application": "SUMUWW",
-  "client_version": "0.6.95",
+  "client_version": "0.6.96",
   "rpc_method_count": 28,
   "rest_route_count": 11,
   "methods": {
@@ -237,5 +237,6 @@
     "unknown_components": null,
     "individual_address_allocation": false
   },
-  "platform": "Android embedded node core"
+  "platform": "Android embedded node core",
+  "certified_witness_selection_activation_height": 9600
 }

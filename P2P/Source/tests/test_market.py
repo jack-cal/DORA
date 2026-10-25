@@ -112,4 +112,74 @@ class BitcoinTradeTests(unittest.TestCase):
         packet=self.b.store.identity.sign(packet['body'])
         with self.assertRaises(ValueError):self.a.engine.receive(packet)
 
+    def test_canceled_unsubmitted_preview_releases_its_inputs(self):
+        from unittest.mock import patch
+        sid=self.prepare();node=self.a.engine.nodes['SMW']
+        coin=node.coins(self.a.vault.key('SMW'))[:1]
+        with patch.object(node,'coins',return_value=coin):
+            first=self.a.engine.preview(sid,'lock')
+            self.a.cancel_trade(sid)
+            next_sid=self.prepare();next_preview=self.a.engine.preview(next_sid,'lock')
+            self.assertNotEqual(first['txid'],next_preview['txid'])
+            self.assertTrue(node.output(coin[0]['txid'],coin[0]['index']))
+            self.assertFalse(self.a.engine._load(sid)[1]['ops']['lock']['submitted'])
+
+    def test_own_refund_works_when_other_chain_is_unavailable(self):
+        from unittest.mock import patch
+        sid=self.prepare();self.locks(sid);self.a.engine.cancel(sid)
+        self.node.mine(self.a.vault.key('SMW'),121)
+        btc=self.a.engine.nodes['BTC']
+        with patch.object(btc,'info',side_effect=ValueError('Test: other chain unavailable')):
+            preview=self.a.engine.preview(sid,'refund')
+            result=self.a.engine.submit(sid,'refund',preview['txid'])
+            self.assertEqual('unavailable',result['chains']['BTC']['status'])
+            self.node.mine(self.a.vault.key('SMW'))
+            result=self.a.engine.status(sid)
+            self.assertEqual('refunded',result['state'])
+            self.assertEqual('refunded',result['chains']['SMW']['status'])
+
+    def test_reviewed_fee_children_keep_funding_references_and_settle(self):
+        sid=self.prepare()
+        for app,coin in ((self.a,'SMW'),(self.b,'BTC')):
+            original=app.engine.preview(sid,'lock');app.engine.submit(sid,'lock',original['txid'])
+            reference=app.engine._load(sid)[1]['refs'][coin].copy()
+            preview=app.engine.preview_fee_increase(sid)
+            self.assertNotEqual(original['txid'],preview['txid'])
+            self.assertEqual(reference,app.engine._load(sid)[1]['refs'][coin])
+            app.engine.submit(sid,preview['action'],preview['txid'])
+            if coin=='SMW':self.node.mine(self.a.vault.key('SMW'))
+            else:self.btc.mine()
+            app.sync_trade(sid)
+            self.assertEqual('locked',app.engine.status(sid)['chains'][coin]['status'])
+        self.send(self.a,sid,'claim','BTC');self.send(self.b,sid,'claim','SMW')
+        self.assertEqual('completed',self.a.engine.status(sid)['state'])
+
+    def test_definite_preflight_rejection_does_not_mark_as_submitted(self):
+        from unittest.mock import patch
+        sid=self.prepare();preview=self.a.engine.preview(sid,'lock')
+        rpc=self.a.engine.nodes['SMW'].rpc;original=rpc.call
+        def reject(method,*args):
+            if method=='testmempoolaccept':return {'allowed':False,'reject_reason':'isolated test fee policy'}
+            return original(method,*args)
+        with patch.object(rpc,'call',side_effect=reject):
+            with self.assertRaisesRegex(ValueError,'rejected by current node policy'):
+                self.a.engine.submit(sid,'lock',preview['txid'])
+        self.assertFalse(self.a.engine._load(sid)[1]['ops']['lock']['submitted'])
+        self.assertNotIn('SMW',self.a.engine._load(sid)[1]['refs'])
+
+    def test_high_fee_refund_uses_own_extra_input_without_reducing_agreed_amount(self):
+        from unittest.mock import patch
+        from sumuww.transaction import Transaction
+        sid=self.prepare();self.locks(sid);self.node.mine(self.a.vault.key('SMW'),121)
+        node=self.a.engine.nodes['SMW']
+        with patch.object(node,'fee_quote',return_value=20000):
+            preview=self.a.engine.preview(sid,'refund')
+        t,s=self.a.engine._load(sid)
+        operation=self.a.vault.unseal(sid+':refund',s['ops']['refund']['sealed'])
+        tx=Transaction.deserialize(bytes.fromhex(operation['raw']))
+        self.assertGreater(len(tx.inputs),1)
+        self.assertEqual(t['smw_units'],tx.outputs[0].value)
+        self.a.engine.submit(sid,'refund',preview['txid']);self.node.mine(self.a.vault.key('SMW'))
+        self.assertEqual('refunded',self.a.engine.status(sid)['state'])
+
 if __name__=='__main__':unittest.main()

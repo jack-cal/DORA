@@ -10,6 +10,8 @@ from . import link_beacon as beacon
 class LinkState:
     def __init__(self,chain,activation):
         self.chain=chain;self.activation=activation;self.pending=None;self.anchor_cache={}
+        from .link_selection import PUBLIC_ACTIVATION_HEIGHT,SELECTION_POLICY
+        self.selection_activation=PUBLIC_ACTIVATION_HEIGHT if chain.network.name=='dora' else None
         self._producer_id=None;self._template_extras=None
         self.network=chain.network.genesis.block_hash().hex()
         if activation is None:return
@@ -33,10 +35,18 @@ class LinkState:
             c.execute('CREATE INDEX IF NOT EXISTS link_proof_source ON link_proofs(source)')
             c.execute('CREATE INDEX IF NOT EXISTS link_proof_target ON link_proofs(target)')
             c.execute('CREATE TABLE IF NOT EXISTS link_local (name TEXT PRIMARY KEY, body BLOB NOT NULL)')
+            c.execute('CREATE TABLE IF NOT EXISTS link_selection_upgrade (one INTEGER PRIMARY KEY, policy TEXT NOT NULL, activation INTEGER NOT NULL)')
+            if self.selection_activation is not None:
+                selection_row=c.execute('SELECT policy,activation FROM link_selection_upgrade WHERE one=1').fetchone()
+                require(selection_row in (None,(SELECTION_POLICY,self.selection_activation)),'Selection activation configuration mismatch')
+                c.execute('INSERT OR IGNORE INTO link_selection_upgrade VALUES (1,?,?)',(SELECTION_POLICY,self.selection_activation))
             c.execute('COMMIT')
         except BaseException:
             c.execute('ROLLBACK');raise
     def enabled(self,height):return self.activation is not None and height>=self.activation
+    def selection_required(self,height):
+        activation=getattr(self,'selection_activation',None)
+        return activation is not None and height>=activation
     def required(self,height,parent_hash=None):return False # A proof is never a mining/acceptance prerequisite.
     def assert_registered(self,*args,**kwargs):pass # No arrival-order finality locks.
     def store(self,*args):pass
@@ -123,7 +133,8 @@ class LinkState:
     def all_proofs(self):
         return [json.loads(r[0]) for r in self.chain.connection.execute('SELECT body FROM link_proofs ORDER BY id')]
     def verify_proof(self,proof):
-        require(type(proof) is dict and set(proof)=={'message','left','right','source_receipt','target_receipt'},'Complete paired link required')
+        fields={'message','left','right','source_receipt','target_receipt'}
+        require(type(proof) is dict and set(proof) in (fields,fields|{'selection'}),'Complete paired link required')
         m=proof['message'];a=bytes.fromhex(m['source']);b=bytes.fromhex(m['target'])
         ar=self.chain._row(a);br=self.chain._row(b)
         require(self.enabled(ar[2]) and br[1]==a and br[2]==ar[2]+1,'Link must bind a direct child after activation')
@@ -133,7 +144,19 @@ class LinkState:
         random=beacon.verify_beacon(setup,expected_slot,m['beacon'])
         require(proof_selected(random),'This random event does not request a link')
         signers=m['signers'];require(type(signers) is list and len(signers)==3 and len(set(signers))==3,'Three distinct witnesses required')
-        require(m==message(self.network,a.hex(),b.hex(),ar[2],ar[1].hex(),signers,m['beacon']),'Link message context')
+        certificate=proof.get('selection');selection_id=None
+        if certificate is not None:
+            from .link_selection import verify_certificate
+            require(getattr(self,'selection_activation',None) is not None,'Certified selection upgrade is not activated')
+            round_height=self.chain._row(bytes.fromhex(certificate['proposal']['context']['round']))[2]
+            require(self.selection_required(round_height),'Candidate certificate precedes selection activation')
+            selected=verify_certificate(self,certificate,random)
+            ctx=certificate['proposal']['context']
+            require(ctx['source']==a.hex() and ctx['target']==b.hex(),'Candidate certificate connection mismatch')
+            require(signers==selected,'Witnesses differ from the certified random selection')
+            selection_id=digest(certificate)
+        else:require(not self.selection_required(ar[2]),'Certified active witness selection is required')
+        require(m==message(self.network,a.hex(),b.hex(),ar[2],ar[1].hex(),signers,m['beacon'],selection_id),'Link message context')
         left=decompress(proof['left'],96);right=decompress(proof['right'],96)
         for i,signer in enumerate(signers):verify(signer,m,(left[i*32:(i+1)*32]+right[i*32:(i+1)*32]).hex())
         body={'domain':'sumuww-source-attachment-v1','message':m,'left':proof['left'],'right':proof['right']}

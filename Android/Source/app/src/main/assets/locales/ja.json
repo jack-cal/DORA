@@ -310,5 +310,19 @@
   "Issuance limit (block)": "ブロックの発行上限",
   "Available fees (block)": "ブロックの手数料合計",
   "Unclaimed reward": "未請求の報酬",
-  "Reward not fully claimed": "報酬の一部のみ請求"
+  "Reward not fully claimed": "報酬の一部のみ請求",
+  "Update before block 9,600.": "ブロック9,600までに更新してください。",
+  "Checking active nodes": "稼働中のノードを確認中",
+  "Waiting for lottery": "抽選待ち",
+  "Waiting for candidate approval": "候補の承認待ち",
+  "Waiting for witness signatures": "証人の署名待ち",
+  "Waiting for block producer": "ブロック生成者の応答待ち",
+  "Witness replies": "証人の応答",
+  "Next retry": "次の再試行",
+  "Increase fee": "手数料を増額",
+  "Connection unavailable": "接続できません",
+  "Automatic fee": "自動手数料",
+  "Manual fee rate (blank = automatic)": "手動の手数料率（空欄で自動）",
+  "Connection proofs": "接続証明",
+  "Selected pending": "選択後の完了待ち"
 }

@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P prüft signierte SUMUWW-Transaktionen vor der Übertragung beim verbundenen Knoten. Bei Ablehnung erfolgt keine Übertragung. Vereinbarte Tauschbeträge und Gebühren bleiben fest; Bitcoin-Gebühren behalten ihre eigenen Einheiten.
+P2P bietet Gebühren anhand der aktuellen Warteschlange, manuelle Sätze und bestätigte Erhöhungen. Abgebrochene ungesendete Vorschauen geben reservierte Mittel frei. Für eine Rückzahlung wird nur die Kette mit den eigenen Mitteln benötigt. Vereinbarte Beträge und Gebührenreserven bleiben fest.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

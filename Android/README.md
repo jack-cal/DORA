@@ -1,4 +1,6 @@
-# SUMUWW Android 0.6.95
+# SUMUWW Android 0.6.96
+
+Update every validating full node and ordinary wallet before **block 9,600**. The connection-proof candidate certificate and renewal rules activate at that height. English is the first-launch language on every operating-system language; a saved language choice remains in effect.
 
 The node validates and synchronizes the SUMUWW chain, provides a personal wallet and optional CPU mining, and retains peer recovery and asynchronous connection proofs.
 
@@ -8,6 +10,6 @@ The API supports address and transaction inspection, signed-transaction checks a
 
 English is the default and all 34 UI languages remain available. Preserve encrypted wallets and valid chain history. The existing height-9000 rules and height-9100 HTLC activation remain unchanged. Tests do not establish uninterrupted Internet availability or an independent security audit.
 
-The APK uses package org.sumuww.miner and versionCode 155. Update the matching existing app without clearing data. This release was prepared as an installation file; physical-phone execution and installation are not claimed. The app has no RPC configuration screen.
+The APK uses package org.sumuww.miner and versionCode 156. Update the matching existing app without clearing data. This release was prepared as an installation file; physical-phone execution and installation are not claimed. The app has no RPC configuration screen.
 
-[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.95) · [Source](Source) · [Node interface](Source/docs/integration/docs/i18n/en/ANDROID.html)
+[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.96) · [Source](Source) · [Node interface](Source/docs/integration/docs/i18n/en/ANDROID.html)

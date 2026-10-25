@@ -1,314 +1,127 @@
 {
-  "reviewed_at": "2026-10-24T18:00:38.996664+09:00",
-  "document_edition": "2.2",
-  "status": "prepared_local_not_published_not_installed",
-  "repository_base": "da1eee4fb52dcada8b1ba56289ff3d623a9e13ca",
-  "changed_documents": {
-    "repository/Documentation/Whitepaper/RECOVERY_VERIFICATION_20261022.md": "6e328da3802acf426733c0f9646e04b7f4deae820873099c5e8f88e9c29dbb59",
-    "repository/Documentation/Whitepaper/WHITEPAPER.md": "99112537f772cd1352b4d070e5049ad8468dc278d40e09111563c03e44ba255f",
-    "repository/Documentation/Whitepaper/CONNECTION_PROOFS_9000.md": "f70d68bbc9ecf1b13e16cb0c3e3e1085b8b310069053d6f6e208c6bfe2f45a6e",
-    "repository/Documentation/Whitepaper/BEACON_RECOVERY.md": "f152f1643bff6ed348ea79dc5c25cbca0e8739cfe1ceedcbad36bcebe6a7db74",
-    "repository/Documentation/BEACON_RECOVERY.md": "f152f1643bff6ed348ea79dc5c25cbca0e8739cfe1ceedcbad36bcebe6a7db74",
-    "repository/Documentation/Whitepaper/README.md": "5abf11d830e50f958abeb20532ce56e1b974540df15242b80bc321f182692353",
-    "repository/Documentation/Whitepaper/CHANGELOG.md": "6f1eca224cb9763dbffbe2e3854682a89237a0c0b84dfc984e7224c6c67cbe35",
-    "repository/Documentation/Whitepaper/VERIFICATION.md": "9c966abcfb6c4cd7a69aaa42214fb7b8fb28a226cee08d27e9bb39d9e53f1b53",
-    "repository/Documentation/Whitepaper/BEACON_RECOVERY.html": "4a2a409b7c7a032db4a6d62572471d6167533ec8157ebf681df23a207e035abe",
-    "repository/Documentation/Whitepaper/CHANGELOG.html": "ad805108abd22bff7c1d340b0f5e28dbaf04f66f5ddfc8c1033543ffab007fec",
-    "repository/Documentation/Whitepaper/CONNECTION_PROOFS_9000.html": "4b3923234c4158d7f42604dd37a38d65a000e210389cbcd6e0e38288df4b094b",
-    "repository/Documentation/Whitepaper/HTLC_9100.html": "938b87d73c671a43c7d52beb13964dcf80f79c0c4817178328f0013d6ea9bd76",
-    "repository/Documentation/Whitepaper/README.html": "1b9eafafa001940e05a5aa32540f7d793221444d665c2e01a98b7f10a395b807",
-    "repository/Documentation/Whitepaper/RECOVERY_VERIFICATION_20261022.html": "08a5c26996f9e223960130e8ce3452c13a06a3f02f29e3ab7b2d96bda655fb62",
-    "repository/Documentation/Whitepaper/VERIFICATION.html": "96dcc73b867e3660c33ad0be4ecf6f4a9176e666d7e60fa950851ac6154e890e",
-    "repository/Documentation/Whitepaper/WHITEPAPER.html": "b9182a361fd0ac6ac356b5968962768d5bf6629d27630669ec8c1f84758a83c8",
-    "repository/Documentation/Whitepaper/index.html": "41c38b61677b8b5af94ace83c27769931e2c8c674b67f0616a888045e600f3cc",
-    "repository/Android/Source/BEACON_RECOVERY.md": "dbaf20d13510beb3bd9af1cb51ae7c73a09c275eb244748dd13302e6e0c76a9c",
-    "repository/Android/Source/UPGRADE_9000.txt": "ce7d11760c3e5ec0ebca1b248652f1ba4c135c361ea20a787b67a078c3a3ce20",
-    "repository/Android/Source/docs/CONNECTION_PROOFS_9000.html": "0d8d80a82d88b279a26699dcc61de467d61738b8b89fa73b0bacf4509fff48a0",
-    "repository/Android/Source/docs/i18n/en/WHITEPAPER.html": "c09260cd02ec303570fb71b299ec6c9b431f29b78ebdf620f5b90fd19be06421",
-    "repository/Android/Source/docs/i18n/en/WHITEPAPER.md": "dc6d14f17278f3d857f94476609db569cd600409c4fb47b7ab3bc99175709d1a",
-    "repository/Android/Source/docs/pc043/CONNECTION_PROOFS_9000.html": "c97cfea5871dc155295def0bb3b15949401210131a5153c2243d9f5de950057f",
-    "repository/Android/Source/docs/pc043/CONNECTION_PROOFS_9000.md": "04463513b23ab76d2bd684ddf04c5baa44fe71308781fe300a299d52def6ef4c",
-    "repository/Android/Source/docs/pc043/WHITEPAPER.md": "4746822ce04f01f298236d181e0dbb52c2745421960a65a4f23c6c0782f5e0b9",
-    "repository/Android/Source/docs/pc043/WHITEPAPER.html": "1e46071a47ed968ce050059c8d050f1fb2683174f4de571b72084812cce24c17",
-    "repository/Android/Source/docs/pc043/docs/i18n/en/WHITEPAPER.html": "c09260cd02ec303570fb71b299ec6c9b431f29b78ebdf620f5b90fd19be06421",
-    "repository/Android/Source/docs/pc043/docs/i18n/en/WHITEPAPER.md": "dc6d14f17278f3d857f94476609db569cd600409c4fb47b7ab3bc99175709d1a",
-    "repository/PC/Source/BEACON_RECOVERY.md": "dbaf20d13510beb3bd9af1cb51ae7c73a09c275eb244748dd13302e6e0c76a9c",
-    "repository/PC/Source/UPGRADE_9000.txt": "ce7d11760c3e5ec0ebca1b248652f1ba4c135c361ea20a787b67a078c3a3ce20",
-    "repository/PC/Source/WHITEPAPER.md": "4746822ce04f01f298236d181e0dbb52c2745421960a65a4f23c6c0782f5e0b9",
-    "repository/PC/Source/WHITEPAPER.html": "1e46071a47ed968ce050059c8d050f1fb2683174f4de571b72084812cce24c17",
-    "repository/PC/Source/docs/i18n/en/WHITEPAPER.html": "c09260cd02ec303570fb71b299ec6c9b431f29b78ebdf620f5b90fd19be06421",
-    "repository/PC/Source/docs/i18n/en/WHITEPAPER.md": "dc6d14f17278f3d857f94476609db569cd600409c4fb47b7ab3bc99175709d1a",
-    "repository/Android/Source/docs/SOURCE_REVISION.md": "ee164267582276f59639b8c5ef29f4395dd1dea78ccbf18ab4aee7119bc23789",
-    "repository/Documentation/CURRENT_STATUS.md": "bdce58eaad4f21e192d698ad6e6e8f5cbc14b986d30e5f6dec7f86142f78d4aa",
-    "repository/Documentation/README.md": "7dad8a7bf44be47aa3e06b685000cad930c17f992386e188568ef0ae45427dfe",
-    "repository/Documentation/BEACON_RECOVERY_VERIFICATION.md": "381e5dc6baec54435019b51739b998c1fb175732ff15cf487aec455dc78bddfe",
-    "repository/Documentation/UI_LANGUAGE_VERIFICATION.md": "66231befb4570d6aab1823e68d46adf176766050ec3a3127b1050b878dabc8d6",
-    "repository/Documentation/LOCAL_REPAIR_VERIFICATION.md": "3512efba39ec72a12d2ef5ba1ade6ce0cc5fb1bec61b7913ad0bdea0f9eb050d",
-    "repository/Documentation/COMPONENT_SUITE.md": "db44a8929443b1029a7fa6dd9b6f5bea6a2811640446d3059c07dc5b78a61eba",
-    "repository/README.md": "d7d2fda2d8d17122eda82701d6abaef6050553f3e5ab1c8804432f25b339ebc5",
-    "stage/문서/Whitepaper/BEACON_RECOVERY.html": "4a2a409b7c7a032db4a6d62572471d6167533ec8157ebf681df23a207e035abe",
-    "stage/문서/Whitepaper/BEACON_RECOVERY.md": "f152f1643bff6ed348ea79dc5c25cbca0e8739cfe1ceedcbad36bcebe6a7db74",
-    "stage/문서/Whitepaper/CHANGELOG.html": "ad805108abd22bff7c1d340b0f5e28dbaf04f66f5ddfc8c1033543ffab007fec",
-    "stage/문서/Whitepaper/CHANGELOG.md": "6f1eca224cb9763dbffbe2e3854682a89237a0c0b84dfc984e7224c6c67cbe35",
-    "stage/문서/Whitepaper/CONNECTION_PROOFS_9000.html": "4b3923234c4158d7f42604dd37a38d65a000e210389cbcd6e0e38288df4b094b",
-    "stage/문서/Whitepaper/CONNECTION_PROOFS_9000.md": "f70d68bbc9ecf1b13e16cb0c3e3e1085b8b310069053d6f6e208c6bfe2f45a6e",
-    "stage/문서/Whitepaper/HTLC_9100.html": "938b87d73c671a43c7d52beb13964dcf80f79c0c4817178328f0013d6ea9bd76",
-    "stage/문서/Whitepaper/index.html": "41c38b61677b8b5af94ace83c27769931e2c8c674b67f0616a888045e600f3cc",
-    "stage/문서/Whitepaper/README.html": "1b9eafafa001940e05a5aa32540f7d793221444d665c2e01a98b7f10a395b807",
-    "stage/문서/Whitepaper/README.md": "5abf11d830e50f958abeb20532ce56e1b974540df15242b80bc321f182692353",
-    "stage/문서/Whitepaper/RECOVERY_VERIFICATION_20261022.html": "08a5c26996f9e223960130e8ce3452c13a06a3f02f29e3ab7b2d96bda655fb62",
-    "stage/문서/Whitepaper/RECOVERY_VERIFICATION_20261022.md": "6e328da3802acf426733c0f9646e04b7f4deae820873099c5e8f88e9c29dbb59",
-    "stage/문서/Whitepaper/VERIFICATION.html": "96dcc73b867e3660c33ad0be4ecf6f4a9176e666d7e60fa950851ac6154e890e",
-    "stage/문서/Whitepaper/VERIFICATION.md": "9c966abcfb6c4cd7a69aaa42214fb7b8fb28a226cee08d27e9bb39d9e53f1b53",
-    "stage/문서/Whitepaper/WHITEPAPER.html": "b9182a361fd0ac6ac356b5968962768d5bf6629d27630669ec8c1f84758a83c8",
-    "stage/문서/Whitepaper/WHITEPAPER.md": "99112537f772cd1352b4d070e5049ad8468dc278d40e09111563c03e44ba255f",
-    "stage/문서/Whitepaper/WHITEPAPER-CHANGELOG.md": "6f1eca224cb9763dbffbe2e3854682a89237a0c0b84dfc984e7224c6c67cbe35",
-    "stage/문서/Technical/BEACON_RECOVERY.md": "f152f1643bff6ed348ea79dc5c25cbca0e8739cfe1ceedcbad36bcebe6a7db74",
-    "stage/문서/Technical/BEACON_RECOVERY_VERIFICATION.md": "381e5dc6baec54435019b51739b998c1fb175732ff15cf487aec455dc78bddfe",
-    "stage/문서/Technical/COMPONENT_SUITE.md": "ee380fc267a61c8dc08a89fb6bab2d627b23be570bcb62df5cecc18cfca23143",
-    "stage/문서/Technical/CURRENT_STATUS.md": "eefaa3b59da48e10765453bf129d4584bc9bf583cabdcd775cac994fcecd0e68",
-    "stage/문서/Technical/LOCAL_REPAIR_VERIFICATION.md": "3512efba39ec72a12d2ef5ba1ade6ce0cc5fb1bec61b7913ad0bdea0f9eb050d",
-    "stage/문서/Technical/PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md": "a28b60bbd52619ae595457247e73daf4f7621ffd35306dec5982ca8a59064002",
-    "stage/문서/Technical/README.md": "d02a0064cd733271dcb61dec4ad587d0e4d323a8a7a7ba2f920c40ff66683dfb",
-    "stage/문서/Technical/UI_LANGUAGE_VERIFICATION.md": "66231befb4570d6aab1823e68d46adf176766050ec3a3127b1050b878dabc8d6",
-    "stage/문서/Technical/VERIFICATION.md": "fffb25287f5031b8459f8bc8f6d0b23e52bc3a93c94a322783bad230cd043f80",
-    "stage/START_HERE.txt": "09919a5244a2cacb177e66c6ca9af1dd4856b001cb49adcef7cd6b9fa4bafd87",
-    "stage/시작_안내.txt": "6ac3fec4989fbc0b9376182363ea4e8dafcfad3e78edf0b37d6d8cd5f2745708",
-    "stage/START_HERE.html": "1c226fc89a5ab50ba28041f61b2a8e30fa2422ce4349c575a1d1a8c1324b212a",
-    "stage/CHECKSUM_GUIDE.txt": "f212483b286a8bec43309bb08a45a82fd9bf82a7361676a0879283418a651ae9"
+  "document_edition": "2.3",
+  "review_date": "2026-10-26",
+  "status": "release_edition_2.3",
+  "activation_height": 9600,
+  "translated_scope": "34 directly authored summaries and corrections; complete technical specification is English",
+  "current_files": {
+    "assets/sumuww_symbol.png": "79c786d8ce4336c3821abcb55b809c3298b71be57538f8e5032357b9102a3e7d",
+    "BEACON_RECOVERY.html": "cfce00ee5ccf568440d8471aca8f357b49553cbd416895cf030f908049bf35e9",
+    "BEACON_RECOVERY.md": "b82686e809dbac55c0b3068a73368fb69c3d7a3121a1b01cbf992a7882f52776",
+    "CHANGELOG.html": "bfb46efec2999ab25da15877e3ca072b42ca7c12e9d6251f52fa49a03606f37d",
+    "CHANGELOG.md": "2eee58cf8dc0aa48d4fa5dce1aa3122ec4b33e5524fc577f097d89e386953f58",
+    "CONNECTION_PROOFS_9000.html": "3abdb9e8c53b8dc8f1ee97358236bfc1fd65aa4a29fd622931edb0487ec650cd",
+    "CONNECTION_PROOFS_9000.md": "39997ae68d33644b004bd68bb968823ee25cee5a99ce77065668f104c0b33598",
+    "HTLC_9100.html": "0924b75eb5ea8d3df3c67bb857a400499d5cfd53f8a6bf1df73f01abf868f11f",
+    "HTLC_9100.md": "a2117410cdd911d4ddebb5c613798c6d6e24607f85d19b78ec1d8f08f3d39fab",
+    "i18n/ar/CURRENT_RULES.html": "443a5dab120c3f0aa0f64827677f65f0c6e8ae3c0ec16525252a69238bd292d1",
+    "i18n/ar/WHITEPAPER.html": "443a5dab120c3f0aa0f64827677f65f0c6e8ae3c0ec16525252a69238bd292d1",
+    "i18n/bn/CURRENT_RULES.html": "bd1bce4b9f4868758a7d6c547e85c0c73ed6d0b97521beabea267d0c2dffa784",
+    "i18n/bn/WHITEPAPER.html": "bd1bce4b9f4868758a7d6c547e85c0c73ed6d0b97521beabea267d0c2dffa784",
+    "i18n/cs/CURRENT_RULES.html": "be7e26807e39ff80522c8849c20586b4cbe89092eda77e2b8ce13ed2290fe244",
+    "i18n/cs/WHITEPAPER.html": "be7e26807e39ff80522c8849c20586b4cbe89092eda77e2b8ce13ed2290fe244",
+    "i18n/da/CURRENT_RULES.html": "ececdebc91a3f9598a7019b7864c7508d1be11352deb4fa244e33904bbf2fc39",
+    "i18n/da/WHITEPAPER.html": "ececdebc91a3f9598a7019b7864c7508d1be11352deb4fa244e33904bbf2fc39",
+    "i18n/de/CURRENT_RULES.html": "07bcd241c44e306d24f5955dae8bef968d2741649e461345cf6d8402e11fc881",
+    "i18n/de/WHITEPAPER.html": "07bcd241c44e306d24f5955dae8bef968d2741649e461345cf6d8402e11fc881",
+    "i18n/el/CURRENT_RULES.html": "d57e3a992620511ff9f986af9dfaa27bb361496d869990ad77cd3700adc156f7",
+    "i18n/el/WHITEPAPER.html": "d57e3a992620511ff9f986af9dfaa27bb361496d869990ad77cd3700adc156f7",
+    "i18n/en/BEACON_RECOVERY.html": "cfce00ee5ccf568440d8471aca8f357b49553cbd416895cf030f908049bf35e9",
+    "i18n/en/BEACON_RECOVERY.md": "b82686e809dbac55c0b3068a73368fb69c3d7a3121a1b01cbf992a7882f52776",
+    "i18n/en/CHANGELOG.html": "2fdc3cb34b35d4274debfe53334edc99ec42cfd8cb38842f3fdd95e2dafa6de1",
+    "i18n/en/CHANGELOG.md": "b6f9c67dfe37669d0320cc5de65e81209d9b54832f316e071ffd0cf6a0c90180",
+    "i18n/en/CONNECTION_PROOFS_9000.html": "3abdb9e8c53b8dc8f1ee97358236bfc1fd65aa4a29fd622931edb0487ec650cd",
+    "i18n/en/CONNECTION_PROOFS_9000.md": "39997ae68d33644b004bd68bb968823ee25cee5a99ce77065668f104c0b33598",
+    "i18n/en/CURRENT_RULES.html": "2c53aa4e66915c951e509b2ed8b9f58318a6f3563fb987409ceb0acd2e583421",
+    "i18n/en/HTLC_9100.html": "0924b75eb5ea8d3df3c67bb857a400499d5cfd53f8a6bf1df73f01abf868f11f",
+    "i18n/en/HTLC_9100.md": "a2117410cdd911d4ddebb5c613798c6d6e24607f85d19b78ec1d8f08f3d39fab",
+    "i18n/en/NETWORK_PROTOCOL.html": "4453b528bebf024382c16fb6d91f179db6ee65f68e4fe4eda92cb9ecdd0577bb",
+    "i18n/en/NETWORK_PROTOCOL.md": "bc7963113a97b3ec79e08a1871446f4c9bb33ed3f772b3e8434fad4f4d578503",
+    "i18n/en/NODE_FEATURES.html": "3127b4ceb6b7a2a3ef2c07c2332c2e3c0b713eb739aa509e07115dd10ea1d5fe",
+    "i18n/en/NODE_FEATURES.md": "be7c286a61173d288f779f5a605bc6e72fda8b56bee4620ed8aeb09de3f03166",
+    "i18n/en/README.html": "2fdc3cb34b35d4274debfe53334edc99ec42cfd8cb38842f3fdd95e2dafa6de1",
+    "i18n/en/README.md": "b6f9c67dfe37669d0320cc5de65e81209d9b54832f316e071ffd0cf6a0c90180",
+    "i18n/en/RECOVERY_VERIFICATION_20261022.html": "592425b27f7efba2ec395da8cd4c3e56c7287b412d158c2f78bad1efa90f14dd",
+    "i18n/en/RECOVERY_VERIFICATION_20261022.md": "bf34f4bb46b40d87fcd53d0f466c0c878a7580790a5cc3111a3866cc14600c39",
+    "i18n/en/SUMUWW_PROTOCOL_SPEC.html": "71d6009dc201356d5c928a541791eab10a871ac0e4e39e76aa7631ea0a56e32b",
+    "i18n/en/SUMUWW_PROTOCOL_SPEC.md": "d006fea3fec36c41f056f3555214e79c3fdfefb2c55d873d33c7b1a3efcee597",
+    "i18n/en/vectors/sumuww_genesis.json": "715363de5d11ee8c76e24e69edf3ce59050e14a86d51d9b0fe5cd0597ac67a88",
+    "i18n/en/VERIFICATION.html": "2fdc3cb34b35d4274debfe53334edc99ec42cfd8cb38842f3fdd95e2dafa6de1",
+    "i18n/en/VERIFICATION.md": "b6f9c67dfe37669d0320cc5de65e81209d9b54832f316e071ffd0cf6a0c90180",
+    "i18n/en/WHITEPAPER.html": "03d3269c6859a273fb0ec018741a3131d27117da0dbedabc39cfb28fbc6aafb0",
+    "i18n/en/WHITEPAPER.md": "2ed563ddfb4fdfae30b6e55cb8ad55380401525281a0890f7cc2ad2a946fb4d1",
+    "i18n/es/CURRENT_RULES.html": "7bb4c8a4f35f08feb00754aa7dbf94d900cc6bb3997bc8e36daaed53dc02d35b",
+    "i18n/es/WHITEPAPER.html": "7bb4c8a4f35f08feb00754aa7dbf94d900cc6bb3997bc8e36daaed53dc02d35b",
+    "i18n/fi/CURRENT_RULES.html": "f1cc9bbc55b8a4da6b97810c436a2be288d51ef0a3c376a10aba458222570fa2",
+    "i18n/fi/WHITEPAPER.html": "f1cc9bbc55b8a4da6b97810c436a2be288d51ef0a3c376a10aba458222570fa2",
+    "i18n/fil/CURRENT_RULES.html": "1ce6aa498728f7bc8d4bfeee08db572ed37c1644fd36630b4cb1c4e49ebeae28",
+    "i18n/fil/WHITEPAPER.html": "1ce6aa498728f7bc8d4bfeee08db572ed37c1644fd36630b4cb1c4e49ebeae28",
+    "i18n/fr/CURRENT_RULES.html": "cdb325093547191b5ba610225b382056431c74308a16e2762bcfa26e65bfb2ff",
+    "i18n/fr/WHITEPAPER.html": "cdb325093547191b5ba610225b382056431c74308a16e2762bcfa26e65bfb2ff",
+    "i18n/hi/CURRENT_RULES.html": "9f3f79de42e4791b70c1ffb5b7fa56d41fab7c564252d099ac7c3679a5e41cea",
+    "i18n/hi/WHITEPAPER.html": "9f3f79de42e4791b70c1ffb5b7fa56d41fab7c564252d099ac7c3679a5e41cea",
+    "i18n/id/CURRENT_RULES.html": "f474eb05e0bfe58089014f6349ea2a4818ac2fc8f7078a2921b9523278157db8",
+    "i18n/id/WHITEPAPER.html": "f474eb05e0bfe58089014f6349ea2a4818ac2fc8f7078a2921b9523278157db8",
+    "i18n/index.html": "1a406688a6e949b51255b5272f8b47723da04cb4d930e15ce6a5779f7921d0fd",
+    "i18n/it/CURRENT_RULES.html": "cae1091457de7ecf3d7bcf028081983c3d6d72a3cb35f5c71efb8cb3bac34eb4",
+    "i18n/it/WHITEPAPER.html": "cae1091457de7ecf3d7bcf028081983c3d6d72a3cb35f5c71efb8cb3bac34eb4",
+    "i18n/ja/CURRENT_RULES.html": "45347f721e758d71cfee1bf18ffb6bc80ac2d39e0a6a79317432e9016b2ed7d1",
+    "i18n/ja/WHITEPAPER.html": "45347f721e758d71cfee1bf18ffb6bc80ac2d39e0a6a79317432e9016b2ed7d1",
+    "i18n/ko/CURRENT_RULES.html": "b5fe941a8936bdba3d023caef8609a32137a872d87762b8b4afb9d37a08a7455",
+    "i18n/ko/WHITEPAPER.html": "b5fe941a8936bdba3d023caef8609a32137a872d87762b8b4afb9d37a08a7455",
+    "i18n/mn/CURRENT_RULES.html": "a604e442c4f14f07b5d9a075b2d6c0cf99729c5844c9fc1714bd28f2c67a26e5",
+    "i18n/mn/WHITEPAPER.html": "a604e442c4f14f07b5d9a075b2d6c0cf99729c5844c9fc1714bd28f2c67a26e5",
+    "i18n/mn-Mong/CURRENT_RULES.html": "e8891c085f237a10c257c0f431324262c1837f79bcefe37d4f66497a69cbd585",
+    "i18n/mn-Mong/WHITEPAPER.html": "e8891c085f237a10c257c0f431324262c1837f79bcefe37d4f66497a69cbd585",
+    "i18n/nl/CURRENT_RULES.html": "6bdd955347406ef5f0243dbabeb09e5236fd8494bddce63c0305d2d05bcc016f",
+    "i18n/nl/WHITEPAPER.html": "6bdd955347406ef5f0243dbabeb09e5236fd8494bddce63c0305d2d05bcc016f",
+    "i18n/no/CURRENT_RULES.html": "7d856a20c6a6d4ac709f170f912f6f9439fc053413ee0af44508bd236c35588d",
+    "i18n/no/WHITEPAPER.html": "7d856a20c6a6d4ac709f170f912f6f9439fc053413ee0af44508bd236c35588d",
+    "i18n/pl/CURRENT_RULES.html": "5be39db3114b4fc60de0124a2d8e2ff0ce7499743e80001adc722e3532c1395f",
+    "i18n/pl/WHITEPAPER.html": "5be39db3114b4fc60de0124a2d8e2ff0ce7499743e80001adc722e3532c1395f",
+    "i18n/pt/CURRENT_RULES.html": "d67ed96f764b556e3656b22c3b55181f5df533845e1ea1ff6cf68a7c006bc0bc",
+    "i18n/pt/WHITEPAPER.html": "d67ed96f764b556e3656b22c3b55181f5df533845e1ea1ff6cf68a7c006bc0bc",
+    "i18n/ru/CURRENT_RULES.html": "091d633a7090b6c60c36cb17a2d2018e9755300989e5cab5062b5d863b57ccbc",
+    "i18n/ru/WHITEPAPER.html": "091d633a7090b6c60c36cb17a2d2018e9755300989e5cab5062b5d863b57ccbc",
+    "i18n/sr/CURRENT_RULES.html": "f58cbf0fd7f0c0798a181e1af92a6fb817663ec551601b2a17bb1be16b99e305",
+    "i18n/sr/WHITEPAPER.html": "f58cbf0fd7f0c0798a181e1af92a6fb817663ec551601b2a17bb1be16b99e305",
+    "i18n/sv/CURRENT_RULES.html": "31e90ca106d8cc1af0cbea09df973ac740eba060f1575853181583854bbfe6ba",
+    "i18n/sv/WHITEPAPER.html": "31e90ca106d8cc1af0cbea09df973ac740eba060f1575853181583854bbfe6ba",
+    "i18n/sw/CURRENT_RULES.html": "bd6e7e7781f126f51a7848108084303d5bad9a47a5fbae158465c7896277bdae",
+    "i18n/sw/WHITEPAPER.html": "bd6e7e7781f126f51a7848108084303d5bad9a47a5fbae158465c7896277bdae",
+    "i18n/ta/CURRENT_RULES.html": "f5b27553f4877fa31462c37a22db8cea00e63f6a01fe2923fb7f9cd2c2f6ea88",
+    "i18n/ta/WHITEPAPER.html": "f5b27553f4877fa31462c37a22db8cea00e63f6a01fe2923fb7f9cd2c2f6ea88",
+    "i18n/th/CURRENT_RULES.html": "9a7e9cb66484613d9deefead42baad8c0d4b4b3aad0023723fde317ec9032e96",
+    "i18n/th/WHITEPAPER.html": "9a7e9cb66484613d9deefead42baad8c0d4b4b3aad0023723fde317ec9032e96",
+    "i18n/tr/CURRENT_RULES.html": "863d27f63b28b5ca80b72f778cbd475e3f97ded9cef9a223073e21c2018eabf3",
+    "i18n/tr/WHITEPAPER.html": "863d27f63b28b5ca80b72f778cbd475e3f97ded9cef9a223073e21c2018eabf3",
+    "i18n/ur/CURRENT_RULES.html": "8ac974a49d1872a0e58e2b1f76b437471256d7e2dacd5a78959a583eea4f75b9",
+    "i18n/ur/WHITEPAPER.html": "8ac974a49d1872a0e58e2b1f76b437471256d7e2dacd5a78959a583eea4f75b9",
+    "i18n/vi/CURRENT_RULES.html": "a568f3ad1a0c6089b3328370286cbc2eba975d50f7cd9cc690ef4f2469d496bb",
+    "i18n/vi/WHITEPAPER.html": "a568f3ad1a0c6089b3328370286cbc2eba975d50f7cd9cc690ef4f2469d496bb",
+    "i18n/zh/CURRENT_RULES.html": "be243c1cc514211ff2e691b0ac2b51aedff758bd687d150364f310e7cb8eec7e",
+    "i18n/zh/WHITEPAPER.html": "be243c1cc514211ff2e691b0ac2b51aedff758bd687d150364f310e7cb8eec7e",
+    "i18n/zh-HK/CURRENT_RULES.html": "933799c01f9e49c3223a713cc3e881a5e1010077ec63bee0038c222958f630e6",
+    "i18n/zh-HK/WHITEPAPER.html": "933799c01f9e49c3223a713cc3e881a5e1010077ec63bee0038c222958f630e6",
+    "i18n/zh-TW/CURRENT_RULES.html": "40fbf18ca20e9d2ee3b609969d8adfd237ca66c886bb85ce19dfd1d91ad9e996",
+    "i18n/zh-TW/WHITEPAPER.html": "40fbf18ca20e9d2ee3b609969d8adfd237ca66c886bb85ce19dfd1d91ad9e996",
+    "index.html": "bfb46efec2999ab25da15877e3ca072b42ca7c12e9d6251f52fa49a03606f37d",
+    "LICENSE": "9dc594c3c0b2daaf22bf0f9d05a1caf9fca0cce8f1273fe914f4c9838d3cff66",
+    "NETWORK_PROTOCOL.html": "4453b528bebf024382c16fb6d91f179db6ee65f68e4fe4eda92cb9ecdd0577bb",
+    "NETWORK_PROTOCOL.md": "bc7963113a97b3ec79e08a1871446f4c9bb33ed3f772b3e8434fad4f4d578503",
+    "NODE_FEATURES.html": "3127b4ceb6b7a2a3ef2c07c2332c2e3c0b713eb739aa509e07115dd10ea1d5fe",
+    "NODE_FEATURES.md": "be7c286a61173d288f779f5a605bc6e72fda8b56bee4620ed8aeb09de3f03166",
+    "README.html": "bfb46efec2999ab25da15877e3ca072b42ca7c12e9d6251f52fa49a03606f37d",
+    "README.md": "2eee58cf8dc0aa48d4fa5dce1aa3122ec4b33e5524fc577f097d89e386953f58",
+    "RECOVERY_VERIFICATION_20261022.html": "592425b27f7efba2ec395da8cd4c3e56c7287b412d158c2f78bad1efa90f14dd",
+    "RECOVERY_VERIFICATION_20261022.md": "6e328da3802acf426733c0f9646e04b7f4deae820873099c5e8f88e9c29dbb59",
+    "SUMUWW_PROTOCOL_SPEC.html": "71d6009dc201356d5c928a541791eab10a871ac0e4e39e76aa7631ea0a56e32b",
+    "SUMUWW_PROTOCOL_SPEC.md": "d006fea3fec36c41f056f3555214e79c3fdfefb2c55d873d33c7b1a3efcee597",
+    "vectors/sumuww_genesis.json": "715363de5d11ee8c76e24e69edf3ce59050e14a86d51d9b0fe5cd0597ac67a88",
+    "VERIFICATION.html": "bfb46efec2999ab25da15877e3ca072b42ca7c12e9d6251f52fa49a03606f37d",
+    "VERIFICATION.md": "2eee58cf8dc0aa48d4fa5dce1aa3122ec4b33e5524fc577f097d89e386953f58",
+    "WHITEPAPER.html": "03d3269c6859a273fb0ec018741a3131d27117da0dbedabc39cfb28fbc6aafb0",
+    "WHITEPAPER.md": "2ed563ddfb4fdfae30b6e55cb8ad55380401525281a0890f7cc2ad2a946fb4d1"
   },
-  "protocol_regression_tests": {
-    "passed": 12,
-    "failed": 0,
-    "modules": [
-      "test_issuance_transition",
-      "test_p20_dgw10",
-      "test_htlc_activation"
-    ]
-  },
-  "repository_document_links": {
-    "checked": 100,
-    "broken": []
-  },
-  "staged_document_links": {
-    "checked": 1289,
-    "broken": []
-  },
-  "unchanged_runtime_and_archive_files": 375,
-  "publication_status": [
-    {
-      "tag_name": "whitepaper-v2.1-en",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en",
-      "published_at": "2026-10-22T10:16:56Z",
-      "assets": [
-        {
-          "name": "SUMUWW-Whitepaper-v2.1-English.zip",
-          "size": 203040,
-          "digest": "sha256:b66853673544e45997c8b14b5add7f7e61c952790e1dc6a4638336bdf194472f"
-        },
-        {
-          "name": "WHITEPAPER-CHANGELOG.md",
-          "size": 1116,
-          "digest": "sha256:a98e9adf36e0bea825014cfb200ba5fd944a0b05760dc8610daa9bd3c9c0eab0"
-        },
-        {
-          "name": "Whitepaper-SHA256SUMS.txt",
-          "size": 102,
-          "digest": "sha256:dd8f9c025209987dd32d9d60cbfeecf7214cd00f70809eaed6fac7669b790723"
-        }
-      ]
-    },
-    {
-      "tag_name": "pc-v0.57.40",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40",
-      "published_at": "2026-10-24T07:36:38Z",
-      "assets": [
-        {
-          "name": "PC-RELEASE.md",
-          "size": 3300,
-          "digest": "sha256:a32d1deaf1e1a67d2ee971e28c9b461286090f4c9368d5c6b2ce10bf385342ae"
-        },
-        {
-          "name": "PC-SHA256SUMS.txt",
-          "size": 461,
-          "digest": "sha256:40d01af584310101aa98b56ba281323a64bf539c377e23517b3051ee03fbbda3"
-        },
-        {
-          "name": "PUBLICATION_CHECKS.json",
-          "size": 3240,
-          "digest": "sha256:dccde7871bda71832a75d8843f44db117bd5bf5f13edefec243f9b68cfa09bf6"
-        },
-        {
-          "name": "SUMUWW-PC-0.57.40-English.zip",
-          "size": 93738583,
-          "digest": "sha256:55203b191c20b3671cddfe8fe4c7b8682aaa7fc964cd54897de4404461dd4fd3"
-        },
-        {
-          "name": "SUMUWW-Windows-Source-0.57.40-English.zip",
-          "size": 39539087,
-          "digest": "sha256:55b31ec6141384cc278803e2e05efbd6eae68c10bc2d684cba8bb37549b0299c"
-        },
-        {
-          "name": "VERIFICATION.md",
-          "size": 2671,
-          "digest": "sha256:048c0809029971ff209ed181ecfcd90a231cd257b82e2be688390ce98b62a88e"
-        }
-      ]
-    },
-    {
-      "tag_name": "android-v0.6.89",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89",
-      "published_at": "2026-10-24T07:36:33Z",
-      "assets": [
-        {
-          "name": "Android-RELEASE.md",
-          "size": 2444,
-          "digest": "sha256:adb9972acc72a4da9c4eb3d59609cc4e0e6a3c7753932b7ee9ffd48a5a8c4260"
-        },
-        {
-          "name": "Android-SHA256SUMS.txt",
-          "size": 461,
-          "digest": "sha256:6a08defefd30a8a69125935e2ed72ed25a7c2cfddddbac4536bf5b34fdba7b24"
-        },
-        {
-          "name": "PUBLICATION_CHECKS.json",
-          "size": 3240,
-          "digest": "sha256:dccde7871bda71832a75d8843f44db117bd5bf5f13edefec243f9b68cfa09bf6"
-        },
-        {
-          "name": "SUMUWW-Android-0.6.89.apk",
-          "size": 66060024,
-          "digest": "sha256:e8209db34847888d4881deeee4115e6c2036d07d72819185a293e6b55ba3909e"
-        },
-        {
-          "name": "SUMUWW-Android-Source-0.6.89-English.zip",
-          "size": 43184053,
-          "digest": "sha256:db1746e518bcc86752fa774ccc5d2b2186c3a880e0b83293bdd1c4708692038f"
-        },
-        {
-          "name": "VERIFICATION.md",
-          "size": 2671,
-          "digest": "sha256:048c0809029971ff209ed181ecfcd90a231cd257b82e2be688390ce98b62a88e"
-        }
-      ]
-    },
-    {
-      "tag_name": "wallet-pc-v1.0.1",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.1",
-      "published_at": "2026-10-22T13:43:27Z",
-      "assets": [
-        {
-          "name": "README.txt",
-          "size": 6953,
-          "digest": "sha256:96b82a938fde7f4269d24a6d326d74f58508f8c120ae6700fed6de62c17b048a"
-        },
-        {
-          "name": "RELEASE_NOTES.txt",
-          "size": 2434,
-          "digest": "sha256:62a52fd45a3ec208a785cddd8d6bbd3c3017ea06e360548631b7b72164df0e0f"
-        },
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 446,
-          "digest": "sha256:d93b1cd2df77c476f79271736074ea0a8f4749fb82461908c82460188fcd5975"
-        },
-        {
-          "name": "SOURCE_COMMIT.txt",
-          "size": 124,
-          "digest": "sha256:af50167884d4d1e9f1da9109b151d909e90634a5d2e88ba4094ba4a457a49bf5"
-        },
-        {
-          "name": "SUMUWW-Wallet-PC-1.0.1-Source.zip",
-          "size": 35025512,
-          "digest": "sha256:b1d4e14d6fff2052d09f8a07c05373ffca9b23c8f95101147b6215fe334df00f"
-        },
-        {
-          "name": "SUMUWW-Wallet-PC-1.0.1-Windows.zip",
-          "size": 48226620,
-          "digest": "sha256:52fdcb96ce4716f1c4ed81dfbf494fae6afa8a0270486243f67264cf1e1725b2"
-        }
-      ]
-    },
-    {
-      "tag_name": "wallet-android-v1.1.1",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.1",
-      "published_at": "2026-10-22T13:43:42Z",
-      "assets": [
-        {
-          "name": "README.txt",
-          "size": 6953,
-          "digest": "sha256:96b82a938fde7f4269d24a6d326d74f58508f8c120ae6700fed6de62c17b048a"
-        },
-        {
-          "name": "RELEASE_NOTES.txt",
-          "size": 2809,
-          "digest": "sha256:297732803694712edecb69d65c0886743df9f544cfe89e6cc57f53f7313add5d"
-        },
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 448,
-          "digest": "sha256:71c24f8063866b46109b303a37340e491a4636a888cdb9523d71e2cc941eb03b"
-        },
-        {
-          "name": "SOURCE_COMMIT.txt",
-          "size": 124,
-          "digest": "sha256:af50167884d4d1e9f1da9109b151d909e90634a5d2e88ba4094ba4a457a49bf5"
-        },
-        {
-          "name": "SUMUWW-Wallet-Android-1.1.1-Source.zip",
-          "size": 28318846,
-          "digest": "sha256:25d2323e66d764f0ab9491e2013422a8d62373d933f01df18d6730fe11c9857a"
-        },
-        {
-          "name": "SUMUWW-Wallet-Android-1.1.1.apk",
-          "size": 51719669,
-          "digest": "sha256:039058be0dde4ea02aa69e38017af5a83622baf1b1aa1b70bbb4712d15dcc291"
-        }
-      ]
-    },
-    {
-      "tag_name": "explorer-v0.4.6",
-      "html_url": "https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6",
-      "published_at": "2026-10-22T13:44:07Z",
-      "assets": [
-        {
-          "name": "README.txt",
-          "size": 6953,
-          "digest": "sha256:96b82a938fde7f4269d24a6d326d74f58508f8c120ae6700fed6de62c17b048a"
-        },
-        {
-          "name": "RELEASE_NOTES.txt",
-          "size": 2251,
-          "digest": "sha256:d2c3228c22f72f1ccec401efd76115e06855ada62c388f327829e4e750188382"
-        },
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 532,
-          "digest": "sha256:29b71a362b8d9c6397776728e77a5e4ebe16f515607bb01d54c79fba8e5283a3"
-        },
-        {
-          "name": "SOURCE_COMMIT.txt",
-          "size": 124,
-          "digest": "sha256:af50167884d4d1e9f1da9109b151d909e90634a5d2e88ba4094ba4a457a49bf5"
-        },
-        {
-          "name": "SUMUWW-Explorer-v0.4.6-Source.zip",
-          "size": 27510057,
-          "digest": "sha256:f0cfcf60ff37e4ad8464796e65d4719eb34efb48027406485073337c30b59e08"
-        },
-        {
-          "name": "SUMUWW-Explorer-v0.4.6-Windows.zip",
-          "size": 20770391,
-          "digest": "sha256:7ca019196032f5d1481060f7fff4b8e005b84594a2b7d307bda733c3c73f44f5"
-        },
-        {
-          "name": "SUMUWW-Explorer.exe",
-          "size": 20956291,
-          "digest": "sha256:73d4d6c9d20e46209db0be771ac35257a733086928874b9f45efeb51ae097b55"
-        }
-      ]
-    }
-  ],
-  "scope": "Documentation and current source-document copies only. Published packages and canonical desktop installation are unchanged. Historical verification reports retain their measured scope.",
-  "record_scope": "Historical local review snapshot before publication. Original counts, hashes and then-current publication status are retained. Current releases are linked from README.md."
+  "release_url": "https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.3-en"
 }

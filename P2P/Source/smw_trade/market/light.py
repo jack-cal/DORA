@@ -5,17 +5,20 @@ completeness/unspentness still require honest available servers; this is not a
 full Bitcoin validator. All supplied amounts/scripts are parsed from raw txs.
 """
 import hashlib
+from decimal import Decimal
 from pathlib import Path
 from sumuww.transaction import Transaction
 from .utxo import UtxoAdapter, BTC_GENESIS, txid
 from .light_headers import GENESIS, sha256d
 from .light_network import LightNetwork, DEFAULT_SERVERS
+from .fee_quote import quote,validate_settings
 
 
 class BitcoinLightAdapter(UtxoAdapter):
     def __init__(self, config, directory, network='mainnet', progress=None):
         self.coin = 'BTC'
         self.config = config
+        validate_settings(config)
         self.network = network
         self.confirmations = int(config.get('confirmations', 6 if network == 'mainnet' else 1))
         if self.confirmations < 1 or (network == 'mainnet' and self.confirmations < 6):
@@ -33,6 +36,19 @@ class BitcoinLightAdapter(UtxoAdapter):
 
     def close(self):
         self.client.close()
+
+    def fee_quote(self,size,mode=None):
+        self.client.sync();mode=mode or self.config.get('fee_mode','normal')
+        manual=self.config.get('fee_rate')
+        def estimate(peer):
+            floor=Decimal(str(peer.call('blockchain.relayfee')))*100000
+            bins=peer.call('mempool.get_fee_histogram') if manual is None else []
+            return quote(size,bins,max(floor,Decimal('0.001')),mode,manual)
+        values,errors=self.client.parallel(self.client.active,estimate)
+        if len(values)<2:raise ValueError('Two Bitcoin servers must supply live fee data before signing.')
+        # Fee advice is not consensus. Choose the higher independently quoted
+        # value, bounded by the same local spending cap as Full.
+        return max(value for peer,value in values)
 
     def info(self):
         height = self.client.sync()
@@ -194,3 +210,11 @@ class BitcoinLightAdapter(UtxoAdapter):
         if txid(tx) != operation['txid']:
             raise ValueError('Changed signed Bitcoin transaction.')
         return self.client.broadcast(operation['raw'], operation['txid'])
+
+    def preflight(self,operation):
+        self.client.sync(force=True)
+        tx=Transaction.deserialize(bytes.fromhex(operation['raw']))
+        if txid(tx)!=operation['txid']:raise ValueError('Changed signed Bitcoin transaction.')
+        # Electrum has no standard policy-test method. Submission remains
+        # journaled before broadcast so an uncertain reply cannot free inputs.
+        return None

@@ -1,8 +1,10 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
+
+Update every validating full node and ordinary wallet before **block 9,600**. The connection-proof candidate certificate and renewal rules activate at that height. English is the first-launch language on every operating-system language; a saved language choice remains in effect.
 
 Read-only local block explorer for Windows. It reads the selected SUMUWW node's stored active chain and maintains its own query index; it does not synchronize a node itself.
 
-[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10) · [Source](Source) · [Current guide](Source/CURRENT_GUIDE.md)
+[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.11) · [Source](Source) · [Current guide](Source/CURRENT_GUIDE.md)
 
 The current build exposes block reward components, fee rates in yugeon/vB, local transaction replacement links when recorded, and revealed spending conditions. Missing historical fee information is reported as unknown. Public activation of multisig and output locks remains unscheduled.
 

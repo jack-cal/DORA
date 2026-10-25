@@ -77,6 +77,11 @@ class Index:
                 return {'genesis_hash': self.btc.rpc('getblockhash', 0)}
             if method == 'blockchain.transaction.broadcast':
                 return self.btc.rpc('sendrawtransaction', *params)
+            if method == 'blockchain.relayfee':
+                return self.btc.rpc('getmempoolinfo')['minrelaytxfee']
+            if method == 'mempool.get_fee_histogram':
+                pool=self.btc.rpc('getrawmempool',True)
+                return sorted([[float(e['fees']['base'])*100000000/e['vsize'],e['vsize']] for e in pool.values()],reverse=True)
             self.update()
             if method == 'blockchain.headers.subscribe':
                 return {'height': len(self.blocks) - 1, 'hex': self.blocks[-1][0]}

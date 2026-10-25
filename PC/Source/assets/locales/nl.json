@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Uitgiftelimiet van het blok",
   "Available fees (block)": "Beschikbare blokkosten",
   "Unclaimed reward": "Niet opgeëiste beloning",
-  "Reward not fully claimed": "Beloning gedeeltelijk opgeëist"
+  "Reward not fully claimed": "Beloning gedeeltelijk opgeëist",
+  "Update before block 9,600.": "Werk bij vóór blok 9.600.",
+  "Checking active nodes": "Actieve nodes controleren",
+  "Waiting for lottery": "Wachten op loting",
+  "Waiting for candidate approval": "Wachten op goedkeuring van kandidaten",
+  "Waiting for witness signatures": "Wachten op getuigenhandtekeningen",
+  "Waiting for block producer": "Wachten op de blokproducent",
+  "Witness replies": "Antwoorden van getuigen",
+  "Next retry": "Volgende poging",
+  "Increase fee": "Kosten verhogen",
+  "Connection unavailable": "Verbinding niet beschikbaar",
+  "Automatic fee": "Automatische kosten",
+  "Manual fee rate (blank = automatic)": "Handmatig tarief (leeg = automatisch)"
 }

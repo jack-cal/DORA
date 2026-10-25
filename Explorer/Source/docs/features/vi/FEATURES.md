@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Trình khám phá hiển thị mức phí bằng yugeon/vB. Nếu nút cục bộ ghi nhận việc thay thế, trang giao dịch sẽ liên kết tới giao dịch mới. Dữ liệu đã xác nhận trên chuỗi được ưu tiên; lịch sử thay thế cục bộ có giới hạn.
 

@@ -310,5 +310,19 @@
   "Issuance limit (block)": "தொகுதியின் வெளியீட்டு வரம்பு",
   "Available fees (block)": "தொகுதியில் கிடைக்கும் கட்டணம்",
   "Unclaimed reward": "பெறப்படாத வெகுமதி",
-  "Reward not fully claimed": "வெகுமதியின் ஒரு பகுதி பெறப்பட்டது"
+  "Reward not fully claimed": "வெகுமதியின் ஒரு பகுதி பெறப்பட்டது",
+  "Update before block 9,600.": "தொகுதி 9,600-க்கு முன் புதுப்பிக்கவும்.",
+  "Checking active nodes": "செயலில் உள்ள முனைகள் சரிபார்க்கப்படுகின்றன",
+  "Waiting for lottery": "குலுக்கலுக்காகக் காத்திருக்கிறது",
+  "Waiting for candidate approval": "வேட்பாளர் ஒப்புதலுக்காகக் காத்திருக்கிறது",
+  "Waiting for witness signatures": "சாட்சிகளின் கையொப்பங்களுக்காகக் காத்திருக்கிறது",
+  "Waiting for block producer": "தொகுதி உருவாக்குநருக்காகக் காத்திருக்கிறது",
+  "Witness replies": "சாட்சிகளின் பதில்கள்",
+  "Next retry": "அடுத்த முயற்சி",
+  "Increase fee": "கட்டணத்தை உயர்த்தவும்",
+  "Connection unavailable": "இணைப்பு கிடைக்கவில்லை",
+  "Automatic fee": "தானியங்கிக் கட்டணம்",
+  "Manual fee rate (blank = automatic)": "கைமுறை கட்டண விகிதம் (காலியாக இருந்தால் தானியங்கி)",
+  "Connection proofs": "இணைப்புச் சான்றுகள்",
+  "Selected pending": "தேர்வாகி நிலுவையில் உள்ளது"
 }

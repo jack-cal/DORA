@@ -34,7 +34,7 @@ from analytics import AdvancedExplorer, FILTER_KEYS, rate
 from sumuww.rewards import reward_amounts
 
 HASH = re.compile(r'^[0-9a-fA-F]{64}$')
-VERSION = '0.4.10'
+VERSION = '0.4.11'
 INDEX_ID = 0x53574D45
 MAX_HEIGHT = 0x7fffffff
 

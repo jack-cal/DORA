@@ -101,7 +101,7 @@ class PcControlIntegrationTests(unittest.TestCase):
   self.app.send_address.set('invalid');self.app.send_amount.set('1')
   with patch('sumuww.app.messagebox.showerror') as errors:
    self.app.send_button.invoke();errors.assert_called_once()
-  self.app.send_address.set(bob.address);self.app.send_amount.set('1');self.app.manual_fee.set(True);self.app.send_fee.set('0');self.app._sync_controls()
+  self.app.send_address.set(bob.address);self.app.send_amount.set('1');self.app.manual_fee.set(True);self.app.send_fee.set('1');self.app._sync_controls()
   with patch('sumuww.app.messagebox.askyesno',return_value=False) as confirmation:
    self.app.send_button.invoke();self.pump();confirmation.assert_called_once()
   self.assertEqual('1',self.app.send_amount.get())

@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 De verkenner toont tarieven in yugeon/vB. Als de lokale node een vervanging heeft vastgelegd, verwijst de transactiepagina naar de nieuwe transactie. Bevestigde ketengegevens hebben voorrang; de lokale vervangingsgeschiedenis is beperkt.
 

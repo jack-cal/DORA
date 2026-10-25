@@ -1,13 +1,12 @@
-# SUMUWW Whitepaper v2.2 — English
+# SUMUWW Whitepaper · edition 2.3
 
-Release edition: 24 October 2026. [Whitepaper 2.2 download](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en).
-The earlier [v2.1 archive](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en) remains available as history.
-Application releases PC 0.57.40 / Android 0.6.89 are separate. This document
-edition does not rebuild or replace their binaries or frozen source ZIPs.
+26 October 2026. This edition documents source-block 9,600 selection certification, renewed witness rounds, retry progress, fee estimation and reward components. Download the matching edition from https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.3-en.
 
-Extract the complete archive and open [index.html](index.html). Editable Markdown,
-readable HTML, technical references and the original icon are included. Primary
-documentation is English; all 34 application UI languages and saved preferences
-remain. Text was authored directly without an external translation service.
+- [Whitepaper](WHITEPAPER.md)
+- [Connection-proof specification](CONNECTION_PROOFS_9000.md)
+- [Beacon recovery](BEACON_RECOVERY.md)
+- [Fees and node features](NODE_FEATURES.md)
+- [HTLC](HTLC_9100.md)
+- [34-language reading editions](i18n/index.html)
 
-[Changes](CHANGELOG.html) · [Verification and limits](VERIFICATION.html)
+The earlier published 2.2 archive is historical. Its fixed-witness wording does not describe certified renewal after 9,600. Tests use isolated data; no live quorum availability or completed public-network jobs are implied.

@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Selain näyttää maksutasot yksikössä yugeon/vB. Jos paikallinen solmu on tallentanut korvauksen, tapahtumasivu linkittää korvaavaan tapahtumaan. Ketjussa vahvistetut tiedot ovat etusijalla; paikallinen korvaushistoria on rajallinen.
 

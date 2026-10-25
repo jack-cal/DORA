@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Utforskaren visar avgiftssatser i yugeon/vB. Om den lokala noden har registrerat en ersättning länkar transaktionssidan till den nya transaktionen. Bekräftade kedjedata har företräde; den lokala ersättningshistoriken är begränsad.
 

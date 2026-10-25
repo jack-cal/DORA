@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Průzkumník zobrazuje sazby poplatků v yugeon/vB. Pokud místní uzel zaznamenal nahrazení, stránka transakce odkazuje na novou transakci. Potvrzené údaje řetězce mají přednost; místní historie nahrazení je omezená.
 

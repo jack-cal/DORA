@@ -334,13 +334,12 @@ class AppService:
     def __init__(self, directory, network='dora', listen=None, allow_lan=None,
                  allow_internet=None, peers=None, bootstrap=False, advertise=None,
                  bootstrap_manifest=None, bootstrap_scope='public', auto_address=None,
-                 privacy_router_factory=ManagedRouter, network_provider=None):
+                 privacy_router_factory=ManagedRouter):
         self.directory = Path(directory).expanduser().resolve()
         self.database = self.directory / 'node.sqlite'
         self.network = get_network(network)
         self._privacy_options = privacy.load(self.directory)
         self._privacy_router_factory = privacy_router_factory
-        self._network_provider = network_provider
         if bootstrap_scope not in ('public', 'loopback') or (self.network.name == 'dora' and bootstrap_scope != 'public'):
             raise ValueError('The main network requires public bootstrap scope')
         self._bootstrap_manifest = bootstrap_manifest
@@ -454,6 +453,9 @@ class AppService:
 
     def block_history(self, offset=0, limit=50, height=None):
         return self._submit('block_history', offset, limit, height)
+
+    def block_transactions(self, block_hash, offset=0, limit=50):
+        return self._submit('block_transactions', block_hash, offset, limit)
 
     def transaction_history(self, offset=0, limit=50):
         return self._submit('transaction_history', offset, limit)
@@ -890,7 +892,14 @@ class AppService:
             from .block_history import block_history
             runtime = self._node.boundary_runtime
             own_id = runtime.keys.node_id if runtime else None
-            return await asyncio.to_thread(block_history, self.database, *arguments, own_id)
+            result = await asyncio.to_thread(block_history, self.database, *arguments, own_id)
+            result['lottery_jobs'] = runtime.job_counts() if runtime is not None else None
+            result['pending_proof_jobs'] = runtime.job_details() if runtime is not None else []
+            result['selection_activation_height'] = self._node.chain.boundary.selection_activation
+            return result
+        if operation == 'block_transactions':
+            from .block_history import block_transactions
+            return await asyncio.to_thread(block_transactions, self.database, *arguments, self.network)
         if operation == 'transaction_history':
             if self._address is None:
                 raise AppServiceError('Select a wallet before reading transaction history')
@@ -1103,7 +1112,6 @@ class AppService:
                         outgoing_target=None,
                         privacy=self._privacy_options,
                         privacy_router_factory=self._privacy_router_factory,
-                        network_provider=self._network_provider,
                         network=self.network, allow_lan=settings['allow_lan'],
                         allow_internet=settings['allow_internet'],
                         auto_address=automatic_active,

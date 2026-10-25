@@ -1,8 +1,8 @@
 {
-  "android": "0.6.95",
+  "android": "0.6.96",
   "scope": "Embedded node API; no separate developer bridge",
   "files": {
-    "rpc.py": "f0ba1ac80157aa95f86d138a021f8c2a24fc51bd156ca9f93dd1dbc74d68fa22",
+    "rpc.py": "46551b6c8a31f9a43c6d15982eee244d18b869b36cf94f01ac9a93a237610e4d",
     "rpc_client.py": "25e8d4113b5fadd00889b223b8b10d4f19db3246a1ce5c0ba9aac407101334b9",
     "fees.py": "ab0e59f90827e60f616fb847eb0f887518cefcb9f8473ded8d8a8cfe53f69804",
     "mempool_policy.py": "10756d5e56396cb8571e2590d2a8107cafcaf22226c721cdf51e51b36614bf50",

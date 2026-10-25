@@ -128,15 +128,24 @@ class Engine:
                       'expiry':seller['expiry'][c],'scan_start':min(seller['start'][c],buyer['start'][c]),'fee':seller['chains'][c]['fee']}
         return specs
 
-    def _observe(self,t,s,specs):
+    @staticmethod
+    def canceled(s):
+        return s['canceled'] or bool(s.get('remote') and s['remote']['body']['canceled'])
+
+    def _observe(self,t,s,specs,*,action=None,tolerant=False):
         result={}
         for c,sp in specs.items():
+            if action=='refund' and c!=self.own_coin(t):continue
             ref=s['refs'].get(c) or s['remote']['body']['references'].get(c)
             # References are hints only. An invalid hint cannot hide a valid lock.
-            try:result[c]=self.nodes[c].observe(sp,ref)
-            except (ValueError,KeyError,TypeError):
-                if not ref:raise
-                result[c]=self.nodes[c].observe(sp,None)
+            try:
+                try:result[c]=self.nodes[c].observe(sp,ref)
+                except (ValueError,KeyError,TypeError):
+                    if not ref:raise
+                    result[c]=self.nodes[c].observe(sp,None)
+            except (OSError,ValueError,KeyError,TypeError):
+                if not tolerant:raise
+                result[c]={'status':'unavailable','confirmed':False}
         return result
 
     def _window(self,t,specs):
@@ -144,9 +153,18 @@ class Engine:
         if remaining[t['coin']]<self.minimum or remaining['SMW']<remaining[t['coin']]+self.margin:raise ValueError('Insufficient refund safety window. No new funding allowed.')
         if remaining['SMW']>self.long+600 or remaining[t['coin']]>self.short+600:raise ValueError('Refund window exceeds the signed protocol policy.')
 
+    def reserved_inputs(self,coin):
+        reserved=[]
+        with self.board.connect() as c:rows=[json.loads(r[0]) for r in c.execute('SELECT state FROM swaps')]
+        for row in rows:
+            for saved in row['ops'].values():
+                if self.canceled(row) and not saved['submitted']:continue
+                if saved['coin']==coin:reserved.extend(tuple(x) for x in saved.get('inputs',[]))
+        return reserved
+
     def _check(self,action,t,s,specs,observed):
         own=self.own_coin(t);other=self.other_coin(t)
-        for c in specs:
+        for c in ((own,) if action=='refund' else specs):
             info=self.nodes[c].info()
             if not info['active'] or {k:info[k] for k in POLICY}!=s['offer']['chains'][c]:raise ValueError('Chain identity or policy changed.')
         if action=='lock':
@@ -171,25 +189,21 @@ class Engine:
             if action not in ('lock','claim','refund'):raise ValueError('Unknown action.')
             if action not in s['ops']:
                 with self.board.connect() as c:others=[(r[0],json.loads(r[1])) for r in c.execute('SELECT id,state FROM swaps WHERE id<>?',(session,))]
-                for sid,other in others:
+                for sid,other in (others if action=='lock' else ()):
                     if any(op['coin']==coin for op in other['ops'].values()):
                         state=self.status(sid)['state']
                         if state not in ('completed','refunded') and not (state=='canceled' and all(not op['submitted'] for op in other['ops'].values())):
                             raise ValueError('Resolve the other trade using this coin before signing another transaction.')
-                observed=self._observe(t,s,specs);self._check(action,t,s,specs,observed)
+                observed=self._observe(t,s,specs,action=action);self._check(action,t,s,specs,observed)
                 key=self.vault.key(coin);node=self.nodes[coin];ref=observed[coin].get('reference')
+                reserved=self.reserved_inputs(coin)
                 if action=='lock':
-                    reserved=[]
-                    with self.board.connect() as c:rows=[json.loads(r[0]) for r in c.execute('SELECT state FROM swaps')]
-                    for row in rows:
-                        for saved in row['ops'].values():
-                            if saved['coin']==coin:reserved.extend(tuple(x) for x in saved.get('inputs',[]))
                     op=node.prepare_lock(specs[coin],key,reserved)
                 elif action=='claim':
                     secret=self.vault.secret(session) if self.selling(t) else bytes.fromhex(observed[t['coin']]['secret'])
                     if hashlib.sha256(secret).hexdigest()!=specs[coin]['hash']:raise ValueError('Observed preimage mismatch.')
-                    op=node.prepare_claim(specs[coin],ref,key,secret)
-                else:op=node.prepare_refund(specs[coin],ref,key)
+                    op=node.prepare_claim(specs[coin],ref,key,secret,reserved)
+                else:op=node.prepare_refund(specs[coin],ref,key,reserved)
                 s['ops'][action]={'coin':coin,'txid':op['txid'],'fee':op['fee'],'value':op['value'],'inputs':op.get('inputs',[]),'sealed':self.vault.seal(session+':'+action,op),'submitted':False}
                 self._save(session,s)
             op=s['ops'][action]
@@ -200,19 +214,52 @@ class Engine:
 
     def submit(self,session,action,txid):
         with self.lock:
+            if action.startswith('fee:'):return self.submit_fee_increase(session,action,txid)
             t,s=self._load(session);saved=s['ops'].get(action)
             if not saved or saved['txid']!=txid:raise ValueError('Review the exact saved transaction first.')
-            specs=self.specs(t,s);observed=self._observe(t,s,specs);coin=saved['coin']
+            specs=self.specs(t,s);observed=self._observe(t,s,specs,action=action);coin=saved['coin']
             expected={'lock':'locked','claim':'claimed','refund':'refunded'}[action]
             if saved['submitted'] and observed[coin]['status']==expected:return self.status(session)
             self._check(action,t,s,specs,observed)
             operation=self.vault.unseal(session+':'+action,saved['sealed'])
+            self.nodes[coin].preflight(operation)
             # Persist the exact transaction and reference BEFORE any network call.
             saved['submitted']=True
             if action=='lock':s['refs'][coin]=self.nodes[coin].reference(specs[coin],operation);s['revision']+=1
             self._save(session,s)
             self.nodes[coin].broadcast(operation)
             return self.status(session)
+
+    def preview_fee_increase(self,session):
+        with self.lock:
+            t,s=self._load(session);last_error=None
+            for action,parent in reversed(tuple(s['ops'].items())):
+                if not parent['submitted']:continue
+                coin=parent['coin'];node=self.nodes[coin];name='fee:'+parent['txid']
+                if name in s['ops']:
+                    if s['ops'][name]['submitted']:continue
+                    saved=s['ops'][name]
+                else:
+                    operation=self.vault.unseal(session+':'+action,parent['sealed'])
+                    try:child=node.prepare_fee_child(operation,self.vault.key(coin),self.reserved_inputs(coin))
+                    except ValueError as error:last_error=error;continue
+                    saved={'coin':coin,'txid':child['txid'],'fee':child['fee'],'value':0,'inputs':child['inputs'],
+                           'sealed':self.vault.seal(session+':'+name,child),'submitted':False}
+                    s['ops'][name]=saved;self._save(session,s)
+                address=self.vault.public(coin)['address']
+                return {'session':session,'action':name,'coin':coin,'txid':saved['txid'],'fee':show(saved['fee'],coin),
+                        'amount':'0','from':address,'to':address,'network':self.board.network,'submitted':saved['submitted']}
+            if last_error:raise last_error
+            raise ValueError('No pending transaction is available for a fee increase.')
+
+    def submit_fee_increase(self,session,action,txid):
+        t,s=self._load(session);saved=s['ops'].get(action)
+        if not saved or saved['txid']!=txid:raise ValueError('Review the exact saved fee increase first.')
+        node=self.nodes[saved['coin']];operation=self.vault.unseal(session+':'+action,saved['sealed'])
+        node.preflight(operation)
+        saved['submitted']=True;self._save(session,s)
+        node.broadcast(operation)
+        return self.status(session)
 
     def cancel(self,session):
         with self.lock:
@@ -224,9 +271,17 @@ class Engine:
             t,s=self._load(session)
             result={'session':session,'prepared':True,'peer_ready':bool(s['remote']),'canceled':s['canceled'],'state':'canceled' if s['canceled'] else 'prepared'}
             if not s['remote']:return result
-            specs=self.specs(t,s);observed=self._observe(t,s,specs)
+            specs=self.specs(t,s);observed=self._observe(t,s,specs,tolerant=True)
             result['chains']={c:{k:v for k,v in o.items() if k!='secret'} for c,o in observed.items()}
-            result['remaining']={c:max(0,self.nodes[c].remaining(sp)) for c,sp in specs.items()}
+            result['remaining']={}
+            for c,sp in specs.items():
+                if observed[c]['status']=='unavailable':continue
+                try:result['remaining'][c]=max(0,self.nodes[c].remaining(sp))
+                except (OSError,ValueError,KeyError,TypeError):
+                    observed[c]['status']='unavailable'
+                    observed[c]['confirmed']=False
+                    result['chains'][c]['status']='unavailable'
+                    result['chains'][c]['confirmed']=False
             states=[o['status'] for o in observed.values()]
             if all(v=='claimed' for v in states):result['state']='completed'
             elif observed[self.own_coin(t)]['status']=='refunded':result['state']='refunded'
@@ -235,4 +290,5 @@ class Engine:
             elif 'pending' in states:result['state']='pending'
             elif any(op['submitted'] for op in s['ops'].values()):result['state']='pending'
             elif s['canceled'] or s['remote']['body']['canceled']:result['state']='canceled'
+            elif 'unavailable' in states:result['state']='unavailable'
             return result

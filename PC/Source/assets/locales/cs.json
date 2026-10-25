@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Emisní limit bloku",
   "Available fees (block)": "Dostupné poplatky bloku",
   "Unclaimed reward": "Nevyzvednutá odměna",
-  "Reward not fully claimed": "Odměna vyzvednuta částečně"
+  "Reward not fully claimed": "Odměna vyzvednuta částečně",
+  "Update before block 9,600.": "Aktualizujte před blokem 9 600.",
+  "Checking active nodes": "Kontrola aktivních uzlů",
+  "Waiting for lottery": "Čekání na losování",
+  "Waiting for candidate approval": "Čekání na schválení kandidátů",
+  "Waiting for witness signatures": "Čekání na podpisy svědků",
+  "Waiting for block producer": "Čekání na tvůrce bloku",
+  "Witness replies": "Odpovědi svědků",
+  "Next retry": "Další pokus",
+  "Increase fee": "Zvýšit poplatek",
+  "Connection unavailable": "Připojení není dostupné",
+  "Automatic fee": "Automatický poplatek",
+  "Manual fee rate (blank = automatic)": "Ruční sazba (prázdné = automatická)"
 }

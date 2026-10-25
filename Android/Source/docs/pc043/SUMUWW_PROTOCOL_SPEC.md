@@ -9,6 +9,10 @@ Valid blocks through 8999 remain usable, including those sent together with an i
 <!-- /current-links-9000 -->
 
 
+## Source-block 9,600 update
+
+From source block 9,600, connection proofs require certified active-candidate selection. More than two thirds of the anchored generation attest the activity round; validators recompute the three witnesses. After activation, unfinished jobs can renew the activity round while preserving the A/B pair and event beacon. Archived responses from different rounds cannot be combined. Earlier valid proofs remain valid. The exact rules and quorum assumptions are in [CONNECTION_PROOFS_9000.md](CONNECTION_PROOFS_9000.md).
+
 ## 1. Basic principles
 
 - No administrator authority for arbitrary issuance, freezing, confiscation or balance modification.
@@ -59,7 +63,7 @@ Validation rejects empty inputs/outputs, duplicate inputs, missing or spent UTXO
 
 Only the first transaction may be coinbase. Coinbase null outpoint, scriptSig length 2~100 bytes and height prefix are checked. Output total cannot exceed the height's subsidy plus block fees. Merkle mutation and witness commitment are checked. Block weight is `3*base_size + total_size <= 4000000`; sigops cost must not exceed 80,000.
 
-Before block 9100, spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. From block 9100, upgraded nodes additionally validate the exact HTLC template described in [HTLC_9100.md](HTLC_9100.md). Other spending scripts or signature flags remain unsupported; a general script VM is not implemented. Activation is evaluated at the block spending an output, not the block that created its coins.
+Before block 9100, spending validation supports **native P2WPKH / SIGHASH_ALL** using secp256k1 ECDSA. From block 9100, upgraded nodes additionally validate the exact HTLC template described in [HTLC_9100.md](HTLC_9100.md). Other public-network spending scripts or signature flags remain unsupported; a general script VM is not implemented. Multisig and output-lock templates are implemented for explicit test-chain activation only; public activation is not scheduled. Activation is evaluated at the block spending an output, not the block that created its coins.
 
 ## 5. Proof of work, difficulty and time
 
@@ -104,6 +108,6 @@ Nodes exchange version/verack, locator/headers, inventory/getdata and block/tran
 SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0 and a 20-byte witness program for native P2WPKH. Validation checks the network prefix, checksum and padding. Other-network addresses, mixed case and invalid padding are rejected.
 
 
-## Implementation addendum: PC 0.57.46 / Android 0.6.95
+## Implementation addendum: PC 0.57.47 / Android 0.6.96
 
 [Current fee, yugeon, replacement and script activation specification](NODE_FEATURES.md).

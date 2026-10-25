@@ -7,7 +7,11 @@ Object.assign(strings.ko,{all:'전체',transactionhistory:'거래 내역',coinba
 Object.assign(strings.en,{coinbase:'Mining reward',ordinary:'Ordinary transaction',all:'All',transactionhistory:'Transaction history',coinbaselist:'Mining reward transactions',ordinarylist:'Ordinary transactions',browseordinary:'View all ordinary transactions',type:'Type'});
 if(typeof explorerLanguages!=='undefined')Object.assign(strings,explorerLanguages.strings);
 const languageChoices=typeof explorerLanguages!=='undefined'?explorerLanguages.languages:[['ko','한국어'],['en','English']];
-const locale=()=>lang==='zh'?'zh-CN':lang==='mn-Mong'?'mn-Mong-CN':lang==='no'?'nb-NO':lang;
+const locale=()=>{
+  const requested=lang==='zh'?'zh-CN':lang==='mn-Mong'?'mn-Mong-CN':lang==='no'?'nb-NO':lang;
+  // Unsupported script locales must not silently fall back to the OS language.
+  return Intl.DateTimeFormat.supportedLocalesOf([requested,lang.split('-')[0],'en'])[0]||'en';
+};
 let lang='en';
 try { const saved=localStorage.getItem('sumuww-explorer-language');lang=languageChoices.some(([code])=>code===saved)?saved:'en'; } catch {}
 let sequence=0, searchSequence=0, routeVersion=0, rendering=false, renderController=null, searchNotice='';

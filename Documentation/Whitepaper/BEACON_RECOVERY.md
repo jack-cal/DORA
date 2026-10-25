@@ -1,8 +1,8 @@
-> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
+> Document edition 2.3, 26 October 2026. Source-block 9,600 activation.
 
 # Automatic beacon generation recovery
 
-First included in Windows 0.57.34 / Android 0.6.84; current implementation: Windows 0.57.40 / Android 0.6.89. This document describes a protocol extension;
+First included in Windows 0.57.34 / Android 0.6.84; retained in Windows 0.57.47 / Android 0.6.96. This document describes a protocol extension;
 it does not certify public-network readiness.
 
 ## What changes
@@ -17,14 +17,11 @@ old secret. Old blocks and completed connection proofs remain verifiable under
 their original setup. An unfinished old job keeps its original A/B hashes and
 original beacon; a new key cannot finish that old job or redraw its lottery.
 
-Starting with PC 0.57.40 / Android 0.6.89, new connection jobs probe the
-entire discovered identity inventory and sample three responsive identities.
-The nonce echo used for witness availability is distinct from a BLS health
-challenge used to assess an existing beacon key. Silent contacts are retained
-and can respond to later attempts. Already selected jobs retain their original
-message and witnesses. This local availability policy does not create consensus
-membership. There is no registration, exit procedure, fee, per-IP quota or fixed
-candidate count. The 20% event probability, issuance, halvings and DGW/10 remain.
+A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.
+
+For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.
+
+Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.
 
 ## Preparation and failure handling
 
@@ -46,7 +43,7 @@ does not disqualify a responding contact from witness selection.
 Default local scheduling uses a 60-second check interval, 20-second request timeout,
 120-second setup timeout and 300-second DKG retry cooldown. These values do not
 determine consensus or limit the witness candidate population. Unfinished link
-jobs retry with a 30-second local backoff. Public deals/readiness are replayed
+jobs use a persisted exponential retry backoff capped at 900 seconds. Public deals/readiness are replayed
 after reconnection. Secret shares and identity keys stay in the local key store.
 
 ## Consensus binding

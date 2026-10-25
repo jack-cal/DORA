@@ -1,5 +1,5 @@
 {
-  "documentation_revision": 52,
+  "documentation_revision": 53,
   "coin_documents": [
     "COIN_PROMOTION_AND_REGISTRATION.md",
     "CONSENSUS_BASELINE.md",
@@ -149,5 +149,6 @@
     "EXCHANGE_EXAMPLES"
   ],
   "localized_update_scope": "The 0.57.46 / Android 0.6.95 yugeon fee policy, RBF, block reward breakdown, data records and isolated multisig/lock activation tests. Historical whitepapers and other topics retain their separately recorded translation scope.",
-  "documentation_edition": "0.57.46"
+  "documentation_edition": "0.57.46",
+  "local_document_edition": "2.3"
 }

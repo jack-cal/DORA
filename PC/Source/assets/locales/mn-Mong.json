@@ -352,5 +352,17 @@
   "Issuance limit (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠭᠠᠷᠭᠠᠯᠲᠠ ᠶᠢᠨ ᠬᠢᠵᠠᠭᠠᠷ",
   "Available fees (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠪᠣᠯᠣᠮᠵᠢᠲᠤ ᠰᠢᠮᠲᠡᠭᠡᠯ",
   "Unclaimed reward": "ᠠᠪᠤᠭ᠎ᠠ ᠦᠭᠡᠢ ᠱᠠᠭᠨᠠᠯ",
-  "Reward not fully claimed": "ᠱᠠᠭᠨᠠᠯ ᠢ ᠬᠡᠰᠡᠭᠴᠢᠯᠡᠨ ᠠᠪᠤᠭᠰᠠᠨ"
+  "Reward not fully claimed": "ᠱᠠᠭᠨᠠᠯ ᠢ ᠬᠡᠰᠡᠭᠴᠢᠯᠡᠨ ᠠᠪᠤᠭᠰᠠᠨ",
+  "Update before block 9,600.": "9,600 ᠳ᠋ᠤᠭᠠᠷ ᠪᠯᠣᠺ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠨ᠎ᠡ ᠦᠦ᠃",
+  "Checking active nodes": "ᠢᠳᠡᠪᠬᠢᠲᠡᠢ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ ᠶᠢ ᠱᠠᠯᠭᠠᠵᠤ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Waiting for lottery": "ᠰᠤᠭᠤᠯᠠᠭ᠎ᠠ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Waiting for candidate approval": "ᠨᠡᠷ᠎ᠡ ᠳᠡᠪᠰᠢᠭᠴᠢ ᠶᠢᠨ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠯ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Waiting for witness signatures": "ᠭᠡᠷᠡᠴᠢ ᠶᠢᠨ ᠭᠠᠷ ᠤᠨ ᠦᠰᠦᠭ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Waiting for block producer": "ᠪᠯᠣᠺ ᠦᠭᠦᠰᠭᠡᠭᠴᠢ ᠶᠢ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠶᠢᠨ᠎ᠠ",
+  "Witness replies": "ᠭᠡᠷᠡᠴᠢ ᠶᠢᠨ ᠬᠠᠷᠢᠭᠤ",
+  "Next retry": "ᠳᠠᠷᠠᠭ᠎ᠠ ᠶᠢᠨ ᠣᠷᠣᠯᠳᠤᠯᠭ᠎ᠠ",
+  "Increase fee": "ᠰᠢᠮᠲᠡᠭᠡᠯ ᠨᠡᠮᠡᠬᠦ",
+  "Connection unavailable": "ᠬᠣᠯᠪᠣᠭ᠎ᠠ ᠪᠣᠯᠣᠮᠵᠢ ᠦᠭᠡᠢ",
+  "Automatic fee": "ᠠᠦ᠋ᠲ᠋ᠣ᠋ᠮᠠᠲ ᠰᠢᠮᠲᠡᠭᠡᠯ",
+  "Manual fee rate (blank = automatic)": "ᠭᠠᠷ ᠢᠶᠠᠷ ᠣᠷᠣᠭᠤᠯᠬᠤ ᠬᠤᠪᠢ (ᠬᠣᠭᠣᠰᠣᠨ = ᠠᠦ᠋ᠲ᠋ᠣ᠋ᠮᠠᠲ)"
 }

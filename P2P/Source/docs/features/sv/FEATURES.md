@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P kontrollerar signerade SUMUWW-transaktioner hos den anslutna noden innan de sänds. Vid avslag sänds de inte. Avtalade bytesbelopp och avgifter ligger fast; Bitcoin-avgifter använder sina egna enheter.
+P2P erbjuder avgifter utifrån aktuell kö, manuella avgiftssatser och bekräftade höjningar. Avbrutna oskickade förhandsvisningar frigör reserverade medel. Återbetalning kräver bara kedjan som håller dina medel. Avtalade belopp och avgiftsreserver är oförändrade.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

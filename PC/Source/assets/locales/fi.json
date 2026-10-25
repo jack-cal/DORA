@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Lohkon liikkeeseenlaskuraja",
   "Available fees (block)": "Lohkon saatavilla olevat maksut",
   "Unclaimed reward": "Lunastamaton palkkio",
-  "Reward not fully claimed": "Palkkio lunastettu osittain"
+  "Reward not fully claimed": "Palkkio lunastettu osittain",
+  "Update before block 9,600.": "Päivitä ennen lohkoa 9 600.",
+  "Checking active nodes": "Tarkistetaan aktiivisia solmuja",
+  "Waiting for lottery": "Odotetaan arvontaa",
+  "Waiting for candidate approval": "Odotetaan ehdokkaiden hyväksyntää",
+  "Waiting for witness signatures": "Odotetaan todistajien allekirjoituksia",
+  "Waiting for block producer": "Odotetaan lohkon tuottajaa",
+  "Witness replies": "Todistajien vastaukset",
+  "Next retry": "Seuraava yritys",
+  "Increase fee": "Nosta maksua",
+  "Connection unavailable": "Yhteys ei ole käytettävissä",
+  "Automatic fee": "Automaattinen maksu",
+  "Manual fee rate (blank = automatic)": "Manuaalinen maksutaso (tyhjä = automaattinen)"
 }

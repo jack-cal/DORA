@@ -44,7 +44,11 @@ class IncrementalChainTests(unittest.TestCase):
         previous_changes = self.chain.connection.total_changes
         self.assertTrue(self.chain.accept_block(block))
         self.chain.connection.set_trace_callback(None)
-        self.assertEqual(3, self.chain.connection.total_changes - previous_changes)
+        # Block, tip, new coinbase UTXO, and its one derived fee-index row.
+        self.assertEqual(4, self.chain.connection.total_changes - previous_changes)
+        self.assertEqual((0,), self.chain.connection.execute(
+            'SELECT fees FROM block_reward_fees WHERE blockhash=?',
+            (block.block_hash(),)).fetchone())
         self.assertFalse(any(query.upper().strip() == "DELETE FROM UTXOS" for query in trace))
         self.assertEqual(21 * 50 * COIN, self.chain.balance(ALICE.script_pubkey))
         self.assertTrue(self.chain.verify_persisted_state())

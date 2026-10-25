@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Udforskeren viser gebyrsatser i yugeon/vB. Hvis den lokale node har registreret en erstatning, linker transaktionssiden til den nye transaktion. Bekræftede kædedata har forrang; den lokale erstatningshistorik er begrænset.
 

@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P tarkistaa allekirjoitetun SUMUWW-tapahtuman yhdistetyltä solmulta ennen lähettämistä. Hylättyä tapahtumaa ei lähetetä. Sovitut vaihtosummat ja maksut pysyvät samoina; Bitcoin-maksuissa käytetään omia yksiköitä.
+P2P tukee nykyiseen jonoon perustuvia maksuja, käsin asetettavia maksutasoja ja vahvistettavia korotuksia. Lähettämättömän esikatselun peruminen vapauttaa varatut varat. Palautus tarvitsee vain varojasi säilyttävän ketjun. Sovitut summat ja maksuvaraukset eivät muutu.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

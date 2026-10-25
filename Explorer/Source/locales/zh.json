@@ -42,7 +42,7 @@
   "next": "下一个区块",
   "size": "大小",
   "weight": "重量",
-  "nonce": "随机数",
+  "nonce": "Nonce",
   "bits": "难度位",
   "merkle": "Merkle 根",
   "copy": "复制",

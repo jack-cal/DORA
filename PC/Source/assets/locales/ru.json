@@ -352,5 +352,17 @@
   "Issuance limit (block)": "Лимит эмиссии блока",
   "Available fees (block)": "Доступные комиссии блока",
   "Unclaimed reward": "Невостребованная награда",
-  "Reward not fully claimed": "Награда востребована частично"
+  "Reward not fully claimed": "Награда востребована частично",
+  "Update before block 9,600.": "Обновите до блока 9 600.",
+  "Checking active nodes": "Проверка активных узлов",
+  "Waiting for lottery": "Ожидание жеребьёвки",
+  "Waiting for candidate approval": "Ожидание одобрения кандидатов",
+  "Waiting for witness signatures": "Ожидание подписей свидетелей",
+  "Waiting for block producer": "Ожидание создателя блока",
+  "Witness replies": "Ответы свидетелей",
+  "Next retry": "Следующая попытка",
+  "Increase fee": "Повысить комиссию",
+  "Connection unavailable": "Соединение недоступно",
+  "Automatic fee": "Автоматическая комиссия",
+  "Manual fee rate (blank = automatic)": "Ставка вручную (пусто = автоматически)"
 }

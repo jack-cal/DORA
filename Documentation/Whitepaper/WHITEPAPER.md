@@ -1,4 +1,4 @@
-> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
+> Document edition 2.3, 26 October 2026. Source-block 9,600 activation.
 
 # SUMUWW Whitepaper
 
@@ -16,17 +16,20 @@ A's producer signs the paired attachment; B's producer verifies it and signs a r
 
 ## Random selection and distributed randomness
 
-A verified distributed random value selects a connection event with probability 20%. This is neither a fixed five-block schedule nor a guarantee that 20% of blocks obtain completed proofs. Starting with PC 0.57.40 / Android 0.6.89, a new job probes the producer's entire discovered identity inventory through authenticated relays. It then samples three distinct responding identities without replacement using the verified beacon. Silent contacts remain in discovery for later attempts. A response shows availability at that moment, not a guarantee of a later signature. This is a local availability policy, not consensus membership. Already selected jobs keep their exact A/B pair, beacon and three witnesses. Discovery extends through relays, without a direct-neighbor filter, per-IP quota or fixed candidate count. No admission, exit procedure or participation fee is required; one operator may run multiple nodes.
+A verified threshold beacon selects a connection event with probability 20%. This is not a fixed five-block schedule or a guarantee of completed proofs. The producer probes its entire discovered identity inventory and samples three distinct responding identities without replacement. A response establishes availability at that round, not a promise of a later reply.
 
-The random beacon uses Feldman DKG and threshold BLS, with its public setup anchored on chain before A. Enough valid shares reconstruct the same output despite some missing replies. Below the threshold, the proof remains incomplete while mining continues. Initial setup needs all listed dealers' contributions and a readiness quorum. Unavailable beacon groups can be replaced by background fresh-key DKG, with each replacement anchored in PoW and bound to its predecessor and an ancestor round. Old proofs keep their original key; new generations apply only to later source blocks. Recovery needs enough responsive participants and eventual delivery, and never gates mining. This is fresh-key recovery, not recovery of a lost old secret; same-key resharing is not implemented. A worldwide complete candidate census and resistance to a producer's candidate omissions are not established.
+For source blocks at or above 9,600, a completed proof must include a certified active-candidate list. Activity signatures bind the network, A/B pair, recent round, anchored generation and nonce. More than two thirds of the PoW-anchored beacon generation must approve the complete responder set they independently observed; validators then recompute the three witnesses from the existing beacon. Signing requires a round on the active chain no more than six blocks behind the tip. Historical proof verification does not impose that freshness test.
+
+Earlier valid proofs remain valid. After the tip reaches 9,600, an unfinished earlier job can use a new certified activity round while keeping its original A/B pair and event beacon. Earlier messages and signature pieces are archived; replies from different rounds are never combined. This does not reroll the 20% event lottery. A missing required quorum, an unavailable original beacon or a missing target producer may still prevent completion. Discovery has no registration fee, per-IP quota or fixed candidate count. One operator may run multiple identities. The certificate relies on the anchored quorum's honesty; it does not prove a worldwide complete census or independent human ownership.
+
+The random beacon uses Feldman DKG and threshold BLS, with its public setup anchored on chain before A. Enough valid shares reconstruct the same output despite some missing replies. Below the threshold, the proof remains incomplete while mining continues. Initial setup needs all listed dealers' contributions and a readiness quorum. Unavailable beacon groups can be replaced by background fresh-key DKG, with each replacement anchored in PoW and bound to its predecessor and an ancestor round. Old proofs keep their original key; new generations apply only to later source blocks. Recovery needs enough responsive participants and eventual delivery, and never gates mining. This is fresh-key recovery, not recovery of a lost old secret; same-key resharing is not implemented. Candidate-set certification at 9,600 adds quorum attestation; its scope and assumptions are stated above.
 
 ## Progress and application views
 
 Setup records, lottery jobs and completed proofs count different things. A setup
 can support many jobs; a nonselected lottery finishes without creating a proof.
 Subtracting 9 selected jobs from 11 setup records does not imply 2 successes.
-Valid partial signatures survive retries and restarts. Already selected jobs
-still require their original participants; completion is not guaranteed.
+Valid partial signatures survive retries and restarts within their own round. Certified renewal archives prior rounds. Failed jobs retain their next retry across restart, with backoff capped at 15 minutes. The progress view distinguishes candidate collection, quorum approval, witness replies, target receipt and verification. Completion is not guaranteed.
 
 Full nodes independently validate and synchronize the chain. Ordinary wallets
 also use local full validation but do not expose mining. The Windows full node's
@@ -79,9 +82,13 @@ The chain uses SHA-256d PoW with a 600-second target interval. Before height 806
 
 ## Transactions and UTXOs
 
-The ledger records unspent transaction outputs, or UTXOs. Transactions consume existing outputs and create new ones. Nodes check input existence, duplicates, maturity, owner signatures and amount totals to reject double spending and overspending. The basic spending format is native P2WPKH with `SIGHASH_ALL`.
+One SMW equals 100,000,000 yugeon; one yugeon is 0.00000001 SMW. The ledger records unspent transaction outputs, or UTXOs. Transactions consume existing outputs and create new ones. Nodes check input existence, duplicates, maturity, owner signatures and amount totals to reject double spending and overspending. The basic spending format is native P2WPKH with `SIGHASH_ALL`.
 
 ## Fees and protocol upgrades
+
+Automatic slow, normal and fast suggestions use the node’s current accepted transaction queue and ancestor packages. They do not use recent-block fee samples. Manual rates use yugeon/vB: vB measures data size, not currency. The final confirmation fixes the exact fee and total. The public default relay floor is 1 yugeon/vB; this is local policy, not a consensus ban on zero-fee blocks. A rejected transaction does not debit confirmed coins, although pending wallet inputs may remain reserved.
+
+Mining history reports new issuance, included transaction fees and claimed total separately from the amount received by your own address. For an underclaimed coinbase the split of the paid reward is unknown, rather than invented. Fees can still be claimed after the block subsidy reaches zero.
 
 Fees equal total inputs minus total outputs. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.
 
@@ -89,7 +96,7 @@ Each node still validates independently; neither the author nor an API caller ca
 
 ## Activation and compatibility
 
-Valid history through 8999 remains usable even when transmitted with an invalid later suffix. From 9000 every block must contain the producer's public-key commitment and satisfy the active difficulty rules. Compatibility is judged by block validity, not the software version name. At 9100, the exact P2WSH SHA256/preimage/CLTV spending template becomes available; this does not introduce a general-purpose script VM. Ordinary P2WPKH transfers and existing valid coins remain usable.
+Valid history through 8999 remains usable even when transmitted with an invalid later suffix. From 9000 every block must contain the producer's public-key commitment and satisfy the active difficulty rules. Compatibility is judged by block validity, not the software version name. At 9100, the exact P2WSH SHA256/preimage/CLTV spending template becomes available; this does not introduce a general-purpose script VM. Ordinary P2WPKH transfers and existing valid coins remain usable. The source-block 9,600 connection-proof rule requires coordinated node and wallet updates before that height. Missing proof does not invalidate a valid PoW block, but old software can choose a different equal-work branch. General multisig and output-lock templates are implemented for explicit test-chain activation; public activation is not scheduled.
 
 ## Participation and privacy
 
@@ -97,4 +104,4 @@ P2P peers can observe connection IP addresses. The protocol does not guarantee p
 
 ---
 
-[SUMUWW · A/B · Ed25519 · BLS](CONNECTION_PROOFS_9000.html) · [HTLC · 9100](HTLC_9100.html)
+[SUMUWW · A/B · Ed25519 · BLS](CONNECTION_PROOFS_9000.md) · [HTLC · 9100](HTLC_9100.md)

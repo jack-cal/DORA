@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Kichunguzi huonyesha viwango vya ada kwa yugeon/vB. Ikiwa nodi ya ndani imerekodi muamala uliobadilishwa, ukurasa wake una kiungo cha muamala mpya. Rekodi zilizothibitishwa kwenye mnyororo hupewa kipaumbele; historia ya mabadiliko ya ndani ina kikomo.
 

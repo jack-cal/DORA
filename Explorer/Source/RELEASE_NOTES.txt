@@ -1,3 +1,9 @@
+# SUMUWW Explorer 0.4.11 — 26 October 2026
+
+Long translated menus now expand the header at intermediate widths. Unsupported locale formatting falls back explicitly instead of using an unrelated OS language. Chain data remains read-only. Release: https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.11.
+
+## Previously published releases
+
 # SUMUWW Explorer 0.4.10 — 25 October 2026
 
 This executable includes the current shared-core integration, block issuance/fee/total reward fields, yugeon fee-rate labels, locally recorded replacement links and revealed spending conditions. It remains a read-only explorer of the selected node database. Unknown historical fee values are not presented as zero. Public multisig/output-lock activation is not scheduled.

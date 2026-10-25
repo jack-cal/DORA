@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-P2P memeriksa transaksi SUMUWW yang telah ditandatangani melalui node terhubung sebelum menyiarkannya. Jika ditolak, transaksi tidak disiarkan. Jumlah dan biaya pertukaran yang disepakati tetap; biaya Bitcoin memakai satuannya sendiri.
+P2P menyediakan biaya menurut antrean saat ini, tarif manual, dan kenaikan setelah konfirmasi. Membatalkan pratinjau yang belum dikirim membebaskan dana cadangan. Pengembalian hanya memerlukan rantai tempat dana Anda berada. Jumlah dan cadangan biaya yang disepakati tetap.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

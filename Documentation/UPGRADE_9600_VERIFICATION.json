@@ -1,0 +1,268 @@
+{
+  "activation_height": 9600,
+  "artifacts": {
+    "SUMUWW-PC-0.57.47.zip": {
+      "sha256": "c6d7b0da6e201030db940d89c49bef43d773e5c155b62878137c5e12e606d537",
+      "bytes": 96719510,
+      "kind": "binary"
+    },
+    "SUMUWW-Wallet-PC-1.0.7-Windows.zip": {
+      "sha256": "8c280e0bc88d80fa245475651e3787594ab06067bc51e31e964c2be31c251732",
+      "bytes": 54374155,
+      "kind": "binary"
+    },
+    "SUMUWW-P2P-Full-0.3.5-Windows.zip": {
+      "sha256": "812a25384a0a0e5dcf143747baeeefe8834efafe72a4d5c7d684820cb004c78a",
+      "bytes": 35402059,
+      "kind": "binary"
+    },
+    "SUMUWW-P2P-Light-0.3.5-Windows.zip": {
+      "sha256": "e2e21057ec3ffe09970cf79c20742f81f3156300fb8bf1dca20740d7fb396053",
+      "bytes": 25738468,
+      "kind": "binary"
+    },
+    "SUMUWW-Windows-Source-0.57.47.zip": {
+      "sha256": "e2aa000629bd56ae697640d3d8cae3c25ca0f1c79522d8dba6c7f5d5d69a622c",
+      "bytes": 42052065,
+      "kind": "source",
+      "files": 2900
+    },
+    "SUMUWW-Android-Source-0.6.96.zip": {
+      "sha256": "af8c426e2f5881518953b6ff7cdbb0d4eb0f2d6ad3580b8d55878d95a84f0a03",
+      "bytes": 46781082,
+      "kind": "source",
+      "files": 4347
+    },
+    "SUMUWW-Wallet-PC-1.0.7-Source.zip": {
+      "sha256": "f22e8ed295eded17613246857c1e42939367a457d4c7962cfb9380e637f9e372",
+      "bytes": 42292874,
+      "kind": "source",
+      "files": 3050
+    },
+    "SUMUWW-Wallet-Android-1.1.7-Source.zip": {
+      "sha256": "fe53203d3418b6cb84c2d66ac4a198a904b3f3d978ee67e7dc79736ce631a0a7",
+      "bytes": 28592774,
+      "kind": "source",
+      "files": 1410
+    },
+    "SUMUWW-P2P-0.3.5-Source.zip": {
+      "sha256": "38cd65e3d7dad746ae56feae4f98f28cc9ba05f7846845b892b8e77f4295e9d6",
+      "bytes": 27861142,
+      "kind": "source",
+      "files": 1158
+    },
+    "SUMUWW-Android-0.6.96.apk": {
+      "sha256": "3614e7ca67db761e585521143a54709d35385dfb7709f476e013f3de5bb6a75a",
+      "bytes": 67443668,
+      "kind": "apk"
+    },
+    "SUMUWW-Wallet-Android-1.1.7.apk": {
+      "sha256": "a2329dc28af9f4929a80d6db2b8146a5bafd530017b2e7c47684d2868fa2ac0d",
+      "bytes": 51961528,
+      "kind": "apk"
+    }
+  },
+  "sources": {
+    "SUMUWW-Windows-Source-0.57.47.zip": 2900,
+    "SUMUWW-Android-Source-0.6.96.zip": 4347,
+    "SUMUWW-Wallet-PC-1.0.7-Source.zip": 3050,
+    "SUMUWW-Wallet-Android-1.1.7-Source.zip": 1410,
+    "SUMUWW-P2P-0.3.5-Source.zip": 1158
+  },
+  "binary_files": {
+    "SUMUWW-PC-0.57.47.zip": 4972,
+    "SUMUWW-Wallet-PC-1.0.7-Windows.zip": 2579,
+    "SUMUWW-P2P-Full-0.3.5-Windows.zip": 1351,
+    "SUMUWW-P2P-Light-0.3.5-Windows.zip": 1349
+  },
+  "shared_modules": {
+    "__init__.py": "6b286973599e4326d354d57f6bc01839e0dcd18cf013bff0eefd071892f27d0d",
+    "link_selection.py": "797f37c0ab023f78409869b619c67aee8b59b21a1343b6a95dcfd592c1e3a522",
+    "link_crypto.py": "d6bac295248ff78080d2bcd8c84336d6faca99c145942021c1fc085e996807e3",
+    "link_state.py": "534ec7e7508f994b42f9382324f22a93d377ed3c47f42c56f7e87ba18277f93e",
+    "link_runtime.py": "cdf94d3aafeaa0758f284e521393744822333f098bdfc305fe73f03a3faaf4cb",
+    "link_recovery.py": "a944371bdcba59a44d003c9584aa3e769e5c0207a0c35cdcf98aca1cd77ba98c",
+    "boundary_transport.py": "dfcb25ab17666880c95d224fd8ebe8d1a179483670629f73dd4231bec6738186",
+    "rpc.py": "46551b6c8a31f9a43c6d15982eee244d18b869b36cf94f01ac9a93a237610e4d",
+    "app_service.py": "e0493a2d5c947337823f5569aa9559e21ec54f2532fd542df30e3ab6818b80f2",
+    "block_browser_ui.py": "9ea4dd5c6cdaaf24cc4255333c6c6d85db5306cefa16e8734988b878d53062c5"
+  },
+  "tests": {
+    "node_regression": {
+      "passed": 60
+    },
+    "activation_recovery_transport_browser": {
+      "passed": 22
+    },
+    "p2p_full_light": {
+      "passed": 22,
+      "note": "21 passed in the initial suite; one obsolete exception expectation was changed to assert unavailable/unconfirmed status plus low-level rejection and passed in its focused rerun."
+    },
+    "android_wallet_jvm": {
+      "passed": 4
+    },
+    "new_progress_ui_languages": 34,
+    "public_funds_used": false
+  },
+  "frozen": {
+    "PC/Source/bin/SUMUWW/SUMUWW.exe": {
+      "modules_match": [
+        "sumuww",
+        "sumuww.link_selection",
+        "sumuww.link_state",
+        "sumuww.link_runtime",
+        "sumuww.link_recovery",
+        "sumuww.boundary_transport",
+        "sumuww.rpc"
+      ],
+      "sha256": "1e22f161af567daf953b083b725a5adf29cf8e3bc1905614aeccd10940973d55"
+    },
+    "PC/Source/bin/SUMUWW/SUMUWW-node.exe": {
+      "modules_match": [
+        "sumuww",
+        "sumuww.link_selection",
+        "sumuww.link_state",
+        "sumuww.link_runtime",
+        "sumuww.link_recovery",
+        "sumuww.boundary_transport",
+        "sumuww.rpc"
+      ],
+      "sha256": "7d1dd7d1c9ac3e8e553db2507a467c078b31209ede4bcaa74da911a1e0ad9637"
+    },
+    "Wallet/Desktop/build/upgrade9600-dist/SUMUWW-Wallet/SUMUWW-Wallet.exe": {
+      "modules_match": [
+        "sumuww",
+        "sumuww.link_selection",
+        "sumuww.link_state",
+        "sumuww.link_runtime",
+        "sumuww.link_recovery",
+        "sumuww.boundary_transport",
+        "sumuww.rpc"
+      ],
+      "sha256": "0a04674fc29225038e5b406ba1ae4413585cafc953372029774a70d0ee6909d9"
+    },
+    "P2P/Source/dist-native/SUMUWW-P2P-Full/SUMUWW-P2P-Full.exe": {
+      "modules_match": [
+        "smw_trade.market",
+        "smw_trade.market.engine",
+        "smw_trade.market.desktop",
+        "smw_trade.market.fee_quote",
+        "smw_trade.market.utxo",
+        "smw_trade.market.light"
+      ],
+      "sha256": "491384adc00800b86aae2c9f99d17090fb5aa301c170224f1b9c47d761be7fee"
+    },
+    "P2P/Source/dist-native/SUMUWW-P2P-Light/SUMUWW-P2P-Light.exe": {
+      "modules_match": [
+        "smw_trade.market",
+        "smw_trade.market.engine",
+        "smw_trade.market.desktop",
+        "smw_trade.market.fee_quote",
+        "smw_trade.market.utxo",
+        "smw_trade.market.light"
+      ],
+      "sha256": "115db6bf72ae1d1ae046da4a1cfe6712bf9355eebca799348667b5ab13e77290"
+    },
+    "wallet_smoke": {
+      "status": "passed",
+      "version": "1.0.7",
+      "checks": [
+        "encrypted wallet creation",
+        "backup authentication",
+        "lock",
+        "restore same address",
+        "mining command unavailable",
+        "34 language catalogs"
+      ]
+    },
+    "p2p_smoke": {
+      "full": {
+        "passed": true,
+        "version": "0.3.5",
+        "edition": "full",
+        "languages": 34,
+        "pairs": 1,
+        "assets": [
+          "BTC"
+        ],
+        "native_window": true,
+        "signed_tcp_reservations": 1,
+        "contract_deployment_required": false,
+        "public_funds_used": false
+      },
+      "light": {
+        "passed": true,
+        "version": "0.3.5",
+        "edition": "light",
+        "languages": 34,
+        "pairs": 1,
+        "assets": [
+          "BTC"
+        ],
+        "native_window": true,
+        "signed_tcp_reservations": 1,
+        "contract_deployment_required": false,
+        "public_funds_used": false
+      }
+    }
+  },
+  "android": {
+    "SUMUWW-Android-0.6.96.apk": {
+      "sha256": "3614e7ca67db761e585521143a54709d35385dfb7709f476e013f3de5bb6a75a",
+      "version_code": 156,
+      "package": "org.sumuww.miner",
+      "same_signing_certificate": true,
+      "certificate_sha256": "8481abe8acb2fbc935f824008fa54cd78e790bebbb5795f80604234ee1b4cf4d",
+      "source_modules_match": [
+        "__init__",
+        "link_selection",
+        "link_state",
+        "link_runtime",
+        "link_recovery",
+        "boundary_transport",
+        "rpc",
+        "app_service"
+      ],
+      "phone_installation": false
+    },
+    "SUMUWW-Wallet-Android-1.1.7.apk": {
+      "sha256": "a2329dc28af9f4929a80d6db2b8146a5bafd530017b2e7c47684d2868fa2ac0d",
+      "version_code": 18,
+      "package": "org.sumuww.wallet.current",
+      "same_signing_certificate": true,
+      "certificate_sha256": "e6b41f98b4c965a76072277b8ea258553901bd7f9fd9b1c3120b567e6212e80a",
+      "source_modules_match": [
+        "__init__",
+        "link_selection",
+        "link_state",
+        "link_runtime",
+        "link_recovery",
+        "boundary_transport",
+        "rpc",
+        "app_service"
+      ],
+      "phone_installation": false
+    }
+  },
+  "pc_smoke": {
+    "exit": 0,
+    "checks": [
+      "console_help_version_and_peer_help",
+      "frozen_cli_public_profile_offline_mining_rejected_without_block",
+      "bundled_sqlite_coincurve_cryptography_wallet_mine_and_send",
+      "encrypted_backup_restore_preserves_address",
+      "frozen_yugeon_fee_estimation_bounded_rbf_policy_and_activation_state",
+      "frozen_block_coinbase_and_pending_template_reward_breakdown",
+      "frozen_address_decode_api_and_removed_exchange_command",
+      "two_frozen_daemons_real_localhost_dns_block_tx_relay_confirmation_peer_sync_replay_and_close",
+      "frozen_tk_gui_logo_asset_start_temporary_chain_and_graceful_window_close",
+      "portable_cmd_binary_preference_no_vendor_wheels_and_quoted_path"
+    ],
+    "all_data_temporary": true,
+    "child_path": "C:\\WINDOWS\\System32;C:\\WINDOWS",
+    "python_related_environment_removed": true,
+    "scope": "Actual frozen executables on this Windows PC; no external peers or separate clean PC test"
+  },
+  "public_pending_jobs_completed": false,
+  "github_published": false
+}

@@ -22,7 +22,8 @@ class MarketDesktop:
         except tk.TclError:pass
         self.queue=Queue();self.busy=False;self.closing=False;self.workers=[];self.buttons={};self.images=[];self.last_result=None
         self.vars={k:tk.StringVar(value=v) for k,v in {'coin':'BTC','quantity':'','price':'','title':'','details':'','password':'','confirm':'',
-                   'peer':'127.0.0.1','port':'','listen':'127.0.0.1','listen_port':'0','node_coin':'SMW','url':'','auth':'','server1':'','server2':'','server3':''}.items()}
+                   'peer':'127.0.0.1','port':'','listen':'127.0.0.1','listen_port':'0','node_coin':'SMW','url':'','auth':'','server1':'','server2':'','server3':'',
+                   'fee_mode':'','fee_rate':''}.items()}
         self.side=tk.IntVar(value=0);self.message=tk.StringVar();self.total=tk.StringVar();self.wallet_state=tk.StringVar()
         self.vars['quantity'].trace_add('write',lambda *_:self.total_changed());self.vars['price'].trace_add('write',lambda *_:self.total_changed())
         self._style();self.layout();self.paint();self.root.protocol('WM_DELETE_WINDOW',self.close);self.timer=self.root.after(100,self.poll)
@@ -97,6 +98,7 @@ class MarketDesktop:
         commands=[('Prepare trade',lambda s:self.app.engine.prepare(s)),('Exchange details',self.app.sync_trade),('Refresh status',self.app.engine.status),('Cancel trade',self.app.cancel_trade)]
         for i,(title,callback) in enumerate(commands):self.button(toolbar,title,lambda cb=callback:self.trade_command(cb)).grid(row=0,column=i,padx=4,pady=5,sticky='ew')
         for i,(title,action) in enumerate([('Lock my asset','lock'),('Receive coins','claim'),('Refund','refund')]):self.button(toolbar,title,lambda a=action:self.spend(a)).grid(row=1,column=i,padx=4,pady=5,sticky='ew')
+        self.button(toolbar,'Increase fee',lambda:self.spend('increase_fee')).grid(row=1,column=3,padx=4,pady=5,sticky='ew')
         for i in range(4):toolbar.columnconfigure(i,weight=1)
         self.label(trades,'Locked funds can be refunded after the deadline.',wraplength=1000).pack(anchor='w',pady=10)
         self.trade_result=tk.Text(trades,height=9,wrap='word',bg='#142038',fg='#edf2ff',relief='flat',state='disabled');self.trade_result.pack(fill='x')
@@ -170,16 +172,19 @@ class MarketDesktop:
         if not sid:return
         def reviewed(p):
             lines=[self.tr('Mainnet' if p['network']=='mainnet' else 'Test network'),p['amount']+' '+p['coin'],self.tr('Network fee')+': '+p['fee']+' '+p['coin'],self.tr('Recipient')+': '+p['to'],self.tr('Locked funds can be refunded after the deadline.'),self.tr('Send transaction?')]
-            if messagebox.askyesno(self.tr('Transaction review'),'\n\n'.join(lines),parent=self.root):self.work(lambda:self.app.engine.submit(sid,action,p['txid']),self.show_trade)
-        self.work(lambda:self.app.engine.preview(sid,action),reviewed)
+            if p['action'].startswith('fee:'):
+                lines=[self.tr('Mainnet' if p['network']=='mainnet' else 'Test network'),self.tr('Increase fee'),
+                       self.tr('Network fee')+': '+p['fee']+' '+p['coin'],self.tr('Send transaction?')]
+            if messagebox.askyesno(self.tr('Transaction review'),'\n\n'.join(lines),parent=self.root):self.work(lambda:self.app.engine.submit(sid,p['action'],p['txid']),self.show_trade)
+        self.work(lambda:self.app.engine.preview_fee_increase(sid) if action=='increase_fee' else self.app.engine.preview(sid,action),reviewed)
     def show_trade(self,result):
         # No secret preimages, signed raw transactions or private keys enter this view.
         if isinstance(result,dict) and 'body' in result:result={'state':'prepared','session':result['body'].get('session')}
         self.last_result=result
-        phases={'prepared':'Prepare trade','completed':'Swap completed','refunded':'Refund confirmed','claim_ready':'Receive coins','refund_wait':'Checking refund height','locked':'Confirmed','pending':'Awaiting confirmations','canceled':'Canceled'}
+        phases={'prepared':'Prepare trade','completed':'Swap completed','refunded':'Refund confirmed','claim_ready':'Receive coins','refund_wait':'Checking refund height','locked':'Confirmed','pending':'Awaiting confirmations','canceled':'Canceled','unavailable':'Connection unavailable'}
         text=self.tr(phases.get(result.get('state'),'Done.'))
         for coin,state in result.get('chains',{}).items():
-            label={'missing':'Not funded','pending':'Awaiting confirmations','locked':'Confirmed','claimed':'Swap completed','refunded':'Refund confirmed'}.get(state['status'],'Status')
+            label={'missing':'Not funded','pending':'Awaiting confirmations','locked':'Confirmed','claimed':'Swap completed','refunded':'Refund confirmed','unavailable':'Connection unavailable'}.get(state['status'],'Status')
             text+='\n\n'+coin+': '+self.tr(label)
             if state.get('txid'):text+='\n'+state['txid']
         if result.get('remaining'):text+='\n\n'+self.tr('Refund wait (seconds)')+': '+', '.join(c+' '+str(v) for c,v in result['remaining'].items())
@@ -223,6 +228,14 @@ class MarketDesktop:
         else:
             self.row(self.connection_fields,'RPC URL','url');self.row(self.connection_fields,'Authentication file','auth')
             self.button(self.connection_fields,'Select file',self.auth_file).pack(anchor='e')
+        modes={'fast':'Fast','normal':'Normal','slow':'Slow'}
+        self.vars['fee_mode'].set(self.tr(modes.get(config.get('fee_mode','normal'),'Normal')))
+        self.vars['fee_rate'].set(str(config.get('fee_rate','')))
+        fee_row=ttk.Frame(self.connection_fields);fee_row.pack(fill='x',pady=4)
+        self.label(fee_row,'Automatic fee').pack(side='left')
+        ttk.Combobox(fee_row,state='readonly',textvariable=self.vars['fee_mode'],values=[self.tr(modes[m]) for m in modes]).pack(side='right')
+        self.row(self.connection_fields,'Manual fee rate (blank = automatic)','fee_rate')
+        self.label(self.connection_fields,'yugeon/vB' if self.vars['node_coin'].get()=='SMW' else 'sat/vB').pack(anchor='e')
     def save_connection(self):
         coin=self.vars['node_coin'].get();value={'url':self.vars['url'].get().strip()}
         if coin=='BTC' and self.app.flavor=='light':value={'mode':'light','servers':[self.vars['server'+str(i)].get().strip() for i in range(1,4)]}
@@ -230,6 +243,9 @@ class MarketDesktop:
         # Editing an endpoint must not silently change existing fee/timing policy.
         old=self.app.config['nodes'].get(coin,{})
         value.update({k:old[k] for k in ('fee_units','confirmations','block_seconds') if k in old})
+        value['fee_mode']={self.tr('Fast'):'fast',self.tr('Normal'):'normal',self.tr('Slow'):'slow'}.get(self.vars['fee_mode'].get(),'normal')
+        if self.vars['fee_rate'].get().strip():
+            value['fee_rate']=self.vars['fee_rate'].get().strip()
         self.app.header_progress=None
         def saved(info):
             if coin=='BTC' and self.app.flavor=='light':

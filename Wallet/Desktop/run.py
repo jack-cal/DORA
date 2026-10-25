@@ -18,9 +18,10 @@ from tkinter import filedialog, messagebox, simpledialog, ttk
 from sumuww.brand import apply_window_icon, artwork
 from sumuww.vertical_text import VerticalLabel, VerticalButton
 from sumuww.primitives import format_amount
+from sumuww import __version__ as CORE_VERSION
 import wallet_runtime as runtime
 
-VERSION = '1.0.6'
+VERSION = '1.0.8'
 
 
 class FeeDialog(simpledialog.Dialog):
@@ -171,7 +172,7 @@ class WalletApp:
         self.body.bind('<Configure>', lambda e: self.body_canvas.configure(scrollregion=self.body_canvas.bbox('all')))
         self.body_canvas.bind('<Configure>', lambda e: self.body_canvas.itemconfigure(body_window, width=e.width))
         self.root.bind('<MouseWheel>', lambda e: self.body_canvas.yview_scroll(-int(e.delta / 120), 'units'))
-        self.label(frame, text=f'SUMUWW Wallet {VERSION} · Core 0.57.46', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
+        self.label(frame, text=f'SUMUWW Wallet {VERSION} · Core {CORE_VERSION}', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
         self.render()
         self.update_status()
         self.set_busy(self.busy)

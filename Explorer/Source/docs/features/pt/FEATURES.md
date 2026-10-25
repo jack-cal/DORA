@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 O explorador mostra as taxas em yugeon/vB. Quando o nó local regista uma substituição, a página da transação liga à nova transação. Os registos confirmados na cadeia têm prioridade; o histórico local de substituições é limitado.
 

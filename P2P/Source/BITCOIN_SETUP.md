@@ -166,8 +166,11 @@ Cancellation can stop new funding; it cannot reverse a confirmed transfer or
 bypass a refund deadline. Refunds return an unspent expired lock to its funding
 key, less network fees. A claimed output cannot also be refunded. Refunds and
 claims are explicit actions: there is no unattended monitoring or automatic fee
-bumping. Keep the app, working chain connections and complete recovery records
-available while funds are locked. Fixed fees may be insufficient in congestion.
+bumping. Keep the app and complete recovery records available while funds are locked.
+Refund requires only the chain holding your funds. Automatic fees use the current
+queue; manual rates are available. Increase fee creates a reviewed child payment
+without replacing the funding reference. Agreed reserves remain fixed; additional
+owned inputs may cover higher claim or refund fees.
 
 Use **Recovery backup** to preserve keys, orders, agreements and saved signed
 transactions. Wallet-only backups do not contain all funded-trade state. Full

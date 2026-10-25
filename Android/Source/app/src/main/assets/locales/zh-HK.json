@@ -310,5 +310,19 @@
   "Issuance limit (block)": "區塊發行上限",
   "Available fees (block)": "區塊可領取手續費",
   "Unclaimed reward": "未領取獎勵",
-  "Reward not fully claimed": "只領取了部分獎勵"
+  "Reward not fully claimed": "只領取了部分獎勵",
+  "Update before block 9,600.": "請在第9,600個區塊前更新。",
+  "Checking active nodes": "正在檢查活躍節點",
+  "Waiting for lottery": "等待抽籤",
+  "Waiting for candidate approval": "等待候選名單批准",
+  "Waiting for witness signatures": "等待見證人簽署",
+  "Waiting for block producer": "等待區塊產生者回應",
+  "Witness replies": "見證人回應",
+  "Next retry": "下次重試",
+  "Increase fee": "提高手續費",
+  "Connection unavailable": "無法連線",
+  "Automatic fee": "自動手續費",
+  "Manual fee rate (blank = automatic)": "手動費率（留空則自動）",
+  "Connection proofs": "連線證明",
+  "Selected pending": "選中待完成"
 }

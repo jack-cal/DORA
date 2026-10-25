@@ -17,4 +17,4 @@ p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;paddin
 <p>公开网络为 <code>sumuww</code>，内部别名为 <code>dora</code>。请核对下方创世区块哈希。原生地址采用 witness v0 P2WPKH，以及压缩 secp256k1 公钥的 HASH160。无需强制 memo 或 tag。应拒绝网络错误或校验和无效的地址。记录 HD 收款/找零分支及索引，不要假定与 Bitcoin 的派生路径相同。</p>
 <h2>交易与区块查询</h2>
 <p><code>getrawtransaction</code> 查询活跃链及内存池，不查询仅存在于孤立分支的交易。输入指向之前的输出，并非唯一发送地址。<code>getblock</code> 的 <code>verbose</code> 为布尔值；已保存的非活跃块为 <code>active=false</code>、<code>confirmations=-1</code>，仍可用区块哈希取得原始交易。<code>findspendingtransaction</code> 仅查活跃链上已确认的花费，null 不证明可用。还需查询 <code>include_mempool=true</code> 的 <code>gettxout</code>。确认数及活跃状态都可能随重组改变。</p>
-<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main><p><a href="../../upgrade9600/zh.html">请在第9,600个区块前更新。</a></p></body></html>

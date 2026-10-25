@@ -1,12 +1,12 @@
 # SUMUWW documentation
 
-Current document release: 25 October 2026. [English whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) and [documentation 20261025-r1](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261025-r1) are separate downloads.
+Current document release: 26 October 2026. [English whitepaper 2.3](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.3-en) and [documentation 20261026-r1](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261026-r1) are separate downloads.
 
 - [Current versions, publication states and bundled-document erratum](CURRENT_STATUS.md)
-- [Whitepaper 2.2](Whitepaper/WHITEPAPER.md) · [Changes](Whitepaper/CHANGELOG.md)
+- [Whitepaper 2.3](Whitepaper/WHITEPAPER.md) · [Changes](Whitepaper/CHANGELOG.md)
 - [Connection-proof specification](Whitepaper/CONNECTION_PROOFS_9000.md)
 - [Beacon recovery](BEACON_RECOVERY.md) · [HTLC reference](Whitepaper/HTLC_9100.md)
-- [Current build verification: PC 0.57.46 / Android 0.6.95](RELEASE_VERIFICATION_20261025.json)
+- [Historical build verification: PC 0.57.46 / Android 0.6.95](RELEASE_VERIFICATION_20261025.json)
 - [Earlier connection repair verification](CONNECTION_PROOF_REPAIR_VERIFICATION.md)
 - [Component suite and migration](COMPONENT_SUITE.md)
 - [Historical whitepaper 2.1 archive](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en)
@@ -23,3 +23,5 @@ Current document release: 25 October 2026. [English whitepaper 2.2](https://gith
 
 Historical reports apply to their named versions and test environments, not to
 every later build. A published document or application does not mean it was installed.
+
+[Block-9,600 upgrade](UPGRADE_9600_STATUS.md) · [Current verification](RELEASE_VERIFICATION_20261026.md). Publication does not install an update on other users’ devices.

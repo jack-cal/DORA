@@ -1,7 +1,5 @@
-# SUMUWW P2P Full / Light 0.3.4
+# SUMUWW P2P Full / Light 0.3.5
 
-Avant de diffuser une transaction SUMUWW signée, P2P la vérifie auprès du nœud connecté. Un refus empêche la diffusion. Les montants et frais convenus pour l’échange restent fixes ; les frais Bitcoin conservent leurs propres unités.
+P2P propose des frais selon la file actuelle, un taux manuel et une augmentation après confirmation. Annuler un aperçu non envoyé libère les fonds réservés. Le remboursement ne nécessite que la chaîne détenant vos fonds. Les montants et réserves convenus restent fixes.
 
-`1 yugeon = 0.00000001 SMW`
-
-`1 SMW = 100,000,000 yugeon`
+1 yugeon = 0.00000001 SMW

@@ -1,4 +1,4 @@
-# SUMUWW Explorer 0.4.10
+# SUMUWW Explorer 0.4.11
 
 Gezgin, ücret oranlarını yugeon/vB cinsinden gösterir. Yerel düğüm bir değiştirme kaydı tutmuşsa işlem sayfası yeni işleme bağlantı verir. Zincirde onaylanan kayıtlar önceliklidir; yerel değiştirme geçmişi sınırlıdır.
 

@@ -4,6 +4,13 @@
 .language{max-width:145px}.stat-note a{white-space:nowrap}.top nav{gap:20px}html[dir="rtl"] .metric span:last-child{text-align:left}html[dir="rtl"] .mono{direction:ltr;unicode-bidi:isolate}@media(max-width:600px){.top{height:auto;min-height:76px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px;gap:12px}.top nav{order:3;width:100%;justify-content:space-between;gap:8px}.top-end{margin-left:auto}.language{max-width:140px}.stat-note{line-height:1.8}}
 
 .top nav{flex-wrap:wrap}.chart{direction:ltr}
+/* Long translations must grow the header instead of overflowing its fixed height. */
+.top{height:auto;min-height:92px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px;gap:20px 32px}
+.top nav{flex:1 1 400px;min-width:0;white-space:normal}
+.top nav a{max-width:100%;overflow-wrap:anywhere}
+.top-end{flex-shrink:0}
+@media(max-width:1100px){.top nav{order:3;flex-basis:100%;width:100%;justify-content:flex-start}}
+@media(max-width:600px){.top{min-height:76px;padding-top:12px;padding-bottom:12px}}
 
 .page-controls{gap:16px;flex-wrap:wrap}.page-status{line-height:1.7}.page-controls .pagination{flex-wrap:wrap;gap:5px}.page-number{min-width:32px;text-align:center;padding:7px 9px}.page-gap{padding:0 3px}form.page-jump{display:flex;gap:8px;border:0;box-shadow:none;background:transparent;border-radius:0;padding:0;max-width:none;margin:0}form.page-jump label{display:flex;gap:8px;align-items:center;font-size:11px;color:#637c99}form.page-jump input{height:32px;width:78px;flex:none;border:1px solid #dfe7f1;border-radius:6px;font-size:12px;padding:5px 8px;color:var(--ink);background:white}form.page-jump button{height:32px;min-width:0;padding:5px 12px;border:1px solid #dfe7f1;border-radius:6px;font-size:11px;background:#f2f6fc;color:#456b9c}@media(max-width:600px){.page-controls>span{max-width:100%}.page-controls .pagination{width:100%;gap:5px}.page-controls .quiet-button{font-size:10px;padding:6px 8px}.page-controls .page-number{min-width:28px}}
 

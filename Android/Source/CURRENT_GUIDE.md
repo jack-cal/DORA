@@ -1,11 +1,9 @@
-# SUMUWW Android 0.6.90
+# SUMUWW Android 0.6.96
 
-Install the signed APK over the existing org.sumuww.miner app. Do not uninstall or clear data. English is the initial language and saved language preferences remain intact. The update retains wallets and chain history.
+Install the signed APK over org.sumuww.miner without clearing its data. Existing wallets, valid blocks and earlier proofs are preserved. English remains the default and saved language preferences remain available.
 
-[Android integration and all 34 languages](docs/integration/docs/i18n/en/ANDROID.html) · [Current whitepaper](docs/pc043/Whitepaper.html)
+Update before source block 9,600. From that height, connection proofs must verify a certified selection of active witnesses. After activation, an unfinished job may retry with a newly certified round while retaining its original block pair and earlier records. Missing updated participants can still delay completion. Mining does not wait for proof completion.
 
-More > Help > Documentation opens bundled documents without an Internet connection. The Android-specific introduction explains the key-free developer bridge. PC command examples are labeled as PC 0.57.41 reference material. The bridge does not unlock or sign with the phone wallet. Local RPC remains disabled unless explicitly enabled by integration code.
+More > All history shows all validated blocks, stored connection proofs and pending job details. More > Help > Documentation opens the [offline Android guide](docs/integration/docs/i18n/en/ANDROID.html). Read [34-language upgrade notices](docs/integration/docs/upgrade9600/index.html) and [exact upgrade rules](UPGRADE_9600.md). The app has no RPC configuration screen. The API specification describes the embedded node core.
 
-The connection-proof availability repair from 0.6.89 is included. Existing selected jobs retain their original witnesses; an update cannot manufacture missing signatures. Previously valid chain history and consensus rules remain unchanged.
-
-Do not package personal wallets, keys, passwords or chain databases. Test artifacts use separate disposable data. See the release verification for measured results and limitations. GitHub publication is a separate action.
+This release is prepared as an installation file. Physical-phone installation and public completion of pending jobs are not claimed.
