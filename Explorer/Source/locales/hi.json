@@ -180,5 +180,14 @@
   "share": "ब्लॉक शेयर (%)",
   "knownfees": "ज्ञात लेनदेन शुल्क",
   "rewardsubsidy": "अधिकतम ब्लॉक सब्सिडी",
-  "pendingstats": "स्थानीय मेमपूल आँकड़े"
+  "pendingstats": "स्थानीय मेमपूल आँकड़े",
+  "spendingconditions": "खर्च की शर्तें",
+  "decodedonly": "केवल स्क्रिप्ट पढ़ी गई है; खर्च करने की पात्रता सत्यापित नहीं हुई है।",
+  "rewardissuance": "ब्लॉक का नया निर्गम",
+  "rewardfees": "ब्लॉक के लेनदेन शुल्क",
+  "rewardtotalblock": "ब्लॉक का कुल पुरस्कार",
+  "rewardlimit": "ब्लॉक की निर्गम सीमा",
+  "rewardavailablefees": "ब्लॉक के उपलब्ध शुल्क",
+  "rewardunclaimed": "दावा न किया गया पुरस्कार",
+  "rewardpartial": "पुरस्कार का आंशिक दावा"
 }

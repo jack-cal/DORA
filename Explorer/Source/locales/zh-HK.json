@@ -180,5 +180,14 @@
   "share": "區塊份額 (%)",
   "knownfees": "已知交易費用",
   "rewardsubsidy": "最高整筆補貼",
-  "pendingstats": "本地內存池統計"
+  "pendingstats": "本地內存池統計",
+  "spendingconditions": "支出條件",
+  "decodedonly": "僅解析腳本，未驗證是否可以支出。",
+  "rewardissuance": "區塊新增發行獎勵",
+  "rewardfees": "區塊交易手續費獎勵",
+  "rewardtotalblock": "區塊總獎勵",
+  "rewardlimit": "區塊發行上限",
+  "rewardavailablefees": "區塊可領取手續費",
+  "rewardunclaimed": "未領取獎勵",
+  "rewardpartial": "只領取了部分獎勵"
 }

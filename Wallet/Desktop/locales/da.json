@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Overførselsgennemgangen udløb. Gennemgå det igen.",
   "Peers: {0} · Block: {1} · ": "Forbundne noder: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} bekræftelser",
-  "Select language": "Vælg sprog"
+  "Select language": "Vælg sprog",
+  "Fee rate (yugeon/vB)": "Gebyrsats (yugeon/vB)",
+  "Slow": "Langsom",
+  "Normal": "Normal",
+  "Fast": "Hurtig",
+  "Manual": "Manuel",
+  "Check the fee rate and wallet limits.": "Kontrollér gebyrsatsen og tegnebogens grænser.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kø: {0} vB · {1} yugeon/vB · mål: {2} blokke",
+  "Replaced · not applied": "Erstattet · påvirker ikke saldoen",
+  "Replaced by {0}": "Erstattet af {0}",
+  "Removed after parent replacement": "Fjernet efter udskiftning af den overordnede transaktion",
+  "New issuance (block)": "Ny udstedelse (blok)",
+  "Transaction fees (block)": "Transaktionsgebyrer (blok)",
+  "Total block reward": "Samlet blokbelønning",
+  "Issuance limit (block)": "Blokkens udstedelsesgrænse",
+  "Available fees (block)": "Tilgængelige blokgebyrer",
+  "Unclaimed reward": "Ikke hævet belønning",
+  "Reward not fully claimed": "Belønning delvist hævet"
 }

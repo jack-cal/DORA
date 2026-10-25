@@ -1,33 +1,12 @@
-# SUMUWW Explorer
+# SUMUWW Explorer 0.4.10
 
-[All components](../README.md) · [Unified guide](../Documentation/README.md) · [Version history](#version-history)
+Read-only local block explorer for Windows. It reads the selected SUMUWW node's stored active chain and maintains its own query index; it does not synchronize a node itself.
 
-Read-only local block explorer for Windows.
+[Release and checksums](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10) · [Source](Source) · [Current guide](Source/CURRENT_GUIDE.md)
 
-## Latest — 0.4.6 docs-r3
+The current build exposes block reward components, fee rates in yugeon/vB, local transaction replacement links when recorded, and revealed spending conditions. Missing historical fee information is reported as unknown. Public activation of multisig and output locks remains unscheduled.
 
-[Release and verified downloads](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3) ·
-[Current guide](Source/CURRENT_GUIDE.md)
-
-The executable remains 0.4.6. This separate documentation edition clarifies
-current component versions, all-address history and transaction-inclusion proof
-scope. The original [0.4.6 release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6) remains unchanged.
-
-English first-launch default, 34 bundled offline interface languages and persistent explicit language selection. UI language changes preserve amounts, addresses, keys and protocol data.
-
-Version 0.4.6 corrects 164 entries across 19 languages, including block/hash terminology, time labels and chart captions. The browser language bundle matches the source catalogs. Extract the complete Windows ZIP and run start-explorer.cmd.
-
-
-## Upgrade before block 9,000
-
-The current rules apply at height **9,000 inclusive**. Blocks produced by legacy
-software under the old rules at height 9,000 or above are rejected by upgraded
-nodes and cannot extend the upgraded chain. Update miners and validating nodes.
-Valid legacy blocks through **8,999 remain usable**, including the valid prefix
-of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings
-are preserved. Validation follows block rules, not an advertised version string.
-
-[Current suite and verification](../Documentation/COMPONENT_SUITE.md)
+Extract the complete ZIP and run start-explorer.cmd. English is the default, with 34 offline UI languages and saved language preferences. Existing node databases are opened read-only. Historical verification reports apply to their named builds.
 
 ## Version history
 

@@ -180,5 +180,14 @@
   "share": "بلاک شیئر (%)",
   "knownfees": "معلوم ٹرانزیکشن فیس",
   "rewardsubsidy": "زیادہ سے زیادہ بلاک سبسڈیز",
-  "pendingstats": "مقامی میمپول کے اعدادوشمار"
+  "pendingstats": "مقامی میمپول کے اعدادوشمار",
+  "spendingconditions": "خرچ کرنے کی شرائط",
+  "decodedonly": "صرف اسکرپٹ کا تجزیہ ہوا ہے؛ خرچ کرنے کی اہلیت کی تصدیق نہیں ہوئی۔",
+  "rewardissuance": "بلاک کا نیا اجرا",
+  "rewardfees": "بلاک کی لین دین فیس",
+  "rewardtotalblock": "بلاک کا کل انعام",
+  "rewardlimit": "بلاک کے اجرا کی حد",
+  "rewardavailablefees": "بلاک کی دستیاب فیس",
+  "rewardunclaimed": "غیر وصول شدہ انعام",
+  "rewardpartial": "انعام جزوی طور پر وصول ہوا"
 }

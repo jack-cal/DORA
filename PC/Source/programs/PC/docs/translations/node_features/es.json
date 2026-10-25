@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Tarifa (yugeon/vB)",
+    "Slow": "Lenta",
+    "Normal": "Normal",
+    "Fast": "Rápida",
+    "Manual": "Manual",
+    "Check the fee rate and wallet limits.": "Revisa la tarifa y los límites de la cartera."
+  },
+  "wallet": "La tarifa automática considera el volumen pendiente, la capacidad de los bloques y la prioridad de las transacciones. No usa tarifas de bloques anteriores. Con poca espera mantiene la tarifa mínima. La vista previa se actualiza; la confirmación final fija la tarifa. Los datos corresponden al nodo local conectado, no a todos los nodos.\n\nEl historial de sustituciones registrado por este nodo se conserva al reiniciar la cartera. Las transacciones retiradas no afectan al saldo.\n\nEl historial de minería separa la nueva emisión, las comisiones y la recompensa total de cada bloque. El importe recibido por tu cartera se muestra por separado. Si la recompensa se reclama parcialmente, no se inventa un reparto entre sus componentes. El nodo ofrece 28 métodos RPC, incluida la estimación de comisiones, y valida y retransmite transacciones firmadas.",
+  "node": "El nodo incorpora consultas de comisiones, comprobaciones previas al envío, estado de sustituciones RBF y registros de datos ordenados por bloque. Se valida la sustitución antes de eliminar transacciones pendientes. Las firmas múltiples y las salidas bloqueadas están implementadas para pruebas aisladas; aún no están activadas en la red pública.",
+  "live_preview": "Cola local: {0} vB · {1} yugeon/vB · objetivo: {2} bloques"
+}

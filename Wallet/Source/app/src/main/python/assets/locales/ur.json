@@ -284,5 +284,22 @@
   "Do not show this help again.": "یہ مدد دوبارہ نہ دکھائیں۔",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "براہ راست رابطہ Tor یا I2P استعمال نہیں کرتا۔ عموماً یہ تیز اور کم وسائل استعمال کرتا ہے۔ دوسرے نوڈ آپ کے رابطے کا IP دیکھ سکتے ہیں۔",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔\n\nI2P نوڈز درکار ہیں۔"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nفائدہ: دوسرے نوڈز سے آپ کا اصل IP چھپانے میں مدد کرتا ہے۔\n\nنقصانات: رابطہ اور ہم وقت سازی سست ہو سکتے ہیں اور بیٹری و ڈیٹا کا استعمال بڑھ سکتا ہے۔ لین دین کا ریکارڈ عوامی رہتا ہے۔ رابطہ ناکام ہو تو براہ راست رابطہ بند رہتا ہے۔\n\nI2P نوڈز درکار ہیں۔",
+  "Fee rate (yugeon/vB)": "فیس کی شرح (yugeon/vB)",
+  "Slow": "آہستہ",
+  "Normal": "معمول",
+  "Fast": "تیز",
+  "Manual": "دستی",
+  "Check the fee rate and wallet limits.": "فیس کی شرح اور والیٹ کی حدود دیکھیں۔",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "مقامی قطار: {0} vB · {1} yugeon/vB · ہدف: {2} بلاک",
+  "Replaced · not applied": "تبدیل ہو گیا · بیلنس پر اثر نہیں",
+  "Replaced by {0}": "متبادل لین دین: {0}",
+  "Removed after parent replacement": "اصل لین دین کی تبدیلی کے بعد ہٹا دیا گیا",
+  "New issuance (block)": "بلاک کا نیا اجرا",
+  "Transaction fees (block)": "بلاک کی لین دین فیس",
+  "Total block reward": "بلاک کا کل انعام",
+  "Issuance limit (block)": "بلاک کے اجرا کی حد",
+  "Available fees (block)": "بلاک کی دستیاب فیس",
+  "Unclaimed reward": "غیر وصول شدہ انعام",
+  "Reward not fully claimed": "انعام جزوی طور پر وصول ہوا"
 }

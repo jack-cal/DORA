@@ -284,5 +284,22 @@
   "Do not show this help again.": "Ne plus afficher cette aide.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "La connexion directe n’utilise ni Tor ni I2P. Elle est généralement plus rapide et consomme moins de ressources. Les autres pairs voient votre IP de connexion.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.\n\nDes pairs I2P sont nécessaires."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantage : aide à masquer votre véritable IP aux autres pairs.\n\nInconvénients : la connexion et la synchronisation peuvent ralentir, et la consommation de batterie et de données augmenter. Les transactions restent publiques. En cas d’échec, la connexion directe reste désactivée.\n\nDes pairs I2P sont nécessaires.",
+  "Fee rate (yugeon/vB)": "Taux de frais (yugeon/vB)",
+  "Slow": "Lent",
+  "Normal": "Normal",
+  "Fast": "Rapide",
+  "Manual": "Manuel",
+  "Check the fee rate and wallet limits.": "Vérifiez le taux de frais et les limites du portefeuille.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "File locale : {0} vB · {1} yugeon/vB · objectif : {2} blocs",
+  "Replaced · not applied": "Remplacée · sans effet sur le solde",
+  "Replaced by {0}": "Remplacée par {0}",
+  "Removed after parent replacement": "Retirée après le remplacement de la transaction parente",
+  "New issuance (block)": "Émission nouvelle (bloc)",
+  "Transaction fees (block)": "Frais de transaction (bloc)",
+  "Total block reward": "Récompense totale du bloc",
+  "Issuance limit (block)": "Plafond d’émission du bloc",
+  "Available fees (block)": "Frais disponibles du bloc",
+  "Unclaimed reward": "Récompense non réclamée",
+  "Reward not fully claimed": "Récompense partiellement réclamée"
 }

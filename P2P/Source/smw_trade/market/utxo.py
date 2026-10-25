@@ -187,6 +187,10 @@ class UtxoAdapter:
         if known is not None:
             if known.serialize()!=tx.serialize():raise ValueError('Different known witness.')
             return txid(tx)
+        if self.coin=='SMW':
+            preflight=self.rpc.call('testmempoolaccept',operation['raw'])
+            if not preflight.get('allowed'):
+                raise ValueError('SUMUWW transaction rejected by current node policy: '+str(preflight.get('reject_reason','validation failed')))
         result=self.rpc.call('sendrawtransaction',operation['raw'])
         digest=result if self.coin=='BTC' else result['txid']
         if digest!=txid(tx):raise ValueError('Unexpected broadcast ID.')

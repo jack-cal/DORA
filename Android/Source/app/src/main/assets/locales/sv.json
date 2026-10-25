@@ -293,5 +293,22 @@
   "Block hash": "Blockhash",
   "All blocks": "Alla block",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Validerade block från genesisblocket till kedjans nuvarande topp, från alla noder.",
-  "Search": "Sök"
+  "Search": "Sök",
+  "Fee rate (yugeon/vB)": "Avgiftssats (yugeon/vB)",
+  "Slow": "Långsam",
+  "Normal": "Normal",
+  "Fast": "Snabb",
+  "Manual": "Manuell",
+  "Check the fee rate and wallet limits.": "Kontrollera avgiftssatsen och plånbokens gränser.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kö: {0} vB · {1} yugeon/vB · mål: {2} block",
+  "Replaced · not applied": "Ersatt · påverkar inte saldot",
+  "Replaced by {0}": "Ersatt av {0}",
+  "Removed after parent replacement": "Borttagen efter att den överordnade transaktionen ersattes",
+  "New issuance (block)": "Ny utgivning (block)",
+  "Transaction fees (block)": "Transaktionsavgifter (block)",
+  "Total block reward": "Total blockbelöning",
+  "Issuance limit (block)": "Blockets utgivningsgräns",
+  "Available fees (block)": "Tillgängliga blockavgifter",
+  "Unclaimed reward": "Ej uttagen belöning",
+  "Reward not fully claimed": "Belöning delvis uttagen"
 }

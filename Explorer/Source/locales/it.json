@@ -180,5 +180,14 @@
   "share": "Quota blocco (%)",
   "knownfees": "Commissioni di transazione note",
   "rewardsubsidy": "Sussidi massimi in blocco",
-  "pendingstats": "Statistiche mempool locali"
+  "pendingstats": "Statistiche mempool locali",
+  "spendingconditions": "Condizioni di spesa",
+  "decodedonly": "È stato decodificato solo lo script; la possibilità di spesa non è stata verificata.",
+  "rewardissuance": "Nuova emissione (blocco)",
+  "rewardfees": "Commissioni del blocco",
+  "rewardtotalblock": "Ricompensa totale del blocco",
+  "rewardlimit": "Limite di emissione del blocco",
+  "rewardavailablefees": "Commissioni disponibili del blocco",
+  "rewardunclaimed": "Ricompensa non riscossa",
+  "rewardpartial": "Ricompensa riscossa in parte"
 }

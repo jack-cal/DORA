@@ -180,5 +180,14 @@
   "share": "Cuota de bloque (%)",
   "knownfees": "Tarifas de transacción conocidas",
   "rewardsubsidy": "Subsidios máximos en bloque",
-  "pendingstats": "Estadísticas de mempool local"
+  "pendingstats": "Estadísticas de mempool local",
+  "spendingconditions": "Condiciones de gasto",
+  "decodedonly": "Solo se ha decodificado el script; no se ha verificado si se puede gastar.",
+  "rewardissuance": "Nueva emisión (bloque)",
+  "rewardfees": "Comisiones (bloque)",
+  "rewardtotalblock": "Recompensa total del bloque",
+  "rewardlimit": "Límite de emisión del bloque",
+  "rewardavailablefees": "Comisiones disponibles del bloque",
+  "rewardunclaimed": "Recompensa no reclamada",
+  "rewardpartial": "Recompensa reclamada parcialmente"
 }

@@ -33,7 +33,7 @@ from .network_settings import (SETTINGS_NAME, OWN_ADDRESS_SETTINGS_NAME, load_se
                                load_auto_address, normalize_settings, save_settings)
 from .network_settings import _atomic_json
 from .rpc import RpcServer, load_or_create_token, validate_rpc_endpoint
-from .fees import estimate_payment_fee
+from .fees import estimate_payment_fee, fee_overview
 from .bootstrap import load_bootstrap
 from .wallet_history import WalletHistory
 from . import hardware_mining
@@ -969,15 +969,25 @@ class AppService:
         script = decode_address(address, network=self.network)
         amount = parse_amount(amount_string)
         with self._node.chain.read_snapshot():
+            mode = 'normal'
+            rate = None
+            if isinstance(fee_string, str) and fee_string.startswith('auto:'):
+                mode, fee_string = fee_string[5:], None
+            elif isinstance(fee_string, str) and fee_string.startswith('rate:'):
+                rate, fee_string = fee_string[5:], None
             if fee_string is None:
-                estimate = estimate_payment_fee(self._node.chain, self._script, script, amount)
+                estimate = estimate_payment_fee(self._node.chain, self._script, script, amount, mode=mode, rate=rate)
                 fee = estimate['fee_units']
                 source, capped = estimate['source'], estimate['capped']
                 estimated_vsize = estimate['estimated_vsize']
             else:
+                from .fees import MAX_MANUAL_FEE_UNITS
                 fee = parse_amount(fee_string)
+                if fee > MAX_MANUAL_FEE_UNITS:
+                    raise ValueError('Manual fee exceeds the wallet fee limit')
                 source, capped, estimated_vsize = 'manual', False, None
             transaction = create_payment(self._node.chain, self._key, script, amount, fee)
+            self._node.chain.mempool_policy.check_fee(transaction, fee)
         quote_id = secrets.token_hex(16)
         self._payment_quote = {'id': quote_id, 'transaction': transaction,
                                'key': self._key, 'node': self._node,
@@ -986,7 +996,8 @@ class AppService:
         return {'quote_id': quote_id, 'amount_smw': format_amount(amount),
                 'fee_smw': format_amount(fee), 'total_smw': format_amount(amount + fee),
                 'estimated_vsize': estimated_vsize or (transaction.weight() + 3) // 4,
-                'source': source, 'capped': capped}
+                'source': source, 'capped': capped,
+                'fee_yugeon': fee, 'mode': mode, 'vsize': (transaction.weight() + 3) // 4}
 
     def _submit_payment(self, quote_id):
         quote = self._payment_quote
@@ -999,7 +1010,7 @@ class AppService:
         if _quote_clock() >= quote['expires']:
             raise AppServiceError('Payment quote expired; prepare again')
         # The normal write-lock validation rejects a conflicting spend or reorg.
-        digest = self._node.chain.submit_transaction(quote['transaction'])
+        digest = self._node.chain.submit_transaction(quote['transaction'], allow_replacement=quote.get('replacement', False))
         return {'txid': hash_to_display(digest), 'fee_smw': format_amount(quote['fee']),
                 'status': 'local mempool'}
 
@@ -1211,6 +1222,7 @@ class AppService:
     def _status(self):
         with self._node.chain.read_snapshot():
             node = self._node.info(include_state=False)
+            fees = fee_overview(self._node.chain)
             mining = {'state': self._mining_state, 'reserved': self._mining_reserved,
                       'wait_reason': 'network' if self._mining_state == 'waiting' else None,
                       'network_pauses': self._mining_network_pauses,
@@ -1218,7 +1230,7 @@ class AppService:
                           (time.monotonic() - self._mining_wait_started if self._mining_wait_started is not None else 0.0)}
             mining['hardware'] = hardware_mining.public_settings(self._hardware_settings, node['height'])
             if self._address is None:
-                return {'node': node, 'wallet': None, 'connection': self._connection(node),
+                return {'node': node, 'fees': fees, 'wallet': None, 'connection': self._connection(node),
                         'rpc': self._rpc_status(), 'transactions': [], 'mining': mining}
             confirmed = dict(self._node.chain.list_utxos(self._script))
             pool = self._node.chain.mempool_transactions()
@@ -1242,7 +1254,7 @@ class AppService:
                            'available_smw': format_amount(available),
                            'pending_smw': ('-' if pending < 0 else '') + format_amount(abs(pending)),
                            'immature_smw': format_amount(total - spendable)})
-            return {'node': node, 'wallet': wallet, 'connection': self._connection(node),
+            return {'node': node, 'fees': fees, 'wallet': wallet, 'connection': self._connection(node),
                     'rpc': self._rpc_status(), 'transactions': self._history.recent(self._node.chain),
                     'mining': mining}
 

@@ -11,7 +11,10 @@ from hashlib import sha256
 import re
 import struct
 
-COIN = 100_000_000
+# One yugeon is the indivisible SMW amount stored in transaction values.
+YUGEON = 1
+BASE_UNIT_NAME = "yugeon"
+COIN = 100_000_000 * YUGEON
 ERA_BLOCKS = 210_000
 FIRST_ERA_BLOCKS = 150_000
 FIRST_SUBSIDY = 50 * COIN

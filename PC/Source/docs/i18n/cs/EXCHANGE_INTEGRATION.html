@@ -1,0 +1,68 @@
+<!doctype html><html lang="cs" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · Rozhraní uzlu</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Dokumentace · 34</summary><nav><a href="../en/EXCHANGE_INTEGRATION.html" lang="en"><bdi>English</bdi></a><a href="../fr/EXCHANGE_INTEGRATION.html" lang="fr"><bdi>Français</bdi></a><a href="../es/EXCHANGE_INTEGRATION.html" lang="es"><bdi>Español</bdi></a><a href="../ar/EXCHANGE_INTEGRATION.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/EXCHANGE_INTEGRATION.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/EXCHANGE_INTEGRATION.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/EXCHANGE_INTEGRATION.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/EXCHANGE_INTEGRATION.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/EXCHANGE_INTEGRATION.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/EXCHANGE_INTEGRATION.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/EXCHANGE_INTEGRATION.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/EXCHANGE_INTEGRATION.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/EXCHANGE_INTEGRATION.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/EXCHANGE_INTEGRATION.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/EXCHANGE_INTEGRATION.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/EXCHANGE_INTEGRATION.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/EXCHANGE_INTEGRATION.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/EXCHANGE_INTEGRATION.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/EXCHANGE_INTEGRATION.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/EXCHANGE_INTEGRATION.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/EXCHANGE_INTEGRATION.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/EXCHANGE_INTEGRATION.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/EXCHANGE_INTEGRATION.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/EXCHANGE_INTEGRATION.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/EXCHANGE_INTEGRATION.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="EXCHANGE_INTEGRATION.html" lang="cs" aria-current="page"><bdi>Čeština</bdi></a><a href="../da/EXCHANGE_INTEGRATION.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/EXCHANGE_INTEGRATION.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/EXCHANGE_INTEGRATION.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/EXCHANGE_INTEGRATION.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/EXCHANGE_INTEGRATION.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/EXCHANGE_INTEGRATION.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/EXCHANGE_INTEGRATION.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/EXCHANGE_INTEGRATION.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Dokumentace</a><a href="EXCHANGE_INTEGRATION.html">Rozhraní uzlu</a><a href="RPC_API.html">RPC a HTTP API</a><a href="NETWORK_RUNBOOK.html">Provoz uzlu</a><a href="RELEASE_NOTES.html">Poznámky k vydání</a><a href="EXCHANGE_EXAMPLES.html">Ověření</a></nav></header><main><h1>SUMUWW · Rozhraní uzlu</h1>
+<p>SUMUWW PC 0.57.46 · Uzel ověřuje, ukládá, předává a zpřístupňuje data řetězce.</p>
+<h2>Síť a adresy</h2>
+<p>Veřejná síť je <code>sumuww</code>, interní alias <code>dora</code>. Ověřte níže uvedený hash genesis. Nativní adresy používají witness v0 P2WPKH a HASH160 komprimovaného veřejného klíče secp256k1. Memo ani tag nejsou povinné. Odmítněte cizí síť a chybný kontrolní součet. Zaznamenejte HD větev příjmu/vratky a index; nepředpokládejte derivační cestu Bitcoinu.</p>
+<h2>Formát podpisu</h2>
+<p>Volitelné SDK ve zdrojích sestavuje transakce a ověřuje dodané podpisy bez klíčů a sítě. Není to podepisovací program ani příkaz uzlu. Omezení P2WPKH platí pro formát příkladu, nikoli pro uzel. Dosavadní osobní peněženka zůstává dostupná.</p>
+<h2>RPC a HTTP API</h2>
+<p>validateaddress kontroluje kontrolní součet a zvolenou síť. decoded_only z decoderawtransaction znamená pouze rozbor, nikoli platnost podpisu či potvrzení. OP_RETURN uchovává data pro externí programy. Uzel přidává dotazy na poplatky, kontrolu před odesláním, stav náhrady RBF a čtení dat v pořadí bloků. Náhrada se ověří před odstraněním čekajících transakcí. Vícenásobné podpisy a uzamčené výstupy jsou implementovány pro oddělené testy aktivace; ve veřejné síti zatím nejsou aktivní.</p>
+<h2>Ověření přístupu a limity</h2>
+<p>RPC zapněte výslovně na číselném loopbacku <code>127.0.0.1:18443</code> se soukromým Bearer tokenem. Odemčení peněženky ani vzdálený podpis nejsou zpřístupněny. Použijte místní službu či ověřený tunel; požadavky prohlížeče Origin/Referer se odmítají. JSON-RPC používá POST <code>/rpc</code>, objekt/pole <code>params</code> a <code>id</code>; notifikace vracejí HTTP 204. Limity: tělo 8004096 bajtů, hlavičky 8192, dávka 16, souběžné požadavky 16, lhůta 10 sekund; limit 1–1000, offset 0–1000000. K dispozici je 28 metod a 11 REST cest.</p>
+<h2>Částky a dostupné výstupy</h2>
+<p><code>_units</code> jsou celé nejmenší jednotky, <code>_smw</code> řetězec s 8 desetinnými místy, <code>_dora</code> kompatibilní alias. Částkové pole <code>_sumuww</code> neexistuje. 1 SMW = 100000000 jednotek. <code>gettxout</code> nemá <code>spendable</code> a může vrátit nezralé coinbase výstupy. Pro utracení v příštím bloku je nutných alespoň 100 potvrzení. Filtrujte <code>listunspent</code> přes <code>spendable</code>; available v <code>getaddressbalance</code> vynechává nezralé prostředky a čekající útraty. Nové výstupy mempoolu nejsou potvrzené. Kontrolujte vrchol mezi stránkami a znovu ověřte vybrané vstupy.</p>
+<p>1 SMW = 100 000 000 yugeon. Automatické poplatky nabízejí tři úrovně podle místních pozorování, bez záruky času potvrzení. Sazbu v yugeon/vB lze zadat ručně. Před odesláním ověřte konečný poplatek a součet v SMW. Odmítnutá transakce nesníží zůstatek.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automatický poplatek zohledňuje objem čekajících dat, kapacitu bloků a prioritu transakcí. Poplatky z minulých bloků nepoužívá. Při malé frontě platí minimální sazba. Náhled se aktualizuje; konečné potvrzení poplatek zafixuje. Pozorování se týká připojeného místního uzlu, nikoli všech uzlů.</p>
+<p>Historie nahrazení zaznamenaná tímto uzlem zůstává zachována po restartu peněženky. Odstraněné transakce nemění zůstatek.</p>
+<p>Historie těžby zobrazuje zvlášť novou emisi, poplatky a celkovou odměnu každého bloku. Částka přijatá vaší peněženkou je uvedena samostatně. Při částečném vyzvednutí se rozdělení mezi složkami nepředpokládá. Uzel poskytuje 28 metod RPC včetně odhadu poplatků a ověřuje a předává podepsané transakce.</p>
+<h2>Vyhledání transakcí a bloků</h2>
+<p><code>getrawtransaction</code> prohledává aktivní řetězec a mempool, nikoli výhradně osiřelé transakce. Vstupy určují předchozí výstupy, ne jednoznačného odesílatele. <code>getblock</code> používá logické <code>verbose</code>; uložené neaktivní bloky mají <code>active=false</code>, <code>confirmations=-1</code>. Surové transakce zůstávají dostupné přes hash bloku. <code>findspendingtransaction</code> hledá pouze potvrzené aktivní útraty; null nedokazuje dostupnost. Zkontrolujte <code>gettxout</code> s <code>include_mempool=true</code>. Potvrzení a aktivní stav se mohou při reorganizaci změnit.</p>
+<h2>Ověření</h2>
+<p>Po instalaci závislostí spusťte ze zdrojů python examples/node_contract.py. Veřejné testovací klíče a dočasný regtest ověřují odeslání, odmítnutí, potvrzení, reorganizaci a uchování dat. Nepoužívají se skutečné prostředky, uživatelské profily ani hardwarové podepisovače.</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="README.html">Dokumentace</a> · <a href="RPC_API.html">RPC a HTTP API</a> · <a href="NETWORK_RUNBOOK.html">Provoz uzlu</a> · <a href="RELEASE_NOTES.html">Poznámky k vydání</a> · <a href="EXCHANGE_EXAMPLES.html">Ověření</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">Podrobná anglická reference</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

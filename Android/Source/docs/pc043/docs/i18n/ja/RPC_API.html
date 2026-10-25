@@ -1,1 +1,244 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../en/RPC_API.html"><title>SUMUWW documentation</title></head><body><p>Documentation is published in English.</p><a href="../en/RPC_API.html">Open the English document</a></body></html>
+<!doctype html><html lang="ja" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · RPC・HTTP API</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>ドキュメント · 34</summary><nav><a href="../en/RPC_API.html" lang="en"><bdi>English</bdi></a><a href="../fr/RPC_API.html" lang="fr"><bdi>Français</bdi></a><a href="../es/RPC_API.html" lang="es"><bdi>Español</bdi></a><a href="../ar/RPC_API.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/RPC_API.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/RPC_API.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/RPC_API.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/RPC_API.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/RPC_API.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/RPC_API.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/RPC_API.html" lang="ko"><bdi>한국어</bdi></a><a href="RPC_API.html" lang="ja" aria-current="page"><bdi>日本語</bdi></a><a href="../id/RPC_API.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/RPC_API.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/RPC_API.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/RPC_API.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/RPC_API.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/RPC_API.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/RPC_API.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/RPC_API.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/RPC_API.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/RPC_API.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/RPC_API.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/RPC_API.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/RPC_API.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/RPC_API.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/RPC_API.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/RPC_API.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/RPC_API.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/RPC_API.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/RPC_API.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/RPC_API.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/RPC_API.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/RPC_API.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">ドキュメント</a><a href="EXCHANGE_INTEGRATION.html">ノード連携</a><a href="RPC_API.html">RPC・HTTP API</a><a href="NETWORK_RUNBOOK.html">ノードの運用</a><a href="RELEASE_NOTES.html">変更履歴</a><a href="EXCHANGE_EXAMPLES.html">検証</a></nav></header><main><h1>SUMUWW · RPC・HTTP API</h1>
+<p>SUMUWW PC 0.57.46 · ノードはチェーンデータの検証・保存・伝播・照会を担います。</p>
+<h2>RPC・HTTP API</h2>
+<p>validateaddress はチェックサムと選択したネットワークを確認します。decoderawtransaction の decoded_only は解析のみを示し、署名の有効性や承認を示しません。OP_RETURN 出力は外部プログラム用データを保存します。 ノードに手数料照会、送信前検証、RBF の置換状態、ブロック順のデータ取得を追加しました。置換取引の検証後にのみ、元の未承認取引を削除します。複数署名とロック出力は分離環境での有効化試験用に実装済みですが、公開ネットワークではまだ有効ではありません。</p>
+<h2>認証と制限</h2>
+<p>RPCは明示的に有効化し、数値ループバック <code>127.0.0.1:18443</code> と非公開のBearerトークンを使います。ウォレット解除や遠隔署名は公開しません。ローカルサービスか認証済みトンネルを使用してください。ブラウザーのOrigin/Referer要求は拒否します。JSON-RPCはPOST <code>/rpc</code>、オブジェクトまたは配列の <code>params</code>、<code>id</code> を使い、通知にはHTTP 204を返します。上限は本文8004096バイト、ヘッダー8192バイト、バッチ16、同時要求16、期限10秒。ページのlimitは1–1000、offsetは0–1000000です。メソッド28個とREST経路11個を提供します。</p>
+<h2>金額と使用可能な出力</h2>
+<p><code>_units</code> は最小単位の整数、<code>_smw</code> は小数点以下8桁の文字列、<code>_dora</code> は互換用の別名です。<code>_sumuww</code> 金額フィールドはありません。1 SMW = 100000000単位です。<code>gettxout</code> に <code>spendable</code> はなく、未成熟のコインベース出力も返します。次のブロックで使うには100確認以上必要です。<code>listunspent</code> は <code>spendable</code> で絞り込みます。<code>getaddressbalance</code> のavailable金額は未成熟・保留取引で使用中の資金を除外します。メモリプールの新しい出力は確定資金ではありません。ページ間で先端を確認し、選択した入力を再検証してください。</p>
+<p>1 SMW = 100,000,000 yugeon です。自動手数料はローカルの観測値に基づく3段階で、承認時間を保証するものではありません。yugeon/vB で手動入力もできます。送信前に、最終手数料と合計を SMW で確認してください。拒否された取引で残高が減ることはありません。</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>自動手数料には現在の待機データ量、ブロック容量、取引の優先順位を反映します。過去のブロックの手数料は使いません。待機量が少ないときは最低料率を維持します。プレビューは更新され、最終確認時に手数料が固定されます。観測対象は接続中のローカルノードであり、全ノードではありません。</p>
+<p>再起動後も、このノードで記録した取引の置換履歴が残ります。削除された取引は残高に反映されません。</p>
+<p>採掘履歴では、各ブロックの新規発行報酬、取引手数料報酬、合計を分けて表示します。自分のウォレットが受け取った額は別に表示します。報酬の一部しか請求されていない場合、内訳を推定しません。ノードは手数料推定を含む28個のRPCメソッドを提供し、署名済み取引を検証・中継します。</p>
+<h2>取引・ブロックの照会</h2>
+<p><code>getrawtransaction</code> はアクティブチェーンとメモリプールを検索し、孤立分岐だけの取引は検索しません。入力は過去の出力を指し、一意の送信元アドレスを表しません。<code>getblock</code> の <code>verbose</code> は真偽値です。保存済み非アクティブブロックは <code>active=false</code>、<code>confirmations=-1</code> となり、生の取引はブロックハッシュで取得できます。<code>findspendingtransaction</code> はアクティブチェーンの確定済み使用取引だけを探すため、nullだけで使用可能とは判断できません。<code>include_mempool=true</code> の <code>gettxout</code> も確認してください。確認数とactive状態は再編で変わり得ます。</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getblockchaininfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>gethtlcinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset=0, limit=100</code></td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>gettxout</code></td>
+<td><code>txid, index, include_mempool=true</code></td>
+</tr>
+<tr>
+<td><code>findspendingtransaction</code></td>
+<td><code>txid, index, start_height=0</code></td>
+</tr>
+<tr>
+<td><code>getnetworkinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockcount</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getbestblockhash</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockhash</code></td>
+<td><code>height</code></td>
+</tr>
+<tr>
+<td><code>getblock</code></td>
+<td><code>hash, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>getrawmempool</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize=140, mode=normal</code></td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>getrawtransaction</code></td>
+<td><code>txid, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>decoderawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>validateaddress</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>listunspent</code></td>
+<td><code>address, limit=100, offset=0</code></td>
+</tr>
+<tr>
+<td><code>getaddressbalance</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>sendrawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>submitblock</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getblocktemplate</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td><code>{} / []</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>URI</th>
+<th>JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/network</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/blocks/{height-or-hash}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/transactions/{txid}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/balance</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/utxos?limit=100&amp;offset=0</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/transactions</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/blocks</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/mining/template</code></td>
+<td><code>{"address":"..."}</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="README.html">ドキュメント</a> · <a href="EXCHANGE_INTEGRATION.html">ノード連携</a> · <a href="NETWORK_RUNBOOK.html">ノードの運用</a> · <a href="RELEASE_NOTES.html">変更履歴</a> · <a href="EXCHANGE_EXAMPLES.html">検証</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">英語の詳細資料</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

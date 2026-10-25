@@ -125,9 +125,9 @@ class ChainIntegrationTests(unittest.TestCase):
         self.chain.submit_transaction(tx)
         self.assert_rejected_without_state_change(lambda: self.chain.submit_transaction(tx), InvalidTransaction)
         conflict = self.spend(outputs=(TxOutput(49 * COIN, BOB.script_pubkey),))
-        self.assert_rejected_without_state_change(lambda: self.chain.submit_transaction(conflict), InvalidTransaction)
+        self.assert_rejected_without_state_change(lambda: self.chain.submit_transaction(conflict, allow_replacement=False), InvalidTransaction)
         self.chain.mine(MINER.script_pubkey)
-        self.assert_rejected_without_state_change(lambda: self.chain.submit_transaction(conflict), InvalidTransaction)
+        self.assert_rejected_without_state_change(lambda: self.chain.submit_transaction(conflict, allow_replacement=False), InvalidTransaction)
 
     def test_duplicate_input_is_rejected(self):
         tx = self.spend()

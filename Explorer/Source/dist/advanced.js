@@ -23,7 +23,7 @@ function advancedPath(parts,params){
   return null;
 }
 function idList(items){return items.length?`<div class="id-list">${items.map(id=>link('transaction',id,id,'mono hash full')).join('')}</div>`:empty('nodata');}
-function feeTable(items){return items.length?`<div class="table-wrap"><table><thead><tr>${['txid','fee','feerate','package','vsize'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${items.map(r=>`<tr><td>${link('transaction',r.txid,short(r.txid),'mono')}</td><td>${r.fee===null?'—':esc(money(r.fee))+' SMW'}</td><td>${esc(r.fee_rate??'—')}</td><td>${esc(r.effective_fee_rate??'—')}</td><td>${n(r.vsize)} vB</td></tr>`).join('')}</tbody></table></div>`:empty('empty');}
+function feeTable(items){return items.length?`<div class="table-wrap"><table><thead><tr>${['txid','fee','feerate','package','vsize'].map(k=>`<th>${esc(t(k))}</th>`).join('')}</tr></thead><tbody>${items.map(r=>`<tr><td>${link('transaction',r.txid,short(r.txid),'mono')}</td><td>${r.fee===null?'—':esc(money(r.fee))+' SMW'}</td><td>${esc(r.fee_rate??'—')} yugeon/vB</td><td>${esc(r.effective_fee_rate??'—')} yugeon/vB</td><td>${n(r.vsize)} vB</td></tr>`).join('')}</tbody></table></div>`:empty('empty');}
 function feesPage(data){
   const recommendations=data.recommendations.map(r=>metric(r.level,r.fee_rate===null?'—':esc(money(r.fee_rate)))).join('');
   const buckets=`<div class="table-wrap"><table><thead><tr><th>${esc(t('feerate'))}</th><th>${esc(t('transactions'))}</th><th>vB</th></tr></thead><tbody>${data.buckets.map(b=>`<tr><td>${esc(b.minimum)}–${esc(b.maximum??'∞')}</td><td>${n(b.count)}</td><td>${n(b.vsize)}</td></tr>`).join('')}</tbody></table></div>`;

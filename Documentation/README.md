@@ -1,12 +1,13 @@
 # SUMUWW documentation
 
-Current document release: 24 October 2026. [English whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) and [documentation 20261024-r1](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261024-r1) are separate downloads.
+Current document release: 25 October 2026. [English whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) and [documentation 20261025-r1](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261025-r1) are separate downloads.
 
 - [Current versions, publication states and bundled-document erratum](CURRENT_STATUS.md)
 - [Whitepaper 2.2](Whitepaper/WHITEPAPER.md) · [Changes](Whitepaper/CHANGELOG.md)
 - [Connection-proof specification](Whitepaper/CONNECTION_PROOFS_9000.md)
 - [Beacon recovery](BEACON_RECOVERY.md) · [HTLC reference](Whitepaper/HTLC_9100.md)
-- [Current connection repair verification: PC 0.57.40 / Android 0.6.89](CONNECTION_PROOF_REPAIR_VERIFICATION.md)
+- [Current build verification: PC 0.57.46 / Android 0.6.95](RELEASE_VERIFICATION_20261025.json)
+- [Earlier connection repair verification](CONNECTION_PROOF_REPAIR_VERIFICATION.md)
 - [Component suite and migration](COMPONENT_SUITE.md)
 - [Historical whitepaper 2.1 archive](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.1-en)
 - [P2P Full/Light comparison](../P2P/Source/EDITIONS.md) · [Bitcoin and block-9100 setup](../P2P/Source/BITCOIN_SETUP.md)

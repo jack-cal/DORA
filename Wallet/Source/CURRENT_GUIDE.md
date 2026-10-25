@@ -1,4 +1,4 @@
-SUMUWW Wallet Current 1.1.2 — Android
+SUMUWW Wallet Current 1.1.6 — Android
 
 Ordinary wallet with send, receive, transaction history, encrypted backups,
 recovery words, automatic lock, and 34 offline interface languages. English is
@@ -11,7 +11,7 @@ claimed. Keep the old application and its data. Import an encrypted backup or
 restore the recovery words in the new app to retain the same address and keys.
 Never share a password or recovery phrase. The original wallet is not modified.
 
-The new wallet uses SUMUWW 0.57.38 / Android 0.6.88 validation code. Valid legacy
+The wallet uses SUMUWW PC 0.57.46 / Android 0.6.95 validation code validation code. Valid legacy
 blocks through 8999 are retained; old-rule blocks at 9000 and later are rejected.
 Post-PoW connection events use a 20% probability. A block producer collects three
 witness signatures after mining, splits each into two parts and binds evidence
@@ -44,3 +44,9 @@ same application ID and certificate. See the repository UI_LANGUAGE_VERIFICATION
 report for historical physical-device and multilingual caption checks.
 Those earlier device results are not a physical-device test of version 1.1.2.
 See RELEASE_NOTES.txt for the current build and verification scope.
+
+## 1.1.6
+
+1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.
+
+[Current features in 34 languages](docs/features/index.html).

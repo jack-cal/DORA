@@ -21,9 +21,11 @@ from urllib.parse import parse_qs, urlsplit
 from .address import AddressError, decode_address, encode_address
 from .block import Block, MAX_BLOCK_WEIGHT
 from .errors import MempoolFull, UnsupportedFeature, ValidationError
+from .rewards import read_reward
 from .primitives import (coinbase_is_mature, format_amount, hash_from_display,
                          hash_to_display, valid_target)
 from .transaction import Transaction
+from .mempool_policy import MempoolPolicyError
 
 MAX_HEADER = 8192
 MAX_BODY = 2 * MAX_BLOCK_WEIGHT + 4096
@@ -159,6 +161,9 @@ def _encode_json(value):
 METHODS = {
     'getblockchaininfo': (),
     'gethtlcinfo': (),
+    'getspendinginfo': (),
+    'getdatarecords': ('blockhash', 'offset', 'limit'),
+    'decodescript': ('hex',),
     'gettxout': ('txid', 'index', 'include_mempool'),
     'findspendingtransaction': ('txid', 'index', 'start_height'),
     'getnetworkinfo': (),
@@ -168,7 +173,14 @@ METHODS = {
     'getblock': ('hash', 'verbose'),
     'getrawmempool': (),
     'getmempoolinfo': (),
+    'getmempoolpolicy': (),
+    'estimatefee': ('vsize', 'mode'),
+    'testmempoolaccept': ('hex',),
+    'getmempoolentry': ('txid',),
+    'gettransactionstatus': ('txid',),
     'getrawtransaction': ('txid', 'verbose'),
+    'decoderawtransaction': ('hex',),
+    'validateaddress': ('address',),
     'listunspent': ('address', 'limit', 'offset'),
     'getaddressbalance': ('address',),
     'sendrawtransaction': ('hex',),
@@ -178,7 +190,8 @@ METHODS = {
 }
 _REQUIRED = {'gettxout': 2, 'findspendingtransaction': 2, 'getblockhash': 1, 'getblock': 1, 'getrawtransaction': 1,
              'listunspent': 1, 'getaddressbalance': 1, 'sendrawtransaction': 1,
-             'submitblock': 1, 'getblocktemplate': 1}
+             'submitblock': 1, 'getblocktemplate': 1, 'decoderawtransaction': 1,
+             'validateaddress': 1, 'testmempoolaccept': 1, 'getmempoolentry': 1, 'gettransactionstatus': 1, 'decodescript': 1, 'getdatarecords': 1}
 
 
 class RpcServer:
@@ -394,7 +407,7 @@ class RpcServer:
             return 200, result
         except RpcError as error:
             status = {-32601: 404, -32001: 404, -32002: 409,
-                      -32003: 503, -32005: 503, -32603: 500}.get(error.code, 400)
+                      -32003: 503, -32005: 503, -32006: 409, -32603: 500}.get(error.code, 400)
             return status, {'error': {'code': error.code, 'message': error.message}}
 
     @staticmethod
@@ -458,7 +471,7 @@ class RpcServer:
             return {'methods': {name: {'parameters': list(fields),
                                       'required': _REQUIRED.get(name, 0)}
                                 for name, fields in METHODS.items()},
-                    'money': 'Integer smallest units and fixed 8-decimal SUMUWW strings',
+                    'money': 'Integer yugeon amounts and fixed 8-decimal SMW strings; 1 SMW = 100000000 yugeon',
                     'wallet_signing': False}
         try:
             node = self._node_provider()
@@ -468,6 +481,8 @@ class RpcServer:
             return compatibility_fields(self._dispatch(node, method, arguments))
         except RpcError:
             raise
+        except MempoolPolicyError as error:
+            raise RpcError(-32006, str(error)) from None
         except MempoolFull:
             raise RpcError(-32005, 'Local mempool is full. Transaction was not queued; retry after capacity becomes available.') from None
         except (ValidationError, UnsupportedFeature):
@@ -498,18 +513,85 @@ class RpcServer:
                   'wtxid': hash_to_display(transaction.wtxid()),
                   'hex': transaction.serialize().hex(), 'version': transaction.version,
                   'lock_time': transaction.lock_time, 'coinbase': transaction.is_coinbase(),
-                  'weight': transaction.weight(), 'outputs': outputs,
+                  'weight': transaction.weight(), 'vsize': (transaction.weight()+3)//4, 'amount_unit': 'yugeon', 'outputs': outputs,
                   'inputs': [{'txid': hash_to_display(item.prev_txid),
                               'index': item.prev_index, 'sequence': item.sequence}
                              for item in transaction.inputs],
                   'confirmations': 0 if height is None else tip_height - height + 1,
                   'in_mempool': height is None}
         if height is not None:
+            if transaction.is_coinbase():
+                from .rewards import read_reward
+                result['mining_reward'] = read_reward(chain.connection, block, height)
             result.update({'blockhash': hash_to_display(block.block_hash()), 'height': height})
         return result
 
     def _dispatch(self, node, method, arguments):
         chain = node.chain
+        if method == 'getdatarecords':
+            digest = _hash(arguments['blockhash'])
+            offset = _integer(arguments.get('offset', 0), 0, MAX_OFFSET)
+            limit = _integer(arguments.get('limit', 100), 1, MAX_LIMIT)
+            with chain.read_snapshot():
+                if not chain.has_block(digest): raise RpcError(-32001, 'Block not found')
+                block = chain.get_block(digest)
+                height = chain._row(digest)[2]
+                path = chain._path(chain.tip_hash)
+                active = height < len(path) and path[height][0][0] == digest
+                records = [{'txid': hash_to_display(tx.txid()), 'transaction_index': tx_index,
+                            'output_index': index, 'script_pubkey': output.script_pubkey.hex(),
+                            'value_units': output.value}
+                           for tx_index, tx in enumerate(block.transactions)
+                           for index, output in enumerate(tx.outputs) if output.script_pubkey.startswith(b'\x6a')]
+                return {'blockhash': hash_to_display(digest), 'height': height, 'active': active,
+                        'bestblockhash': hash_to_display(chain.tip_hash), 'amount_unit': 'yugeon',
+                        'total': len(records), 'offset': offset, 'records': records[offset:offset+limit]}
+        if method == 'getspendinginfo':
+            return chain.spending_policy.info(chain._row(chain.tip_hash)[2])
+        if method == 'decodescript':
+            from .spending import SpendingTemplate
+            try: template = SpendingTemplate.parse(_hex(arguments['hex'], 600))
+            except (ValueError, TypeError, IndexError):
+                raise RpcError(-32602, 'Unsupported or noncanonical spending template') from None
+            return dict(template.info(), address=encode_address(template.script_pubkey, network=chain.network),
+                        activation=chain.spending_policy.info(chain._row(chain.tip_hash)[2]))
+        if method == 'getmempoolpolicy':
+            return dict(chain.mempool_policy.info(), amount_unit='yugeon', yugeon_per_smw=100_000_000)
+        if method == 'estimatefee':
+            from .fees import estimate_fee
+            size = _integer(arguments.get('vsize', 140), 1, 1_000_000)
+            mode = arguments.get('mode', 'normal')
+            if mode not in ('slow', 'normal', 'fast'):
+                raise RpcError(-32602, 'Invalid fee mode')
+            return estimate_fee(chain, size, mode)
+        if method == 'testmempoolaccept':
+            return chain.test_mempool_accept(Transaction.deserialize(_hex(arguments['hex'])))
+        if method == 'getmempoolentry':
+            result = chain.mempool_entry(_hash(arguments['txid']))
+            if result is None: raise RpcError(-32001, 'Transaction not in local mempool')
+            return result
+        if method == 'gettransactionstatus':
+            return chain.transaction_status(_hash(arguments['txid']))
+        if method == 'validateaddress':
+            address = arguments['address']
+            if not isinstance(address, str):
+                raise RpcError(-32602, 'Address must be a string')
+            try:
+                script = decode_address(address, network=chain.network)
+            except AddressError:
+                return {'isvalid': False, 'network': chain.network.name}
+            return {'isvalid': True, 'network': chain.network.name,
+                    'address': encode_address(script, network=chain.network),
+                    'script_pubkey': script.hex()}
+        if method == 'decoderawtransaction':
+            transaction = Transaction.deserialize(_hex(arguments['hex']))
+            result = self._transaction_view(transaction, chain)
+            # Parsing is independent of acceptance, signature validation and
+            # chain membership. Do not fabricate a pending/confirmed state.
+            result.pop('confirmations')
+            result.pop('in_mempool')
+            result['validation'] = 'decoded_only'
+            return result
         if method == 'sendrawtransaction':
             raw = _hex(arguments['hex'])
             transaction = Transaction.deserialize(raw)
@@ -571,7 +653,10 @@ class RpcServer:
                 script = self._address(chain, arguments['address'])
                 template = chain._block_template(script)
                 height = chain._row(chain.tip_hash)[2] + 1
-                return {'height': height, 'previousblockhash': hash_to_display(chain.tip_hash),
+                from .rewards import reward_info
+                from .primitives import subsidy
+                fees = sum(o.value for o in template.transactions[0].outputs) - subsidy(height)
+                return {'reward': reward_info(template, height, fees), 'height': height, 'previousblockhash': hash_to_display(chain.tip_hash),
                         'bits': f'{template.header.bits:08x}',
                         'target': f'{valid_target(template.header.bits, chain.network.pow_limit):064x}',
                         'timestamp': template.header.timestamp,
@@ -604,6 +689,7 @@ class RpcServer:
                 active = row[2] <= tip_height and path[row[2]][0][0] == digest
                 return {'hash': hash_to_display(digest), 'height': row[2],
                         'active': active, 'confirmations': tip_height - row[2] + 1 if active else -1,
+                        'reward': read_reward(chain.connection, block, row[2]),
                         'previousblockhash': hash_to_display(row[1]),
                         'chainwork': row[3], 'bits': f'{block.header.bits:08x}',
                         'timestamp': block.header.timestamp, 'nonce': block.header.nonce,

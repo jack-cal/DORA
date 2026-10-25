@@ -1,4 +1,4 @@
-# SUMUWW P2P 0.3.0 guide
+# SUMUWW P2P 0.3.4 guide
 
 The current instructions are in [README.txt](README.txt), with changes in
 [RELEASE_NOTES.txt](RELEASE_NOTES.txt) and evidence in [VERIFICATION.txt](VERIFICATION.txt).
@@ -26,7 +26,13 @@ No separately deployed exchange contract is needed. Keep private recovery backup
 
 [Detailed Bitcoin full-node setup and block-9100 activation guide](BITCOIN_SETUP.md).
 
-Documentation edition docs-r2, 24 October 2026. The current Windows full-node
-setup link points to 0.57.40; P2P executable code remains 0.3.0. Downloads:
-https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0-docs-r2
-https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0-docs-r2
+Current editions, 25 October 2026: P2P Full/Light 0.3.4 and Windows full node
+0.57.46. Downloads:
+https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.4
+https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.4
+
+## 0.3.4
+
+Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
+
+[Current features in 34 languages](docs/features/index.html).

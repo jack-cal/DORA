@@ -1,0 +1,5 @@
+SUMUWW PC 0.57.46 verification
+
+226 node, fee, RBF, signature/lock, wallet, RPC, mining-selection and peer-policy tests passed.
+10 frozen Windows checks passed, including yugeon queries, two-node relay and GUI startup/close.
+Disposable test data only. Public multisig/lock activation is not scheduled. No continuous public-network availability claim.

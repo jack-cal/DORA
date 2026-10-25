@@ -2,3 +2,9 @@ reportlab==5.0.1
 arabic-reshaper==3.0.1
 python-bidi==0.6.11
 uharfbuzz==0.56.3
+
+coincurve==21.0.0
+
+cffi==2.1.0
+
+pycparser==3.0

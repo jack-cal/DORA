@@ -293,5 +293,22 @@
   "Block hash": "Hashi ya bloku",
   "All blocks": "Bloku zote",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Bloku zilizothibitishwa kuanzia bloku ya mwanzo hadi ya sasa, kutoka nodi zote.",
-  "Search": "Tafuta"
+  "Search": "Tafuta",
+  "Fee rate (yugeon/vB)": "Kiwango cha ada (yugeon/vB)",
+  "Slow": "Polepole",
+  "Normal": "Kawaida",
+  "Fast": "Haraka",
+  "Manual": "Weka mwenyewe",
+  "Check the fee rate and wallet limits.": "Kagua kiwango cha ada na vikomo vya pochi.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Foleni ya nodi hii: {0} vB · {1} yugeon/vB · lengo: vitalu {2}",
+  "Replaced · not applied": "Imebadilishwa · salio halijaathiriwa",
+  "Replaced by {0}": "Imebadilishwa na {0}",
+  "Removed after parent replacement": "Imeondolewa baada ya kubadilishwa kwa muamala tangulizi",
+  "New issuance (block)": "Sarafu mpya za bloku",
+  "Transaction fees (block)": "Ada za miamala za bloku",
+  "Total block reward": "Jumla ya zawadi ya bloku",
+  "Issuance limit (block)": "Kikomo cha sarafu mpya za bloku",
+  "Available fees (block)": "Ada zinazopatikana za bloku",
+  "Unclaimed reward": "Zawadi ambayo haijadaiwa",
+  "Reward not fully claimed": "Sehemu tu ya zawadi imedaiwa"
 }

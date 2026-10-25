@@ -1,0 +1,53 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · Documentation</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Documentation · 34</summary><nav><a href="README.html" lang="en" aria-current="page"><bdi>English</bdi></a><a href="../fr/README.html" lang="fr"><bdi>Français</bdi></a><a href="../es/README.html" lang="es"><bdi>Español</bdi></a><a href="../ar/README.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/README.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/README.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/README.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/README.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/README.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/README.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/README.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/README.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/README.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/README.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/README.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/README.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/README.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/README.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/README.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/README.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/README.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/README.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/README.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/README.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/README.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/README.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/README.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/README.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/README.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/README.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/README.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/README.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/README.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/README.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Documentation</a><a href="EXCHANGE_INTEGRATION.html">Node interface</a><a href="RPC_API.html">RPC and HTTP API</a><a href="NETWORK_RUNBOOK.html">Node operation</a><a href="RELEASE_NOTES.html">Release notes</a><a href="EXCHANGE_EXAMPLES.html">Verification</a></nav></header><main><h1>SUMUWW Android 0.6.95 · Documentation</h1>
+<p>SUMUWW Android 0.6.95 · The node validates, stores, relays and exposes chain data.</p>
+<h2>Network and addresses</h2>
+<p>The public network is <code>sumuww</code>; <code>dora</code> is its internal alias. Check the genesis hash below. Native addresses use witness v0 P2WPKH and HASH160 of a compressed secp256k1 public key. There is no mandatory memo or tag. Reject wrong-network addresses and invalid checksums. Record each HD receive/change branch and index; do not assume Bitcoin's derivation path.</p>
+<h2>Amounts and available outputs</h2>
+<p><code>_units</code> means integer smallest units; <code>_smw</code> is an 8-decimal string; <code>_dora</code> is a compatibility alias. There is no <code>_sumuww</code> amount field. 1 SMW = 100000000 units. <code>gettxout</code> has no <code>spendable</code> field and may return immature coinbase outputs. Coinbase needs at least 100 confirmations for spending in the next block. Filter <code>listunspent</code> by <code>spendable</code>; available amounts from <code>getaddressbalance</code> exclude immature and pending-spent funds. New mempool outputs are not confirmed funds. Check the tip across pages and revalidate selected inputs.</p>
+<p>1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automatic fees use current pending volume, block capacity and transaction priority. Past block fees are not used. A quiet queue keeps the minimum rate. The preview refreshes; the final confirmation fixes the fee. Observations cover the connected local node, not every node.</p>
+<p>Wallet history retains local replacement records after restart. Removed transactions do not affect the balance.</p>
+<p>Mining history separates new issuance, transaction fees and total reward for each block. Your received amount is shown separately. A partial claim does not identify how the two components were divided. The node provides 28 RPC methods, including fee estimation, and validates and relays signed transactions.</p>
+<h2>Transaction and block lookup</h2>
+<p><code>getrawtransaction</code> searches the active chain and mempool, not orphan-only transactions. Inputs identify outpoints, not a unique sender address. <code>getblock</code> takes Boolean <code>verbose</code>; inactive stored blocks have <code>active=false</code> and <code>confirmations=-1</code>. Their raw transactions remain available by block hash. <code>findspendingtransaction</code> searches confirmed active-chain spends only; null does not prove availability. Check <code>gettxout</code> with <code>include_mempool=true</code>. All confirmations and active flags can change after a reorganization.</p>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

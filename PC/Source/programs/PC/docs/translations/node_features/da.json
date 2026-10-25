@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Gebyrsats (yugeon/vB)",
+    "Slow": "Langsom",
+    "Normal": "Normal",
+    "Fast": "Hurtig",
+    "Manual": "Manuel",
+    "Check the fee rate and wallet limits.": "Kontrollér gebyrsatsen og tegnebogens grænser."
+  },
+  "wallet": "Automatiske gebyrer følger den ventende datamængde, blokkapaciteten og transaktionernes prioritet. Gebyrer fra tidligere blokke bruges ikke. Ved kort kø gælder minimumssatsen. Forhåndsvisningen opdateres; den endelige bekræftelse fastlægger gebyret. Oplysningerne dækker den tilsluttede lokale node, ikke alle noder.\n\nUdskiftninger registreret af denne node bevares i historikken efter genstart af tegnebogen. Fjernede transaktioner påvirker ikke saldoen.\n\nMinehistorikken viser ny udstedelse, gebyrer og samlet belønning for hver blok hver for sig. Det beløb, din wallet modtager, vises separat. Ved delvis udbetaling antages ingen fordeling mellem de to dele. Noden tilbyder 28 RPC-metoder, herunder gebyrestimering, og kontrollerer og videresender signerede transaktioner.",
+  "node": "Noden tilføjer gebyrforespørgsler, kontrol før afsendelse, status for RBF-erstatning og data i blokrækkefølge. Erstatningen valideres, før ventende transaktioner fjernes. Flere signaturer og låste outputs er implementeret til isolerede aktiveringstests; de er endnu ikke aktive på det offentlige netværk.",
+  "live_preview": "Lokal kø: {0} vB · {1} yugeon/vB · mål: {2} blokke"
+}

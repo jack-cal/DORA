@@ -180,5 +180,14 @@
   "share": "Part de bloc (%)",
   "knownfees": "Frais de transaction connus",
   "rewardsubsidy": "Subventions globales maximales",
-  "pendingstats": "Statistiques du pool de mémoire local"
+  "pendingstats": "Statistiques du pool de mémoire local",
+  "spendingconditions": "Conditions de dépense",
+  "decodedonly": "Script décodé uniquement ; la possibilité de dépenser n’est pas vérifiée.",
+  "rewardissuance": "Émission nouvelle (bloc)",
+  "rewardfees": "Frais de transaction (bloc)",
+  "rewardtotalblock": "Récompense totale du bloc",
+  "rewardlimit": "Plafond d’émission du bloc",
+  "rewardavailablefees": "Frais disponibles du bloc",
+  "rewardunclaimed": "Récompense non réclamée",
+  "rewardpartial": "Récompense partiellement réclamée"
 }

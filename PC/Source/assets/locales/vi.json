@@ -335,5 +335,22 @@
   "Local lottery jobs": "Tác vụ rút thăm của nút này",
   "Not selected": "Không được chọn",
   "Selected pending": "Đã chọn, đang chờ",
-  "Selected complete": "Đã chọn, hoàn tất"
+  "Selected complete": "Đã chọn, hoàn tất",
+  "Fee rate (yugeon/vB)": "Mức phí (yugeon/vB)",
+  "Slow": "Chậm",
+  "Normal": "Bình thường",
+  "Fast": "Nhanh",
+  "Manual": "Thủ công",
+  "Check the fee rate and wallet limits.": "Kiểm tra mức phí và giới hạn của ví.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Hàng đợi cục bộ: {0} vB · {1} yugeon/vB · mục tiêu: {2} khối",
+  "Replaced · not applied": "Đã thay thế · không ảnh hưởng số dư",
+  "Replaced by {0}": "Giao dịch thay thế: {0}",
+  "Removed after parent replacement": "Bị loại bỏ do giao dịch cha được thay thế",
+  "New issuance (block)": "Phát hành mới của khối",
+  "Transaction fees (block)": "Phí giao dịch của khối",
+  "Total block reward": "Tổng phần thưởng khối",
+  "Issuance limit (block)": "Giới hạn phát hành của khối",
+  "Available fees (block)": "Phí khả dụng của khối",
+  "Unclaimed reward": "Phần thưởng chưa nhận",
+  "Reward not fully claimed": "Chỉ nhận một phần thưởng"
 }

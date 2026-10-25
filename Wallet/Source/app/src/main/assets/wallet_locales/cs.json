@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Platnost kontroly převodu vypršela. Zkontrolujte to znovu.",
   "Peers: {0} · Block: {1} · ": "Připojené uzly: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} potvrzení",
-  "Select language": "Vyberte jazyk"
+  "Select language": "Vyberte jazyk",
+  "Fee rate (yugeon/vB)": "Sazba poplatku (yugeon/vB)",
+  "Slow": "Pomalu",
+  "Normal": "Běžně",
+  "Fast": "Rychle",
+  "Manual": "Ručně",
+  "Check the fee rate and wallet limits.": "Zkontrolujte sazbu poplatku a limity peněženky.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Místní fronta: {0} vB · {1} yugeon/vB · cíl: {2} bloků",
+  "Replaced · not applied": "Nahrazena · bez vlivu na zůstatek",
+  "Replaced by {0}": "Nahrazena transakcí {0}",
+  "Removed after parent replacement": "Odstraněna po nahrazení nadřazené transakce",
+  "New issuance (block)": "Nová emise bloku",
+  "Transaction fees (block)": "Transakční poplatky bloku",
+  "Total block reward": "Celková odměna bloku",
+  "Issuance limit (block)": "Emisní limit bloku",
+  "Available fees (block)": "Dostupné poplatky bloku",
+  "Unclaimed reward": "Nevyzvednutá odměna",
+  "Reward not fully claimed": "Odměna vyzvednuta částečně"
 }

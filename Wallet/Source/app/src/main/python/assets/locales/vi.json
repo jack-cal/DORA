@@ -284,5 +284,22 @@
   "Do not show this help again.": "Không hiện trợ giúp này nữa.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Kết nối trực tiếp không dùng Tor hay I2P. Thường kết nối nhanh hơn và dùng ít tài nguyên hơn. Nút khác có thể thấy IP kết nối của bạn.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.\n\nCần có các nút I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nƯu điểm: giúp ẩn IP thật của bạn với các nút khác.\n\nNhược điểm: kết nối và đồng bộ có thể chậm hơn, tốn thêm pin và dữ liệu. Lịch sử giao dịch vẫn công khai. Nếu kết nối thất bại, kết nối trực tiếp vẫn bị tắt.\n\nCần có các nút I2P.",
+  "Fee rate (yugeon/vB)": "Mức phí (yugeon/vB)",
+  "Slow": "Chậm",
+  "Normal": "Bình thường",
+  "Fast": "Nhanh",
+  "Manual": "Thủ công",
+  "Check the fee rate and wallet limits.": "Kiểm tra mức phí và giới hạn của ví.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Hàng đợi cục bộ: {0} vB · {1} yugeon/vB · mục tiêu: {2} khối",
+  "Replaced · not applied": "Đã thay thế · không ảnh hưởng số dư",
+  "Replaced by {0}": "Giao dịch thay thế: {0}",
+  "Removed after parent replacement": "Bị loại bỏ do giao dịch cha được thay thế",
+  "New issuance (block)": "Phát hành mới của khối",
+  "Transaction fees (block)": "Phí giao dịch của khối",
+  "Total block reward": "Tổng phần thưởng khối",
+  "Issuance limit (block)": "Giới hạn phát hành của khối",
+  "Available fees (block)": "Phí khả dụng của khối",
+  "Unclaimed reward": "Phần thưởng chưa nhận",
+  "Reward not fully claimed": "Chỉ nhận một phần thưởng"
 }

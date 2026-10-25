@@ -293,5 +293,22 @@
   "Block hash": "Block hash",
   "All blocks": "All blocks",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Validated blocks from genesis to the current tip. Includes all nodes.",
-  "Search": "Search"
+  "Search": "Search",
+  "Fee rate (yugeon/vB)": "Fee rate (yugeon/vB)",
+  "Slow": "Slow",
+  "Normal": "Normal",
+  "Fast": "Fast",
+  "Manual": "Manual",
+  "Check the fee rate and wallet limits.": "Check the fee rate and wallet limits.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks",
+  "Replaced · not applied": "Replaced · not applied",
+  "Replaced by {0}": "Replaced by {0}",
+  "Removed after parent replacement": "Removed after parent replacement",
+  "New issuance (block)": "New issuance (block)",
+  "Transaction fees (block)": "Transaction fees (block)",
+  "Total block reward": "Total block reward",
+  "Issuance limit (block)": "Issuance limit (block)",
+  "Available fees (block)": "Available fees (block)",
+  "Unclaimed reward": "Unclaimed reward",
+  "Reward not fully claimed": "Reward not fully claimed"
 }

@@ -15,6 +15,32 @@ class ReleaseRecheck(TestCase):
     await_idle = support.DesktopWalletTests.await_idle
     create = support.DesktopWalletTests.create
 
+    def test_reward_components_and_own_amount_in_all_languages(self):
+        from sumuww.rewards import reward_amounts
+        self.create()
+        self.app.page='Activity';self.app.build();self.await_idle()
+        row={'txid':'a'*64,'status':'confirmed','confirmations':2,'coinbase':True,
+             'net_amount':20*100_000_000,'mining_reward':reward_amounts(5_000_100_000,101,100_000)}
+        for language in self.app.languages:
+            self.app.language=language;self.app.show_history({'transactions':[row]})
+            text=self.app.history.get('1.0','end')
+            for label in ('New issuance (block)','Transaction fees (block)','Total block reward'):
+                self.assertIn(self.app.t(label),text,language)
+            for amount in ('20.00000000 SMW','50.00000000 SMW','0.00100000 SMW','50.00100000 SMW'):
+                self.assertIn(amount,text,language)
+
+    def test_replacement_history_has_localized_status_and_replacement_id(self):
+        self.create()
+        self.app.page='Activity'; self.app.build(); self.await_idle()
+        for language in self.app.languages:
+            self.app.language=language
+            for reason in ('conflict','ancestor_replaced'):
+                self.app.show_history({'transactions':[{'txid':'a'*64,'status':'replaced','replaced_by':'b'*64,
+                    'replacement_reason':reason,'confirmations':0,'net_amount':-1000}]})
+                text=self.app.history.get('1.0','end')
+                expected='Removed after parent replacement' if reason=='ancestor_replaced' else 'Replaced · not applied'
+                self.assertIn(self.app.t(expected),text); self.assertIn('b'*64,text)
+
     def test_auto_lock_closes_recovery_text_window(self):
         self.create()
         self.app.show_phrase({'words': ' '.join(['disposable'] * 12)})
@@ -71,7 +97,7 @@ class ReleaseRecheck(TestCase):
         self.app.refresh();self.await_idle()
         for code in self.app.languages:
             self.app.language=code;self.app.build()
-            with patch.object(run.simpledialog,'askstring',side_effect=[recipient.address,'1.00000001','0.00001000']),patch.object(run.messagebox,'askokcancel',return_value=False) as review:
+            with patch.object(run.simpledialog,'askstring',side_effect=[recipient.address,'1.00000001']),patch.object(run,'FeeDialog',return_value=type('Quote',(),{'result':'0.00001000'})()),patch.object(run.messagebox,'askokcancel',return_value=False) as review:
                 self.app.buttons['↑  Send'][0].invoke();self.await_idle()
             self.assertEqual(review.call_args.args[0],self.app.t('Confirm transfer'),code)
             self.assertIn(recipient.address,review.call_args.args[1],code)

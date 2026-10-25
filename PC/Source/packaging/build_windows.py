@@ -49,6 +49,11 @@ def copy_distribution_files(source, bundle):
                  'requirements-win-cp312.lock', 'requirements.txt', 'LICENSE', 'LICENSE.md', 'LICENSE.txt'):
         if (source / name).is_file():
             shutil.copy2(source / name, bundle / name)
+    for name in ('NODE_FEATURES.md', 'NODE_FEATURES.html', 'EXCHANGE_INTEGRATION.md', 'EXCHANGE_INTEGRATION.html',
+                 'EXCHANGE_INTEGRATION.ko.md', 'EXCHANGE_INTEGRATION.ko.html', 'API_CONTRACT.json'):
+        shutil.copy2(source / name, bundle / name)
+    shutil.copytree(source / 'examples', bundle / 'examples', dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns('*.py', '__pycache__'))
     packaging = bundle / 'packaging'
     packaging.mkdir(exist_ok=True)
     shutil.copy2(source / 'packaging' / 'BUILD_WINDOWS.md', packaging / 'BUILD_WINDOWS.md')

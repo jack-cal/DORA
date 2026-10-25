@@ -1,0 +1,34 @@
+{
+  "labels": [
+    "Documentation",
+    "Interface du nœud",
+    "API RPC et HTTP",
+    "Exploitation du nœud",
+    "Notes de version",
+    "Référence détaillée en anglais",
+    "Réseau et adresses",
+    "Signature hors ligne",
+    "Format de signature",
+    "Envoi et nouvelle tentative",
+    "Recherche de transactions et de blocs",
+    "Authentification et limites",
+    "Montants et sorties disponibles",
+    "Recherche de transactions et de blocs",
+    "Exploitation et restauration",
+    "Vérification",
+    "Erreurs",
+    "Montants et sorties disponibles",
+    "Format de signature"
+  ],
+  "text": [
+    "SUMUWW PC 0.57.46 · Le nœud valide, conserve, relaie et expose les données de la chaîne.",
+    "Le réseau public est `sumuww`, avec l’alias interne `dora`. Vérifiez le hash de genèse ci-dessous. Les adresses natives utilisent P2WPKH witness v0 et HASH160 d’une clé publique secp256k1 compressée. Aucun mémo ni tag n’est obligatoire. Rejetez les adresses d’un autre réseau et les sommes de contrôle invalides. Notez la branche réception/monnaie et l’index HD ; ne supposez pas le chemin de dérivation de Bitcoin.",
+    "Le SDK source facultatif assemble les transactions et vérifie les signatures fournies, sans clé ni réseau. Ce n’est ni un outil de signature ni une commande du nœud. La restriction P2WPKH concerne le format de l’exemple, pas le nœud. Le portefeuille personnel existant reste disponible.",
+    "validateaddress vérifie la somme de contrôle et le réseau choisi. decoderawtransaction renvoie decoded_only, sans attester la signature ni la confirmation. Les sorties OP_RETURN conservent les données destinées aux programmes externes . Le nœud ajoute la consultation des frais, la vérification avant envoi, le suivi des remplacements RBF et la lecture ordonnée des données de bloc. La validation précède toute suppression de transaction en attente. Les signatures multiples et les sorties verrouillées sont implémentées pour des essais isolés ; elles ne sont pas encore activées sur le réseau public.",
+    "Activez explicitement RPC sur la boucle locale numérique `127.0.0.1:18443`, avec son jeton Bearer privé. Aucune fonction de déverrouillage ou de signature distante n’est exposée. Utilisez un service local ou un tunnel authentifié ; les requêtes de navigateur Origin/Referer sont refusées. JSON-RPC utilise POST `/rpc`, `params` objet/tableau et `id` ; les notifications renvoient HTTP 204. Limites : corps 8004096 octets, en-têtes 8192, lots 16, requêtes simultanées 16, délai 10 secondes ; pagination limit 1–1000, offset 0–1000000. Il existe 28 méthodes et 11 routes REST.",
+    "`_units` désigne des unités minimales entières ; `_smw` une chaîne à 8 décimales ; `_dora` un alias compatible. Aucun champ monétaire `_sumuww` n’existe. 1 SMW = 100000000 unités. `gettxout` n’a pas de champ `spendable` et peut renvoyer une récompense immature. Une coinbase exige au moins 100 confirmations pour être dépensée au bloc suivant. Filtrez `listunspent` sur `spendable` ; le montant available de `getaddressbalance` exclut les fonds immatures ou engagés par des transactions en attente. Les nouvelles sorties du mempool ne sont pas confirmées. Vérifiez la pointe entre les pages et revalidez les entrées choisies.\n\n1 SMW = 100 000 000 yugeon. Les frais automatiques proposent trois niveaux selon les observations locales, sans garantir le délai de confirmation. Vous pouvez saisir un taux en yugeon/vB. Vérifiez les frais définitifs et le total en SMW avant l’envoi. Une transaction refusée ne débite pas votre solde.\n\n`1 yugeon = 0.00000001 SMW` · `1 SMW = 100000000 yugeon`\n\n| API / wallet | yugeon / SMW |\n|---|---|\n| minimum relay | 1 yugeon/vB |\n| automatic cap | 0.01 SMW |\n| manual cap | 1 SMW |\n| manual rate | 1–100000 yugeon/vB |\n\nLes frais automatiques suivent le volume en attente, la capacité des blocs et la priorité des transactions, sans reprendre les frais passés. Si la file est peu chargée, le taux reste minimal. L’aperçu s’actualise ; la confirmation finale fixe les frais. Les observations concernent le nœud local connecté, pas tous les nœuds.\n\nL’historique des remplacements observés par ce nœud est conservé après le redémarrage du portefeuille. Les transactions retirées ne modifient pas le solde.\n\nL’historique de minage distingue l’émission nouvelle, les frais et la récompense totale de chaque bloc. Le montant reçu par votre portefeuille apparaît séparément. Une récompense partiellement réclamée ne permet pas d’attribuer les deux composantes. Le nœud fournit 28 méthodes RPC, dont l’estimation des frais, et valide et relaie les transactions signées.",
+    "`getrawtransaction` recherche la chaîne active et le mempool, pas les seules branches orphelines. Les entrées désignent des sorties précédentes, pas une adresse d’expéditeur unique. `getblock` reçoit un `verbose` booléen ; un bloc inactif conservé a `active=false` et `confirmations=-1`. Ses transactions brutes restent accessibles par hash de bloc. `findspendingtransaction` ne cherche que les dépenses confirmées actives ; null ne prouve pas la disponibilité. Vérifiez `gettxout` avec `include_mempool=true`. Confirmations et état actif peuvent changer après réorganisation.",
+    "Exécutez python examples/node_contract.py depuis les sources après installation des dépendances. Des clés publiques de test et un regtest temporaire vérifient soumission, rejet, confirmations, réorganisation et conservation. Aucun fonds réel, profil personnel ou dispositif de signature matériel n’est utilisé."
+  ],
+  "scope": "SUMUWW PC interface specification, supported features and disposable tests. Directly authored translations."
+}

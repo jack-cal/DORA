@@ -129,6 +129,44 @@ class HistoryUiTests(unittest.TestCase):
     def values(self, dialog):
         return [tuple(dialog.table.item(item, 'values')) for item in dialog.table.get_children()]
 
+    def test_reward_breakdown_keeps_own_receipt_separate_in_both_views(self):
+        from sumuww.rewards import reward_amounts
+        row = {'txid': 'a' * 64, 'confirmations': 1, 'height': 123,
+               'coinbase': True, 'net_amount': 20 * 100_000_000,
+               'status': 'confirmed',
+               'mining_reward': reward_amounts(5_000_100_000, 123, 100_000)}
+        self.service.status_value['transactions'] = [row]
+        self.app._apply_status(copy.deepcopy(self.service.status_value))
+        recent = self.app.transaction_table
+        item = recent.get_children()[0]
+        self.assertEqual('+20.00000000', recent.set(item, 'amount'))
+        self.assertEqual('50.00000000 SMW', recent.set(item, 'subsidy'))
+        self.assertEqual('0.00100000 SMW', recent.set(item, 'fees'))
+        self.assertEqual('50.00100000 SMW', recent.set(item, 'reward'))
+        dialog = self.open()
+        self.service.history_requests[-1]['future'].set_result({
+            'transactions': [row], 'total': 1, 'offset': 0, 'limit': 50,
+            'height': 123, 'tip': 'b' * 64,
+            'address': self.service.status_value['wallet']['address']})
+        self.pump(lambda: len(dialog.table.get_children()) == 1)
+        item = dialog.table.get_children()[0]
+        for column in ('amount', 'subsidy', 'fees', 'reward'):
+            self.assertEqual(recent.set(recent.get_children()[0], column), dialog.table.set(item, column))
+
+    def test_underclaimed_reward_has_no_invented_component_payment(self):
+        from sumuww.rewards import reward_amounts
+        row = {'txid': 'a' * 64, 'confirmations': 1, 'coinbase': True,
+               'net_amount': 49 * 100_000_000, 'status': 'confirmed',
+               'mining_reward': reward_amounts(49 * 100_000_000, 123, 0)}
+        self.service.status_value['transactions'] = [row]
+        self.app._apply_status(copy.deepcopy(self.service.status_value))
+        table = self.app.transaction_table
+        item = table.get_children()[0]
+        self.assertEqual('—', table.set(item, 'subsidy'))
+        self.assertEqual('—', table.set(item, 'fees'))
+        self.assertEqual('49.00000000 SMW', table.set(item, 'reward'))
+        self.assertIn('Reward not fully claimed', table.set(item, 'kind'))
+
     def test_locked_wallet_opens_default_page_and_renders_transaction_types(self):
         self.assertFalse(self.app._wallet['unlocked'])
         self.assertEqual('normal', str(self.app.history_button.cget('state')))

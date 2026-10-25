@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Mức phí (yugeon/vB)",
+    "Slow": "Chậm",
+    "Normal": "Bình thường",
+    "Fast": "Nhanh",
+    "Manual": "Thủ công",
+    "Check the fee rate and wallet limits.": "Kiểm tra mức phí và giới hạn của ví."
+  },
+  "wallet": "Phí tự động dựa trên lượng dữ liệu đang chờ, dung lượng khối và mức ưu tiên của giao dịch. Không sử dụng phí từ các khối cũ. Khi hàng đợi ngắn, mức phí tối thiểu được giữ nguyên. Bản xem trước được cập nhật; bước xác nhận cuối cùng cố định phí. Dữ liệu phản ánh nút cục bộ đang kết nối, không phải mọi nút.\n\nLịch sử thay thế giao dịch do nút này ghi nhận được giữ lại sau khi khởi động lại ví. Giao dịch bị loại bỏ không ảnh hưởng đến số dư.\n\nLịch sử đào tách riêng phát hành mới, phí giao dịch và tổng phần thưởng của từng khối. Số tiền ví của bạn nhận được hiển thị riêng. Khi chỉ nhận một phần, hệ thống không tự suy đoán cách chia hai thành phần. Nút cung cấp 28 phương thức RPC, bao gồm ước tính phí, đồng thời xác minh và chuyển tiếp giao dịch đã ký.",
+  "node": "Nút có thêm truy vấn phí, kiểm tra trước khi gửi, trạng thái thay thế RBF và đọc dữ liệu theo thứ tự khối. Giao dịch thay thế được xác minh trước khi xóa giao dịch đang chờ. Đa chữ ký và đầu ra khóa đã được triển khai để thử kích hoạt trong môi trường riêng; chưa kích hoạt trên mạng công khai.",
+  "live_preview": "Hàng đợi cục bộ: {0} vB · {1} yugeon/vB · mục tiêu: {2} khối"
+}

@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Maksutaso (yugeon/vB)",
+    "Slow": "Hidas",
+    "Normal": "Tavallinen",
+    "Fast": "Nopea",
+    "Manual": "Manuaalinen",
+    "Check the fee rate and wallet limits.": "Tarkista maksutaso ja lompakon rajat."
+  },
+  "wallet": "Automaattinen maksu perustuu jonossa olevaan datamäärään, lohkokapasiteettiin ja siirtojen etusijaan. Aiempien lohkojen maksuja ei käytetä. Lyhyessä jonossa käytetään vähimmäishintaa. Esikatselu päivittyy; lopullinen vahvistus lukitsee maksun. Havainnot koskevat yhdistettyä paikallista solmua, eivät kaikkia solmuja.\n\nTämän solmun kirjaama korvaushistoria säilyy lompakon uudelleenkäynnistyksen jälkeen. Poistetut tapahtumat eivät vaikuta saldoon.\n\nLouhintahistoria erittelee kunkin lohkon uuden liikkeeseenlaskun, siirtomaksut ja kokonaispalkkion. Lompakkosi vastaanottama summa näkyy erikseen. Osittain lunastetun palkkion jakautumista ei oleteta. Solmu tarjoaa 28 RPC-menetelmää, mukaan lukien maksuarvion, sekä tarkistaa ja välittää allekirjoitetut tapahtumat.",
+  "node": "Solmuun lisätään maksukyselyt, tarkistus ennen lähetystä, RBF-korvauksen tila ja tietojen luku lohkojärjestyksessä. Korvaava tapahtuma tarkistetaan ennen odottavien tapahtumien poistamista. Moniallekirjoitus ja lukitut ulostulot on toteutettu erillisiä aktivointitestejä varten; ne eivät vielä ole käytössä julkisessa verkossa.",
+  "live_preview": "Paikallinen jono: {0} vB · {1} yugeon/vB · tavoite: {2} lohkoa"
+}

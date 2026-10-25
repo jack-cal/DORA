@@ -284,5 +284,22 @@
   "Do not show this help again.": "Энэ тусламжийг дахин бүү харуул.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Шууд холболт Tor эсвэл I2P ашиглахгүй. Ихэвчлэн хурдан бөгөөд нөөц бага хэрэглэнэ. Бусад зангилаа таны холболтын IP-г харна.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nДавуу тал: бодит IP-г бусад зангилаанаас нуухад тусална.\n\nСул тал: холболт, синхрончлол удааширч, зай болон өгөгдлийн хэрэглээ нэмэгдэж болно. Гүйлгээний бүртгэл нээлттэй хэвээр. Холболт бүтэлгүйтвэл шууд холболт идэвхжихгүй.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nДавуу тал: бодит IP-г бусад зангилаанаас нуухад тусална.\n\nСул тал: холболт, синхрончлол удааширч, зай болон өгөгдлийн хэрэглээ нэмэгдэж болно. Гүйлгээний бүртгэл нээлттэй хэвээр. Холболт бүтэлгүйтвэл шууд холболт идэвхжихгүй.\n\nI2P зангилаа шаардлагатай."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nДавуу тал: бодит IP-г бусад зангилаанаас нуухад тусална.\n\nСул тал: холболт, синхрончлол удааширч, зай болон өгөгдлийн хэрэглээ нэмэгдэж болно. Гүйлгээний бүртгэл нээлттэй хэвээр. Холболт бүтэлгүйтвэл шууд холболт идэвхжихгүй.\n\nI2P зангилаа шаардлагатай.",
+  "Fee rate (yugeon/vB)": "Шимтгэлийн хэмжээ (yugeon/vB)",
+  "Slow": "Удаан",
+  "Normal": "Ердийн",
+  "Fast": "Хурдан",
+  "Manual": "Гараар",
+  "Check the fee rate and wallet limits.": "Шимтгэлийн хэмжээ болон түрийвчийн хязгаарыг шалгана уу.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Дотоод хүлээлт: {0} vB · {1} yugeon/vB · зорилт: {2} блок",
+  "Replaced · not applied": "Солигдсон · үлдэгдэлд нөлөөлөхгүй",
+  "Replaced by {0}": "Орлуулсан гүйлгээ: {0}",
+  "Removed after parent replacement": "Эх гүйлгээ солигдсон тул хасагдсан",
+  "New issuance (block)": "Блокийн шинэ гаргалт",
+  "Transaction fees (block)": "Блокийн гүйлгээний шимтгэл",
+  "Total block reward": "Блокийн нийт шагнал",
+  "Issuance limit (block)": "Блокийн гаргалтын хязгаар",
+  "Available fees (block)": "Блокийн боломжит шимтгэл",
+  "Unclaimed reward": "Аваагүй шагнал",
+  "Reward not fully claimed": "Шагналыг хэсэгчлэн авсан"
 }

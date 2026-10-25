@@ -36,53 +36,47 @@ class FeeEstimationTests(unittest.TestCase):
     def quote(self,amount=COIN):
         return estimate_payment_fee(self.chain,self.alice.script_pubkey,self.bob.script_pubkey,amount)
 
-    def test_no_samples_uses_total_initial_fee_and_bounds_actual_signed_size(self):
+    def test_no_samples_uses_initial_rate_and_bounds_actual_signed_size(self):
         quote=self.quote()
-        self.assertEqual(100_000,quote['fee_units'])
-        self.assertEqual('initial_default',quote['source'])
+        self.assertEqual(quote['estimated_vsize'],quote['fee_units'])
+        self.assertEqual('live_mempool',quote['source'])
         self.assertFalse(quote['capped'])
         signed=create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,quote['fee_units'])
         self.assertLessEqual(virtual_size(signed),quote['estimated_vsize'])
         self.chain.submit_transaction(signed)
 
-    def test_pending_observation_and_confirmed_observation_are_used(self):
+    def test_small_backlog_and_confirmed_high_fee_do_not_raise_quote(self):
         tx=create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,10_000)
         self.chain.submit_transaction(tx)
         pending=self.quote()
-        self.assertEqual('local_mempool',pending['source'])
+        self.assertEqual('live_mempool',pending['source'])
         self.assertEqual(1,pending['sample_count'])
-        self.assertGreaterEqual(pending['fee_units']*virtual_size(tx),10_000*pending['estimated_vsize'])
+        self.assertEqual(pending['fee_units'],pending['estimated_vsize'])
         self.chain.mine(self.alice.script_pubkey,1)
         confirmed=self.quote()
-        self.assertEqual('local_history',confirmed['source'])
+        self.assertEqual('live_mempool',confirmed['source'])
         self.assertEqual(pending['fee_units'],confirmed['fee_units'])
+        self.assertEqual(0,confirmed['sample_count'])
 
     def test_zero_fee_samples_do_not_create_a_positive_fee_prediction(self):
         self.chain.submit_transaction(create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,0))
-        self.assertEqual('initial_default',self.quote()['source'])
+        self.assertEqual('live_mempool',self.quote()['source'])
         self.chain.mine(self.alice.script_pubkey,1)
-        self.assertEqual(100_000,self.quote()['fee_units'])
+        self.assertEqual(self.quote()['estimated_vsize'],self.quote()['fee_units'])
 
-    def test_large_local_fee_is_capped_only_for_automatic_quote(self):
+    def test_large_fee_in_quiet_pool_does_not_trigger_auto_cap(self):
         self.chain.submit_transaction(create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,COIN))
         automatic=self.quote()
-        self.assertTrue(automatic['capped'])
-        self.assertEqual(MAX_AUTO_FEE_UNITS,automatic['fee_units'])
+        self.assertFalse(automatic['capped'])
+        self.assertEqual(automatic['estimated_vsize'],automatic['fee_units'])
         manual=create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,2*COIN)
         self.chain.submit_transaction(manual)
 
-    def test_nearest_rank_upper_quartile_uses_exact_rates(self):
-        fees=(1000,2000,3000,4000)
-        transactions=[]
-        for fee in fees:
-            tx=create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,fee)
-            self.chain.submit_transaction(tx)
-            transactions.append(tx)
+    def test_fee_percentiles_do_not_raise_price_without_capacity_pressure(self):
+        for fee in (1000,2000,3000,4000):
+            self.chain.submit_transaction(create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,fee))
         quote=self.quote()
-        from fractions import Fraction
-        rate=sorted(Fraction(fee,virtual_size(tx)) for fee,tx in zip(fees,transactions))[2]
-        expected=(rate.numerator*quote['estimated_vsize']+rate.denominator-1)//rate.denominator
-        self.assertEqual(expected,quote['fee_units'])
+        self.assertEqual(quote['estimated_vsize'],quote['fee_units'])
 
     def test_quote_excludes_pending_spends_and_immature_rewards(self):
         self.chain.submit_transaction(create_payment(self.chain,self.alice,self.bob.script_pubkey,49*COIN,1000))
@@ -92,12 +86,12 @@ class FeeEstimationTests(unittest.TestCase):
     def test_amount_can_change_without_fee_being_a_percentage(self):
         self.assertEqual(self.quote(COIN)['fee_units'],self.quote(2*COIN)['fee_units'])
 
-    def test_history_cache_follows_active_tip_after_reorganization(self):
+    def test_live_queue_follows_reorganization(self):
         original=self.chain.tip_hash
         tx=create_payment(self.chain,self.alice,self.bob.script_pubkey,COIN,10_000)
         self.chain.submit_transaction(tx)
         self.chain.mine(self.alice.script_pubkey,1)
-        self.assertEqual('local_history',self.quote()['source'])
+        self.assertEqual('live_mempool',self.quote()['source'])
         side=self.chain.make_block(self.bob.script_pubkey,transactions=(),parent_hash=original)
         self.chain.accept_block(side)
         extension=self.chain.make_block(self.bob.script_pubkey,transactions=(),parent_hash=side.block_hash())
@@ -105,7 +99,7 @@ class FeeEstimationTests(unittest.TestCase):
         # The disconnected signed transaction returns to the pool; it is now
         # pending and must not remain cached as active confirmed history.
         quote=self.quote()
-        self.assertEqual('local_mempool',quote['source'])
+        self.assertEqual('live_mempool',quote['source'])
         self.assertEqual(1,quote['sample_count'])
 
     def cli_payment(self,*options):
@@ -131,9 +125,9 @@ class FeeEstimationTests(unittest.TestCase):
     def test_cli_defaults_to_auto_and_reports_actual_fee_and_total(self):
         result=self.cli_payment()
         self.assertEqual('automatic',result['fee_mode'])
-        self.assertEqual('initial_default',result['fee_source'])
-        self.assertEqual('0.00100000',result['fee_smw'])
-        self.assertEqual('1.00100000',result['total_smw'])
+        self.assertEqual('live_mempool',result['fee_source'])
+        self.assertEqual('0.00000141',result['fee_smw'])
+        self.assertEqual('1.00000141',result['total_smw'])
 
     def test_cli_manual_zero_remains_supported(self):
         result=self.cli_payment('--fee','0')

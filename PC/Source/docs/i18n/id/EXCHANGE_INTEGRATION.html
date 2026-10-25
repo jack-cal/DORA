@@ -1,0 +1,68 @@
+<!doctype html><html lang="id" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · Antarmuka node</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Dokumentasi · 34</summary><nav><a href="../en/EXCHANGE_INTEGRATION.html" lang="en"><bdi>English</bdi></a><a href="../fr/EXCHANGE_INTEGRATION.html" lang="fr"><bdi>Français</bdi></a><a href="../es/EXCHANGE_INTEGRATION.html" lang="es"><bdi>Español</bdi></a><a href="../ar/EXCHANGE_INTEGRATION.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/EXCHANGE_INTEGRATION.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/EXCHANGE_INTEGRATION.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/EXCHANGE_INTEGRATION.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/EXCHANGE_INTEGRATION.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/EXCHANGE_INTEGRATION.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/EXCHANGE_INTEGRATION.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/EXCHANGE_INTEGRATION.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/EXCHANGE_INTEGRATION.html" lang="ja"><bdi>日本語</bdi></a><a href="EXCHANGE_INTEGRATION.html" lang="id" aria-current="page"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/EXCHANGE_INTEGRATION.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/EXCHANGE_INTEGRATION.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/EXCHANGE_INTEGRATION.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/EXCHANGE_INTEGRATION.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/EXCHANGE_INTEGRATION.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/EXCHANGE_INTEGRATION.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/EXCHANGE_INTEGRATION.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/EXCHANGE_INTEGRATION.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/EXCHANGE_INTEGRATION.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/EXCHANGE_INTEGRATION.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/EXCHANGE_INTEGRATION.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/EXCHANGE_INTEGRATION.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/EXCHANGE_INTEGRATION.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/EXCHANGE_INTEGRATION.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/EXCHANGE_INTEGRATION.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/EXCHANGE_INTEGRATION.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/EXCHANGE_INTEGRATION.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/EXCHANGE_INTEGRATION.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/EXCHANGE_INTEGRATION.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/EXCHANGE_INTEGRATION.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/EXCHANGE_INTEGRATION.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Dokumentasi</a><a href="EXCHANGE_INTEGRATION.html">Antarmuka node</a><a href="RPC_API.html">API RPC dan HTTP</a><a href="NETWORK_RUNBOOK.html">Operasi node</a><a href="RELEASE_NOTES.html">Catatan versi</a><a href="EXCHANGE_EXAMPLES.html">Verifikasi</a></nav></header><main><h1>SUMUWW · Antarmuka node</h1>
+<p>SUMUWW PC 0.57.46 · Node memvalidasi, menyimpan, meneruskan, dan menyediakan data rantai.</p>
+<h2>Jaringan dan alamat</h2>
+<p>Jaringan publik adalah <code>sumuww</code>, dengan alias internal <code>dora</code>. Periksa hash genesis di bawah. Alamat asli memakai witness v0 P2WPKH dan HASH160 kunci publik secp256k1 terkompresi. Memo atau tag tidak wajib. Tolak jaringan yang salah dan checksum tidak valid. Catat cabang HD penerimaan/kembalian serta indeks; jangan menganggap jalur derivasi Bitcoin berlaku.</p>
+<h2>Format tanda tangan</h2>
+<p>SDK sumber opsional menyusun transaksi dan memverifikasi tanda tangan yang diberikan tanpa kunci atau jaringan. Ini bukan penanda tangan atau perintah node. Batas pembayaran P2WPKH berlaku pada format contoh, bukan node. Dompet pribadi yang ada tetap tersedia.</p>
+<h2>API RPC dan HTTP</h2>
+<p>validateaddress memeriksa checksum dan jaringan pilihan. decoded_only dari decoderawtransaction hanya berarti penguraian, bukan keabsahan tanda tangan atau konfirmasi. Output OP_RETURN menyimpan data bagi program eksternal. Node menyediakan kueri biaya, pemeriksaan sebelum pengiriman, status penggantian RBF, dan data sesuai urutan blok. Pengganti divalidasi sebelum transaksi tertunda dihapus. Multitanda tangan dan keluaran terkunci telah diterapkan untuk pengujian aktivasi terpisah; belum aktif di jaringan publik.</p>
+<h2>Autentikasi dan batas</h2>
+<p>Aktifkan RPC secara eksplisit pada loopback numerik <code>127.0.0.1:18443</code> dengan token Bearer privat. Tidak ada pembukaan kunci dompet atau penandatanganan jarak jauh. Gunakan layanan lokal atau terowongan terautentikasi; permintaan browser Origin/Referer ditolak. JSON-RPC memakai POST <code>/rpc</code>, objek/array <code>params</code>, dan <code>id</code>; notifikasi mengembalikan HTTP 204. Batas: badan 8004096 byte, header 8192, batch 16, permintaan bersamaan 16, tenggat 10 detik; limit 1–1000, offset 0–1000000. Ada 28 metode dan 11 rute REST.</p>
+<h2>Jumlah dan output tersedia</h2>
+<p><code>_units</code> adalah satuan terkecil bilangan bulat; <code>_smw</code> teks 8 desimal; <code>_dora</code> alias kompatibilitas. Tidak ada kolom jumlah <code>_sumuww</code>. 1 SMW = 100000000 satuan. <code>gettxout</code> tidak memiliki <code>spendable</code> dan dapat mengembalikan output coinbase belum matang. Perlu minimal 100 konfirmasi untuk dipakai pada blok berikutnya. Saring <code>listunspent</code> dengan <code>spendable</code>; available pada <code>getaddressbalance</code> mengecualikan dana belum matang dan yang dipakai transaksi tertunda. Output mempool baru belum terkonfirmasi. Periksa ujung rantai antarlaman dan validasi ulang input terpilih.</p>
+<p>1 SMW = 100.000.000 yugeon. Biaya otomatis menawarkan tiga tingkat berdasarkan pengamatan lokal, tanpa menjamin waktu konfirmasi. Anda dapat memasukkan tarif yugeon/vB secara manual. Periksa biaya akhir dan total dalam SMW sebelum mengirim. Transaksi yang ditolak tidak mengurangi saldo.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Biaya otomatis mempertimbangkan volume data tertunda, kapasitas blok, dan prioritas transaksi. Biaya blok lama tidak digunakan. Saat antrean pendek, tarif minimum dipertahankan. Pratinjau diperbarui; konfirmasi akhir menetapkan biaya. Pengamatan mencakup node lokal yang terhubung, bukan semua node.</p>
+<p>Riwayat penggantian yang dicatat node ini tetap tersimpan setelah dompet dimulai ulang. Transaksi yang dihapus tidak memengaruhi saldo.</p>
+<p>Riwayat penambangan memisahkan penerbitan baru, biaya transaksi, dan total imbalan setiap blok. Jumlah yang diterima dompet Anda ditampilkan terpisah. Klaim sebagian tidak menentukan pembagian kedua komponen. Node menyediakan 28 metode RPC, termasuk perkiraan biaya, serta memvalidasi dan meneruskan transaksi bertanda tangan.</p>
+<h2>Pencarian transaksi dan blok</h2>
+<p><code>getrawtransaction</code> mencari rantai aktif dan mempool, bukan transaksi yang hanya ada di cabang yatim. Input menunjuk output terdahulu, bukan satu alamat pengirim unik. <code>getblock</code> menerima <code>verbose</code> Boolean; blok tidak aktif yang tersimpan memiliki <code>active=false</code>, <code>confirmations=-1</code>. Transaksi mentahnya tetap dapat diakses melalui hash blok. <code>findspendingtransaction</code> hanya mencari pembelanjaan terkonfirmasi pada rantai aktif; null bukan bukti ketersediaan. Periksa <code>gettxout</code> dengan <code>include_mempool=true</code>. Konfirmasi dan status aktif bisa berubah setelah reorganisasi.</p>
+<h2>Verifikasi</h2>
+<p>Pasang dependensi lalu jalankan python examples/node_contract.py dari sumber. Kunci uji publik dan regtest sementara menguji pengiriman, penolakan, konfirmasi, reorganisasi, dan persistensi. Tidak ada dana nyata, profil pengguna, atau penanda tangan perangkat keras yang digunakan.</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="README.html">Dokumentasi</a> · <a href="RPC_API.html">API RPC dan HTTP</a> · <a href="NETWORK_RUNBOOK.html">Operasi node</a> · <a href="RELEASE_NOTES.html">Catatan versi</a> · <a href="EXCHANGE_EXAMPLES.html">Verifikasi</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">Referensi lengkap bahasa Inggris</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

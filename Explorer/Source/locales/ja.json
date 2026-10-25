@@ -180,5 +180,14 @@
   "share": "ブロックシェア (%)",
   "knownfees": "既知の取引手数料",
   "rewardsubsidy": "最大ブロック補助金",
-  "pendingstats": "ローカル メモリプール統計"
+  "pendingstats": "ローカル メモリプール統計",
+  "spendingconditions": "支出条件",
+  "decodedonly": "スクリプトの解析結果です。支出可能かどうかは検証していません。",
+  "rewardissuance": "新規発行報酬（ブロック）",
+  "rewardfees": "取引手数料報酬（ブロック）",
+  "rewardtotalblock": "ブロック報酬合計",
+  "rewardlimit": "ブロックの発行上限",
+  "rewardavailablefees": "ブロックの手数料合計",
+  "rewardunclaimed": "未請求の報酬",
+  "rewardpartial": "報酬の一部のみ請求"
 }

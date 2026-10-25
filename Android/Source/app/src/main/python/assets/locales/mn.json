@@ -293,5 +293,22 @@
   "Block hash": "Блокийн хэш",
   "All blocks": "Бүх блок",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Эхний блокоос гинжний одоогийн сүүлийн блок хүртэлх бүх зангилааны баталгаажсан блокууд.",
-  "Search": "Хайх"
+  "Search": "Хайх",
+  "Fee rate (yugeon/vB)": "Шимтгэлийн хэмжээ (yugeon/vB)",
+  "Slow": "Удаан",
+  "Normal": "Ердийн",
+  "Fast": "Хурдан",
+  "Manual": "Гараар",
+  "Check the fee rate and wallet limits.": "Шимтгэлийн хэмжээ болон түрийвчийн хязгаарыг шалгана уу.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Дотоод хүлээлт: {0} vB · {1} yugeon/vB · зорилт: {2} блок",
+  "Replaced · not applied": "Солигдсон · үлдэгдэлд нөлөөлөхгүй",
+  "Replaced by {0}": "Орлуулсан гүйлгээ: {0}",
+  "Removed after parent replacement": "Эх гүйлгээ солигдсон тул хасагдсан",
+  "New issuance (block)": "Блокийн шинэ гаргалт",
+  "Transaction fees (block)": "Блокийн гүйлгээний шимтгэл",
+  "Total block reward": "Блокийн нийт шагнал",
+  "Issuance limit (block)": "Блокийн гаргалтын хязгаар",
+  "Available fees (block)": "Блокийн боломжит шимтгэл",
+  "Unclaimed reward": "Аваагүй шагнал",
+  "Reward not fully claimed": "Шагналыг хэсэгчлэн авсан"
 }

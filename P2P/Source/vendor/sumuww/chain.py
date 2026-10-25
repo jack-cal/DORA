@@ -156,8 +156,10 @@ def _legacy_sigops(script: bytes) -> int:
 
 
 class Chain:
-    def __init__(self, database: str | Path, *, clock=None, fault_hook=None, network='regtest', boundary_activation=None, htlc_activation=None):
+    def __init__(self, database: str | Path, *, clock=None, fault_hook=None, network='regtest', boundary_activation=None, htlc_activation=None, mempool_policy=None, spending_activation=None):
         self.network = get_network(network)
+        from .mempool_policy import MempoolPolicy
+        self.mempool_policy = mempool_policy or MempoolPolicy(minimum_rate=0 if self.network.name == 'regtest' else 1000)
         from .htlc_policy import activation_for
         self.htlc_activation = activation_for(self.network, htlc_activation)
         self.database = Path(database)
@@ -175,6 +177,9 @@ class Chain:
             self.connection.execute('PRAGMA synchronous=FULL')
             self.connection.execute('PRAGMA foreign_keys=ON')
             self._initialize()
+            self.connection.execute('CREATE TABLE IF NOT EXISTS block_reward_fees (blockhash BLOB PRIMARY KEY, fees INTEGER NOT NULL)')
+            self.connection.execute('CREATE TABLE IF NOT EXISTS mempool_replacements (old_txid BLOB PRIMARY KEY, new_txid BLOB NOT NULL, reason TEXT NOT NULL, seen INTEGER NOT NULL)')
+            self.connection.execute('CREATE TABLE IF NOT EXISTS mempool_replacement_effects (old_txid BLOB PRIMARY KEY, effects BLOB NOT NULL)')
             from .link_state import LinkState as BoundaryState
             if self.network.name == 'dora':
                 if boundary_activation not in (None, 9000): raise StorageError('Public boundary activation is fixed at 9000')
@@ -184,13 +189,21 @@ class Chain:
             self.boundary=BoundaryState(self,boundary_activation)
             from .htlc_policy import HtlcPolicy
             self.htlc_policy=HtlcPolicy(self,self.htlc_activation)
+            from .spending_policy import SpendingPolicy
+            self.spending_policy = SpendingPolicy(self, spending_activation)
             self.verify_persisted_state()
             self.boundary.verify_storage()
             self.connection.execute('BEGIN IMMEDIATE')
             try:
+                verified_branches = dict(self._branch_entries())
+                # Rebuild derived reward data only after the existing chain passed replay.
+                self.connection.executemany('INSERT OR REPLACE INTO block_reward_fees VALUES (?,?)', self._verified_reward_fees.items())
+                self._verified_reward_fees = {}
                 # The mempool is recoverable local policy state, not consensus state.
                 self._rebuild_mempool()
+                cache_token = self._path_cache_token()
                 self.connection.execute('COMMIT')
+                self._publish_branches(cache_token, verified_branches, ())
             except BaseException:
                 self.connection.execute('ROLLBACK')
                 raise
@@ -423,6 +436,14 @@ class Chain:
             branch = self._branch_entries(token).get(block_hash)
             if branch is not None:
                 return branch[1]
+            if cached is not None and cached[0] == token:
+                # Proof jobs revisit many old parents. Their exact ancestry is
+                # already validated in this immutable, same-snapshot path.
+                # Match the hash as well as height; a fork must never borrow
+                # another branch's prefix. SQL edits invalidate the token.
+                height = self._row(block_hash)[2]
+                if 0 <= height < len(cached[1]) and cached[1][height][0][0] == block_hash:
+                    return cached[1][:height + 1]
             path = self._read_index_path(block_hash)
             if block_hash == self.tip_hash:
                 self._indexed_path_cache = (token, path)
@@ -544,7 +565,15 @@ class Chain:
         if fee < 0:
             raise InvalidTransaction('Transaction creates value')
         for index, coin in enumerate(coins):
-            if self.htlc_policy.active(height):
+            template = None
+            if self.spending_policy.active(height) and coin.output.script_pubkey[:2] == b'\x00\x20':
+                from .spending import SpendingTemplate
+                try: template = SpendingTemplate.parse(transaction.inputs[index].witness[-1])
+                except (ValueError, TypeError, IndexError): pass
+            if template is not None:
+                from .spending import verify_spend as verify_template
+                authorized = verify_template(transaction, index, coin.output)
+            elif self.htlc_policy.active(height):
                 from .htlc import verify_spend
                 authorized = verify_spend(transaction, index, coin.output)
             else:
@@ -577,7 +606,7 @@ class Chain:
         if check_boundary:
             self.boundary.validate(block,path)
 
-    def _connect(self, block, state, path, *, check_future=True, check_boundary=True):
+    def _connect(self, block, state, path, *, check_future=True, check_boundary=True, reward_fees=None):
         self._validate_block_header(block, path, check_future=check_future,check_boundary=check_boundary)
         height = len(path)
         if not block.transactions or not block.transactions[0].is_coinbase() or any(t.is_coinbase() for t in block.transactions[1:]):
@@ -614,15 +643,17 @@ class Chain:
             raise ValidationError('Block sigops cost exceeds maximum')
         if _sum(o.value for o in coinbase.outputs) > subsidy(height) + fees:
             raise ValidationError('Coinbase overclaims subsidy and fees')
+        if reward_fees is not None:
+            reward_fees[block.block_hash()] = fees
         for index, output in enumerate(coinbase.outputs):
             if not (output.script_pubkey.startswith(b'\x6a') or len(output.script_pubkey) > 10_000):
                 state[(coinbase.txid(), index)] = Coin(output, height, True)
         return state
 
-    def _replay(self, path):
+    def _replay(self, path, reward_fees=None):
         state = _CoinState()
         for index in range(1, len(path)):
-            self._connect(path[index][1], state, _PathPrefix(path, 0, index), check_future=False)
+            self._connect(path[index][1], state, _PathPrefix(path, 0, index), check_future=False, reward_fees=reward_fees)
         return state
 
     def _branch_entries(self, token=None):
@@ -654,13 +685,13 @@ class Chain:
                 del entries[next(iter(entries))]
         self._validated_branch_cache = (token, entries)
 
-    def _validated_state(self, block_hash, path):
+    def _validated_state(self, block_hash, path, reward_fees=None):
         cached = self._branch_entries().get(block_hash)
         if cached is not None:
             return cached[0].copy()
         # Another writer's active extension keeps the existing incremental
         # path: authoritative UTXOs are loaded, not replayed from genesis.
-        return self._load_utxos() if block_hash == self.tip_hash else self._replay(path)
+        return self._load_utxos() if block_hash == self.tip_hash else self._replay(path, reward_fees)
 
     def verify_persisted_state(self):
         # Verification must independently reread every stored block, even if a
@@ -671,11 +702,13 @@ class Chain:
         try:
             tip = self.tip_hash
             path = self._path(tip)
-            expected = self._replay(path)
+            reward_fees = {}
+            expected = self._replay(path, reward_fees)
             if expected != self._load_utxos():
                 raise StorageError('Stored UTXO does not match verified active-chain replay')
             token = self._path_cache_token()
             self.connection.execute('COMMIT')
+            self._verified_reward_fees = reward_fees
             self._publish_branches(token, {}, ((tip, expected, path),))
         except BaseException:
             self._indexed_path_cache = None
@@ -725,11 +758,12 @@ class Chain:
             self._validate_block_header(block, path)
             old_tip = self.tip_hash
             extends_active = block.header.previous_hash == old_tip
-            state = self._validated_state(block.header.previous_hash, path)
+            reward_fees = {}
+            state = self._validated_state(block.header.previous_hash, path, reward_fees)
             fully_replayed = not extends_active or block.header.previous_hash in prior_branches
             parent_state = state.copy() if fully_replayed else None
             try:
-                new_state = self._connect(block, state, path)
+                new_state = self._connect(block, state, path, reward_fees=reward_fees)
             except (TransientValidationError, UnsupportedFeature):
                 raise
             except ValidationError as error:
@@ -741,6 +775,7 @@ class Chain:
                 raise InvalidBlock('Boundary candidate does not advance current verified work')
             saved_row = (digest, block.header.previous_hash, len(path), str(work), raw)
             c.execute('INSERT INTO blocks VALUES (?,?,?,?,?)', saved_row)
+            c.executemany('INSERT OR REPLACE INTO block_reward_fees VALUES (?,?)', reward_fees.items())
             self.boundary.store(block,len(path))
             new_path = path + ((saved_row, block),)
             # Mempool rebuilding adds pending spends to its supplied dictionary;
@@ -815,7 +850,8 @@ class Chain:
                     continue
                 trial = state.copy()
                 try:
-                    self._apply_transaction(tx, trial, len(path), path)
+                    fee = self._apply_transaction(tx, trial, len(path), path)
+                    self.mempool_policy.check_fee(tx, fee)
                 except ValidationError:
                     pending.append(tx)
                     continue
@@ -830,14 +866,14 @@ class Chain:
                 break
             candidates = pending
 
-    def submit_transaction(self, transaction, *, before_submit=None):
+    def submit_transaction(self, transaction, *, before_submit=None, test_only=False, allow_replacement=True):
+        from .mempool_policy import replacement, vsize, MAX_REPLACEMENT_EFFECT_BYTES
         self.connection.execute('BEGIN IMMEDIATE')
         try:
-            # Optional local wallet policy runs under the same write lock as
-            # submission, so a concurrent chain switch cannot bypass its check.
             if before_submit is not None:
                 before_submit(self)
-            if self.connection.execute('SELECT 1 FROM mempool WHERE txid=?', (transaction.txid(),)).fetchone():
+            digest = transaction.txid()
+            if self.connection.execute('SELECT 1 FROM mempool WHERE txid=?', (digest,)).fetchone():
                 raise InvalidTransaction('Transaction already in mempool')
             raw = transaction.serialize()
             tip = self.tip_hash
@@ -845,30 +881,116 @@ class Chain:
             cached = getattr(self, '_validated_mempool_cache', None)
             if cached is not None and cached[0] == token:
                 _, verified_state, path, count, size = cached
-                # Rejections must not mutate the last committed overlay.
                 state = verified_state.copy()
             else:
                 entries = list(self.connection.execute('SELECT raw FROM mempool ORDER BY id'))
                 count, size = len(entries), sum(len(row[0]) for row in entries)
                 state = path = None
-            if count >= MAX_MEMPOOL_TRANSACTIONS or size + len(raw) > MAX_MEMPOOL_BYTES:
-                raise MempoolFull('Local mempool resource limit')
-            if state is None:
-                state, path = self._state_for(tip)
-                for row in entries:
-                    self._apply_transaction(Transaction.deserialize(row[0]), state, len(path), path)
-            self._apply_transaction(transaction, state, len(path), path)
-            self.connection.execute('INSERT INTO mempool(txid,raw) VALUES (?,?)', (transaction.txid(), raw))
-            # Capture while our write lock excludes other commits. Reading the
-            # token after COMMIT could tag this old overlay with a newer writer's
-            # data_version and incorrectly accept a spent input next time.
+            removed = set()
+            try:
+                if count >= MAX_MEMPOOL_TRANSACTIONS or size + len(raw) > MAX_MEMPOOL_BYTES:
+                    raise MempoolFull('Local mempool resource limit')
+                if state is None:
+                    state, path = self._state_for(tip)
+                    for row in entries:
+                        self._apply_transaction(Transaction.deserialize(row[0]), state, len(path), path)
+                if all((i.prev_txid,i.prev_index) in state for i in transaction.inputs):
+                    preliminary_fee = sum(state[(i.prev_txid,i.prev_index)].output.value for i in transaction.inputs) - sum(o.value for o in transaction.outputs)
+                    self.mempool_policy.check_fee(transaction, preliminary_fee)
+                fee = self._apply_transaction(transaction, state, len(path), path)
+                self.mempool_policy.check_fee(transaction, fee)
+            except (InvalidTransaction, MempoolFull):
+                if not allow_replacement: raise
+                pool = tuple(Transaction.deserialize(row[0]) for row in
+                             self.connection.execute('SELECT raw FROM mempool ORDER BY id'))
+                result = replacement(self, transaction, pool)
+                if result is None:
+                    raise
+                state, path, kept, removed, fee, effects = result
+                count, size = len(kept), sum(len(tx.serialize()) for tx in kept)
+                if count >= MAX_MEMPOOL_TRANSACTIONS or size + len(raw) > MAX_MEMPOOL_BYTES:
+                    raise MempoolFull('Local mempool resource limit')
+            if test_only:
+                self.connection.execute('ROLLBACK')
+                return {'txid': hash_to_display(digest), 'allowed': True,
+                        'fee_units': fee, 'vsize': vsize(transaction),
+                        'replaces': sorted(hash_to_display(item) for item in removed)}
+            if removed:
+                points = {i.outpoint() for i in transaction.inputs}
+                direct = {tx.txid() for tx in pool if points.intersection(i.outpoint() for i in tx.inputs)}
+                self.connection.executemany('INSERT OR REPLACE INTO mempool_replacements VALUES (?,?,?,?)',
+                    ((item, digest, 'conflict' if item in direct else 'ancestor_replaced', int(self.clock())) for item in removed))
+                self.connection.execute('DELETE FROM mempool_replacements WHERE old_txid NOT IN (SELECT old_txid FROM mempool_replacements ORDER BY seen DESC,rowid DESC LIMIT 1000)')
+                self.connection.executemany('INSERT OR REPLACE INTO mempool_replacement_effects VALUES (?,?)', effects.items())
+                self.connection.execute('DELETE FROM mempool_replacement_effects WHERE old_txid NOT IN (SELECT old_txid FROM mempool_replacements)')
+                retained = 0
+                evicted = []
+                for old, length in self.connection.execute('''SELECT e.old_txid,length(e.effects) FROM mempool_replacement_effects e
+                    JOIN mempool_replacements r ON r.old_txid=e.old_txid ORDER BY r.seen DESC,r.rowid DESC'''):
+                    retained += length
+                    if retained > MAX_REPLACEMENT_EFFECT_BYTES: evicted.append((old,))
+                self.connection.executemany('DELETE FROM mempool_replacement_effects WHERE old_txid=?', evicted)
+                self.connection.executemany('DELETE FROM mempool WHERE txid=?', ((item,) for item in removed))
+            self.connection.execute('INSERT INTO mempool(txid,raw) VALUES (?,?)', (digest, raw))
+            # Capture under the write lock: another connection may commit as
+            # soon as COMMIT returns. Never tag an old overlay with its version.
             committed_token = (*self._path_cache_token(), tip)
             self.connection.execute('COMMIT')
             self._validated_mempool_cache = (committed_token, state, path, count + 1, size + len(raw))
-            return transaction.txid()
+            return digest
         except BaseException:
-            self.connection.execute('ROLLBACK')
+            if self.connection.in_transaction:
+                self.connection.execute('ROLLBACK')
             raise
+
+    def test_mempool_accept(self, transaction):
+        from .mempool_policy import MempoolPolicyError, vsize
+        try:
+            return self.submit_transaction(transaction, test_only=True)
+        except (ValidationError, UnsupportedFeature) as error:
+            category = ('capacity' if isinstance(error, MempoolFull) else
+                        'policy' if isinstance(error, MempoolPolicyError) else 'validation')
+            return {'txid': hash_to_display(transaction.txid()), 'allowed': False,
+                    'vsize': vsize(transaction), 'reject_category': category,
+                    'reject_reason': str(error)}
+
+    def mempool_entry(self, digest):
+        from .mempool_policy import vsize
+        with self.read_snapshot():
+            pool = self.mempool_transactions()
+            values = {point: coin.output.value for point, coin in self._load_utxos().items()}
+            ids = {tx.txid() for tx in pool}
+            for tx in pool:
+                fee = sum(values[(i.prev_txid, i.prev_index)] for i in tx.inputs) - sum(o.value for o in tx.outputs)
+                values.update({(tx.txid(), i): out.value for i, out in enumerate(tx.outputs)})
+                if tx.txid() == digest:
+                    descendants = {digest}
+                    while True:
+                        following = {item.txid() for item in pool if any(i.prev_txid in descendants for i in item.inputs)}
+                        if following.issubset(descendants): break
+                        descendants.update(following)
+                    return {'txid': hash_to_display(digest), 'fee_units': fee, 'amount_unit': 'yugeon',
+                            'vsize': vsize(tx), 'weight': tx.weight(),
+                            'depends': sorted({hash_to_display(i.prev_txid) for i in tx.inputs if i.prev_txid in ids}),
+                            'descendant_count': len(descendants) - 1, 'replaceable': True}
+            return None
+
+    def transaction_status(self, digest):
+        with self.read_snapshot():
+            tip = self.tip_hash
+            path = self._path(tip)
+            result = {'txid': hash_to_display(digest), 'bestblockhash': hash_to_display(tip),
+                      'height': len(path) - 1, 'confirmations': 0}
+            for height, (_, block) in enumerate(path):
+                if any(tx.txid() == digest for tx in block.transactions):
+                    return dict(result, status='confirmed', blockhash=hash_to_display(block.block_hash()),
+                                block_height=height, confirmations=len(path)-height)
+            if self.has_mempool_transaction(digest):
+                return dict(result, status='mempool')
+            event = self.connection.execute('SELECT new_txid,reason FROM mempool_replacements WHERE old_txid=?', (digest,)).fetchone()
+            if event:
+                return dict(result, status='replaced', replaced_by=hash_to_display(event[0]), reason=event[1])
+            return dict(result, status='unknown')
 
     def mempool_transactions(self):
         with self.read_snapshot():
@@ -889,7 +1011,13 @@ class Chain:
         legacy = sum(_legacy_sigops(i.script_sig) for i in transaction.inputs)
         legacy += sum(_legacy_sigops(o.script_pubkey) for o in transaction.outputs)
         # The caller validates all normal inputs as native P2WPKH first.
-        return legacy * 4 + (0 if transaction.is_coinbase() else len(transaction.inputs))
+        witness_cost = 0
+        if not transaction.is_coinbase():
+            from .spending import SpendingTemplate
+            for item in transaction.inputs:
+                try: witness_cost += len(SpendingTemplate.parse(item.witness[-1]).pubkeys)
+                except (ValueError, TypeError, IndexError): witness_cost += 1
+        return legacy * 4 + witness_cost
 
     def _select_mempool_transactions(self, pay_script, state, path, extra_nonce):
         """Select by ancestor-package fee/vbyte, with FIFO ties and exact budgets.
@@ -1251,7 +1379,7 @@ class Chain:
                     'target_timespan': self.network.target_timespan,
                     'utxos': self.connection.execute('SELECT COUNT(*) FROM utxos').fetchone()[0],
                     'mempool': self.connection.execute('SELECT COUNT(*) FROM mempool').fetchone()[0],
-                    'spending_support': ('native P2WPKH / SIGHASH_ALL plus exact P2WSH HTLC v1' if self.htlc_policy.active(row[2]) else 'native P2WPKH / SIGHASH_ALL only'), 'conditional_spend': self.htlc_policy.info(row[2]), 'public_network_ready': False}
+                    'spending_support': ('native P2WPKH / SIGHASH_ALL plus exact P2WSH HTLC v1' if self.htlc_policy.active(row[2]) else 'native P2WPKH / SIGHASH_ALL only'), 'conditional_spend': self.htlc_policy.info(row[2]), 'extended_spending': self.spending_policy.info(row[2]), 'public_network_ready': False}
 
     def info(self):
         with self.read_snapshot():
@@ -1269,4 +1397,4 @@ class Chain:
                     'target_timespan': self.network.target_timespan,
                     'utxos': len(self.list_utxos()), 'utxo_commitment': self.state_commitment(),
                     'mempool': self.connection.execute('SELECT COUNT(*) FROM mempool').fetchone()[0],
-                    'spending_support': ('native P2WPKH / SIGHASH_ALL plus exact P2WSH HTLC v1' if self.htlc_policy.active(row[2]) else 'native P2WPKH / SIGHASH_ALL only'), 'conditional_spend': self.htlc_policy.info(row[2]), 'public_network_ready': False}
+                    'spending_support': ('native P2WPKH / SIGHASH_ALL plus exact P2WSH HTLC v1' if self.htlc_policy.active(row[2]) else 'native P2WPKH / SIGHASH_ALL only'), 'conditional_spend': self.htlc_policy.info(row[2]), 'extended_spending': self.spending_policy.info(row[2]), 'public_network_ready': False}

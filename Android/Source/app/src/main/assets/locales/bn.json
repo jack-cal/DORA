@@ -293,5 +293,22 @@
   "Block hash": "ব্লকের হ্যাশ",
   "All blocks": "সব ব্লক",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "জেনেসিস ব্লক থেকে চেইনের বর্তমান শেষ ব্লক পর্যন্ত সব নোডের যাচাইকৃত ব্লক।",
-  "Search": "খুঁজুন"
+  "Search": "খুঁজুন",
+  "Fee rate (yugeon/vB)": "ফি হার (yugeon/vB)",
+  "Slow": "ধীর",
+  "Normal": "স্বাভাবিক",
+  "Fast": "দ্রুত",
+  "Manual": "নিজে নির্ধারণ",
+  "Check the fee rate and wallet limits.": "ফি হার ও ওয়ালেটের সীমা পরীক্ষা করুন।",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "স্থানীয় সারি: {0} vB · {1} yugeon/vB · লক্ষ্য: {2} ব্লক",
+  "Replaced · not applied": "প্রতিস্থাপিত · ব্যালেন্সে প্রভাব নেই",
+  "Replaced by {0}": "প্রতিস্থাপনকারী লেনদেন: {0}",
+  "Removed after parent replacement": "মূল লেনদেন প্রতিস্থাপনের পরে সরানো হয়েছে",
+  "New issuance (block)": "ব্লকের নতুন ইস্যু",
+  "Transaction fees (block)": "ব্লকের লেনদেন ফি",
+  "Total block reward": "ব্লকের মোট পুরস্কার",
+  "Issuance limit (block)": "ব্লকের ইস্যু সীমা",
+  "Available fees (block)": "ব্লকের উপলব্ধ ফি",
+  "Unclaimed reward": "দাবি না করা পুরস্কার",
+  "Reward not fully claimed": "পুরস্কারের আংশিক দাবি"
 }

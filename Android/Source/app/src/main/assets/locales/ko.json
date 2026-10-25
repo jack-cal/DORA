@@ -293,5 +293,22 @@
   "Block hash": "블록 해시",
   "All blocks": "전체 블록",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "제네시스부터 현재까지 검증된 모든 노드의 블록을 확인합니다.",
-  "Search": "검색"
+  "Search": "검색",
+  "Fee rate (yugeon/vB)": "수수료율 (yugeon/vB)",
+  "Slow": "느림",
+  "Normal": "보통",
+  "Fast": "빠름",
+  "Manual": "직접 설정",
+  "Check the fee rate and wallet limits.": "수수료율과 지갑의 수수료 한도를 확인하세요.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "내 노드 대기량: {0} vB · {1} yugeon/vB · 목표: {2}블록",
+  "Replaced · not applied": "교체됨 · 잔액에 미반영",
+  "Replaced by {0}": "교체한 거래: {0}",
+  "Removed after parent replacement": "선행 거래가 교체되어 제거됨",
+  "New issuance (block)": "신규 발행 보상(블록)",
+  "Transaction fees (block)": "거래 수수료 보상(블록)",
+  "Total block reward": "블록 총보상",
+  "Issuance limit (block)": "블록 신규 발행 한도",
+  "Available fees (block)": "블록 수수료 합계",
+  "Unclaimed reward": "미청구 보상",
+  "Reward not fully claimed": "보상 일부만 청구됨"
 }

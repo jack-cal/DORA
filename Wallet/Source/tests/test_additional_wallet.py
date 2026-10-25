@@ -5,7 +5,7 @@ from pathlib import Path
 import time
 import unittest
 
-from standalone_wallet_flow import WalletFlow, runtime, keystore, Chain, decode_address
+from test_wallet_flow import WalletFlow, runtime, keystore, Chain, decode_address
 
 class AdditionalWalletChecks(WalletFlow):
     # Keep the original four checks in their own suite, not inherited duplicates.

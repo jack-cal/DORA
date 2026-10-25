@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Avgiftssats (yugeon/vB)",
+    "Slow": "Långsam",
+    "Normal": "Normal",
+    "Fast": "Snabb",
+    "Manual": "Manuell",
+    "Check the fee rate and wallet limits.": "Kontrollera avgiftssatsen och plånbokens gränser."
+  },
+  "wallet": "Automatiska avgifter utgår från väntande datamängd, blockkapacitet och transaktionsprioritet. Avgifter i tidigare block används inte. Vid kort kö gäller minimiavgiften. Förhandsvisningen uppdateras; den slutliga bekräftelsen låser avgiften. Uppgifterna gäller den anslutna lokala noden, inte alla noder.\n\nErsättningar som denna nod har registrerat finns kvar i historiken efter omstart av plånboken. Borttagna transaktioner påverkar inte saldot.\n\nUtvinningshistoriken visar ny utgivning, avgifter och total belöning för varje block var för sig. Beloppet din plånbok tar emot visas separat. Vid delvis uttag antas ingen fördelning mellan delarna. Noden erbjuder 28 RPC-metoder, inklusive avgiftsuppskattning, och kontrollerar och vidarebefordrar signerade transaktioner.",
+  "node": "Noden lägger till avgiftsfrågor, kontroll före sändning, status för RBF-ersättning och data i blockordning. Ersättningen valideras innan väntande transaktioner tas bort. Flera signaturer och låsta utdata är implementerade för isolerade aktiveringstester; de är ännu inte aktiva i det offentliga nätverket.",
+  "live_preview": "Lokal kö: {0} vB · {1} yugeon/vB · mål: {2} block"
+}

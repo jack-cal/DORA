@@ -180,5 +180,14 @@
   "share": "区块份额 (%)",
   "knownfees": "已知交易费用",
   "rewardsubsidy": "最高整笔补贴",
-  "pendingstats": "本地内存池统计"
+  "pendingstats": "本地内存池统计",
+  "spendingconditions": "支出条件",
+  "decodedonly": "仅解析脚本，未验证是否可以支出。",
+  "rewardissuance": "区块新增发行奖励",
+  "rewardfees": "区块交易手续费奖励",
+  "rewardtotalblock": "区块总奖励",
+  "rewardlimit": "区块发行上限",
+  "rewardavailablefees": "区块可领取手续费",
+  "rewardunclaimed": "未领取奖励",
+  "rewardpartial": "仅领取了部分奖励"
 }

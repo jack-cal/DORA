@@ -414,6 +414,8 @@ class _RpcDialog(simpledialog.Dialog):
 def _error_message(error: BaseException) -> str:
     """Translate known failures without displaying arbitrary backend contents."""
     description = str(error).lower()
+    if any(value in description for value in ('fee rate', 'manual fee exceeds', 'relay minimum', 'local relay minimum')):
+        return tr('Check the fee rate and wallet limits.')
     if 'local mempool resource limit' in description:
         return tr('This node\'s pending transaction pool is full. Your transfer was not queued. Try again after pending transactions are confirmed.')
     if 'connect and synchronize' in description:
@@ -487,14 +489,17 @@ class _HistoryDialog(tk.Toplevel):
                wraplength=980).grid(row=0, column=0, columnspan=2, sticky='ew')
         _label(body, text=tr('Current chain · mining rewards, incoming payments and sends'),
                wraplength=980).grid(row=1, column=0, columnspan=2, sticky='ew', pady=(4, 10))
-        self.table = VerticalTreeview(body, columns=('kind', 'amount', 'confirmations', 'height', 'txid'),
+        self.table = VerticalTreeview(body, columns=('kind', 'amount', 'confirmations', 'height', 'txid', 'subsidy', 'fees', 'reward'), displaycolumns=('kind','amount','subsidy','fees','reward','confirmations','height','txid'),
                                   show='headings', height=13, selectmode='browse')
         for name, caption, width, anchor in (
                 ('kind', tr('Transaction'), 130, 'w'),
                 ('amount', tr('Change SMW'), 150, 'e'),
                 ('confirmations', tr('Confirm'), 100, 'center'),
                 ('height', tr('Block height'), 100, 'center'),
-                ('txid', tr('Transaction ID'), 490, 'w')):
+                ('txid', tr('Transaction ID'), 490, 'w'),
+                ('subsidy', tr('New issuance (block)'), 170, 'e'),
+                ('fees', tr('Transaction fees (block)'), 170, 'e'),
+                ('reward', tr('Total block reward'), 170, 'e')):
             _heading(self.table, name, text=caption)
             self.table.column(name, width=width, minwidth=width, anchor=anchor, stretch=name == 'txid')
         self.table.grid(row=2, column=0, sticky='nsew')
@@ -581,6 +586,7 @@ class _HistoryDialog(tk.Toplevel):
 
     def _render(self):
         from .primitives import format_amount
+        from .rewards import reward_columns
         children = self.table.get_children()
         if children:
             self.table.delete(*children)
@@ -590,10 +596,12 @@ class _HistoryDialog(tk.Toplevel):
                 continue
             amount_text = ('−' if amount < 0 else '+' if amount > 0 else '') + format_amount(abs(amount))
             kind = tr('Mining reward') if transaction.get('coinbase') else tr('Send') if amount < 0 else tr('Incoming') if amount > 0 else tr('Transaction')
+            if (transaction.get('mining_reward') or {}).get('allocation') == 'underclaimed':
+                kind += ' · ' + tr('Reward not fully claimed')
             pending = transaction.get('status') == 'pending'
-            confirmations = tr('Pending') if pending else tr('{0:,} conf.', transaction.get('confirmations', 0))
-            height = tr('Pending') if pending else transaction.get('height', '')
-            self.table.insert('', 'end', values=(kind, amount_text, confirmations, height, transaction.get('txid', '')))
+            confirmations = tr('Removed after parent replacement' if transaction.get('replacement_reason') == 'ancestor_replaced' else 'Replaced · not applied') if transaction.get('status') == 'replaced' else tr('Pending') if pending else tr('{0:,} conf.', transaction.get('confirmations', 0))
+            height = tr('Replaced by {0}', transaction.get('replaced_by', '')) if transaction.get('status') == 'replaced' else tr('Pending') if pending else transaction.get('height', '')
+            self.table.insert('', 'end', values=(kind, amount_text, confirmations, height, transaction.get('txid', '')) + reward_columns(transaction))
         if self.total:
             self.state_text.set(tr('Transactions {0:,}–{1:,} of {2:,} · Chain height {3:,}',
                                    self.offset + 1, self.offset + len(self.transactions), self.total, self.height))
@@ -849,10 +857,10 @@ class SumuwwApp:
         _label(send_card, text=tr('Send'), style='CardTitle.TLabel').grid(row=0, column=0, sticky='w', pady=(0, 5))
         self.send_address = LocalizedStringVar()
         self.send_amount = LocalizedStringVar()
-        self.send_fee = LocalizedStringVar(value='0.001')
+        self.send_fee = LocalizedStringVar(value='1')
         self.manual_fee = tk.BooleanVar(value=False)
         self.fee_mode_text = LocalizedStringVar(value=tr('Automatic · exact fee shown at confirmation'))
-        for column, caption in enumerate((tr('Recipient address'), tr('Amount SMW'), tr('Fee SMW'))):
+        for column, caption in enumerate((tr('Recipient address'), tr('Amount SMW'), tr('Fee rate (yugeon/vB)'))):
             _label(send_card, text=caption, style='CardMuted.TLabel', wraplength=440 if column == 0 else 140).grid(row=1, column=column, sticky='w', padx=(0 if column == 0 else 9, 0))
         self.send_to_entry = ttk.Entry(send_card, textvariable=self.send_address)
         self.amount_entry = ttk.Entry(send_card, textvariable=self.send_amount, width=13)
@@ -863,7 +871,11 @@ class SumuwwApp:
         self.send_button.grid(row=2, column=3, padx=(10, 0))
         self.manual_fee_button = _checkbutton(send_card, text=tr('Advanced: set fee manually'), variable=self.manual_fee,
                                              command=self._sync_controls)
-        self.manual_fee_button.grid(row=3, column=0, columnspan=2, sticky='w', pady=(5, 0))
+        self.manual_fee_button.grid(row=3, column=0, sticky='w', pady=(5, 0))
+        self.fee_preset = ttk.Combobox(send_card, values=[tr('Slow'), tr('Normal'), tr('Fast')], state='readonly', width=13)
+        self.fee_preset.current(1)
+        self.fee_preset.bind('<<ComboboxSelected>>', lambda _: self._sync_controls())
+        self.fee_preset.grid(row=3, column=1, padx=(9,0), sticky='w')
         _label(send_card, textvariable=self.fee_mode_text, style='CardMuted.TLabel',
                wraplength=350).grid(row=3, column=2, columnspan=2, sticky='w', padx=(9, 0), pady=(5, 0))
         _label(send_card, text=tr('Transactions affect the confirmed balance after inclusion in a block.'), style='CardMuted.TLabel', wraplength=870).grid(row=4, column=0, columnspan=4, sticky='w', pady=(6, 0))
@@ -932,14 +944,16 @@ class SumuwwApp:
         self.history_button = _button(history_actions, text=tr('My history'), command=self._open_history)
         self.history_button.pack(side='right', padx=(10, 0))
         _label(history_actions, text=tr('Last 10 · Confirmations follow the current chain'), style='CardMuted.TLabel', wraplength=250).pack(side='right')
-        self.transaction_table = VerticalTreeview(history_card, columns=('kind', 'amount', 'confirmations', 'txid'), show='headings', height=3, selectmode='browse')
-        for name, caption, width, anchor in (('kind', tr('Transaction'), 140, 'w'), ('amount', tr('Change SMW'), 150, 'e'), ('confirmations', tr('Confirm'), 110, 'center'), ('txid', tr('Transaction ID'), 410, 'w')):
+        self.transaction_table = VerticalTreeview(history_card, columns=('kind', 'amount', 'confirmations', 'txid', 'subsidy', 'fees', 'reward'), displaycolumns=('kind','amount','subsidy','fees','reward','confirmations','txid'), show='headings', height=3, selectmode='browse')
+        for name, caption, width, anchor in (('kind', tr('Transaction'), 140, 'w'), ('amount', tr('Change SMW'), 150, 'e'), ('confirmations', tr('Confirm'), 110, 'center'), ('txid', tr('Transaction ID'), 410, 'w'), ('subsidy', tr('New issuance (block)'), 170, 'e'), ('fees', tr('Transaction fees (block)'), 170, 'e'), ('reward', tr('Total block reward'), 170, 'e')):
             _heading(self.transaction_table, name, text=caption)
             self.transaction_table.column(name, width=width, minwidth=width, anchor=anchor, stretch=name == 'txid')
         self.transaction_table.grid(row=1, column=0, sticky='ew')
         history_scrollbar = ttk.Scrollbar(history_card, orient='vertical', command=self.transaction_table.yview)
         history_scrollbar.grid(row=1, column=1, sticky='ns')
-        self.transaction_table.configure(yscrollcommand=history_scrollbar.set)
+        history_horizontal = ttk.Scrollbar(history_card, orient='horizontal', command=self.transaction_table.xview)
+        history_horizontal.grid(row=2, column=0, sticky='ew')
+        self.transaction_table.configure(yscrollcommand=history_scrollbar.set, xscrollcommand=history_horizontal.set)
         self.footer_text = LocalizedStringVar(value=tr('Starting the node…'))
         self.footer = _label(outer, textvariable=self.footer_text, wraplength=920)
         self.footer.grid(row=7, column=0, sticky='ew')
@@ -1125,6 +1139,9 @@ class SumuwwApp:
         self.translator.set_language(language)
         set_translator(self.translator)
         self.language_choice.set(dict(LANGUAGES)[language])
+        preset_index = self.fee_preset.current()
+        self.fee_preset.configure(values=[tr('Slow'),tr('Normal'),tr('Fast')])
+        self.fee_preset.current(preset_index)
         saved = True
         try:
             save_language(language, self._language_path)
@@ -1327,6 +1344,8 @@ class SumuwwApp:
 
     def _status_failed(self, error):
         self._status_inflight = False
+        self._fee_snapshot = {}
+        self._sync_controls()
         if not self._closing and (not self._status_error_shown):
             self._message(tr('Could not read the status. ') + _error_message(error), error=True)
             self._status_error_shown = True
@@ -1336,6 +1355,7 @@ class SumuwwApp:
             return
         node = status.get('node') or {}
         self._node_snapshot = node
+        self._fee_snapshot = status.get("fees") or {}
         self._hardware_mode = ((status.get("mining") or {}).get("hardware") or {}).get("mode", "cpu")
         listen = node.get('listen') or {}
         if isinstance(listen, dict):
@@ -1487,6 +1507,7 @@ class SumuwwApp:
 
     def _show_transactions(self):
         from .primitives import format_amount
+        from .rewards import reward_columns
         children = self.transaction_table.get_children()
         if children:
             self.transaction_table.delete(*children)
@@ -1496,8 +1517,10 @@ class SumuwwApp:
                 continue
             amount_text = ('−' if amount < 0 else '+' if amount > 0 else '') + format_amount(abs(amount))
             kind = tr('Mining reward') if transaction.get('coinbase') else tr('Send') if amount < 0 else tr('Incoming') if amount > 0 else tr('Transaction')
-            confirmation_text = tr('Pending') if transaction.get('status') == 'pending' else tr('{0:,} conf.', transaction.get('confirmations', 0))
-            self.transaction_table.insert('', 'end', values=(kind, amount_text, confirmation_text, transaction.get('txid', '')))
+            if (transaction.get('mining_reward') or {}).get('allocation') == 'underclaimed':
+                kind += ' · ' + tr('Reward not fully claimed')
+            confirmation_text = tr('Removed after parent replacement' if transaction.get('replacement_reason') == 'ancestor_replaced' else 'Replaced · not applied') if transaction.get('status') == 'replaced' else tr('Pending') if transaction.get('status') == 'pending' else tr('{0:,} conf.', transaction.get('confirmations', 0))
+            self.transaction_table.insert('', 'end', values=(kind, amount_text, confirmation_text, transaction.get('txid', '')) + reward_columns(transaction))
 
     def _sync_controls(self):
         ready = self._started and (not (self._closing or self._busy or self._dialog_open or self._mining or self._mine_inflight))
@@ -1521,9 +1544,16 @@ class SumuwwApp:
         for entry in (self.send_to_entry, self.amount_entry):
             entry.configure(state='normal' if ready else 'disabled')
         self.manual_fee_button.configure(state='normal' if ready else 'disabled')
+        self.fee_preset.configure(state='readonly' if ready and not self.manual_fee.get() else 'disabled')
         self.fee_entry.configure(state=('normal' if self.manual_fee.get() else 'readonly') if ready else 'disabled')
         self.fee_mode_text.set(tr('Manual · use the entered fee') if self.manual_fee.get()
                                else tr('Automatic · exact fee shown at confirmation'))
+        preview = getattr(self, '_fee_snapshot', {})
+        if not self.manual_fee.get() and not self._busy and preview.get('rates'):
+            mode = ('slow', 'normal', 'fast')[max(0, self.fee_preset.current())]
+            self.send_fee.set(preview['rates'][mode])
+            self.fee_mode_text.set(tr('Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks',
+                preview['pending_vsize'], preview['rates'][mode], preview['target_blocks'][mode]))
         self.mine_start_button.configure(state='normal' if ready and wallet and self._mining_allowed() else 'disabled')
         self.backup_button.configure(state='normal' if ready and wallet else 'disabled')
         self.copy_button.configure(state='normal' if wallet and (not self._closing) else 'disabled')
@@ -1790,15 +1820,15 @@ class SumuwwApp:
             return
         address = self.send_address.get().strip()
         amount = self.send_amount.get().strip()
-        fee = self.send_fee.get().strip() if self.manual_fee.get() else None
+        fee = 'rate:' + self.send_fee.get().strip() if self.manual_fee.get() else 'auto:' + ('slow','normal','fast')[max(0,self.fee_preset.current())]
         try:
             from .address import decode_address
             from .primitives import parse_amount
             decode_address(address, network=getattr(self.service, 'network', self.network_name))
             if parse_amount(amount) <= 0:
                 raise ValueError('Payment amount must be positive')
-            if fee is not None:
-                parse_amount(fee)
+            if self.manual_fee.get() and not self.send_fee.get().strip():
+                raise ValueError('Enter a fee rate in yugeon/vB with at most three decimals')
         except (ValueError, TypeError) as error:
             messagebox.showerror(tr('Confirm transfer'), _error_message(error), parent=self.root)
             return
@@ -1829,7 +1859,6 @@ class SumuwwApp:
                 self._busy = False
                 return
             # The confirmation displays the exact signed transaction's amounts.
-            self.send_fee.set(quote['fee_smw'])
             self._dialog_open = True
             self._sync_controls()
             confirmation = tr('Send this transaction?\n\nRecipient address\n{0}\n\nAmount: {1} SMW\nFee: {2} SMW\nTotal debit: {3} SMW',

@@ -20,6 +20,7 @@ import secrets
 import socket
 import time
 
+from .mempool_policy import MempoolPolicyError
 from .block import Block
 from .boundary_runtime import BoundaryPolicyMismatch
 from .chain import Chain
@@ -2355,6 +2356,10 @@ class PeerNode:
                     woke += 1
                     if woke == 32:
                         break
+        except MempoolPolicyError:
+            # Local policy is not a permanent invalid-transaction verdict. A
+            # future announcement may be retried, but do not spin every 15 s.
+            self._stats['policy_rejections'] = self._stats.get('policy_rejections', 0) + 1
         except UnsupportedFeature:
             self._stats['unsupported_features'] += 1
         except ValidationError:

@@ -284,5 +284,22 @@
   "Do not show this help again.": "Do not show this help again.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nBenefit: Helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If this connection fails, direct connections stay disabled.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBenefit: Helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If this connection fails, direct connections stay disabled.\n\nI2P peers are required."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBenefit: Helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If this connection fails, direct connections stay disabled.\n\nI2P peers are required.",
+  "Fee rate (yugeon/vB)": "Fee rate (yugeon/vB)",
+  "Slow": "Slow",
+  "Normal": "Normal",
+  "Fast": "Fast",
+  "Manual": "Manual",
+  "Check the fee rate and wallet limits.": "Check the fee rate and wallet limits.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks",
+  "Replaced · not applied": "Replaced · not applied",
+  "Replaced by {0}": "Replaced by {0}",
+  "Removed after parent replacement": "Removed after parent replacement",
+  "New issuance (block)": "New issuance (block)",
+  "Transaction fees (block)": "Transaction fees (block)",
+  "Total block reward": "Total block reward",
+  "Issuance limit (block)": "Issuance limit (block)",
+  "Available fees (block)": "Available fees (block)",
+  "Unclaimed reward": "Unclaimed reward",
+  "Reward not fully claimed": "Reward not fully claimed"
 }

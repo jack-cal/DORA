@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Siirron tarkistus vanheni. Tarkista se uudelleen.",
   "Peers: {0} · Block: {1} · ": "Yhdistetyt solmut: {0} · Lohko: {1} · ",
   "{0} confirmations": "{0} vahvistukset",
-  "Select language": "Valitse kieli"
+  "Select language": "Valitse kieli",
+  "Fee rate (yugeon/vB)": "Maksutaso (yugeon/vB)",
+  "Slow": "Hidas",
+  "Normal": "Tavallinen",
+  "Fast": "Nopea",
+  "Manual": "Manuaalinen",
+  "Check the fee rate and wallet limits.": "Tarkista maksutaso ja lompakon rajat.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Paikallinen jono: {0} vB · {1} yugeon/vB · tavoite: {2} lohkoa",
+  "Replaced · not applied": "Korvattu · ei vaikutusta saldoon",
+  "Replaced by {0}": "Korvaava tapahtuma: {0}",
+  "Removed after parent replacement": "Poistettu edeltävän tapahtuman korvaamisen vuoksi",
+  "New issuance (block)": "Lohkon uusi liikkeeseenlasku",
+  "Transaction fees (block)": "Lohkon siirtomaksut",
+  "Total block reward": "Lohkon kokonaispalkkio",
+  "Issuance limit (block)": "Lohkon liikkeeseenlaskuraja",
+  "Available fees (block)": "Lohkon saatavilla olevat maksut",
+  "Unclaimed reward": "Lunastamaton palkkio",
+  "Reward not fully claimed": "Palkkio lunastettu osittain"
 }

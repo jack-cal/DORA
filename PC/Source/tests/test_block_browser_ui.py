@@ -6,7 +6,7 @@ import unittest
 
 from sumuww.app import SumuwwApp
 from sumuww.i18n import LANGUAGES,Translator,set_translator
-from test_app_history_v31 import HistoryFixtureService
+from tests.test_app_history_v31 import HistoryFixtureService
 
 class BlockBrowserUiTests(unittest.TestCase):
     def setUp(self):
@@ -74,6 +74,19 @@ class BlockBrowserUiTests(unittest.TestCase):
         self.browser.next.invoke()
         self.assertIsNone(self.browser.detail)
         self.assertEqual(0,self.service.mine_calls)
+
+    def test_block_reward_breakdown_and_outputs_expand_together(self):
+        from sumuww.rewards import reward_amounts
+        key=self.browser.rows[0]['hash']
+        data=self.service.block_transactions(key).result()
+        data['transactions'][0]['mining_reward']=reward_amounts(5_000_100_000,103,100_000)
+        self.browser.detail=data;self.browser.render_transactions()
+        self.assertFalse(self.browser.transactions.item('tx-0','open'))
+        self.browser.transactions.focus('tx-0');self.browser.expand_transaction()
+        children=self.browser.transactions.get_children('tx-0')
+        self.assertEqual(4,len(children))
+        values=[self.browser.transactions.item(child,'values')[0] for child in children]
+        self.assertEqual(['50.00000000 SMW','0.00100000 SMW','50.00100000 SMW','50.00000000'],values)
 
     def test_late_transaction_response_cannot_replace_new_selection(self):
         pending=[]

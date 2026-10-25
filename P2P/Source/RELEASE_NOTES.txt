@@ -1,4 +1,4 @@
-SUMUWW P2P 0.3.0 — Full and Light — 2026-10-23
+SUMUWW P2P 0.3.4 — Full and Light — 2026-10-23
 
 Activation and prerequisites
 - SMW/BTC conditional exchange transactions activate from SUMUWW block 9100.
@@ -59,3 +59,9 @@ automatic fee bumping, hosted public orderbook or NAT traversal. Monitor funded
 trades and retain complete recovery backups. Fixed fees may be insufficient in
 congestion. This release cannot settle or refund retired ETH/BNB/XRP trades.
 Read EDITIONS.md, README.txt and VERIFICATION.txt before funding.
+
+## 0.3.4
+
+Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
+
+[Current features in 34 languages](docs/features/index.html).

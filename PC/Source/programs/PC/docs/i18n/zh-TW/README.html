@@ -1,1 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../en/README.html"><title>SUMUWW documentation</title></head><body><p>Documentation is published in English.</p><a href="../en/README.html">Open the English document</a></body></html>
+<!doctype html><html lang="zh-TW" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · 文件</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>文件 · 34</summary><nav><a href="../en/README.html" lang="en"><bdi>English</bdi></a><a href="../fr/README.html" lang="fr"><bdi>Français</bdi></a><a href="../es/README.html" lang="es"><bdi>Español</bdi></a><a href="../ar/README.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/README.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/README.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/README.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/README.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/README.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/README.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/README.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/README.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/README.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/README.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/README.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/README.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/README.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/README.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/README.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/README.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/README.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/README.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/README.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="README.html" lang="zh-TW" aria-current="page"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/README.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/README.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/README.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/README.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/README.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/README.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/README.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/README.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/README.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/README.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">文件</a><a href="EXCHANGE_INTEGRATION.html">節點介面</a><a href="RPC_API.html">RPC 與 HTTP API</a><a href="NETWORK_RUNBOOK.html">節點運作</a><a href="RELEASE_NOTES.html">版本說明</a><a href="EXCHANGE_EXAMPLES.html">查驗</a></nav></header><main><h1>SUMUWW · 文件</h1>
+<p>SUMUWW PC 0.57.46 · 節點負責驗證、儲存、傳播與查詢鏈上資料。</p>
+<h2>簽章格式</h2>
+<p>選用的原始碼 SDK 不需金鑰或網路即可組合交易並驗證傳入的簽章。它不是簽署程式，也不是節點指令。P2WPKH 支付限制只針對範例格式，不針對節點。原有個人錢包仍可使用。</p>
+<h2>RPC 與 HTTP API</h2>
+<p>validateaddress 檢查校驗碼與所選網路。decoderawtransaction 的 decoded_only 僅表示解析，不代表簽章有效或交易已確認。OP_RETURN 輸出可儲存供外部程式讀取的資料。 節點新增費用查詢、廣播前檢查、RBF 替換狀態，以及依區塊順序讀取資料紀錄的功能。替換交易通過驗證後，才會移除原有待確認交易。多重簽章與鎖定輸出已實作，供獨立環境進行啟用測試，目前尚未在公開網路啟用。</p>
+<h2>查驗</h2>
+<p>安裝相依套件後，從原始碼執行 python examples/node_contract.py。公開測試金鑰與暫時 regtest 驗證提交、拒絕、確認、鏈重組及資料保存，不使用真實資金、使用者設定檔或硬體簽署器。</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="EXCHANGE_INTEGRATION.html">節點介面</a> · <a href="RPC_API.html">RPC 與 HTTP API</a> · <a href="NETWORK_RUNBOOK.html">節點運作</a> · <a href="RELEASE_NOTES.html">版本說明</a> · <a href="EXCHANGE_EXAMPLES.html">查驗</a></p>
+<p><a href="../../../../../EXCHANGE_INTEGRATION.html">英文詳細參考</a> · <a href="../../../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

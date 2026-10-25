@@ -20,7 +20,49 @@ from sumuww.vertical_text import VerticalLabel, VerticalButton
 from sumuww.primitives import format_amount
 import wallet_runtime as runtime
 
-VERSION = '1.0.2'
+VERSION = '1.0.6'
+
+
+class FeeDialog(simpledialog.Dialog):
+    def __init__(self, parent, translate, preview=lambda: {}):
+        self.t = translate
+        self.preview = preview
+        self._timer = None
+        super().__init__(parent, self.t('Network fee'))
+
+    def body(self, parent):
+        ttk.Label(parent, text=self.t('Fee rate (yugeon/vB)')).grid(row=0, column=0, padx=12, pady=8)
+        self.mode = ttk.Combobox(parent, state='readonly', values=[self.t(x) for x in ('Slow','Normal','Fast','Manual')])
+        self.mode.grid(row=1,column=0,padx=12,pady=8);self.mode.current(1)
+        self.rate = ttk.Entry(parent);self.rate.insert(0,'1');self.rate.configure(state='disabled')
+        self.rate.grid(row=2,column=0,padx=12,pady=8)
+        self.hint = ttk.Label(parent, wraplength=380)
+        self.hint.grid(row=3,column=0,padx=12,pady=8)
+        self.mode.bind('<<ComboboxSelected>>', lambda _: self.refresh_preview())
+        self.refresh_preview()
+        return self.mode
+
+    def refresh_preview(self):
+        if self._timer is not None:self.after_cancel(self._timer)
+        manual = self.mode.current() == 3
+        self.rate.configure(state='normal' if manual else 'disabled')
+        preview = self.preview() or {}
+        if not manual and preview.get('rates'):
+            mode = ('slow','normal','fast')[max(0,self.mode.current())]
+            self.hint.configure(text=self.t('Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks').format(
+                preview['pending_vsize'],preview['rates'][mode],preview['target_blocks'][mode]))
+        else:self.hint.configure(text='')
+        self._timer = self.after(1000,self.refresh_preview)
+
+    def destroy(self):
+        if self._timer is not None:
+            self.after_cancel(self._timer)
+            self._timer = None
+        super().destroy()
+
+    def apply(self):
+        self.result = ('rate:'+self.rate.get().strip() if self.mode.current()==3
+                       else 'auto:'+('slow','normal','fast')[self.mode.current()])
 
 
 class WalletApp:
@@ -129,7 +171,7 @@ class WalletApp:
         self.body.bind('<Configure>', lambda e: self.body_canvas.configure(scrollregion=self.body_canvas.bbox('all')))
         self.body_canvas.bind('<Configure>', lambda e: self.body_canvas.itemconfigure(body_window, width=e.width))
         self.root.bind('<MouseWheel>', lambda e: self.body_canvas.yview_scroll(-int(e.delta / 120), 'units'))
-        self.label(frame, text=f'SUMUWW Wallet {VERSION} · Core 0.57.34', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
+        self.label(frame, text=f'SUMUWW Wallet {VERSION} · Core 0.57.46', foreground='#6f7e98').pack(anchor='w', pady=(16, 0))
         self.render()
         self.update_status()
         self.set_busy(self.busy)
@@ -218,6 +260,7 @@ class WalletApp:
     def friendly(self, message):
         lower = message.lower()
         rules = (
+            (any(s in lower for s in ('fee rate','manual fee exceeds','relay minimum')), 'Check the fee rate and wallet limits.'),
             ('password' in lower and 'at least 12' in lower, 'Enter a password of at least 12 characters.'),
             (any(s in lower for s in ('authentication', 'password or', 'decrypt')), 'Check the password or backup file.'),
             ('different network' in lower or 'address' in lower, 'Check the complete SUMUWW receiving address.'),
@@ -409,7 +452,7 @@ class WalletApp:
         amount = simpledialog.askstring(self.t('Send SMW'), self.t('Amount (SMW)'), parent=self.root)
         if not amount:
             return
-        fee = simpledialog.askstring(self.t('Send SMW'), self.t('Fee (leave empty to estimate)'), parent=self.root)
+        fee = FeeDialog(self.root, self.t, lambda: self.state.get('fees')).result
         if fee is not None:
             self.call('prepare', recipient.strip(), amount, fee, done=lambda quote: self.review(dict(quote, recipient=recipient.strip())))
 
@@ -446,10 +489,18 @@ class WalletApp:
         lines = []
         for tx in value.get('transactions', []):
             lines.append(str(tx.get('txid', '')))
-            lines.append(self.t('{0} confirmations').replace('{0}', str(tx.get('confirmations', 0))))
+            if tx.get('status') == 'replaced':
+                lines.append(self.t('Removed after parent replacement' if tx.get('replacement_reason') == 'ancestor_replaced' else 'Replaced · not applied'))
+                lines.append(self.t('Replaced by {0}').replace('{0}', str(tx.get('replaced_by', ''))))
+            else:
+                lines.append(self.t('Pending') if tx.get('status') == 'pending' else self.t('{0} confirmations').replace('{0}', str(tx.get('confirmations', 0))))
             units = tx.get('net_amount', 0)
             amount = ('-' if units < 0 else '') + format_amount(abs(units))
-            lines.append(self.t('Amount') + ': ' + amount + ' SMW\n')
+            lines.append(self.t('Amount') + ': ' + amount + ' SMW')
+            from sumuww.rewards import reward_rows
+            for label, value in reward_rows(tx.get('mining_reward')):
+                lines.append(self.t(label) + ': ' + value)
+            lines.append('')
         self.history.configure(state='normal')
         self.history.delete('1.0', 'end')
         self.history.insert('1.0', '\n'.join(lines) or self.t('No transactions yet.'))

@@ -180,5 +180,14 @@
   "share": "Proporsi blok (%)",
   "knownfees": "Biaya transaksi yang diketahui",
   "rewardsubsidy": "Subsidi blok maksimum",
-  "pendingstats": "Statistik mempool lokal"
+  "pendingstats": "Statistik mempool lokal",
+  "spendingconditions": "Syarat pembelanjaan",
+  "decodedonly": "Hanya skrip yang diuraikan; kemampuan membelanjakan belum diverifikasi.",
+  "rewardissuance": "Penerbitan baru (blok)",
+  "rewardfees": "Biaya transaksi (blok)",
+  "rewardtotalblock": "Total imbalan blok",
+  "rewardlimit": "Batas penerbitan blok",
+  "rewardavailablefees": "Biaya blok yang tersedia",
+  "rewardunclaimed": "Imbalan belum diklaim",
+  "rewardpartial": "Imbalan diklaim sebagian"
 }

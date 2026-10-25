@@ -25,3 +25,9 @@ Release downloads: https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.
 and https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.2. Earlier versions remain a separate historical record. See LOCAL_REPAIR_VERIFICATION.md in the
 suite documentation for current verification results and limits. Earlier
 physical-device and live-network measurements do not certify this new build.
+
+## 1.1.6
+
+1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.
+
+[Current features in 34 languages](docs/features/index.html).

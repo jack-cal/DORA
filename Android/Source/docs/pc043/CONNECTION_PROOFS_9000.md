@@ -1,8 +1,6 @@
-> Documentation edition 2.2, 24 October 2026, for PC 0.57.40 / Android 0.6.89. Download: https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en. Existing application release archives remain unchanged.
-
 # SUMUWW · current height-9000 protocol
 
-Current implementation: PC 0.57.40 / Android 0.6.89 · 2026-10-24. Recovery was introduced in PC 0.57.34 / Android 0.6.84.
+Protocol baseline introduced in PC 0.57.34 / Android 0.6.84 on 2026-10-22; retained in PC 0.57.40 / Android 0.6.89
 
 ## History, money and compatibility
 
@@ -44,13 +42,12 @@ verified threshold beacon selects a connection event when its 256-bit output
 is less than floor(2^256/5). This is a 20% event probability, not a five-block
 schedule or a guarantee that 20% of blocks obtain completed evidence.
 
-For a new job, the producer probes its entire discovered identity inventory
-through authenticated nonce echoes, including relayed participants. At least
-three identities must respond before the job proceeds to the verified beacon
-and its 20% event test. The producer then samples three responding identities
-without replacement, using rejection sampling. Silent contacts remain in the
-discovery inventory for later attempts. Responses are local availability
-observations, not consensus membership or a guaranteed future signature. There are no
+Starting with PC 0.57.40 / Android 0.6.89, a new job first probes the entire
+locally discovered identity set through relays. It then samples three distinct
+responding identities without replacement using the verified beacon and
+rejection sampling. This local availability snapshot is not consensus membership;
+contacts that time out remain discovered and are probed again for later jobs.
+Already selected jobs keep their original message and witness team. There are no
 registration fees, membership admissions, exits, one-person checks, per-IP
 lottery quotas or fixed candidate-count/prefix/hop limits. Discovery continues
 through relays. Unknown/offline nodes cannot be guaranteed to appear; candidate
@@ -120,10 +117,8 @@ A database already containing incompatible post-activation history is refused
 for explicit review. Do not delete it or reset a wallet to bypass this check.
 
 The shipped implementation and isolated test evidence are not an independent
-security audit or proof of worldwide decentralization. The original laboratory tests used isolated networks. On 24 October 2026,
-read-only checks observed a local active chain beyond heights 9000 and 9100.
-That snapshot does not establish network-wide adoption, uninterrupted operation
-or successful completion of repaired connection jobs on the public network.
+security audit or proof of worldwide decentralization. Initial public-network
+activation at height 9000 has not occurred in these laboratory tests.
 
 ## Source map
 

@@ -56,6 +56,8 @@ class MainActivity : Activity() {
     private var sendAmount = ""
     private var sendAddress = ""
     private var sendFee = ""
+    private var sendFeeMode = 1
+    private var feePreview: TextView? = null
     private var historyOffset = 0
     private var pendingExport: ByteArray? = null
     private var pendingImport: Pair<Int, ByteArray>? = null
@@ -175,6 +177,7 @@ class MainActivity : Activity() {
             "password" in lower && "at least 12" in lower -> t("비밀번호는 12자 이상 입력해 주세요.", "Enter a password of at least 12 characters.")
             "authentication" in lower || "password or" in lower || "decrypt" in lower -> t("비밀번호 또는 백업 파일을 확인해 주세요.", "Check the password or backup file.")
             "different network" in lower || "address" in lower -> t("SUMUWW 받는 주소 전체를 확인해 주세요.", "Check the complete SUMUWW receiving address.")
+            listOf("fee rate","manual fee exceeds","relay minimum").any { it in lower } -> t("수수료율과 지갑의 수수료 한도를 확인하세요.","Check the fee rate and wallet limits.")
             "insufficient" in lower -> t("수량과 수수료를 지불할 사용 가능 잔액이 부족합니다.", "Insufficient available balance for the amount and fee.")
             "unlock" in lower -> t("지갑 잠금을 해제한 뒤 다시 확인해 주세요.", "Unlock the wallet and try again.")
             "mnemonic" in lower || "recovery word" in lower -> t("복구 단어와 순서를 확인해 주세요.", "Check the recovery words and their order.")
@@ -243,7 +246,7 @@ class MainActivity : Activity() {
     }
     private fun render() {
         window.decorView.layoutDirection = if (language in setOf("ar", "ur")) View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
-        statusLabel = null; amountLabel = null; pendingLabel = null; immatureLabel = null; recent = null; historyList = null; addressInput = null; amountInput = null; feeInput = null
+        feePreview = null; statusLabel = null; amountLabel = null; pendingLabel = null; immatureLabel = null; recent = null; historyList = null; addressInput = null; amountInput = null; feeInput = null
         root = column().apply { setBackgroundColor(this@MainActivity.background) }
         root.setOnApplyWindowInsetsListener { view, insets ->
             view.setPadding(0, insets.systemWindowInsetTop, 0, insets.systemWindowInsetBottom); insets
@@ -317,6 +320,7 @@ class MainActivity : Activity() {
         }
     }
     private fun refreshLabels() {
+        refreshFeePreview()
         val node = state.optJSONObject("node")
         statusLabel?.text = if (node == null) t("연결 중…", "Connecting…") else
             tf("Peers: {0} · Block: {1} · ", node.optInt("peers"), node.optInt("height")) +
@@ -408,19 +412,35 @@ class MainActivity : Activity() {
         val amount = input("0.00000000").apply { inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL; setText(sendAmount) }
         amountInput = amount; rememberDraft(amount) { sendAmount = it }
         add(panel, amount); gap(panel, 18)
-        add(panel, label(t("수수료 (빈칸이면 자동 계산)", "Fee (leave empty to estimate)"), 13, muted)); gap(panel, 7)
+        val preset=Spinner(this).apply {
+            adapter=ArrayAdapter(this@MainActivity,android.R.layout.simple_spinner_dropdown_item,listOf(t("느림","Slow"),t("보통","Normal"),t("빠름","Fast")))
+            setSelection(sendFeeMode)
+            onItemSelectedListener=object: AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent:AdapterView<*>?,view:View?,position:Int,id:Long){sendFeeMode=position;refreshFeePreview()}
+                override fun onNothingSelected(parent:AdapterView<*>?){}
+            }
+        };add(panel,preset);gap(panel,7)
+        add(panel, label(t("수수료율 (yugeon/vB)", "Fee rate (yugeon/vB)"), 13, muted)); gap(panel, 7)
         val fee = input(t("자동", "Automatic")).apply { inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL; setText(sendFee) }
-        feeInput = fee; rememberDraft(fee) { sendFee = it }
-        add(panel, fee); gap(panel, 22)
+        feeInput = fee; rememberDraft(fee) { sendFee = it;refreshFeePreview() }
+        add(panel, fee); gap(panel, 10)
+        feePreview=label("",13,muted);add(panel,feePreview!!);refreshFeePreview();gap(panel,12)
         add(panel, button(t("송금 내용 확인", "Review transfer")) {
             sendAddress = destination.text.toString().trim(); sendAmount = amount.text.toString(); sendFee = fee.text.toString()
             if (!unlocked()) { passwordDialog("unlock") { render() }; return@button }
             (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(amount.windowToken, 0)
             work("parse_address", sendAddress) { parsed ->
                 sendAddress = parsed.optString("address")
-                work("prepare", sendAddress, sendAmount, sendFee) { quote -> confirmTransfer(quote) }
+                work("prepare", sendAddress, sendAmount, if(sendFee.isBlank()) "auto:"+listOf("slow","normal","fast")[sendFeeMode] else "rate:"+sendFee.trim()) { quote -> confirmTransfer(quote) }
             }
         })
+    }
+    private fun refreshFeePreview() {
+        val fees=state.optJSONObject("fees")
+        val mode=listOf("slow","normal","fast")[sendFeeMode.coerceIn(0,2)]
+        feePreview?.text=if(sendFee.isNotBlank()||fees==null) "" else tf("Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks",
+            fees.optLong("pending_vsize"),fees.optJSONObject("rates")?.optString(mode,"—")?:"—",
+            fees.optJSONObject("target_blocks")?.optInt(mode)?:0)
     }
     private fun rememberDraft(field: EditText, changed: (String) -> Unit) {
         field.addTextChangedListener(object : TextWatcher {
@@ -459,7 +479,15 @@ class MainActivity : Activity() {
         val units = BigDecimal.valueOf(transaction.optLong("net_amount"), 8).stripTrailingZeros().toPlainString()
         val title = if (transaction.optBoolean("coinbase")) t("채굴 보상", "Mining reward") else if (transaction.optLong("net_amount") < 0) t("보냄", "Sent") else t("받음", "Received")
         add(panel, label("$title   $units SMW", 17, ink, true)); gap(panel, 7)
-        add(panel, label(if (transaction.optString("status") == "pending") t("확인 대기", "Pending") else tf("{0} confirmations", transaction.optInt("confirmations")), 13, muted))
+        add(panel, label(when (transaction.optString("status")) { "replaced" -> if (transaction.optString("replacement_reason") == "ancestor_replaced") t("선행 거래가 교체되어 제거됨", "Removed after parent replacement") else t("교체됨 · 잔액에 미반영", "Replaced · not applied"); "pending" -> t("확인 대기", "Pending"); else -> tf("{0} confirmations", transaction.optInt("confirmations")) }, 13, muted))
+        transaction.optJSONObject("mining_reward")?.let { reward ->
+            for ((caption, field) in listOf("New issuance (block)" to "subsidy_reward_smw", "Transaction fees (block)" to "fee_reward_smw", "Total block reward" to "claimed_reward_smw")) {
+                val value = if (reward.isNull(field)) "—" else reward.optString(field) + " SMW"
+                add(panel, label(t(caption, caption) + ": " + value, 13, muted))
+            }
+            if (reward.optString("allocation") == "underclaimed") add(panel, label(t("Reward not fully claimed", "Reward not fully claimed"), 13, muted))
+        }
+        if (transaction.optString("status") == "replaced") add(panel, label(tf("Replaced by {0}", transaction.optString("replaced_by")), 12, muted))
         gap(panel, 7)
         add(panel, label(transaction.optString("txid").take(20) + "…", 12, muted))
         panel.setOnClickListener {

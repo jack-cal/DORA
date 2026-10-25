@@ -180,5 +180,14 @@
   "share": "حظر المشاركة (%)",
   "knownfees": "رسوم المعاملات المعروفة",
   "rewardsubsidy": "الحد الأقصى لإعانات الكتلة",
-  "pendingstats": "إحصائيات mempool المحلية"
+  "pendingstats": "إحصائيات mempool المحلية",
+  "spendingconditions": "شروط الإنفاق",
+  "decodedonly": "تم تحليل البرنامج النصي فقط، ولم يُتحقق من إمكانية الإنفاق.",
+  "rewardissuance": "الإصدار الجديد للكتلة",
+  "rewardfees": "رسوم المعاملات للكتلة",
+  "rewardtotalblock": "إجمالي مكافأة الكتلة",
+  "rewardlimit": "حد إصدار الكتلة",
+  "rewardavailablefees": "الرسوم المتاحة للكتلة",
+  "rewardunclaimed": "المكافأة غير المطالب بها",
+  "rewardpartial": "تمت المطالبة بجزء من المكافأة"
 }

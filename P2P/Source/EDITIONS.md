@@ -1,4 +1,4 @@
-# SUMUWW P2P 0.3.0 — Full and Light
+# SUMUWW P2P 0.3.4 — Full and Light
 
 Both Windows editions share a signed SMW/BTC buy/sell board, exact prices and
 quantities, local signing, encrypted recovery records and deadline refunds.
@@ -133,3 +133,9 @@ does not establish an independent security audit or guaranteed settlement.
 - [Bitcoin Core proof-of-work rules](https://github.com/bitcoin/bitcoin/blob/v31.0/src/pow.cpp)
 - [Electrum public server directory](https://github.com/spesmilo/electrum/blob/master/electrum/chains/mainnet/servers.json)
 - [User instructions](README.txt), [changes](RELEASE_NOTES.txt), [verification](VERIFICATION.txt)
+
+## 0.3.4
+
+Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
+
+[Current features in 34 languages](docs/features/index.html).

@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "application": "SUMUWW",
+  "client_version": "0.57.46",
+  "rpc_method_count": 28,
+  "rest_route_count": 11,
+  "methods": {
+    "getblockchaininfo": {
+      "parameters": [],
+      "required": 0
+    },
+    "gethtlcinfo": {
+      "parameters": [],
+      "required": 0
+    },
+    "getspendinginfo": {
+      "parameters": [],
+      "required": 0
+    },
+    "getdatarecords": {
+      "parameters": [
+        "blockhash",
+        "offset",
+        "limit"
+      ],
+      "required": 1
+    },
+    "decodescript": {
+      "parameters": [
+        "hex"
+      ],
+      "required": 1
+    },
+    "gettxout": {
+      "parameters": [
+        "txid",
+        "index",
+        "include_mempool"
+      ],
+      "required": 2
+    },
+    "findspendingtransaction": {
+      "parameters": [
+        "txid",
+        "index",
+        "start_height"
+      ],
+      "required": 2
+    },
+    "getnetworkinfo": {
+      "parameters": [],
+      "required": 0
+    },
+    "getblockcount": {
+      "parameters": [],
+      "required": 0
+    },
+    "getbestblockhash": {
+      "parameters": [],
+      "required": 0
+    },
+    "getblockhash": {
+      "parameters": [
+        "height"
+      ],
+      "required": 1
+    },
+    "getblock": {
+      "parameters": [
+        "hash",
+        "verbose"
+      ],
+      "required": 1
+    },
+    "getrawmempool": {
+      "parameters": [],
+      "required": 0
+    },
+    "getmempoolinfo": {
+      "parameters": [],
+      "required": 0
+    },
+    "getmempoolpolicy": {
+      "parameters": [],
+      "required": 0
+    },
+    "estimatefee": {
+      "parameters": [
+        "vsize",
+        "mode"
+      ],
+      "required": 0
+    },
+    "testmempoolaccept": {
+      "parameters": [
+        "hex"
+      ],
+      "required": 1
+    },
+    "getmempoolentry": {
+      "parameters": [
+        "txid"
+      ],
+      "required": 1
+    },
+    "gettransactionstatus": {
+      "parameters": [
+        "txid"
+      ],
+      "required": 1
+    },
+    "getrawtransaction": {
+      "parameters": [
+        "txid",
+        "verbose"
+      ],
+      "required": 1
+    },
+    "decoderawtransaction": {
+      "parameters": [
+        "hex"
+      ],
+      "required": 1
+    },
+    "validateaddress": {
+      "parameters": [
+        "address"
+      ],
+      "required": 1
+    },
+    "listunspent": {
+      "parameters": [
+        "address",
+        "limit",
+        "offset"
+      ],
+      "required": 1
+    },
+    "getaddressbalance": {
+      "parameters": [
+        "address"
+      ],
+      "required": 1
+    },
+    "sendrawtransaction": {
+      "parameters": [
+        "hex"
+      ],
+      "required": 1
+    },
+    "submitblock": {
+      "parameters": [
+        "hex"
+      ],
+      "required": 1
+    },
+    "getblocktemplate": {
+      "parameters": [
+        "address"
+      ],
+      "required": 1
+    },
+    "help": {
+      "parameters": [],
+      "required": 0
+    }
+  },
+  "amount_fields": {
+    "integer": "_units",
+    "decimal_string": "_smw",
+    "legacy_alias": "_dora",
+    "unit_name": "yugeon",
+    "yugeon_per_smw": 100000000
+  },
+  "transport": {
+    "bind": "numeric IPv4 loopback only",
+    "authentication": "Bearer token",
+    "max_body_bytes": 8004096,
+    "max_header_bytes": 8192,
+    "max_batch": 16
+  },
+  "errors": {
+    "-32700": "parse error",
+    "-32600": "invalid request",
+    "-32601": "unknown method",
+    "-32602": "invalid parameters",
+    "-32603": "internal error",
+    "-32001": "not found in queried scope",
+    "-32002": "validation rejection",
+    "-32003": "node unavailable or mining gate",
+    "-32004": "batch response limit",
+    "-32005": "mempool capacity; not queued",
+    "-32006": "local fee or replacement policy rejection; not queued"
+  },
+  "scope": "SUMUWW node validation, relay policy, yugeon fee estimation, script inspection and chain data queries.",
+  "decoderawtransaction": "Decodes bytes only. validation=decoded_only; no confirmation, mempool or signature-validity claim.",
+  "validateaddress": "Checks supported address encoding, checksum and selected network; does not establish ownership.",
+  "estimatefee": {
+    "source": "live_mempool",
+    "target_blocks": {
+      "slow": 6,
+      "normal": 3,
+      "fast": 1
+    },
+    "history_fee_samples": false,
+    "congestion": "current local queue; nested rates preview 140 vB",
+    "confirmation_time_guaranteed": false
+  },
+  "replacement_history": {
+    "local_only": true,
+    "max_events": 1000,
+    "max_effect_bytes": 4000000,
+    "changes_balance": false,
+    "active_chain_overrides_history": true
+  },
+  "block_rewards": {
+    "scope": "block",
+    "integer_unit": "yugeon",
+    "fields": [
+      "subsidy_reward",
+      "fee_reward",
+      "claimed_reward",
+      "subsidy_limit",
+      "transaction_fees",
+      "unclaimed_reward"
+    ],
+    "suffixes": [
+      "_units",
+      "_smw"
+    ],
+    "allocation": [
+      "full",
+      "underclaimed",
+      "genesis_unspendable",
+      "unavailable"
+    ],
+    "unknown_components": null,
+    "individual_address_allocation": false
+  }
+}

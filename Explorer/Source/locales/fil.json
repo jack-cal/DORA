@@ -180,5 +180,14 @@
   "share": "Bahagi ng mga bloke (%)",
   "knownfees": "Mga kilalang bayarin sa transaksyon",
   "rewardsubsidy": "Pinakamataas na subsidyo ng mga bloke",
-  "pendingstats": "Lokal na mga istatistika ng mempool"
+  "pendingstats": "Lokal na mga istatistika ng mempool",
+  "spendingconditions": "Mga kundisyon sa paggastos",
+  "decodedonly": "Binasa lamang ang script; hindi pa napatutunayang maaaring gastusin ang output.",
+  "rewardissuance": "Bagong inilabas sa block",
+  "rewardfees": "Bayarin sa transaksyon ng block",
+  "rewardtotalblock": "Kabuuang gantimpala ng block",
+  "rewardlimit": "Limitasyon ng paglabas sa block",
+  "rewardavailablefees": "Makukuhang bayarin ng block",
+  "rewardunclaimed": "Hindi nakuhang gantimpala",
+  "rewardpartial": "Bahagi lamang ng gantimpala ang kinuha"
 }

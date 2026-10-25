@@ -284,5 +284,22 @@
   "Do not show this help again.": "Ikke vis denne hjelpen igjen.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Direkte tilkobling bruker verken Tor eller I2P. Den er vanligvis raskere og bruker færre ressurser. Andre noder kan se tilkoblingens IP.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nFordel: bidrar til å skjule din virkelige IP for andre noder.\n\nUlemper: tilkobling og synkronisering kan bli tregere, og batteri- og databruk kan øke. Transaksjoner forblir offentlige. Ved feil forblir direkte tilkobling avslått.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFordel: bidrar til å skjule din virkelige IP for andre noder.\n\nUlemper: tilkobling og synkronisering kan bli tregere, og batteri- og databruk kan øke. Transaksjoner forblir offentlige. Ved feil forblir direkte tilkobling avslått.\n\nI2P-noder er påkrevd."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFordel: bidrar til å skjule din virkelige IP for andre noder.\n\nUlemper: tilkobling og synkronisering kan bli tregere, og batteri- og databruk kan øke. Transaksjoner forblir offentlige. Ved feil forblir direkte tilkobling avslått.\n\nI2P-noder er påkrevd.",
+  "Fee rate (yugeon/vB)": "Gebyrsats (yugeon/vB)",
+  "Slow": "Langsom",
+  "Normal": "Normal",
+  "Fast": "Rask",
+  "Manual": "Manuell",
+  "Check the fee rate and wallet limits.": "Kontroller gebyrsatsen og grensene i lommeboken.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kø: {0} vB · {1} yugeon/vB · mål: {2} blokker",
+  "Replaced · not applied": "Erstattet · påvirker ikke saldoen",
+  "Replaced by {0}": "Erstattet av {0}",
+  "Removed after parent replacement": "Fjernet etter at den overordnede transaksjonen ble erstattet",
+  "New issuance (block)": "Ny utstedelse (blokk)",
+  "Transaction fees (block)": "Transaksjonsgebyrer (blokk)",
+  "Total block reward": "Samlet blokkbelønning",
+  "Issuance limit (block)": "Blokkens utstedelsesgrense",
+  "Available fees (block)": "Tilgjengelige blokkgebyrer",
+  "Unclaimed reward": "Belønning som ikke er hentet",
+  "Reward not fully claimed": "Belønning delvis hentet"
 }

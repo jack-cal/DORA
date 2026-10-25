@@ -335,5 +335,22 @@
   "Local lottery jobs": "Sorteos de este nodo",
   "Not selected": "No seleccionados",
   "Selected pending": "Seleccionados pendientes",
-  "Selected complete": "Seleccionados completados"
+  "Selected complete": "Seleccionados completados",
+  "Fee rate (yugeon/vB)": "Tarifa (yugeon/vB)",
+  "Slow": "Lenta",
+  "Normal": "Normal",
+  "Fast": "Rápida",
+  "Manual": "Manual",
+  "Check the fee rate and wallet limits.": "Revisa la tarifa y los límites de la cartera.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Cola local: {0} vB · {1} yugeon/vB · objetivo: {2} bloques",
+  "Replaced · not applied": "Sustituida · sin efecto en el saldo",
+  "Replaced by {0}": "Sustituida por {0}",
+  "Removed after parent replacement": "Retirada tras sustituirse la transacción anterior",
+  "New issuance (block)": "Nueva emisión (bloque)",
+  "Transaction fees (block)": "Comisiones (bloque)",
+  "Total block reward": "Recompensa total del bloque",
+  "Issuance limit (block)": "Límite de emisión del bloque",
+  "Available fees (block)": "Comisiones disponibles del bloque",
+  "Unclaimed reward": "Recompensa no reclamada",
+  "Reward not fully claimed": "Recompensa reclamada parcialmente"
 }

@@ -284,5 +284,22 @@
   "Do not show this help again.": "Usionyeshe msaada huu tena.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Muunganisho wa moja kwa moja hautumii Tor wala I2P. Kwa kawaida ni wa haraka na hutumia rasilimali chache. Nodi nyingine zinaweza kuona IP ya muunganisho wako.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nFaida: husaidia kuficha IP yako halisi kutoka kwa nodi nyingine.\n\nHasara: kuunganisha na kusawazisha kunaweza kuwa polepole na matumizi ya betri na data kuongezeka. Rekodi za miamala zinabaki wazi. Muunganisho ukishindwa, muunganisho wa moja kwa moja unabaki umezimwa.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFaida: husaidia kuficha IP yako halisi kutoka kwa nodi nyingine.\n\nHasara: kuunganisha na kusawazisha kunaweza kuwa polepole na matumizi ya betri na data kuongezeka. Rekodi za miamala zinabaki wazi. Muunganisho ukishindwa, muunganisho wa moja kwa moja unabaki umezimwa.\n\nNodi za I2P zinahitajika."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFaida: husaidia kuficha IP yako halisi kutoka kwa nodi nyingine.\n\nHasara: kuunganisha na kusawazisha kunaweza kuwa polepole na matumizi ya betri na data kuongezeka. Rekodi za miamala zinabaki wazi. Muunganisho ukishindwa, muunganisho wa moja kwa moja unabaki umezimwa.\n\nNodi za I2P zinahitajika.",
+  "Fee rate (yugeon/vB)": "Kiwango cha ada (yugeon/vB)",
+  "Slow": "Polepole",
+  "Normal": "Kawaida",
+  "Fast": "Haraka",
+  "Manual": "Weka mwenyewe",
+  "Check the fee rate and wallet limits.": "Kagua kiwango cha ada na vikomo vya pochi.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Foleni ya nodi hii: {0} vB · {1} yugeon/vB · lengo: vitalu {2}",
+  "Replaced · not applied": "Imebadilishwa · salio halijaathiriwa",
+  "Replaced by {0}": "Imebadilishwa na {0}",
+  "Removed after parent replacement": "Imeondolewa baada ya kubadilishwa kwa muamala tangulizi",
+  "New issuance (block)": "Sarafu mpya za bloku",
+  "Transaction fees (block)": "Ada za miamala za bloku",
+  "Total block reward": "Jumla ya zawadi ya bloku",
+  "Issuance limit (block)": "Kikomo cha sarafu mpya za bloku",
+  "Available fees (block)": "Ada zinazopatikana za bloku",
+  "Unclaimed reward": "Zawadi ambayo haijadaiwa",
+  "Reward not fully claimed": "Sehemu tu ya zawadi imedaiwa"
 }

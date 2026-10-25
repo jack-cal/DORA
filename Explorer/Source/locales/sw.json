@@ -180,5 +180,14 @@
   "share": "Sehemu ya bloku (%)",
   "knownfees": "Ada za muamala zinazojulikana",
   "rewardsubsidy": "Ruzuku ya juu zaidi ya bloku",
-  "pendingstats": "Takwimu za mempool za ndani"
+  "pendingstats": "Takwimu za mempool za ndani",
+  "spendingconditions": "Masharti ya matumizi",
+  "decodedonly": "Skripti imetafsiriwa tu; uwezo wa kutumia fedha haujathibitishwa.",
+  "rewardissuance": "Sarafu mpya za bloku",
+  "rewardfees": "Ada za miamala za bloku",
+  "rewardtotalblock": "Jumla ya zawadi ya bloku",
+  "rewardlimit": "Kikomo cha sarafu mpya za bloku",
+  "rewardavailablefees": "Ada zinazopatikana za bloku",
+  "rewardunclaimed": "Zawadi ambayo haijadaiwa",
+  "rewardpartial": "Sehemu tu ya zawadi imedaiwa"
 }

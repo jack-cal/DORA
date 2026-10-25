@@ -180,5 +180,14 @@
   "share": "Udział bloku (%)",
   "knownfees": "Znane opłaty transakcyjne",
   "rewardsubsidy": "Maksymalne dotacje blokowe",
-  "pendingstats": "Statystyki lokalnej puli pamięci"
+  "pendingstats": "Statystyki lokalnej puli pamięci",
+  "spendingconditions": "Warunki wydania środków",
+  "decodedonly": "Zdekodowano tylko skrypt; możliwość wydania środków nie została zweryfikowana.",
+  "rewardissuance": "Nowa emisja bloku",
+  "rewardfees": "Opłaty transakcyjne bloku",
+  "rewardtotalblock": "Łączna nagroda bloku",
+  "rewardlimit": "Limit emisji bloku",
+  "rewardavailablefees": "Dostępne opłaty bloku",
+  "rewardunclaimed": "Nieodebrana nagroda",
+  "rewardpartial": "Nagroda odebrana częściowo"
 }

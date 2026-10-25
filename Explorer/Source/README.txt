@@ -1,4 +1,4 @@
-SUMUWW Explorer 0.4.6
+SUMUWW Explorer 0.4.10
 
 Windows application ZIP: extract everything and run start-explorer.cmd (or SUMUWW-Explorer.exe).
 The launcher opens http://127.0.0.1:8770 in your browser. If an explorer is already
@@ -169,3 +169,9 @@ Current consensus compatibility: the expected difficulty calculation supplies th
 
 UPGRADE AT HEIGHT 9000
 Valid legacy blocks through 8999 remain usable. Old-rule blocks at 9000 inclusive and above are rejected by upgraded nodes. Update miners and validating nodes. See CURRENT_GUIDE.md.
+
+## 0.4.10
+
+The explorer shows fee rates in yugeon/vB. When the local node has recorded a transaction replacement, the transaction page links to the replacement. Confirmed chain records take precedence; local replacement history is limited.
+
+[Current features in 34 languages](docs/features/index.html).

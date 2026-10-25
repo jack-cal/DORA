@@ -335,5 +335,22 @@
   "Local lottery jobs": "このノードの抽選処理",
   "Not selected": "未選択で終了",
   "Selected pending": "選択後の完了待ち",
-  "Selected complete": "選択後に完了"
+  "Selected complete": "選択後に完了",
+  "Fee rate (yugeon/vB)": "手数料率（yugeon/vB）",
+  "Slow": "低速",
+  "Normal": "標準",
+  "Fast": "高速",
+  "Manual": "手動",
+  "Check the fee rate and wallet limits.": "手数料率とウォレットの上限を確認してください。",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "ローカル待機量: {0} vB · {1} yugeon/vB · 目標: {2}ブロック",
+  "Replaced · not applied": "置換済み・残高には未反映",
+  "Replaced by {0}": "置換後の取引: {0}",
+  "Removed after parent replacement": "親取引の置換により削除",
+  "New issuance (block)": "新規発行報酬（ブロック）",
+  "Transaction fees (block)": "取引手数料報酬（ブロック）",
+  "Total block reward": "ブロック報酬合計",
+  "Issuance limit (block)": "ブロックの発行上限",
+  "Available fees (block)": "ブロックの手数料合計",
+  "Unclaimed reward": "未請求の報酬",
+  "Reward not fully claimed": "報酬の一部のみ請求"
 }

@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-TW"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{max-width:980px;margin:32px auto;padding:24px;font:17px/1.8 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:8px}pre{white-space:pre-wrap}</style><h1>SUMUWW · 0.57.45 / 0.6.94</h1>
+<p>節點新增費用查詢、廣播前檢查、RBF 替換狀態，以及依區塊順序讀取資料紀錄的功能。替換交易通過驗證後，才會移除原有待確認交易。多重簽章與鎖定輸出已實作，供獨立環境進行啟用測試，目前尚未在公開網路啟用。</p>
+<p>1 SMW = 100,000,000 yugeon。自動費用依本機觀測提供慢速、一般與快速選項，但不保證確認時間。也可手動輸入 yugeon/vB 費率。傳送前請核對以 SMW 顯示的最終費用與總額。遭拒絕的交易不會扣減餘額。</p>
+<p><code>1 yugeon = 0.00000001 SMW</code></p>
+<p><code>1 SMW = 100,000,000 yugeon</code></p>
+<p>自動手續費依目前待處理資料量、區塊容量和交易優先順序計算，不使用歷史區塊的手續費。待處理量較少時維持最低費率。預覽會更新，最終確認時固定手續費。觀測範圍是已連線的本機節點，並非所有節點。</p>
+<p>重新啟動錢包後，本節點記錄的交易替換歷史仍會保留。已移除的交易不計入餘額。</p>
+<p>瀏覽器顯示已公開的多重簽章及輸出鎖定條件。主網啟用時程尚未確定。</p></html>

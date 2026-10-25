@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "स्थानांतरण समीक्षा समाप्त हो गई। इसकी दोबारा समीक्षा करें.",
   "Peers: {0} · Block: {1} · ": "जुड़े नोड: {0} · ब्लॉक: {1} · ",
   "{0} confirmations": "{0} पुष्टिकरण",
-  "Select language": "भाषा चुनें"
+  "Select language": "भाषा चुनें",
+  "Fee rate (yugeon/vB)": "शुल्क दर (yugeon/vB)",
+  "Slow": "धीमा",
+  "Normal": "सामान्य",
+  "Fast": "तेज़",
+  "Manual": "मैन्युअल",
+  "Check the fee rate and wallet limits.": "शुल्क दर और वॉलेट की सीमाएँ जाँचें।",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "स्थानीय कतार: {0} vB · {1} yugeon/vB · लक्ष्य: {2} ब्लॉक",
+  "Replaced · not applied": "बदला गया · शेष राशि पर असर नहीं",
+  "Replaced by {0}": "नया लेन-देन: {0}",
+  "Removed after parent replacement": "मूल लेन-देन बदलने के बाद हटाया गया",
+  "New issuance (block)": "ब्लॉक का नया निर्गम",
+  "Transaction fees (block)": "ब्लॉक के लेनदेन शुल्क",
+  "Total block reward": "ब्लॉक का कुल पुरस्कार",
+  "Issuance limit (block)": "ब्लॉक की निर्गम सीमा",
+  "Available fees (block)": "ब्लॉक के उपलब्ध शुल्क",
+  "Unclaimed reward": "दावा न किया गया पुरस्कार",
+  "Reward not fully claimed": "पुरस्कार का आंशिक दावा"
 }

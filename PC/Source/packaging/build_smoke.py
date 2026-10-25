@@ -149,11 +149,45 @@ def main(argv=None):
             target_ready, target_stop = root / 'target-ready.json', root / 'target-stop'
             common = ['peer', '--network', 'regtest', '--allow-internet', '--poll-interval', '.1', '--timeout', '2']
             source = subprocess.Popen([str(node_exe), *common, '--database', str(database),
-                                       '--listen', '0.0.0.0:0', '--ready-file', str(source_ready),
+                                       '--listen', '0.0.0.0:0', '--rpc', '--rpc-port', '0',
+                                       '--rpc-token-file', str(root / 'rpc-token'), '--ready-file', str(source_ready),
                                        '--stop-file', str(source_stop)], cwd=root, env=environment,
                                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             children.append(source)
             source_state = wait_until(lambda: status(source_ready))
+            rpc_state = source_state['rpc']['listen']
+            rpc_url = 'http://%s:%s/rpc' % (rpc_state['host'], rpc_state['port'])
+            rpc_args = ('rpc', '--url', rpc_url, '--token-file', root / 'rpc-token')
+            valid = run(*rpc_args, '--params', json.dumps({'address': bob_info['address']}), 'validateaddress')
+            assert valid['isvalid']
+            raw = run(*rpc_args, '--params', json.dumps({'txid': sent['txid'], 'verbose': False}), 'getrawtransaction')
+            parsed = run(*rpc_args, '--params', json.dumps({'hex': raw}), 'decoderawtransaction')
+            assert parsed['validation'] == 'decoded_only' and 'confirmations' not in parsed
+            estimate = run(*rpc_args, '--params', '{"vsize":140,"mode":"normal"}', 'estimatefee')
+            assert estimate['amount_unit'] == 'yugeon' and estimate['fee_units'] >= 140
+            assert estimate['source'] == 'live_mempool' and estimate['target_blocks'] == 3
+            assert estimate['congestion']['scope'] == 'local_node'
+            assert set(estimate['congestion']['rates']) == {'slow', 'normal', 'fast'}
+            policy = run(*rpc_args, 'getmempoolpolicy')
+            assert policy['full_rbf'] and policy['max_replacements'] == 100
+            spending = run(*rpc_args, 'getspendinginfo')
+            assert not spending['active'] and not spending['public_activation_scheduled']
+            checks.append('frozen_yugeon_fee_estimation_bounded_rbf_policy_and_activation_state')
+            template = run(*rpc_args, '--params', json.dumps({'address': alice_info['address']}), 'getblocktemplate')
+            reward = template['reward']
+            assert reward['subsidy_reward_smw'] == '50.00000000'
+            assert reward['fee_reward_smw'] == '0.00100000'
+            assert reward['claimed_reward_smw'] == '50.00100000'
+            first_hash = run(*rpc_args, '--params', '{"height":1}', 'getblockhash')
+            first_block = run(*rpc_args, '--params', json.dumps({'hash': first_hash}), 'getblock')
+            coinbase = run(*rpc_args, '--params', json.dumps({'txid': first_block['tx'][0]}), 'getrawtransaction')
+            assert first_block['reward'] == coinbase['mining_reward']
+            assert first_block['reward']['fee_reward_units'] == 0
+            checks.append('frozen_block_coinbase_and_pending_template_reward_breakdown')
+            removed = subprocess.run([str(node_exe), 'exchange', '--help'], cwd=root, env=environment,
+                capture_output=True, text=True, timeout=15)
+            assert removed.returncode != 0
+            checks.append('frozen_address_decode_api_and_removed_exchange_command')
             target = subprocess.Popen([str(node_exe), *common, '--database', str(root / 'target.sqlite'),
                                        '--listen', '127.0.0.1:0', '--peer', f"localhost:{source_state['listen']['port']}",
                                        '--ready-file', str(target_ready), '--stop-file', str(target_stop)],

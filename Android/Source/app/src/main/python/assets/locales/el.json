@@ -293,5 +293,22 @@
   "Block hash": "Κατακερματισμός μπλοκ",
   "All blocks": "Όλα τα μπλοκ",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Επικυρωμένα μπλοκ από το αρχικό μπλοκ έως την τρέχουσα κορυφή της αλυσίδας, από όλους τους κόμβους.",
-  "Search": "Αναζήτηση"
+  "Search": "Αναζήτηση",
+  "Fee rate (yugeon/vB)": "Συντελεστής χρέωσης (yugeon/vB)",
+  "Slow": "Αργά",
+  "Normal": "Κανονικά",
+  "Fast": "Γρήγορα",
+  "Manual": "Χειροκίνητα",
+  "Check the fee rate and wallet limits.": "Ελέγξτε τη χρέωση και τα όρια του πορτοφολιού.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Τοπική ουρά: {0} vB · {1} yugeon/vB · στόχος: {2} μπλοκ",
+  "Replaced · not applied": "Αντικαταστάθηκε · δεν επηρεάζει το υπόλοιπο",
+  "Replaced by {0}": "Αντικαταστάθηκε από {0}",
+  "Removed after parent replacement": "Αφαιρέθηκε μετά την αντικατάσταση της γονικής συναλλαγής",
+  "New issuance (block)": "Νέα έκδοση του μπλοκ",
+  "Transaction fees (block)": "Τέλη συναλλαγών του μπλοκ",
+  "Total block reward": "Συνολική ανταμοιβή μπλοκ",
+  "Issuance limit (block)": "Όριο έκδοσης του μπλοκ",
+  "Available fees (block)": "Διαθέσιμα τέλη του μπλοκ",
+  "Unclaimed reward": "Μη διεκδικημένη ανταμοιβή",
+  "Reward not fully claimed": "Μερική διεκδίκηση ανταμοιβής"
 }

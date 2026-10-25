@@ -31,7 +31,6 @@ H >= 150000:
 Nominal maximum issuance: **17,999,999.97690000 SMW**.
 Maximum excluding the unspendable genesis reward: **17,999,949.97690000 SMW**.
 
-
 ## Public technical material
 
 - Whitepaper: purpose, consensus principles and security limits.

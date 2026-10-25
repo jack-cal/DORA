@@ -20,7 +20,7 @@ android {
 
         applicationId="org.sumuww.miner"; minSdk=26; targetSdk=35
 
-        versionCode=149; versionName="0.6.89"
+        versionCode=155; versionName="0.6.95"
 
         ndk { abiFilters += listOf("arm64-v8a","x86_64") }
 

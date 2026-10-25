@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Gebührensatz (yugeon/vB)",
+    "Slow": "Langsam",
+    "Normal": "Normal",
+    "Fast": "Schnell",
+    "Manual": "Manuell",
+    "Check the fee rate and wallet limits.": "Prüfen Sie den Gebührensatz und die Wallet-Grenzen."
+  },
+  "wallet": "Automatische Gebühren berücksichtigen das ausstehende Datenvolumen, die Blockkapazität und die Transaktionspriorität. Frühere Blockgebühren werden nicht verwendet. Bei geringer Auslastung gilt der Mindestsatz. Die Vorschau wird aktualisiert; die abschließende Bestätigung legt die Gebühr fest. Die Beobachtung erfasst den verbundenen lokalen Knoten, nicht alle Knoten.\n\nDie von diesem Knoten erfassten Ersetzungen bleiben nach dem Neustart der Wallet erhalten. Entfernte Transaktionen ändern das Guthaben nicht.\n\nDer Mining-Verlauf zeigt neue Ausgabe, Transaktionsgebühren und Gesamtbelohnung jedes Blocks getrennt. Der von Ihrer Wallet empfangene Betrag wird separat angezeigt. Bei einer teilweise beanspruchten Belohnung wird die Aufteilung nicht angenommen. Der Knoten bietet 28 RPC-Methoden einschließlich Gebührenschätzung und prüft und verbreitet signierte Transaktionen.",
+  "node": "Der Knoten ergänzt Gebührenabfragen, Prüfungen vor dem Senden, den RBF-Ersetzungsstatus und geordnete Blockdaten. Erst nach erfolgreicher Prüfung werden ersetzte ausstehende Transaktionen entfernt. Mehrfachsignaturen und gesperrte Ausgänge sind für isolierte Aktivierungstests implementiert und im öffentlichen Netz noch nicht aktiviert.",
+  "live_preview": "Lokale Warteschlange: {0} vB · {1} yugeon/vB · Ziel: {2} Blöcke"
+}

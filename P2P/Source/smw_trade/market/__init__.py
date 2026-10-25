@@ -1,3 +1,3 @@
 """Signed SMW/BTC trading board."""
 
-VERSION = '0.3.0'
+VERSION = '0.3.4'

@@ -1,0 +1,68 @@
+{
+  "purpose": "Public regtest fixture only; private scalar 1 is publicly known. Never use for real funds.",
+  "unsigned_package": {
+    "format": "sumuww-external-signing-v1",
+    "network": "regtest",
+    "genesis_hash": "51ff452925cf7a4350330ca73abcbf66b4e50d9e0c4641aca6e360dbde838ba0",
+    "unsigned_tx": "02000000018730bd1ccce61c210319ee34638a35b4358ad21ed8b70393152f07e31d5d00300000000000ffffffff0200a3e1110000000016001406afd46bcdfd22ef94ac122aa11f241244a37ecc60c8221801000000160014751e76e8199196d454941c45d1b3a323f1433bd600000000",
+    "previous_transactions": {
+      "30005d1de3072f159303b7d81ed28a35b4358a6334ee1903211ce6cc1cbd3087": "02000000010000000000000000000000000000000000000000000000000000000000000000ffffffff06510400000000ffffffff0100f2052a01000000160014751e76e8199196d454941c45d1b3a323f1433bd600000000"
+    },
+    "request_id": "c99397847599a1caf4c9134760f25845490f0651a093832ca0ab30b37e05f81e",
+    "signatures": []
+  },
+  "inspection": {
+    "format": "sumuww-external-signing-v1",
+    "network": "regtest",
+    "genesis_hash": "51ff452925cf7a4350330ca73abcbf66b4e50d9e0c4641aca6e360dbde838ba0",
+    "request_id": "c99397847599a1caf4c9134760f25845490f0651a093832ca0ab30b37e05f81e",
+    "txid": "1e53013bcbebf1f58f6f7550822f62217ed5929605ea5f3846cba8537226b5fd",
+    "fee_units": 100000,
+    "fee_smw": "0.00100000",
+    "estimated_vsize": 141,
+    "complete": false,
+    "inputs": [
+      {
+        "input_index": 0,
+        "txid": "30005d1de3072f159303b7d81ed28a35b4358a6334ee1903211ce6cc1cbd3087",
+        "index": 0,
+        "address": "drt1qw508d6qejxtdg4y5r3zarvary0c5xw7kmg9243",
+        "value_units": 5000000000,
+        "signed": false,
+        "digest_hex": "03768ce3dd2598d09f742fd2b213d7abd8b200320be12b3b1b96daa8a1358a1e"
+      }
+    ],
+    "outputs": [
+      {
+        "index": 0,
+        "address": "drt1qq6hag67dl53wl99vzg42z8eyzfz2xlkv3k5vv9",
+        "value_units": 300000000,
+        "value_smw": "3.00000000"
+      },
+      {
+        "index": 1,
+        "address": "drt1qw508d6qejxtdg4y5r3zarvary0c5xw7kmg9243",
+        "value_units": 4699900000,
+        "value_smw": "46.99900000"
+      }
+    ]
+  },
+  "signed_package": {
+    "format": "sumuww-external-signing-v1",
+    "network": "regtest",
+    "genesis_hash": "51ff452925cf7a4350330ca73abcbf66b4e50d9e0c4641aca6e360dbde838ba0",
+    "unsigned_tx": "02000000018730bd1ccce61c210319ee34638a35b4358ad21ed8b70393152f07e31d5d00300000000000ffffffff0200a3e1110000000016001406afd46bcdfd22ef94ac122aa11f241244a37ecc60c8221801000000160014751e76e8199196d454941c45d1b3a323f1433bd600000000",
+    "previous_transactions": {
+      "30005d1de3072f159303b7d81ed28a35b4358a6334ee1903211ce6cc1cbd3087": "02000000010000000000000000000000000000000000000000000000000000000000000000ffffffff06510400000000ffffffff0100f2052a01000000160014751e76e8199196d454941c45d1b3a323f1433bd600000000"
+    },
+    "request_id": "c99397847599a1caf4c9134760f25845490f0651a093832ca0ab30b37e05f81e",
+    "signatures": [
+      {
+        "input_index": 0,
+        "public_key": "0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+        "signature_der": "304402206e25d025c406daaef0b6b80003bea1ee39c9221051fd9ca7f355a3a3c09c525502203525a18c1452fe9f2e14429bccc6e54d3639d3a490e6373f6029f7ea1c2e21e3"
+      }
+    ]
+  },
+  "signed_hex": "020000000001018730bd1ccce61c210319ee34638a35b4358ad21ed8b70393152f07e31d5d00300000000000ffffffff0200a3e1110000000016001406afd46bcdfd22ef94ac122aa11f241244a37ecc60c8221801000000160014751e76e8199196d454941c45d1b3a323f1433bd60247304402206e25d025c406daaef0b6b80003bea1ee39c9221051fd9ca7f355a3a3c09c525502203525a18c1452fe9f2e14429bccc6e54d3639d3a490e6373f6029f7ea1c2e21e301210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f8179800000000"
+}

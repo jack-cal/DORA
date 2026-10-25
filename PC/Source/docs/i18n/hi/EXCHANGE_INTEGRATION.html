@@ -1,0 +1,68 @@
+<!doctype html><html lang="hi" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · नोड इंटरफ़ेस</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>दस्तावेज़ · 34</summary><nav><a href="../en/EXCHANGE_INTEGRATION.html" lang="en"><bdi>English</bdi></a><a href="../fr/EXCHANGE_INTEGRATION.html" lang="fr"><bdi>Français</bdi></a><a href="../es/EXCHANGE_INTEGRATION.html" lang="es"><bdi>Español</bdi></a><a href="../ar/EXCHANGE_INTEGRATION.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/EXCHANGE_INTEGRATION.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/EXCHANGE_INTEGRATION.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/EXCHANGE_INTEGRATION.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/EXCHANGE_INTEGRATION.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/EXCHANGE_INTEGRATION.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="EXCHANGE_INTEGRATION.html" lang="hi" aria-current="page"><bdi>हिन्दी</bdi></a><a href="../ko/EXCHANGE_INTEGRATION.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/EXCHANGE_INTEGRATION.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/EXCHANGE_INTEGRATION.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/EXCHANGE_INTEGRATION.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/EXCHANGE_INTEGRATION.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/EXCHANGE_INTEGRATION.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/EXCHANGE_INTEGRATION.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/EXCHANGE_INTEGRATION.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/EXCHANGE_INTEGRATION.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/EXCHANGE_INTEGRATION.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/EXCHANGE_INTEGRATION.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/EXCHANGE_INTEGRATION.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/EXCHANGE_INTEGRATION.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/EXCHANGE_INTEGRATION.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/EXCHANGE_INTEGRATION.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/EXCHANGE_INTEGRATION.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/EXCHANGE_INTEGRATION.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/EXCHANGE_INTEGRATION.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/EXCHANGE_INTEGRATION.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/EXCHANGE_INTEGRATION.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/EXCHANGE_INTEGRATION.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/EXCHANGE_INTEGRATION.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/EXCHANGE_INTEGRATION.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/EXCHANGE_INTEGRATION.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">दस्तावेज़</a><a href="EXCHANGE_INTEGRATION.html">नोड इंटरफ़ेस</a><a href="RPC_API.html">RPC और HTTP API</a><a href="NETWORK_RUNBOOK.html">नोड संचालन</a><a href="RELEASE_NOTES.html">संस्करण टिप्पणियाँ</a><a href="EXCHANGE_EXAMPLES.html">सत्यापन</a></nav></header><main><h1>SUMUWW · नोड इंटरफ़ेस</h1>
+<p>SUMUWW PC 0.57.46 · नोड चेन डेटा की जाँच, संग्रह, प्रसार और जानकारी उपलब्ध कराने का काम करता है।</p>
+<h2>नेटवर्क और पते</h2>
+<p>सार्वजनिक नेटवर्क <code>sumuww</code> है; उसका आंतरिक उपनाम <code>dora</code> है। नीचे दिया genesis hash जाँचें। मूल पते witness v0 P2WPKH और संपीड़ित secp256k1 सार्वजनिक कुंजी का HASH160 इस्तेमाल करते हैं। memo या tag अनिवार्य नहीं है। गलत नेटवर्क और अमान्य checksum अस्वीकार करें। HD प्राप्ति/वापसी शाखा और index दर्ज करें; Bitcoin का derivation path लागू न मानें।</p>
+<h2>हस्ताक्षर प्रारूप</h2>
+<p>वैकल्पिक सोर्स SDK बिना कुंजी या नेटवर्क के लेनदेन बनाता और दिए गए हस्ताक्षर जाँचता है। यह हस्ताक्षर प्रोग्राम या नोड कमांड नहीं है। P2WPKH भुगतान की सीमा उदाहरण के प्रारूप पर लागू है, नोड पर नहीं। मौजूदा निजी वॉलेट उपलब्ध है।</p>
+<h2>RPC और HTTP API</h2>
+<p>validateaddress चेकसम और चुना गया नेटवर्क जाँचता है। decoderawtransaction का decoded_only केवल डेटा पढ़ने का संकेत है, हस्ताक्षर की वैधता या पुष्टि का नहीं। OP_RETURN आउटपुट बाहरी प्रोग्राम के लिए डेटा रखते हैं. नोड में शुल्क पूछताछ, भेजने से पहले जाँच, RBF प्रतिस्थापन की स्थिति और ब्लॉक क्रम में डेटा पढ़ने की सुविधा जोड़ी गई है। लंबित लेनदेन हटाने से पहले नए लेनदेन की जाँच होती है। बहु-हस्ताक्षर और लॉक किए गए आउटपुट अलग परीक्षणों के लिए लागू हैं; सार्वजनिक नेटवर्क पर अभी सक्रिय नहीं हैं।</p>
+<h2>प्रमाणीकरण और सीमाएँ</h2>
+<p>निजी Bearer token के साथ संख्यात्मक loopback <code>127.0.0.1:18443</code> पर RPC स्पष्ट रूप से चालू करें। वॉलेट खोलना या दूरस्थ हस्ताक्षर उपलब्ध नहीं हैं। स्थानीय सेवा या प्रमाणित tunnel उपयोग करें; ब्राउज़र के Origin/Referer अनुरोध अस्वीकार होते हैं। JSON-RPC में POST <code>/rpc</code>, object/array <code>params</code> और <code>id</code> हैं; notification का उत्तर HTTP 204 है। सीमाएँ: body 8004096 बाइट, header 8192, batch 16, समवर्ती अनुरोध 16, समय 10 सेकंड; limit 1–1000, offset 0–1000000। कुल 28 method और 11 REST route हैं।</p>
+<h2>राशियाँ और उपलब्ध आउटपुट</h2>
+<p><code>_units</code> सबसे छोटी इकाई का पूर्णांक है; <code>_smw</code> 8 दशमलव का string; <code>_dora</code> संगतता उपनाम। <code>_sumuww</code> राशि फ़ील्ड नहीं है। 1 SMW = 100000000 इकाइयाँ। <code>gettxout</code> में <code>spendable</code> नहीं और अपरिपक्व coinbase आउटपुट लौट सकता है। अगले ब्लॉक में खर्च हेतु कम से कम 100 पुष्टियाँ चाहिए। <code>listunspent</code> को <code>spendable</code> से छाँटें; <code>getaddressbalance</code> का available अपरिपक्व और लंबित खर्च में लगे धन को हटाता है। नए mempool आउटपुट पुष्ट धन नहीं हैं। पन्नों के बीच सिरा जाँचें और चुने इनपुट फिर सत्यापित करें।</p>
+<p>1 SMW = 100,000,000 yugeon। स्वचालित शुल्क स्थानीय अवलोकनों के आधार पर तीन विकल्प देता है; पुष्टि के समय की गारंटी नहीं है। आप yugeon/vB में दर स्वयं भर सकते हैं। भेजने से पहले अंतिम शुल्क और कुल राशि SMW में जाँचें। अस्वीकार किए गए लेनदेन से शेष राशि नहीं कटती।</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>स्वचालित शुल्क में लंबित डेटा की मात्रा, ब्लॉक क्षमता और लेनदेन की प्राथमिकता शामिल हैं। पिछले ब्लॉकों के शुल्क इस्तेमाल नहीं होते। कतार छोटी हो तो न्यूनतम दर बनी रहती है। पूर्वावलोकन अद्यतन होता है; अंतिम पुष्टि शुल्क तय करती है। अवलोकन जुड़े हुए स्थानीय नोड के हैं, सभी नोड के नहीं।</p>
+<p>वॉलेट दोबारा शुरू करने पर भी इस नोड में दर्ज लेन-देन बदलने का इतिहास बना रहता है। हटाए गए लेन-देन से शेष राशि नहीं बदलती।</p>
+<p>खनन इतिहास में प्रत्येक ब्लॉक का नया निर्गम, लेनदेन शुल्क और कुल पुरस्कार अलग दिखते हैं। आपके वॉलेट को मिली राशि अलग दिखाई जाती है। आंशिक दावा होने पर दोनों हिस्सों में राशि का मनमाना बँटवारा नहीं किया जाता। नोड शुल्क अनुमान सहित 28 RPC विधियाँ देता है और हस्ताक्षरित लेनदेन की जाँच तथा प्रसारण करता है।</p>
+<h2>लेनदेन और ब्लॉक खोज</h2>
+<p><code>getrawtransaction</code> सक्रिय चेन और mempool खोजता है, केवल अनाथ शाखा के लेनदेन नहीं। इनपुट पुराने आउटपुट बताते हैं, एक निश्चित प्रेषक पता नहीं। <code>getblock</code> का <code>verbose</code> Boolean है; सहेजे निष्क्रिय ब्लॉक में <code>active=false</code>, <code>confirmations=-1</code> होता है। उनका कच्चा लेनदेन ब्लॉक hash से मिलता रहता है। <code>findspendingtransaction</code> केवल सक्रिय चेन के पुष्ट खर्च खोजता है; null उपलब्धता का प्रमाण नहीं। <code>include_mempool=true</code> के साथ <code>gettxout</code> देखें। पुनर्गठन में पुष्टि और सक्रिय स्थिति बदल सकती हैं।</p>
+<h2>सत्यापन</h2>
+<p>निर्भरताएँ स्थापित करके सोर्स से python examples/node_contract.py चलाएँ। सार्वजनिक परीक्षण कुंजियाँ और अस्थायी regtest भेजना, अस्वीकृति, पुष्टि, पुनर्गठन और डेटा बने रहने की जाँच करते हैं। वास्तविक धन, उपयोगकर्ता प्रोफ़ाइल या हार्डवेयर हस्ताक्षरकर्ता इस्तेमाल नहीं होते।</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="README.html">दस्तावेज़</a> · <a href="RPC_API.html">RPC और HTTP API</a> · <a href="NETWORK_RUNBOOK.html">नोड संचालन</a> · <a href="RELEASE_NOTES.html">संस्करण टिप्पणियाँ</a> · <a href="EXCHANGE_EXAMPLES.html">सत्यापन</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">विस्तृत अंग्रेज़ी संदर्भ</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

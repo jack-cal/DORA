@@ -284,5 +284,22 @@
   "Do not show this help again.": "Να μην εμφανιστεί ξανά αυτή η βοήθεια.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Η άμεση σύνδεση δεν χρησιμοποιεί Tor ή I2P. Συνήθως είναι ταχύτερη και χρησιμοποιεί λιγότερους πόρους. Άλλοι κόμβοι βλέπουν την IP της σύνδεσής σας.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nΠλεονέκτημα: βοηθά να κρύβεται η πραγματική IP σας από άλλους κόμβους.\n\nΜειονεκτήματα: η σύνδεση και ο συγχρονισμός μπορεί να επιβραδυνθούν, με αυξημένη χρήση μπαταρίας και δεδομένων. Οι συναλλαγές παραμένουν δημόσιες. Σε αποτυχία η άμεση σύνδεση παραμένει απενεργοποιημένη.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nΠλεονέκτημα: βοηθά να κρύβεται η πραγματική IP σας από άλλους κόμβους.\n\nΜειονεκτήματα: η σύνδεση και ο συγχρονισμός μπορεί να επιβραδυνθούν, με αυξημένη χρήση μπαταρίας και δεδομένων. Οι συναλλαγές παραμένουν δημόσιες. Σε αποτυχία η άμεση σύνδεση παραμένει απενεργοποιημένη.\n\nΑπαιτούνται κόμβοι I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nΠλεονέκτημα: βοηθά να κρύβεται η πραγματική IP σας από άλλους κόμβους.\n\nΜειονεκτήματα: η σύνδεση και ο συγχρονισμός μπορεί να επιβραδυνθούν, με αυξημένη χρήση μπαταρίας και δεδομένων. Οι συναλλαγές παραμένουν δημόσιες. Σε αποτυχία η άμεση σύνδεση παραμένει απενεργοποιημένη.\n\nΑπαιτούνται κόμβοι I2P.",
+  "Fee rate (yugeon/vB)": "Συντελεστής χρέωσης (yugeon/vB)",
+  "Slow": "Αργά",
+  "Normal": "Κανονικά",
+  "Fast": "Γρήγορα",
+  "Manual": "Χειροκίνητα",
+  "Check the fee rate and wallet limits.": "Ελέγξτε τη χρέωση και τα όρια του πορτοφολιού.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Τοπική ουρά: {0} vB · {1} yugeon/vB · στόχος: {2} μπλοκ",
+  "Replaced · not applied": "Αντικαταστάθηκε · δεν επηρεάζει το υπόλοιπο",
+  "Replaced by {0}": "Αντικαταστάθηκε από {0}",
+  "Removed after parent replacement": "Αφαιρέθηκε μετά την αντικατάσταση της γονικής συναλλαγής",
+  "New issuance (block)": "Νέα έκδοση του μπλοκ",
+  "Transaction fees (block)": "Τέλη συναλλαγών του μπλοκ",
+  "Total block reward": "Συνολική ανταμοιβή μπλοκ",
+  "Issuance limit (block)": "Όριο έκδοσης του μπλοκ",
+  "Available fees (block)": "Διαθέσιμα τέλη του μπλοκ",
+  "Unclaimed reward": "Μη διεκδικημένη ανταμοιβή",
+  "Reward not fully claimed": "Μερική διεκδίκηση ανταμοιβής"
 }

@@ -293,5 +293,22 @@
   "Block hash": "Hash blok",
   "All blocks": "Semua blok",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Blok terverifikasi dari blok genesis hingga ujung rantai saat ini, dari semua node.",
-  "Search": "Cari"
+  "Search": "Cari",
+  "Fee rate (yugeon/vB)": "Tarif biaya (yugeon/vB)",
+  "Slow": "Lambat",
+  "Normal": "Normal",
+  "Fast": "Cepat",
+  "Manual": "Manual",
+  "Check the fee rate and wallet limits.": "Periksa tarif biaya dan batas dompet.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Antrean lokal: {0} vB · {1} yugeon/vB · target: {2} blok",
+  "Replaced · not applied": "Diganti · saldo tidak terpengaruh",
+  "Replaced by {0}": "Diganti oleh {0}",
+  "Removed after parent replacement": "Dihapus setelah transaksi induk diganti",
+  "New issuance (block)": "Penerbitan baru (blok)",
+  "Transaction fees (block)": "Biaya transaksi (blok)",
+  "Total block reward": "Total imbalan blok",
+  "Issuance limit (block)": "Batas penerbitan blok",
+  "Available fees (block)": "Biaya blok yang tersedia",
+  "Unclaimed reward": "Imbalan belum diklaim",
+  "Reward not fully claimed": "Imbalan diklaim sebagian"
 }

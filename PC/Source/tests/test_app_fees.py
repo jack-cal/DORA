@@ -51,9 +51,9 @@ class PaymentQuoteTests(unittest.TestCase):
     def test_auto_initial_quote_and_submission_use_exact_fee(self):
         quote = self.prepare()
         self.assertEqual('1.00000000', quote['amount_smw'])
-        self.assertEqual('0.00100000', quote['fee_smw'])
-        self.assertEqual('1.00100000', quote['total_smw'])
-        self.assertEqual('initial_default', quote['source'])
+        self.assertEqual('0.00000141', quote['fee_smw'])
+        self.assertEqual('1.00000141', quote['total_smw'])
+        self.assertEqual('live_mempool', quote['source'])
         self.assertNotIn('transaction', quote)
         self.assertNotIn('key', quote)
         self.assertNotIn('hex', json.dumps(quote))
@@ -61,7 +61,7 @@ class PaymentQuoteTests(unittest.TestCase):
         self.assertEqual(quote['fee_smw'], result['fee_smw'])
         with Chain(self.database, network=REGTEST) as chain:
             transaction, = chain.mempool_transactions()
-            self.assertEqual(100_000, 50 * COIN - sum(o.value for o in transaction.outputs))
+            self.assertEqual(141, 50 * COIN - sum(o.value for o in transaction.outputs))
             self.assertEqual(result['txid'], hash_to_display(transaction.txid()))
         with self.assertRaisesRegex(Exception, 'no longer valid'):
             self.submit(quote)
@@ -79,7 +79,7 @@ class PaymentQuoteTests(unittest.TestCase):
 
     def test_no_estimation_or_resigning_after_confirmation(self):
         estimate = {'fee_units': 12345, 'estimated_vsize': 141,
-                    'source': 'local_history', 'capped': False}
+                    'source': 'live_mempool', 'capped': False}
         with patch('sumuww.app_service.estimate_payment_fee', return_value=estimate) as estimator:
             quote = self.prepare()
         with patch('sumuww.app_service.estimate_payment_fee', side_effect=AssertionError('recalculated')), \
@@ -160,9 +160,9 @@ class PaymentQuoteTests(unittest.TestCase):
             transaction = sign_p2wpkh(transaction, 0, coin.output, ALICE)
             chain.submit_transaction(transaction)
             changed = estimate_payment_fee(chain, ALICE.script_pubkey, BOB.script_pubkey, COIN)
-            self.assertEqual('local_mempool', changed['source'])
+            self.assertEqual('live_mempool', changed['source'])
             self.assertNotEqual(100_000, changed['fee_units'])
-        self.assertEqual('0.00100000', self.submit(quote)['fee_smw'])
+        self.assertEqual('0.00000141', self.submit(quote)['fee_smw'])
 
 
 class PaymentQuoteUiTests(unittest.TestCase):
@@ -196,7 +196,7 @@ class PaymentQuoteUiTests(unittest.TestCase):
         self.app.send_amount.set('1')
         self.quote = {'quote_id': 'a' * 32, 'amount_smw': '1.00000000',
                       'fee_smw': '0.00234567', 'total_smw': '1.00234567',
-                      'estimated_vsize': 141, 'source': 'local_history', 'capped': False}
+                      'estimated_vsize': 141, 'source': 'live_mempool', 'capped': False}
 
     def tearDown(self):
         self.app._finish_close()
@@ -207,7 +207,7 @@ class PaymentQuoteUiTests(unittest.TestCase):
         self.assertEqual('readonly', str(self.app.fee_entry.cget('state')))
         self.app._send()
         self.assertTrue(self.app._busy)
-        self.assertEqual([(BOB.address, '1', None)], self.prepare_calls)
+        self.assertEqual([(BOB.address, '1', 'auto:normal')], self.prepare_calls)
         self.assertFalse(self.submit_calls)
         self.assertEqual('disabled', str(self.app.amount_entry.cget('state')))
         with patch('sumuww.app.messagebox.askyesno', return_value=True) as confirmation:
@@ -221,19 +221,19 @@ class PaymentQuoteUiTests(unittest.TestCase):
         self.assertFalse(self.app._busy)
         self.assertEqual('', self.app.send_amount.get())
 
-    def test_manual_zero_cancel_and_language_switch_preserve_inputs(self):
+    def test_manual_rate_cancel_and_language_switch_preserve_inputs(self):
         self.app.manual_fee.set(True)
-        self.app.send_fee.set('0')
+        self.app.send_fee.set('1')
         self.app._sync_controls()
         self.assertEqual('normal', str(self.app.fee_entry.cget('state')))
         for language in ('ko', 'ar', 'hi', 'en'):
             self.assertTrue(self.app.set_language(language))
             self.assertTrue(self.app.manual_fee.get())
-            self.assertEqual('0', self.app.send_fee.get())
+            self.assertEqual('1', self.app.send_fee.get())
             self.assertEqual(BOB.address, self.app.send_address.get())
         self.app._send()
-        self.assertEqual([(BOB.address, '1', '0')], self.prepare_calls)
-        manual_quote = dict(self.quote, fee_smw='0.00000000', total_smw='1.00000000', source='manual')
+        self.assertEqual([(BOB.address, '1', 'rate:1')], self.prepare_calls)
+        manual_quote = dict(self.quote, fee_smw='0.00000141', total_smw='1.00000141', source='manual_rate')
         with patch('sumuww.app.messagebox.askyesno', return_value=False):
             self.prepare_future.set_result(manual_quote)
             self.app._pump()

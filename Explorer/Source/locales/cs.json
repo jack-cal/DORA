@@ -180,5 +180,14 @@
   "share": "Podíl bloků (%)",
   "knownfees": "Známé transakční poplatky",
   "rewardsubsidy": "Maximální blokové dotace",
-  "pendingstats": "Statistika místního mempoolu"
+  "pendingstats": "Statistika místního mempoolu",
+  "spendingconditions": "Podmínky utracení",
+  "decodedonly": "Byl pouze dekódován skript; možnost utracení nebyla ověřena.",
+  "rewardissuance": "Nová emise bloku",
+  "rewardfees": "Transakční poplatky bloku",
+  "rewardtotalblock": "Celková odměna bloku",
+  "rewardlimit": "Emisní limit bloku",
+  "rewardavailablefees": "Dostupné poplatky bloku",
+  "rewardunclaimed": "Nevyzvednutá odměna",
+  "rewardpartial": "Odměna vyzvednuta částečně"
 }

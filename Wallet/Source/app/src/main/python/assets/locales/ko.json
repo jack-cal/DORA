@@ -284,5 +284,22 @@
   "Do not show this help again.": "다음부터 도움말을 보지 않겠습니다.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Tor와 I2P를 사용하지 않습니다. 보통 연결이 빠르고 자원을 적게 쓰지만, 상대 노드에게 연결 IP가 보입니다.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.\n\nI2P 피어가 필요합니다."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n장점: 상대 노드에게 실제 IP를 숨기는 데 도움이 됩니다.\n\n단점: 연결·동기화가 느려지고 배터리·데이터 사용이 늘 수 있습니다. 거래 기록은 공개됩니다. 연결에 실패해도 일반 연결로 전환하지 않습니다.\n\nI2P 피어가 필요합니다.",
+  "Fee rate (yugeon/vB)": "수수료율 (yugeon/vB)",
+  "Slow": "느림",
+  "Normal": "보통",
+  "Fast": "빠름",
+  "Manual": "직접 설정",
+  "Check the fee rate and wallet limits.": "수수료율과 지갑의 수수료 한도를 확인하세요.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "내 노드 대기량: {0} vB · {1} yugeon/vB · 목표: {2}블록",
+  "Replaced · not applied": "교체됨 · 잔액에 미반영",
+  "Replaced by {0}": "교체한 거래: {0}",
+  "Removed after parent replacement": "선행 거래가 교체되어 제거됨",
+  "New issuance (block)": "신규 발행 보상(블록)",
+  "Transaction fees (block)": "거래 수수료 보상(블록)",
+  "Total block reward": "블록 총보상",
+  "Issuance limit (block)": "블록 신규 발행 한도",
+  "Available fees (block)": "블록 수수료 합계",
+  "Unclaimed reward": "미청구 보상",
+  "Reward not fully claimed": "보상 일부만 청구됨"
 }

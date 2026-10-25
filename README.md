@@ -1,29 +1,34 @@
 # SUMUWW (SMW)
 
-SUMUWW is an independent SHA-256d proof-of-work coin with an experimental asynchronous connection-proof system. A block producer requests three witness signatures after PoW, binds the six signature halves to an exact parent/child pair, and relays completed evidence without making mining wait. Valid cumulative work remains the primary chain-selection rule.
+SUMUWW is an independent SHA-256d proof-of-work coin with asynchronous connection proofs. Valid cumulative work remains the primary chain-selection rule. Existing wallets, valid chain history, issuance and halvings are preserved.
 
-Release editions 2026-10-24: ordinary wallets now include core 0.57.38 connection
-recovery and synchronization fixes. The wallet builds, Explorer docs-r3, P2P docs-r2 and whitepaper 2.2 are separate releases. Full nodes PC 0.57.40 / Android 0.6.89 now include the
-connection-proof availability repair. Their release pages below contain the matching binaries, source archives and checksums.
+## Current downloads — 25 October 2026
 
-## Downloads
-
-| Component | Version | Release | Source |
+| Component | Version | Download | Source |
 |---|---|---|---|
-| Windows node, wallet and miner | 0.57.40 | [Windows release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) | [PC source](PC/Source) |
-| Android node, wallet and miner | 0.6.89 | [Android release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89) | [Android source](Android/Source) |
-| Windows ordinary wallet | 1.0.2 | [Windows wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.2) | [Source](Wallet/Desktop) |
-| Android ordinary wallet | 1.1.2 | [Android wallet](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.2) | [Source](Wallet/Source) |
-| Local block explorer | 0.4.6 | [Explorer](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3) | [Source](Explorer/Source) |
-| P2P Full — SMW/BTC trading | 0.3.0 | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.0-docs-r2) | [Source](P2P/Source) |
-| P2P Light — SMW/BTC trading | 0.3.0 | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.0-docs-r2) | [Source](P2P/Source) |
-| Whitepaper and technical references | v2.2, English | [Whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) | [Editable documents](Documentation/Whitepaper) |
+| Windows full node, wallet and miner | 0.57.46 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.46) | [Source](PC/Source) |
+| Android full node, wallet and miner | 0.6.95 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.95) | [Source](Android/Source) |
+| Windows ordinary wallet | 1.0.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.6) | [Source](Wallet/Desktop) |
+| Android ordinary wallet | 1.1.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.6) | [Source](Wallet/Source) |
+| Local block explorer | 0.4.10 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10) | [Source](Explorer/Source) |
+| P2P Full — SMW/BTC trading | 0.3.4 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.4) | [Source](P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.4 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.4) | [Source](P2P/Source) |
 
-Read the component instructions and SHA-256 checksums before installing. Keep existing encrypted wallets and chain data. Android full-node updates install over the matching existing app. The new ordinary Android wallet installs alongside the old wallet and imports an encrypted backup; do not uninstall or clear old app data. See the [component suite guide](Documentation/COMPONENT_SUITE.md). Whitepaper 2.2 and corrected source documents are separate releases; [status and errata](Documentation/CURRENT_STATUS.md) identify differences from immutable published archives.
+[Current node documentation in 34 languages](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261025-r1) · [English whitepaper 2.2](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.2-en) · [Component installation guide](Documentation/COMPONENT_SUITE.md)
 
-P2P now has separate [Full and Light editions](P2P/Source/EDITIONS.md). Full uses your local Bitcoin Core; Light checks Bitcoin headers and transaction inclusion proofs using configurable TLS servers. Both require your local SUMUWW node and HTLC activation at height 9100. Light is SPV and depends on available honest servers for complete transaction histories.
+## Changes in these versions
 
-## Latest node update: Windows 0.57.40 / Android 0.6.89
+Mining history and block APIs separate new issuance, transaction fees and total block rewards. Wallet-specific received amounts remain separate. Automatic fee previews use the connected node's current pending queue, block capacity and transaction priority; they do not sample past block fees or claim a view of every node. Manual rates and the final fee review remain available. One yugeon is 0.00000001 SMW.
+
+The node exposes address validation, transaction decoding, signed-transaction checking and submission, UTXOs, confirmations, replacement status, reorganization state and ordered OP_RETURN data. The source examples cover disposable regtest submission and reorganization. Multisig and output-lock templates remain limited to explicitly activated isolated tests; public activation is not scheduled.
+
+English is the default; all 34 existing UI languages and saved preferences are retained. Current program documentation is included in the matching packages. Read the [node specification](PC/Source/NODE_FEATURES.md), [current release status](Documentation/CURRENT_STATUS.md) and [verification record](Documentation/RELEASE_VERIFICATION_20261025.json).
+
+Extract the complete Windows archive. Install each Android APK over the matching package signed with the same certificate; retain encrypted backups and application data. Android packages were prepared and inspected but these versions were not installed or tested on a physical phone. P2P Full requires synchronized unpruned Bitcoin Core with txindex; Light uses Bitcoin SPV and has different availability and trust limits. Both require the current SUMUWW node and the height-9100 HTLC rule.
+
+Each component has a new release, matching source and SHA-256 checksums. Earlier release posts and attachments are preserved. Whitepaper 2.2 remains the existing published edition.
+
+## Earlier node update: Windows 0.57.40 / Android 0.6.89
 
 New proof jobs check responsiveness across the discovered identity inventory before selecting three witnesses. Valid replies survive retries and restarts; already selected jobs retain their original witnesses. PC public history shows all active-chain transactions and distinguishes nonselected lotteries, selected pending jobs, selected completed jobs and stored complete proofs. See the [repair verification and limits](Documentation/CONNECTION_PROOF_REPAIR_VERIFICATION.md). Completion still depends on the required participants being available.
 

@@ -1,22 +1,9 @@
-# SUMUWW release guide — PC 0.57.33 / Android 0.6.83
+# SUMUWW PC 0.57.46
 
-[Current whitepaper](Whitepaper.html) · [Protocol](Protocol.html) · [Height-9000 connection rules and limitations](CONNECTION_PROOFS_9000.html)
+1 yugeon = 0.00000001 SMW. Wallet fees support slow, normal and fast suggestions or a manual yugeon/vB rate, with the exact total shown before confirmation. The node adds signed-transaction preflight, bounded atomic replacement and block data record queries.
 
-Extract the complete PC ZIP into a new folder and run SUMUWW.exe. Close the old
-app before using the same data directory. Do not reset the database or wallet.
-Install the Android APK over org.sumuww.miner without uninstalling or clearing
-data. The signing certificate is unchanged. The separate .audit test package
-is not a distribution artifact.
+Multisig and output-lock validation is implemented for explicitly activated isolated test chains; public activation is not scheduled.
 
-Valid old history through 8999 is retained even when an invalid later suffix is
-sent with it. From 9000 blocks must satisfy the producer commitment and current
-DGW rules. Mining never requires a completed witness attachment. Software age
-alone does not invalidate a rule-compliant block or common-history transaction.
+[Node features](NODE_FEATURES.html) · [API](EXCHANGE_INTEGRATION.html) · [34 language editions](docs/index.html).
 
-DGW uses a 24-block window and recalculates at 9000, 9010, 9020…; target 600 s.
-The random connection-event probability is 20%, with 3 discovered witnesses.
-Issuance, halving, maturity, wallet format, icon assets and 34 UI languages remain.
-
-No real wallet, chain database, password or signing private key belongs in the
-release archive. The verification report records isolated tests and limitations;
-it does not claim independent security certification or completed public activation.
+Automatic fees use current pending volume, block capacity and transaction priority. Past block fees are not used. A quiet queue keeps the minimum rate. The preview refreshes; the final confirmation fixes the fee. Observations cover the connected local node, not every node.

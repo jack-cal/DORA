@@ -14,6 +14,14 @@ MAX_REQUEST_BYTES = 8_100_000
 MAX_RESPONSE_BYTES = 16_200_000
 
 
+class RpcCallError(ValueError):
+    """Structured node rejection; retains the original ValueError interface."""
+    def __init__(self, code, message):
+        self.code = code
+        self.message = message
+        super().__init__('RPC error %s: %s' % (code, message))
+
+
 class _NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, request, response, code, message, headers, new_url):
         return None
@@ -85,7 +93,7 @@ def call(url, token_file, method, params=None, *, timeout=10):
         error = result['error']
         if not isinstance(error, dict):
             raise ValueError('Invalid JSON-RPC error response')
-        raise ValueError('RPC error %s: %s' % (error.get('code'), error.get('message')))
+        raise RpcCallError(error.get('code'), error.get('message'))
     if 'result' not in result:
         raise ValueError('Missing JSON-RPC result')
     return result['result']

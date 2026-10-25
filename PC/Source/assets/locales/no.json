@@ -335,5 +335,22 @@
   "Local lottery jobs": "Denne nodens trekninger",
   "Not selected": "Ikke valgt",
   "Selected pending": "Valgt, venter",
-  "Selected complete": "Valgt, fullført"
+  "Selected complete": "Valgt, fullført",
+  "Fee rate (yugeon/vB)": "Gebyrsats (yugeon/vB)",
+  "Slow": "Langsom",
+  "Normal": "Normal",
+  "Fast": "Rask",
+  "Manual": "Manuell",
+  "Check the fee rate and wallet limits.": "Kontroller gebyrsatsen og grensene i lommeboken.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kø: {0} vB · {1} yugeon/vB · mål: {2} blokker",
+  "Replaced · not applied": "Erstattet · påvirker ikke saldoen",
+  "Replaced by {0}": "Erstattet av {0}",
+  "Removed after parent replacement": "Fjernet etter at den overordnede transaksjonen ble erstattet",
+  "New issuance (block)": "Ny utstedelse (blokk)",
+  "Transaction fees (block)": "Transaksjonsgebyrer (blokk)",
+  "Total block reward": "Samlet blokkbelønning",
+  "Issuance limit (block)": "Blokkens utstedelsesgrense",
+  "Available fees (block)": "Tilgjengelige blokkgebyrer",
+  "Unclaimed reward": "Belønning som ikke er hentet",
+  "Reward not fully claimed": "Belønning delvis hentet"
 }

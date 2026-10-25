@@ -180,5 +180,14 @@
   "share": "Lohkojen osuus (%)",
   "knownfees": "Tunnetut tapahtumamaksut",
   "rewardsubsidy": "Tuen enimmäismäärä",
-  "pendingstats": "Paikalliset mempool-tilastot"
+  "pendingstats": "Paikalliset mempool-tilastot",
+  "spendingconditions": "Käyttöehdot",
+  "decodedonly": "Vain skripti on tulkittu; varojen käytettävyyttä ei ole tarkistettu.",
+  "rewardissuance": "Lohkon uusi liikkeeseenlasku",
+  "rewardfees": "Lohkon siirtomaksut",
+  "rewardtotalblock": "Lohkon kokonaispalkkio",
+  "rewardlimit": "Lohkon liikkeeseenlaskuraja",
+  "rewardavailablefees": "Lohkon saatavilla olevat maksut",
+  "rewardunclaimed": "Lunastamaton palkkio",
+  "rewardpartial": "Palkkio lunastettu osittain"
 }

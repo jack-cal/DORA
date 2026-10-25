@@ -180,5 +180,14 @@
   "share": "Compartilhamento de bloco (%)",
   "knownfees": "Taxas de transação conhecidas",
   "rewardsubsidy": "Subsídios máximos por bloco",
-  "pendingstats": "Estatísticas de membros locais"
+  "pendingstats": "Estatísticas de membros locais",
+  "spendingconditions": "Condições de gasto",
+  "decodedonly": "Apenas o script foi decodificado; a possibilidade de gasto não foi verificada.",
+  "rewardissuance": "Nova emissão (bloco)",
+  "rewardfees": "Taxas de transação (bloco)",
+  "rewardtotalblock": "Recompensa total do bloco",
+  "rewardlimit": "Limite de emissão do bloco",
+  "rewardavailablefees": "Taxas disponíveis do bloco",
+  "rewardunclaimed": "Recompensa não reivindicada",
+  "rewardpartial": "Recompensa reivindicada parcialmente"
 }

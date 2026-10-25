@@ -1,4 +1,4 @@
-SUMUWW P2P 0.3.0 — Full and Light Windows editions
+SUMUWW P2P 0.3.4 — Full and Light Windows editions
 
 CHOOSE AN EDITION
 Full: run PC/SUMUWW-P2P-Full.exe with your synchronized local Bitcoin Core.
@@ -124,3 +124,9 @@ PYTHONPATH=vendor;tests;. python -m unittest discover -s tests -v
 --market-self-check --data-dir <new-directory> checks the packaged native UI,
 all 34 languages, SMW/BTC wallet addresses and signed BTC-order reservations.
 See VERIFICATION.txt for completed checks and precise limits.
+
+## 0.3.4
+
+Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
+
+[Current features in 34 languages](docs/features/index.html).

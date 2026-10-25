@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "การตรวจสอบการโอนหมดอายุแล้ว ทบทวนอีกครั้ง.",
   "Peers: {0} · Block: {1} · ": "โหนดที่เชื่อมต่อ: {0} · บล็อก: {1} · ",
   "{0} confirmations": "{0} ยืนยันแล้ว",
-  "Select language": "เลือกภาษา"
+  "Select language": "เลือกภาษา",
+  "Fee rate (yugeon/vB)": "อัตราค่าธรรมเนียม (yugeon/vB)",
+  "Slow": "ช้า",
+  "Normal": "ปกติ",
+  "Fast": "เร็ว",
+  "Manual": "กำหนดเอง",
+  "Check the fee rate and wallet limits.": "ตรวจสอบอัตราค่าธรรมเนียมและขีดจำกัดของกระเป๋า",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "คิวในโหนดนี้: {0} vB · {1} yugeon/vB · เป้าหมาย: {2} บล็อก",
+  "Replaced · not applied": "ถูกแทนที่ · ไม่กระทบยอดคงเหลือ",
+  "Replaced by {0}": "ธุรกรรมที่มาแทน: {0}",
+  "Removed after parent replacement": "ถูกนำออกเพราะธุรกรรมต้นทางถูกแทนที่",
+  "New issuance (block)": "เหรียญออกใหม่ของบล็อก",
+  "Transaction fees (block)": "ค่าธรรมเนียมธุรกรรมของบล็อก",
+  "Total block reward": "รางวัลรวมของบล็อก",
+  "Issuance limit (block)": "เพดานการออกเหรียญของบล็อก",
+  "Available fees (block)": "ค่าธรรมเนียมที่รับได้ของบล็อก",
+  "Unclaimed reward": "รางวัลที่ไม่ได้รับ",
+  "Reward not fully claimed": "รับรางวัลเพียงบางส่วน"
 }

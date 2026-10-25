@@ -1,4 +1,4 @@
-# SUMUWW Wallet for Windows 1.0.2
+# SUMUWW Wallet for Windows 1.0.6
 
 An ordinary wallet with receive, send, activity, encrypted backup, recovery,
 automatic lock and 34 offline interface languages. English is the first-launch
@@ -27,3 +27,9 @@ For source execution use Windows Python 3.12 with the pinned dependencies in
 `../../PC/Source/requirements.txt`, then `python run.py`. Build with PyInstaller
 using `SUMUWW-Wallet.spec`. Desktop tests use disposable regtest wallets only.
 The executable is not publisher-code-signed.
+
+## 1.0.6
+
+1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.
+
+[Current features in 34 languages](docs/features/index.html).

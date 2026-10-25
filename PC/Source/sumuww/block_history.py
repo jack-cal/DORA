@@ -5,6 +5,7 @@ import sqlite3
 from .block import Block
 from .link_crypto import producer
 from .primitives import hash_to_display
+from .rewards import read_reward
 
 
 def block_history(database, offset=0, limit=50, height=None, own_node_id=None):
@@ -52,6 +53,7 @@ def block_history(database, offset=0, limit=50, height=None, own_node_id=None):
                       'local' if identity == own_node_id else 'other')
             blocks.append({'height': block_height, 'hash': hash_to_display(digest),
                            'parent_hash': hash_to_display(parent), 'timestamp': block.header.timestamp,
+                           'reward': read_reward(connection, block, block_height),
                            'producer_id': identity, 'origin': origin, 'transactions': len(block.transactions),
                            'proofs': connection.execute('SELECT COUNT(*) FROM link_proofs WHERE source=? OR target=?', (digest, digest)).fetchone()[0] if has_proofs else 0})
         return {'blocks': blocks, 'total': top+1, 'height': top, 'tip_hash': hash_to_display(tip),
@@ -102,11 +104,12 @@ def block_transactions(database, block_hash, offset=0, limit=50, network='dora')
                 except ValueError: address = None
                 outputs.append({'index': index, 'value': output.value, 'address': address,
                                 'script': output.script_pubkey.hex()})
-            transactions.append({'txid': hash_to_display(tx.txid()), 'coinbase': tx.is_coinbase(),
+            transactions.append({'mining_reward': read_reward(connection, block, height) if tx.is_coinbase() else None,
+                                 'txid': hash_to_display(tx.txid()), 'coinbase': tx.is_coinbase(),
                                  'output_total': sum(o.value for o in tx.outputs), 'outputs': outputs,
                                  'inputs': [{'txid': hash_to_display(i.prev_txid),
                                              'index': i.prev_index} for i in tx.inputs]})
-        return {'block_hash': block_hash, 'height': height, 'confirmations': top-height+1,
+        return {'block_hash': block_hash, 'height': height, 'reward': read_reward(connection, block, height), 'confirmations': top-height+1,
                 'tip_hash': hash_to_display(tip), 'transactions': transactions,
                 'offset': offset, 'total': total, 'limit': limit}
     finally:

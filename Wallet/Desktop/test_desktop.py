@@ -75,14 +75,14 @@ class DesktopWalletTests(unittest.TestCase):
             chain.mine(script, 101)
         self.app.refresh()
         self.await_idle()
-        with patch.object(run.simpledialog, 'askstring', side_effect=[key.address, '2.50000000', '0.00001000']), patch.object(run.messagebox, 'askokcancel', return_value=False) as review:
+        with patch.object(run.simpledialog, 'askstring', side_effect=[key.address, '2.50000000']), patch.object(run, 'FeeDialog', return_value=type('Quote', (), {'result':'0.00001000'})()), patch.object(run.messagebox, 'askokcancel', return_value=False) as review:
             self.app.buttons['↑  Send'][0].invoke()
             self.await_idle()
             self.assertIn(key.address, review.call_args.args[1])
             self.assertIn('2.50001000', review.call_args.args[1])
         with Chain(Path(self.temp.name) / 'node.sqlite', network='regtest') as chain:
             self.assertEqual(len(chain.mempool_transactions()), 0)
-        with patch.object(run.simpledialog, 'askstring', side_effect=[key.address, '2.50000000', '0.00001000']), patch.object(run.messagebox, 'askokcancel', return_value=True), patch.object(run.messagebox, 'showinfo'):
+        with patch.object(run.simpledialog, 'askstring', side_effect=[key.address, '2.50000000']), patch.object(run, 'FeeDialog', return_value=type('Quote', (), {'result':'0.00001000'})()), patch.object(run.messagebox, 'askokcancel', return_value=True), patch.object(run.messagebox, 'showinfo'):
             self.app.buttons['↑  Send'][0].invoke()
             self.await_idle()
         with Chain(Path(self.temp.name) / 'node.sqlite', network='regtest') as chain:

@@ -180,5 +180,14 @@
   "share": "Blokaandeel (%)",
   "knownfees": "Bekende transactiekosten",
   "rewardsubsidy": "Maximale bloksubsidies",
-  "pendingstats": "Lokale mempool-statistieken"
+  "pendingstats": "Lokale mempool-statistieken",
+  "spendingconditions": "Bestedingsvoorwaarden",
+  "decodedonly": "Alleen het script is gedecodeerd; besteedbaarheid is niet gecontroleerd.",
+  "rewardissuance": "Nieuwe uitgifte (blok)",
+  "rewardfees": "Transactiekosten (blok)",
+  "rewardtotalblock": "Totale blokbeloning",
+  "rewardlimit": "Uitgiftelimiet van het blok",
+  "rewardavailablefees": "Beschikbare blokkosten",
+  "rewardunclaimed": "Niet opgeëiste beloning",
+  "rewardpartial": "Beloning gedeeltelijk opgeëist"
 }

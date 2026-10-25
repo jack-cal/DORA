@@ -1,0 +1,307 @@
+{
+  "checked_at_utc": "2026-10-25T01:47:05.032015+00:00",
+  "core_tests_passed": 226,
+  "frozen_pc_checks": [
+    "console_help_version_and_peer_help",
+    "frozen_cli_public_profile_offline_mining_rejected_without_block",
+    "bundled_sqlite_coincurve_cryptography_wallet_mine_and_send",
+    "encrypted_backup_restore_preserves_address",
+    "frozen_yugeon_fee_estimation_bounded_rbf_policy_and_activation_state",
+    "frozen_block_coinbase_and_pending_template_reward_breakdown",
+    "frozen_address_decode_api_and_removed_exchange_command",
+    "two_frozen_daemons_real_localhost_dns_block_tx_relay_confirmation_peer_sync_replay_and_close",
+    "frozen_tk_gui_logo_asset_start_temporary_chain_and_graceful_window_close",
+    "portable_cmd_binary_preference_no_vendor_wheels_and_quoted_path"
+  ],
+  "windows": {
+    "PC": {
+      "version": "0.57.46",
+      "binaries": {
+        "SUMUWW-node-manager.exe": {
+          "sha256": "84c4cc7ddf5317737b0a8dc396b56bc156ff7fa159d52165158d2d3cdeec4dfa",
+          "compiled_modules_match_source": 54
+        },
+        "SUMUWW-node.exe": {
+          "sha256": "000c4157d54c322f4a66992124a8b71fdf0d2717eb0f4cdb9792a7d55c56ec66",
+          "compiled_modules_match_source": 49
+        },
+        "SUMUWW.exe": {
+          "sha256": "c9c676a52ad0da7ef29d34bc6c63257c1d2690fb281e0cff044b388b13b47644",
+          "compiled_modules_match_source": 63
+        }
+      }
+    },
+    "Wallet-PC": {
+      "version": "1.0.6",
+      "binaries": {
+        "SUMUWW-Wallet.exe": {
+          "sha256": "471653e853fadd8785116d7c8f3b41d245b7bdef0d8de201be66fe056ac7ee03",
+          "compiled_modules_match_source": 58
+        }
+      }
+    },
+    "Explorer": {
+      "version": "0.4.10",
+      "binaries": {
+        "SUMUWW-Explorer.exe": {
+          "sha256": "bafd51896508fd56dba62fd7e8b626596a924f91395e68525728b1a808101e7c",
+          "compiled_modules_match_source": 17
+        }
+      }
+    },
+    "P2P-Full": {
+      "version": "0.3.4",
+      "binaries": {
+        "SUMUWW-P2P-Full.exe": {
+          "sha256": "8eae89fa406aa2e6a065b14e5fed1db073eb29fe9b2dc750f1e7902133748347",
+          "compiled_modules_match_source": 58
+        }
+      }
+    },
+    "P2P-Light": {
+      "version": "0.3.4",
+      "binaries": {
+        "SUMUWW-P2P-Light.exe": {
+          "sha256": "37a3068f96f539fac2ed951cc33ee246cc9e73a7102bb5beb79710d021356625",
+          "compiled_modules_match_source": 58
+        }
+      }
+    }
+  },
+  "android": {
+    "Android": {
+      "version": "0.6.95",
+      "version_code": 155,
+      "package": "org.sumuww.miner",
+      "sha256": "bb687797caf0f50171e54916641f3a44197aca71b9fe8e2ae0a020fef6d63e2e",
+      "certificate_sha256": "8481abe8acb2fbc935f824008fa54cd78e790bebbb5795f80604234ee1b4cf4d",
+      "compiled_modules_match_source": 231,
+      "assets_match_source": 527,
+      "physical_phone_tested": false,
+      "phone_installed": false
+    },
+    "Wallet-Android": {
+      "version": "1.1.6",
+      "version_code": 17,
+      "package": "org.sumuww.wallet.current",
+      "sha256": "42c28127284006fc38f4dde1520b58e5cfec1a073169ab4cbc8e54c373b4dea0",
+      "certificate_sha256": "e6b41f98b4c965a76072277b8ea258553901bd7f9fd9b1c3120b567e6212e80a",
+      "compiled_modules_match_source": 96,
+      "assets_match_source": 126,
+      "physical_phone_tested": false,
+      "phone_installed": false
+    }
+  },
+  "documentation": {
+    "PC": {
+      "languages": 34,
+      "pages": 952,
+      "local_links": 20137,
+      "broken_links": 0
+    },
+    "Android": {
+      "languages": 34,
+      "pages": 238,
+      "local_links": 9758,
+      "broken_links": 0
+    },
+    "Wallet-PC": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    },
+    "Wallet-Android": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    },
+    "Explorer": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    },
+    "P2P-Full": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    },
+    "P2P-Light": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    },
+    "Node-addendum": {
+      "languages": 34,
+      "pages": 34,
+      "local_links": 0,
+      "broken_links": 0
+    }
+  },
+  "artifacts": {
+    "SUMUWW-PC-0.57.46.zip": {
+      "sha256": "9346631db42ab399349cdde5ee2a51f5dea9ff4d2db039c0ee49c4c42aec9292",
+      "bytes": 96570452
+    },
+    "SUMUWW-Wallet-PC-1.0.6-Windows.zip": {
+      "sha256": "4c10d70e6f72092e77222e44d062c74eaca29686bc17de2f2a1da5526063ba6c",
+      "bytes": 54301604
+    },
+    "SUMUWW-Explorer-0.4.10-Windows.zip": {
+      "sha256": "0dc9e9b1a77d905deb2699929cf8036f4c882078466f52fad0d7fc8f0b614051",
+      "bytes": 22339972
+    },
+    "SUMUWW-P2P-Full-0.3.4-Windows.zip": {
+      "sha256": "b1b7c6543fb67e93c59ac66ea49ba1c7761af3798bf2e19f9067ae5fdc072bf3",
+      "bytes": 35309260
+    },
+    "SUMUWW-P2P-Light-0.3.4-Windows.zip": {
+      "sha256": "b1610a51591a17ff8e4add0fd8612534dc540c36e031a961e801dace8a8eb3ec",
+      "bytes": 25646826
+    },
+    "SUMUWW-Windows-Source-0.57.46.zip": {
+      "sha256": "cc466619ef1018922cb48225f9967c0d3bc8f2644f41e3f2b201caba976268dc",
+      "bytes": 41942052,
+      "source_files": 2860
+    },
+    "SUMUWW-Android-Source-0.6.95.zip": {
+      "sha256": "a8fce67c6c501d1ca2a8f6c7faf53b496e936580d1ddd299f7720523163022fd",
+      "bytes": 46691972,
+      "source_files": 4273
+    },
+    "SUMUWW-Wallet-PC-1.0.6-Source.zip": {
+      "sha256": "20946020ef40b5a567cfedaf0541c77c36f6e06b4d14cc3c2c8e8ebeec7659a4",
+      "bytes": 42156120,
+      "source_files": 2973
+    },
+    "SUMUWW-Wallet-Android-1.1.6-Source.zip": {
+      "sha256": "30c0516348626be6e11ab4ad30f2b0acb1c73f9ef29071fd63d696abdb2901ae",
+      "bytes": 28555968,
+      "source_files": 1371
+    },
+    "SUMUWW-Explorer-0.4.10-Source.zip": {
+      "sha256": "8256509ec2ac5927650a910178510b3505a53f0bbff3dfca46b1af6a37f81e6a",
+      "bytes": 27627704,
+      "source_files": 1068
+    },
+    "SUMUWW-P2P-0.3.4-Source.zip": {
+      "sha256": "2ca5b14cdb091706569b5ccca8cacfb54636d0ab66beada900c79144d5c802cf",
+      "bytes": 27806057,
+      "source_files": 1117
+    },
+    "SUMUWW-Android-0.6.95.apk": {
+      "sha256": "bb687797caf0f50171e54916641f3a44197aca71b9fe8e2ae0a020fef6d63e2e",
+      "bytes": 67354522
+    },
+    "SUMUWW-Wallet-Android-1.1.6.apk": {
+      "sha256": "42c28127284006fc38f4dde1520b58e5cfec1a073169ab4cbc8e54c373b4dea0",
+      "bytes": 51889186
+    },
+    "SUMUWW-Node-Features-46-95-Documentation.zip": {
+      "sha256": "99c3df5f13204bbff2c65ce0826242f0e0dcbe0de5ef04c297d8e2deea9faa84",
+      "bytes": 92554
+    }
+  },
+  "public_multisig_lock_activation": "Not scheduled; isolated regtest validation only",
+  "github_published": false,
+  "limits": [
+    "Android APK signatures and compiled code/assets were verified; no physical-phone installation or UI test.",
+    "Local/loopback tests do not establish uninterrupted public-network availability.",
+    "Multisig and new output locks remain available only in explicitly activated isolated tests; public activation is not scheduled.",
+    "An unclaimed reward has no uniquely defined component-payment split. Legacy read-only branches without fee data report unknown values until verified replay."
+  ],
+  "history_regression_tests": 23,
+  "all_block_browser_tests": 12,
+  "wallet_checks": {
+    "desktop_tests": 11,
+    "android_python_tests": 14
+  },
+  "explorer_checks": {
+    "reader_test_executions": 86,
+    "ui_tests": 46,
+    "frozen_reward_http_verified": true
+  },
+  "scope_audit": [
+    {
+      "item": "Independent node",
+      "status": "implemented",
+      "evidence": "Independent genesis and network parameters, standalone node, peer synchronization, verified database replay and build instructions."
+    },
+    {
+      "item": "Query and submission API",
+      "status": "implemented",
+      "evidence": "28 RPC methods and 11 REST routes; authenticated queries, decoding, preflight and signed-transaction validation/acceptance/relay."
+    },
+    {
+      "item": "Addresses",
+      "status": "implemented",
+      "evidence": "Compressed secp256k1 public-key HASH160, witness-v0 address rules, network/checksum validation, no mandatory memo/tag."
+    },
+    {
+      "item": "Transaction and signature format",
+      "status": "implemented_node_scope",
+      "evidence": "Transaction serialization, digest/signature specification, public vectors and key-free reference code; node rejects unsigned/invalid-signature transactions."
+    },
+    {
+      "item": "Transfer and confirmation queries",
+      "status": "implemented",
+      "evidence": "Outputs, integer amounts, block hashes/heights, active flags, confirmation counts and coinbase maturity."
+    },
+    {
+      "item": "Replay and reorganization",
+      "status": "implemented",
+      "evidence": "UTXO double-spend rejection, duplicate submission, bounded replacement state, greater-work reorganization and reconfirmation tests."
+    },
+    {
+      "item": "Fees and available outputs",
+      "status": "implemented_node_scope",
+      "evidence": "Live local-queue estimates, automatic presets/manual rate, exact confirmation quote, spendable UTXO and balance queries; block subsidy and fees reported separately."
+    },
+    {
+      "item": "Explorer",
+      "status": "implemented",
+      "evidence": "Read-only address/block/transaction queries; per-block and coinbase reward components; public script-condition decoding."
+    },
+    {
+      "item": "Reproducible tests and documentation",
+      "status": "implemented",
+      "evidence": "Disposable regtest fixtures, authenticated HTTP acceptance/rejection and reorganization examples, API errors, 34-language current program documents."
+    },
+    {
+      "item": "Operation and upgrades",
+      "status": "implemented",
+      "evidence": "Node status/synchronization, peer recovery, storage verification, versioned packages/source archives and checksums. Public activation remains separate from a local build."
+    }
+  ],
+  "reward_changes": {
+    "new_reward_tests": 9,
+    "five_core_copies_identical": true,
+    "default_language": "en",
+    "direct_translation_languages": 34,
+    "translated_scope": "Seven reward labels, one reward/API paragraph and method-count corrections; existing live-fee translations retained.",
+    "derived_index_is_consensus": false,
+    "wallet_balance_rules_changed": false,
+    "historic_active_chain_backfilled": true,
+    "legacy_branch_backfilled_on_verified_replay": true,
+    "underclaim_paid_split": "unknown, reported as null",
+    "read_only_legacy_missing_fee_data": "unknown, never fabricated zero"
+  },
+  "documentation_repairs": {
+    "corrected_extended_documents": [
+      "programs\\PC\\docs\\NETWORK_RUNBOOK.md",
+      "programs\\PC\\docs\\OPERATIONS_PLAN.md",
+      "programs\\PC\\docs\\RPC_API.md",
+      "programs\\PC\\docs\\i18n\\en\\OPERATIONS_PLAN.md"
+    ],
+    "authentication_method_count_languages": 34,
+    "current_methods": 28,
+    "default_language": "en"
+  },
+  "audit_completed_at_utc": "2026-10-25T01:49:57.472169+00:00",
+  "publication_scope": "PC, Android, ordinary wallets, Explorer, P2P Full/Light and program documentation; no launchpad or AMM publication.",
+  "artifact_note": "Artifact hashes below identify the original tested local build. Publication may correct plain-text guide metadata and add source-commit provenance. Use each release SHA256SUMS for uploaded archive hashes. Tested executable and APK bytes are preserved."
+}

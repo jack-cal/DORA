@@ -2,7 +2,7 @@
 from PyInstaller.utils.hooks import collect_submodules
 from PyInstaller.utils.hooks import collect_all
 
-datas = [('tools/bitcoin-31.1', 'tools/bitcoin-31.1'), ('tools/runtime-manifest.json', 'tools'), ('smw_trade/locales', 'smw_trade/locales'), ('assets/fonts', 'assets/fonts'), ('vendor/assets/bip39', 'assets/bip39'), ('vendor/assets/bootstrap-nodes.json', 'assets/bootstrap-nodes.json')]
+datas = [('docs', 'docs'), ('tools/bitcoin-31.1', 'tools/bitcoin-31.1'), ('tools/runtime-manifest.json', 'tools'), ('smw_trade/locales', 'smw_trade/locales'), ('assets/fonts', 'assets/fonts'), ('vendor/assets/bip39', 'assets/bip39'), ('vendor/assets/bootstrap-nodes.json', 'assets/bootstrap-nodes.json')]
 binaries = []
 datas += [('smw_trade/market/translations.json', 'smw_trade/market'), ('vendor/assets/sumuww.ico', 'vendor/assets')]
 hiddenimports = []

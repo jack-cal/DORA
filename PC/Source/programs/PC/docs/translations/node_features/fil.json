@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Rate ng bayad (yugeon/vB)",
+    "Slow": "Mabagal",
+    "Normal": "Karaniwan",
+    "Fast": "Mabilis",
+    "Manual": "Manwal",
+    "Check the fee rate and wallet limits.": "Suriin ang rate ng bayad at mga limitasyon ng wallet."
+  },
+  "wallet": "Batay ang awtomatikong bayad sa dami ng nakabinbing datos, kapasidad ng bloke at prayoridad ng transaksiyon. Hindi ginagamit ang bayad ng mga nakaraang bloke. Kapag maikli ang pila, nananatili ang pinakamababang singil. Naa-update ang preview; itinatakda ng huling kumpirmasyon ang bayad. Ang obserbasyon ay para sa nakakonektang lokal na node, hindi sa lahat ng node.\n\nNananatili ang tala ng mga pagpapalit na naitala ng node na ito kahit i-restart ang wallet. Hindi naaapektuhan ng mga inalis na transaksiyon ang balanse.\n\nHiwalay sa kasaysayan ng pagmimina ang bagong inilabas, bayarin sa transaksyon, at kabuuang gantimpala ng bawat block. Hiwalay ding ipinapakita ang natanggap ng iyong wallet. Kapag bahagi lamang ang kinuha, hindi ipinapalagay ang paghahati ng dalawang sangkap. May 28 RPC method ang node, kabilang ang pagtatantiya ng bayarin, at sinusuri at ipinapasa nito ang mga nilagdaang transaksyon.",
+  "node": "May dagdag na pagtatanong ng bayad, pagsusuri bago magpadala, katayuan ng pagpapalit sa RBF at datos ayon sa pagkakasunod ng mga block. Sinusuri muna ang kapalit bago alisin ang mga nakabinbing transaksiyon. Naipatupad ang maramihang lagda at naka-lock na output para sa hiwalay na pagsubok; hindi pa aktibo sa pampublikong network.",
+  "live_preview": "Lokal na pila: {0} vB · {1} yugeon/vB · target: {2} bloke"
+}

@@ -1,3 +1,13 @@
+# SUMUWW Explorer 0.4.10 — 25 October 2026
+
+This executable includes the current shared-core integration, block issuance/fee/total reward fields, yugeon fee-rate labels, locally recorded replacement links and revealed spending conditions. It remains a read-only explorer of the selected node database. Unknown historical fee values are not presented as zero. Public multisig/output-lock activation is not scheduled.
+
+English is the default. Current features are documented in all 34 supported languages under docs/features. Source and the Windows package are published at https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10.
+
+## Historical release notes
+
+The following entries describe older releases and their recorded checks.
+
 Documentation revision 3 (2026-10-24). Release: https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.6-docs-r3. Explorer
 executable 0.4.6 is unchanged. The guide now identifies published full nodes
 0.57.40 / 0.6.89 and separates wallet source availability from download releases.
@@ -25,3 +35,9 @@ This patch does not change consensus. The existing 20% asynchronous post-PoW con
 English remains the first-launch default; all 34 offline UI languages remain selectable. Corrections were written directly, without external translation services. Existing wallet formats and core consensus code are unchanged.
 
 See the [UI and language verification report](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/UI_LANGUAGE_VERIFICATION.md) for tests and limits. Local checks are not an independent security audit or Internet-scale endurance test. That earlier suite statement concerned P2P 0.1.9. Current P2P Full/Light 0.3.0 require height-9100 activation and synchronized nodes; Explorer itself does not exchange coins. Source archives and SHA-256 checksums accompany this release. Windows executables are not publisher-code-signed.
+
+## 0.4.10
+
+The explorer shows fee rates in yugeon/vB. When the local node has recorded a transaction replacement, the transaction page links to the replacement. Confirmed chain records take precedence; local replacement history is limited.
+
+[Current features in 34 languages](docs/features/index.html).

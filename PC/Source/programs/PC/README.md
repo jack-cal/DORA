@@ -1,3 +1,9 @@
+# SUMUWW PC 0.57.46
+
+This release adds address validation and transaction decoding to the node API. The node provides signed-transaction validation and submission, block/transaction/UTXO queries, synchronization state and reorganization information. Existing wallet, mining and connection-proof features are retained. English is the default, with documentation in all 34 supported languages.
+
+See [node interface](../../EXCHANGE_INTEGRATION.html) and [language editions](../../docs/index.html).
+
 # SUMUWW PC program
 
 <!-- current-links-9000 -->
@@ -9,7 +15,7 @@ Valid blocks through 8999 remain usable, including those sent together with an i
 <!-- /current-links-9000 -->
 
 
-SUMUWW PC full node · 0.57.40
+SUMUWW PC full node · 0.57.46
 
 Extract the Windows executable package and run SUMUWW.exe. Keep the shared runtime and documents beside it.
 
@@ -26,3 +32,5 @@ Encrypted wallet creation, opening, seed recovery, backup and restore; balances,
 [Deployment readiness and failure handling](docs/i18n/en/DEPLOYMENT_READINESS.md)
 
 All history opens the public active-chain browser without selecting a wallet. Select a block to view all its transactions and expand a transaction to inspect its inputs and outputs. Recent wallet transactions and My history remain specific to the selected wallet. Connection proof counts refer to complete stored attachments, not beacon preparation.
+
+[Exchange integration and offline signing](../../EXCHANGE_INTEGRATION.html) · [한국어 안내](../../EXCHANGE_INTEGRATION.ko.html)

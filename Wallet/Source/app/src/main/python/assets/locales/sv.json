@@ -284,5 +284,22 @@
   "Do not show this help again.": "Visa inte den här hjälpen igen.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Direktanslutning använder varken Tor eller I2P. Den är oftast snabbare och använder färre resurser. Andra noder kan se din anslutnings-IP.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nFördel: hjälper till att dölja din riktiga IP för andra noder.\n\nNackdelar: anslutning och synkronisering kan bli långsammare och batteri- och dataförbrukning öka. Transaktioner förblir offentliga. Vid fel förblir direktanslutning avstängd.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFördel: hjälper till att dölja din riktiga IP för andra noder.\n\nNackdelar: anslutning och synkronisering kan bli långsammare och batteri- och dataförbrukning öka. Transaktioner förblir offentliga. Vid fel förblir direktanslutning avstängd.\n\nI2P-noder krävs."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nFördel: hjälper till att dölja din riktiga IP för andra noder.\n\nNackdelar: anslutning och synkronisering kan bli långsammare och batteri- och dataförbrukning öka. Transaktioner förblir offentliga. Vid fel förblir direktanslutning avstängd.\n\nI2P-noder krävs.",
+  "Fee rate (yugeon/vB)": "Avgiftssats (yugeon/vB)",
+  "Slow": "Långsam",
+  "Normal": "Normal",
+  "Fast": "Snabb",
+  "Manual": "Manuell",
+  "Check the fee rate and wallet limits.": "Kontrollera avgiftssatsen och plånbokens gränser.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kö: {0} vB · {1} yugeon/vB · mål: {2} block",
+  "Replaced · not applied": "Ersatt · påverkar inte saldot",
+  "Replaced by {0}": "Ersatt av {0}",
+  "Removed after parent replacement": "Borttagen efter att den överordnade transaktionen ersattes",
+  "New issuance (block)": "Ny utgivning (block)",
+  "Transaction fees (block)": "Transaktionsavgifter (block)",
+  "Total block reward": "Total blockbelöning",
+  "Issuance limit (block)": "Blockets utgivningsgräns",
+  "Available fees (block)": "Tillgängliga blockavgifter",
+  "Unclaimed reward": "Ej uttagen belöning",
+  "Reward not fully claimed": "Belöning delvis uttagen"
 }

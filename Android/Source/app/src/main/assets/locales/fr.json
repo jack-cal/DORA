@@ -293,5 +293,22 @@
   "Block hash": "Empreinte du bloc",
   "All blocks": "Tous les blocs",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "Blocs validés depuis la genèse jusqu’au bloc actuel, tous nœuds confondus.",
-  "Search": "Rechercher"
+  "Search": "Rechercher",
+  "Fee rate (yugeon/vB)": "Taux de frais (yugeon/vB)",
+  "Slow": "Lent",
+  "Normal": "Normal",
+  "Fast": "Rapide",
+  "Manual": "Manuel",
+  "Check the fee rate and wallet limits.": "Vérifiez le taux de frais et les limites du portefeuille.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "File locale : {0} vB · {1} yugeon/vB · objectif : {2} blocs",
+  "Replaced · not applied": "Remplacée · sans effet sur le solde",
+  "Replaced by {0}": "Remplacée par {0}",
+  "Removed after parent replacement": "Retirée après le remplacement de la transaction parente",
+  "New issuance (block)": "Émission nouvelle (bloc)",
+  "Transaction fees (block)": "Frais de transaction (bloc)",
+  "Total block reward": "Récompense totale du bloc",
+  "Issuance limit (block)": "Plafond d’émission du bloc",
+  "Available fees (block)": "Frais disponibles du bloc",
+  "Unclaimed reward": "Récompense non réclamée",
+  "Reward not fully claimed": "Récompense partiellement réclamée"
 }

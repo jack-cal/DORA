@@ -212,7 +212,9 @@ def main(argv=None):
         if name == 'wallet-send':
             command.add_argument('--to-address', required=True)
             command.add_argument('--amount', required=True)
-            command.add_argument('--fee', default='auto', help='Automatic local suggestion (default), or a nonnegative total SUMUWW fee')
+            command.add_argument('--fee', default='auto', help='Automatic suggestion, or legacy total SMW fee')
+            command.add_argument('--fee-rate', help='Manual yugeon/vB rate (up to three decimals)')
+            command.add_argument('--fee-mode', choices=('slow','normal','fast'), default='normal')
     mining_address = commands.add_parser('mine')
     mining_address.add_argument('--address', required=True)
     mining_address.add_argument('--count', type=int, default=1)
@@ -258,7 +260,11 @@ def main(argv=None):
         if args.command == 'wallet-send':
             script = decode_address(args.to_address, network=network)
             amount = parse_amount(args.amount)
+            if args.fee_rate is not None and args.fee != 'auto':
+                raise ValueError('Choose a fee rate or a total fee, not both')
             fee = None if args.fee == 'auto' else parse_amount(args.fee)
+            if fee is not None and fee > 100_000_000:
+                raise ValueError('Manual fee exceeds the wallet fee limit')
             if amount <= 0:
                 raise ValueError('Payment amount must be positive')
         if args.command in ('wallet-create', 'wallet-address', 'wallet-backup', 'wallet-restore',
@@ -294,10 +300,10 @@ def main(argv=None):
                     result = _balance(chain, script)
                 elif args.command == 'wallet-send':
                     with chain.read_snapshot():
-                        suggestion = estimate_payment_fee(chain, key.script_pubkey, script, amount) if fee is None else None
+                        suggestion = estimate_payment_fee(chain, key.script_pubkey, script, amount, mode=args.fee_mode, rate=args.fee_rate) if fee is None else None
                         fee = suggestion['fee_units'] if suggestion else fee
                         tx = create_payment(chain, key, script, amount, fee)
-                    result = {'txid': hash_to_display(chain.submit_transaction(tx)), 'transaction_hex': tx.serialize().hex(), 'fee_smw': format_amount(fee), 'total_smw': format_amount(amount + fee), 'fee_mode': 'automatic' if suggestion else 'manual', 'fee_source': suggestion['source'] if suggestion else 'manual', 'status': 'local mempool', 'from_address': key.address, 'to_address': args.to_address}
+                    result = {'txid': hash_to_display(chain.submit_transaction(tx, allow_replacement=False)), 'transaction_hex': tx.serialize().hex(), 'fee_smw': format_amount(fee), 'total_smw': format_amount(amount + fee), 'fee_mode': 'automatic' if suggestion else 'manual', 'fee_source': suggestion['source'] if suggestion else 'manual', 'status': 'local mempool', 'from_address': key.address, 'to_address': args.to_address}
                 elif args.command == 'send-test':
                     tx = create_test_payment(chain, args.from_key_id, bytes.fromhex(args.to_pubkey), parse_amount(args.amount), parse_amount(args.fee))
                     result = {'txid': hash_to_display(chain.submit_transaction(tx)), 'transaction_hex': tx.serialize().hex(), 'fee_smw': args.fee, 'status': 'local mempool'}

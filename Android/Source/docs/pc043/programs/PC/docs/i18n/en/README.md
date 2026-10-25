@@ -1,22 +1,27 @@
-# SUMUWW PC program
+# SUMUWW · Documentation
 
-<!-- current-links-9000 -->
-## 2026-10-22 · 9000 · 20% · DGW/10
+SUMUWW PC 0.57.46 · The node validates, stores, relays and exposes chain data.
 
-Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.
+## Signing format
 
-[Current protocol / exact format / limitations](../../../../../CONNECTION_PROOFS_9000.html)
-<!-- /current-links-9000 -->
+The optional source SDK assembles transactions and checks supplied signatures without keys or network access. It is not a signer or node command. Its P2WPKH payment restriction applies to the example format, not the node. The existing personal wallet remains available.
 
+## RPC and HTTP API
 
-SUMUWW PC program · 0.57.33
+validateaddress checks the checksum and selected network. decoderawtransaction returns decoded_only, not signature validity or confirmation. Existing OP_RETURN outputs preserve data for external programs. The node adds fee queries, submission checks, RBF replacement status and ordered block data records. Replacements are validated before any pending transaction is removed. Multisig and output locks are implemented for isolated activation tests; they are not yet active on the public network.
 
-Extract the Windows executable package and run SUMUWW.exe. Keep the shared runtime and documents beside it.
+## Verification
 
-Encrypted wallet creation, opening, seed recovery, backup and restore; balances, fees, signed transfers and transaction history; mining, pause/resume, node discovery, synchronization, RPC/API and on-demand node checks.
+Run python examples/node_contract.py from source with dependencies installed. Public fixture keys and disposable regtest test submission, rejection, confirmations, reorganization and data persistence. No real funds, user profile or hardware signer is used.
 
-[RPC/API](RPC_API.md) · [Network](NETWORK_RUNBOOK.md) · [Capabilities](CAPABILITIES.md)
+```text
+network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+```
 
-[CPU / GPU / ASIC](MINING_DEVICES.md)
+[Node interface](EXCHANGE_INTEGRATION.html) · [RPC and HTTP API](RPC_API.html) · [Node operation](NETWORK_RUNBOOK.html) · [Release notes](RELEASE_NOTES.html) · [Verification](EXCHANGE_EXAMPLES.html)
 
-[Deployment readiness and failure handling](DEPLOYMENT_READINESS.md)
+[Extended English reference](../../../../../EXCHANGE_INTEGRATION.html) · [API_CONTRACT.json](../../../../../API_CONTRACT.json) · [vectors.json](../../../../../examples/exchange/vectors.json)

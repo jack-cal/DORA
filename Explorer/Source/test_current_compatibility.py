@@ -30,6 +30,26 @@ class ActivatedDifficultyTests(unittest.TestCase):
     make=fixtures.ExplorerTests.make
     add=fixtures.ExplorerTests.add
 
+    def test_replacement_history_changes_snapshot_but_confirmed_chain_wins(self):
+        from sumuww.primitives import hash_to_display
+        from server import SnapshotChanged
+        old=b'\x43'*32; new=b'\x44'*32
+        self.explorer.refresh(force=True)
+        initial=self.explorer.snapshot
+        self.c.execute('CREATE TABLE mempool_replacements(old_txid BLOB PRIMARY KEY,new_txid BLOB,reason TEXT,seen INTEGER)')
+        self.c.execute('INSERT INTO mempool_replacements VALUES (?,?,?,?)',(old,new,'conflict',1))
+        self.c.execute('INSERT INTO mempool_replacements VALUES (?,?,?,?)',(self.tx.txid(),new,'conflict',2))
+        self.c.commit();self.explorer.refresh(force=True)
+        self.assertNotEqual(initial,self.explorer.snapshot)
+        result=self.explorer.run('transaction',hash_to_display(old))
+        self.assertEqual(result['status'],'replaced')
+        self.assertEqual(result['replaced_by'],hash_to_display(new))
+        confirmed=self.explorer.run('transaction',hash_to_display(self.tx.txid()))
+        self.assertGreater(confirmed['confirmations'],0)
+        self.assertFalse(confirmed['pending'])
+        self.assertNotIn('replaced_by',confirmed)
+        with self.assertRaises(SnapshotChanged):self.explorer.run('transaction',hash_to_display(old),snapshot=initial)
+
     def test_mining_analysis_across_actual_dgw_activation_height(self):
         parent=self.two
         for height in range(3,8064):

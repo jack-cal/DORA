@@ -1,10 +1,8 @@
-> PC 0.57.40 / Android 0.6.89 improve connection-proof participant availability and retain valid partial signatures across retries. Setup generations, lottery jobs and completed proofs are separate counts. See [RELEASE_NOTES.txt](RELEASE_NOTES.txt).
+# SUMUWW PC 0.57.46
 
-> Windows full node 0.57.40: **All history** shows all active-chain blocks and their transactions. **My history** and recent wallet transactions remain wallet-only. See [RELEASE_NOTES.txt](RELEASE_NOTES.txt). See the [PC 0.57.40 release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) and [Android 0.6.89 release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89) for publication status and verified assets.
+This release adds address validation and transaction decoding to the node API. The node provides signed-transaction validation and submission, block/transaction/UTXO queries, synchronization state and reorganization information. Existing wallet, mining and connection-proof features are retained. English is the default, with documentation in all 34 supported languages.
 
-> Automatic beacon recovery was introduced in PC 0.57.34 / Android 0.6.84 and is retained in current PC 0.57.40 / Android 0.6.89. Read [BEACON_RECOVERY.md](BEACON_RECOVERY.md) for compatibility and verification limits.
-
-> Updated height-9000 implementation: read [UPGRADE_9000.txt](UPGRADE_9000.txt). Earlier release notes below describe the original source.
+See [node interface](EXCHANGE_INTEGRATION.html) and [language editions](docs/index.html).
 
 # SUMUWW Independent Coin
 

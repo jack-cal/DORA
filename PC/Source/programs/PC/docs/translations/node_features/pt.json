@@ -1,0 +1,13 @@
+{
+  "ui": {
+    "Fee rate (yugeon/vB)": "Taxa (yugeon/vB)",
+    "Slow": "Lenta",
+    "Normal": "Normal",
+    "Fast": "Rápida",
+    "Manual": "Manual",
+    "Check the fee rate and wallet limits.": "Verifique a taxa e os limites da carteira."
+  },
+  "wallet": "A taxa automática considera o volume pendente, a capacidade dos blocos e a prioridade das transações. Não usa taxas de blocos anteriores. Com pouca espera, mantém a taxa mínima. A prévia se atualiza; a confirmação final fixa a taxa. Os dados abrangem o nó local conectado, não todos os nós.\n\nO histórico de substituições registrado por este nó permanece após reiniciar a carteira. As transações removidas não afetam o saldo.\n\nO histórico de mineração separa a nova emissão, as taxas e a recompensa total de cada bloco. O valor recebido pela sua carteira aparece separadamente. Uma reivindicação parcial não permite atribuir os valores de cada componente. O nó oferece 28 métodos RPC, incluindo estimativa de taxas, e valida e retransmite transações assinadas.",
+  "node": "O nó inclui consultas de taxas, verificação antes do envio, estado de substituições RBF e leitura ordenada dos dados dos blocos. A substituição é validada antes de remover transações pendentes. As assinaturas múltiplas e as saídas bloqueadas estão implementadas para testes isolados; ainda não estão ativas na rede pública.",
+  "live_preview": "Fila local: {0} vB · {1} yugeon/vB · meta: {2} blocos"
+}

@@ -1,138 +1,185 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>SUMUWW PC 0.57.23 RPC and HTTP API</h1>
-<p>SUMUWW PC program · 0.57.23</p>
-<h2>Enable and authenticate</h2>
-<p>Open RPC/API in SUMUWW, enable the service and apply port <code>18443</code>. It is disabled until you opt in and binds only to numeric loopback <code>127.0.0.1</code>. Your saved enable/port settings are restored on the next launch. The default token file is <code>rpc-token</code> in the selected data directory. It contains a randomly generated 32-byte token encoded as 64 lowercase hexadecimal characters. Treat this file as a local access credential: an authenticated caller can submit transactions/blocks and request templates, but cannot unlock a wallet or sign. Status output does not reveal the token. The service does not enable public HTTP listening or change P2P firewall rules. For a node without the GUI:</p>
-<pre><code class="language-powershell">.\SUMUWW-node.exe peer --database data/server/node.sqlite --network sumuww --listen 0.0.0.0:18444 --allow-internet --rpc --rpc-port 18443 --rpc-token-file data/server/rpc-token
-</code></pre>
-<h2>Local command-line client</h2>
-<p>Run the client against the same local service and its token file. Use the actual token path of the GUI or daemon you enabled. <code>--params</code> is JSON and may be an object with named parameters or an array in the order below. Use an integer for height, limit and offset; <code>verbose</code> must be a JSON boolean. Specify the configured port when it differs from <code>18443</code>. <code>--params-file PATH</code> reads parameters from a UTF-8 JSON file, including a BOM. Use only one of <code>--params</code> and <code>--params-file</code>.</p>
-<pre><code class="language-powershell">.\SUMUWW-node.exe rpc --token-file data/server/rpc-token getblockchaininfo
-'{&quot;height&quot;:0}' | Set-Content -Encoding utf8 -Path rpc-params.json
-.\SUMUWW-node.exe rpc --token-file data/server/rpc-token --params-file rpc-params.json getblockhash
-</code></pre>
-<h2>JSON-RPC 2.0</h2>
-<p>Send <code>POST /rpc</code> with <code>Content-Type: application/json</code> and <code>Authorization: Bearer &lt;token&gt;</code>. JSON-RPC requests use <code>"jsonrpc":"2.0"</code>, <code>method</code>, optional object/array <code>params</code> and a response <code>id</code>. A valid notification omits <code>id</code> and has no response body; HTTP returns 204. Batches contain at most 16 requests. A normal request receives <code>result</code> or <code>error</code> with its original <code>id</code>. This is SUMUWW’s own API contract; it does not claim Bitcoin Core RPC or BIP22 mining-format compatibility.</p>
-<pre><code class="language-json">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;getblockhash&quot;,&quot;params&quot;:{&quot;height&quot;:0}}
-</code></pre>
-<pre><code class="language-json">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97&quot;}
-</code></pre>
-<pre><code class="language-python">import json
-import urllib.request
-rpc_host = input(&quot;Numeric RPC loopback address: &quot;).strip()
-from pathlib import Path
-
-token = Path(&quot;data/server/rpc-token&quot;).read_text(encoding=&quot;utf-8&quot;).strip()
-payload = {&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;getblockchaininfo&quot;, &quot;params&quot;: {}}
-request = urllib.request.Request(
-    f&quot;http://{rpc_host}:18443/rpc&quot;,
-    data=json.dumps(payload).encode(&quot;utf-8&quot;),
-    headers={&quot;Authorization&quot;: &quot;Bearer &quot; + token, &quot;Content-Type&quot;: &quot;application/json&quot;},
-)
-with urllib.request.urlopen(request, timeout=10) as response:
-    print(json.load(response))
-</code></pre>
-<h2>Methods and parameters</h2>
-<p>getmempoolinfo and GET /api/v1/mempool/info return one consistent read snapshot. Integer fields are size, bytes, max_transactions, max_bytes, remaining_transactions and remaining_bytes; full is Boolean. This version has 15 RPC methods and 11 REST routes.</p>
-<p>MempoolFull is temporary local-capacity rejection: JSON-RPC -32005 and HTTP 503. The rejected transaction is not queued or accepted. Retry when capacity becomes available; this does not guarantee confirmation.</p>
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · RPC and HTTP API</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Documentation · 34</summary><nav><a href="RPC_API.html" lang="en" aria-current="page"><bdi>English</bdi></a><a href="../fr/RPC_API.html" lang="fr"><bdi>Français</bdi></a><a href="../es/RPC_API.html" lang="es"><bdi>Español</bdi></a><a href="../ar/RPC_API.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/RPC_API.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/RPC_API.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/RPC_API.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/RPC_API.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/RPC_API.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/RPC_API.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/RPC_API.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/RPC_API.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/RPC_API.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/RPC_API.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/RPC_API.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/RPC_API.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/RPC_API.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/RPC_API.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/RPC_API.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/RPC_API.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/RPC_API.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/RPC_API.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/RPC_API.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/RPC_API.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/RPC_API.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/RPC_API.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/RPC_API.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/RPC_API.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/RPC_API.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/RPC_API.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/RPC_API.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/RPC_API.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/RPC_API.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/RPC_API.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Documentation</a><a href="EXCHANGE_INTEGRATION.html">Node interface</a><a href="RPC_API.html">RPC and HTTP API</a><a href="NETWORK_RUNBOOK.html">Node operation</a><a href="RELEASE_NOTES.html">Release notes</a><a href="EXCHANGE_EXAMPLES.html">Verification</a></nav></header><main><h1>SUMUWW · RPC and HTTP API</h1>
+<p>SUMUWW PC 0.57.46 · The node validates, stores, relays and exposes chain data.</p>
+<h2>RPC and HTTP API</h2>
+<p>validateaddress checks the checksum and selected network. decoderawtransaction returns decoded_only, not signature validity or confirmation. Existing OP_RETURN outputs preserve data for external programs. The node adds fee queries, submission checks, RBF replacement status and ordered block data records. Replacements are validated before any pending transaction is removed. Multisig and output locks are implemented for isolated activation tests; they are not yet active on the public network.</p>
+<h2>Authentication and limits</h2>
+<p>Enable RPC explicitly at numeric loopback <code>127.0.0.1:18443</code> with its private Bearer token. No wallet unlock or remote signing is exposed. Use a local service or authenticated tunnel; browser Origin/Referer requests are rejected. JSON-RPC uses POST <code>/rpc</code>, an object/array <code>params</code> and an <code>id</code>; notifications return HTTP 204. Limits: body 8004096 bytes, headers 8192 bytes, batch 16, concurrent requests 16, deadline 10 seconds; pagination limit 1–1000 and offset 0–1000000. There are 28 methods and 11 REST routes.</p>
+<h2>Amounts and available outputs</h2>
+<p><code>_units</code> means integer smallest units; <code>_smw</code> is an 8-decimal string; <code>_dora</code> is a compatibility alias. There is no <code>_sumuww</code> amount field. 1 SMW = 100000000 units. <code>gettxout</code> has no <code>spendable</code> field and may return immature coinbase outputs. Coinbase needs at least 100 confirmations for spending in the next block. Filter <code>listunspent</code> by <code>spendable</code>; available amounts from <code>getaddressbalance</code> exclude immature and pending-spent funds. New mempool outputs are not confirmed funds. Check the tip across pages and revalidate selected inputs.</p>
+<p>1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Parameters</th>
-<th>Result / action</th>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>help</code></td>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automatic fees use current pending volume, block capacity and transaction priority. Past block fees are not used. A quiet queue keeps the minimum rate. The preview refreshes; the final confirmation fixes the fee. Observations cover the connected local node, not every node.</p>
+<p>Wallet history retains local replacement records after restart. Removed transactions do not affect the balance.</p>
+<p>Mining history separates new issuance, transaction fees and total reward for each block. Your received amount is shown separately. A partial claim does not identify how the two components were divided. The node provides 28 RPC methods, including fee estimation, and validates and relays signed transactions.</p>
+<h2>Transaction and block lookup</h2>
+<p><code>getrawtransaction</code> searches the active chain and mempool, not orphan-only transactions. Inputs identify outpoints, not a unique sender address. <code>getblock</code> takes Boolean <code>verbose</code>; inactive stored blocks have <code>active=false</code> and <code>confirmations=-1</code>. Their raw transactions remain available by block hash. <code>findspendingtransaction</code> searches confirmed active-chain spends only; null does not prove availability. Check <code>gettxout</code> with <code>include_mempool=true</code>. All confirmations and active flags can change after a reorganization.</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getblockchaininfo</code></td>
 <td><code>{} / []</code></td>
-<td>Available methods and parameter information</td>
-</tr>
-<tr>
-<td><code>getblockchaininfo, getnetworkinfo</code></td>
-<td><code>{} / []</code></td>
-<td>Validated active-chain state / peer connection and synchronization state</td>
-</tr>
-<tr>
-<td><code>getblockcount, getbestblockhash</code></td>
-<td><code>{} / []</code></td>
-<td>Active height / active tip display hash</td>
-</tr>
-<tr>
-<td><code>getblockhash</code></td>
-<td><code>height</code></td>
-<td>Active block hash at height</td>
-</tr>
-<tr>
-<td><code>getblock</code></td>
-<td><code>hash, verbose=true</code></td>
-<td>Block details; <code>verbose=false</code> returns serialized block hex</td>
 </tr>
 <tr>
 <td><code>gethtlcinfo</code></td>
 <td><code>{} / []</code></td>
-<td>HTLC configuration and current/next-block activation; public height 9100</td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset=0, limit=100</code></td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
 </tr>
 <tr>
 <td><code>gettxout</code></td>
 <td><code>txid, index, include_mempool=true</code></td>
-<td>Confirmed unspent output or null; optionally exclude mempool-spent outputs</td>
 </tr>
 <tr>
 <td><code>findspendingtransaction</code></td>
 <td><code>txid, index, start_height=0</code></td>
-<td>Spending transaction in the active chain, including raw hex, or null</td>
+</tr>
+<tr>
+<td><code>getnetworkinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockcount</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getbestblockhash</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockhash</code></td>
+<td><code>height</code></td>
+</tr>
+<tr>
+<td><code>getblock</code></td>
+<td><code>hash, verbose=true</code></td>
 </tr>
 <tr>
 <td><code>getrawmempool</code></td>
 <td><code>{} / []</code></td>
-<td>Current mempool transaction IDs</td>
 </tr>
 <tr>
 <td><code>getmempoolinfo</code></td>
 <td><code>{} / []</code></td>
-<td>Local capacity and remaining space from one read snapshot</td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize=140, mode=normal</code></td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
 </tr>
 <tr>
 <td><code>getrawtransaction</code></td>
 <td><code>txid, verbose=true</code></td>
-<td>Transaction in active chain or mempool; <code>verbose=false</code> returns hex</td>
+</tr>
+<tr>
+<td><code>decoderawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>validateaddress</code></td>
+<td><code>address</code></td>
 </tr>
 <tr>
 <td><code>listunspent</code></td>
 <td><code>address, limit=100, offset=0</code></td>
-<td>Address UTXOs with pending-spent and spendable flags; paginated</td>
 </tr>
 <tr>
 <td><code>getaddressbalance</code></td>
 <td><code>address</code></td>
-<td>Address balance on the current active chain</td>
 </tr>
 <tr>
 <td><code>sendrawtransaction</code></td>
 <td><code>hex</code></td>
-<td>Validate signed transaction bytes; returns <code>txid</code> and <code>accepted</code></td>
 </tr>
 <tr>
 <td><code>submitblock</code></td>
 <td><code>hex</code></td>
-<td>Validate block bytes; returns <code>hash</code>, <code>accepted</code>, <code>already_known</code>, <code>activated</code></td>
 </tr>
 <tr>
 <td><code>getblocktemplate</code></td>
 <td><code>address</code></td>
-<td>Construct a candidate; no CPU mining in the HTTP service</td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td><code>{} / []</code></td>
 </tr>
 </tbody>
 </table>
-<h2>HTTP REST routes</h2>
-<p>All routes below require the same Bearer token. GET returns JSON. POST takes exactly the shown JSON keys and goes through the same node validation as RPC. Replace route placeholders with an actual height, display hash, TXID or valid address of the selected network. There is no browser CORS permission; Origin/Referer requests are rejected. Use a local CLI or service client.</p>
 <table>
 <thead>
 <tr>
-<th>Verb</th>
-<th>Route</th>
-<th>JSON body</th>
+<th>HTTP</th>
+<th>URI</th>
+<th>JSON</th>
 </tr>
 </thead>
 <tbody>
@@ -193,17 +240,5 @@ with urllib.request.urlopen(request, timeout=10) as response:
 </tr>
 </tbody>
 </table>
-<h2>Amounts, confirmations and maturity</h2>
-<p>Money fields ending in <code>_units</code> are integer minimum units. Fields ending in <code>_sumuww</code> are fixed 8-decimal strings; do not parse or sign using binary floating-point amounts. 1 SMW is <code>100000000</code> units. Confirmations follow the current active chain and can change after a valid reorganization. Coinbase outputs may be spent only when spending height minus creation height is at least 100. Balance/UTXO spendability is assessed for the next block and excludes inputs reserved by pending transactions. Addresses do not grant spending authority. External callers must produce signed transaction bytes with the existing wallet CLI or their own compatible signer before submission.</p>
-<p>Fees equal total inputs minus total outputs. The GUI and wallet-send CLI now use automatic estimation by default; the sender may override it with any nonnegative manual total, including 0. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.</p>
-<h2>Limits and errors</h2>
-<p>The server limits request bodies to <code>8004096</code> bytes, headers to <code>8192</code> bytes, batches to 16 calls, concurrent requests to 16 and a request deadline to 10 seconds. <code>limit</code> is 1–1000; <code>offset</code> is 0–1000000. HTTP Host must be numeric loopback and match the actual port. Authentication precedes execution. Unsupported routes, invalid JSON, wrong parameter types and malformed or invalid transaction/block data are rejected. A <code>getblocktemplate</code> request for <code>sumuww</code> requires a connected, fully synchronized peer; offline regtest is permitted. Templates provide <code>height</code>, <code>previousblockhash</code>, <code>bits</code>, <code>target</code>, <code>header_hex</code> and <code>block_hex</code>. Miners must satisfy normal PoW and all block rules before submitting; this endpoint neither lowers difficulty nor issues coins by itself.</p>
-<p>JSON-RPC errors: <code>-32700</code> parse error, <code>-32600</code> invalid request, <code>-32601</code> unknown method, <code>-32602</code> invalid parameters, <code>-32603</code> internal error, <code>-32001</code> not found, <code>-32002</code> validation failure, <code>-32003</code> not running/mining gate, <code>-32004</code> batch response limit. A successful submission is not an irreversible confirmation or guaranteed active-chain inclusion. Read the returned state and current chain confirmations.</p>
-<h2>License and consensus</h2>
-<p>SUMUWW's own code is distributed under the MIT license, the same license type used by Bitcoin Core. Use, copying, modification, merging, publication, distribution, sublicensing, sale and commercial use are permitted. Copies or substantial portions must retain the copyright and permission notice. The software is supplied without warranty; MIT does not require publishing modified source or paying royalties. External dependencies retain their own license notices. The English LICENSE text is authoritative. <code>Copyright (c) 2026 SUMUWW contributors</code>. <a href="../../../../../LICENSE">MIT</a>.</p>
-<p>UI, API and performance improvements can preserve genesis, issuance, difficulty, signatures, UTXO validity and cumulative-work chain selection. Each node still validates independently; neither the author nor an API caller can force upgrades or mint, freeze or rewrite balances. Adoption of changed consensus rules is voluntary and may split the chain. These rules do not cryptographically prevent people from creating a fork. SUMUWW has a decentralized consensus architecture; sustained participation by independent public operators has not yet been established by the local checks.</p>
-<h2>Fee policy</h2>
-<p>The default GUI estimates the fee and shows the recipient, payment, fee and total debit for confirmation. Advanced settings allow a manual fee. The wallet-send CLI uses automatic estimation when <code>--fee</code> is omitted or set to <code>--fee auto</code>; <code>--fee 0</code> explicitly requests a zero manual fee. Automatic estimation is a wallet policy, not a mandatory network fee or a change to consensus. The CLI treats running wallet-send as authorization to submit directly and reports the actual fee, total debit, fee mode and estimate source; its command does not open the GUI confirmation step.</p>
-<p>The local estimator uses positive transaction fee-rate samples from the most recent 20 active-chain blocks and the node’s pending transactions. Virtual size is <code>ceil(weight/4)</code>; the upper quartile of observed fee per virtual byte determines the estimate. Payment sizing conservatively budgets a 73-byte DER signature, a 33-byte public key and 2 outputs per supported wallet payment. With no positive sample, the fallback total is <code>0.001 SMW</code>. Automatic total fees are capped at <code>0.01 SMW</code>; a sender’s explicit manual fee may exceed that cap. This cap may make the automatic offer insufficient during congestion. This is a simple local estimate, not Bitcoin Core’s confirmation predictor or a promised speed. The active-chain history is limited to its latest 1000 transaction samples. The upper quartile uses the nearest-rank 75th percentile and at least 1 smallest unit per virtual byte; the resulting total is rounded upward.</p>
-<p>The GUI displays a prepared payment quote and submits that same payment after approval, without silently changing the fee. A quote expires after 120 seconds; locking the wallet or changing the wallet or network invalidates it. Changed inputs or chain conditions can require preparing and confirming again. Final submission revalidates the transaction against current UTXOs and maturity.</p>
-<p>The default miner ranks transactions by ancestor-package fee per virtual byte: unconfirmed parents are counted together with their child, parents are placed first, equal-rate packages preserve arrival order, and real block weight and signature-operation limits are enforced. Zero-fee valid transactions remain eligible. Inclusion depends on the chosen miner, available block space and current chain. RPC/API provides 15 methods and 11 REST routes; it adds no RPC fee-estimation method in this release.</p></article></body></html>
+<p><a href="README.html">Documentation</a> · <a href="EXCHANGE_INTEGRATION.html">Node interface</a> · <a href="NETWORK_RUNBOOK.html">Node operation</a> · <a href="RELEASE_NOTES.html">Release notes</a> · <a href="EXCHANGE_EXAMPLES.html">Verification</a></p>
+<p><a href="../../../../../EXCHANGE_INTEGRATION.html">Extended English reference</a> · <a href="../../../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

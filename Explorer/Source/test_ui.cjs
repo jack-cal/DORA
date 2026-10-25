@@ -28,6 +28,16 @@ test('new pages are renderable in all 34 languages',async()=>{
 const overview=(height=2,snapshot='a'.repeat(64))=>({height,snapshot,updated_at:1,transactions:height+1,mempool_count:0,mempool:[],interval:600,blocks:[],next_before:null,algorithm:'DGW v3',activation_height:8064,utxos:1});
 const block={hash:'b'.repeat(64),height:2,confirmations:1,timestamp:1,size:100,weight:400,tx_count:0,reward:'50.00000000',bits:'1e0377ae',nonce:1,algorithm:'DGW v3',version:1,parent:'c'.repeat(64),next:null,merkle:'d'.repeat(64),transactions:[],offset:0};
 const response=(data,status=200)=>({ok:status>=200&&status<300,status,json:async()=>data});
+test('revealed spending conditions are escaped and translated in all languages',async()=>{
+  const h=await boot();
+  for(const [code] of h.run('languageChoices')){
+    h.run('lang='+JSON.stringify(code));
+    const output=h.run("spendingConditions({spending_conditions:{required_signatures:2,lock_kind:'height',lock_value:100,decoded_only:true,witness_script:'<img src=x onerror=alert(1)>'}})");
+    assert.ok(output.includes('required_signatures'));assert.ok(output.includes('&lt;img'));
+    assert.ok(!output.includes('<img'));assert.ok(!output.includes('undefined'));
+  }
+  assert.equal(h.run('spendingConditions({})'),'');
+});
 async function boot({blockedStorage=false,savedLanguage="ko"}={}){
   const elements=new Map();
   function element(id){if(!elements.has(id))elements.set(id,{hidden:false,textContent:'',innerHTML:'',value:'',disabled:false,dataset:{},listeners:{},setAttribute(k,v){this[k]=v;},addEventListener(k,v){this.listeners[k]=v;},querySelector(){return element('submit');}});return elements.get(id);}
@@ -283,6 +293,23 @@ test('automatic refresh leaves the page-jump input intact while it has focus',as
 
 test('fresh launch is English even on non-English systems',async()=>{
  const h=await boot({savedLanguage:null});assert.equal(h.run('lang'),'en');assert.equal(h.context.document.documentElement.lang,'en');assert.equal(h.run("t('search')"),'Search ↗');
+});
+
+test('block reward components show zero fees and do not fabricate an underclaim split',async()=>{
+ const h=await boot({savedLanguage:'en'});
+ h.context.reward={allocation:'full',subsidy_reward_smw:'50.00000000',fee_reward_smw:'0.00000000',claimed_reward_smw:'50.00000000'};
+ let html=h.run('rewardBreakdown(reward)');
+ assert.ok(html.includes('New issuance (block)'));assert.ok(html.includes('Transaction fees (block)'));assert.ok(html.includes('>0 SMW<'));
+ h.context.reward={allocation:'underclaimed',subsidy_reward_smw:null,fee_reward_smw:null,claimed_reward_smw:'49.00000000',subsidy_limit_smw:'50.00000000',transaction_fees_smw:'0.00000000',unclaimed_reward_smw:'1.00000000'};
+ html=h.run('rewardBreakdown(reward)');assert.ok(html.includes('Reward not fully claimed'));assert.ok(html.includes('Unclaimed reward'));assert.ok(html.includes('>49 SMW<'));assert.ok(!html.includes('undefined'));
+});
+
+test('all 34 reward translations render with exact decimal amounts',async()=>{
+ const h=await boot();h.context.reward={allocation:'full',subsidy_reward_smw:'0.00000000',fee_reward_smw:'0.00000001',claimed_reward_smw:'0.00000001'};
+ for(const code of h.run('languageChoices.map(item=>item[0])')){
+  h.element('language').value=code;await h.element('language').listeners.change();
+  const html=h.run('rewardBreakdown(reward)');assert.ok(html.includes('0.00000001'));assert.ok(!html.includes('undefined'));
+ }
 });
 test('invalid saved choice and blocked storage retain English fallback',async()=>{
  for(const options of [{savedLanguage:'invalid'},{blockedStorage:true,savedLanguage:null}]){const h=await boot(options);assert.equal(h.run('lang'),'en');}

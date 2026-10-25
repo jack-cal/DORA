@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Nag-expire ang pagsusuri sa paglipat. Suriin ito muli.",
   "Peers: {0} · Block: {1} · ": "Mga nakakonektang node: {0} · Bloke: {1} · ",
   "{0} confirmations": "{0} pagkumpirma",
-  "Select language": "Pumili ng wika"
+  "Select language": "Pumili ng wika",
+  "Fee rate (yugeon/vB)": "Rate ng bayad (yugeon/vB)",
+  "Slow": "Mabagal",
+  "Normal": "Karaniwan",
+  "Fast": "Mabilis",
+  "Manual": "Manwal",
+  "Check the fee rate and wallet limits.": "Suriin ang rate ng bayad at mga limitasyon ng wallet.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal na pila: {0} vB · {1} yugeon/vB · target: {2} bloke",
+  "Replaced · not applied": "Pinalitan · walang epekto sa balanse",
+  "Replaced by {0}": "Kapalit na transaksiyon: {0}",
+  "Removed after parent replacement": "Inalis dahil pinalitan ang pinagmulang transaksiyon",
+  "New issuance (block)": "Bagong inilabas sa block",
+  "Transaction fees (block)": "Bayarin sa transaksyon ng block",
+  "Total block reward": "Kabuuang gantimpala ng block",
+  "Issuance limit (block)": "Limitasyon ng paglabas sa block",
+  "Available fees (block)": "Makukuhang bayarin ng block",
+  "Unclaimed reward": "Hindi nakuhang gantimpala",
+  "Reward not fully claimed": "Bahagi lamang ng gantimpala ang kinuha"
 }

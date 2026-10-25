@@ -1,1 +1,31 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../en/NETWORK_RUNBOOK.html"><title>SUMUWW documentation</title></head><body><p>Documentation is published in English.</p><a href="../en/NETWORK_RUNBOOK.html">Open the English document</a></body></html>
+<!doctype html><html lang="zh" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · 节点运行</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>文档 · 34</summary><nav><a href="../en/NETWORK_RUNBOOK.html" lang="en"><bdi>English</bdi></a><a href="../fr/NETWORK_RUNBOOK.html" lang="fr"><bdi>Français</bdi></a><a href="../es/NETWORK_RUNBOOK.html" lang="es"><bdi>Español</bdi></a><a href="../ar/NETWORK_RUNBOOK.html" lang="ar"><bdi>العربية</bdi></a><a href="NETWORK_RUNBOOK.html" lang="zh" aria-current="page"><bdi>中文（普通话）</bdi></a><a href="../pt/NETWORK_RUNBOOK.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/NETWORK_RUNBOOK.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/NETWORK_RUNBOOK.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/NETWORK_RUNBOOK.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/NETWORK_RUNBOOK.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/NETWORK_RUNBOOK.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/NETWORK_RUNBOOK.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/NETWORK_RUNBOOK.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/NETWORK_RUNBOOK.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/NETWORK_RUNBOOK.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/NETWORK_RUNBOOK.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/NETWORK_RUNBOOK.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/NETWORK_RUNBOOK.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/NETWORK_RUNBOOK.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/NETWORK_RUNBOOK.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/NETWORK_RUNBOOK.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/NETWORK_RUNBOOK.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/NETWORK_RUNBOOK.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/NETWORK_RUNBOOK.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/NETWORK_RUNBOOK.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/NETWORK_RUNBOOK.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/NETWORK_RUNBOOK.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/NETWORK_RUNBOOK.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/NETWORK_RUNBOOK.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/NETWORK_RUNBOOK.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/NETWORK_RUNBOOK.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/NETWORK_RUNBOOK.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/NETWORK_RUNBOOK.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/NETWORK_RUNBOOK.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">文档</a><a href="EXCHANGE_INTEGRATION.html">节点接口</a><a href="RPC_API.html">RPC 与 HTTP API</a><a href="NETWORK_RUNBOOK.html">节点运行</a><a href="RELEASE_NOTES.html">版本说明</a><a href="EXCHANGE_EXAMPLES.html">验证</a></nav></header><main><h1>SUMUWW · 节点运行</h1>
+<p>SUMUWW PC 0.57.46 · 节点负责验证、保存、传播和查询链上数据。</p>
+<h2>网络与地址</h2>
+<p>公开网络为 <code>sumuww</code>，内部别名为 <code>dora</code>。请核对下方创世区块哈希。原生地址采用 witness v0 P2WPKH，以及压缩 secp256k1 公钥的 HASH160。无需强制 memo 或 tag。应拒绝网络错误或校验和无效的地址。记录 HD 收款/找零分支及索引，不要假定与 Bitcoin 的派生路径相同。</p>
+<h2>认证与限制</h2>
+<p>明确启用 RPC，使用数字回环地址 <code>127.0.0.1:18443</code> 及私有 Bearer token。不提供钱包解锁或远程签名。通过本地服务或已认证隧道连接；拒绝浏览器 Origin/Referer 请求。JSON-RPC 使用 POST <code>/rpc</code>、对象/数组 <code>params</code> 及 <code>id</code>；通知返回 HTTP 204。限制：请求体 8004096 字节、头部 8192 字节、批量 16、并发 16、期限 10 秒；limit 1–1000、offset 0–1000000。共有 28 个方法及 11 条 REST 路由。</p>
+<h2>交易与区块查询</h2>
+<p><code>getrawtransaction</code> 查询活跃链及内存池，不查询仅存在于孤立分支的交易。输入指向之前的输出，并非唯一发送地址。<code>getblock</code> 的 <code>verbose</code> 为布尔值；已保存的非活跃块为 <code>active=false</code>、<code>confirmations=-1</code>，仍可用区块哈希取得原始交易。<code>findspendingtransaction</code> 仅查活跃链上已确认的花费，null 不证明可用。还需查询 <code>include_mempool=true</code> 的 <code>gettxout</code>。确认数及活跃状态都可能随重组改变。</p>
+<h2>验证</h2>
+<p>安装依赖后，从源码运行 python examples/node_contract.py。公开测试密钥和临时 regtest 用于验证提交、拒绝、确认、链重组及数据持久性，不使用真实资金、用户配置或硬件签名器。</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="README.html">文档</a> · <a href="EXCHANGE_INTEGRATION.html">节点接口</a> · <a href="RPC_API.html">RPC 与 HTTP API</a> · <a href="RELEASE_NOTES.html">版本说明</a> · <a href="EXCHANGE_EXAMPLES.html">验证</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">英文详细参考</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

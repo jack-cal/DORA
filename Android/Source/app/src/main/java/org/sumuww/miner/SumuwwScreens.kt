@@ -28,7 +28,7 @@ internal class SumuwwScreens(
         val targetDraft: String, val sendAddress: String, val sendAmount: String,
         val error: String?, val tour: Boolean, val dark: Boolean,
         val palette: SumuwwTheme.Palette, val themeMode: String, val languageName: String,
-        val manualFee: Boolean = false, val feeDraft: String = "0.001", val historySearch: String = "", val statusUnavailable: Boolean = false, val blocks: JSONObject? = null, val blockSearch: String = ""
+        val manualFee: Boolean = false, val feeDraft: String = "1", val historySearch: String = "", val statusUnavailable: Boolean = false, val blocks: JSONObject? = null, val blockSearch: String = "", val feeMode: Int = 1
     )
 
     val appRoot = FrameLayout(activity)
@@ -299,15 +299,34 @@ internal class SumuwwScreens(
         val quantity = ui.SumuwwField(tr("보낼 수량"), "0 SMW", state.sendAmount, true, "sendAmount")
         p.addView(quantity.first)
         p.addView(miningText(ui.label("",13f,ui.muted)){"${tr("사용 가능한 잔액")}  ${amount("available_smw")} SMW"}, ui.params(top = 12, bottom = 24))
-        val fee = ui.SumuwwField(tr("수수료"), "0.001 SMW", state.feeDraft, true, "sendFee")
+        val fee = ui.SumuwwField(tr("수수료율 (yugeon/vB)"), "1 yugeon/vB", state.feeDraft, true, "sendFee")
+        val preset=android.widget.Spinner(activity).apply {
+            tag="feeMode"
+            adapter=android.widget.ArrayAdapter(activity,android.R.layout.simple_spinner_dropdown_item,listOf(tr("느림"),tr("보통"),tr("빠름")))
+            setSelection(state.feeMode.coerceIn(0,2));isEnabled=!state.manualFee
+        }
+        p.addView(preset,ui.params(bottom=8))
         val manual = android.widget.CheckBox(activity).apply {
             SumuwwVerticalCaptions.watch(this)
             tag="manualFee";text=tr("수수료 직접 설정");setTextColor(ui.ink);isChecked=state.manualFee
         }
         fee.first.visibility=if(manual.isChecked)View.VISIBLE else View.GONE
-        manual.setOnCheckedChangeListener { _,checked -> fee.first.visibility=if(checked)View.VISIBLE else View.GONE }
+        manual.setOnCheckedChangeListener { _,checked -> fee.first.visibility=if(checked)View.VISIBLE else View.GONE;preset.isEnabled=!checked }
         p.addView(manual,ui.params(bottom=8));p.addView(fee.first)
-        p.addView(ui.label(tr("자동 계산 · 최종 수수료는 전송 전에 확인합니다"),13f,ui.muted),ui.params(top=8,bottom=20))
+        val preview = miningText(ui.label("",13f,ui.muted)) {
+            val fees=state.status?.optJSONObject("fees")
+            val mode=listOf("slow","normal","fast")[preset.selectedItemPosition.coerceIn(0,2)]
+            if(manual.isChecked||fees==null) tr("자동 계산 · 최종 수수료는 전송 전에 확인합니다")
+            else tr("현지 대기 수수료").replace("{0}",fees.optLong("pending_vsize").toString())
+                .replace("{1}",fees.optJSONObject("rates")?.optString(mode,"—")?:"—")
+                .replace("{2}",fees.optJSONObject("target_blocks")?.optInt(mode).toString())
+        }
+        preset.onItemSelectedListener=object:android.widget.AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent:android.widget.AdapterView<*>?,view:View?,position:Int,id:Long){miningUpdates.forEach{it()}}
+            override fun onNothingSelected(parent:android.widget.AdapterView<*>?){}
+        }
+        manual.setOnCheckedChangeListener { _,checked -> fee.first.visibility=if(checked)View.VISIBLE else View.GONE;preset.isEnabled=!checked;miningUpdates.forEach{it()} }
+        p.addView(preview,ui.params(top=8,bottom=20))
         p.addView(View(activity), if(ui.verticalMongolian) ui.params(height=ui.dp(8)) else LinearLayout.LayoutParams(-1, 0, 1f))
         p.addView(ui.SumuwwPrimaryButton(tr("다음")) { action("send", recipient.second.text.toString().trim(), quantity.second.text.toString().trim()) })
     }
@@ -496,6 +515,7 @@ internal class SumuwwScreens(
     }
 
     private fun help(p: LinearLayout) {
+        p.addView(ui.SumuwwSettingRow(R.drawable.ic_info, DocumentationActivity.title(activity), "0.6.91") { action("documents") }.apply { tag = "sumuww-documents-entry" })
         val page = SumuwwHelp.page(activity, UiLanguage.code(activity))
         p.addView(ui.label(page.subtitle, 14f, ui.muted), ui.params(bottom = 16))
         page.topics.forEach { topic ->
@@ -533,8 +553,16 @@ internal class SumuwwScreens(
     private fun transaction(p: LinearLayout, tx: JSONObject) {
         val kind = kind(tx); val raw = tx.optLong("net_amount")
         val name = tr(when (kind) { "send" -> "보내기"; "receive" -> "받기"; else -> "채굴 보상" })
-        val detail = if (tx.optString("status") == "pending") tr("대기 중") else "${tx.optInt("confirmations")} ${tr("확인") }"
-        p.addView(ui.SumuwwTransactionRow(name, "${if (raw > 0) "+" else ""}${formatUnits(raw)} SMW", detail, kind) { action("transaction", tx.toString()) }); p.addView(ui.divider())
+        val detail = when (tx.optString("status")) { "replaced" -> tr(if (tx.optString("replacement_reason") == "ancestor_replaced") "Removed after parent replacement" else "Replaced · not applied"); "pending" -> tr("대기 중"); else -> "${tx.optInt("confirmations")} ${tr("확인") }" }
+        p.addView(ui.SumuwwTransactionRow(name, "${if (raw > 0) "+" else ""}${formatUnits(raw)} SMW", detail, kind) { action("transaction", tx.toString()) })
+        tx.optJSONObject("mining_reward")?.let { reward ->
+            for ((caption, field) in listOf("New issuance (block)" to "subsidy_reward_smw", "Transaction fees (block)" to "fee_reward_smw", "Total block reward" to "claimed_reward_smw")) {
+                val value = if (reward.isNull(field)) "—" else reward.optString(field) + " SMW"
+                metric(p, tr(caption), value)
+            }
+            if (reward.optString("allocation") == "underclaimed") p.addView(ui.label(tr("Reward not fully claimed"), 13f, ui.muted))
+        }
+        p.addView(ui.divider())
     }
     private fun kind(tx: JSONObject) = if (tx.optBoolean("coinbase")) "mining" else if (tx.optLong("net_amount") < 0) "send" else "receive"
     private fun formatUnits(value: Long): String = java.math.BigDecimal.valueOf(value, 8).stripTrailingZeros().toPlainString()

@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Överföringsgranskningen löpte ut. Granska det igen.",
   "Peers: {0} · Block: {1} · ": "Anslutningar: {0} · Block: {1} · ",
   "{0} confirmations": "{0} bekräftelser",
-  "Select language": "Välj språk"
+  "Select language": "Välj språk",
+  "Fee rate (yugeon/vB)": "Avgiftssats (yugeon/vB)",
+  "Slow": "Långsam",
+  "Normal": "Normal",
+  "Fast": "Snabb",
+  "Manual": "Manuell",
+  "Check the fee rate and wallet limits.": "Kontrollera avgiftssatsen och plånbokens gränser.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal kö: {0} vB · {1} yugeon/vB · mål: {2} block",
+  "Replaced · not applied": "Ersatt · påverkar inte saldot",
+  "Replaced by {0}": "Ersatt av {0}",
+  "Removed after parent replacement": "Borttagen efter att den överordnade transaktionen ersattes",
+  "New issuance (block)": "Ny utgivning (block)",
+  "Transaction fees (block)": "Transaktionsavgifter (block)",
+  "Total block reward": "Total blockbelöning",
+  "Issuance limit (block)": "Blockets utgivningsgräns",
+  "Available fees (block)": "Tillgängliga blockavgifter",
+  "Unclaimed reward": "Ej uttagen belöning",
+  "Reward not fully claimed": "Belöning delvis uttagen"
 }

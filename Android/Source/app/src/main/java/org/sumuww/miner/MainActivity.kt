@@ -28,7 +28,7 @@ class MainActivity:Activity(){
  private var history:JSONObject?=null; private var offset=0; private var filter="all"; private var search=""
  private var lastActivitySignal=0L
  private var target="1"; private var appliedTarget="1"; private var recipient=""; private var quantity=""
- private var manualFee=false; private var feeDraft="0.001"
+ private var manualFee=false; private var feeDraft="1"; private var feeMode=1
  private var touching=false
  private var polling=false
  private var cpu=0; private var cpuWall=SystemClock.elapsedRealtime(); private var cpuTime=android.os.Process.getElapsedCpuTime()
@@ -52,7 +52,7 @@ class MainActivity:Activity(){
   LocaleBrand.syncLauncher(this)
   appliedTarget=prefs.getString("mining-target","1")?.toIntOrNull()?.takeIf{it in 1..10000}?.toString()?:"1"
   target=appliedTarget
-  saved?.let{page=it.getInt("page");target=it.getString("target","1")?:"1";recipient=it.getString("recipient","")?:"";quantity=it.getString("quantity","")?:"";manualFee=it.getBoolean("manualFee");feeDraft=it.getString("feeDraft","0.001")?:"0.001";offset=it.getInt("offset");filter=it.getString("filter","all")?:"all";search=it.getString("search","")?:""}
+  saved?.let{page=it.getInt("page");target=it.getString("target","1")?:"1";recipient=it.getString("recipient","")?:"";quantity=it.getString("quantity","")?:"";manualFee=it.getBoolean("manualFee");feeMode=it.getInt("feeMode",1).coerceIn(0,2);feeDraft=it.getString("feeDraft","1")?:"1";offset=it.getInt("offset");filter=it.getString("filter","all")?:"all";search=it.getString("search","")?:""}
   saved?.let{blocksOffset=it.getInt("blocksOffset");blocksSearch=it.getString("blocksSearch", "")?:""}
   saved?.getIntArray("backPages")?.filter{it in 0..15}?.takeLast(32)?.forEach{backPages.addLast(it)}
   if(Build.VERSION.SDK_INT>=30)window.setDecorFitsSystemWindows(false)
@@ -73,7 +73,7 @@ class MainActivity:Activity(){
  }
  override fun onPause(){privacyDialog?.dismiss();privacyDialog=null;updates.cancel();captureDrafts();error=null;touching=false;epoch++;polling=false;if(!controls.isShutdown)controls.execute{try{PcRuntime.setForeground(false)}catch(_:Exception){}};main.removeCallbacks(poll);main.removeCallbacks(freshness);sensitive.toList().forEach{it.dismiss()};sensitive.clear();super.onPause()}
  override fun onDestroy(){updates.close();polling=false;main.removeCallbacksAndMessages(null);worker.shutdown();controls.shutdown();transfers.shutdown();super.onDestroy()}
- override fun onSaveInstanceState(saved:Bundle){captureDrafts();saved.putInt("page",page);saved.putIntArray("backPages",backPages.toIntArray());saved.putString("target",target);saved.putString("recipient",recipient);saved.putString("quantity",quantity);saved.putBoolean("manualFee",manualFee);saved.putString("feeDraft",feeDraft);saved.putInt("offset",offset);saved.putString("filter",filter);saved.putString("search",search);saved.putInt("blocksOffset",blocksOffset);saved.putString("blocksSearch",blocksSearch);super.onSaveInstanceState(saved)}
+ override fun onSaveInstanceState(saved:Bundle){captureDrafts();saved.putInt("page",page);saved.putIntArray("backPages",backPages.toIntArray());saved.putString("target",target);saved.putString("recipient",recipient);saved.putString("quantity",quantity);saved.putBoolean("manualFee",manualFee);saved.putInt("feeMode",feeMode);saved.putString("feeDraft",feeDraft);saved.putInt("offset",offset);saved.putString("filter",filter);saved.putString("search",search);saved.putInt("blocksOffset",blocksOffset);saved.putString("blocksSearch",blocksSearch);super.onSaveInstanceState(saved)}
  private fun navigate(next:Int){
   if(next in listOf(0,1,2,4))backPages.clear()
   else if(next!=page){if(backPages.size>=32)backPages.removeFirst();backPages.addLast(page)}
@@ -97,7 +97,7 @@ class MainActivity:Activity(){
  }
  private fun captureDrafts(){
   if(!::screens.isInitialized)return
-  if(page==5){screens.content.findViewWithTag<EditText>("sendAddress")?.let{recipient=it.text.toString()};screens.content.findViewWithTag<EditText>("sendAmount")?.let{quantity=it.text.toString()};screens.content.findViewWithTag<EditText>("sendFee")?.let{feeDraft=it.text.toString()};screens.content.findViewWithTag<CheckBox>("manualFee")?.let{manualFee=it.isChecked}}
+  if(page==5){screens.content.findViewWithTag<EditText>("sendAddress")?.let{recipient=it.text.toString()};screens.content.findViewWithTag<EditText>("sendAmount")?.let{quantity=it.text.toString()};screens.content.findViewWithTag<EditText>("sendFee")?.let{feeDraft=it.text.toString()};screens.content.findViewWithTag<CheckBox>("manualFee")?.let{manualFee=it.isChecked};screens.content.findViewWithTag<android.widget.Spinner>("feeMode")?.let{feeMode=it.selectedItemPosition.coerceIn(0,2)}}
   if(page==15)screens.content.findViewWithTag<EditText>("blockSearch")?.let{blocksSearch=it.text.toString()}
   if(page==3)screens.content.findViewWithTag<EditText>("historySearch")?.let{search=it.text.toString()}
   if(page==12)screens.content.findViewWithTag<EditText>("miningTarget")?.let{target=it.text.toString()}
@@ -109,7 +109,7 @@ class MainActivity:Activity(){
   val palette=SumuwwThemeCalendar.resolve(prefs.getString("palette","default"))
   screens.render(SumuwwScreens.Model(page,state,history,offset,filter,cpu,
    state?.optJSONObject("mobile_batch")?.optDouble("elapsed_seconds",0.0)?.toLong()?.let{seconds->"%02d:%02d:%02d".format(seconds/3600,seconds/60%60,seconds%60)}?:"00:00:00",
-   if(page==12)target else appliedTarget,recipient,quantity,error,false,dark(),palette,mode(),UiLanguage.languages[UiLanguage.code(this)]?:"English",manualFee,feeDraft,search,pollError,blocks,blocksSearch))
+   if(page==12)target else appliedTarget,recipient,quantity,error,false,dark(),palette,mode(),UiLanguage.languages[UiLanguage.code(this)]?:"English",manualFee,feeDraft,search,pollError,blocks,blocksSearch,feeMode))
   window.statusBarColor=SumuwwTheme.background(palette,dark());window.navigationBarColor=SumuwwTheme.background(palette,dark())
   if(Build.VERSION.SDK_INT>=30){
    val mask=WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS or WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
@@ -155,7 +155,7 @@ class MainActivity:Activity(){
    postUi{bootRequested=false;withdrawing=!stopped;state=null;history=null;error=null;backPages.clear();page=0;closeConsent();render()}
   }
  }
- private fun fail(e:Exception){postUi{error=e.message?:e.javaClass.simpleName;render()}}
+ private fun fail(e:Exception){postUi{error=if(listOf("fee rate","manual fee exceeds","relay minimum").any { (e.message?:"").lowercase().contains(it) })tr("수수료율과 지갑의 수수료 한도를 확인하세요.") else e.message?:e.javaClass.simpleName;render()}}
  private fun call(method:String,vararg args:String){val executor=if(method=="stop_mining")controls else if(method=="submit_payment")transfers else worker;if(executor.isShutdown)return;executor.execute{try{PcRuntime.call(method,*args);val next=JSONObject(PcRuntime.call("status"));postUi{error=null;accept(next)}}catch(e:Exception){fail(e)}}}
  private fun address()=state?.optJSONObject("wallet")?.optString("address","")?:""
  private fun showResult(title:String,message:String):AlertDialog?{
@@ -212,6 +212,7 @@ class MainActivity:Activity(){
  private fun action(a:String,b:String,c:String){if(!SumuwwConsent.accepted(this)){showConsent(false);return};captureDrafts();when(a){
   "consentSettings"->showConsent(true)
   "checkUpdates"->updates.check()
+  "documents"->startActivity(Intent(this,DocumentationActivity::class.java))
   "page"->{navigate(b.toIntOrNull()?.takeIf{it in 0..15}?:return);if(page==3){history=null;loadHistory()};if(page==15){blocks=null;loadBlocks()};render()};"back"->onBackPressed()
   "startMining"->{
    val reason=MiningProtection.read(this).reason
@@ -290,8 +291,8 @@ class MainActivity:Activity(){
   if(state?.optJSONObject("security")?.optBoolean("locked")==true){password("지갑 비밀번호"){pass->controls.execute{try{val next=JSONObject(PcRuntime.call("unlock_spending",pass));postUi{accept(next);prepare(to,amount)}}catch(e:Exception){fail(e)}}};return}
 
   if(preparing||transfers.isShutdown)return
-  val fee=if(manualFee)feeDraft.trim() else ""
-  if(to.isBlank()||amount.isBlank()||(manualFee&&fee.isBlank())){
+  val fee=if(manualFee)"rate:"+feeDraft.trim() else "auto:"+listOf("slow","normal","fast")[feeMode]
+  if(to.isBlank()||amount.isBlank()||(manualFee&&feeDraft.isBlank())){
    error=tr("받는 주소, 수량과 직접 설정한 수수료를 입력하세요.");render();return
   }
   preparing=true;val owner=epoch

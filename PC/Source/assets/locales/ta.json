@@ -335,5 +335,22 @@
   "Local lottery jobs": "இந்த முனையின் குலுக்கல் பணிகள்",
   "Not selected": "தேர்வாகவில்லை",
   "Selected pending": "தேர்வாகி நிலுவையில் உள்ளது",
-  "Selected complete": "தேர்வாகி முடிந்தது"
+  "Selected complete": "தேர்வாகி முடிந்தது",
+  "Fee rate (yugeon/vB)": "கட்டண விகிதம் (yugeon/vB)",
+  "Slow": "மெதுவாக",
+  "Normal": "சாதாரணம்",
+  "Fast": "வேகமாக",
+  "Manual": "கைமுறையாக",
+  "Check the fee rate and wallet limits.": "கட்டண விகிதத்தையும் பணப்பையின் வரம்புகளையும் சரிபார்க்கவும்.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "உள்ளூர் வரிசை: {0} vB · {1} yugeon/vB · இலக்கு: {2} தொகுதிகள்",
+  "Replaced · not applied": "மாற்றப்பட்டது · இருப்பில் சேர்க்கப்படவில்லை",
+  "Replaced by {0}": "மாற்றுப் பரிவர்த்தனை: {0}",
+  "Removed after parent replacement": "மூலப் பரிவர்த்தனை மாற்றப்பட்டதால் நீக்கப்பட்டது",
+  "New issuance (block)": "தொகுதியின் புதிய வெளியீடு",
+  "Transaction fees (block)": "தொகுதியின் பரிவர்த்தனைக் கட்டணம்",
+  "Total block reward": "தொகுதியின் மொத்த வெகுமதி",
+  "Issuance limit (block)": "தொகுதியின் வெளியீட்டு வரம்பு",
+  "Available fees (block)": "தொகுதியில் கிடைக்கும் கட்டணம்",
+  "Unclaimed reward": "பெறப்படாத வெகுமதி",
+  "Reward not fully claimed": "வெகுமதியின் ஒரு பகுதி பெறப்பட்டது"
 }

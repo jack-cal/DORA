@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "منتقلی کے جائزے کی میعاد ختم ہو گئی۔ اس کا دوبارہ جائزہ لیں۔",
   "Peers: {0} · Block: {1} · ": "منسلک نوڈز: {0} · بلاک: {1} · ",
   "{0} confirmations": "{0} تصدیقات",
-  "Select language": "زبان منتخب کریں۔"
+  "Select language": "زبان منتخب کریں۔",
+  "Fee rate (yugeon/vB)": "فیس کی شرح (yugeon/vB)",
+  "Slow": "آہستہ",
+  "Normal": "معمول",
+  "Fast": "تیز",
+  "Manual": "دستی",
+  "Check the fee rate and wallet limits.": "فیس کی شرح اور والیٹ کی حدود دیکھیں۔",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "مقامی قطار: {0} vB · {1} yugeon/vB · ہدف: {2} بلاک",
+  "Replaced · not applied": "تبدیل ہو گیا · بیلنس پر اثر نہیں",
+  "Replaced by {0}": "متبادل لین دین: {0}",
+  "Removed after parent replacement": "اصل لین دین کی تبدیلی کے بعد ہٹا دیا گیا",
+  "New issuance (block)": "بلاک کا نیا اجرا",
+  "Transaction fees (block)": "بلاک کی لین دین فیس",
+  "Total block reward": "بلاک کا کل انعام",
+  "Issuance limit (block)": "بلاک کے اجرا کی حد",
+  "Available fees (block)": "بلاک کی دستیاب فیس",
+  "Unclaimed reward": "غیر وصول شدہ انعام",
+  "Reward not fully claimed": "انعام جزوی طور پر وصول ہوا"
 }

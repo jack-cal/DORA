@@ -284,5 +284,22 @@
   "Do not show this help again.": "Tuto nápovědu již nezobrazovat.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Přímé spojení nepoužívá Tor ani I2P. Obvykle je rychlejší a spotřebuje méně prostředků. Ostatní uzly vidí IP vašeho připojení.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.\n\nJsou potřeba uzly I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVýhoda: pomáhá skrýt skutečnou IP před ostatními uzly.\n\nNevýhody: spojení a synchronizace mohou být pomalejší a spotřeba baterie a dat vyšší. Transakce zůstávají veřejné. Při chybě se přímé spojení nezapne.\n\nJsou potřeba uzly I2P.",
+  "Fee rate (yugeon/vB)": "Sazba poplatku (yugeon/vB)",
+  "Slow": "Pomalu",
+  "Normal": "Běžně",
+  "Fast": "Rychle",
+  "Manual": "Ručně",
+  "Check the fee rate and wallet limits.": "Zkontrolujte sazbu poplatku a limity peněženky.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Místní fronta: {0} vB · {1} yugeon/vB · cíl: {2} bloků",
+  "Replaced · not applied": "Nahrazena · bez vlivu na zůstatek",
+  "Replaced by {0}": "Nahrazena transakcí {0}",
+  "Removed after parent replacement": "Odstraněna po nahrazení nadřazené transakce",
+  "New issuance (block)": "Nová emise bloku",
+  "Transaction fees (block)": "Transakční poplatky bloku",
+  "Total block reward": "Celková odměna bloku",
+  "Issuance limit (block)": "Emisní limit bloku",
+  "Available fees (block)": "Dostupné poplatky bloku",
+  "Unclaimed reward": "Nevyzvednutá odměna",
+  "Reward not fully claimed": "Odměna vyzvednuta částečně"
 }

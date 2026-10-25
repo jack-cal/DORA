@@ -1,0 +1,53 @@
+<!doctype html><html lang="tr" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · Belgeler</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Belgeler · 34</summary><nav><a href="../en/README.html" lang="en"><bdi>English</bdi></a><a href="../fr/README.html" lang="fr"><bdi>Français</bdi></a><a href="../es/README.html" lang="es"><bdi>Español</bdi></a><a href="../ar/README.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/README.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/README.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/README.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/README.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/README.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/README.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/README.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/README.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/README.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/README.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="README.html" lang="tr" aria-current="page"><bdi>Türkçe</bdi></a><a href="../th/README.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/README.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/README.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/README.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/README.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/README.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/README.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/README.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/README.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/README.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/README.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/README.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/README.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/README.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/README.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/README.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/README.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/README.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/README.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Belgeler</a><a href="EXCHANGE_INTEGRATION.html">Düğüm arayüzü</a><a href="RPC_API.html">RPC ve HTTP API</a><a href="NETWORK_RUNBOOK.html">Düğüm işletimi</a><a href="RELEASE_NOTES.html">Sürüm notları</a><a href="EXCHANGE_EXAMPLES.html">Doğrulama</a></nav></header><main><h1>SUMUWW Android 0.6.95 · Belgeler</h1>
+<p>SUMUWW Android 0.6.95 · Düğüm zincir verilerini doğrular, saklar, iletir ve sorgulamaya açar.</p>
+<h2>Ağ ve adresler</h2>
+<p>Genel ağ <code>sumuww</code>, iç takma adı <code>dora</code>dır. Aşağıdaki başlangıç bloğu hashini kontrol edin. Yerel adresler witness v0 P2WPKH ve sıkıştırılmış secp256k1 açık anahtarının HASH160 değerini kullanır. Zorunlu memo veya tag yoktur. Yanlış ağ ve geçersiz sağlama toplamını reddedin. HD alma/para üstü dalını ve indeksini kaydedin; Bitcoin türetme yolunu varsaymayın.</p>
+<h2>Tutarlar ve kullanılabilir çıktılar</h2>
+<p><code>_units</code> en küçük birimin tam sayısı, <code>_smw</code> 8 ondalıklı metin, <code>_dora</code> uyumluluk takma adıdır. <code>_sumuww</code> tutar alanı yoktur. 1 SMW = 100000000 birim. <code>gettxout</code> içinde <code>spendable</code> yoktur; olgunlaşmamış coinbase çıktısı dönebilir. Sonraki blokta harcamak için en az 100 onay gerekir. <code>listunspent</code> listesini <code>spendable</code> ile süzün; <code>getaddressbalance</code> available tutarı olgunlaşmamış ve bekleyen harcamaya bağlı fonları dışlar. Yeni mempool çıktıları onaylı değildir. Sayfalar arasında zincir ucunu kontrol edin ve seçilen girdileri yeniden doğrulayın.</p>
+<p>1 SMW = 100.000.000 yugeon. Otomatik ücret, yerel gözlemlere göre üç seçenek sunar; onay süresini garanti etmez. yugeon/vB oranını elle girebilirsiniz. Göndermeden önce son ücreti ve toplamı SMW cinsinden kontrol edin. Reddedilen işlem bakiyeyi azaltmaz.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Otomatik ücret, bekleyen veri hacmini, blok kapasitesini ve işlem önceliğini dikkate alır. Geçmiş blokların ücretleri kullanılmaz. Kuyruk kısaysa asgari oran korunur. Önizleme yenilenir; son onay ücreti sabitler. Gözlemler tüm düğümleri değil, bağlı yerel düğümü kapsar.</p>
+<p>Bu düğümün kaydettiği işlem değiştirme geçmişi, cüzdan yeniden başlatıldığında korunur. Kaldırılan işlemler bakiyeyi etkilemez.</p>
+<p>Madencilik geçmişi her bloğun yeni ihracını, işlem ücretlerini ve toplam ödülünü ayrı gösterir. Cüzdanınıza gelen tutar ayrıca gösterilir. Ödül kısmen talep edilmişse iki bileşenin dağılımı varsayılmaz. Düğüm, ücret tahmini dahil 28 RPC yöntemi sunar; imzalı işlemleri doğrular ve iletir.</p>
+<h2>İşlem ve blok sorgulama</h2>
+<p><code>getrawtransaction</code> aktif zincir ve mempool’u arar, yalnızca ayrılmış dallardaki işlemleri aramaz. Girdiler tek bir gönderen adresini değil önceki çıktıları belirtir. <code>getblock</code>, Boolean <code>verbose</code> alır; kayıtlı pasif bloklarda <code>active=false</code>, <code>confirmations=-1</code> olur. Ham işlemler blok hashiyle erişilebilir kalır. <code>findspendingtransaction</code> yalnızca aktif zincirde onaylanmış harcamaları arar; null kullanılabilirliği kanıtlamaz. <code>include_mempool=true</code> ile <code>gettxout</code> kontrol edin. Onaylar ve aktif durum yeniden yapılanmada değişebilir.</p>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

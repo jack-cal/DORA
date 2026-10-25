@@ -1,114 +1,29 @@
-# SUMUWW component suite — 2026-10-24
+# SUMUWW component suite — 25 October 2026
 
-| Application | Version | Purpose |
-|---|---|---|
-| Windows full node | 0.57.40 | Validation, synchronization, wallet and optional mining |
-| Android full node | 0.6.89 | Validation, synchronization, wallet and optional mining |
-| Windows ordinary wallet | 1.0.2 | Receiving, sending, backup, recovery and activity |
-| Android ordinary wallet | 1.1.2 | Receiving, sending, backup, recovery and activity |
-| Explorer | 0.4.6 | Read-only local blockchain inspection |
-| P2P Full | 0.3.0 | SMW/BTC board and settlement using local full nodes |
-| P2P Light | 0.3.0 | SMW/BTC board and settlement using Bitcoin SPV |
+| Component | Version | Download | Source |
+|---|---|---|---|
+| Windows full node, wallet and miner | 0.57.46 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.46) | [Source](../PC/Source) |
+| Android full node, wallet and miner | 0.6.95 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.95) | [Source](../Android/Source) |
+| Windows ordinary wallet | 1.0.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.6) | [Source](../Wallet/Desktop) |
+| Android ordinary wallet | 1.1.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.6) | [Source](../Wallet/Source) |
+| Local block explorer | 0.4.10 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.10) | [Source](../Explorer/Source) |
+| P2P Full — SMW/BTC trading | 0.3.4 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.4) | [Source](../P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.4 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.4) | [Source](../P2P/Source) |
 
-Windows full node 0.57.40 includes public block/transaction browsing and the connection-proof availability repair. Android full node 0.6.89 includes the same proof repair. New jobs probe all discovered identities before selecting three responsive witnesses; old selected jobs keep their original witnesses. Valid replies survive retries and restarts. Setup records, local lottery jobs and complete proofs have distinct counters. Full-node release pages: [PC 0.57.40](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.40) and [Android 0.6.89](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89). Wallet 1.0.2 / 1.1.2, Explorer docs-r3, P2P docs-r2 and whitepaper 2.2 have separate release links in [current release status](CURRENT_STATUS.md). Peer
-discovery, block/transaction propagation and synchronization are built into the
-node. A separate networking application is not required. P2P 0.3.0 has separate Full and Light trading editions. Funding requires a
-current synchronized SUMUWW node and conditional-spend activation at height 9100.
-Full also requires synchronized unpruned Bitcoin Core with txindex; Light does not.
-Read the [Bitcoin setup and block-9100 guide](../P2P/Source/BITCOIN_SETUP.md).
-An order or reservation does not transfer funds. See the
-[edition comparison and verification limits](../P2P/Source/EDITIONS.md).
+## Installation and existing data
 
-English is the first-launch default. All 34 offline UI languages remain
-selectable. Existing branding is retained. Text translation does not alter keys,
-addresses, amounts or protocol data. This update adds no node enrollment fee.
+Extract each complete Windows ZIP. Keep encrypted wallet backups and existing data directories. Ordinary wallets validate and synchronize the chain locally; Explorer reads a selected node database without changing it. The full-node/miner applications and ordinary wallets have separate interfaces and profiles.
 
-## Rules from block 9,000
+Android full node 0.6.95 uses org.sumuww.miner. Android ordinary wallet 1.1.6 uses org.sumuww.wallet.current and retains its signing certificate. It can update earlier matching Wallet Current installations. It does not replace the old differently signed org.sumuww.wallet app. Keep the old app and its data until an encrypted backup has been restored successfully. Both new APKs are installation files; physical-phone testing and installation are not claimed.
 
-The current rules apply at height **9,000 inclusive**. Blocks produced by legacy
-software under the old rules at height 9,000 or above are rejected by upgraded
-nodes and cannot extend the upgraded chain. Update miners and validating nodes.
-Valid legacy blocks through **8,999 remain usable**, including the valid prefix
-of a mixed synchronization batch. Wallet keys, valid coins, issuance and halvings
-are preserved. Validation follows block rules, not an advertised version string.
+P2P Full requires synchronized unpruned Bitcoin Core with txindex. Light verifies Bitcoin headers and transaction inclusion using TLS servers and is not full Bitcoin validation. Both require a synchronized SUMUWW node and the height-9100 HTLC rule. Read the [setup and recovery guide](../P2P/Source/BITCOIN_SETUP.md).
 
-## Current consensus behavior
+## Current behavior and verification
 
-SHA-256d PoW and valid cumulative work remain primary. From height 9000 each
-block requires a producer-key commitment. After PoW, a random event has a 20%
-probability of starting an asynchronous connection-proof request. Three distinct
-witnesses each provide one signature divided into two halves. The two bundles (compressed only when smaller)
-are bound to an exact adjacent parent/child pair and retained with proof
-metadata for later verification, including by newly synchronized nodes.
+The shared core is 0.57.46. Fees use live local pending-queue observations. Block issuance, fees and total rewards are reported separately; wallet-specific received amounts are not confused with block totals. Transaction replacement records survive restart. The node exposes signed-transaction checks/submission, chain queries and ordered data records. The source reference does not hold private keys or provide a separate signing application.
 
-Completed signatures are not a prerequisite for mining or accepting an otherwise
-valid block. Missing responses can leave a proof incomplete. Recovery runs
-asynchronously. Verified complete proofs participate in equal-work chain choice;
-they do not override greater valid work or establish irreversible finality.
-New jobs probe the full dynamically discovered candidate inventory through relays and select from the responsive identities, not a fixed ten-node list or just direct peers. Complete discovery of every Internet node cannot be
-guaranteed, and one operator may run multiple identities.
+Multisig/output-lock validation is available only for explicitly activated isolated tests. No public activation is scheduled. Existing public-network consensus, wallet formats, issuance and halvings are preserved. The current height-9000 rules and the separate height-9100 HTLC rule still apply.
 
-Original issuance and halving rules are unchanged. DGW observes 24 preceding
-blocks and recalculates every ten blocks from 9000 (9000, 9010, ...); intervening
-blocks retain the last required target. The exact-template HTLC spending rule
-activates at 9100. Installing P2P does not activate real-money swaps.
+English remains the default and all 34 existing UI languages and language preferences are retained. [Current multilingual notes](Node-Features-46-95/index.html) and [verification record](RELEASE_VERIFICATION_20261025.json) describe the tested scope. Windows binaries are not publisher-code-signed. No independent security audit or uninterrupted public-network availability is claimed.
 
-## Installation and existing wallets
-
-Extract each complete Windows ZIP before running its EXE. Ordinary wallets
-validate and store the blockchain locally; they are not SPV/light wallets.
-They need reachable compatible peers and synchronization before balances and
-confirmations can be considered current. Windows ordinary wallet data is separate
-at `%LOCALAPPDATA%/SUMUWW/Wallet-PC`; the full node can run alongside it.
-
-Android Wallet 1.1.2 has application ID `org.sumuww.wallet.current` and the label
-**SUMUWW Wallet Current**. It retains the Wallet Current 1.1.0 signing key for in-place updates and installs alongside
-the old `org.sumuww.wallet` app. It cannot overwrite that differently signed app.
-Do not uninstall the old wallet or clear its data to install this release.
-Export an encrypted backup from the old app and import it into the new wallet,
-or use its recovery words if available. Preserve the backup and password. Restore
-the same key material to retain the address and ownership of valid coins; chain
-synchronization restores the displayed transaction history. A new empty wallet
-has a different address. The old wallet binary is not reinstated for post-9000 use.
-
-Public Android signing certificate SHA-256:
-`e6b41f98b4c965a76072277b8ea258553901bd7f9fd9b1c3120b567e6212e80a`.
-Private signing material is not distributed. Windows EXEs are not publisher
-code-signed. Compare the supplied SHA256SUMS.txt before installation.
-
-Explorer reads a node database in read-only mode and maintains its own index.
-Run `start-explorer.cmd`; use `--database "C:\path\to\node.sqlite"` to choose
-another source. It does not start or synchronize a node and is not a public hosted
-service. Its data reflects that selected node's stored active chain.
-
-## Changes and verification
-
-Windows wallet 1.0.2 and Android Wallet Current 1.1.2 include the latest
-verified-contact recovery, retry accounting, slow-public-peer deadlines,
-listener discovery, ancestry reuse and cooperative proof-history scheduling.
-Consensus, wallet formats and the 34 language catalogs are unchanged.
-
-Dependency declarations and hash locks now match the actual Windows runtime,
-including transitive dependencies. Each new build checks those version pins.
-Android uses its own ABI-specific dependency versions; those are intentional.
-Current guides and local checksums identify the files actually distributed.
-
-See [the current connection repair verification](CONNECTION_PROOF_REPAIR_VERIFICATION.md),
-[wallet repair evidence](LOCAL_REPAIR_VERIFICATION.md) and
-[current publication/document status](CURRENT_STATUS.md).
-Earlier UI, device and live-network measurements remain in the historical
-[UI and language report](UI_LANGUAGE_VERIFICATION.md) and
-[full-node recovery report](PEER_RECOVERY_VERIFICATION_0.57.38_0.6.88.md).
-They are not new measurements of the rebuilt wallets. No physical-device
-endurance run, public-money transfer or mining test was performed for this repair.
-
-## Sources and references
-
-Implementation, tests, build definitions and licenses are in the repository and
-named source ZIPs. The Windows wallet source ZIP preserves `Wallet/Desktop` and
-`PC/Source` paths because the wallet shares that core. Android signing uses local
-private configuration; source builds cannot reproduce the publisher signature.
-
-[Downloads](https://github.com/jack-cal/SUMUWW/releases) ·
-[Whitepaper](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/Whitepaper/WHITEPAPER.md) ·
-[Connection-proof specification](https://github.com/jack-cal/SUMUWW/blob/main/Documentation/Whitepaper/CONNECTION_PROOFS_9000.md)
+Earlier release posts, files and dated verification reports retain their original scope. Whitepaper 2.2 remains the published whitepaper edition.

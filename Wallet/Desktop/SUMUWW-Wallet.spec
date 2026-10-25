@@ -4,7 +4,7 @@ ROOT = Path(SPECPATH)
 CORE = ROOT.parents[1] / 'PC/Source'
 import runpy
 runpy.run_path(str(CORE / 'packaging/check_dependencies.py'))['check'](CORE)
-datas = [(str(ROOT / 'locales'), 'locales'), (str(CORE / 'assets'), 'assets')]
+datas = [(str(ROOT / 'docs'), 'docs'), (str(ROOT / 'locales'), 'locales'), (str(CORE / 'assets'), 'assets')]
 binaries = []
 hiddenimports = []
 for package in ('coincurve', 'cryptography', 'py_ecc', 'nacl', 'eth_utils', 'eth_typing', 'eth_hash', 'cytoolz'):

@@ -103,7 +103,7 @@ class MempoolCacheTests(unittest.TestCase):
         cached = self.chain._validated_mempool_cache
         before = cached[1].copy()
         with self.assertRaises(InvalidTransaction):
-            self.chain.submit_transaction(self.spend(0, previous=parent, fee=2000))
+            self.chain.submit_transaction(self.spend(0, previous=parent, fee=2000), allow_replacement=False)
         self.assertIs(cached, self.chain._validated_mempool_cache)
         self.assertEqual(before, cached[1])
         self.chain.submit_transaction(self.spend(1))
@@ -146,10 +146,10 @@ class MempoolCacheTests(unittest.TestCase):
         inserted = self.spend(1)
         self.insert(self.chain.connection, inserted)
         with self.assertRaises(InvalidTransaction):
-            self.chain.submit_transaction(self.spend(1, fee=2000))
+            self.chain.submit_transaction(self.spend(1, fee=2000), allow_replacement=False)
         self.chain.connection.execute('DELETE FROM mempool WHERE txid=?', (inserted.txid(),))
         with patch.object(self.chain, '_apply_transaction', wraps=self.chain._apply_transaction) as apply:
-            self.chain.submit_transaction(self.spend(1, fee=2000))
+            self.chain.submit_transaction(self.spend(1, fee=2000), allow_replacement=False)
             self.assertEqual(2, apply.call_count)
 
     def test_external_pool_insert_and_delete_invalidate(self):
@@ -158,10 +158,10 @@ class MempoolCacheTests(unittest.TestCase):
         inserted = self.spend(1)
         self.insert(writer, inserted)
         with self.assertRaises(InvalidTransaction):
-            self.chain.submit_transaction(self.spend(1, fee=2000))
+            self.chain.submit_transaction(self.spend(1, fee=2000), allow_replacement=False)
         writer.execute('DELETE FROM mempool WHERE txid=?', (inserted.txid(),))
         with patch.object(self.chain, '_apply_transaction', wraps=self.chain._apply_transaction) as apply:
-            self.chain.submit_transaction(self.spend(1, fee=2000))
+            self.chain.submit_transaction(self.spend(1, fee=2000), allow_replacement=False)
             self.assertEqual(2, apply.call_count)
 
     def test_corrupt_existing_pool_signature_is_revalidated_after_any_writer(self):
@@ -201,7 +201,7 @@ class MempoolCacheTests(unittest.TestCase):
         inserted = self.spend(1)
         with self.assertRaises(InvalidTransaction):
             self.chain.submit_transaction(self.spend(1, fee=2000),
-                before_submit=lambda chain: self.insert(chain.connection, inserted))
+                before_submit=lambda chain: self.insert(chain.connection, inserted), allow_replacement=False)
         self.assertFalse(self.chain.has_mempool_transaction(inserted.txid()))
         self.assertIs(cached, self.chain._validated_mempool_cache)
         self.chain.submit_transaction(self.spend(1))
@@ -255,7 +255,7 @@ class MempoolCacheTests(unittest.TestCase):
         cache_token = self.chain._validated_mempool_cache[0]
         self.assertNotEqual(cache_token, (*self.chain._path_cache_token(), self.chain.tip_hash))
         with self.assertRaises(InvalidTransaction):
-            self.chain.submit_transaction(self.spend(2, fee=2000))
+            self.chain.submit_transaction(self.spend(2, fee=2000), allow_replacement=False)
         self.assertEqual(3, self.chain.summary()['mempool'])
 
     def test_commit_failure_rolls_back_without_publishing_trial_state(self):

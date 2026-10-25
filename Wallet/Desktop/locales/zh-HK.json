@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "轉會審核已過期。再回顧一下。",
   "Peers: {0} · Block: {1} · ": "節點：{0} · 區塊：{1} · ",
   "{0} confirmations": "{0} 確認",
-  "Select language": "選擇語言"
+  "Select language": "選擇語言",
+  "Fee rate (yugeon/vB)": "費率（yugeon/vB）",
+  "Slow": "慢速",
+  "Normal": "一般",
+  "Fast": "快速",
+  "Manual": "手動",
+  "Check the fee rate and wallet limits.": "請檢查費率及錢包的費用上限。",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "本機待處理量：{0} vB · {1} yugeon/vB · 目標：{2} 個區塊",
+  "Replaced · not applied": "已替換 · 未計入結餘",
+  "Replaced by {0}": "替換交易：{0}",
+  "Removed after parent replacement": "因父交易被替換而移除",
+  "New issuance (block)": "區塊新增發行獎勵",
+  "Transaction fees (block)": "區塊交易手續費獎勵",
+  "Total block reward": "區塊總獎勵",
+  "Issuance limit (block)": "區塊發行上限",
+  "Available fees (block)": "區塊可領取手續費",
+  "Unclaimed reward": "未領取獎勵",
+  "Reward not fully claimed": "只領取了部分獎勵"
 }

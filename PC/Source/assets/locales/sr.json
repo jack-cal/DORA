@@ -335,5 +335,22 @@
   "Local lottery jobs": "Извлачења овог чвора",
   "Not selected": "Нису изабрана",
   "Selected pending": "Изабрана, на чекању",
-  "Selected complete": "Изабрана, завршена"
+  "Selected complete": "Изабрана, завршена",
+  "Fee rate (yugeon/vB)": "Стопа накнаде (yugeon/vB)",
+  "Slow": "Споро",
+  "Normal": "Уобичајено",
+  "Fast": "Брзо",
+  "Manual": "Ручно",
+  "Check the fee rate and wallet limits.": "Проверите стопу накнаде и ограничења новчаника.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Локални ред: {0} vB · {1} yugeon/vB · циљ: {2} блокова",
+  "Replaced · not applied": "Замењена · без утицаја на стање",
+  "Replaced by {0}": "Замењена трансакцијом {0}",
+  "Removed after parent replacement": "Уклоњена после замене родитељске трансакције",
+  "New issuance (block)": "Ново издавање у блоку",
+  "Transaction fees (block)": "Накнаде трансакција у блоку",
+  "Total block reward": "Укупна награда блока",
+  "Issuance limit (block)": "Ограничење издавања блока",
+  "Available fees (block)": "Доступне накнаде блока",
+  "Unclaimed reward": "Непреузета награда",
+  "Reward not fully claimed": "Награда је делимично преузета"
 }

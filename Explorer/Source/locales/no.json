@@ -180,5 +180,14 @@
   "share": "Blokkandel (%)",
   "knownfees": "Kjente transaksjonsgebyrer",
   "rewardsubsidy": "Maksimal blokktilskudd",
-  "pendingstats": "Lokal mempool-statistikk"
+  "pendingstats": "Lokal mempool-statistikk",
+  "spendingconditions": "Vilkår for bruk",
+  "decodedonly": "Bare skriptet er tolket; det er ikke kontrollert om utgangen kan brukes.",
+  "rewardissuance": "Ny utstedelse (blokk)",
+  "rewardfees": "Transaksjonsgebyrer (blokk)",
+  "rewardtotalblock": "Samlet blokkbelønning",
+  "rewardlimit": "Blokkens utstedelsesgrense",
+  "rewardavailablefees": "Tilgjengelige blokkgebyrer",
+  "rewardunclaimed": "Belønning som ikke er hentet",
+  "rewardpartial": "Belønning delvis hentet"
 }

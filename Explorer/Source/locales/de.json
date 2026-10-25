@@ -180,5 +180,14 @@
   "share": "Blockanteil (%)",
   "knownfees": "Bekannte Transaktionsgebühren",
   "rewardsubsidy": "Maximale Blocksubventionen",
-  "pendingstats": "Lokale Mempool-Statistiken"
+  "pendingstats": "Lokale Mempool-Statistiken",
+  "spendingconditions": "Ausgabebedingungen",
+  "decodedonly": "Nur das Skript wurde dekodiert; die Ausgebbarkeit wurde nicht geprüft.",
+  "rewardissuance": "Neue Ausgabe (Block)",
+  "rewardfees": "Transaktionsgebühren (Block)",
+  "rewardtotalblock": "Gesamte Blockbelohnung",
+  "rewardlimit": "Ausgabelimit des Blocks",
+  "rewardavailablefees": "Verfügbare Blockgebühren",
+  "rewardunclaimed": "Nicht beanspruchte Belohnung",
+  "rewardpartial": "Belohnung teilweise beansprucht"
 }

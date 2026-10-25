@@ -284,5 +284,22 @@
   "Do not show this help again.": "यह सहायता फिर न दिखाएँ।",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "सीधा कनेक्शन Tor या I2P का उपयोग नहीं करता। यह आम तौर पर तेज़ है और कम संसाधन लेता है। दूसरे नोड आपका कनेक्शन IP देख सकते हैं।",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।\n\nI2P नोड आवश्यक हैं।"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nलाभ: दूसरे नोड से आपका असली IP छिपाने में मदद करता है।\n\nनुकसान: कनेक्शन और सिंक धीमे हो सकते हैं तथा बैटरी और डेटा की खपत बढ़ सकती है। लेनदेन रिकॉर्ड सार्वजनिक रहते हैं। कनेक्शन विफल होने पर सीधा कनेक्शन चालू नहीं होगा।\n\nI2P नोड आवश्यक हैं।",
+  "Fee rate (yugeon/vB)": "शुल्क दर (yugeon/vB)",
+  "Slow": "धीमा",
+  "Normal": "सामान्य",
+  "Fast": "तेज़",
+  "Manual": "मैन्युअल",
+  "Check the fee rate and wallet limits.": "शुल्क दर और वॉलेट की सीमाएँ जाँचें।",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "स्थानीय कतार: {0} vB · {1} yugeon/vB · लक्ष्य: {2} ब्लॉक",
+  "Replaced · not applied": "बदला गया · शेष राशि पर असर नहीं",
+  "Replaced by {0}": "नया लेन-देन: {0}",
+  "Removed after parent replacement": "मूल लेन-देन बदलने के बाद हटाया गया",
+  "New issuance (block)": "ब्लॉक का नया निर्गम",
+  "Transaction fees (block)": "ब्लॉक के लेनदेन शुल्क",
+  "Total block reward": "ब्लॉक का कुल पुरस्कार",
+  "Issuance limit (block)": "ब्लॉक की निर्गम सीमा",
+  "Available fees (block)": "ब्लॉक के उपलब्ध शुल्क",
+  "Unclaimed reward": "दावा न किया गया पुरस्कार",
+  "Reward not fully claimed": "पुरस्कार का आंशिक दावा"
 }

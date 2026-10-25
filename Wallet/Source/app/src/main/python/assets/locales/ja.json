@@ -284,5 +284,22 @@
   "Do not show this help again.": "次回からこのヘルプを表示しない。",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "TorもI2Pも使用しません。通常は接続が速く、資源の使用も少なくなります。他のノードに接続元IPが見えます。",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。\n\nI2Pノードが必要です。"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n利点：他のノードから実際のIPを隠すのに役立ちます。\n\n欠点：接続や同期が遅くなり、電池やデータの使用量が増える場合があります。取引記録は公開されたままです。接続に失敗しても直接接続には切り替わりません。\n\nI2Pノードが必要です。",
+  "Fee rate (yugeon/vB)": "手数料率（yugeon/vB）",
+  "Slow": "低速",
+  "Normal": "標準",
+  "Fast": "高速",
+  "Manual": "手動",
+  "Check the fee rate and wallet limits.": "手数料率とウォレットの上限を確認してください。",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "ローカル待機量: {0} vB · {1} yugeon/vB · 目標: {2}ブロック",
+  "Replaced · not applied": "置換済み・残高には未反映",
+  "Replaced by {0}": "置換後の取引: {0}",
+  "Removed after parent replacement": "親取引の置換により削除",
+  "New issuance (block)": "新規発行報酬（ブロック）",
+  "Transaction fees (block)": "取引手数料報酬（ブロック）",
+  "Total block reward": "ブロック報酬合計",
+  "Issuance limit (block)": "ブロックの発行上限",
+  "Available fees (block)": "ブロックの手数料合計",
+  "Unclaimed reward": "未請求の報酬",
+  "Reward not fully claimed": "報酬の一部のみ請求"
 }

@@ -1,0 +1,68 @@
+<!doctype html><html lang="fil" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · Interface ng node</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Dokumentasyon · 34</summary><nav><a href="../en/EXCHANGE_INTEGRATION.html" lang="en"><bdi>English</bdi></a><a href="../fr/EXCHANGE_INTEGRATION.html" lang="fr"><bdi>Français</bdi></a><a href="../es/EXCHANGE_INTEGRATION.html" lang="es"><bdi>Español</bdi></a><a href="../ar/EXCHANGE_INTEGRATION.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/EXCHANGE_INTEGRATION.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/EXCHANGE_INTEGRATION.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/EXCHANGE_INTEGRATION.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/EXCHANGE_INTEGRATION.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/EXCHANGE_INTEGRATION.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/EXCHANGE_INTEGRATION.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/EXCHANGE_INTEGRATION.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/EXCHANGE_INTEGRATION.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/EXCHANGE_INTEGRATION.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/EXCHANGE_INTEGRATION.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/EXCHANGE_INTEGRATION.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/EXCHANGE_INTEGRATION.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/EXCHANGE_INTEGRATION.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/EXCHANGE_INTEGRATION.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/EXCHANGE_INTEGRATION.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/EXCHANGE_INTEGRATION.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/EXCHANGE_INTEGRATION.html" lang="nl"><bdi>Nederlands</bdi></a><a href="EXCHANGE_INTEGRATION.html" lang="fil" aria-current="page"><bdi>Filipino</bdi></a><a href="../ta/EXCHANGE_INTEGRATION.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/EXCHANGE_INTEGRATION.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/EXCHANGE_INTEGRATION.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/EXCHANGE_INTEGRATION.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/EXCHANGE_INTEGRATION.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/EXCHANGE_INTEGRATION.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/EXCHANGE_INTEGRATION.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/EXCHANGE_INTEGRATION.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/EXCHANGE_INTEGRATION.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/EXCHANGE_INTEGRATION.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/EXCHANGE_INTEGRATION.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/EXCHANGE_INTEGRATION.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Dokumentasyon</a><a href="EXCHANGE_INTEGRATION.html">Interface ng node</a><a href="RPC_API.html">RPC at HTTP API</a><a href="NETWORK_RUNBOOK.html">Pagpapatakbo ng node</a><a href="RELEASE_NOTES.html">Mga tala ng bersyon</a><a href="EXCHANGE_EXAMPLES.html">Beripikasyon</a></nav></header><main><h1>SUMUWW · Interface ng node</h1>
+<p>SUMUWW PC 0.57.46 · Sinusuri, iniimbak, ipinapasa at ipinapakita ng node ang datos ng chain.</p>
+<h2>Network at mga address</h2>
+<p>Ang pampublikong network ay <code>sumuww</code>, na may panloob na alyas na <code>dora</code>. Suriin ang genesis hash sa ibaba. Gumagamit ang katutubong address ng witness v0 P2WPKH at HASH160 ng compressed secp256k1 public key. Walang kailangang memo o tag. Tanggihan ang maling network at di-wastong checksum. Itala ang HD branch para sa pagtanggap/sukli at index; huwag ipalagay ang derivation path ng Bitcoin.</p>
+<h2>Pormat ng lagda</h2>
+<p>Binubuo ng opsyonal na source SDK ang transaksiyon at sinusuri ang ibinigay na lagda nang walang susi o network. Hindi ito programang lumalagda o utos ng node. Sa format ng halimbawa lang ang limitasyong P2WPKH, hindi sa node. Magagamit pa rin ang personal na wallet.</p>
+<h2>RPC at HTTP API</h2>
+<p>Sinusuri ng validateaddress ang checksum at napiling network. Ang decoded_only mula sa decoderawtransaction ay pagbasa lang ng datos, hindi patunay ng wastong lagda o kumpirmasyon. Nag-iimbak ang OP_RETURN ng datos para sa panlabas na programa. May dagdag na pagtatanong ng bayad, pagsusuri bago magpadala, katayuan ng pagpapalit sa RBF at datos ayon sa pagkakasunod ng mga block. Sinusuri muna ang kapalit bago alisin ang mga nakabinbing transaksiyon. Naipatupad ang maramihang lagda at naka-lock na output para sa hiwalay na pagsubok; hindi pa aktibo sa pampublikong network.</p>
+<h2>Pagpapatunay at mga limitasyon</h2>
+<p>Tahasang paganahin ang RPC sa numerikong loopback <code>127.0.0.1:18443</code> gamit ang pribadong Bearer token. Walang remote signing o pag-unlock ng wallet. Gumamit ng lokal na serbisyo o authenticated tunnel; tinatanggihan ang browser Origin/Referer request. Gumagamit ang JSON-RPC ng POST <code>/rpc</code>, object/array <code>params</code> at <code>id</code>; HTTP 204 ang notification. Limitasyon: body 8004096 byte, header 8192, batch 16, sabay na request 16, takdang oras 10 segundo; limit 1–1000, offset 0–1000000. May 28 method at 11 REST route.</p>
+<h2>Halaga at magagamit na output</h2>
+<p>Ang <code>_units</code> ay integer sa pinakamaliit na yunit; <code>_smw</code> ay string na may 8 decimal; <code>_dora</code> ay compatibility alias. Walang amount field na <code>_sumuww</code>. 1 SMW = 100000000 yunit. Walang <code>spendable</code> ang <code>gettxout</code> at maaaring magbalik ng hindi pa hinog na coinbase output. Kailangan ng hindi bababa sa 100 kumpirmasyon para gastusin sa susunod na block. Salain ang <code>listunspent</code> sa <code>spendable</code>; hindi kasama sa available ng <code>getaddressbalance</code> ang hindi pa hinog at nakatali sa pending spend. Hindi kumpirmado ang bagong mempool output. Suriin ang dulo sa pagitan ng mga pahina at muling patunayan ang piniling input.</p>
+<p>1 SMW = 100,000,000 yugeon. May tatlong antas ang awtomatikong bayad batay sa lokal na obserbasyon, ngunit walang garantisadong oras ng kumpirmasyon. Maaari kang magtakda ng rate sa yugeon/vB. Suriin ang huling bayad at kabuuang SMW bago magpadala. Hindi nababawasan ang balanse sa tinanggihang transaksiyon.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Batay ang awtomatikong bayad sa dami ng nakabinbing datos, kapasidad ng bloke at prayoridad ng transaksiyon. Hindi ginagamit ang bayad ng mga nakaraang bloke. Kapag maikli ang pila, nananatili ang pinakamababang singil. Naa-update ang preview; itinatakda ng huling kumpirmasyon ang bayad. Ang obserbasyon ay para sa nakakonektang lokal na node, hindi sa lahat ng node.</p>
+<p>Nananatili ang tala ng mga pagpapalit na naitala ng node na ito kahit i-restart ang wallet. Hindi naaapektuhan ng mga inalis na transaksiyon ang balanse.</p>
+<p>Hiwalay sa kasaysayan ng pagmimina ang bagong inilabas, bayarin sa transaksyon, at kabuuang gantimpala ng bawat block. Hiwalay ding ipinapakita ang natanggap ng iyong wallet. Kapag bahagi lamang ang kinuha, hindi ipinapalagay ang paghahati ng dalawang sangkap. May 28 RPC method ang node, kabilang ang pagtatantiya ng bayarin, at sinusuri at ipinapasa nito ang mga nilagdaang transaksyon.</p>
+<h2>Paghahanap ng transaksyon at block</h2>
+<p>Hinahanap ng <code>getrawtransaction</code> ang active chain at mempool, hindi ang transaksyong nasa naulilang sangay lamang. Tumutukoy ang input sa dating output, hindi sa iisang sender address. Boolean ang <code>verbose</code> ng <code>getblock</code>; ang naka-save na inactive block ay may <code>active=false</code>, <code>confirmations=-1</code>. Maa-access pa rin ang raw transaction sa block hash. Confirmed active spend lamang ang hinahanap ng <code>findspendingtransaction</code>; hindi patunay ng availability ang null. Suriin ang <code>gettxout</code> na may <code>include_mempool=true</code>. Maaaring magbago ang kumpirmasyon at active status sa reorganisasyon.</p>
+<h2>Beripikasyon</h2>
+<p>I-install ang dependencies at patakbuhin ang python examples/node_contract.py mula sa source. Pampublikong test key at pansamantalang regtest ang sumusubok sa pagpapasa, pagtanggi, kumpirmasyon, reorganisasyon at pag-iimbak. Walang totoong pondo, profile ng user o hardware signer na ginagamit.</p>
+<pre><code class="language-text">network: sumuww (dora)
+genesis: 00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97
+HRP: sumuww
+P2P magic: d052470c
+1 SMW = 100000000 yugeon
+</code></pre>
+<p><a href="README.html">Dokumentasyon</a> · <a href="RPC_API.html">RPC at HTTP API</a> · <a href="NETWORK_RUNBOOK.html">Pagpapatakbo ng node</a> · <a href="RELEASE_NOTES.html">Mga tala ng bersyon</a> · <a href="EXCHANGE_EXAMPLES.html">Beripikasyon</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">Detalyadong sanggunian sa Ingles</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

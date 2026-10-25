@@ -284,5 +284,22 @@
   "Do not show this help again.": "Älä näytä tätä ohjetta uudelleen.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Suora yhteys ei käytä Toria eikä I2P:tä. Se on yleensä nopeampi ja käyttää vähemmän resursseja. Muut solmut näkevät yhteytesi IP:n.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nEtu: auttaa piilottamaan todellisen IP:si muilta solmuilta.\n\nHaitat: yhteys ja synkronointi voivat hidastua ja akun sekä datan kulutus kasvaa. Tapahtumat pysyvät julkisina. Virheen sattuessa suora yhteys pysyy poissa käytöstä.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nEtu: auttaa piilottamaan todellisen IP:si muilta solmuilta.\n\nHaitat: yhteys ja synkronointi voivat hidastua ja akun sekä datan kulutus kasvaa. Tapahtumat pysyvät julkisina. Virheen sattuessa suora yhteys pysyy poissa käytöstä.\n\nI2P-solmuja tarvitaan."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nEtu: auttaa piilottamaan todellisen IP:si muilta solmuilta.\n\nHaitat: yhteys ja synkronointi voivat hidastua ja akun sekä datan kulutus kasvaa. Tapahtumat pysyvät julkisina. Virheen sattuessa suora yhteys pysyy poissa käytöstä.\n\nI2P-solmuja tarvitaan.",
+  "Fee rate (yugeon/vB)": "Maksutaso (yugeon/vB)",
+  "Slow": "Hidas",
+  "Normal": "Tavallinen",
+  "Fast": "Nopea",
+  "Manual": "Manuaalinen",
+  "Check the fee rate and wallet limits.": "Tarkista maksutaso ja lompakon rajat.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Paikallinen jono: {0} vB · {1} yugeon/vB · tavoite: {2} lohkoa",
+  "Replaced · not applied": "Korvattu · ei vaikutusta saldoon",
+  "Replaced by {0}": "Korvaava tapahtuma: {0}",
+  "Removed after parent replacement": "Poistettu edeltävän tapahtuman korvaamisen vuoksi",
+  "New issuance (block)": "Lohkon uusi liikkeeseenlasku",
+  "Transaction fees (block)": "Lohkon siirtomaksut",
+  "Total block reward": "Lohkon kokonaispalkkio",
+  "Issuance limit (block)": "Lohkon liikkeeseenlaskuraja",
+  "Available fees (block)": "Lohkon saatavilla olevat maksut",
+  "Unclaimed reward": "Lunastamaton palkkio",
+  "Reward not fully claimed": "Palkkio lunastettu osittain"
 }

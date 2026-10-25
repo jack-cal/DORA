@@ -1,0 +1,242 @@
+<!doctype html><html lang="ta" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · RPC மற்றும் HTTP API</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>ஆவணங்கள் · 34</summary><nav><a href="../en/RPC_API.html" lang="en"><bdi>English</bdi></a><a href="../fr/RPC_API.html" lang="fr"><bdi>Français</bdi></a><a href="../es/RPC_API.html" lang="es"><bdi>Español</bdi></a><a href="../ar/RPC_API.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/RPC_API.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/RPC_API.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/RPC_API.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/RPC_API.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/RPC_API.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/RPC_API.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/RPC_API.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/RPC_API.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/RPC_API.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/RPC_API.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/RPC_API.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/RPC_API.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/RPC_API.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/RPC_API.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/RPC_API.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/RPC_API.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/RPC_API.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/RPC_API.html" lang="fil"><bdi>Filipino</bdi></a><a href="RPC_API.html" lang="ta" aria-current="page"><bdi>தமிழ்</bdi></a><a href="../zh-TW/RPC_API.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/RPC_API.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/RPC_API.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/RPC_API.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/RPC_API.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/RPC_API.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/RPC_API.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/RPC_API.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/RPC_API.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/RPC_API.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/RPC_API.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">ஆவணங்கள்</a><a href="EXCHANGE_INTEGRATION.html">முனை இடைமுகம்</a><a href="RPC_API.html">RPC மற்றும் HTTP API</a><a href="NETWORK_RUNBOOK.html">கணு இயக்கம்</a><a href="RELEASE_NOTES.html">பதிப்பு குறிப்புகள்</a><a href="EXCHANGE_EXAMPLES.html">சரிபார்ப்பு</a></nav></header><main><h1>SUMUWW Android 0.6.95 · RPC மற்றும் HTTP API</h1>
+<p>SUMUWW Android 0.6.95 · முனை சங்கிலித் தரவைச் சரிபார்த்து, சேமித்து, பரப்பி, தேடலுக்கு வழங்குகிறது.</p>
+<p>API விவரக்குறிப்பு உள்ளமைந்த முனையின் மையத்தை விளக்குகிறது. Android செயலியில் RPC அமைப்புத் திரை இல்லை.</p>
+<h2>RPC மற்றும் HTTP API</h2>
+<p>validateaddress சரிபார்ப்புத் தொகையையும் தேர்ந்தெடுத்த பிணையத்தையும் சோதிக்கிறது. decoderawtransaction தரும் decoded_only தரவைப் படித்ததை மட்டுமே குறிக்கும். கட்டண வினவல், அனுப்பும் முன் சரிபார்ப்பு, RBF மாற்று நிலை மற்றும் தொகுதி வரிசையில் தரவு வாசிப்பு ஆகியவை முனையில் சேர்க்கப்பட்டுள்ளன. நிலுவைப் பரிவர்த்தனைகளை அகற்றும் முன் மாற்றுப் பரிவர்த்தனை சரிபார்க்கப்படும். பல கையொப்பங்களும் பூட்டப்பட்ட வெளியீடுகளும் தனிச் செயல்படுத்தல் சோதனைக்காக உருவாக்கப்பட்டுள்ளன; பொது வலையில் இன்னும் செயல்படவில்லை.</p>
+<h2>தொகைகளும் கிடைக்கும் வெளியீடுகளும்</h2>
+<p><code>_units</code> மிகச்சிறிய அலகின் முழு எண்; <code>_smw</code> 8 தசம இடங்களுள்ள உரை; <code>_dora</code> பொருந்துதலுக்கான மாற்றுப் பெயர். <code>_sumuww</code> தொகைப் புலம் இல்லை. 1 SMW = 100000000 அலகுகள். <code>gettxout</code>-ல் <code>spendable</code> இல்லை; முதிராத coinbase வெளியீடும் வரலாம். அடுத்த தொகுதியில் செலவிட குறைந்தது 100 உறுதிகள் தேவை. <code>listunspent</code>-ஐ <code>spendable</code> கொண்டு வடிகட்டவும்; <code>getaddressbalance</code>-இன் available முதிராத மற்றும் நிலுவைச் செலவில் உள்ள நிதியை விலக்கும். புதிய mempool வெளியீடுகள் உறுதியான நிதியல்ல. பக்கங்களுக்கு இடையில் முனையைச் சரிபார்த்து தேர்ந்த உள்ளீடுகளை மீண்டும் பரிசோதிக்கவும்.</p>
+<p>1 SMW = 100,000,000 yugeon. உள்ளூர் கண்காணிப்பின் அடிப்படையில் தானியங்கிக் கட்டணம் மூன்று நிலைகளை வழங்குகிறது; உறுதிப்படுத்தும் நேரத்திற்கு உத்தரவாதம் இல்லை. yugeon/vB விகிதத்தை நீங்களே உள்ளிடலாம். அனுப்பும் முன் இறுதிக் கட்டணத்தையும் மொத்தத்தையும் SMW-இல் சரிபார்க்கவும். நிராகரிக்கப்பட்ட பரிவர்த்தனை இருப்பைக் குறைக்காது.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>தானியங்கிக் கட்டணம் நிலுவைத் தரவின் அளவு, தொகுதியின் கொள்ளளவு, பரிவர்த்தனை முன்னுரிமை ஆகியவற்றைக் கணக்கில் கொள்கிறது. பழைய தொகுதிகளின் கட்டணங்கள் பயன்படுத்தப்படுவதில்லை. வரிசை குறைவாக இருந்தால் குறைந்தபட்ச விகிதம் நீடிக்கும். முன்னோட்டம் புதுப்பிக்கப்படும்; இறுதி உறுதிப்படுத்தலின்போது கட்டணம் நிலைபெறும். கண்காணிப்பு இணைக்கப்பட்ட உள்ளூர் முனைக்குரியது; எல்லா முனைகளுக்குமானது அல்ல.</p>
+<p>பணப்பையை மீண்டும் தொடங்கிய பின்னரும் இந்த முனை பதிவு செய்த பரிவர்த்தனை மாற்ற வரலாறு இருக்கும். நீக்கப்பட்ட பரிவர்த்தனைகள் இருப்பைப் பாதிக்காது.</p>
+<p>சுரங்க வரலாற்றில் ஒவ்வொரு தொகுதியின் புதிய வெளியீடு, பரிவர்த்தனைக் கட்டணம், மொத்த வெகுமதி தனித்தனியாகக் காட்டப்படும். உங்கள் பணப்பை பெற்ற தொகை தனியாகக் காட்டப்படும். ஒரு பகுதி மட்டுமே பெறப்பட்டால் இரு கூறுகளின் பங்குகள் ஊகிக்கப்படாது. கட்டண மதிப்பீடு உட்பட 28 RPC முறைகளை முனை வழங்குகிறது; கையொப்பமிட்ட பரிவர்த்தனைகளைச் சரிபார்த்து அனுப்புகிறது.</p>
+<h2>பரிவர்த்தனை மற்றும் தொகுதி தேடல்</h2>
+<p><code>getrawtransaction</code> செயலிலுள்ள சங்கிலி மற்றும் mempool-ஐத் தேடும்; பிரிந்த கிளையில் மட்டுமே உள்ள பரிவர்த்தனையை அல்ல. உள்ளீடுகள் முந்தைய வெளியீடுகளைக் குறிக்கும், ஒரே அனுப்புநர் முகவரியை அல்ல. <code>getblock</code>-இன் <code>verbose</code> Boolean; சேமித்த செயலற்ற தொகுதிகளில் <code>active=false</code>, <code>confirmations=-1</code>. தொகுதி hash மூலம் மூலப் பரிவர்த்தனைகள் கிடைக்கும். <code>findspendingtransaction</code> செயலில் உறுதியான செலவுகளை மட்டுமே தேடும்; null கிடைப்பதற்கான சான்றல்ல. <code>include_mempool=true</code> உடன் <code>gettxout</code> பார்க்கவும். மறுசீரமைப்பில் உறுதிகளும் செயல்நிலையும் மாறலாம்.</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getblockchaininfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>gethtlcinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset=0, limit=100</code></td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>gettxout</code></td>
+<td><code>txid, index, include_mempool=true</code></td>
+</tr>
+<tr>
+<td><code>findspendingtransaction</code></td>
+<td><code>txid, index, start_height=0</code></td>
+</tr>
+<tr>
+<td><code>getnetworkinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockcount</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getbestblockhash</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockhash</code></td>
+<td><code>height</code></td>
+</tr>
+<tr>
+<td><code>getblock</code></td>
+<td><code>hash, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>getrawmempool</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize=140, mode=normal</code></td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>getrawtransaction</code></td>
+<td><code>txid, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>decoderawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>validateaddress</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>listunspent</code></td>
+<td><code>address, limit=100, offset=0</code></td>
+</tr>
+<tr>
+<td><code>getaddressbalance</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>sendrawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>submitblock</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getblocktemplate</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td><code>{} / []</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>URI</th>
+<th>JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/network</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/blocks/{height-or-hash}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/transactions/{txid}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/balance</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/utxos?limit=100&amp;offset=0</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/transactions</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/blocks</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/mining/template</code></td>
+<td><code>{"address":"..."}</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

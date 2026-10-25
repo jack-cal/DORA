@@ -284,5 +284,22 @@
   "Do not show this help again.": "Больше не показывать эту справку.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Прямое соединение не использует Tor или I2P. Обычно оно быстрее и требует меньше ресурсов. Другие узлы видят IP вашего соединения.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.\n\nНужны узлы I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nПреимущество: помогает скрыть настоящий IP от других узлов.\n\nНедостатки: соединение и синхронизация могут замедлиться, расход батареи и трафика — возрасти. Записи транзакций остаются публичными. При сбое прямое соединение не включается.\n\nНужны узлы I2P.",
+  "Fee rate (yugeon/vB)": "Ставка комиссии (yugeon/vB)",
+  "Slow": "Медленно",
+  "Normal": "Обычно",
+  "Fast": "Быстро",
+  "Manual": "Вручную",
+  "Check the fee rate and wallet limits.": "Проверьте ставку комиссии и ограничения кошелька.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Локальная очередь: {0} vB · {1} yugeon/vB · цель: {2} блоков",
+  "Replaced · not applied": "Заменена · баланс не изменён",
+  "Replaced by {0}": "Заменена транзакцией {0}",
+  "Removed after parent replacement": "Удалена после замены родительской транзакции",
+  "New issuance (block)": "Новая эмиссия блока",
+  "Transaction fees (block)": "Комиссии блока",
+  "Total block reward": "Общая награда блока",
+  "Issuance limit (block)": "Лимит эмиссии блока",
+  "Available fees (block)": "Доступные комиссии блока",
+  "Unclaimed reward": "Невостребованная награда",
+  "Reward not fully claimed": "Награда востребована частично"
 }

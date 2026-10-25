@@ -284,5 +284,22 @@
   "Do not show this help again.": "Jangan tampilkan bantuan ini lagi.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Koneksi langsung tidak menggunakan Tor maupun I2P. Biasanya lebih cepat dan memakai lebih sedikit sumber daya. Rekan lain dapat melihat IP koneksi Anda.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nKelebihan: membantu menyembunyikan IP asli Anda dari rekan lain.\n\nKekurangan: koneksi dan sinkronisasi dapat melambat serta penggunaan baterai dan data meningkat. Catatan transaksi tetap publik. Jika koneksi gagal, koneksi langsung tetap nonaktif.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nKelebihan: membantu menyembunyikan IP asli Anda dari rekan lain.\n\nKekurangan: koneksi dan sinkronisasi dapat melambat serta penggunaan baterai dan data meningkat. Catatan transaksi tetap publik. Jika koneksi gagal, koneksi langsung tetap nonaktif.\n\nRekan I2P diperlukan."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nKelebihan: membantu menyembunyikan IP asli Anda dari rekan lain.\n\nKekurangan: koneksi dan sinkronisasi dapat melambat serta penggunaan baterai dan data meningkat. Catatan transaksi tetap publik. Jika koneksi gagal, koneksi langsung tetap nonaktif.\n\nRekan I2P diperlukan.",
+  "Fee rate (yugeon/vB)": "Tarif biaya (yugeon/vB)",
+  "Slow": "Lambat",
+  "Normal": "Normal",
+  "Fast": "Cepat",
+  "Manual": "Manual",
+  "Check the fee rate and wallet limits.": "Periksa tarif biaya dan batas dompet.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Antrean lokal: {0} vB · {1} yugeon/vB · target: {2} blok",
+  "Replaced · not applied": "Diganti · saldo tidak terpengaruh",
+  "Replaced by {0}": "Diganti oleh {0}",
+  "Removed after parent replacement": "Dihapus setelah transaksi induk diganti",
+  "New issuance (block)": "Penerbitan baru (blok)",
+  "Transaction fees (block)": "Biaya transaksi (blok)",
+  "Total block reward": "Total imbalan blok",
+  "Issuance limit (block)": "Batas penerbitan blok",
+  "Available fees (block)": "Biaya blok yang tersedia",
+  "Unclaimed reward": "Imbalan belum diklaim",
+  "Reward not fully claimed": "Imbalan diklaim sebagian"
 }

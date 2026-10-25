@@ -293,5 +293,22 @@
   "Block hash": "แฮชของบล็อก",
   "All blocks": "บล็อกทั้งหมด",
   "Validated blocks from genesis to the current tip. Includes all nodes.": "บล็อกที่ตรวจสอบแล้วตั้งแต่บล็อกแรกจนถึงปลายเชนปัจจุบัน รวมบล็อกจากทุกโหนด",
-  "Search": "ค้นหา"
+  "Search": "ค้นหา",
+  "Fee rate (yugeon/vB)": "อัตราค่าธรรมเนียม (yugeon/vB)",
+  "Slow": "ช้า",
+  "Normal": "ปกติ",
+  "Fast": "เร็ว",
+  "Manual": "กำหนดเอง",
+  "Check the fee rate and wallet limits.": "ตรวจสอบอัตราค่าธรรมเนียมและขีดจำกัดของกระเป๋า",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "คิวในโหนดนี้: {0} vB · {1} yugeon/vB · เป้าหมาย: {2} บล็อก",
+  "Replaced · not applied": "ถูกแทนที่ · ไม่กระทบยอดคงเหลือ",
+  "Replaced by {0}": "ธุรกรรมที่มาแทน: {0}",
+  "Removed after parent replacement": "ถูกนำออกเพราะธุรกรรมต้นทางถูกแทนที่",
+  "New issuance (block)": "เหรียญออกใหม่ของบล็อก",
+  "Transaction fees (block)": "ค่าธรรมเนียมธุรกรรมของบล็อก",
+  "Total block reward": "รางวัลรวมของบล็อก",
+  "Issuance limit (block)": "เพดานการออกเหรียญของบล็อก",
+  "Available fees (block)": "ค่าธรรมเนียมที่รับได้ของบล็อก",
+  "Unclaimed reward": "รางวัลที่ไม่ได้รับ",
+  "Reward not fully claimed": "รับรางวัลเพียงบางส่วน"
 }

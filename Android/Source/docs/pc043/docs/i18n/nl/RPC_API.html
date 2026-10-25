@@ -1,1 +1,244 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../en/RPC_API.html"><title>SUMUWW documentation</title></head><body><p>Documentation is published in English.</p><a href="../en/RPC_API.html">Open the English document</a></body></html>
+<!doctype html><html lang="nl" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW · RPC- en HTTP-API</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Documentatie · 34</summary><nav><a href="../en/RPC_API.html" lang="en"><bdi>English</bdi></a><a href="../fr/RPC_API.html" lang="fr"><bdi>Français</bdi></a><a href="../es/RPC_API.html" lang="es"><bdi>Español</bdi></a><a href="../ar/RPC_API.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/RPC_API.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/RPC_API.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/RPC_API.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/RPC_API.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/RPC_API.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/RPC_API.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/RPC_API.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/RPC_API.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/RPC_API.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/RPC_API.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/RPC_API.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/RPC_API.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/RPC_API.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/RPC_API.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/RPC_API.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/RPC_API.html" lang="pl"><bdi>Polski</bdi></a><a href="RPC_API.html" lang="nl" aria-current="page"><bdi>Nederlands</bdi></a><a href="../fil/RPC_API.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/RPC_API.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/RPC_API.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/RPC_API.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/RPC_API.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/RPC_API.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/RPC_API.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/RPC_API.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/RPC_API.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/RPC_API.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/RPC_API.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/RPC_API.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/RPC_API.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Documentatie</a><a href="EXCHANGE_INTEGRATION.html">Node-interface</a><a href="RPC_API.html">RPC- en HTTP-API</a><a href="NETWORK_RUNBOOK.html">Nodebeheer</a><a href="RELEASE_NOTES.html">Versieopmerkingen</a><a href="EXCHANGE_EXAMPLES.html">Verificatie</a></nav></header><main><h1>SUMUWW · RPC- en HTTP-API</h1>
+<p>SUMUWW PC 0.57.46 · De node valideert, bewaart, verspreidt en ontsluit ketengegevens.</p>
+<h2>RPC- en HTTP-API</h2>
+<p>validateaddress controleert controlesom en gekozen netwerk. decoderawtransaction geeft decoded_only, geen bewijs van een geldige handtekening of bevestiging. OP_RETURN bewaart gegevens voor externe programma’s. De node biedt kostenopvragen, controle vóór verzending, de status van RBF-vervangingen en gegevens in blokvolgorde. Vervangingen worden gecontroleerd voordat wachtende transacties worden verwijderd. Meervoudige handtekeningen en vergrendelde outputs zijn geïmplementeerd voor afzonderlijke activeringstests; ze zijn nog niet actief op het openbare netwerk.</p>
+<h2>Authenticatie en limieten</h2>
+<p>Schakel RPC expliciet in op numeriek loopback <code>127.0.0.1:18443</code> met privé-Bearer-token. Walletontgrendeling en ondertekening op afstand worden niet aangeboden. Gebruik lokale service of geauthenticeerde tunnel; browserverzoeken met Origin/Referer worden geweigerd. JSON-RPC gebruikt POST <code>/rpc</code>, object/array <code>params</code> en <code>id</code>; notificaties leveren HTTP 204. Limieten: body 8004096 bytes, headers 8192, batch 16, gelijktijdige verzoeken 16, deadline 10 seconden; limit 1–1000, offset 0–1000000. Er zijn 28 methoden en 11 REST-routes.</p>
+<h2>Bedragen en beschikbare outputs</h2>
+<p><code>_units</code> zijn gehele kleinste eenheden; <code>_smw</code> is tekst met 8 decimalen; <code>_dora</code> een compatibiliteitsalias. Er bestaat geen bedragveld <code>_sumuww</code>. 1 SMW = 100000000 eenheden. <code>gettxout</code> heeft geen <code>spendable</code> en kan onrijpe coinbase-outputs geven. Voor besteding in het volgende blok zijn minstens 100 bevestigingen nodig. Filter <code>listunspent</code> op <code>spendable</code>; available bij <code>getaddressbalance</code> sluit onrijpe en in wachtende transacties bestede middelen uit. Nieuwe mempool-outputs zijn niet bevestigd. Controleer de ketentop tussen pagina’s en valideer gekozen inputs opnieuw.</p>
+<p>1 SMW = 100.000.000 yugeon. Automatische kosten bieden drie niveaus op basis van lokale waarnemingen, zonder de bevestigingstijd te garanderen. U kunt een tarief in yugeon/vB invoeren. Controleer vóór verzending de definitieve kosten en het totaal in SMW. Een geweigerde transactie verlaagt het saldo niet.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automatische kosten volgen het wachtende datavolume, de blokcapaciteit en de transactieprioriteit. Kosten uit eerdere blokken tellen niet mee. Bij weinig wachtrij blijft het minimumtarief gelden. Het voorbeeld wordt vernieuwd; de definitieve bevestiging legt de kosten vast. De waarneming geldt voor de verbonden lokale node, niet voor alle nodes.</p>
+<p>De door dit knooppunt vastgelegde vervangingsgeschiedenis blijft na het herstarten van de wallet bewaard. Verwijderde transacties veranderen het saldo niet.</p>
+<p>De mininggeschiedenis toont nieuwe uitgifte, transactiekosten en totale beloning per blok afzonderlijk. Het bedrag dat uw wallet ontvangt staat apart. Bij een gedeeltelijk opgeëiste beloning wordt de verdeling niet aangenomen. De node biedt 28 RPC-methoden, waaronder kostenschatting, en controleert en verspreidt ondertekende transacties.</p>
+<h2>Transacties en blokken opzoeken</h2>
+<p><code>getrawtransaction</code> doorzoekt actieve keten en mempool, geen uitsluitend verweesde transacties. Inputs verwijzen naar eerdere outputs, niet één afzenderadres. <code>getblock</code> gebruikt booleaanse <code>verbose</code>; opgeslagen inactieve blokken hebben <code>active=false</code>, <code>confirmations=-1</code>. Hun ruwe transacties blijven via blokhash beschikbaar. <code>findspendingtransaction</code> zoekt alleen bevestigde actieve bestedingen; null bewijst geen beschikbaarheid. Controleer <code>gettxout</code> met <code>include_mempool=true</code>. Bevestigingen en actieve status kunnen veranderen na reorganisatie.</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getblockchaininfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>gethtlcinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset=0, limit=100</code></td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>gettxout</code></td>
+<td><code>txid, index, include_mempool=true</code></td>
+</tr>
+<tr>
+<td><code>findspendingtransaction</code></td>
+<td><code>txid, index, start_height=0</code></td>
+</tr>
+<tr>
+<td><code>getnetworkinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockcount</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getbestblockhash</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockhash</code></td>
+<td><code>height</code></td>
+</tr>
+<tr>
+<td><code>getblock</code></td>
+<td><code>hash, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>getrawmempool</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize=140, mode=normal</code></td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>getrawtransaction</code></td>
+<td><code>txid, verbose=true</code></td>
+</tr>
+<tr>
+<td><code>decoderawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>validateaddress</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>listunspent</code></td>
+<td><code>address, limit=100, offset=0</code></td>
+</tr>
+<tr>
+<td><code>getaddressbalance</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>sendrawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>submitblock</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getblocktemplate</code></td>
+<td><code>address</code></td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td><code>{} / []</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>URI</th>
+<th>JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/network</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/mempool/info</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/blocks/{height-or-hash}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/transactions/{txid}</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/balance</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/addresses/{address}/utxos?limit=100&amp;offset=0</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/transactions</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/blocks</code></td>
+<td><code>{"hex":"..."}</code></td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/mining/template</code></td>
+<td><code>{"address":"..."}</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="README.html">Documentatie</a> · <a href="EXCHANGE_INTEGRATION.html">Node-interface</a> · <a href="NETWORK_RUNBOOK.html">Nodebeheer</a> · <a href="RELEASE_NOTES.html">Versieopmerkingen</a> · <a href="EXCHANGE_EXAMPLES.html">Verificatie</a></p>
+<p><a href="../../../EXCHANGE_INTEGRATION.html">Uitgebreide Engelse referentie</a> · <a href="../../../API_CONTRACT.json">API_CONTRACT.json</a> · <a href="../../../examples/exchange/vectors.json">vectors.json</a></p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>

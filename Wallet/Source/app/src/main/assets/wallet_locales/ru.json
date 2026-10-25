@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Срок рассмотрения переноса истек. Просмотрите его еще раз.",
   "Peers: {0} · Block: {1} · ": "Подключённые узлы: {0} · Блок: {1} · ",
   "{0} confirmations": "{0} подтверждения",
-  "Select language": "Выберите язык"
+  "Select language": "Выберите язык",
+  "Fee rate (yugeon/vB)": "Ставка комиссии (yugeon/vB)",
+  "Slow": "Медленно",
+  "Normal": "Обычно",
+  "Fast": "Быстро",
+  "Manual": "Вручную",
+  "Check the fee rate and wallet limits.": "Проверьте ставку комиссии и ограничения кошелька.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Локальная очередь: {0} vB · {1} yugeon/vB · цель: {2} блоков",
+  "Replaced · not applied": "Заменена · баланс не изменён",
+  "Replaced by {0}": "Заменена транзакцией {0}",
+  "Removed after parent replacement": "Удалена после замены родительской транзакции",
+  "New issuance (block)": "Новая эмиссия блока",
+  "Transaction fees (block)": "Комиссии блока",
+  "Total block reward": "Общая награда блока",
+  "Issuance limit (block)": "Лимит эмиссии блока",
+  "Available fees (block)": "Доступные комиссии блока",
+  "Unclaimed reward": "Невостребованная награда",
+  "Reward not fully claimed": "Награда востребована частично"
 }

@@ -1,0 +1,16 @@
+{
+  "android": "0.6.95",
+  "scope": "Embedded node API; no separate developer bridge",
+  "files": {
+    "rpc.py": "f0ba1ac80157aa95f86d138a021f8c2a24fc51bd156ca9f93dd1dbc74d68fa22",
+    "rpc_client.py": "25e8d4113b5fadd00889b223b8b10d4f19db3246a1ce5c0ba9aac407101334b9",
+    "fees.py": "ab0e59f90827e60f616fb847eb0f887518cefcb9f8473ded8d8a8cfe53f69804",
+    "mempool_policy.py": "10756d5e56396cb8571e2590d2a8107cafcaf22226c721cdf51e51b36614bf50",
+    "spending.py": "8d6970ad3f1b6d07b384b1125049781355d07f388f6b3b388766dd519754db71",
+    "spending_policy.py": "8815ec465ef695356246d70505ede19b75dc50dd11b8fa96642112df267466a8",
+    "chain.py": "f1fbde5e3c2314d97a812b6ca66d011d99daba04ede609c28949847878ca73ca",
+    "wallet_history.py": "15009a7c2cdca4abedf4a4a89f05e3b95f13a09d739c68b828a19d4f79427241",
+    "block_history.py": "b217c387a5df9138dc08bd9b2e1a21cdc48648d0c1ce5f4f2ef2d24c6727ab15",
+    "rewards.py": "5399a747f0a403c29d00c05b37bc9a35afbb06328fb450366d037766432cb58d"
+  }
+}

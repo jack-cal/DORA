@@ -284,5 +284,22 @@
   "Do not show this help again.": "এই সহায়তা আর দেখাবেন না।",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "সরাসরি সংযোগ Tor বা I2P ব্যবহার করে না। সাধারণত এটি দ্রুত এবং কম সম্পদ ব্যবহার করে। অন্য নোড আপনার সংযোগের IP দেখতে পারে।",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nসুবিধা: অন্য নোড থেকে আপনার আসল IP লুকাতে সাহায্য করে।\n\nঅসুবিধা: সংযোগ ও সিঙ্ক ধীর হতে পারে এবং ব্যাটারি ও ডেটার ব্যবহার বাড়তে পারে। লেনদেনের রেকর্ড প্রকাশ্য থাকে। সংযোগ ব্যর্থ হলে সরাসরি সংযোগ চালু হবে না।",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nসুবিধা: অন্য নোড থেকে আপনার আসল IP লুকাতে সাহায্য করে।\n\nঅসুবিধা: সংযোগ ও সিঙ্ক ধীর হতে পারে এবং ব্যাটারি ও ডেটার ব্যবহার বাড়তে পারে। লেনদেনের রেকর্ড প্রকাশ্য থাকে। সংযোগ ব্যর্থ হলে সরাসরি সংযোগ চালু হবে না।\n\nI2P নোড প্রয়োজন।"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nসুবিধা: অন্য নোড থেকে আপনার আসল IP লুকাতে সাহায্য করে।\n\nঅসুবিধা: সংযোগ ও সিঙ্ক ধীর হতে পারে এবং ব্যাটারি ও ডেটার ব্যবহার বাড়তে পারে। লেনদেনের রেকর্ড প্রকাশ্য থাকে। সংযোগ ব্যর্থ হলে সরাসরি সংযোগ চালু হবে না।\n\nI2P নোড প্রয়োজন।",
+  "Fee rate (yugeon/vB)": "ফি হার (yugeon/vB)",
+  "Slow": "ধীর",
+  "Normal": "স্বাভাবিক",
+  "Fast": "দ্রুত",
+  "Manual": "নিজে নির্ধারণ",
+  "Check the fee rate and wallet limits.": "ফি হার ও ওয়ালেটের সীমা পরীক্ষা করুন।",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "স্থানীয় সারি: {0} vB · {1} yugeon/vB · লক্ষ্য: {2} ব্লক",
+  "Replaced · not applied": "প্রতিস্থাপিত · ব্যালেন্সে প্রভাব নেই",
+  "Replaced by {0}": "প্রতিস্থাপনকারী লেনদেন: {0}",
+  "Removed after parent replacement": "মূল লেনদেন প্রতিস্থাপনের পরে সরানো হয়েছে",
+  "New issuance (block)": "ব্লকের নতুন ইস্যু",
+  "Transaction fees (block)": "ব্লকের লেনদেন ফি",
+  "Total block reward": "ব্লকের মোট পুরস্কার",
+  "Issuance limit (block)": "ব্লকের ইস্যু সীমা",
+  "Available fees (block)": "ব্লকের উপলব্ধ ফি",
+  "Unclaimed reward": "দাবি না করা পুরস্কার",
+  "Reward not fully claimed": "পুরস্কারের আংশিক দাবি"
 }

@@ -180,5 +180,14 @@
   "share": "Paylaşımı engelle (%)",
   "knownfees": "Bilinen işlem ücretleri",
   "rewardsubsidy": "Maksimum blok sübvansiyonları",
-  "pendingstats": "Yerel bellek havuzu istatistikleri"
+  "pendingstats": "Yerel bellek havuzu istatistikleri",
+  "spendingconditions": "Harcama koşulları",
+  "decodedonly": "Yalnızca betik çözümlendi; harcanabilirlik doğrulanmadı.",
+  "rewardissuance": "Blokta yeni ihraç",
+  "rewardfees": "Blok işlem ücretleri",
+  "rewardtotalblock": "Toplam blok ödülü",
+  "rewardlimit": "Blok ihraç sınırı",
+  "rewardavailablefees": "Kullanılabilir blok ücretleri",
+  "rewardunclaimed": "Talep edilmeyen ödül",
+  "rewardpartial": "Ödül kısmen talep edildi"
 }

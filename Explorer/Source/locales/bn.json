@@ -180,5 +180,14 @@
   "share": "ব্লক শেয়ার (%)",
   "knownfees": "পরিচিত লেনদেনের ফি",
   "rewardsubsidy": "সর্বোচ্চ ব্লক ভর্তুকি",
-  "pendingstats": "স্থানীয় মেম্পুল পরিসংখ্যান"
+  "pendingstats": "স্থানীয় মেম্পুল পরিসংখ্যান",
+  "spendingconditions": "ব্যয় করার শর্ত",
+  "decodedonly": "শুধু স্ক্রিপ্ট বিশ্লেষণ করা হয়েছে; ব্যয় করা যাবে কি না যাচাই করা হয়নি।",
+  "rewardissuance": "ব্লকের নতুন ইস্যু",
+  "rewardfees": "ব্লকের লেনদেন ফি",
+  "rewardtotalblock": "ব্লকের মোট পুরস্কার",
+  "rewardlimit": "ব্লকের ইস্যু সীমা",
+  "rewardavailablefees": "ব্লকের উপলব্ধ ফি",
+  "rewardunclaimed": "দাবি না করা পুরস্কার",
+  "rewardpartial": "পুরস্কারের আংশিক দাবি"
 }

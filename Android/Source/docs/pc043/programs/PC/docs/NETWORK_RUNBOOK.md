@@ -1,12 +1,12 @@
-# SUMUWW Node Operation PC 0.57.23
+# SUMUWW Node Operation PC 0.57.46
 
-SUMUWW PC program · 0.57.23
+SUMUWW PC program · 0.57.46
 
 ## New wallets and existing data
 
-For the general user ZIP, extract the entire archive and run **SUMUWW.exe**. The default interface is English. The Language menu offers 34 languages. The selection is remembered on the next launch and also applies to the Documents menu's whitepaper, specification, usage, and operating guides. Close existing SUMUWW windows normally before using the new executable. The development commands and start.cmd examples below refer to the complete source distribution.
+For the general user ZIP, extract the entire archive and run **SUMUWW.exe**. The default interface is English. The Language menu offers 34 languages. The UI selection is remembered on the next launch. English remains the default document language. The current integration update, API corrections, operations, examples and release introduction are available in all 34 UI languages at [Documentation](../../../docs/index.html). Close existing SUMUWW windows normally before using the new executable. The development commands and start.cmd examples below refer to the complete source distribution.
 
-Extract the archive and run `start.cmd`. The default GUI network is SUMUWW. Keep the native SUMUWW.exe, SUMUWW-node.exe, and shared _internal folder together. Build verification status is recorded in the .
+Extract the archive and run `start.cmd`. The default GUI network is SUMUWW. Keep the native SUMUWW.exe, SUMUWW-node.exe, and shared _internal folder together. Build verification is recorded in the versioned EXCHANGE_VERIFICATION.txt supplied with this release.
 
 The existing registered SUMUWW data path and connection settings are retained. A new PC defaults to %LOCALAPPDATA%\SUMUWW\data; use `--directory` or SUMUWW_DATA_DIR to specify another location. Other nodes use separate DBs and data folders. Close the existing window before updating.
 
@@ -14,7 +14,7 @@ Automatic discovery uses enabled discovery sources and saved addresses. Manual p
 
 ## Connecting and listening
 
-1. Run `SUMUWW.exe` for the wallet and ordinary node.
+1. Run `SUMUWW.exe` for the wallet and full node.
 2. Use automatic discovery. If it finds no reachable peer, optionally enter a known operating peer using its actual IP or domain and listening port; the port is not necessarily 18444.
 3. Before mining, check actual peer connections and completed block synchronization. A count of 0 leaves mining waiting.
 
@@ -44,7 +44,7 @@ This connection restriction does not sanction miner identities or wallet address
 
 Wallet files can be stored on another drive using file dialogs. To put the entire chain on removable storage, specify a location such as `start.cmd --directory "LOCAL_DATA_DIRECTORY"`. First close the program normally and retain the whole data folder. Copying only the executable to USB does not automatically move the default data path.
 
-Windows wallet storage uses overwrite-protected rename without hard links. Physical FAT32/exFAT device tests and power-loss validation have not yet been performed. Both the file and password are required for restoration. A USB backup is not a hardware wallet; no separate hardware-signing integration is provided.
+Windows wallet storage uses overwrite-protected rename without hard links. Physical FAT32/exFAT device tests and power-loss validation have not yet been performed. Both the file and password are required for restoration. A USB backup is not a hardware wallet. The external-signing interchange is available separately; vendor-specific hardware applications and physical-device validation are not supplied by this release.
 
 All chain blocks and competing branches remain stored. There is no pruning or total-capacity limit, so maintain free disk space. regtest and retarget-lab are independent test networks; do not mix them with SUMUWW DBs, addresses, or wallets.
 
@@ -60,13 +60,13 @@ SUMUWW's own code is distributed under the MIT license, the same license type us
 
 ## Fee policy
 
-The default GUI estimates the fee and shows the recipient, payment, fee and total debit for confirmation. Advanced settings allow a manual fee. The wallet-send CLI uses automatic estimation when `--fee` is omitted or set to `--fee auto`; `--fee 0` explicitly requests a zero manual fee. Automatic estimation is a wallet policy, not a mandatory network fee or a change to consensus. The CLI treats running wallet-send as authorization to submit directly and reports the actual fee, total debit, fee mode and estimate source; its command does not open the GUI confirmation step.
+The wallet previews automatic slow, normal and fast fee rates from the connected local node and shows the payment, fee and total debit before confirmation. A manual rate can be entered in yugeon/vB. The minimum relay rate is 1 yugeon/vB, the automatic total cap is 0.01 SMW, and the manual total cap is 1 SMW. The CLI supports --fee-mode and --fee-rate; its explicit --fee option is a total in SMW. Zero fees fail the default relay policy. These are local admission and wallet policies, separate from block validity.
 
-The local estimator uses positive transaction fee-rate samples from the most recent 20 active-chain blocks and the node’s pending transactions. Virtual size is `ceil(weight/4)`; the upper quartile of observed fee per virtual byte determines the estimate. Payment sizing conservatively budgets a 73-byte DER signature, a 33-byte public key and 2 outputs per supported wallet payment. With no positive sample, the fallback total is `0.001 SMW`. Automatic total fees are capped at `0.01 SMW`; a sender’s explicit manual fee may exceed that cap. This cap may make the automatic offer insufficient during congestion. This is a simple local estimate, not Bitcoin Core’s confirmation predictor or a promised speed. The active-chain history is limited to its latest 1000 transaction samples. The upper quartile uses the nearest-rank 75th percentile and at least 1 smallest unit per virtual byte; the resulting total is rounded upward.
+Automatic estimation uses the current local pending queue, ancestor-package priority and block capacity. It does not sample fees from previous blocks or use a historical percentile. The fast, normal and slow modes use capacity budgets of 1, 3 and 6 blocks; these are not confirmation-time guarantees. Virtual size is ceil(weight/4), measured in vB. Coin amounts use yugeon: 1 yugeon = 0.00000001 SMW. A quiet queue keeps the minimum relay rate. The preview refreshes while the wallet is active; the confirmed payment retains its exact fee. A node that is disconnected or synchronizing may have an incomplete queue.
 
 The GUI displays a prepared payment quote and submits that same payment after approval, without silently changing the fee. A quote expires after 120 seconds; locking the wallet or changing the wallet or network invalidates it. Changed inputs or chain conditions can require preparing and confirming again. Final submission revalidates the transaction against current UTXOs and maturity.
 
-The default miner ranks transactions by ancestor-package fee per virtual byte: unconfirmed parents are counted together with their child, parents are placed first, equal-rate packages preserve arrival order, and real block weight and signature-operation limits are enforced. Zero-fee valid transactions remain eligible. Inclusion depends on the chosen miner, available block space and current chain. RPC/API provides 15 methods and 11 REST routes; it adds no RPC fee-estimation method in this release.
+The default miner ranks eligible transactions by ancestor-package fee per virtual byte. Parents are counted with their children and placed first; equal-rate packages preserve arrival order. Block weight and signature-operation limits remain enforced. The default mempool rejects fees below 1 yugeon/vB, while consensus itself permits a valid zero-fee transaction in a block. A successful block producer claims the issuance subsidy plus included transaction fees. RPC/API provides 28 methods and 11 REST routes, including estimatefee.
 
 ## Public node setup
 
@@ -83,3 +83,7 @@ Replace `LISTEN_ADDRESS` and `PUBLIC_CONTACT` with the interface and reachable e
 Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.
 
 Tor and I2P are optional and bundled with SUMUWW. Only the selected router runs; Direct runs neither. No separate router installation or port setting is needed. If a private connection fails, it does not switch to Direct. I2P requires b32.i2p peers.
+
+## Node interface
+
+See [the integration guide](../../../EXCHANGE_INTEGRATION.md) for node API fields, transaction formats, validation, reorganization queries and isolated tests.

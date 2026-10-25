@@ -284,5 +284,22 @@
   "Do not show this help again.": "Huwag nang ipakita ang tulong na ito.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Hindi gumagamit ng Tor o I2P ang direktang koneksyon. Karaniwan itong mas mabilis at mas kaunti ang gamit na resources. Makikita ng ibang node ang IP ng koneksyon mo.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.\n\nKailangan ng mga I2P node."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nBentahe: nakatutulong na itago ang tunay mong IP sa ibang node.\n\nKahinaan: maaaring bumagal ang koneksyon at pag-sync, at tumaas ang paggamit ng baterya at data. Pampubliko pa rin ang mga transaksyon. Kapag pumalya, mananatiling naka-off ang direktang koneksyon.\n\nKailangan ng mga I2P node.",
+  "Fee rate (yugeon/vB)": "Rate ng bayad (yugeon/vB)",
+  "Slow": "Mabagal",
+  "Normal": "Karaniwan",
+  "Fast": "Mabilis",
+  "Manual": "Manwal",
+  "Check the fee rate and wallet limits.": "Suriin ang rate ng bayad at mga limitasyon ng wallet.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokal na pila: {0} vB · {1} yugeon/vB · target: {2} bloke",
+  "Replaced · not applied": "Pinalitan · walang epekto sa balanse",
+  "Replaced by {0}": "Kapalit na transaksiyon: {0}",
+  "Removed after parent replacement": "Inalis dahil pinalitan ang pinagmulang transaksiyon",
+  "New issuance (block)": "Bagong inilabas sa block",
+  "Transaction fees (block)": "Bayarin sa transaksyon ng block",
+  "Total block reward": "Kabuuang gantimpala ng block",
+  "Issuance limit (block)": "Limitasyon ng paglabas sa block",
+  "Available fees (block)": "Makukuhang bayarin ng block",
+  "Unclaimed reward": "Hindi nakuhang gantimpala",
+  "Reward not fully claimed": "Bahagi lamang ng gantimpala ang kinuha"
 }

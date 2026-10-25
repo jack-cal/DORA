@@ -117,5 +117,22 @@
   "Peers: {0} · Block: {1} · ": "ᠬᠣᠯᠪᠣᠭᠳᠠᠭᠰᠠᠨ ᠵᠠᠩᠭᠢᠯᠠᠭ᠎ᠠ: {0} · ᠪᠯᠣᠺ: {1} · ",
   "{0} confirmations": "{0} ᠶᠢᠨ ᠨᠣᠲᠠᠯᠠᠯᠲᠠ",
   "Language": "ᠬᠡᠯᠡ",
-  "Select language": "ᠢ ᠰᠣᠩᠭᠣᠬᠤ"
+  "Select language": "ᠢ ᠰᠣᠩᠭᠣᠬᠤ",
+  "Fee rate (yugeon/vB)": "ᠰᠢᠮᠲᠡᠭᠡᠯ (yugeon/vB)",
+  "Slow": "ᠤᠳᠠᠭᠠᠨ",
+  "Normal": "ᠡᠷᠦᠳᠡᠶᠢᠨ",
+  "Fast": "ᠬᠤᠷᠳᠤᠨ",
+  "Manual": "ᠭᠠᠷ ᠢᠶᠠᠷ",
+  "Check the fee rate and wallet limits.": "ᠰᠢᠮᠲᠡᠭᠡᠯ ᠪᠠ ᠲᠦᠷᠢᠶᠢᠪᠴᠢ ᠶᠢᠨ ᠬᠢᠵᠠᠭᠠᠷ ᠢ ᠰᠢᠯᠭᠠᠨ᠎ᠠ ᠤᠤ᠃",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "ᠳᠣᠲᠣᠭᠠᠳᠤ ᠬᠦᠯᠢᠶᠡᠯᠲᠡ: {0} vB · {1} yugeon/vB · ᠵᠣᠷᠢᠯᠲᠠ: {2} ᠪᠯᠣᠺ",
+  "Replaced · not applied": "ᠰᠣᠯᠢᠭᠳᠠᠭᠰᠠᠨ · ᠦᠯᠡᠳᠡᠭᠳᠡᠯ ᠳᠦ ᠨᠥᠯᠥᠭᠡᠯᠡᠬᠦ ᠦᠭᠡᠢ",
+  "Replaced by {0}": "ᠣᠷᠣᠯᠠᠭᠤᠯᠤᠭᠰᠠᠨ ᠭᠦᠶᠦᠯᠭᠡᠭᠡ: {0}",
+  "Removed after parent replacement": "ᠡᠬᠡ ᠭᠦᠶᠦᠯᠭᠡᠭᠡ ᠰᠣᠯᠢᠭᠳᠠᠭᠰᠠᠨ ᠲᠤᠯᠠ ᠬᠠᠰᠤᠭᠳᠠᠭᠰᠠᠨ",
+  "New issuance (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠰᠢᠨ᠎ᠡ ᠭᠠᠷᠭᠠᠯᠲᠠ",
+  "Transaction fees (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠭᠦᠶᠦᠯᠭᠡᠭᠡᠨ ᠦ ᠰᠢᠮᠲᠡᠭᠡᠯ",
+  "Total block reward": "ᠪᠯᠣᠺ ᠤᠨ ᠨᠡᠶᠢᠲᠡ ᠱᠠᠭᠨᠠᠯ",
+  "Issuance limit (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠭᠠᠷᠭᠠᠯᠲᠠ ᠶᠢᠨ ᠬᠢᠵᠠᠭᠠᠷ",
+  "Available fees (block)": "ᠪᠯᠣᠺ ᠤᠨ ᠪᠣᠯᠣᠮᠵᠢᠲᠤ ᠰᠢᠮᠲᠡᠭᠡᠯ",
+  "Unclaimed reward": "ᠠᠪᠤᠭ᠎ᠠ ᠦᠭᠡᠢ ᠱᠠᠭᠨᠠᠯ",
+  "Reward not fully claimed": "ᠱᠠᠭᠨᠠᠯ ᠢ ᠬᠡᠰᠡᠭᠴᠢᠯᠡᠨ ᠠᠪᠤᠭᠰᠠᠨ"
 }

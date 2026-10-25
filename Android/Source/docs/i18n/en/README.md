@@ -1,5 +1,5 @@
-# SUMUWW Android 0.6.46-pc043
+# SUMUWW Android 0.6.95 · Documentation
 
+SUMUWW Android 0.6.95 · The node validates, stores, relays and exposes chain data.
 
-
-[USER_GUIDE.md](USER_GUIDE.md) · [REGISTRATION_GUIDE.md](REGISTRATION_GUIDE.md)
+[Documentation](../../integration/docs/i18n/en/README.html)

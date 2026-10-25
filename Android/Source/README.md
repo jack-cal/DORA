@@ -1,27 +1,7 @@
-> Update 0.6.89: connection-proof jobs now check participant availability before new selections and preserve valid witness replies across retries and restarts. Existing selected jobs retain their original witnesses. See [RELEASE_NOTES.txt](RELEASE_NOTES.txt). See the [Android 0.6.89 release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.89) for publication status and verified assets.
+# SUMUWW Android 0.6.95 (155)
 
-> All blocks browser: PC 0.57.40 / Android 0.6.89. See [RELEASE_NOTES.txt](RELEASE_NOTES.txt). Browse the full validated local chain; mining progress remains separate.
+SUMUWW Android provides an independently validating full node, a personal wallet, CPU mining, peer synchronization and connection proofs. Automatic fees use current pending volume, block capacity and transaction priority. Past block fees are not used. A quiet queue keeps the minimum rate. The preview refreshes; the final confirmation fixes the fee. Observations cover the connected local node, not every node. Multisig and output-lock validation is available for isolated activation tests; public activation is not scheduled. Open More > Help > Documentation for offline Android documentation in all 34 supported languages. English is the default; saved language preferences remain in effect.
 
-> Automatic beacon recovery: PC 0.57.34 / Android 0.6.84. Read [BEACON_RECOVERY.md](BEACON_RECOVERY.md) for compatibility and verification limits.
+Install over the existing org.sumuww.miner app with the same signing certificate. Wallet formats, stored chain history and public-network consensus rules are preserved. The node core supports signed transaction validation/submission, block/transaction/UTXO queries and reorganization state. The Android app has no RPC configuration screen. See [Android node interface](docs/integration/docs/i18n/en/ANDROID.html).
 
-# SUMUWW Android 0.6.89
-
-Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.
-
-[Current protocol](CONNECTION_PROOFS_9000.html)
-
-> Updated height-9000 implementation: read [UPGRADE_9000.txt](UPGRADE_9000.txt). Earlier release notes below describe the original source.
-
-# SUMUWW Android 0.6.89
-
-SUMUWW Android provides an independently validating node, a non-custodial wallet and CPU proof-of-work mining. The phone maintains its own chain data and wallet.
-
-Install the signed APK over the existing app to update. Preserve an encrypted wallet backup and recovery words. Do not uninstall the app or clear its data to perform an ordinary update.
-
-Create, open or recover a wallet through Wallet management. Connect to a compatible peer and synchronize before mining. Review the recipient, amount and network fee before confirming a transfer.
-
-Settings include 34 languages, appearance, node connections, mining protection and notifications. Required consent covers device/background operation and peer communication.
-
-[USER_GUIDE.md](USER_GUIDE.md) · [REGISTRATION_GUIDE.md](REGISTRATION_GUIDE.md)
-
-Node upgrade: exact-template HTLC spends activate at height 9100. The asynchronous connection-proof rules at 9000 and existing ordinary transfers are unchanged. See [HTLC_9100.md](HTLC_9100.md).
+Tests run in the separate .audit package on disposable regtest data. The test fixture is included only in the instrumentation APK. The production APK contains the application modules and offline documents.

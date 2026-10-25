@@ -180,5 +180,14 @@
   "share": "Blockandel (%)",
   "knownfees": "Kända transaktionsavgifter",
   "rewardsubsidy": "Maximalt blocksubvention",
-  "pendingstats": "Lokal mempoolstatistik"
+  "pendingstats": "Lokal mempoolstatistik",
+  "spendingconditions": "Villkor för användning",
+  "decodedonly": "Endast skriptet har tolkats; möjligheten att använda utgången har inte verifierats.",
+  "rewardissuance": "Ny utgivning (block)",
+  "rewardfees": "Transaktionsavgifter (block)",
+  "rewardtotalblock": "Total blockbelöning",
+  "rewardlimit": "Blockets utgivningsgräns",
+  "rewardavailablefees": "Tillgängliga blockavgifter",
+  "rewardunclaimed": "Ej uttagen belöning",
+  "rewardpartial": "Belöning delvis uttagen"
 }

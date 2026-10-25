@@ -180,5 +180,14 @@
   "share": "블록 비율 (%)",
   "knownfees": "계산된 거래 수수료",
   "rewardsubsidy": "최대 블록 보조금",
-  "pendingstats": "로컬 미확정 거래 통계"
+  "pendingstats": "로컬 미확정 거래 통계",
+  "spendingconditions": "지출 조건",
+  "decodedonly": "스크립트 해석 결과이며, 지출 가능 여부를 검증한 것은 아닙니다.",
+  "rewardissuance": "신규 발행 보상(블록)",
+  "rewardfees": "거래 수수료 보상(블록)",
+  "rewardtotalblock": "블록 총보상",
+  "rewardlimit": "블록 신규 발행 한도",
+  "rewardavailablefees": "블록 수수료 합계",
+  "rewardunclaimed": "미청구 보상",
+  "rewardpartial": "보상 일부만 청구됨"
 }

@@ -1,72 +1,13 @@
-SUMUWW PC 0.57.40 / Android full node 0.6.89 (149) — 2026-10-24
+# SUMUWW PC 0.57.46
 
-Connection proof availability and accounting
-- Before a new job chooses its three witnesses, probe the complete discovered identity inventory with authenticated nonce echoes through the existing relay protocol. Sample three distinct currently responsive identities with the verified beacon. No neighbor-only pool, participant quota, paid admission or deletion of silent contacts is introduced.
-- This is a local availability policy, not a consensus membership list. A probe can time out for an otherwise honest node; later jobs probe it again. A participant can also disappear after replying, so proof completion is not guaranteed.
-- Existing selected jobs retain their exact block pair, beacon and three-witness message. Existing signature locks are never erased or bypassed. An old job still needs its original witnesses to return.
-- Verify and persist each witness's two signature halves independently. Retries and restarts reuse valid saved replies rather than discarding them when another witness or the target producer is temporarily unavailable.
-- Persist the current phase, missing witnesses and last error. Public status separates nonselected finished lotteries, selected pending jobs, selected completed jobs and stored complete proofs.
-- PC All history shows these separate local job counters. A beacon setup can serve many lotteries: setup records must not be subtracted from selected-job counts.
-- The previous PC 0.57.39 public block/transaction browser is included. Recent wallet history remains wallet-only.
+This release adds address validation and transaction decoding to the node API. The node provides signed-transaction validation and submission, block/transaction/UTXO queries, synchronization state and reorganization information. Existing wallet, mining and connection-proof features are retained. English is the default, with documentation in all 34 supported languages.
 
-Compatibility
-The v2 attachment format, 20 percent event selection, three-signature requirement, PoW, chain selection, signature locks, stored history and wallet formats remain unchanged. Existing v2 peers already support the authenticated probe. Ordinary wallets and external nodes are not automatically upgraded. Android retains its existing UI while receiving the proof job repair. Release tags: pc-v0.57.40 and android-v0.6.89. The matching GitHub release pages record publication status and verified assets.
+See [node interface](EXCHANGE_INTEGRATION.html) and [language editions](docs/index.html).
 
-Earlier release notes follow (historical versions).
+The optional source reference provides key-free transaction assembly, digest inspection, signature attachment and serialization. The disposable regtest example checks validation, confirmations, reorganization and data persistence. The compiled program uses the existing node, wallet and RPC commands.
 
-SUMUWW Windows full node 0.57.39 — 2026-10-24
+1 SMW = 100,000,000 yugeon. Automatic fees offer slow, normal and fast presets based on local observations; they do not guarantee confirmation times. You can enter a rate in yugeon/vB manually. Review the final fee and total in SMW before sending. A rejected transaction does not debit your balance.
 
-Public history and wallet history
-- Recent wallet transactions / Confirmations shows only the selected wallet's last 10 transactions.
-- All history, beside the recent list, opens the same public browser as All blocks in the top bar. No wallet is required.
-- The public list includes all producers on the validated local active chain, from height 0 to the current tip. Browse 50 blocks per page or search by height.
-- Select a block to see every transaction, including other wallets' mining rewards and transfers. Transactions are paginated in groups of 50; expand a transaction to inspect its input references and every output address or script.
-- Amounts in the public list are output totals, not the selected wallet's gain or loss. Confirmations are computed from the current read snapshot. A block removed from the active chain is rejected when its details are refreshed.
-- My history keeps the separate wallet-only full history, including pending wallet transactions.
-- Connection proofs displays the number of locally stored complete attachments and the count associated with each listed block. The total can include stored side-branch evidence. A beacon setup is not a completed proof; zero stored proofs must not be described as successful completion.
-- Public history does not include unreceived data, inactive-chain blocks or unconfirmed network transactions. It covers the full locally validated active chain.
-- All new labels were directly authored in 34 languages. Saved language choices are retained.
+The node adds fee queries, submission checks, RBF replacement status and ordered block data records. Replacements are validated before any pending transaction is removed. Multisig and output locks are implemented for isolated activation tests; they are not yet active on the public network.
 
-Compatibility and publication
-No consensus, witness selection, monetary, wallet-format, transport or mining scheduling rules change in this release. This PC release is a local build; it has not been published to GitHub. Android full node remains 0.6.88, ordinary wallets remain 1.0.2 / 1.1.2.
-
-Earlier release notes follow (historical versions).
-
-SUMUWW PC 0.57.38 / Android 0.6.88 (148)
-
-All blocks
-- A separate All blocks screen now shows the validated active chain from genesis (height 0) to the current local tip, including blocks from every producer.
-- Browse 50 blocks per page with Previous and Next, or search a block height directly. Refresh returns to the latest page.
-- PC: use All blocks in the top bar. Android: More > All blocks.
-- Mining screens retain their own local mining progress. The network-wide block list is separate from wallet transaction history.
-- Entries include height, block-header time in the local time zone, producer commitment when available, and the full block hash. Header time is not reception time.
-- This node / Other node compares the producer commitment with this installation. Legacy blocks without producer commitments are marked Producer unavailable. This is not an identification of the person operating a node.
-- Browsing works without an unlocked wallet. Read-only database snapshots and background reads keep history queries off the node event loop; only the requested page loads block bodies.
-- All 34 languages are retained. Only locally synchronized, validated active-chain blocks appear; unreceived blocks and inactive branches do not appear in this list.
-
-Compatibility
-No consensus or wallet-format changes. Existing wallets, balances, blocks, issuance, halvings, DGW every 10 blocks and the 20% linkage-proof schedule are retained.
-Height 9000 protocol activation and height 9100 SMW/BTC swap activation are unchanged. Valid legacy blocks below 9000 remain usable; legacy-rule blocks at or above 9000 are rejected by upgraded nodes.
-
-Peer reconnection
-- Previously synchronized contacts now remain available after temporary connection failures and retry with bounded backoff. Failed unverified hints are still removed, and verified contacts expire after the existing 30-day cache age.
-- Same-node transport deduplication is unchanged: IPv4, IPv6 and opposite directions share one process identity. An IP address can host multiple node processes.
-- A connection still requires an available remote node; retaining a contact cannot make an offline peer reachable.
-
-Missing listener recovery
-- A synchronized incoming peer can answer address requests without advertising any listening address. The node now queues that observed socket IP and SUMUWW default port as an unverified candidate.
-- It does not use the incoming source port, assume that the candidate is the same process, or publish an untested endpoint as verified. Existing scope/privacy rules, handshake, identity deduplication and chain synchronization still apply. Successfully verified contacts are then shared normally.
-- This adds another discovery path; it does not restrict discovery to these addresses or a fixed node count. It cannot make an unreachable remote listener accessible.
-
-Learned-peer retry accounting
-- Count one failed connection attempt once, including its verified alternate addresses.
-- Preserve response-timeout failures instead of subsequently resetting them as successful attempts.
-- Verified addresses remain available for automatic retry. Peer identity, chain validation, readiness rules, consensus and wallet formats are unchanged.
-- This client correction does not guarantee availability of external nodes or eliminate observed remote response outages.
-
-Slow public peers and proof-history scheduling
-- Reuse an immutable verified ancestor prefix only when its hash, height and SQLite snapshot match. Index changes still invalidate the cache; forks remain independently validated.
-- Yield between background proof/history jobs so network and mining control can run.
-- Separate public outgoing handshake/response waits (120 seconds) from the unchanged short partial-frame and write deadlines.
-- An already synchronized, verified peer may finish a periodic tip refresh within the bounded response budget. Unknown block/header data, unverified sessions and expired replies cannot use this grace. Real disconnection still removes the peer.
-- No consensus, issuance, difficulty, wallet, random witness selection or 9000/9100 activation changes.
+Automatic fees use current pending volume, block capacity and transaction priority. Past block fees are not used. A quiet queue keeps the minimum rate. The preview refreshes; the final confirmation fixes the fee. Observations cover the connected local node, not every node.

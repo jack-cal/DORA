@@ -284,5 +284,22 @@
   "Do not show this help again.": "下次不再顯示此說明。",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "直接連線不使用 Tor 或 I2P，通常連線較快、資源消耗較少。其他節點可看見你的連線 IP。",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。\n\n需要 I2P 節點。"
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\n優點：有助向其他節點隱藏你的真實 IP。\n\n缺點：連線與同步可能變慢，電池及數據用量可能增加。交易紀錄仍然公開。此連線失敗時不會切換至直接連線。\n\n需要 I2P 節點。",
+  "Fee rate (yugeon/vB)": "費率（yugeon/vB）",
+  "Slow": "慢速",
+  "Normal": "一般",
+  "Fast": "快速",
+  "Manual": "手動",
+  "Check the fee rate and wallet limits.": "請檢查費率及錢包的費用上限。",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "本機待處理量：{0} vB · {1} yugeon/vB · 目標：{2} 個區塊",
+  "Replaced · not applied": "已替換 · 未計入結餘",
+  "Replaced by {0}": "替換交易：{0}",
+  "Removed after parent replacement": "因父交易被替換而移除",
+  "New issuance (block)": "區塊新增發行獎勵",
+  "Transaction fees (block)": "區塊交易手續費獎勵",
+  "Total block reward": "區塊總獎勵",
+  "Issuance limit (block)": "區塊發行上限",
+  "Available fees (block)": "區塊可領取手續費",
+  "Unclaimed reward": "未領取獎勵",
+  "Reward not fully claimed": "只領取了部分獎勵"
 }

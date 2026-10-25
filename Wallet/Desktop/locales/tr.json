@@ -117,5 +117,22 @@
   "The transfer review expired. Review it again.": "Aktarım incelemesinin süresi doldu. Tekrar gözden geçirin.",
   "Peers: {0} · Block: {1} · ": "Bağlı düğümler: {0} · Blok: {1} · ",
   "{0} confirmations": "{0} onayları",
-  "Select language": "Dili seçin"
+  "Select language": "Dili seçin",
+  "Fee rate (yugeon/vB)": "Ücret oranı (yugeon/vB)",
+  "Slow": "Yavaş",
+  "Normal": "Normal",
+  "Fast": "Hızlı",
+  "Manual": "Elle",
+  "Check the fee rate and wallet limits.": "Ücret oranını ve cüzdan sınırlarını kontrol edin.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Yerel kuyruk: {0} vB · {1} yugeon/vB · hedef: {2} blok",
+  "Replaced · not applied": "Değiştirildi · bakiyeye yansıtılmadı",
+  "Replaced by {0}": "Yerine geçen işlem: {0}",
+  "Removed after parent replacement": "Üst işlem değiştirildiği için kaldırıldı",
+  "New issuance (block)": "Blokta yeni ihraç",
+  "Transaction fees (block)": "Blok işlem ücretleri",
+  "Total block reward": "Toplam blok ödülü",
+  "Issuance limit (block)": "Blok ihraç sınırı",
+  "Available fees (block)": "Kullanılabilir blok ücretleri",
+  "Unclaimed reward": "Talep edilmeyen ödül",
+  "Reward not fully claimed": "Ödül kısmen talep edildi"
 }

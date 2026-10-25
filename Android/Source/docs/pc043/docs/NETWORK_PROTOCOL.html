@@ -1,5 +1,11 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><style>body{font:18px/1.7 sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:8px}pre{white-space:pre-wrap}</style></head><body><article><h1 id="sumuww-tcp-protocol">SUMUWW TCP Protocol</h1>
-<h2 id="frames-and-resource-limits">Frames and resource limits</h2>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:8px}pre{white-space:pre-wrap}</style></head><body><article><h1>SUMUWW TCP Protocol</h1>
+<!-- current-links-9000 -->
+<h2>2026-10-22 · 9000 · 20% · DGW/10</h2>
+<p>Valid blocks through 8999 remain usable, including those sent together with an invalid later suffix. From 9000, every block needs a producer commitment. DGW uses 24 preceding blocks and recalculates at 9000, 9010, 9020…; intervening blocks keep the parent difficulty. The target interval remains 600 seconds. Connection events are random with probability 20%. Three discovered identities sign after PoW; mining and block acceptance do not wait for signatures. Cumulative work takes priority; valid, nonconflicting connections break work ties, followed by the smaller tip hash. Late evidence can change a tie. See the exact implementation and limitations below.</p>
+<p><a href="../CONNECTION_PROOFS_9000.html">Current protocol / exact format / limitations</a></p>
+<!-- /current-links-9000 -->
+
+<h2>Frames and resource limits</h2>
 <p>Each frame consists of a 24-byte header and payload. Integer fields are little-endian; hashes use the internal raw 32-byte order. The length is checked before reading the payload, then the checksum is validated.</p>
 <table>
 <thead>
@@ -33,7 +39,7 @@
 </tbody>
 </table>
 <p>Normal EOF at a frame boundary is distinguished as <code>PeerDisconnected</code>. EOF after only part of a header/body, invalid magic/padding/checksum/size, and frame timeout are errors. Whole-frame reading and drain each have a deadline. Command payloads are also checked for canonical CompactSize, lengths, counts, and trailing bytes.</p>
-<h2 id="handshake-and-messages">Handshake and messages</h2>
+<h2>Handshake and messages</h2>
 <p>Each frame's magic is compared with the selected network. After both sides send <code>version</code>, protocol, genesis, profile, and self-connection nonce are checked. Empty <code>verack</code> messages must then be exchanged before ordinary messages are processed. A peer's advertised tip is a discovery hint, not an adopted validated chain state. Claimed height or work never drives chain selection.</p>
 <table>
 <thead>
@@ -98,11 +104,11 @@
 </table>
 <p>This local <code>headers</code> message does not append a transaction-count byte to each header. The version payload and witness inventory handling also differ from Bitcoin wire messages. Commands sharing names does not mean the program can connect to Bitcoin peers.</p>
 <p>Inventory kind 1 is the raw 32-byte TXID of the transaction excluding witness; kind 2 is the raw 32-byte SHA256d of the 80-byte block header. <code>getheaders</code> returns starting after the first active-chain hash found in locator order. With no common hash, it returns after genesis; a stop of 0 proceeds up to the count limit. When the active-chain stop hash is encountered, that header is included and the response ends.</p>
-<h2 id="synchronization-and-transaction-relay">Synchronization and transaction relay</h2>
+<h2>Synchronization and transaction relay</h2>
 <p>A node requests headers using its own validated block locator. Known blocks are skipped and unknown blocks fetched in sequence. The header stage checks the selected profile's PoW limit, PoW, and linkage; it does not require fixed regtest nBits on all networks. At this stage, headers are not stored as validated work or activated as the chain.</p>
 <p>Received full blocks can be stored/activated only after consensus validation passes every check: expected nBits calculated from the actual branch's parent/ancestors and timestamps, amounts, maturity, signatures, time, and commitments. Valid blocks crossing lab adjustment boundaries are relayed. Blocks with valid PoW but incorrect contextual nBits are rejected at the body stage. Unvalidated headers or a peer's tip advertisement do not change UTXO or tip in this case.</p>
 <p>When a batch ends, the next locator is built from the last validated branch hash. The next page can be fetched even if that branch is shorter than or tied with the current active chain; once its total valid cumulative work grows larger, existing consensus rules select it.</p>
-<h2 id="p2p-discovery-encoding-and-compatibility">P2P discovery encoding and compatibility</h2>
+<h2>P2P discovery encoding and compatibility</h2>
 <p>The new <code>getaddr</code> message is empty. The <code>addr</code> payload has the following binary layout; integers are little-endian and counts use canonical CompactSize. A listener, if present, is separate from the count of remaining peers.</p>
 <pre><code class="language-text">getaddr: empty
 addr:

@@ -31,9 +31,10 @@ from sumuww.profiles import SUMUWW
 from sumuww.errors import UnsupportedFeature
 from sumuww.primitives import MAX_MONEY, Header, hash_to_display, valid_target, subsidy, merkle_root, sha256d
 from analytics import AdvancedExplorer, FILTER_KEYS, rate
+from sumuww.rewards import reward_amounts
 
 HASH = re.compile(r'^[0-9a-fA-F]{64}$')
-VERSION = '0.4.6'
+VERSION = '0.4.10'
 INDEX_ID = 0x53574D45
 MAX_HEIGHT = 0x7fffffff
 
@@ -183,6 +184,7 @@ class Explorer(AdvancedExplorer):
         self.updated = 0
         self.last_error = None
         self.pool = {}
+        self.replacements = {}
         self.coins = []
         try:
             self.initialize_index()
@@ -290,6 +292,12 @@ class Explorer(AdvancedExplorer):
                 if tx.txid() != digest or tx.is_coinbase():
                     raise ValueError('Mempool bytes differ from the node index')
                 pool[hash_to_display(digest)] = tx
+            replacements = {}
+            if source.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='mempool_replacements'").fetchone():
+                for old,new,reason in source.execute('SELECT old_txid,new_txid,reason FROM mempool_replacements ORDER BY seen DESC,rowid DESC LIMIT 1000'):
+                    if not isinstance(old,bytes) or len(old)!=32 or not isinstance(new,bytes) or len(new)!=32 or reason not in ('conflict','ancestor_replaced'):
+                        raise ValueError('Invalid replacement history')
+                    replacements[hash_to_display(old)] = (hash_to_display(new),reason)
             coins = list(source.execute('SELECT txid,idx,value,script,height,coinbase FROM utxos'))
             for digest,n,value,script,height,coinbase in coins:
                 if (not isinstance(digest,bytes) or len(digest)!=32 or type(n) is not int or not 0<=n<=0xffffffff
@@ -335,8 +343,9 @@ class Explorer(AdvancedExplorer):
                 self.record_observation(index,path,pool,coins,tip)
                 # Commit the index only after every part of the same source
                 # snapshot has been read and checked successfully.
-        changed = self.snapshot is None or tip != self.tip or pool != self.pool or coins != self.coins
+        changed = self.snapshot is None or tip != self.tip or pool != self.pool or coins != self.coins or replacements != self.replacements
         self.pool, self.coins, self.tip = pool, coins, tip
+        self.replacements = replacements
         if changed:
             self.snapshot = secrets.token_hex(32)
         self.updated = time.time()
@@ -393,6 +402,8 @@ class Explorer(AdvancedExplorer):
         result['confirmations'] = self.tip_height(c) - row['height'] + 1
         result['reward'] = amount(row['reward'])
         result['subsidy'] = amount(row['subsidy'])
+        fees = [self.financials(c, tx[0], False) for tx in c.execute('SELECT txid FROM txs WHERE blockhash=? AND coinbase=0', (row['hash'],))]
+        result['reward_breakdown'] = reward_amounts(row['reward'], row['height'], sum(fees) if all(fee is not None for fee in fees) else None)
         result['bits'] = f'{row["bits"]:08x}'
         result['target'] = f'{valid_target(row["bits"], SUMUWW.pow_limit):064x}'
         result['algorithm'] = 'DGW v3' if row['height'] >= SUMUWW.dgw_activation_height else '2016-block retarget'
@@ -440,7 +451,7 @@ class Explorer(AdvancedExplorer):
         result = dict(row)
         result['output_total'] = amount(c.execute('SELECT coalesce(sum(value),0) FROM outputs WHERE txid=?', (row['txid'],)).fetchone()[0])
         fee=self.financials(c,row['txid'],row['coinbase']);vsize=(row['weight']+3)//4
-        result.update(vsize=vsize,fee=amount(fee) if fee is not None else None,fee_rate=rate(fee,vsize))
+        result.update(amount_unit='yugeon',fee_rate_unit='yugeon/vB',vsize=vsize,fee=amount(fee) if fee is not None else None,fee_rate=rate(fee,vsize))
         return result
 
     def pending_summary(self, txid, tx):
@@ -452,6 +463,25 @@ class Explorer(AdvancedExplorer):
         return {**self.pending_summary(txid,tx),
                 'inputs': [{'previous': hash_to_display(i.prev_txid), 'previous_n': i.prev_index} for i in tx.inputs],
                 'outputs': [{'n': n, 'value': amount(o.value), 'address': address(o.script_pubkey), 'script': o.script_pubkey.hex()} for n, o in enumerate(tx.outputs)]}
+
+    def spending_conditions(self, c, tx, inputs):
+        from sumuww.spending import SpendingTemplate
+        from hashlib import sha256
+        for item, view in zip(tx.inputs, inputs):
+            if not item.witness: continue
+            previous = hash_to_display(item.prev_txid)
+            parent = self.pool.get(previous)
+            if parent is not None and item.prev_index < len(parent.outputs):
+                script = parent.outputs[item.prev_index].script_pubkey
+            else:
+                row = c.execute('SELECT script FROM outputs WHERE txid=? AND n=?', (previous, item.prev_index)).fetchone()
+                if row is None: continue
+                script = bytes.fromhex(row[0])
+            raw = item.witness[-1]
+            if script != b'\x00\x20' + sha256(raw).digest(): continue
+            try: template = SpendingTemplate.parse(raw)
+            except ValueError: continue
+            view['spending_conditions'] = dict(template.info(), decoded_only=True)
 
     def address_summary(self,c,row,canonical):
         result=self.tx_summary(c,row)
@@ -486,8 +516,12 @@ class Explorer(AdvancedExplorer):
         if row is None:
             if txid in self.pool:
                 data=self.pending_view(txid, self.pool[txid]);model=self.pool_model(c)[txid]
+                self.spending_conditions(c, self.pool[txid], data['inputs'])
                 data.update({key:model[key] for key in ('fee','fee_rate','vsize','effective_fee_rate')})
                 return data
+            if txid in self.replacements:
+                new,reason=self.replacements[txid]
+                return {'txid':txid,'status':'replaced','replaced_by':new,'replacement_reason':reason,'confirmations':0,'inputs':[],'outputs':[]}
             raise NotFound('Transaction not found in the active chain or local mempool')
         result = self.tx_summary(c, row)
         result['confirmations'] = self.tip_height(c) - row['height'] + 1
@@ -498,12 +532,16 @@ class Explorer(AdvancedExplorer):
                    LEFT JOIN inputs i ON i.previous=o.txid AND i.previous_n=o.n WHERE o.txid=? ORDER BY o.n''', (txid,))]
         total_in = sum(i['value'] for i in inputs if i['value'] is not None)
         total_out = sum(o['value'] for o in outputs)
+        if row['coinbase']:
+            result['mining_reward'] = self.view_block(c, self.block_row(c, row['blockhash']))['reward_breakdown']
         result['fee'] = amount(total_in - total_out) if not row['coinbase'] and all(i['value'] is not None for i in inputs) else None
         for item in inputs + outputs:
             if item.get('value') is not None:
                 item['value'] = amount(item['value'])
         for item in outputs:
             item['unspendable'] = row['height'] == 0 or item['script'].startswith('6a')
+        _, _, tx = self.transaction_bytes(c, txid)
+        self.spending_conditions(c, tx, inputs)
         result['inputs'], result['outputs'] = inputs, outputs
         return result
 

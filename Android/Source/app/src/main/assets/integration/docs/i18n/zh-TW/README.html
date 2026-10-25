@@ -1,0 +1,53 @@
+<!doctype html><html lang="zh-TW" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · 文件</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>文件 · 34</summary><nav><a href="../en/README.html" lang="en"><bdi>English</bdi></a><a href="../fr/README.html" lang="fr"><bdi>Français</bdi></a><a href="../es/README.html" lang="es"><bdi>Español</bdi></a><a href="../ar/README.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/README.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/README.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/README.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/README.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/README.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/README.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/README.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/README.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/README.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/README.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/README.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/README.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/README.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/README.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/README.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/README.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/README.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/README.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/README.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="README.html" lang="zh-TW" aria-current="page"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/README.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/README.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/README.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/README.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/README.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/README.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/README.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/README.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/README.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/README.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">文件</a><a href="EXCHANGE_INTEGRATION.html">節點介面</a><a href="RPC_API.html">RPC 與 HTTP API</a><a href="NETWORK_RUNBOOK.html">節點運作</a><a href="RELEASE_NOTES.html">版本說明</a><a href="EXCHANGE_EXAMPLES.html">查驗</a></nav></header><main><h1>SUMUWW Android 0.6.95 · 文件</h1>
+<p>SUMUWW Android 0.6.95 · 節點負責驗證、儲存、傳播與查詢鏈上資料。</p>
+<h2>網路與位址</h2>
+<p>公開網路為 <code>sumuww</code>，內部別名為 <code>dora</code>。請核對下方創世區塊雜湊。原生位址採用 witness v0 P2WPKH，以及壓縮 secp256k1 公開金鑰的 HASH160。無須強制 memo 或 tag。應拒絕網路錯誤或檢查碼無效的位址。記錄 HD 收款/找零分支及索引，不要假定與 Bitcoin 的衍生路徑相同。</p>
+<h2>金額與可用輸出</h2>
+<p><code>_units</code> 為最小單位整數，<code>_smw</code> 為 8 位小數字串，<code>_dora</code> 為相容別名。不存在 <code>_sumuww</code> 金額欄位。1 SMW = 100000000 單位。<code>gettxout</code> 沒有 <code>spendable</code>，可能回傳未成熟 coinbase 輸出。要在下一區塊花費，至少須 100 次確認。依 <code>spendable</code> 篩選 <code>listunspent</code>；<code>getaddressbalance</code> 的 available 金額排除未成熟及已被待處理交易占用的資金。記憶池新輸出不是已確認資金。分頁時檢查鏈頂並重新驗證所選輸入。</p>
+<p>1 SMW = 100,000,000 yugeon。自動費用依本機觀測提供慢速、一般與快速選項，但不保證確認時間。也可手動輸入 yugeon/vB 費率。傳送前請核對以 SMW 顯示的最終費用與總額。遭拒絕的交易不會扣減餘額。</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>自動手續費依目前待處理資料量、區塊容量和交易優先順序計算，不使用歷史區塊的手續費。待處理量較少時維持最低費率。預覽會更新，最終確認時固定手續費。觀測範圍是已連線的本機節點，並非所有節點。</p>
+<p>重新啟動錢包後，本節點記錄的交易替換歷史仍會保留。已移除的交易不計入餘額。</p>
+<p>挖礦紀錄分別顯示每個區塊的新增發行獎勵、交易手續費獎勵及總獎勵，錢包實際收到的金額另行顯示。若只領取部分獎勵，不會擅自推定兩類獎勵的分配。節點提供 28 個 RPC 方法，包括手續費估算，並驗證及轉發已簽署交易。</p>
+<h2>交易與區塊查詢</h2>
+<p><code>getrawtransaction</code> 查詢有效鏈及記憶池，不查詢僅存在於孤立分支的交易。輸入指向之前的輸出，並非唯一傳送地址。<code>getblock</code> 的 <code>verbose</code> 為布林值；已保存的非有效區塊為 <code>active=false</code>、<code>confirmations=-1</code>，仍可用區塊雜湊取得原始交易。<code>findspendingtransaction</code> 僅查有效鏈上已確認的花費，null 不證明可用。還須查詢 <code>include_mempool=true</code> 的 <code>gettxout</code>。確認數與有效狀態都可能隨重組改變。</p>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

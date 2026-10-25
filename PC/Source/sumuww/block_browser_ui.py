@@ -193,6 +193,10 @@ class BlockBrowser(tk.Toplevel):
             key=f'tx-{index}'
             self.transactions.insert('','end',iid=key,text=tr('Mining reward') if tx['coinbase'] else tr('Transaction'),
                 values=(format_amount(tx['output_total']),d['confirmations'],tx['txid']))
+            if tx.get('mining_reward'):
+                from .rewards import reward_rows
+                for label, value in reward_rows(tx['mining_reward']):
+                    self.transactions.insert(key, 'end', text=tr(label), values=(value, '', ''))
             self.transactions.insert(key,'end',iid=key+'-pending',text='…')
         self.detail_state.set(tr('Block height')+f": {d['height']:,} · "+tr('Transaction')+f": {d['offset']+1:,}–{d['offset']+len(d['transactions']):,} / {d['total']:,}")
 

@@ -284,5 +284,22 @@
   "Do not show this help again.": "Non mostrare più questa guida.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "La connessione diretta non usa Tor né I2P. Di solito è più veloce e usa meno risorse. Gli altri peer vedono l’IP della connessione.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nVantaggio: aiuta a nascondere il tuo vero IP agli altri peer.\n\nSvantaggi: connessione e sincronizzazione possono rallentare e il consumo di batteria e dati aumentare. Le transazioni restano pubbliche. In caso di errore la connessione diretta resta disabilitata.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVantaggio: aiuta a nascondere il tuo vero IP agli altri peer.\n\nSvantaggi: connessione e sincronizzazione possono rallentare e il consumo di batteria e dati aumentare. Le transazioni restano pubbliche. In caso di errore la connessione diretta resta disabilitata.\n\nServono peer I2P."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nVantaggio: aiuta a nascondere il tuo vero IP agli altri peer.\n\nSvantaggi: connessione e sincronizzazione possono rallentare e il consumo di batteria e dati aumentare. Le transazioni restano pubbliche. In caso di errore la connessione diretta resta disabilitata.\n\nServono peer I2P.",
+  "Fee rate (yugeon/vB)": "Tariffa (yugeon/vB)",
+  "Slow": "Lenta",
+  "Normal": "Normale",
+  "Fast": "Rapida",
+  "Manual": "Manuale",
+  "Check the fee rate and wallet limits.": "Controlla la tariffa e i limiti del portafoglio.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Coda locale: {0} vB · {1} yugeon/vB · obiettivo: {2} blocchi",
+  "Replaced · not applied": "Sostituita · nessun effetto sul saldo",
+  "Replaced by {0}": "Sostituita da {0}",
+  "Removed after parent replacement": "Rimossa dopo la sostituzione della transazione precedente",
+  "New issuance (block)": "Nuova emissione (blocco)",
+  "Transaction fees (block)": "Commissioni del blocco",
+  "Total block reward": "Ricompensa totale del blocco",
+  "Issuance limit (block)": "Limite di emissione del blocco",
+  "Available fees (block)": "Commissioni disponibili del blocco",
+  "Unclaimed reward": "Ricompensa non riscossa",
+  "Reward not fully claimed": "Ricompensa riscossa in parte"
 }

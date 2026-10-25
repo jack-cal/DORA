@@ -180,5 +180,14 @@
   "share": "Khối chia sẻ (%)",
   "knownfees": "Phí giao dịch đã biết",
   "rewardsubsidy": "Trợ cấp khối tối đa",
-  "pendingstats": "Thống kê mempool địa phương"
+  "pendingstats": "Thống kê mempool địa phương",
+  "spendingconditions": "Điều kiện chi tiêu",
+  "decodedonly": "Chỉ giải mã tập lệnh; chưa xác minh khả năng chi tiêu.",
+  "rewardissuance": "Phát hành mới của khối",
+  "rewardfees": "Phí giao dịch của khối",
+  "rewardtotalblock": "Tổng phần thưởng khối",
+  "rewardlimit": "Giới hạn phát hành của khối",
+  "rewardavailablefees": "Phí khả dụng của khối",
+  "rewardunclaimed": "Phần thưởng chưa nhận",
+  "rewardpartial": "Chỉ nhận một phần thưởng"
 }

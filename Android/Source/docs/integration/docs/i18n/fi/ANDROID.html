@@ -1,0 +1,53 @@
+<!doctype html><html lang="fi" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · Dokumentaatio</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Dokumentaatio · 34</summary><nav><a href="../en/README.html" lang="en"><bdi>English</bdi></a><a href="../fr/README.html" lang="fr"><bdi>Français</bdi></a><a href="../es/README.html" lang="es"><bdi>Español</bdi></a><a href="../ar/README.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/README.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/README.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/README.html" lang="ru"><bdi>Русский</bdi></a><a href="../de/README.html" lang="de"><bdi>Deutsch</bdi></a><a href="../sw/README.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/README.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/README.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/README.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/README.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/README.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/README.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/README.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/README.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/README.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/README.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/README.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/README.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/README.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/README.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/README.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/README.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/README.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/README.html" lang="da"><bdi>Dansk</bdi></a><a href="README.html" lang="fi" aria-current="page"><bdi>Suomi</bdi></a><a href="../el/README.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/README.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/README.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/README.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/README.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/README.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Dokumentaatio</a><a href="EXCHANGE_INTEGRATION.html">Solmun rajapinta</a><a href="RPC_API.html">RPC- ja HTTP-API</a><a href="NETWORK_RUNBOOK.html">Solmun käyttö</a><a href="RELEASE_NOTES.html">Julkaisutiedot</a><a href="EXCHANGE_EXAMPLES.html">Varmennus</a></nav></header><main><h1>SUMUWW Android 0.6.95 · Dokumentaatio</h1>
+<p>SUMUWW Android 0.6.95 · Solmu tarkistaa, tallentaa, välittää ja tarjoaa ketjun tiedot.</p>
+<h2>Verkko ja osoitteet</h2>
+<p>Julkinen verkko on <code>sumuww</code>, sisäinen alias <code>dora</code>. Tarkista alla oleva genesis-tiiviste. Osoitteet käyttävät witness v0 P2WPKH:ta ja pakatun secp256k1-julkisen avaimen HASH160:tä. Memoa tai tagia ei vaadita. Hylkää väärän verkon osoitteet ja virheelliset tarkistussummat. Tallenna HD-vastaanotto-/vaihtorahahaara ja indeksi; älä oleta Bitcoinin johtamispolkua.</p>
+<h2>Summat ja käytettävissä olevat tulosteet</h2>
+<p><code>_units</code> tarkoittaa kokonaisia pienimpiä yksiköitä; <code>_smw</code> 8 desimaalin merkkijonoa; <code>_dora</code> yhteensopivuusaliasta. <code>_sumuww</code>-summakenttää ei ole. 1 SMW = 100000000 yksikköä. <code>gettxout</code> ei sisällä <code>spendable</code>-kenttää ja voi palauttaa kypsymättömän coinbase-tulosteen. Seuraavassa lohkossa käyttämiseen tarvitaan vähintään 100 vahvistusta. Suodata <code>listunspent</code> kentällä <code>spendable</code>; <code>getaddressbalance</code>-vastauksen available sulkee pois kypsymättömät ja odottaviin tapahtumiin sidotut varat. Mempoolin uudet tulosteet eivät ole vahvistettuja. Tarkista kärki sivujen välillä ja validoi valitut syötteet uudelleen.</p>
+<p>1 SMW = 100 000 000 yugeon. Automaattinen maksu tarjoaa kolme tasoa paikallisten havaintojen perusteella, mutta ei takaa vahvistusaikaa. Voit syöttää maksutason yksikössä yugeon/vB. Tarkista lopullinen maksu ja kokonaissumma SMW-yksikössä ennen lähettämistä. Hylätty tapahtuma ei vähennä saldoa.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automaattinen maksu perustuu jonossa olevaan datamäärään, lohkokapasiteettiin ja siirtojen etusijaan. Aiempien lohkojen maksuja ei käytetä. Lyhyessä jonossa käytetään vähimmäishintaa. Esikatselu päivittyy; lopullinen vahvistus lukitsee maksun. Havainnot koskevat yhdistettyä paikallista solmua, eivät kaikkia solmuja.</p>
+<p>Tämän solmun kirjaama korvaushistoria säilyy lompakon uudelleenkäynnistyksen jälkeen. Poistetut tapahtumat eivät vaikuta saldoon.</p>
+<p>Louhintahistoria erittelee kunkin lohkon uuden liikkeeseenlaskun, siirtomaksut ja kokonaispalkkion. Lompakkosi vastaanottama summa näkyy erikseen. Osittain lunastetun palkkion jakautumista ei oleteta. Solmu tarjoaa 28 RPC-menetelmää, mukaan lukien maksuarvion, sekä tarkistaa ja välittää allekirjoitetut tapahtumat.</p>
+<h2>Tapahtumien ja lohkojen haku</h2>
+<p><code>getrawtransaction</code> hakee aktiivisesta ketjusta ja mempoolista, ei vain hylätyistä haaroista. Syötteet viittaavat aiempiin tulosteisiin, eivät yksiselitteiseen lähettäjäosoitteeseen. <code>getblock</code> ottaa totuusarvon <code>verbose</code>; tallennetun epäaktiivisen lohkon arvot ovat <code>active=false</code>, <code>confirmations=-1</code>. Raakatapahtumat saa edelleen lohkotiivisteellä. <code>findspendingtransaction</code> hakee vain aktiivisen ketjun vahvistetut käytöt; null ei todista käytettävyyttä. Tarkista <code>gettxout</code> asetuksella <code>include_mempool=true</code>. Vahvistukset ja aktiivisuus voivat muuttua uudelleenjärjestelyssä.</p>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

@@ -335,5 +335,22 @@
   "Local lottery jobs": "Lotingen van deze node",
   "Not selected": "Niet geselecteerd",
   "Selected pending": "Geselecteerd, in afwachting",
-  "Selected complete": "Geselecteerd, voltooid"
+  "Selected complete": "Geselecteerd, voltooid",
+  "Fee rate (yugeon/vB)": "Tarief (yugeon/vB)",
+  "Slow": "Langzaam",
+  "Normal": "Normaal",
+  "Fast": "Snel",
+  "Manual": "Handmatig",
+  "Check the fee rate and wallet limits.": "Controleer het tarief en de walletlimieten.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Lokale wachtrij: {0} vB · {1} yugeon/vB · doel: {2} blokken",
+  "Replaced · not applied": "Vervangen · geen invloed op saldo",
+  "Replaced by {0}": "Vervangen door {0}",
+  "Removed after parent replacement": "Verwijderd na vervanging van de bovenliggende transactie",
+  "New issuance (block)": "Nieuwe uitgifte (blok)",
+  "Transaction fees (block)": "Transactiekosten (blok)",
+  "Total block reward": "Totale blokbeloning",
+  "Issuance limit (block)": "Uitgiftelimiet van het blok",
+  "Available fees (block)": "Beschikbare blokkosten",
+  "Unclaimed reward": "Niet opgeëiste beloning",
+  "Reward not fully claimed": "Beloning gedeeltelijk opgeëist"
 }

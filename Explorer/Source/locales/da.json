@@ -180,5 +180,14 @@
   "share": "Andel af blokke (%)",
   "knownfees": "Kendte transaktionsgebyrer",
   "rewardsubsidy": "Maksimal bloktilskud",
-  "pendingstats": "Lokal mempool statistik"
+  "pendingstats": "Lokal mempool statistik",
+  "spendingconditions": "Betingelser for brug",
+  "decodedonly": "Kun scriptet er afkodet; det er ikke kontrolleret, om outputtet kan bruges.",
+  "rewardissuance": "Ny udstedelse (blok)",
+  "rewardfees": "Transaktionsgebyrer (blok)",
+  "rewardtotalblock": "Samlet blokbelønning",
+  "rewardlimit": "Blokkens udstedelsesgrænse",
+  "rewardavailablefees": "Tilgængelige blokgebyrer",
+  "rewardunclaimed": "Ikke hævet belønning",
+  "rewardpartial": "Belønning delvist hævet"
 }

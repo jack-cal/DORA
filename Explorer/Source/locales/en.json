@@ -180,5 +180,14 @@
   "share": "Block share (%)",
   "knownfees": "Known transaction fees",
   "rewardsubsidy": "Maximum block subsidies",
-  "pendingstats": "Local mempool statistics"
+  "pendingstats": "Local mempool statistics",
+  "spendingconditions": "Spending conditions",
+  "decodedonly": "Decoded script only; spendability is not verified.",
+  "rewardissuance": "New issuance (block)",
+  "rewardfees": "Transaction fees (block)",
+  "rewardtotalblock": "Total block reward",
+  "rewardlimit": "Issuance limit (block)",
+  "rewardavailablefees": "Available fees (block)",
+  "rewardunclaimed": "Unclaimed reward",
+  "rewardpartial": "Reward not fully claimed"
 }

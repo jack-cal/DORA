@@ -102,3 +102,8 @@ Nodes exchange version/verack, locator/headers, inventory/getdata and block/tran
 ## 7. Address encoding
 
 SUMUWW addresses use Bech32 with HRP `sumuww`, witness version 0 and a 20-byte witness program for native P2WPKH. Validation checks the network prefix, checksum and padding. Other-network addresses, mixed case and invalid padding are rejected.
+
+
+## Implementation addendum: PC 0.57.46 / Android 0.6.95
+
+[Current fee, yugeon, replacement and script activation specification](NODE_FEATURES.md).

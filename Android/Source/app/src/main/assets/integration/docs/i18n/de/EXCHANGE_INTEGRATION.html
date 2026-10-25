@@ -1,0 +1,56 @@
+<!doctype html><html lang="de" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW Android 0.6.95 · Knotenschnittstelle</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Dokumentation · 34</summary><nav><a href="../en/EXCHANGE_INTEGRATION.html" lang="en"><bdi>English</bdi></a><a href="../fr/EXCHANGE_INTEGRATION.html" lang="fr"><bdi>Français</bdi></a><a href="../es/EXCHANGE_INTEGRATION.html" lang="es"><bdi>Español</bdi></a><a href="../ar/EXCHANGE_INTEGRATION.html" lang="ar"><bdi>العربية</bdi></a><a href="../zh/EXCHANGE_INTEGRATION.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../pt/EXCHANGE_INTEGRATION.html" lang="pt"><bdi>Português</bdi></a><a href="../ru/EXCHANGE_INTEGRATION.html" lang="ru"><bdi>Русский</bdi></a><a href="EXCHANGE_INTEGRATION.html" lang="de" aria-current="page"><bdi>Deutsch</bdi></a><a href="../sw/EXCHANGE_INTEGRATION.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../hi/EXCHANGE_INTEGRATION.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../ko/EXCHANGE_INTEGRATION.html" lang="ko"><bdi>한국어</bdi></a><a href="../ja/EXCHANGE_INTEGRATION.html" lang="ja"><bdi>日本語</bdi></a><a href="../id/EXCHANGE_INTEGRATION.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../vi/EXCHANGE_INTEGRATION.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../tr/EXCHANGE_INTEGRATION.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../th/EXCHANGE_INTEGRATION.html" lang="th"><bdi>ไทย</bdi></a><a href="../it/EXCHANGE_INTEGRATION.html" lang="it"><bdi>Italiano</bdi></a><a href="../bn/EXCHANGE_INTEGRATION.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../ur/EXCHANGE_INTEGRATION.html" lang="ur"><bdi>اردو</bdi></a><a href="../pl/EXCHANGE_INTEGRATION.html" lang="pl"><bdi>Polski</bdi></a><a href="../nl/EXCHANGE_INTEGRATION.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../fil/EXCHANGE_INTEGRATION.html" lang="fil"><bdi>Filipino</bdi></a><a href="../ta/EXCHANGE_INTEGRATION.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../zh-TW/EXCHANGE_INTEGRATION.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../zh-HK/EXCHANGE_INTEGRATION.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../cs/EXCHANGE_INTEGRATION.html" lang="cs"><bdi>Čeština</bdi></a><a href="../da/EXCHANGE_INTEGRATION.html" lang="da"><bdi>Dansk</bdi></a><a href="../fi/EXCHANGE_INTEGRATION.html" lang="fi"><bdi>Suomi</bdi></a><a href="../el/EXCHANGE_INTEGRATION.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../no/EXCHANGE_INTEGRATION.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../sv/EXCHANGE_INTEGRATION.html" lang="sv"><bdi>Svenska</bdi></a><a href="../sr/EXCHANGE_INTEGRATION.html" lang="sr"><bdi>Српски</bdi></a><a href="../mn/EXCHANGE_INTEGRATION.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../mn-Mong/EXCHANGE_INTEGRATION.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="README.html">Dokumentation</a><a href="EXCHANGE_INTEGRATION.html">Knotenschnittstelle</a><a href="RPC_API.html">RPC- und HTTP-API</a><a href="NETWORK_RUNBOOK.html">Node-Betrieb</a><a href="RELEASE_NOTES.html">Versionshinweise</a><a href="EXCHANGE_EXAMPLES.html">Prüfung</a></nav></header><main><h1>SUMUWW Android 0.6.95 · Knotenschnittstelle</h1>
+<p>SUMUWW Android 0.6.95 · Der Knoten prüft, speichert, verbreitet und liefert Kettendaten.</p>
+<p>Die API-Spezifikation beschreibt den eingebetteten Knotenkern. Die Android-App hat keinen Bildschirm zur RPC-Konfiguration.</p>
+<h2>Netzwerk und Adressen</h2>
+<p>Das öffentliche Netzwerk heißt <code>sumuww</code>, intern auch <code>dora</code>. Prüfen Sie den unten angegebenen Genesis-Hash. Native Adressen verwenden Witness-v0-P2WPKH und HASH160 eines komprimierten secp256k1-Public-Keys. Memo oder Tag sind nicht vorgeschrieben. Falsches Netzwerk und ungültige Prüfsummen sind abzulehnen. Empfangs-/Wechselgeldzweig und HD-Index dokumentieren; nicht den Bitcoin-Ableitungspfad voraussetzen.</p>
+<h2>RPC- und HTTP-API</h2>
+<p>validateaddress prüft Prüfsumme und gewähltes Netzwerk. decoderawtransaction liefert decoded_only, keine Aussage über Signaturgültigkeit oder Bestätigung. OP_RETURN-Ausgänge speichern Daten für externe Programme. Der Knoten ergänzt Gebührenabfragen, Prüfungen vor dem Senden, den RBF-Ersetzungsstatus und geordnete Blockdaten. Erst nach erfolgreicher Prüfung werden ersetzte ausstehende Transaktionen entfernt. Mehrfachsignaturen und gesperrte Ausgänge sind für isolierte Aktivierungstests implementiert und im öffentlichen Netz noch nicht aktiviert.</p>
+<h2>Beträge und verfügbare Ausgänge</h2>
+<p><code>_units</code> sind ganzzahlige kleinste Einheiten, <code>_smw</code> Zeichenketten mit 8 Nachkommastellen, <code>_dora</code> ein Kompatibilitätsalias. Ein Betragsfeld <code>_sumuww</code> existiert nicht. 1 SMW = 100000000 Einheiten. <code>gettxout</code> besitzt kein <code>spendable</code> und kann unreife Coinbase-Ausgänge liefern. Für Ausgabe im nächsten Block sind mindestens 100 Bestätigungen nötig. <code>listunspent</code> nach <code>spendable</code> filtern; available bei <code>getaddressbalance</code> schließt unreife und durch ausstehende Transaktionen belegte Mittel aus. Neue Mempool-Ausgänge sind nicht bestätigt. Spitze über mehrere Seiten prüfen und ausgewählte Eingänge revalidieren.</p>
+<p>1 SMW = 100.000.000 yugeon. Die automatische Berechnung bietet drei Stufen anhand lokaler Beobachtungen, ohne Bestätigungszeiten zu garantieren. Sie können einen Satz in yugeon/vB eingeben. Prüfen Sie vor dem Senden die endgültige Gebühr und die Summe in SMW. Abgelehnte Transaktionen belasten das Guthaben nicht.</p>
+<p><code>1 yugeon = 0.00000001 SMW</code> · <code>1 SMW = 100000000 yugeon</code></p>
+<table>
+<thead>
+<tr>
+<th>API / wallet</th>
+<th>yugeon / SMW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minimum relay</td>
+<td>1 yugeon/vB</td>
+</tr>
+<tr>
+<td>automatic cap</td>
+<td>0.01 SMW</td>
+</tr>
+<tr>
+<td>manual cap</td>
+<td>1 SMW</td>
+</tr>
+<tr>
+<td>manual rate</td>
+<td>1–100000 yugeon/vB</td>
+</tr>
+</tbody>
+</table>
+<p>Automatische Gebühren berücksichtigen das ausstehende Datenvolumen, die Blockkapazität und die Transaktionspriorität. Frühere Blockgebühren werden nicht verwendet. Bei geringer Auslastung gilt der Mindestsatz. Die Vorschau wird aktualisiert; die abschließende Bestätigung legt die Gebühr fest. Die Beobachtung erfasst den verbundenen lokalen Knoten, nicht alle Knoten.</p>
+<p>Die von diesem Knoten erfassten Ersetzungen bleiben nach dem Neustart der Wallet erhalten. Entfernte Transaktionen ändern das Guthaben nicht.</p>
+<p>Der Mining-Verlauf zeigt neue Ausgabe, Transaktionsgebühren und Gesamtbelohnung jedes Blocks getrennt. Der von Ihrer Wallet empfangene Betrag wird separat angezeigt. Bei einer teilweise beanspruchten Belohnung wird die Aufteilung nicht angenommen. Der Knoten bietet 28 RPC-Methoden einschließlich Gebührenschätzung und prüft und verbreitet signierte Transaktionen.</p>
+<h2>Transaktionen und Blöcke abfragen</h2>
+<p><code>getrawtransaction</code> durchsucht aktive Kette und Mempool, keine ausschließlich verwaisten Transaktionen. Eingänge nennen frühere Ausgänge, keine eindeutige Absenderadresse. <code>getblock</code> erwartet boolesches <code>verbose</code>; gespeicherte inaktive Blöcke haben <code>active=false</code> und <code>confirmations=-1</code>. Ihre Rohtransaktionen bleiben über den Block-Hash abrufbar. <code>findspendingtransaction</code> sucht nur bestätigte aktive Ausgaben; null beweist keine Verfügbarkeit. <code>gettxout</code> mit <code>include_mempool=true</code> prüfen. Bestätigungen und Aktivstatus können sich durch Reorganisation ändern.</p>
+<p><a href="../../../API_CONTRACT.json">API_CONTRACT.json</a></p><footer>SUMUWW Android · 0.6.95 · 2026-10-25</footer></main></body></html>

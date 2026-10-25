@@ -284,5 +284,22 @@
   "Do not show this help again.": "Bu yardımı tekrar gösterme.",
   "Direct connection uses neither Tor nor I2P. It usually connects faster and uses fewer resources. Other peers can see your connection IP.": "Doğrudan bağlantı Tor veya I2P kullanmaz. Genellikle daha hızlıdır ve daha az kaynak tüketir. Diğer eşler bağlantı IP'nizi görebilir.",
   "Benefit: Tor helps hide your real IP from other peers.\n\nTrade-offs: Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If Tor fails, direct connections stay disabled.": "Tor\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.",
-  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.\n\nI2P eşleri gerekir."
+  "Benefit: I2P helps hide your real IP from other I2P peers.\n\nTrade-offs: I2P peers are required. Connecting and syncing may be slower, and battery and data use may increase. Transaction records remain public. If I2P fails, direct connections stay disabled.": "I2P\n\nAvantaj: gerçek IP'nizi diğer eşlerden gizlemeye yardımcı olur.\n\nDezavantajlar: bağlantı ve eşitleme yavaşlayabilir, pil ve veri kullanımı artabilir. İşlem kayıtları herkese açık kalır. Bağlantı başarısız olursa doğrudan bağlantı kapalı kalır.\n\nI2P eşleri gerekir.",
+  "Fee rate (yugeon/vB)": "Ücret oranı (yugeon/vB)",
+  "Slow": "Yavaş",
+  "Normal": "Normal",
+  "Fast": "Hızlı",
+  "Manual": "Elle",
+  "Check the fee rate and wallet limits.": "Ücret oranını ve cüzdan sınırlarını kontrol edin.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "Yerel kuyruk: {0} vB · {1} yugeon/vB · hedef: {2} blok",
+  "Replaced · not applied": "Değiştirildi · bakiyeye yansıtılmadı",
+  "Replaced by {0}": "Yerine geçen işlem: {0}",
+  "Removed after parent replacement": "Üst işlem değiştirildiği için kaldırıldı",
+  "New issuance (block)": "Blokta yeni ihraç",
+  "Transaction fees (block)": "Blok işlem ücretleri",
+  "Total block reward": "Toplam blok ödülü",
+  "Issuance limit (block)": "Blok ihraç sınırı",
+  "Available fees (block)": "Kullanılabilir blok ücretleri",
+  "Unclaimed reward": "Talep edilmeyen ödül",
+  "Reward not fully claimed": "Ödül kısmen talep edildi"
 }

@@ -1,12 +1,13 @@
 # -*- mode: python ; coding: utf-8 -*-
-
+from PyInstaller.utils.hooks import collect_all
+curve_data, curve_binaries, curve_imports = collect_all('coincurve')
 
 a = Analysis(
     ['server.py'],
     pathex=['vendor'],
-    binaries=[],
-    datas=[('dist', 'dist')],
-    hiddenimports=['sumuww.dgw'],
+    binaries=curve_binaries,
+    datas=[('dist', 'dist'), ('docs', 'docs')] + curve_data,
+    hiddenimports=['sumuww.dgw', '_cffi_backend'] + curve_imports,
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

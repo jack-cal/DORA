@@ -82,3 +82,8 @@ P2P peers can observe connection IP addresses. The protocol does not guarantee p
 ---
 
 [SUMUWW · A/B · Ed25519 · BLS](CONNECTION_PROOFS_9000.html) · [HTLC · 9100](HTLC_9100.html)
+
+
+## Implementation addendum: PC 0.57.46 / Android 0.6.95
+
+[Current fee, yugeon, replacement and script activation specification](NODE_FEATURES.md).

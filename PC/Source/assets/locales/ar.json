@@ -335,5 +335,22 @@
   "Local lottery jobs": "عمليات السحب لهذه العقدة",
   "Not selected": "لم تُختَر",
   "Selected pending": "مختارة قيد الانتظار",
-  "Selected complete": "مختارة مكتملة"
+  "Selected complete": "مختارة مكتملة",
+  "Fee rate (yugeon/vB)": "معدل الرسوم (yugeon/vB)",
+  "Slow": "بطيء",
+  "Normal": "عادي",
+  "Fast": "سريع",
+  "Manual": "يدوي",
+  "Check the fee rate and wallet limits.": "تحقق من معدل الرسوم وحدود المحفظة.",
+  "Local queue: {0} vB · {1} yugeon/vB · target: {2} blocks": "الطابور المحلي: {0} vB · {1} yugeon/vB · الهدف: {2} كتل",
+  "Replaced · not applied": "تم الاستبدال · دون تأثير على الرصيد",
+  "Replaced by {0}": "المعاملة البديلة: {0}",
+  "Removed after parent replacement": "أُزيلت بعد استبدال المعاملة الأصلية",
+  "New issuance (block)": "الإصدار الجديد للكتلة",
+  "Transaction fees (block)": "رسوم المعاملات للكتلة",
+  "Total block reward": "إجمالي مكافأة الكتلة",
+  "Issuance limit (block)": "حد إصدار الكتلة",
+  "Available fees (block)": "الرسوم المتاحة للكتلة",
+  "Unclaimed reward": "المكافأة غير المطالب بها",
+  "Reward not fully claimed": "تمت المطالبة بجزء من المكافأة"
 }

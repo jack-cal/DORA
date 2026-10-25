@@ -1,5 +1,18 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:18px/1.7 system-ui,sans-serif;max-width:1080px;margin:auto;padding:30px}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}pre{white-space:pre-wrap}img{max-width:100%}code{overflow-wrap:anywhere}</style></head><body><article><h1>SUMUWW PC 0.57.23 RPC and HTTP API</h1>
-<p>SUMUWW PC program · 0.57.23</p>
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="sumuww-doc-revision" content="52"><title>SUMUWW PC 0.57.46 RPC and HTTP API</title><style>body{font:17px/1.75 system-ui,"Noto Sans",sans-serif;color:#183248;background:#f5f8fb;margin:0}
+main,header{max-width:1080px;margin:auto;padding:28px}main{background:white;border-radius:16px;margin-bottom:32px}
+h1,h2{line-height:1.35;color:#164967}h1{font-size:2rem}h2{margin-top:2em}a{color:#075f91}
+nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0}nav a[aria-current=page]{font-weight:bold}
+details{background:#eaf0f6;padding:12px;border-radius:8px}summary{cursor:pointer}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:20px 0}
+td,th{border:1px solid #cad7e3;padding:10px;text-align:start;vertical-align:top}
+pre{background:#edf2f7;padding:16px;overflow:auto;direction:ltr;text-align:left;unicode-bidi:isolate}
+code{font:0.9em ui-monospace,Consolas,monospace;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+p{overflow-wrap:anywhere}blockquote{border-inline-start:4px solid #a8bccc;padding-inline-start:16px;margin-inline:0}
+.mongolian p{font-family:"Mongolian Baiti","Noto Sans Mongolian",serif;writing-mode:vertical-lr;height:34rem;max-width:100%;overflow:auto;line-height:2}
+.mongolian p code{writing-mode:horizontal-tb}footer{padding-top:24px;border-top:1px solid #cad7e3;color:#46617a}
+@media(max-width:650px){main,header{padding:18px}h1{font-size:1.6rem}}
+</style></head><body><header><details><summary>Documentation · 34</summary><nav><a href="../../../docs/i18n/en/RPC_API.html" lang="en" aria-current="page"><bdi>English</bdi></a><a href="../../../docs/i18n/fr/RPC_API.html" lang="fr"><bdi>Français</bdi></a><a href="../../../docs/i18n/es/RPC_API.html" lang="es"><bdi>Español</bdi></a><a href="../../../docs/i18n/ar/RPC_API.html" lang="ar"><bdi>العربية</bdi></a><a href="../../../docs/i18n/zh/RPC_API.html" lang="zh"><bdi>中文（普通话）</bdi></a><a href="../../../docs/i18n/pt/RPC_API.html" lang="pt"><bdi>Português</bdi></a><a href="../../../docs/i18n/ru/RPC_API.html" lang="ru"><bdi>Русский</bdi></a><a href="../../../docs/i18n/de/RPC_API.html" lang="de"><bdi>Deutsch</bdi></a><a href="../../../docs/i18n/sw/RPC_API.html" lang="sw"><bdi>Kiswahili</bdi></a><a href="../../../docs/i18n/hi/RPC_API.html" lang="hi"><bdi>हिन्दी</bdi></a><a href="../../../docs/i18n/ko/RPC_API.html" lang="ko"><bdi>한국어</bdi></a><a href="../../../docs/i18n/ja/RPC_API.html" lang="ja"><bdi>日本語</bdi></a><a href="../../../docs/i18n/id/RPC_API.html" lang="id"><bdi>Bahasa Indonesia</bdi></a><a href="../../../docs/i18n/vi/RPC_API.html" lang="vi"><bdi>Tiếng Việt</bdi></a><a href="../../../docs/i18n/tr/RPC_API.html" lang="tr"><bdi>Türkçe</bdi></a><a href="../../../docs/i18n/th/RPC_API.html" lang="th"><bdi>ไทย</bdi></a><a href="../../../docs/i18n/it/RPC_API.html" lang="it"><bdi>Italiano</bdi></a><a href="../../../docs/i18n/bn/RPC_API.html" lang="bn"><bdi>বাংলা</bdi></a><a href="../../../docs/i18n/ur/RPC_API.html" lang="ur"><bdi>اردو</bdi></a><a href="../../../docs/i18n/pl/RPC_API.html" lang="pl"><bdi>Polski</bdi></a><a href="../../../docs/i18n/nl/RPC_API.html" lang="nl"><bdi>Nederlands</bdi></a><a href="../../../docs/i18n/fil/RPC_API.html" lang="fil"><bdi>Filipino</bdi></a><a href="../../../docs/i18n/ta/RPC_API.html" lang="ta"><bdi>தமிழ்</bdi></a><a href="../../../docs/i18n/zh-TW/RPC_API.html" lang="zh-TW"><bdi>繁體中文（台灣）</bdi></a><a href="../../../docs/i18n/zh-HK/RPC_API.html" lang="zh-HK"><bdi>繁體中文（香港）</bdi></a><a href="../../../docs/i18n/cs/RPC_API.html" lang="cs"><bdi>Čeština</bdi></a><a href="../../../docs/i18n/da/RPC_API.html" lang="da"><bdi>Dansk</bdi></a><a href="../../../docs/i18n/fi/RPC_API.html" lang="fi"><bdi>Suomi</bdi></a><a href="../../../docs/i18n/el/RPC_API.html" lang="el"><bdi>Ελληνικά</bdi></a><a href="../../../docs/i18n/no/RPC_API.html" lang="no"><bdi>Norsk (bokmål)</bdi></a><a href="../../../docs/i18n/sv/RPC_API.html" lang="sv"><bdi>Svenska</bdi></a><a href="../../../docs/i18n/sr/RPC_API.html" lang="sr"><bdi>Српски</bdi></a><a href="../../../docs/i18n/mn/RPC_API.html" lang="mn"><bdi>Монгол (Кирилл)</bdi></a><a href="../../../docs/i18n/mn-Mong/RPC_API.html" lang="mn-Mong"><bdi>Mongolian (traditional)</bdi></a></nav></details><nav><a href="../../../docs/i18n/en/README.html">Documentation</a><a href="../../../docs/i18n/en/EXCHANGE_INTEGRATION.html">Node interface</a><a href="../../../docs/i18n/en/RPC_API.html">RPC and HTTP API</a><a href="../../../docs/i18n/en/NETWORK_RUNBOOK.html">Node operation</a><a href="../../../docs/i18n/en/RELEASE_NOTES.html">Release notes</a><a href="../../../docs/i18n/en/EXCHANGE_EXAMPLES.html">Verification</a></nav></header><main><h1>SUMUWW PC 0.57.46 RPC and HTTP API</h1>
+<p>SUMUWW PC program · 0.57.46</p>
 <h2>Enable and authenticate</h2>
 <p>Open RPC/API in SUMUWW, enable the service and apply port <code>18443</code>. It is disabled until you opt in and binds only to numeric loopback <code>127.0.0.1</code>. Your saved enable/port settings are restored on the next launch. The default token file is <code>rpc-token</code> in the selected data directory. It contains a randomly generated 32-byte token encoded as 64 lowercase hexadecimal characters. Treat this file as a local access credential: an authenticated caller can submit transactions/blocks and request templates, but cannot unlock a wallet or sign. Status output does not reveal the token. The service does not enable public HTTP listening or change P2P firewall rules. For a node without the GUI:</p>
 <pre><code class="language-powershell">.\SUMUWW-node.exe peer --database data/server/node.sqlite --network sumuww --listen 0.0.0.0:18444 --allow-internet --rpc --rpc-port 18443 --rpc-token-file data/server/rpc-token
@@ -16,112 +29,133 @@
 </code></pre>
 <pre><code class="language-json">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;00000032e243a8c71b449b13c2da733dd329f308a75aa4358f3f22707a28af97&quot;}
 </code></pre>
-<pre><code class="language-python">import json
-import urllib.request
-rpc_host = input(&quot;Numeric RPC loopback address: &quot;).strip()
-from pathlib import Path
-
-token = Path(&quot;data/server/rpc-token&quot;).read_text(encoding=&quot;utf-8&quot;).strip()
-payload = {&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;getblockchaininfo&quot;, &quot;params&quot;: {}}
-request = urllib.request.Request(
-    f&quot;http://{rpc_host}:18443/rpc&quot;,
-    data=json.dumps(payload).encode(&quot;utf-8&quot;),
-    headers={&quot;Authorization&quot;: &quot;Bearer &quot; + token, &quot;Content-Type&quot;: &quot;application/json&quot;},
-)
-with urllib.request.urlopen(request, timeout=10) as response:
-    print(json.load(response))
+<pre><code class="language-python">from sumuww.rpc_client import call
+result = call(&quot;http://127.0.0.1:18443/rpc&quot;, &quot;data/server/rpc-token&quot;,
+              &quot;getblockchaininfo&quot;)
+print(result)
 </code></pre>
 <h2>Methods and parameters</h2>
-<p>getmempoolinfo and GET /api/v1/mempool/info return one consistent read snapshot. Integer fields are size, bytes, max_transactions, max_bytes, remaining_transactions and remaining_bytes; full is Boolean. This version has 15 RPC methods and 11 REST routes.</p>
+<p>getmempoolinfo and GET /api/v1/mempool/info return one consistent read snapshot. Integer fields are size, bytes, max_transactions, max_bytes, remaining_transactions and remaining_bytes; full is Boolean. This version has 28 RPC methods and 11 REST routes.</p>
 <p>MempoolFull is temporary local-capacity rejection: JSON-RPC -32005 and HTTP 503. The rejected transaction is not queued or accepted. Retry when capacity becomes available; this does not guarantee confirmation.</p>
 <table>
 <thead>
 <tr>
 <th>Method</th>
 <th>Parameters</th>
-<th>Result / action</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>help</code></td>
+<td><code>getblockchaininfo</code></td>
 <td><code>{} / []</code></td>
-<td>Available methods and parameter information</td>
-</tr>
-<tr>
-<td><code>getblockchaininfo, getnetworkinfo</code></td>
-<td><code>{} / []</code></td>
-<td>Validated active-chain state / peer connection and synchronization state</td>
-</tr>
-<tr>
-<td><code>getblockcount, getbestblockhash</code></td>
-<td><code>{} / []</code></td>
-<td>Active height / active tip display hash</td>
-</tr>
-<tr>
-<td><code>getblockhash</code></td>
-<td><code>height</code></td>
-<td>Active block hash at height</td>
-</tr>
-<tr>
-<td><code>getblock</code></td>
-<td><code>hash, verbose=true</code></td>
-<td>Block details; <code>verbose=false</code> returns serialized block hex</td>
 </tr>
 <tr>
 <td><code>gethtlcinfo</code></td>
 <td><code>{} / []</code></td>
-<td>HTLC configuration and current/next-block activation; public height 9100</td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset, limit</code></td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
 </tr>
 <tr>
 <td><code>gettxout</code></td>
-<td><code>txid, index, include_mempool=true</code></td>
-<td>Confirmed unspent output or null; optionally exclude mempool-spent outputs</td>
+<td><code>txid, index, include_mempool</code></td>
 </tr>
 <tr>
 <td><code>findspendingtransaction</code></td>
-<td><code>txid, index, start_height=0</code></td>
-<td>Spending transaction in the active chain, including raw hex, or null</td>
+<td><code>txid, index, start_height</code></td>
+</tr>
+<tr>
+<td><code>getnetworkinfo</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockcount</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getbestblockhash</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>getblockhash</code></td>
+<td><code>height</code></td>
+</tr>
+<tr>
+<td><code>getblock</code></td>
+<td><code>hash, verbose</code></td>
 </tr>
 <tr>
 <td><code>getrawmempool</code></td>
 <td><code>{} / []</code></td>
-<td>Current mempool transaction IDs</td>
 </tr>
 <tr>
 <td><code>getmempoolinfo</code></td>
 <td><code>{} / []</code></td>
-<td>Local capacity and remaining space from one read snapshot</td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td><code>{} / []</code></td>
+</tr>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize, mode</code></td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
 </tr>
 <tr>
 <td><code>getrawtransaction</code></td>
-<td><code>txid, verbose=true</code></td>
-<td>Transaction in active chain or mempool; <code>verbose=false</code> returns hex</td>
+<td><code>txid, verbose</code></td>
+</tr>
+<tr>
+<td><code>decoderawtransaction</code></td>
+<td><code>hex</code></td>
+</tr>
+<tr>
+<td><code>validateaddress</code></td>
+<td><code>address</code></td>
 </tr>
 <tr>
 <td><code>listunspent</code></td>
-<td><code>address, limit=100, offset=0</code></td>
-<td>Address UTXOs with pending-spent and spendable flags; paginated</td>
+<td><code>address, limit, offset</code></td>
 </tr>
 <tr>
 <td><code>getaddressbalance</code></td>
 <td><code>address</code></td>
-<td>Address balance on the current active chain</td>
 </tr>
 <tr>
 <td><code>sendrawtransaction</code></td>
 <td><code>hex</code></td>
-<td>Validate signed transaction bytes; returns <code>txid</code> and <code>accepted</code></td>
 </tr>
 <tr>
 <td><code>submitblock</code></td>
 <td><code>hex</code></td>
-<td>Validate block bytes; returns <code>hash</code>, <code>accepted</code>, <code>already_known</code>, <code>activated</code></td>
 </tr>
 <tr>
 <td><code>getblocktemplate</code></td>
 <td><code>address</code></td>
-<td>Construct a candidate; no CPU mining in the HTTP service</td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td><code>{} / []</code></td>
 </tr>
 </tbody>
 </table>
@@ -194,16 +228,138 @@ with urllib.request.urlopen(request, timeout=10) as response:
 </tbody>
 </table>
 <h2>Amounts, confirmations and maturity</h2>
-<p>Money fields ending in <code>_units</code> are integer minimum units. Fields ending in <code>_sumuww</code> are fixed 8-decimal strings; do not parse or sign using binary floating-point amounts. 1 SMW is <code>100000000</code> units. Confirmations follow the current active chain and can change after a valid reorganization. Coinbase outputs may be spent only when spending height minus creation height is at least 100. Balance/UTXO spendability is assessed for the next block and excludes inputs reserved by pending transactions. Addresses do not grant spending authority. External callers must produce signed transaction bytes with the existing wallet CLI or their own compatible signer before submission.</p>
+<p>Money fields ending in <code>_units</code> are integer minimum units. Fields ending in <code>_smw</code> are fixed 8-decimal strings; do not parse or sign using binary floating-point amounts. 1 SMW is <code>100000000</code> units. Confirmations follow the current active chain and can change after a valid reorganization. Coinbase outputs may be spent only when spending height minus creation height is at least 100. Balance/UTXO spendability is assessed for the next block and excludes inputs reserved by pending transactions. Addresses do not grant spending authority. External applications construct and sign transactions outside the node, then submit serialized signed bytes. See <a href="../../../EXCHANGE_INTEGRATION.md">the node integration contract</a>. The node RPC never handles wallet secrets. Existing wallet-send combines signing and local submission; it is not the offline signing command.</p>
 <p>Fees equal total inputs minus total outputs. The GUI and wallet-send CLI now use automatic estimation by default; the sender may override it with any nonnegative manual total, including 0. The sender pays the fee in addition to the payment; the recipient receives the full specified amount. Included fees may be claimed by the block miner at the block reward address with the subsidy. There is no developer share, automatic burn or additional issuance. A higher fee can improve the chance of inclusion when blocks are congested, but does not change the target block interval or guarantee faster propagation or confirmation.</p>
 <h2>Limits and errors</h2>
 <p>The server limits request bodies to <code>8004096</code> bytes, headers to <code>8192</code> bytes, batches to 16 calls, concurrent requests to 16 and a request deadline to 10 seconds. <code>limit</code> is 1–1000; <code>offset</code> is 0–1000000. HTTP Host must be numeric loopback and match the actual port. Authentication precedes execution. Unsupported routes, invalid JSON, wrong parameter types and malformed or invalid transaction/block data are rejected. A <code>getblocktemplate</code> request for <code>sumuww</code> requires a connected, fully synchronized peer; offline regtest is permitted. Templates provide <code>height</code>, <code>previousblockhash</code>, <code>bits</code>, <code>target</code>, <code>header_hex</code> and <code>block_hex</code>. Miners must satisfy normal PoW and all block rules before submitting; this endpoint neither lowers difficulty nor issues coins by itself.</p>
-<p>JSON-RPC errors: <code>-32700</code> parse error, <code>-32600</code> invalid request, <code>-32601</code> unknown method, <code>-32602</code> invalid parameters, <code>-32603</code> internal error, <code>-32001</code> not found, <code>-32002</code> validation failure, <code>-32003</code> not running/mining gate, <code>-32004</code> batch response limit. A successful submission is not an irreversible confirmation or guaranteed active-chain inclusion. Read the returned state and current chain confirmations.</p>
+<p>JSON-RPC errors: <code>-32700</code> parse error, <code>-32600</code> invalid request, <code>-32601</code> unknown method, <code>-32602</code> invalid parameters, <code>-32603</code> internal error, <code>-32001</code> not found, <code>-32002</code> validation failure, <code>-32003</code> not running/mining gate, <code>-32004</code> batch response limit, <code>-32005</code> temporary local mempool capacity rejection. A successful submission is not an irreversible confirmation or guaranteed active-chain inclusion. Read the returned state and current chain confirmations.</p>
 <h2>License and consensus</h2>
 <p>SUMUWW's own code is distributed under the MIT license, the same license type used by Bitcoin Core. Use, copying, modification, merging, publication, distribution, sublicensing, sale and commercial use are permitted. Copies or substantial portions must retain the copyright and permission notice. The software is supplied without warranty; MIT does not require publishing modified source or paying royalties. External dependencies retain their own license notices. The English LICENSE text is authoritative. <code>Copyright (c) 2026 SUMUWW contributors</code>. <a href="../../../LICENSE">MIT</a>.</p>
 <p>UI, API and performance improvements can preserve genesis, issuance, difficulty, signatures, UTXO validity and cumulative-work chain selection. Each node still validates independently; neither the author nor an API caller can force upgrades or mint, freeze or rewrite balances. Adoption of changed consensus rules is voluntary and may split the chain. These rules do not cryptographically prevent people from creating a fork. SUMUWW has a decentralized consensus architecture; sustained participation by independent public operators has not yet been established by the local checks.</p>
 <h2>Fee policy</h2>
-<p>The default GUI estimates the fee and shows the recipient, payment, fee and total debit for confirmation. Advanced settings allow a manual fee. The wallet-send CLI uses automatic estimation when <code>--fee</code> is omitted or set to <code>--fee auto</code>; <code>--fee 0</code> explicitly requests a zero manual fee. Automatic estimation is a wallet policy, not a mandatory network fee or a change to consensus. The CLI treats running wallet-send as authorization to submit directly and reports the actual fee, total debit, fee mode and estimate source; its command does not open the GUI confirmation step.</p>
-<p>The local estimator uses positive transaction fee-rate samples from the most recent 20 active-chain blocks and the node’s pending transactions. Virtual size is <code>ceil(weight/4)</code>; the upper quartile of observed fee per virtual byte determines the estimate. Payment sizing conservatively budgets a 73-byte DER signature, a 33-byte public key and 2 outputs per supported wallet payment. With no positive sample, the fallback total is <code>0.001 SMW</code>. Automatic total fees are capped at <code>0.01 SMW</code>; a sender’s explicit manual fee may exceed that cap. This cap may make the automatic offer insufficient during congestion. This is a simple local estimate, not Bitcoin Core’s confirmation predictor or a promised speed. The active-chain history is limited to its latest 1000 transaction samples. The upper quartile uses the nearest-rank 75th percentile and at least 1 smallest unit per virtual byte; the resulting total is rounded upward.</p>
+<p>The wallet previews automatic slow, normal and fast fee rates from the connected local node and shows the payment, fee and total debit before confirmation. A manual rate can be entered in yugeon/vB. The minimum relay rate is 1 yugeon/vB, the automatic total cap is 0.01 SMW, and the manual total cap is 1 SMW. The CLI supports --fee-mode and --fee-rate; its explicit --fee option is a total in SMW. Zero fees fail the default relay policy. These are local admission and wallet policies, separate from block validity.</p>
+<p>Automatic estimation uses the current local pending queue, ancestor-package priority and block capacity. It does not sample fees from previous blocks or use a historical percentile. The fast, normal and slow modes use capacity budgets of 1, 3 and 6 blocks; these are not confirmation-time guarantees. Virtual size is ceil(weight/4), measured in vB. Coin amounts use yugeon: 1 yugeon = 0.00000001 SMW. A quiet queue keeps the minimum relay rate. The preview refreshes while the wallet is active; the confirmed payment retains its exact fee. A node that is disconnected or synchronizing may have an incomplete queue.</p>
 <p>The GUI displays a prepared payment quote and submits that same payment after approval, without silently changing the fee. A quote expires after 120 seconds; locking the wallet or changing the wallet or network invalidates it. Changed inputs or chain conditions can require preparing and confirming again. Final submission revalidates the transaction against current UTXOs and maturity.</p>
-<p>The default miner ranks transactions by ancestor-package fee per virtual byte: unconfirmed parents are counted together with their child, parents are placed first, equal-rate packages preserve arrival order, and real block weight and signature-operation limits are enforced. Zero-fee valid transactions remain eligible. Inclusion depends on the chosen miner, available block space and current chain. RPC/API provides 15 methods and 11 REST routes; it adds no RPC fee-estimation method in this release.</p></article></body></html>
+<p>The default miner ranks eligible transactions by ancestor-package fee per virtual byte. Parents are counted with their children and placed first; equal-rate packages preserve arrival order. Block weight and signature-operation limits remain enforced. The default mempool rejects fees below 1 yugeon/vB, while consensus itself permits a valid zero-fee transaction in a block. A successful block producer claims the issuance subsidy plus included transaction fees. RPC/API provides 28 methods and 11 REST routes, including estimatefee.</p>
+<h2>Exact integration semantics</h2>
+<p>The 20 method names and parameter contract are also supplied in
+<a href="../../../API_CONTRACT.json">API_CONTRACT.json</a>. SUMUWW is not a Bitcoin Core RPC
+implementation. A block or transaction lookup returns native SUMUWW objects.</p>
+<ul>
+<li>Primary money strings end in <code>_smw</code>, and exact integer fields end in <code>_units</code>.
+  <code>_dora</code> aliases are retained for older clients. There is no <code>_sumuww</code> amount field.
+  The public selector <code>sumuww</code> and the internal network value <code>dora</code> identify the
+  same registered network; compare the expected genesis as well as its label.</li>
+<li><code>gettxout</code> returns <code>value_units</code>, <code>script_pubkey</code>, <code>confirmations</code>, and <code>coinbase</code>,
+  or null. It has no <code>spendable</code> field and does not filter immature coinbase outputs.
+  A coinbase output is spendable in the next block when confirmations are at least</li>
+<li>The default <code>include_mempool=true</code> hides outputs spent by pending transactions;
+  it does not add unconfirmed newly created outputs to the confirmed UTXO set.</li>
+<li><code>listunspent</code> includes <code>coinbase</code>, <code>mature</code>, <code>pending_spent</code> and <code>spendable</code> for
+  each output. Filter <code>spendable</code>; the list also contains unavailable outputs.
+  Its pages can observe different revisions. Verify the tip before and after a
+  multi-page operation and revalidate selected inputs before submission.</li>
+<li><code>getaddressbalance</code> returns <code>confirmed</code>, <code>mature</code>, <code>immature</code>, <code>pending_spent</code> and
+  <code>available</code> amounts as <code>_units</code> and <code>_smw</code>. It does not include new mempool outputs
+  as confirmed incoming money. Maturity/spendability applies to the next block.</li>
+<li><code>getrawtransaction</code> searches the active chain and mempool. Missing/orphan-only
+  data returns -32001. A pending view has confirmations 0 and in_mempool true;
+  a confirmed view includes height and blockhash. Inputs contain outpoints, not
+  sender address fields. Outputs include index, value_units, value_smw and script_pubkey;
+  address is included only when the output is encodable as a supported address.</li>
+<li><code>getblock</code> returns an ordered txid list and the raw block. It accepts a Boolean
+  verbose flag, not Bitcoin Core verbosity levels. A stored inactive block has
+  active false and confirmations -1. Its raw transactions remain accessible by
+  that block hash even when getrawtransaction no longer finds them.</li>
+<li><code>findspendingtransaction</code> searches confirmed active-chain transactions from
+  start_height, not pending transactions. A null result alone does not show that
+  an output is currently available. Use gettxout with pending-spend filtering.</li>
+<li><code>sendrawtransaction</code> rejects an exact duplicate with -32002 at the raw RPC level.
+  On a timeout, query/retry the same signed transaction instead of generating a new
+  payment. The external caller owns retry policy; node submission performs
+  atomic validation against current state.</li>
+<li>Confirmation counts and active flags are observations that can change after a
+  reorganization. There is no per-transaction execution receipt/status code for
+  ordinary transfers: an accepted active-chain transaction has passed validation.</li>
+</ul>
+<p>See <a href="../../../EXCHANGE_INTEGRATION.md">the integration guide</a> and its executable
+source-only regtest example for signed submission, rejection, confirmations, reorgs and data persistence.</p>
+<h2>Node-only integration boundary (0.57.46)</h2>
+<p><code>validateaddress</code> returns <code>isvalid=false</code> for invalid or wrong-network strings, or <code>isvalid</code>, canonical <code>address</code>, <code>script_pubkey</code> and internal <code>network</code> for valid addresses. Non-string parameters return -32602.</p>
+<p><code>decoderawtransaction</code> returns the ordinary transaction fields plus <code>validation=decoded_only</code>. It omits <code>confirmations</code>, <code>in_mempool</code>, <code>height</code> and <code>blockhash</code>. Parsing unsigned bytes succeeds when the serialization is valid; this does not validate the signature, UTXO availability, consensus acceptance or chain membership. Decoding does not submit or change state.</p>
+<p>OP_RETURN data remains in transaction and block bytes, is queryable, and is excluded from spendable outputs. Native spending supports P2WPKH and the activated exact HTLC contract. This release changes no consensus, data-carrier or script rules.</p>
+<h2>Yugeon, fee policy and transaction replacement</h2>
+<p>1 SMW = 100,000,000 yugeon; one yugeon is 0.00000001 SMW. Existing <code>_units</code> integer fields are yugeon. Serialization and balances are unchanged. A vB measures transaction data, not currency: <code>ceil(weight / 4)</code>. Fee rates are shown as yugeon/vB; policy API rates use yugeon per 1,000 vB.</p>
+<p>The public node's default relay floor is 1 yugeon/vB. Regtest defaults to zero for controlled tests. This is local admission policy, not block consensus: a valid zero-fee transaction in a block remains valid. Refusal does not debit confirmed funds. An unconfirmed transaction can reserve local wallet inputs until it is confirmed or removed.</p>
+<p>Automatic suggestions use the current accepted local mempool, including ancestor packages. Past block fee samples and price percentiles are not used. The estimator compares the volume ahead of a new transaction with available block size and signature-operation capacity, reserving space for the current coinbase and block header. A quiet queue uses the local relay floor, at least 1 yugeon/vB. Fast, normal and slow target the capacity of 1, 3 and 6 blocks respectively; these are estimation budgets, not confirmation deadlines. Package fees are divided by their combined vsize, with shared ancestors counted once. If the queue exceeds the selected budget, the suggested rate exceeds the boundary package by the smallest 0.001 yugeon/vB step. Actual transaction size is recalculated during payment preparation. Automatic fees remain capped at 0.01 SMW; manual wallet fees retain the 1 SMW cap. A cap may prevent the requested priority. These limits are wallet policy, not block validity.</p>
+<p>The preview is read-only: PC status refreshes approximately every second, Wallet PC every four seconds, and Android every five seconds while active. A changed queue, replacement, new block or reorganization invalidates the cached queue. The final confirmation holds the exact signed fee; subsequent preview updates cannot reprice or replace it. Manual rate input is preserved. Observations describe this node's accepted transactions, not a global mempool. Offline or synchronizing nodes may have an incomplete view. No confirmation time is guaranteed.</p>
+<p><code>estimatefee(vsize, mode)</code> returns <code>source="live_mempool"</code>, <code>target_blocks</code>, <code>capped</code> and a <code>congestion</code> object. Its <code>rates</code> map is a 140-vB preview; the outer fee is calculated for the requested vsize. <code>pending_vsize</code>, <code>pending_count</code>, <code>block_vsize_capacity</code> and signature-operation fields describe the current snapshot. <code>sample_count</code> now counts pending transactions only. <code>backlog_change_vb_per_second</code> is a diagnostic net queue change measured over at most 60 seconds of process observations, or null during warm-up; it is not an arrival forecast and does not change the fee. An observation gap over 15 seconds resets this diagnostic window. Application <code>status.fees</code> exposes the same unsigned preview. No signing API is called by preview refreshes.</p>
+<p>The wallet shows the final fee and total in SMW before confirmation and submits those exact signed bytes. Ordinary wallet submission cannot silently replace a competing transaction. A deliberately supplied RBF transaction is validated atomically, pays the fees of all removed descendants plus at least 1 yugeon per replacement vB, and must improve the rate over every direct conflict. It may remove at most 100 transactions and cannot add a new unconfirmed input. Pool limits remain 1,000 transactions and 4,000,000 serialized bytes. Invalid replacements leave the previous pool intact. Local replacement history retains at most 1,000 entries; it is not a complete network history.</p>
+<table>
+<thead>
+<tr>
+<th>RPC</th>
+<th>Parameters</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>estimatefee</code></td>
+<td><code>vsize=140, mode="normal"</code></td>
+<td>Suggested integer yugeon fee, rate, sample count, source and cap status</td>
+</tr>
+<tr>
+<td><code>getmempoolpolicy</code></td>
+<td>none</td>
+<td>Relay floor, incremental rate and replacement bound</td>
+</tr>
+<tr>
+<td><code>testmempoolaccept</code></td>
+<td><code>hex</code></td>
+<td>Check signed bytes without queuing or relay; <code>allowed</code> and rejection details</td>
+</tr>
+<tr>
+<td><code>getmempoolentry</code></td>
+<td><code>txid</code></td>
+<td>Exact local fee, virtual size, dependencies and descendant count</td>
+</tr>
+<tr>
+<td><code>gettransactionstatus</code></td>
+<td><code>txid</code></td>
+<td><code>confirmed</code>, <code>mempool</code>, locally <code>replaced</code>, or <code>unknown</code>, with the current tip</td>
+</tr>
+<tr>
+<td><code>getdatarecords</code></td>
+<td><code>blockhash, offset=0, limit=100</code></td>
+<td>OP_RETURN output scripts in transaction/output order, active flag and tip</td>
+</tr>
+<tr>
+<td><code>getspendinginfo</code></td>
+<td>none</td>
+<td>Implemented template limits and actual activation state</td>
+</tr>
+<tr>
+<td><code>decodescript</code></td>
+<td><code>hex</code></td>
+<td>Canonical witness template, address and activation metadata; no ownership assertion</td>
+</tr>
+</tbody>
+</table>
+<p><code>getdatarecords</code> returns the full script, not an interpreted token balance. A side-branch block is readable with <code>active=false</code>; record order is meaningful only within the stated block and chain snapshot. Check the returned tip across pages. The transaction and block weight bounds remain unchanged.</p>
+<h2>Multisig and output locks</h2>
+<p><code>sumuww.spending.SpendingTemplate</code> constructs and parses exact witness-v0 P2WSH templates. It accepts one to sixteen distinct compressed secp256k1 public keys, a signature threshold and an optional absolute height/time or relative height/time lock. Signatures commit to all inputs and outputs through SIGHASH_ALL. Multisig uses an empty leading witness element and signatures in public-key order. Relative time locks use 512-second units. Node finality and input-age checks still apply.</p>
+<p><strong>Public activation is not scheduled.</strong> These validation rules are implemented and available to disposable regtest through the explicit <code>Chain(..., spending_activation=height)</code> setting. The activation configuration is persisted and cannot change silently on reopening. A public node refuses a locally chosen activation height. Do not fund a new template on the public network before coordinated activation. <code>decodescript</code> alone does not make a script spendable. Existing P2WPKH and activated HTLC behavior remain supported.</p>
+<pre><code class="language-powershell">python -m unittest tests.test_fee_policy_v43 tests.test_spending_v43 tests.test_node_contract -v
+python -m sumuww --network regtest --database isolated.sqlite wallet-send --wallet test-wallet.json --to-address drt1... --amount 1 --fee-mode normal
+# Alternatively choose --fee-rate 2.5 (yugeon/vB). Legacy --fee is a total in SMW.
+</code></pre>
+<p>The tests use public fixture keys and disposable databases. They cover replacement descendants, rollback, concurrent writers, reorganization, signature thresholds, activation boundaries and output locks. No production wallet or funds are used.</p>
+<h2>Replacement history and script inspection</h2>
+<p>Wallet history retains the selected script's locally observed replacement records across restart, including descendants removed when a parent is replaced. These rows are historical information and never enter balance calculations. A current mempool or active-chain transaction takes precedence over an older replacement record, including after a reorganization. The node stores public script hashes and integer net amounts in the same atomic write as the replacement. It stores no keys or signatures in this history. The history is limited to 1,000 replacement events and 4,000,000 bytes of amount summaries; older records can expire. Records from earlier versions without amount summaries are not reconstructed. This is local history, not a network-wide archive. A descendant is labelled as removed after its parent was replaced, not as a successful payment.</p>
+<p>Explorer displays a spending template only when the revealed witness script matches the previous output's P2WSH hash and has the canonical supported form. This is decoding, not signature validation or an assertion of spendability. Unrevealed output conditions are not inferred from a script hash. Public multisig and output-lock activation remains unscheduled.</p>
+<h2>Block reward breakdown</h2>
+<p>The history and API expose each block's new-issuance reward, transaction-fee reward and claimed total. These are block totals, not an allocation to an individual address. A wallet's received amount remains separate. Amounts use integer yugeon and eight-decimal SMW strings. History, balances and spending rules are unchanged.</p>
+<p>The node computes transaction fees from validated inputs minus outputs. A derived fee index is committed atomically with a newly accepted block. Existing active-chain records are rebuilt during verified startup replay. This does not modify block bytes, transaction IDs, balances or consensus. Reorganizations select the replacement branch's records. A legacy read-only database without fee information reports unknown values, never an invented zero.</p>
+<p><code>getblock</code> and <code>getblocktemplate</code> include <code>reward</code>; a confirmed coinbase returned by <code>getrawtransaction</code> includes <code>mining_reward</code>. The object has <code>scope="block"</code>, <code>amount_unit="yugeon"</code>, <code>allocation</code> and paired <code>_units</code>/<code>_smw</code> fields: <code>subsidy_reward</code>, <code>fee_reward</code>, <code>claimed_reward</code>, <code>subsidy_limit</code>, <code>transaction_fees</code>, <code>unclaimed_reward</code>. A fully claimed reward has <code>allocation="full"</code>. For an underclaim, the paid split is unspecified: both component rewards are null, with the limits, fees, total and unclaimed amount available separately. Genesis is marked <code>genesis_unspendable</code>. Missing fee data is marked <code>unavailable</code>. Zero issuance after the subsidy schedule ends remains distinct from unknown data: a fully claimed fee-only reward reports an issuance reward of zero.</p>
+<p>Explorer calculates the same block breakdown from its indexed public transaction inputs and outputs. It reads the node database without modifying it. Mining statistics remain an aggregate view; individual block and mining-transaction details provide the breakdown.</p><footer>SUMUWW · 0.57.46 · 2026-10-25</footer></main></body></html>
