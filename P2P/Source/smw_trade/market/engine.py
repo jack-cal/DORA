@@ -31,6 +31,8 @@ class Engine:
         self.margin=21600 if board.network=='mainnet' else 20
         self.minimum=21600 if board.network=='mainnet' else 20
         self.claim_minimum=3600 if board.network=='mainnet' else 5
+        from .funding import Funding
+        self.funding=Funding(self)
 
     def _load(self,session):
         terms=self.board.terms(session)
@@ -153,13 +155,14 @@ class Engine:
         if remaining[t['coin']]<self.minimum or remaining['SMW']<remaining[t['coin']]+self.margin:raise ValueError('Insufficient refund safety window. No new funding allowed.')
         if remaining['SMW']>self.long+600 or remaining[t['coin']]>self.short+600:raise ValueError('Refund window exceeds the signed protocol policy.')
 
-    def reserved_inputs(self,coin):
+    def reserved_inputs(self,coin,session=None,include_holds=True):
         reserved=[]
         with self.board.connect() as c:rows=[json.loads(r[0]) for r in c.execute('SELECT state FROM swaps')]
         for row in rows:
             for saved in row['ops'].values():
                 if self.canceled(row) and not saved['submitted']:continue
                 if saved['coin']==coin:reserved.extend(tuple(x) for x in saved.get('inputs',[]))
+        if include_holds:reserved.extend(self.funding.reserved(coin,session=session))
         return reserved
 
     def _check(self,action,t,s,specs,observed):
@@ -196,7 +199,7 @@ class Engine:
                             raise ValueError('Resolve the other trade using this coin before signing another transaction.')
                 observed=self._observe(t,s,specs,action=action);self._check(action,t,s,specs,observed)
                 key=self.vault.key(coin);node=self.nodes[coin];ref=observed[coin].get('reference')
-                reserved=self.reserved_inputs(coin)
+                reserved=self.reserved_inputs(coin,session=session)
                 if action=='lock':
                     op=node.prepare_lock(specs[coin],key,reserved)
                 elif action=='claim':

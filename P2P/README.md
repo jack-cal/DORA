@@ -1,5 +1,8 @@
 # SUMUWW P2P — SMW/BTC trading
 
+Current release: **0.3.6**. Both trading participants must update for the new
+encrypted automatic connections. See [current changes](Source/CURRENT_GUIDE.md).
+
 Update every validating full node and ordinary wallet before **block 9,600**. The connection-proof candidate certificate and renewal rules activate at that height. English is the first-launch language on every operating-system language; a saved language choice remains in effect.
 
 [All components](../README.md) · [Full/Light comparison](Source/EDITIONS.md) · [User guide](Source/README.txt) · [Verification](Source/VERIFICATION.txt)
@@ -9,18 +12,20 @@ Update every validating full node and ordinary wallet before **block 9,600**. Th
 **SMW/BTC conditional exchange transactions activate from SUMUWW block 9100.**
 Full requires your own synchronized **unpruned Bitcoin Core with txindex**;
 Light requires no local Bitcoin Core. Both require the current synchronized
-SUMUWW node. Setup and ads can be used earlier, but they move no funds.
+SUMUWW node. Wallet setup can be used earlier. Posting requires an active paying chain and confirmed funds.
 
 **[Read the detailed Bitcoin setup and block-9100 guide](Source/BITCOIN_SETUP.md)**
 for disk space, download, configuration, local authentication, readiness checks,
 Light's verification limits and funded-trade recovery.
 
-## Current — 0.3.5
+## Current — 0.3.6
 
 | Edition | Windows download | Release notes | Source |
 |---|---|---|---|
-| Full — your local Bitcoin Core | [Full Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.5/SUMUWW-P2P-Full-0.3.5-Windows.zip) | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.5) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.5/SUMUWW-P2P-0.3.5-Source.zip) |
-| Light — Bitcoin headers and transaction proofs | [Light Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.5/SUMUWW-P2P-Light-0.3.5-Windows.zip) | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.5) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.5/SUMUWW-P2P-0.3.5-Source.zip) |
+| Full — your local Bitcoin Core | [Full Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.6/SUMUWW-P2P-Full-0.3.6-Windows.zip) | [Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.6) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-full-v0.3.6/SUMUWW-P2P-0.3.6-Source.zip) |
+| Light — Bitcoin headers and transaction proofs | [Light Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.6/SUMUWW-P2P-Light-0.3.6-Windows.zip) | [Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.6) | [Source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/p2p-light-v0.3.6/SUMUWW-P2P-0.3.6-Source.zip) |
+
+Posting requires confirmed paying funds plus fees, with local input allocations and maker/taker rechecks. Orders have native Trade, Open trade and Cancel buttons; title and description fields are removed. Peer discovery and reconnection are automatic, with TLS 1.3 and identity verification. Allocations are local, not on-chain escrow; general wallet withdrawals are not included. See [verification and limits](Source/VERIFICATION.txt).
 
 The current builds check signed SUMUWW transactions with the connected node before broadcast. Rejected checks are not broadcast. Agreed swap amounts and funding references stay fixed. The fee review supports current-queue estimates, manual rates and explicit child-transaction fee increases; Bitcoin fees retain their own units. Current documentation is included in all 34 supported languages.
 
@@ -41,9 +46,9 @@ Extract the complete ZIP and run the named EXE in PC. The Full and Light profile
 are separate. Use a complete Recovery backup when moving a funded trade; do not
 run duplicate copies of the same wallet concurrently. See [migration and limits](Source/EDITIONS.md).
 
-The board requires directly reachable counterparty addresses. There is no hosted
-public orderbook, automatic NAT traversal, automatic fee bumping or unattended
-refund service. Network fees apply. Tests used disposable assets; public checks
+The 0.3.6 board discovers peers automatically and uses TLS identity routes.
+There is no hosted public orderbook, universal NAT traversal, automatic fee
+bumping or unattended refund service. Network fees apply. Tests used disposable assets; public checks
 were read-only and do not establish a mainnet settlement audit.
 
 ## Upgrade before block 9,000

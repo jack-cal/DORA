@@ -1,3 +1,6 @@
-# Release source — 26 October 2026
+# P2P 0.3.6 source — 26 October 2026
 
-Includes the source-block-9600 upgrade and P2P repairs. SOURCE_COMMIT.txt in the source archive identifies the published commit; SOURCE_FILES.json records the exact included files.
+Full and Light 0.3.6 share this source. The release tags p2p-full-v0.3.6 and
+p2p-light-v0.3.6 identify the same repository commit. The attached source archive
+records that exact commit in SOURCE_COMMIT.txt and each file in SOURCE_FILES.json.
+Wallets, personal chain databases and private connection logs are excluded.

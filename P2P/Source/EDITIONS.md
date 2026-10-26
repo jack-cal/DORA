@@ -1,4 +1,4 @@
-# SUMUWW P2P 0.3.4 — Full and Light
+# SUMUWW P2P 0.3.6 — Full and Light
 
 Both Windows editions share a signed SMW/BTC buy/sell board, exact prices and
 quantities, local signing, encrypted recovery records and deadline refunds.
@@ -118,9 +118,12 @@ explicit local actions. There is no unattended watcher or automatic fee bumping.
 The fixed fee budget may be inadequate during congestion; inspect an unresolved
 saved transaction instead of deleting records or signing a conflicting trade.
 
-The board uses direct reachable peer addresses. It has no hosted order book,
-automatic Internet discovery or NAT traversal. Orders fill as a whole and are
-not proof of available funds. There is no separately deployed exchange contract
+The board discovers peers automatically and uses bidirectional TLS 1.3 and
+identity routes. Users do not enter counterparty IPs. It has no hosted order
+book or universal NAT traversal. Reachable updated participants are required.
+Posting checks confirmed paying funds and fees, and allocates inputs locally;
+both parties are rechecked before reservation. A received advertisement alone
+is not an independently verified proof of funds. Orders fill as a whole. There is no separately deployed exchange contract
 or application operator fee; blockchain transaction fees and operating resources
 still apply. Mainnet funds were not transferred in verification. Test success
 does not establish an independent security audit or guaranteed settlement.
@@ -134,7 +137,7 @@ does not establish an independent security audit or guaranteed settlement.
 - [Electrum public server directory](https://github.com/spesmilo/electrum/blob/master/electrum/chains/mainnet/servers.json)
 - [User instructions](README.txt), [changes](RELEASE_NOTES.txt), [verification](VERIFICATION.txt)
 
-## 0.3.4
+## 0.3.6
 
 Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and fees remain fixed; Bitcoin fees use their own units.
 

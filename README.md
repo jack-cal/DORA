@@ -13,12 +13,14 @@ SUMUWW is an independent SHA-256d proof-of-work coin with asynchronous connectio
 | Windows ordinary wallet | 1.0.8 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.8) | [Source](Wallet/Desktop) |
 | Android ordinary wallet | 1.1.7 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.7) | [Source](Wallet/Source) |
 | Local block explorer | 0.4.11 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.11) | [Source](Explorer/Source) |
-| P2P Full — SMW/BTC trading | 0.3.5 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.5) | [Source](P2P/Source) |
-| P2P Light — SMW/BTC trading | 0.3.5 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.5) | [Source](P2P/Source) |
+| P2P Full — SMW/BTC trading | 0.3.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.6) | [Source](P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.6) | [Source](P2P/Source) |
 
 [Current node documentation in 34 languages](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261026-r1) · [English whitepaper 2.3](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.3-en) · [Component installation guide](Documentation/COMPONENT_SUITE.md)
 
 ## Changes in these versions
+
+P2P Full and Light 0.3.6 require confirmed paying funds before posting, add a Trade button beside each order and connect trading peers automatically over TLS 1.3. Both trading participants need 0.3.6. See [the P2P guide](P2P/README.md) and [verification limits](P2P/Source/VERIFICATION.txt).
 
 Mining history and block APIs separate new issuance, transaction fees and total block rewards. Wallet-specific received amounts remain separate. Automatic fee previews use the connected node's current pending queue, block capacity and transaction priority; they do not sample past block fees or claim a view of every node. Manual rates and the final fee review remain available. One yugeon is 0.00000001 SMW.
 
@@ -46,8 +48,8 @@ Those packages introduced the All blocks browser, verified-contact recovery, cor
 
 **Conditional exchange transactions are enabled from SUMUWW block 9100.** Both
 P2P editions require a current synchronized local SUMUWW full node. Setup,
-wallet creation and posting ads can happen earlier; they do not move coins or
-bypass activation. Reaching 9100 alone does not guarantee a working trade.
+wallet creation can happen earlier. In P2P 0.3.6, posting requires confirmed
+paying funds and fees on an active paying chain; it does not bypass activation. Reaching 9100 alone does not guarantee a working trade.
 
 **Full requires your own synchronized, unpruned Bitcoin Core with `txindex=1`.**
 It downloads and retains Bitcoin history in addition to the trading application.

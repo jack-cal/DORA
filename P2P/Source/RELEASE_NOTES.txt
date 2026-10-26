@@ -1,69 +1,17 @@
-SUMUWW 0.3.5 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+SUMUWW P2P Full / Light 0.3.6 — release, 26 October 2026
 
-SUMUWW P2P 0.3.5 — Full and Light — 2026-10-23
+- Require confirmed paying funds and fees before posting; allocate inputs per
+  order and recheck both sides at reservation. Preserve allocations in recovery.
+- Remove title/detail fields. Add Trade/Open trade/Cancel buttons beside rows.
+  Trade opens the prepared exchange; unsigned/unfunded posts are not accepted
+  by the application posting path. Each coin spend requires local review.
+- Add automatic LAN/public-DHT discovery and reconnection, bidirectional TLS 1.3,
+  identity routing, identity-key pinning and bounded network resource use.
+  Remove manual counterparty IP controls. Both P2P applications need this update.
+- Keep existing wallets, agreements, signed transactions and valid chain data.
+  Retain English on first launch, saved language choices and all 34 languages.
+- General wallet withdrawals are not included. Internet connectivity depends
+  on reachable updated peers; no universal NAT traversal is claimed.
 
-Activation and prerequisites
-- SMW/BTC conditional exchange transactions activate from SUMUWW block 9100.
-- Both editions require the current synchronized local SUMUWW full node.
-- Full requires synchronized unpruned Bitcoin Core with txindex; Light does not.
-- BITCOIN_SETUP.md details disk space, download, configuration and recovery.
-
-Two separate Windows downloads
-- Full retains local Bitcoin Core verification, full history and synchronized txindex.
-- Light adds locally verified Bitcoin headers and transaction inclusion proofs,
-  supplied by three configurable Electrum TLS servers. Local Bitcoin Core is not required.
-- Both use a current synchronized local SUMUWW node and the same SMW/BTC trading
-  protocol. Full and Light participants can trade with each other.
-- Separate executable names and default profiles preserve existing trading data.
-
-Trading board and recovery
-- Signed SMW/BTC buy/sell posts, exact prices and quantities, whole-order reservations.
-- Explicit local review for funding, receiving and deadline refunds.
-- SMW funds first; verified chain observations determine settlement state.
-- Encrypted signed transactions are saved before broadcast and retried unchanged.
-- Recovery backups preserve keys, addresses, order identity and funded-trade records.
-- Cancellation blocks new funding but cannot bypass refund deadlines.
-- ETH, BNB and XRP are unsupported. Retired encrypted records remain inactive.
-
-Light verification
-- Verify every header from genesis: links, PoW, expected difficulty and retargets,
-  median/future time bounds, activated header versions and cumulative work.
-- Apply Bitcoin Core v31.0's mainnet minimum-work floor; reject stale public tips.
-- Verify TLS certificates and genesis; require two distinct server IPs on the
-  verified tip. Private keys and passwords remain local.
-- Compare histories, unspent outputs and raw transactions. Verify output amounts
-  and scripts from transaction bytes and Merkle inclusion against local headers.
-- Continue with one unavailable server if two consistent responses remain.
-  Conflicts, forged amounts and invalid inclusion proofs stop payment preparation.
-- Follow greater-work reorganizations and revalidate affected proofs.
-- Show synchronization progress and verified header/peer counts in the interface.
-- Correct unsupported-asset connection errors without contacting retired services.
-
-Language and packaging
-- English default and documentation; all 34 offline UI languages remain selectable.
-- Directly authored edition/server captions and light-verification scope notice.
-- Existing icon, styling and vertical Mongolian support; compact vertical metadata keeps the workspace usable in smaller windows.
-- Separate Full/Light Windows assets, shared source and build instructions, SHA-256 checksums
-  and English verification reports. Windows executables are not Authenticode signed.
-
-Consensus boundary retained
-Valid legacy blocks through 8999 remain usable. Old-rule blocks at 9000 inclusive
-and above are rejected by upgraded nodes. Upgrade miners and validating nodes.
-Issuance, halvings, 20% asynchronous connection proofs and DGW every ten blocks
-are unchanged. Conditional HTLC spending remains gated at height 9100.
-
-Limits
-Light is SPV, not full Bitcoin consensus validation. Matching servers can collude
-or omit transactions; different IPs do not prove different operators. Script queries
-reveal transaction interests. No mainnet funds were transferred in verification.
-There is no independent security certification, unattended claim/refund watcher,
-automatic fee bumping, hosted public orderbook or NAT traversal. Monitor funded
-trades and retain complete recovery backups. Fixed fees may be insufficient in
-congestion. This release cannot settle or refund retired ETH/BNB/XRP trades.
-Read EDITIONS.md, README.txt and VERIFICATION.txt before funding.
-
-## 0.3.5
-
-Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and HTLC fee reserves remain fixed. Network fees use the current queue or a manual rate; a pending payment can receive a reviewed child-fee increase. Bitcoin uses its own fee units.
-
-[Current features in 34 languages](docs/features/index.html).
+See VERIFICATION.txt for the actual test scope. Full and Light have separate
+release downloads, with the same matching source and SHA-256 checksum files.

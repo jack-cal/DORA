@@ -50,6 +50,13 @@ def build():
     assert set(result)==set(languages),(set(languages)-set(result))
     from light_translations import extend
     extend(result)
+    from workflow_translations import extend as workflow
+    workflow(result)
+    from peer_translations import extend as peers
+    peers(result)
+    # Preserve directly authored extensions from later feature releases.
+    existing=json.loads((root/'market/translations.json').read_text(encoding='utf8'))
+    for code in result:result[code]={**existing.get(code,{}),**result[code]}
     (root/'market/translations.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8',newline='\n')
     print(f'{len(result)} languages, {len(result["en"])} additional messages each')
 

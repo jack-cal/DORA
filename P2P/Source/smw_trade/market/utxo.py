@@ -111,19 +111,24 @@ class UtxoAdapter:
         if txid(tx)!=digest:raise ValueError('RPC transaction ID mismatch.')
         return tx,value.get('confirmations',0)
 
-    def prepare_lock(self,spec,key,reserved=()):
-        if not self.info()['active']:raise ValueError('SUMUWW HTLC spending activates at height 9100. No funding before activation.')
-        if key.pubkey.hex()!=spec['sender']['pubkey']:raise ValueError('Wrong funding key.')
-        contract=self.contract(spec);amount=spec['amount']+spec['fee'];selected=[];total=0;fee=0
+    def select_funding(self,amount,key,reserved=()):
+        selected=[];total=0;fee=0
         for coin in self.coins(key):
             if (coin['txid'],coin['index']) in reserved:continue
             selected.append(coin);total+=coin['value']
             dummy=Transaction(2,tuple(TxInput(bytes.fromhex(c['txid'])[::-1],c['index'],witness=(bytes(73),key.pubkey)) for c in selected),
-                              (TxOutput(amount,contract.script_pubkey),TxOutput(294,key.script_pubkey)),0)
+                              (TxOutput(amount,b'\x00\x20'+bytes(32)),TxOutput(294,key.script_pubkey)),0)
             fee=self.fee_quote(self.vsize(dummy))
             # Keep an owned change output for a reviewed child-fee increase.
             if total>=amount+fee+294:break
-        if total<amount+fee+294:raise ValueError('Insufficient confirmed funds including fees.')
+        if total<amount+fee+294:raise ValueError('Deposit confirmed funds and network fees into your trading wallet first.')
+        return selected,fee
+
+    def prepare_lock(self,spec,key,reserved=()):
+        if not self.info()['active']:raise ValueError('SUMUWW HTLC spending activates at height 9100. No funding before activation.')
+        if key.pubkey.hex()!=spec['sender']['pubkey']:raise ValueError('Wrong funding key.')
+        contract=self.contract(spec);amount=spec['amount']+spec['fee']
+        selected,fee=self.select_funding(amount,key,reserved);total=sum(c['value'] for c in selected)
         change=total-amount-fee
         outputs=[TxOutput(amount,contract.script_pubkey)]
         if change:outputs.append(TxOutput(change,key.script_pubkey))

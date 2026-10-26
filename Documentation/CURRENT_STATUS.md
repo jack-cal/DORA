@@ -7,7 +7,9 @@
 | Windows ordinary wallet | 1.0.8 |
 | Android ordinary wallet | 1.1.7 |
 | Explorer | 0.4.11 |
-| P2P Full / Light | 0.3.5 |
+| P2P Full / Light | 0.3.6 |
+
+P2P 0.3.6 adds funded order checks, per-order Trade buttons and automatic encrypted trading connections. Its [verification record](../P2P/Source/VERIFICATION.txt) supplements the earlier suite report below.
 
 [Downloads and matching sources](../README.md) · [Installation](COMPONENT_SUITE.md) · [Verification](RELEASE_VERIFICATION_20261026.md)
 

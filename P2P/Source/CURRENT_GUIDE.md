@@ -1,7 +1,23 @@
-# SUMUWW P2P Full / Light 0.3.5
+# SUMUWW P2P Full / Light 0.3.6
 
-This locally prepared update includes current-queue fee estimation, manual rates and reviewed child-fee increases. Agreed trading amounts and fee reserves remain unchanged. A canceled unsubmitted preview releases its input reservations. Refunds need only the chain holding your funds; conflicting or unavailable observations never count as confirmed.
+Deposit SMW to sell or BTC to buy, including fees, into Trading wallet and wait
+for confirmations. Publish checks available funds and reserves local inputs
+per order. Trade beside an order rechecks funds and opens the prepared exchange.
+Titles and free-text descriptions are removed. Every coin spend still requires
+local review. This allocation is not on-chain escrow.
 
-Use a synchronized SUMUWW node updated for source block 9,600. Full requires unpruned Bitcoin Core with txindex. Light checks Bitcoin headers and inclusion proofs against independent TLS servers; it does not fully validate Bitcoin. Both editions use separate profiles and support SMW/BTC. Every spend requires review. There is no unattended payment retry or guaranteed confirmation time.
+Peer discovery, reconnection and order synchronization are automatic. TLS 1.3
+and authenticated bidirectional routes replace manual counterparty IP entry.
+Both P2P programs must be updated. Internet operation requires reachable peers;
+the application does not bypass every router or firewall.
 
-Read [setup and recovery](BITCOIN_SETUP.md), [upgrade details](UPGRADE_9600.md), [34-language notes](docs/upgrade9600/index.html) and [edition differences](EDITIONS.md). Back up the complete private recovery archive while funds are locked. Release publication is a separate step; no new GitHub release is claimed by this local build.
+Full requires synchronized local Bitcoin Core with txindex; Light verifies
+headers and inclusion proofs and relies on servers for complete history. Both
+require the current synchronized SUMUWW node. English remains the initial
+language, with saved choices and all 34 languages retained.
+
+Read [setup](BITCOIN_SETUP.md), [security and connection scope](NETWORK_SECURITY.md),
+[edition differences](EDITIONS.md) and [verification](VERIFICATION.txt).
+See [translated feature notes](docs/features/index.html) and the
+[Full release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.6) /
+[Light release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.6).

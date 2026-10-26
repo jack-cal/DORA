@@ -20,7 +20,7 @@ class MarketUiTests(unittest.TestCase):
                 app.connect('127.0.0.1',peer.relay.address[1]);peer.connect('127.0.0.1',app.relay.address[1])
                 self.assertEqual(len(ui.extra),34)
                 ui.message.set(ui.tr('Done.'))
-                ui.vars['quantity'].set('10.12345678');ui.vars['price'].set('1');ui.vars['title'].set('SMW / Bitcoin board');ui.set_side(1)
+                ui.vars['quantity'].set('10.12345678');ui.vars['price'].set('1');ui.set_side(1)
                 with patch('smw_trade.market.desktop.messagebox.showerror',side_effect=lambda *a,**k:failures.append(a)),patch('smw_trade.market.desktop.messagebox.askyesno',return_value=True):
                     for code,name in ui.localization.languages.items():
                         ui.language.set(name);ui.change_language();root.update()
@@ -34,21 +34,18 @@ class MarketUiTests(unittest.TestCase):
                         self.assertEqual(tuple(ui.pair_select['values']),('BTC',))
                         self.assertEqual(tuple(ui.node_select['values']),('SMW','BTC'))
                         self.assertNotIn('contract',ui.vars)
-                    # Publish and cancel both sides of each pair through actual buttons.
+                    # Deposit-free publishing must fail through actual buttons.
                     ui.language.set('English');ui.change_language()
                     for coin in ('BTC',):
                         for side in (0,1):
                             ui.vars['coin'].set(coin);ui.vars['quantity'].set('10');ui.vars['price'].set('0.5');ui.set_side(side)
-                            ui.buttons['Publish'].invoke();drain();order=app.store.listing()[0]
-                            self.assertEqual((order['coin'],order['side'],order['total']),(coin,'sell' if side==0 else 'buy','5'))
-                            ui.orders.selection_set(order['id']);ui.buttons['Cancel my order'].invoke();drain()
-                            self.assertEqual(app.store.listing()[0]['status'],'canceled')
-                    post=peer.create(side='sell',coin='BTC',quantity='20',price='0.75');ui.buttons['Synchronize'].invoke();drain();ui.orders.selection_set(post['id'])
-                    ui.buttons['Reserve selected order'].invoke();drain();self.assertEqual(len(app.store.sessions()),1)
+                            ui.buttons['Publish'].invoke();drain()
+                            self.assertFalse(app.store.listing());self.assertEqual(len(failures),1);failures.clear()
                     ui.vars['password'].set(PASSWORD);ui.vars['confirm'].set(PASSWORD);ui.buttons['Create wallet'].invoke();drain();self.assertFalse(app.vault.state()['locked'])
                     ui.buttons['Lock'].invoke();drain();self.assertTrue(app.vault.state()['locked'])
                     ui.vars['password'].set(PASSWORD);ui.buttons['Unlock vault'].invoke();drain();self.assertFalse(app.vault.state()['locked'])
-                    ui.vars['listen'].set('127.0.0.1');ui.vars['listen_port'].set('0');ui.buttons['Apply listener'].invoke();drain()
+                    self.assertNotIn('peer',ui.vars);self.assertNotIn('listen',ui.vars)
+                    ui.buttons['Connect'].invoke();drain()
                     self.assertFalse(failures,failures)
                 out=os.environ.get('SUMUWW_UI_SCREENSHOTS')
                 if out:
@@ -64,7 +61,7 @@ class MarketUiTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp);a=MarketApplication(ROOT,path/'a','test');b=None
             try:
-                a.vault.create(PASSWORD);a.create(side='buy',coin='BTC',quantity='1',price='0.001')
+                a.vault.create(PASSWORD);a.store.create(side='buy',coin='BTC',quantity='1',price='0.001')
                 identity=a.store.identity.public;addresses=a.vault.state()['addresses'];a.backup(path/'recovery.smwbackup')
                 b=MarketApplication(ROOT,path/'b','test');b.restore_backup(path/'recovery.smwbackup',PASSWORD)
                 self.assertEqual(b.store.identity.public,identity);self.assertEqual(b.vault.state()['addresses'],addresses)

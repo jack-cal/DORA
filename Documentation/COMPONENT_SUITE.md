@@ -9,8 +9,8 @@ Update every validating full node and ordinary wallet before **block 9,600**. Th
 | Windows ordinary wallet | 1.0.8 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.8) | [Source](../Wallet/Desktop) |
 | Android ordinary wallet | 1.1.7 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.7) | [Source](../Wallet/Source) |
 | Local block explorer | 0.4.11 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/explorer-v0.4.11) | [Source](../Explorer/Source) |
-| P2P Full — SMW/BTC trading | 0.3.5 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.5) | [Source](../P2P/Source) |
-| P2P Light — SMW/BTC trading | 0.3.5 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.5) | [Source](../P2P/Source) |
+| P2P Full — SMW/BTC trading | 0.3.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-full-v0.3.6) | [Source](../P2P/Source) |
+| P2P Light — SMW/BTC trading | 0.3.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.6) | [Source](../P2P/Source) |
 
 ## Installation and existing data
 

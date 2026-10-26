@@ -1,5 +1,5 @@
 """SMW/BTC trading board; translated native controls and explicit spend review."""
-import json,threading
+import json,threading,time
 from pathlib import Path
 from queue import Queue,Empty
 import tkinter as tk
@@ -10,6 +10,7 @@ from ..desktop import Desktop as LegacyStyle
 from . import VERSION
 from .amounts import QUOTES,quote_total,show
 from .vault import COINS
+from .order_rows import OrderRows
 
 class MarketDesktop:
     _style=LegacyStyle._style
@@ -21,10 +22,10 @@ class MarketDesktop:
         try:self.root.iconbitmap(str(app.root/'vendor/assets/sumuww.ico'))
         except tk.TclError:pass
         self.queue=Queue();self.busy=False;self.closing=False;self.workers=[];self.buttons={};self.images=[];self.last_result=None
-        self.vars={k:tk.StringVar(value=v) for k,v in {'coin':'BTC','quantity':'','price':'','title':'','details':'','password':'','confirm':'',
-                   'peer':'127.0.0.1','port':'','listen':'127.0.0.1','listen_port':'0','node_coin':'SMW','url':'','auth':'','server1':'','server2':'','server3':'',
+        self.vars={k:tk.StringVar(value=v) for k,v in {'coin':'BTC','quantity':'','price':'','password':'','confirm':'',
+                   'node_coin':'SMW','url':'','auth':'','server1':'','server2':'','server3':'',
                    'fee_mode':'','fee_rate':''}.items()}
-        self.side=tk.IntVar(value=0);self.message=tk.StringVar();self.total=tk.StringVar();self.wallet_state=tk.StringVar()
+        self.side=tk.IntVar(value=0);self.message=tk.StringVar();self.total=tk.StringVar();self.wallet_state=tk.StringVar();self.balance_text=tk.StringVar();self.last_paint=0
         self.vars['quantity'].trace_add('write',lambda *_:self.total_changed());self.vars['price'].trace_add('write',lambda *_:self.total_changed())
         self._style();self.layout();self.paint();self.root.protocol('WM_DELETE_WINDOW',self.close);self.timer=self.root.after(100,self.poll)
 
@@ -84,14 +85,13 @@ class MarketDesktop:
         self.pair_select=ttk.Combobox(left,textvariable=self.vars['coin'],values=QUOTES,state='readonly');self.pair_select.pack(fill='x',pady=5);self.pair_select.bind('<<ComboboxSelected>>',lambda _:self.total_changed())
         self.row(left,'SMW quantity','quantity');self.row(left,'Price per SMW','price')
         VerticalLabel(left,textvariable=self.total).pack(anchor='w',pady=6)
-        self.row(right,'Title','title');self.row(right,'Details','details');self.label(right,'Full quantity only.',wraplength=380).pack(anchor='w',pady=4)
+        self.label(right,'Deposit the paying coin and network fees before publishing.',wraplength=380).pack(anchor='w',pady=4)
+        self.label(right,'Full quantity only.',wraplength=380).pack(anchor='w',pady=4)
         self.button(right,'Publish',self.publish).pack(anchor='e',pady=6)
-        self.orders=self.table(board,[('side','Side',100),('coin','Trading pair',110),('quantity','SMW quantity',140),('price','Price per SMW',155),('total','Total',150),('title','Title',200),('status','Status',120)])
-        self.order_details=tk.Text(board,height=3,wrap='word',bg='#142038',fg='#edf2ff',relief='flat',state='disabled');self.order_details.pack(fill='x',pady=4)
-        self.orders.bind('<<TreeviewSelect>>',self.show_order)
         actions=ttk.Frame(board);actions.pack(fill='x')
-        for title,callback in [('Reserve selected order',self.reserve),('Cancel my order',self.cancel_post),('Synchronize',lambda:self.work(self.app.sync))]:self.button(actions,title,callback).pack(side='left',padx=5,pady=5)
-        actions.pack_configure(before=self.orders.master)
+        self.button(actions,'Synchronize',lambda:self.work(self.app.sync)).pack(side='left',padx=5,pady=5)
+        self.button(actions,'Trading wallet',lambda:self.tabs.select(2)).pack(side='left',padx=5,pady=5)
+        self.orders=OrderRows(board,self.tr,self.open_order)
         self.label(trades,'Configure both chains before trading.',wraplength=1000).pack(anchor='w')
         self.trades=self.table(trades,[('side','Side',110),('coin','Trading pair',120),('quantity','SMW quantity',150),('total','Total',150),('session','Details',280)])
         toolbar=ttk.Frame(trades);toolbar.pack(fill='x')
@@ -108,12 +108,11 @@ class MarketDesktop:
         VerticalLabel(wallet,textvariable=self.wallet_state,wraplength=1000).pack(anchor='w',pady=6)
         self.label(wallet,'Keep the wallet backup and trade records.',wraplength=1000).pack(anchor='w',pady=6)
         self.addresses=tk.Text(wallet,height=10,wrap='word',bg='#142038',fg='#edf2ff',relief='flat',state='disabled');self.addresses.pack(fill='x')
+        self.button(wallet,'Refresh balance',lambda:self.work(self.app.refresh_balances)).pack(anchor='w',pady=6)
+        VerticalLabel(wallet,textvariable=self.balance_text,wraplength=1000).pack(anchor='w',pady=6)
         self.button(wallet,'Recovery backup',self.recovery_backup).pack(anchor='w',pady=10)
-        self.label(connections,'Peer',font=('Segoe UI',14,'bold')).pack(anchor='w')
-        self.row(connections,'Peer IP address','peer');self.row(connections,'Peer P2P port','port')
-        self.button(connections,'Connect',self.connect_peer).pack(anchor='e')
-        self.row(connections,'Listening address','listen');self.row(connections,'Listening port','listen_port')
-        self.button(connections,'Apply listener',self.apply_listener).pack(anchor='e')
+        self.label(connections,'Automatic peer connection',font=('Segoe UI',14,'bold')).pack(anchor='w')
+        self.button(connections,'Connect',lambda:self.work(self.app.sync)).pack(anchor='e')
         self.listener=tk.StringVar();VerticalLabel(connections,textvariable=self.listener).pack(anchor='w',pady=8)
         self.label(connections,'Chain connection',font=('Segoe UI',14,'bold')).pack(anchor='w',pady=8)
         self.node_select=ttk.Combobox(connections,textvariable=self.vars['node_coin'],values=COINS,state='readonly');self.node_select.pack(fill='x');self.node_select.bind('<<ComboboxSelected>>',lambda _:self.load_connection())
@@ -147,23 +146,31 @@ class MarketDesktop:
         if not values:messagebox.showinfo('SUMUWW',self.tr('Select an order.' if kind=='order' else 'Select a trade.'),parent=self.root);return None
         return values[0]
     def publish(self):
-        values={k:self.vars[k].get() for k in ('coin','quantity','price','title')};values.update(side='sell' if self.side.get()==0 else 'buy',note=self.vars['details'].get())
-        self.work(lambda:self.app.create(**values))
+        values={k:self.vars[k].get() for k in ('coin','quantity','price')};values.update(side='sell' if self.side.get()==0 else 'buy')
+        def published(result):
+            self.orders.selection_set(result['id'])
+            self.message.set(self.tr('Done.' if result['shared'] else 'Waiting for peers'))
+        self.work(lambda:self.app.create(**values),published)
     def cancel_post(self):
         oid=self.selected(self.orders,'order')
         if oid:self.work(lambda:self.app.cancel_post(oid))
-    def show_order(self,event=None):
-        selected=self.orders.selection()
-        text=''
-        if selected:
-            post=self.app.store.post(selected[0]);text=post['title']+'\n'+post['note']
-        self.order_details.configure(state='normal');self.order_details.delete('1.0','end');self.order_details.insert('1.0',text);self.order_details.configure(state='disabled')
+    def open_order(self,oid):
+        if self.busy:return
+        self.orders.selection_set(oid)
+        session=next((t['session'] for t in self.app.store.sessions() if t['post']==oid),None)
+        if session:self.open_trade(session);return
+        if self.app.store.post(oid)['maker']==self.app.store.identity.public:self.cancel_post();return
+        self.reserve()
+
+    def open_trade(self,sid):
+        self.paint();self.tabs.select(1);self.trades.selection_set(sid)
+        self.work(lambda:self.app.engine.status(sid),self.show_trade)
     def reserve(self):
         oid=self.selected(self.orders,'order')
         if not oid:return
         post=self.app.store.post(oid)
         review=f"{post['quantity']} SMW ↔ {show(post['quote_units'],post['coin'])} {post['coin']}\n"+self.tr('Full quantity only.')
-        if messagebox.askyesno(self.tr('Reserve order'),review,parent=self.root):self.work(lambda:self.app.reserve(oid))
+        if messagebox.askyesno(self.tr('Trade'),review,parent=self.root):self.work(lambda:self.app.reserve(oid),self.open_trade)
     def trade_command(self,command):
         sid=self.selected(self.trades,'trade')
         if sid:self.work(lambda:command(sid),self.show_trade)
@@ -175,7 +182,12 @@ class MarketDesktop:
             if p['action'].startswith('fee:'):
                 lines=[self.tr('Mainnet' if p['network']=='mainnet' else 'Test network'),self.tr('Increase fee'),
                        self.tr('Network fee')+': '+p['fee']+' '+p['coin'],self.tr('Send transaction?')]
-            if messagebox.askyesno(self.tr('Transaction review'),'\n\n'.join(lines),parent=self.root):self.work(lambda:self.app.engine.submit(sid,p['action'],p['txid']),self.show_trade)
+            def submit():
+                result=self.app.engine.submit(sid,p['action'],p['txid'])
+                try:self.app.sync_trade(sid)
+                except (OSError,ValueError):pass
+                return result
+            if messagebox.askyesno(self.tr('Transaction review'),'\n\n'.join(lines),parent=self.root):self.work(submit,self.show_trade)
         self.work(lambda:self.app.engine.preview_fee_increase(sid) if action=='increase_fee' else self.app.engine.preview(sid,action),reviewed)
     def show_trade(self,result):
         # No secret preimages, signed raw transactions or private keys enter this view.
@@ -183,6 +195,17 @@ class MarketDesktop:
         self.last_result=result
         phases={'prepared':'Prepare trade','completed':'Swap completed','refunded':'Refund confirmed','claim_ready':'Receive coins','refund_wait':'Checking refund height','locked':'Confirmed','pending':'Awaiting confirmations','canceled':'Canceled','unavailable':'Connection unavailable'}
         text=self.tr(phases.get(result.get('state'),'Done.'))
+        if result.get('session'):
+            terms=self.app.store.terms(result['session']);selling=self.app.engine.selling(terms)
+            own='SMW' if selling else 'BTC';other='BTC' if selling else 'SMW';chains=result.get('chains',{})
+            own_state=chains.get(own,{}).get('status');other_state=chains.get(other,{}).get('status')
+            next_action=None
+            if result.get('peer_ready') and result.get('state') not in ('canceled','completed','refunded','refund_wait','unavailable'):
+                if own_state=='missing' and (selling or other_state=='locked'):next_action='Lock my asset'
+                elif other_state=='locked' and (selling and own_state=='locked' or not selling and own_state=='claimed'):next_action='Receive coins'
+                else:next_action='Awaiting confirmations'
+            if next_action:text=self.tr(next_action)
+            text+='\n'+show(terms['smw_units'],'SMW')+' SMW ↔ '+show(terms['quote_units'],'BTC')+' BTC'
         for coin,state in result.get('chains',{}).items():
             label={'missing':'Not funded','pending':'Awaiting confirmations','locked':'Confirmed','claimed':'Swap completed','refunded':'Refund confirmed','unavailable':'Connection unavailable'}.get(state['status'],'Status')
             text+='\n\n'+coin+': '+self.tr(label)
@@ -208,12 +231,6 @@ class MarketDesktop:
     def auth_file(self):
         path=filedialog.askopenfilename(parent=self.root)
         if path:self.vars['auth'].set(path)
-    def connect_peer(self):
-        host=self.vars['peer'].get().strip();port=self.vars['port'].get()
-        self.work(lambda:self.app.connect(host,int(port)))
-    def apply_listener(self):
-        host=self.vars['listen'].get().strip();port=self.vars['listen_port'].get()
-        self.work(lambda:self.app.listen(host,int(port)))
     def load_connection(self):
         config=self.app.config['nodes'].get(self.vars['node_coin'].get(),{})
         for key,source in [('url','url'),('auth','credential_file')]:self.vars[key].set(config.get(source,''))
@@ -256,6 +273,7 @@ class MarketDesktop:
         self.app.header_progress=None
         self.busy=True;self.message.set(self.tr('Working…'))
         for b in self.buttons.values():b.configure(state='disabled')
+        self.paint()
         def run():
             try:self.queue.put((True,job(),done))
             except Exception as exc:self.queue.put((False,str(exc),None))
@@ -269,23 +287,23 @@ class MarketDesktop:
             self.message.set(self.tr('Done.' if ok else 'Action could not be completed.'))
             self.paint()
             if ok and done:done(value)
-            elif not ok:messagebox.showerror(self.tr('Action could not be completed.'),self.tr('Details')+':\n'+value,parent=self.root)
+            elif not ok:messagebox.showerror(self.tr('Action could not be completed.'),self.tr(value),parent=self.root)
         except Empty:pass
+        if not self.busy and time.monotonic()-self.last_paint>1:
+            self.paint();self.last_paint=time.monotonic()
         if self.closing and not self.busy:self.app.close();self.root.destroy();return
         self.timer=self.root.after(100,self.poll)
     def paint(self):
         state=self.app.state()
-        for tree in (self.orders,self.trades):
+        self.orders.render(state['orders'],{t['post']:t['session'] for t in state['sessions']},state['delivery'],self.busy)
+        for tree in (self.trades,):
             selected=tree.selection();tree.delete(*tree.get_children())
-            if tree is self.orders:
-                for p in state['orders']:
-                    tree.insert('','end',iid=p['id'],values=(self.tr('Sell SMW' if p['side']=='sell' else 'Buy SMW'),'SMW/'+p['coin'],p['quantity'],p['price'],p['total'],p['title'],self.tr({'active':'Available','reserved':'Reserved','canceled':'Canceled','expired':'Expired'}[p['status']])))
-            else:
-                for t in state['sessions']:tree.insert('','end',iid=t['session'],values=(self.tr('Sell SMW' if self.app.engine.selling(t) else 'Buy SMW'),'SMW/'+t['coin'],show(t['smw_units'],'SMW'),show(t['quote_units'],t['coin']),t['session'][:20]))
+            for t in state['sessions']:tree.insert('','end',iid=t['session'],values=(self.tr('Sell SMW' if self.app.engine.selling(t) else 'Buy SMW'),'SMW/'+t['coin'],show(t['smw_units'],'SMW'),show(t['quote_units'],t['coin']),t['session'][:20]))
             if selected and tree.exists(selected[0]):tree.selection_set(selected[0])
-        self.wallet_state.set(self.tr('Locked · Enter password to unlock.' if state['wallet']['locked'] else 'Unlocked · Stored in an AES-256-GCM encrypted file'))
+        self.wallet_state.set(self.tr('Create a trading wallet and deposit funds first.' if not state['wallet']['exists'] else 'Locked · Enter password to unlock.' if state['wallet']['locked'] else 'Unlocked · Stored in an AES-256-GCM encrypted file'))
+        self.balance_text.set('\n'.join(coin+': '+(self.tr('Connection unavailable') if value is None else self.tr('Confirmed')+' '+value['confirmed']+' · '+self.tr('Available')+' '+value['available']) for coin,value in state['balances'].items()))
         self.addresses.configure(state='normal');self.addresses.delete('1.0','end');self.addresses.insert('1.0','\n\n'.join(c+': '+a for c,a in state['wallet']['addresses'].items()));self.addresses.configure(state='disabled')
-        self.listener.set(self.tr('Listening address')+': '+str(state['listener'][0])+':'+str(state['listener'][1])+'   '+self.tr('Peer')+': '+str(len(state['peers'])))
+        self.listener.set(self.tr('Peer')+': '+str(len(state['peers']))+' · TLS 1.3' if state['peers'] else self.tr('Searching for trading peers…'))
     def close(self):
         if self.closing:return
         self.closing=True

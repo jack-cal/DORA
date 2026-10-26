@@ -155,8 +155,10 @@ you query. Use Full when you need your own full Bitcoin validation. Read the
 
 ## Trading, cancellation and recovery
 
-After activation and successful chain checks, publish a buy/sell post with the
-SMW amount and BTC unit price. The other participant reserves the whole order.
+After activation and successful chain checks, deposit SMW to sell or BTC to
+buy into Trading wallet, including network fees, and wait for confirmations.
+Publish with the SMW amount and BTC unit price. Click Trade beside an order
+to reserve its full quantity and automatically prepare/exchange the agreement.
 Both review the same signed terms. The SMW seller funds first; the buyer checks
 that confirmed lock before funding BTC. The seller claims BTC, revealing the
 secret that allows the buyer to claim SMW. Both mainnet chains require six
@@ -179,8 +181,9 @@ to switch editions, and stop the previous copy. Do not run duplicate copies of
 the same trading wallet concurrently. Existing ordinary-wallet and full-node
 data are not automatically imported or replaced.
 
-The order board uses directly reachable peer addresses. It has no hosted public
-marketplace or automatic NAT traversal. Test-chain trades, mixed-edition trades,
+The order board discovers peers automatically and routes signed trade messages
+over bidirectional TLS 1.3 sessions. It has no hosted public marketplace or
+universal NAT traversal. Internet discovery requires reachable updated peers. Test-chain trades, mixed-edition trades,
 cancellation and refunds passed the checks in [VERIFICATION.txt](VERIFICATION.txt).
 Public Bitcoin checks were read-only; no mainnet funds were transferred in those
 tests. The results do not constitute an independent security audit.

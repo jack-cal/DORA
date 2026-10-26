@@ -1,6 +1,6 @@
-SUMUWW 0.3.5 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+SUMUWW 0.3.6 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
 
-SUMUWW P2P 0.3.5 — Full and Light Windows editions
+SUMUWW P2P 0.3.6 — Full and Light Windows editions
 
 CHOOSE AN EDITION
 Full: run PC/SUMUWW-P2P-Full.exe with your synchronized local Bitcoin Core.
@@ -14,8 +14,8 @@ ACTIVATION AND SETUP
 SMW/BTC conditional exchange transactions activate from SUMUWW block 9100.
 The current synchronized SUMUWW full node is required in both editions.
 Full additionally requires synchronized unpruned Bitcoin Core with txindex.
-Light does not require local Bitcoin Core. Setup and ads can be used before
-activation; they do not move coins. Read BITCOIN_SETUP.md for detailed setup,
+Light does not require local Bitcoin Core. Wallet setup is available before
+activation; publishing now requires confirmed funds on an active paying chain. Read BITCOIN_SETUP.md for detailed setup,
 storage, authentication, readiness checks, fees and recovery instructions.
 
 ONE PAIR AND 34 LANGUAGES
@@ -41,13 +41,17 @@ identity, agreements, encrypted transactions and connection settings. Restore
 backup accepts either format in a new, empty profile. Restart locks the wallet.
 A wallet-only backup does not replace ongoing trade recovery records.
 
-DIRECT PEERS
-Connect to the other participant using a reachable IP address and port. The
-listener defaults to loopback; Internet access requires suitable binding,
-routing and firewall configuration. There is no automatic Internet discovery,
-NAT traversal or central marketplace. Synchronize fetches signed history.
-Reservations require a direct route to the author. Canceled and reserved posts
-remain in history. Signed post content is not proof of funds.
+AUTOMATIC TRADING CONNECTIONS
+The application discovers trading peers on the LAN and through a separate
+public DHT contact namespace, reconnects to remembered peers and synchronizes
+signed orders. Trading uses bidirectional TLS 1.3 connections and authenticated
+identity routes; users do not enter a counterparty IP. Both trading programs
+must be updated to 0.3.6. Old plaintext market connections are not accepted.
+Discovery needs reachable updated participants. It does not change router or
+firewall settings or guarantee connectivity through every NAT. When no peer
+has acknowledged a post, it remains visibly marked Waiting for peers.
+This is not a hosted orderbook, and transport encryption does not hide your
+network address from the directly connected peer. See NETWORK_SECURITY.md.
 
 CHAIN CONNECTIONS
 Configure both chains before preparing a trade:
@@ -78,16 +82,24 @@ settle or refund retired-market trades; keep the original backup/software if
 such a trade exists. Do not delete an unfinished trade to bypass a safety check.
 
 TRADE FLOW
-1. Publish a buy/sell post with SMW quantity, BTC unit price and details.
-2. The other party reserves the whole order; reservation moves no coins.
-3. Both prepare and exchange details. The signed agreement binds amounts,
+1. Create or unlock Trading wallet. Deposit SMW to sell or BTC to buy, plus
+   network fees, to the displayed address. Wait for confirmations. Refresh
+   balance shows confirmed and available funds; posting always rechecks them.
+2. Enter SMW quantity and BTC price, then Publish. Titles and descriptions are
+   removed. Confirmed inputs are allocated per order to prevent reuse by other
+   local orders. This allocation does not lock coins on the blockchain.
+3. Click Trade beside the chosen order and confirm its full amount. Both
+   wallets and chains must be ready. Funds are checked again, and the program
+   reserves the order, prepares the agreement and opens My trades. Own active
+   rows offer Cancel my order; reserved local trades offer Open trade.
+   The signed agreement binds amounts,
    chains, proven keys, confirmation policy, hash and refund deadlines.
 4. The SMW seller reviews and locks SMW first. The buyer verifies that confirmed
    lock before reviewing and locking BTC.
 5. The seller verifies both locks and claims BTC. The buyer reads the revealed
    secret from Bitcoin and claims SMW, even without a peer claim notification.
 6. Refresh status checks chain evidence. A peer cannot mark a trade paid.
-Every spend requires local review. A peer cannot unlock, sign or broadcast.
+Every spend requires local review. A peer cannot unlock the wallet or sign or broadcast a coin transaction.
 The exact signed transaction is encrypted and saved before broadcast; retries
 use that transaction. Network fees are additional to the order price.
 There is no operator service fee.
@@ -106,9 +118,9 @@ key, less network fees. A completed claim cannot also be refunded. A valid
 claim may still execute after cancellation while its chain conditions permit.
 Refunds are explicit local actions, not an unattended service.
 
-Unknown broadcast results remain pending, never completed. Automatic fee
-replacement is not implemented. An insufficient fixed UTXO fee requires
-inspection of the saved transaction. Unresolved operations are retained and
+Unknown broadcast results remain pending, never completed. Fee increases use
+a separately reviewed child transaction. Saved transactions are retained for
+inspection and recovery. Unresolved operations are retained and
 may block another trade from the same key. Keep passwords, recovery records,
 node access and adequate balances for transaction fees.
 
@@ -127,8 +139,13 @@ PYTHONPATH=vendor;tests;. python -m unittest discover -s tests -v
 all 34 languages, SMW/BTC wallet addresses and signed BTC-order reservations.
 See VERIFICATION.txt for completed checks and precise limits.
 
-## 0.3.5
+## 0.3.6
 
 Before broadcasting a signed SUMUWW transaction, P2P checks it against the connected node. A rejected check does not broadcast it. Agreed swap amounts and HTLC fee reserves remain fixed. Network fees use the current queue or a manual rate; a pending payment can receive a reviewed child-fee increase. Bitcoin uses its own fee units.
 
 [Current features in 34 languages](docs/features/index.html).
+
+WALLET SCOPE
+The trading wallet receives native SMW and BTC and handles swap locks, claims
+and refunds. A general send-to-any-address screen is not included in this
+release. Wallet-only backups use this application’s format.
