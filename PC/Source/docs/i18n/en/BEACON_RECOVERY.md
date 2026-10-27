@@ -2,7 +2,7 @@
 
 # Automatic beacon generation recovery
 
-First included in Windows 0.57.34 / Android 0.6.84; retained in Windows 0.57.47 / Android 0.6.96. This document describes a protocol extension;
+First included in Windows 0.57.34 / Android 0.6.84; retained in Windows 0.57.48 / Android 0.6.96. This document describes a protocol extension;
 it does not certify public-network readiness.
 
 ## What changes

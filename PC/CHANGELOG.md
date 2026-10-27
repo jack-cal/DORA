@@ -1,3 +1,19 @@
+# SUMUWW Windows 0.57.48
+
+Windows full node, wallet and optional CPU miner. The mining path submits proof-of-work blocks through normal node validation; connection evidence continues asynchronously after block acceptance.
+
+## Verification limits
+
+The generic mining error shown in the earlier desktop screenshot was not reproduced, so its exact cause remains unverified. This release does not claim to fix that specific error. Focused mining tests and disposable-network checks are recorded in the [release verification](../Documentation/RELEASE_VERIFICATION_20261027.md). No live-mainnet block was mined for verification.
+
+English remains the default. All 34 UI languages, saved preferences, existing wallets and valid chain history are retained. The source-block-9,600 upgrade remains required before block 9,600.
+
+## Downloads and source
+
+[Windows ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.48/SUMUWW-PC-0.57.48.zip) · [Windows source ZIP](https://github.com/jack-cal/SUMUWW/releases/download/pc-v0.57.48/SUMUWW-Windows-Source-0.57.48.zip) · [Checksums and verification](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.48)
+
+---
+
 # SUMUWW Windows 0.57.38
 
 Full node, wallet and optional CPU miner. This release includes the recent peer-recovery fixes and the All blocks browser.

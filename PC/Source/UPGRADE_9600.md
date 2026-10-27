@@ -8,7 +8,7 @@ Before activation, old proof rules remain in force. Once activated, unfinished o
 
 Multipart messages are limited to 16 MiB each, 64 MiB of declared concurrent payloads and 120 seconds total duration. Inventory sync pages the complete list without limiting the discovered candidate population.
 
-Versions: Windows node 0.57.47; Android node 0.6.96 (156); Windows wallet 1.0.8; Android Wallet Current 1.1.7 (18); P2P Full and Light 0.3.5. Explorer 0.4.11 fixes wrapped navigation and locale formatting; it remains a read-only chain browser. English remains the default. All 34 languages include directly authored update notices and new interface labels. No third-party translation service was used. Launchpad work is excluded.
+Versions: Windows node 0.57.48; Android node 0.6.96 (156); Windows wallet 1.0.8; Android Wallet Current 1.1.7 (18); P2P Full and Light 0.3.5. Explorer 0.4.11 fixes wrapped navigation and locale formatting; it remains a read-only chain browser. English remains the default. All 34 languages include directly authored update notices and new interface labels. No third-party translation service was used. Launchpad work is excluded.
 
 Verification uses disposable test-chain data and isolated peers. No public trade, live database migration or physical-phone installation is claimed. Public completion of the nine previously pending jobs is not established by these tests. Matching releases must be distributed and users must install them before the activation height. Download matching source and packages from https://github.com/jack-cal/SUMUWW/releases.
 

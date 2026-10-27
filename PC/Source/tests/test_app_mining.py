@@ -7,7 +7,7 @@ import threading
 import unittest
 from unittest.mock import patch
 
-from sumuww.app_service import _mine_block
+from sumuww.app_service import _MiningSession, _mine_block
 from sumuww.app_service import AppService
 from sumuww.chain import Chain
 from sumuww.profiles import REGTEST
@@ -89,6 +89,24 @@ class AppMiningTests(unittest.TestCase):
             self.assertIsNone(_mine_block(self.database, REGTEST, ALICE.script_pubkey, self.cancel))
         with Chain(self.database) as chain:
             self.assertEqual(0, chain.info()['height'])
+
+    def test_activated_pow_mining_does_not_wait_for_connection_proof(self):
+        with Chain(self.database, network=REGTEST, boundary_activation=2) as chain:
+            first = chain.make_block(ALICE.script_pubkey)
+            self.assertTrue(chain.accept_block(first))
+
+        session = _MiningSession(self.database, REGTEST, boundary_activation=2)
+        try:
+            result = session.run(self.database, REGTEST, ALICE.script_pubkey, self.cancel)
+        finally:
+            session.close()
+
+        with Chain(self.database, network=REGTEST, boundary_activation=2) as chain:
+            self.assertEqual(2, chain.info()['height'])
+            self.assertEqual(chain.tip_hash, result)
+            block = chain.get_block(chain.tip_hash)
+            self.assertTrue(any(output.script_pubkey.startswith(b'\x6a\x25SMWL\x01')
+                                for output in block.transactions[0].outputs))
 
     def test_unexpected_mining_error_is_not_swallowed(self):
         with patch.object(Chain, 'make_block', side_effect=RuntimeError('unexpected failure')):

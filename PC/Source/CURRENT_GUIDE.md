@@ -1,6 +1,6 @@
-SUMUWW 0.57.47 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+SUMUWW 0.57.48 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
 
-# SUMUWW PC 0.57.47
+# SUMUWW PC 0.57.48
 
 1 yugeon = 0.00000001 SMW. Wallet fees support slow, normal and fast suggestions or a manual yugeon/vB rate, with the exact total shown before confirmation. The node adds signed-transaction preflight, bounded atomic replacement and block data record queries.
 

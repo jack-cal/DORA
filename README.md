@@ -4,11 +4,11 @@ Update every validating full node and ordinary wallet before **block 9,600**. Th
 
 SUMUWW is an independent SHA-256d proof-of-work coin with asynchronous connection proofs. Valid cumulative work remains the primary chain-selection rule. Existing wallets, valid chain history, issuance and halvings are preserved.
 
-## Current downloads — 26 October 2026
+## Current downloads — 27 October 2026
 
 | Component | Version | Download | Source |
 |---|---|---|---|
-| Windows full node, wallet and miner | 0.57.47 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.47) | [Source](PC/Source) |
+| Windows full node, wallet and miner | 0.57.48 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/pc-v0.57.48) | [Source](PC/Source) |
 | Android full node, wallet and miner | 0.6.96 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/android-v0.6.96) | [Source](Android/Source) |
 | Windows ordinary wallet | 1.0.8 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-pc-v1.0.8) | [Source](Wallet/Desktop) |
 | Android ordinary wallet | 1.1.7 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/wallet-android-v1.1.7) | [Source](Wallet/Source) |
@@ -17,6 +17,8 @@ SUMUWW is an independent SHA-256d proof-of-work coin with asynchronous connectio
 | P2P Light — SMW/BTC trading | 0.3.6 | [Release](https://github.com/jack-cal/SUMUWW/releases/tag/p2p-light-v0.3.6) | [Source](P2P/Source) |
 
 [Current node documentation in 34 languages](https://github.com/jack-cal/SUMUWW/releases/tag/docs-20261026-r1) · [English whitepaper 2.3](https://github.com/jack-cal/SUMUWW/releases/tag/whitepaper-v2.3-en) · [Component installation guide](Documentation/COMPONENT_SUITE.md)
+
+Windows 0.57.48 updates the PC mining path. The screenshot's generic mining error was not reproduced, so this release does not claim to fix that specific error. See the [release verification and limits](Documentation/RELEASE_VERIFICATION_20261027.md).
 
 ## Changes in these versions
 

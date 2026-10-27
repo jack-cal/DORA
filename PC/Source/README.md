@@ -1,6 +1,6 @@
-SUMUWW 0.57.47 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
+SUMUWW 0.57.48 — update before block 9,600. See UPGRADE_9600.md and the local 34-language upgrade9600 guide.
 
-# SUMUWW PC 0.57.47
+# SUMUWW PC 0.57.48
 
 This release adds address validation and transaction decoding to the node API. The node provides signed-transaction validation and submission, block/transaction/UTXO queries, synchronization state and reorganization information. Existing wallet, mining and connection-proof features are retained. English is the default, with documentation in all 34 supported languages.
 

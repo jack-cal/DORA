@@ -231,22 +231,6 @@ class _MiningSession:
                 self._backend_settings = None
             _MINING_CONTEXT.session = previous
 
-    def run_staged(self, public_script, parent, cancellation):
-        """Hash a real next header while its parent's certificate completes."""
-        self._check_owner()
-        chain=self.chain(self.database,self.network)
-        parent_hash=parent.block_hash(); previous=parent.header.previous_hash
-        def interrupted():
-            time.sleep(MINING_COOPERATIVE_YIELD_SECONDS)
-            return cancellation.is_set() or chain.tip_hash not in (previous,parent_hash)
-        if interrupted():return None
-        try:
-            return chain.make_block(public_script,parent_hash=parent_hash,
-                staged_parent=parent,mining_cancel=interrupted,mining_backend=self._backend)
-        except RuntimeError:
-            if interrupted():return None
-            raise
-
     def close(self):
         self._check_owner()
         chain, self._chain = self._chain, None
@@ -315,11 +299,6 @@ def _search_active_chain(chain, public_script, cancellation):
             return None
         if chain.tip_hash != parent:
             continue
-        if chain.boundary.required(chain._row(parent)[2]+1,parent):
-            # The actor collects the certificate. This worker never accepts
-            # an unsigned activated candidate or reports it as a reward.
-            chain.validate_boundary_candidate(block)
-            return block
         # The write transaction decides activation. A competing block
         # cannot make an inactive branch look like a successful reward.
         if chain.accept_block(block):
@@ -401,7 +380,6 @@ class AppService:
         self._mining_guard_task = None
         self._mining_executor = None
         self._mining_session = None
-        self._boundary_pending = None
         self._history = None
         self._rpc_settings = _load_rpc_settings(self.directory)
         self._rpc = None
@@ -552,18 +530,14 @@ class AppService:
             if not self._mining_cancel.is_set():
                 self._mining_cancel_reason = reason
             self._mining_cancel.set()
-            if self._boundary_pending is not None:
-                self._boundary_pending['cancel'].set()
 
     async def _halt_wallet_mining(self):
         self._request_mining_stop('wallet_change')
         if self._mining_reserved:
             if self._mining_task is not None and not self._mining_task.done():
                 await self._mining_task
-        await self._discard_boundary_pending()
 
     async def _close_mining_session(self):
-        await self._discard_boundary_pending()
         executor, session = self._mining_executor, self._mining_session
         if executor is None:
             return
@@ -576,25 +550,6 @@ class AppService:
             # the service actor while Tk awaits its separate shutdown Future.
             executor.shutdown(wait=True, cancel_futures=True)
             self._mining_executor = self._mining_session = None
-
-    async def _discard_boundary_pending(self):
-        pending,self._boundary_pending=self._boundary_pending,None
-        if pending is not None:
-            pending['cancel'].set()
-            await asyncio.gather(pending['future'],return_exceptions=True)
-
-    async def _boundary_result(self, awaitable, parent):
-        task=asyncio.ensure_future(awaitable)
-        try:
-            while not task.done():
-                if (self._mining_cancel.is_set() or self._mining_pause.is_set()
-                        or self._node.chain.tip_hash!=parent):
-                    return None
-                await asyncio.wait((task,),timeout=.1)
-            return task.result()
-        finally:
-            if not task.done():task.cancel()
-            await asyncio.gather(task,return_exceptions=True)
 
     def _thread_main(self):
         loop = None
@@ -750,51 +705,28 @@ class AppService:
                 self._finish_mining_wait()
                 self._mining_pause.clear()
                 self._mining_state = 'running'
-                pending=self._boundary_pending
-                if pending is not None and (pending['parent']!=self._node.chain.tip_hash
-                        or pending['script']!=script or pending['settings']!=self._hardware_settings
-                        or pending['cancel'].is_set()):
-                    await self._discard_boundary_pending();pending=None
-                if pending is not None:
-                    digest=await self._boundary_result(pending['future'],pending['parent'])
-                    if digest is None:await self._discard_boundary_pending()
-                    else:self._boundary_pending=None
-                else:
-                    runtime=self._node.boundary_runtime
-                    digest=runtime.pending_candidate() if runtime is not None else None
-                    if digest is not None and not any(output.script_pubkey==script for output in digest.transactions[0].outputs):
-                        raise AppServiceError('Resume the wallet used for the pending signed mining candidate')
-                    if digest is None:
-                        digest = await asyncio.get_running_loop().run_in_executor(
-                            self._mining_executor, self._mining_session.run,
-                            self.database, self.network, script, interruption)
+                runtime=self._node.boundary_runtime
+                digest=runtime.pending_candidate() if runtime is not None else None
+                if digest is not None and not any(output.script_pubkey==script for output in digest.transactions[0].outputs):
+                    raise AppServiceError('Resume the wallet used for the pending mining candidate')
+                if digest is None:
+                    digest = await asyncio.get_running_loop().run_in_executor(
+                        self._mining_executor, self._mining_session.run,
+                        self.database, self.network, script, interruption)
                 from .block import Block
                 if isinstance(digest,Block):
                     block=digest;digest=None;parent=block.header.previous_hash
                     if self._node.chain.tip_hash!=parent:continue
-                    if not self._node.chain.boundary.required(self._node.chain._row(parent)[2]+1,parent):
-                        # A staged next header can be an ordinary PoW block.
-                        # Accept the original winner without a signing RPC.
-                        if not self._mining_cancel.is_set() and self._node.chain.accept_block(block):
-                            digest=block.block_hash()
-                        if digest is not None:break
-                        if interruption.is_set():continue
-                        raise AppServiceError('Ordinary staged block was not accepted')
-                    cancel=threading.Event()
-                    self._boundary_pending={'parent':block.block_hash(),'script':script,
-                        'settings':dict(self._hardware_settings),'cancel':cancel,
-                        'future':asyncio.get_running_loop().run_in_executor(self._mining_executor,
-                            self._mining_session.run_staged,script,block,
-                            _MiningInterruption(cancel,self._mining_pause))}
-                    runtime=self._node.boundary_runtime
-                    if runtime is None:raise AppServiceError('Boundary signing runtime unavailable')
-                    proof=await self._boundary_result(runtime.complete(block),parent)
-                    if proof is not None and not self._mining_cancel.is_set():
-                        if self._node.chain.accept_block(block,boundary_envelope=proof):
-                            digest=block.block_hash()
+                    # Link evidence is generated by LinkRuntime after PoW and
+                    # block acceptance. It must never gate native mining.
+                    if not self._mining_cancel.is_set() and self._node.chain.accept_block(block):
+                        digest=block.block_hash()
                     if digest is None:
-                        await self._discard_boundary_pending()
-                        if not interruption.is_set():continue
+                        if interruption.is_set() or self._node.chain.tip_hash!=parent:
+                            continue
+                        # A valid but losing/equal-work candidate is not a
+                        # wallet reward; return to the active tip and retry.
+                        continue
                 if digest is not None:
                     break
                 if self._mining_cancel.is_set():
